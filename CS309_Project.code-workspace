@@ -1,0 +1,39 @@
+{
+	"folders": [
+		{
+			"name": "Boss Fight BattleGrounds",
+			"path": "."
+		},
+		{
+			"name": "Documentation",
+			"path": "./Documentation"
+		},
+		{
+			"name": "Experiments",
+			"path": "./Experiments"
+		}
+	],
+	"settings": {
+		"files.exclude": {
+			"Documentation": true,
+			"Experiments": true,
+			"*/**/obj": true,
+			"*/**/bin": true,
+			// "*/**/*.csproj": true,
+			"*/**/.vs": true
+		}
+	},
+	"extensions": {
+		"recommendations": [
+			"ms-vscode.csharp",
+			"ms-vscode.mono-debug",
+			"formulahendry.dotnet-test-explorer",
+			"yzhang.markdown-all-in-one",
+			"jchannon.csharpextensions",
+			"quicktype.quicktype",
+			"eamodio.gitlens",
+			"aaron-bond.better-comments",
+			"jmrog.vscode-nuget-package-manager"
+		]
+	},
+}
