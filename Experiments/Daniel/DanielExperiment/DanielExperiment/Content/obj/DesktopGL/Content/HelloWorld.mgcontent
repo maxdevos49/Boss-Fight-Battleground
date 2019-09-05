@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>A:/School/Fall2019/ComS309/ks_5/Experiments/Daniel/test2/DanielExperiment/Content/HelloWorld.png</SourceFile>
-  <SourceTime>2019-09-04T14:40:44.7583392-05:00</SourceTime>
-  <DestFile>A:/School/Fall2019/ComS309/ks_5/Experiments/Daniel/test2/DanielExperiment/Content/bin/DesktopGL/Content/HelloWorld.xnb</DestFile>
-  <DestTime>2019-09-04T14:55:48.9260096-05:00</DestTime>
+  <SourceFile>A:/School/Fall2019/ComS309/ks_5/Experiments/Daniel/DanielExperiment/DanielExperiment/Content/HelloWorld.png</SourceFile>
+  <SourceTime>2019-09-05T13:55:39.1034052-05:00</SourceTime>
+  <DestFile>A:/School/Fall2019/ComS309/ks_5/Experiments/Daniel/DanielExperiment/DanielExperiment/Content/bin/DesktopGL/Content/HelloWorld.xnb</DestFile>
+  <DestTime>2019-09-05T13:58:17.8712376-05:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2018-08-05T14:17:44-05:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

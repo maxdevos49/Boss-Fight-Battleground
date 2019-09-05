@@ -783,11 +783,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "A:\\School\\Fall2019\\ComS309\\ks_5\\Experiments\\Daniel\\test2\\DanielExperiment\\DanielExperiment.csproj",
+      "projectUniqueName": "A:\\School\\Fall2019\\ComS309\\ks_5\\Experiments\\Daniel\\DanielExperiment\\DanielExperiment\\DanielExperiment.csproj",
       "projectName": "DanielExperiment",
-      "projectPath": "A:\\School\\Fall2019\\ComS309\\ks_5\\Experiments\\Daniel\\test2\\DanielExperiment\\DanielExperiment.csproj",
+      "projectPath": "A:\\School\\Fall2019\\ComS309\\ks_5\\Experiments\\Daniel\\DanielExperiment\\DanielExperiment\\DanielExperiment.csproj",
       "packagesPath": "C:\\Users\\Daniel\\.nuget\\packages\\",
-      "outputPath": "A:\\School\\Fall2019\\ComS309\\ks_5\\Experiments\\Daniel\\test2\\DanielExperiment\\obj\\",
+      "outputPath": "A:\\School\\Fall2019\\ComS309\\ks_5\\Experiments\\Daniel\\DanielExperiment\\DanielExperiment\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\",

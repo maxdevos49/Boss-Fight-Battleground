@@ -4,7 +4,7 @@
   <Platform>DesktopGL</Platform>
   <Config />
   <SourceFiles>
-    <File>A:/School/Fall2019/ComS309/ks_5/Experiments/Daniel/test2/DanielExperiment/Content/HelloWorld.png</File>
+    <File>A:/School/Fall2019/ComS309/ks_5/Experiments/Daniel/DanielExperiment/DanielExperiment/Content/HelloWorld.png</File>
   </SourceFiles>
   <DestFiles>
     <File xsi:nil="true" />
