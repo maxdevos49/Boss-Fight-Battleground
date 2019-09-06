@@ -8,7 +8,10 @@ namespace TestGame.Tests
         [Fact]
         public void Test1()
         {
+            String expected = "This should always pass!";
+            String actual = "This should always pass!";
 
+            Assert.Equal(expected, actual);
         }
     }
 }

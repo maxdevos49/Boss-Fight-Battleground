@@ -5,7 +5,10 @@ VisualStudioVersion = 16.0.29215.179
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestGame", "TestGame\TestGame.csproj", "{264D0555-A2FD-456A-9658-D6CB2959AD5C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestGame.Tests", "TestGame.Tests\TestGame.Tests.csproj", "{91893DCB-05C8-41C7-8979-E7B503E3B78E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestGame.Tests", "TestGame.Tests\TestGame.Tests.csproj", "{91893DCB-05C8-41C7-8979-E7B503E3B78E}"
+	ProjectSection(ProjectDependencies) = postProject
+		{264D0555-A2FD-456A-9658-D6CB2959AD5C} = {264D0555-A2FD-456A-9658-D6CB2959AD5C}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
