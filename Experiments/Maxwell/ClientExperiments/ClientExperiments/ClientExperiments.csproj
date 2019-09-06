@@ -1,0 +1,36 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MonoGame.Content.Builder" Version="3.7.0.9" />
+    <PackageReference Include="MonoGame.Framework.DesktopGL.Core" Version="3.7.0.7" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Content\sprites\grass.xnb" />
+    <None Remove="Content\obj\.mgstats" />
+    <None Remove="Content\obj\.mgcontent" />
+    <None Remove="Content\Content.mgcb" />
+    <None Remove="Content\Fonts\Papyrus.xnb" />
+    <None Remove="Content\Sprites\enemy.xnb" />
+    <None Remove="Content\Sprites\spaceship.xnb" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="Content\sprites\grass.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+   <Content Include="Content\**\*.*">
+  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+</Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Content\Fonts\" />
+    <Folder Include="Engine\" />
+    <Folder Include="Scenes\" />
+  </ItemGroup>
+</Project>

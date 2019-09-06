@@ -17,8 +17,8 @@
 		"files.exclude": {
 			"Documentation": true,
 			"Experiments": true,
-			"*/**/obj": true,
-			"*/**/bin": true,
+			// "*/**/obj": true,
+			// "*/**/bin": true,
 			// "*/**/*.csproj": true,
 			"*/**/.vs": true
 		}
