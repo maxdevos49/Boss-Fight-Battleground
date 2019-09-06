@@ -1,0 +1,178 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
+  <asmv1:assemblyIdentity name="TestGame.exe" version="1.0.0.2" publicKeyToken="49a8f3cc81b6e3bc" language="neutral" processorArchitecture="msil" type="win32" />
+  <description asmv2:iconFile="Icon.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
+  <application />
+  <entryPoint>
+    <assemblyIdentity name="TestGame" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+    <commandLine file="TestGame.exe" parameters="" />
+  </entryPoint>
+  <trustInfo>
+    <security>
+      <applicationRequestMinimum>
+        <PermissionSet Unrestricted="true" ID="Custom" SameSite="site" />
+        <defaultAssemblyRequest permissionSetReference="Custom" />
+      </applicationRequestMinimum>
+      <requestedPrivileges xmlns="urn:schemas-microsoft-com:asm.v3">
+        <requestedExecutionLevel level="asInvoker" uiAccess="false" />
+      </requestedPrivileges>
+    </security>
+  </trustInfo>
+  <dependency>
+    <dependentOS>
+      <osVersionInfo>
+        <os majorVersion="5" minorVersion="1" buildNumber="2600" servicePackMajor="0" />
+      </osVersionInfo>
+    </dependentOS>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
+      <assemblyIdentity name="Microsoft.Windows.CommonLanguageRuntime" version="4.0.30319.0" />
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="MonoGame.Framework.dll" size="1489920">
+      <assemblyIdentity name="MonoGame.Framework" version="3.7.1.189" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>RI1AhmmXwBxHjVvoI8dSQlMkruY5+doyl8CoVW36rTQ=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="TestGame.exe" size="575976">
+      <assemblyIdentity name="TestGame" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>T19c02Qwx2GEv4tZ0mUNS6Rpg74bDQE3mtyhMq+QKwc=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <file name="Content\2d\misc\CursorArrow.xnb" size="4181">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>kjxL//XyK0HTez8ZC02h7xW2fiQKueC424q8oPfR7/A=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Content\2d\projectiles\Fireball-1.xnb" size="501">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>XRaYP6Q3K0DjfcxMObmUngaGPeD5WVoMBxteL3qwQP8=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Content\2d\sf-background.xnb" size="1437525">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>XkYY7oNW7aQJf8AKoN1O5FqhbeKa7RVLepyXXD6GkXg=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Content\2d\stickman-test-2.xnb" size="7081">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>ILKjJwXVfF3oexKtR5DnruwluPtaiJ2lAZQMh5mAY40=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Content\butt.xnb" size="518485">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>crZ9lCMILWCw4W4ehAXWDfEYEtHlilm2Bzfa7JIaEgs=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Content\Fireball-1.xnb" size="501">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>XRaYP6Q3K0DjfcxMObmUngaGPeD5WVoMBxteL3qwQP8=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Content\Player\stickman-test-walk.xnb" size="42061">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>hwAM4cKx7QHPwjItUuMKL9L11nOjx8lKkk3MmcM51I4=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Content\scout_floating_gun.xnb" size="262165">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>0g1iNyWOui8WL71iIJJKTVZ6PN53xFbDaRSyWnNJ9JI=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Content\sf-background.xnb" size="1437525">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>XkYY7oNW7aQJf8AKoN1O5FqhbeKa7RVLepyXXD6GkXg=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Content\stickman-test-2.xnb" size="7081">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>ILKjJwXVfF3oexKtR5DnruwluPtaiJ2lAZQMh5mAY40=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Icon.ico" size="147541">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>w3hsUaqrnLNyB0YuBPTNsy43j2WodZ9/DHeQN0YJwQA=</dsig:DigestValue>
+    </hash>
+  </file>
+  <compatibility xmlns="urn:schemas-microsoft-com:compatibility.v1">
+    <application>
+      <!-- A list of the Windows versions that this application has been tested on and is
+           is designed to work with. Uncomment the appropriate elements and Windows will 
+           automatically selected the most compatible environment. -->
+      <!-- Windows Vista -->
+      <supportedOS Id="{e2011457-1546-43c5-a5fe-008deee3d3f0}" />
+      <!-- Windows 7 -->
+      <supportedOS Id="{35138b9a-5d96-4fbd-8e2d-a2440225f93a}" />
+      <!-- Windows 8 -->
+      <supportedOS Id="{4a2f28e3-53b9-4441-ba9c-d69d4a4a6e38}" />
+      <!-- Windows 8.1 -->
+      <supportedOS Id="{1f676c76-80e1-4239-95bb-83d0f6d0da78}" />
+      <!-- Windows 10 -->
+      <supportedOS Id="{8e0f7a12-bfb3-4fe8-b9a5-48fd50a15a9a}" />
+    </application>
+  </compatibility>
+  <application xmlns="urn:schemas-microsoft-com:asm.v3">
+    <windowsSettings>
+      <dpiAware xmlns="http://schemas.microsoft.com/SMI/2005/WindowsSettings">true/pm</dpiAware>
+    </windowsSettings>
+  </application>
+<publisherIdentity name="CN=DESKTOP-2ECEQ0A\Daniel" issuerKeyHash="59bba3240ad57de9016f787b8e882973196185ea" /><Signature Id="StrongNameSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>eVId76eSclwzR2e+lm4Fm28vtKi3i2Bzdcf5TG3wkek=</DigestValue></Reference></SignedInfo><SignatureValue>iEdd6q+n+4VL/7XU9tFSe9rzyn2vnOQZ45iUgE3SbQnF0yMUlATUG00K+IBs0cDXRk3C7UrVo9YyO9cZYKCqWxx+tGUUCmwSoQ5sfMwlF/Xka4HvAds7056jgvvyIbXeyKw32Zy9M3EbWDxFYqOr7v0NoSlAwqFQtmsL+NoL2oY=</SignatureValue><KeyInfo Id="StrongNameKeyInfo"><KeyValue><RSAKeyValue><Modulus>mU7OnBpjaJ2ipL9yZ+XHwSczZTFOD2F8/uREpL9KK9YLu2Gvl0F1OVN2OoP/BldgSEixhWMFD1txum7kLtM3KJUy9Qmt+DgHd4PYtNJ75RhVkPafot2ZTqto3Vt7ziOy0XI2zmvPdoR9H2/BAtvtYlyg6A4DVV51KpUXFx788CE=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><msrel:RelData xmlns:msrel="http://schemas.microsoft.com/windows/rel/2005/reldata"><r:license xmlns:r="urn:mpeg:mpeg21:2003:01-REL-R-NS" xmlns:as="http://schemas.microsoft.com/windows/pki/2005/Authenticode"><r:grant><as:ManifestInformation Hash="e991f06d4cf9c77573608bb7a8b42f6f9b056e96be6747335c7292a7ef1d5279" Description="" Url=""><as:assemblyIdentity name="TestGame.exe" version="1.0.0.2" publicKeyToken="49a8f3cc81b6e3bc" language="neutral" processorArchitecture="msil" type="win32" /></as:ManifestInformation><as:SignedBy /><as:AuthenticodePublisher><as:X509SubjectName>CN=DESKTOP-2ECEQ0A\Daniel</as:X509SubjectName></as:AuthenticodePublisher></r:grant><r:issuer><Signature Id="AuthenticodeSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>ybi0mzDdMwaRLKWcnJTFJ3kQNMbp5cyAaKiksGD9/5M=</DigestValue></Reference></SignedInfo><SignatureValue>UHyKeau8qCQDfqBxyYkqH+MOvKSCTra08ysPxNvmfsxmOU6IbOYzaCi2cEpWYTEBJn40y/CdLQc4klWxDU+A7txSiI0we0Bj+DdQdt74j4zcec69aDyZpF1t7LnDIHl7pS1v6Rh5ZrqAIQ+mcNFzIeMpgk6VMWwKfEDCZDo7KcA=</SignatureValue><KeyInfo><KeyValue><RSAKeyValue><Modulus>mU7OnBpjaJ2ipL9yZ+XHwSczZTFOD2F8/uREpL9KK9YLu2Gvl0F1OVN2OoP/BldgSEixhWMFD1txum7kLtM3KJUy9Qmt+DgHd4PYtNJ75RhVkPafot2ZTqto3Vt7ziOy0XI2zmvPdoR9H2/BAtvtYlyg6A4DVV51KpUXFx788CE=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><X509Data><X509Certificate>MIIB8TCCAVqgAwIBAgIQbloypnTCJZpI9gvNnpTPuDANBgkqhkiG9w0BAQsFADA3MTUwMwYDVQQDHiwARABFAFMASwBUAE8AUAAtADIARQBDAEUAUQAwAEEAXABEAGEAbgBpAGUAbDAeFw0xOTA4MzAxNTU5NDhaFw0yMDA4MjkyMTU5NDhaMDcxNTAzBgNVBAMeLABEAEUAUwBLAFQATwBQAC0AMgBFAEMARQBRADAAQQBcAEQAYQBuAGkAZQBsMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCZTs6cGmNonaKkv3Jn5cfBJzNlMU4PYXz+5ESkv0or1gu7Ya+XQXU5U3Y6g/8GV2BISLGFYwUPW3G6buQu0zcolTL1Ca34OAd3g9i00nvlGFWQ9p+i3ZlOq2jdW3vOI7LRcjbOa892hH0fb8EC2+1iXKDoDgNVXnUqlRcXHvzwIQIDAQABMA0GCSqGSIb3DQEBCwUAA4GBAFq23619fpbLuFbJnAFnKtgeqXEAxG3VNogwiv34atdDc9vse9hdelFZe/HaMpnX4wCDbMqlEGJXCtzo7+cledevzBEgyxD4UapSe58iS8qWZeBX/cLqKPuAoJng7G7DL8ioJQMPhetxrcDnlfqFJE3hOlUzxQSBvE/894M1qi3M</X509Certificate></X509Data></KeyInfo></Signature></r:issuer></r:license></msrel:RelData></KeyInfo></Signature></asmv1:assembly>
