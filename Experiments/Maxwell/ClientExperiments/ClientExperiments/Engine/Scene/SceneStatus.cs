@@ -1,4 +1,4 @@
-﻿namespace ClientExperiments.Engine
+﻿namespace ClientExperiments.Engine.Scene
 {
     public enum SceneStatus
     {

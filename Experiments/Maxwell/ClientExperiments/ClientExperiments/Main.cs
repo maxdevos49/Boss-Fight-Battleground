@@ -3,7 +3,10 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
-using ClientExperiments.Engine;
+using ClientExperiments.Engine.Scene;
+using ClientExperiments.Engine.Event;
+
+using ClientExperiments.Scenes;
 
 namespace ClientExperiments
 {
@@ -12,6 +15,7 @@ namespace ClientExperiments
 
         private SceneManager SceneManager;
         private GraphicsDeviceManager GraphicsManager;
+        private EventManager EventManager;
         private SpriteBatch SpriteBatch;
         
         #region Main
@@ -33,18 +37,8 @@ namespace ClientExperiments
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
 
-            //Init Graphics manager
+            //Init Graphics manager. (Needs to be in the constructor)
             GraphicsManager = new GraphicsDeviceManager(this);
-
-            //Init Scene Manager
-            SceneManager = new SceneManager(Content);
-
-            //Add scenes to scene manager
-
-            //start first scene
-            //SceneManager.Start("");
-
-
         }
 
         #endregion
@@ -53,8 +47,27 @@ namespace ClientExperiments
 
         protected override void Initialize()
         {
+            
             //Init spritebatch for drawing
             SpriteBatch = new SpriteBatch(GraphicsDevice);
+
+            //Init event manager
+            EventManager = new EventManager();
+
+            //Init Scene Manager
+            SceneManager = new SceneManager(Content, GraphicsManager, EventManager);
+
+            //Add scenes to scene manager
+            SceneManager.AddScene(new Scene[] {
+                new TestScene2(),
+                new TestScene()
+            });
+
+            //start first scene
+            SceneManager.StartScene(nameof(TestScene));
+
+            //Launch second scene in parallel
+            SceneManager.LaunchScene(nameof(TestScene2));
 
             base.Initialize();
         }
@@ -98,7 +111,7 @@ namespace ClientExperiments
             SpriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend);
 
             //Draw Active Scenes
-            SceneManager.DrawScenes(gameTime);
+            SceneManager.DrawScenes(gameTime, SpriteBatch);
 
             SpriteBatch.End();
 
