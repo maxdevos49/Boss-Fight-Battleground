@@ -11,14 +11,25 @@ namespace testGame
         SpriteBatch spriteBatch;
 
         Texture2D target_Sprite;
-        Texture2D crosshair_Sprite;
+        Texture2D crosshairs_Sprite;
         Texture2D background_Sprite;
+
+        SpriteFont gameFont;
+
+        Vector2 targetPosition = new Vector2(300, 300);
+        const int TARGET_RADIUS = 45;
+        int score = 0;
+
+        MouseState mState;
+        bool mReleased = true;
 
         //Constructor for the game
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
+
+            IsMouseVisible = true;
 
             
         }
@@ -38,8 +49,10 @@ namespace testGame
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             target_Sprite = Content.Load<Texture2D>("target");
-            crosshair_Sprite = Content.Load<Texture2D>("circle");
+            crosshairs_Sprite = Content.Load<Texture2D>("crosshairs");
             background_Sprite = Content.Load<Texture2D>("clouds");
+
+            gameFont = Content.Load<SpriteFont>("galleryFont");
 
             // TODO: use this.Content to load your game content here
         }
@@ -56,7 +69,16 @@ namespace testGame
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
-            // TODO: Add your update logic here
+            mState = Mouse.GetState();
+            if (mState.LeftButton == ButtonState.Pressed && mReleased == true){
+                score++;
+                mReleased = false;
+            }
+            
+            if (mState.LeftButton == ButtonState.Released)
+            {
+                mReleased = true;
+            }
 
             base.Update(gameTime);
         }
@@ -68,8 +90,10 @@ namespace testGame
 
             spriteBatch.Begin();
 
-            spriteBatch.Draw(background_Sprite, new Vector2(0, 0), Color.White);
-            spriteBatch.Draw(target_Sprite, new Vector2(0, 0), Color.White);
+            spriteBatch.Draw(background_Sprite, new Vector2(0, 0), Color.White);//background is drawn first to stay in background
+            spriteBatch.Draw(target_Sprite, targetPosition, Color.White);
+
+            spriteBatch.DrawString(gameFont, score.ToString(), new Vector2(100, 100), Color.White);
 
             spriteBatch.End();
 
