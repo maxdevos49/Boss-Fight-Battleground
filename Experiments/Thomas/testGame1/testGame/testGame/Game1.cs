@@ -1,4 +1,6 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System;
+
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
@@ -16,12 +18,13 @@ namespace testGame
 
         SpriteFont gameFont;
 
-        Vector2 targetPosition = new Vector2(300, 300);
+        Vector2 targetPosition = new Vector2(200, 200);
         const int TARGET_RADIUS = 45;
         int score = 0;
 
         MouseState mState;
         bool mReleased = true;
+        float mouseTargetDist;
 
         //Constructor for the game
         public Game1()
@@ -70,13 +73,23 @@ namespace testGame
                 Exit();
 
             mState = Mouse.GetState();
+            mouseTargetDist = Vector2.Distance(targetPosition, new Vector2(mState.X, mState.Y));
+            
             if (mState.LeftButton == ButtonState.Pressed && mReleased == true){
-                score++;
+                if (mouseTargetDist < TARGET_RADIUS){
+                    score++;
+
+                    Random rand = new Random();
+
+                    targetPosition.X = rand.Next(0 + TARGET_RADIUS, graphics.PreferredBackBufferWidth - TARGET_RADIUS + 1);
+                    targetPosition.Y = rand.Next(0 + TARGET_RADIUS, graphics.PreferredBackBufferHeight - TARGET_RADIUS + 1);
+                }
                 mReleased = false;
             }
             
             if (mState.LeftButton == ButtonState.Released)
             {
+
                 mReleased = true;
             }
 
@@ -91,7 +104,7 @@ namespace testGame
             spriteBatch.Begin();
 
             spriteBatch.Draw(background_Sprite, new Vector2(0, 0), Color.White);//background is drawn first to stay in background
-            spriteBatch.Draw(target_Sprite, targetPosition, Color.White);
+            spriteBatch.Draw(target_Sprite, new Vector2(targetPosition.X - TARGET_RADIUS, targetPosition.Y - TARGET_RADIUS), Color.White);
 
             spriteBatch.DrawString(gameFont, score.ToString(), new Vector2(100, 100), Color.White);
 
