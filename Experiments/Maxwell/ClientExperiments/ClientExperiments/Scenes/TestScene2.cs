@@ -1,6 +1,10 @@
-﻿using ClientExperiments.Engine.Event;
+﻿//C#
+using System;
+
+//Engine
 using ClientExperiments.Engine.Scene;
 
+//Monogame
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -21,10 +25,12 @@ namespace ClientExperiments.Scenes
             y = 0;
             r = 0;
 
-            _eventManager.AddEventListener("test-event", (Event) =>
+            _eventManager.AddEventListener("mousedown", (Event) =>
             {
-                r+=0.1f;
+                x = Event.Mouse.X;
+                y = Event.Mouse.Y;
 
+                r += 0.1f;
             });
         }
 
@@ -40,21 +46,21 @@ namespace ClientExperiments.Scenes
 
         public override void Update(GameTime gameTime)
         {
-            x--;
-            y++;
 
-            if (x < 0)
-                x = 600;
-
-            if (y > 600)
-                y = 0;
-
-            _eventManager.Emit("test-event");
         }
 
         public override void Draw(GameTime gameTime, SpriteBatch graphics)
         {
-            graphics.Draw(enemy, new Vector2(x,y), new Rectangle(0,0,100,100), Color.White, r, new Vector2(0,0), 1.0f, SpriteEffects.None, 1);
+            Random rnd = new Random();
+
+            for (int i = 0; i< 10000; i++)
+            {
+                x = rnd.Next(_graphicsManager.GraphicsDevice.Viewport.Width);
+                y = rnd.Next(_graphicsManager.GraphicsDevice.Viewport.Height);
+
+                graphics.Draw(enemy, new Vector2(x, y), new Rectangle(0, 0, 100, 100), Color.White, r, new Vector2(enemy.Width/2, enemy.Height/2), 1.0f, SpriteEffects.None, 1);
+            }
+
         }
 
 

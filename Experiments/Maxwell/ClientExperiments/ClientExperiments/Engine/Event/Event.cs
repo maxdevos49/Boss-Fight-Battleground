@@ -1,19 +1,13 @@
-﻿using System;
-
-
-namespace ClientExperiments.Engine.Event
+﻿namespace ClientExperiments.Engine.Event
 {
-    public class Event
+    public partial class Event
     {
 
         public int EventId { get; set; }
 
         public string EventKey { get; set; }
 
-        public EventPayload Payload { get; set; }
-
         private bool PropagateEvent { get; set; }
-
 
         #region Constructor
 
@@ -21,6 +15,7 @@ namespace ClientExperiments.Engine.Event
         {
             PropagateEvent = true;
         }
+
         #endregion
 
         #region Propagate
@@ -40,5 +35,6 @@ namespace ClientExperiments.Engine.Event
         }
 
         #endregion
+
     }
 }

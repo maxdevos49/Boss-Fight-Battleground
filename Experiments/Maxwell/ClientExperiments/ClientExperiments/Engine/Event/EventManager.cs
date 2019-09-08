@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading;
 
 namespace ClientExperiments.Engine.Event
 {
@@ -66,38 +67,55 @@ namespace ClientExperiments.Engine.Event
         }
 
 
-        public void Emit(string eventKey, EventPayload payload = null)
+        public void Emit(string eventKey, Event eventData = null)
         {
 
-            Event eventObj = new Event
-            {
-                EventId = (EventId++),
-                EventKey = eventKey,
-                Payload = payload
-            };
+            //All fired events
+            Console.WriteLine($"EventKey: \"{eventKey}\", Mouse X/Y: {eventData?.Mouse?.X},{eventData?.Mouse?.Y}, Key: {eventData?.Keyboard?.Key}");
 
-            //make sure the event key exist
             if (EventHandelers.ContainsKey(eventKey))
             {
-                //loop through existing handleres for that event
-                foreach (var handeler in EventHandelers[eventKey])
-                {
+                //create new thread
+                Thread eventThread = new Thread(() => EventThread(eventKey, eventData));
 
-                    //Check if propagation was canceled
-                    if (eventObj.Propagate())
-                    {
-                        //Call event handler
-                        handeler.Value(eventObj);
-                    }
-                    else
-                    {
-                        //event was canceled
-                        break;
-                    }
-                }
+                //start thread
+                eventThread.Start();
             }
         }
 
+        /**
+         * Event processing thread.
+         * */
+        private void EventThread(string eventKey, Event eventData = null)
+        {
+            if (eventData == null)
+            {
+                eventData = new Event();
+            }
+
+            eventData.EventId = (EventId++);
+            eventData.EventKey = eventKey;
+
+            //loop through existing handleres for that event
+            foreach (var handeler in EventHandelers[eventKey])
+            {
+
+                //Check if propagation was canceled
+                if (eventData.Propagate())
+                {
+                    //Call event handler
+                    handeler.Value(eventData);
+
+                    //Event log
+                    //Console.WriteLine($"EventId: {eventData.EventId}, EventKey: \"{eventData.EventKey}\", EventHandelerId: {handeler.Key}");
+                }
+                else
+                {
+                    //event was canceled
+                    break;
+                }
+            }
+        }
 
     }
 }

@@ -32,8 +32,10 @@
     <Folder Include="Content\Fonts\" />
     <Folder Include="Engine\" />
     <Folder Include="Scenes\" />
-    <Folder Include="Engine\Events\" />
+    <Folder Include="Engine\Event\" />
     <Folder Include="Engine\Scene\" />
+    <Folder Include="Engine\Input\" />
+    <Folder Include="Engine\Debug\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="Engine\Events\SceneEventManager.cs" />

@@ -1,23 +1,27 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
 
+//Engine
 using ClientExperiments.Engine.Scene;
 using ClientExperiments.Engine.Event;
+using ClientExperiments.Engine.Input;
 
+//Project
 using ClientExperiments.Scenes;
 
 namespace ClientExperiments
 {
-    public class MainGame: Game
+    public class MainGame : Game
     {
 
+        private InputManager InputManager;
         private SceneManager SceneManager;
         private GraphicsDeviceManager GraphicsManager;
         private EventManager EventManager;
+
         private SpriteBatch SpriteBatch;
-        
+
         #region Main
 
         [STAThread]
@@ -47,12 +51,15 @@ namespace ClientExperiments
 
         protected override void Initialize()
         {
-            
+
             //Init spritebatch for drawing
             SpriteBatch = new SpriteBatch(GraphicsDevice);
 
             //Init event manager
             EventManager = new EventManager();
+
+            //Init input manager
+            InputManager = new InputManager(EventManager, new InputConfig());
 
             //Init Scene Manager
             SceneManager = new SceneManager(Content, GraphicsManager, EventManager);
@@ -60,7 +67,8 @@ namespace ClientExperiments
             //Add scenes to scene manager
             SceneManager.AddScene(new Scene[] {
                 new TestScene2(),
-                new TestScene()
+                new TestScene(),
+                new DebugScene()
             });
 
             //start first scene
@@ -68,17 +76,33 @@ namespace ClientExperiments
 
             //Launch second scene in parallel
             SceneManager.LaunchScene(nameof(TestScene2));
+            SceneManager.LaunchScene(nameof(DebugScene));
 
             base.Initialize();
         }
 
         #endregion
 
-        #region LoadContent(Unused)
+        #region LoadContent
 
         protected override void LoadContent()
         {
-           
+            //Load global textures here. (Fonts, sprites, and audio)
+
+            //font
+            Content.Load<SpriteFont>("Fonts\\Papyrus");
+        }
+
+        #endregion
+
+        #region UnloadContent
+
+        protected override void UnloadContent()
+        {
+
+            Content.Unload();
+
+            base.UnloadContent();
         }
 
         #endregion
@@ -87,9 +111,8 @@ namespace ClientExperiments
 
         protected override void Update(GameTime gameTime)
         {
-            //TODO Input
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
-                Exit();
+            //Checks for inputs and then fires events for those inputs
+            InputManager.CheckInputs();
 
             //Call update for active scenes
             SceneManager.UpdateScenes(gameTime);
@@ -107,12 +130,13 @@ namespace ClientExperiments
             //Clear screen
             GraphicsDevice.Clear(Color.Black);
 
-            //Not sure this 
+            //Starts drawing
             SpriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend);
 
             //Draw Active Scenes
             SceneManager.DrawScenes(gameTime, SpriteBatch);
 
+            //Ends drawing
             SpriteBatch.End();
 
             base.Draw(gameTime);
