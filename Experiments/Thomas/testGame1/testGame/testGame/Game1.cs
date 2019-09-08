@@ -25,6 +25,7 @@ namespace testGame
         MouseState mState;
         bool mReleased = true;
         float mouseTargetDist;
+        float timer = 10f;
 
         //Constructor for the game
         public Game1()
@@ -72,17 +73,22 @@ namespace testGame
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
+            if (timer > 0)
+            {
+                timer -= (float)gameTime.ElapsedGameTime.TotalSeconds; //automatically will update for time
+            }
+
             mState = Mouse.GetState();
             mouseTargetDist = Vector2.Distance(targetPosition, new Vector2(mState.X, mState.Y));
             
             if (mState.LeftButton == ButtonState.Pressed && mReleased == true){
-                if (mouseTargetDist < TARGET_RADIUS){
+                if (mouseTargetDist < TARGET_RADIUS && timer > 0){
                     score++;
 
                     Random rand = new Random();
 
-                    targetPosition.X = rand.Next(0 + TARGET_RADIUS, graphics.PreferredBackBufferWidth - TARGET_RADIUS + 1);
-                    targetPosition.Y = rand.Next(0 + TARGET_RADIUS, graphics.PreferredBackBufferHeight - TARGET_RADIUS + 1);
+                    targetPosition.X = rand.Next(TARGET_RADIUS, graphics.PreferredBackBufferWidth - TARGET_RADIUS + 1);
+                    targetPosition.Y = rand.Next(TARGET_RADIUS, graphics.PreferredBackBufferHeight - TARGET_RADIUS + 1);
                 }
                 mReleased = false;
             }
@@ -104,9 +110,14 @@ namespace testGame
             spriteBatch.Begin();
 
             spriteBatch.Draw(background_Sprite, new Vector2(0, 0), Color.White);//background is drawn first to stay in background
-            spriteBatch.Draw(target_Sprite, new Vector2(targetPosition.X - TARGET_RADIUS, targetPosition.Y - TARGET_RADIUS), Color.White);
 
-            spriteBatch.DrawString(gameFont, score.ToString(), new Vector2(100, 100), Color.White);
+            if (timer > 0)
+            {
+                spriteBatch.Draw(target_Sprite, new Vector2(targetPosition.X - TARGET_RADIUS, targetPosition.Y - TARGET_RADIUS), Color.White);
+            }
+
+            spriteBatch.DrawString(gameFont, score.ToString(), new Vector2(3, 3), Color.Black);
+            spriteBatch.DrawString(gameFont, Math.Ceiling(timer).ToString(), new Vector2(3, 40), Color.Black);
 
             spriteBatch.End();
 
