@@ -66,7 +66,12 @@ namespace testGame
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            
+            spriteBatch.Begin();
+
+            spriteBatch.Draw(background_Sprite, new Vector2(0, 0), Color.White);
+            spriteBatch.Draw(target_Sprite, new Vector2(0, 0), Color.White);
+
+            spriteBatch.End();
 
             base.Draw(gameTime);
         }
