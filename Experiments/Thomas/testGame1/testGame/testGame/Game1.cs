@@ -20,6 +20,7 @@ namespace testGame
 
         Vector2 targetPosition = new Vector2(200, 200);
         const int TARGET_RADIUS = 45;
+        const int CROSSHAIRS_RADIUS = 25;
         int score = 0;
 
         MouseState mState;
@@ -33,7 +34,7 @@ namespace testGame
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
 
-            IsMouseVisible = true;
+            //IsMouseVisible = true; //Lets you see mouse on the game screen
 
             
         }
@@ -116,8 +117,9 @@ namespace testGame
                 spriteBatch.Draw(target_Sprite, new Vector2(targetPosition.X - TARGET_RADIUS, targetPosition.Y - TARGET_RADIUS), Color.White);
             }
 
-            spriteBatch.DrawString(gameFont, score.ToString(), new Vector2(3, 3), Color.Black);
-            spriteBatch.DrawString(gameFont, Math.Ceiling(timer).ToString(), new Vector2(3, 40), Color.Black);
+            spriteBatch.DrawString(gameFont, "Score: " + score.ToString(), new Vector2(3, 40), Color.Black);
+            spriteBatch.DrawString(gameFont, "Time Left: " + Math.Ceiling(timer).ToString() + " Seconds", new Vector2(3, 3), Color.Black);
+            spriteBatch.Draw(crosshairs_Sprite, new Vector2(mState.X - CROSSHAIRS_RADIUS, mState.Y - CROSSHAIRS_RADIUS), Color.Green);
 
             spriteBatch.End();
 
