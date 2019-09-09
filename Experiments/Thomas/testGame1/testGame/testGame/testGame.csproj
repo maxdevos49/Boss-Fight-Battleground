@@ -61,6 +61,7 @@
     <None Include="Content\clouds.xnb" />
     <None Include="Content\crosshairs.xnb" />
     <None Include="Content\galleryFont.xnb" />
+    <None Include="Content\start.xnb" />
     <None Include="Content\target.xnb" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -15,18 +15,24 @@ namespace testGame
         Texture2D target_Sprite;
         Texture2D crosshairs_Sprite;
         Texture2D background_Sprite;
+        Texture2D start_Sprite;
 
         SpriteFont gameFont;
 
         Vector2 targetPosition = new Vector2(200, 200);
+        Vector2 startButtonPosition = new Vector2(325, 200);
         const int TARGET_RADIUS = 45;
         const int CROSSHAIRS_RADIUS = 25;
         int score = 0;
+        int highScore = 0;
 
         MouseState mState;
         bool mReleased = true;
         float mouseTargetDist;
+        float mouseStartDist;
         float timer = 10f;
+        bool gameOverEnable = false;
+        bool gameStart = false;
 
         //Constructor for the game
         public Game1()
@@ -56,6 +62,7 @@ namespace testGame
             target_Sprite = Content.Load<Texture2D>("target");
             crosshairs_Sprite = Content.Load<Texture2D>("crosshairs");
             background_Sprite = Content.Load<Texture2D>("clouds");
+            start_Sprite = Content.Load<Texture2D>("start");
 
             gameFont = Content.Load<SpriteFont>("galleryFont");
 
@@ -74,16 +81,24 @@ namespace testGame
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
-            if (timer > 0)
+            if (timer > 0 && gameStart)
             {
                 timer -= (float)gameTime.ElapsedGameTime.TotalSeconds; //automatically will update for time
             }
 
             mState = Mouse.GetState();
             mouseTargetDist = Vector2.Distance(targetPosition, new Vector2(mState.X, mState.Y));
+            mouseStartDist = Vector2.Distance(startButtonPosition, new Vector2(mState.X, mState.Y));
             
             if (mState.LeftButton == ButtonState.Pressed && mReleased == true){
-                if (mouseTargetDist < TARGET_RADIUS && timer > 0){
+                if (!gameStart)
+                {
+                    gameOverEnable = true;
+                    gameStart = true;
+                    timer = 10;
+                    score = 0;
+                }
+                else if (mouseTargetDist < TARGET_RADIUS && timer > 0){
                     score++;
 
                     Random rand = new Random();
@@ -112,19 +127,33 @@ namespace testGame
 
             spriteBatch.Draw(background_Sprite, new Vector2(0, 0), Color.White);//background is drawn first to stay in background
 
-            if (timer > 0)
+            if (!gameOverEnable)
+            {
+                spriteBatch.DrawString(gameFont, "Click anywhere to begin!", new Vector2(200, 200), Color.Black);
+            }
+
+            else if (timer > 0)
             {
                 spriteBatch.Draw(target_Sprite, new Vector2(targetPosition.X - TARGET_RADIUS, targetPosition.Y - TARGET_RADIUS), Color.White);
                 spriteBatch.DrawString(gameFont, "Score: " + score.ToString(), new Vector2(3, 40), Color.Black);
                 spriteBatch.DrawString(gameFont, "Time Left: " + Math.Ceiling(timer).ToString() + " Seconds", new Vector2(3, 3), Color.Black);
             }
 
-            if (timer < 0)
+            else if (timer < 0)
             {
                 spriteBatch.DrawString(gameFont, "GAME OVER", new Vector2(200, 200), Color.Red);
                 spriteBatch.DrawString(gameFont, "Score: " + score.ToString(), new Vector2(200, 240), Color.Black);
+                spriteBatch.DrawString(gameFont, "Click anywhere to restart.", new Vector2(200, 280), Color.Black);
+                if (score > highScore)
+                {
+                    highScore = score;
+                }
+                gameStart = false;
             }
             
+
+            spriteBatch.DrawString(gameFont, "High Score: " + highScore.ToString(), new Vector2(585, 3), Color.Black);
+
             spriteBatch.Draw(crosshairs_Sprite, new Vector2(mState.X - CROSSHAIRS_RADIUS, mState.Y - CROSSHAIRS_RADIUS), Color.Green);
 
             spriteBatch.End();
