@@ -92,6 +92,9 @@ namespace ClientExperiments
                             SceneManager.LaunchScene(nameof(DebugScene));
 
                         break;
+                    //case Keys.F4:
+                    //    GraphicsManager.ToggleFullScreen();
+                    //    break;
                 }
             });
 

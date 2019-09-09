@@ -77,13 +77,13 @@ namespace ClientExperiments.Engine.Event
 
             if (EventHandelers.ContainsKey(eventKey))
             {
-                ////create new thread
-                //Thread eventThread = new Thread(() => EventThread(eventKey, eventData));
+                //create new thread
+                Thread eventThread = new Thread(() => EventThread(eventKey, eventData));
 
-                ////start thread
-                //eventThread.Start();
+                //start thread
+                eventThread.Start();
 
-                EventThread(eventKey, eventData);
+                //EventThread(eventKey, eventData);
             }
         }
 

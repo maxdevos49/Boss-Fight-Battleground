@@ -150,8 +150,13 @@ namespace ClientExperiments.Engine.Scene
          * */
         public void DrawScenes(GameTime gameTime, SpriteBatch graphics)
         {
-            foreach (var scene in ActiveScenes.ToList())
-                scene.Value?.Draw(gameTime, graphics);
+            try
+            {
+                foreach (var scene in ActiveScenes.ToList())
+                    scene.Value?.Draw(gameTime, graphics);
+            }
+            catch (Exception) { }
+           
         }
 
         #endregion
@@ -163,9 +168,14 @@ namespace ClientExperiments.Engine.Scene
          * */
         public void UpdateScenes(GameTime gameTime)
         {
-            foreach (var scene in ActiveScenes.ToList())
-                if (scene.Value?.GetStatus() == SceneStatus.ACTIVE)
-                    scene.Value?.Update(gameTime);
+            try
+            {
+                foreach (var scene in ActiveScenes.ToList())
+                    if (scene.Value?.GetStatus() == SceneStatus.ACTIVE)
+                        scene.Value?.Update(gameTime);
+            }
+            catch (Exception) { }
+         
         }
 
         #endregion
