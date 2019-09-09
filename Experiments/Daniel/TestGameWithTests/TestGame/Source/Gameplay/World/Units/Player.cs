@@ -18,42 +18,8 @@ namespace TestGame.Source.Gameplay.World
 
         public override void Update()
         {
-            if (velocity.Y > 0)
-                velocity.Y -= 0.5f;
-            if (velocity.Y < 0)
-                velocity.Y += 0.5f;
-            if (velocity.X > 0)
-               velocity.X -= 0.25f;
-            if (velocity.X < 0)
-                velocity.X += 0.25f;
-
-
-            if (Globals.keyboard.GetPress("W") && !isInAir)
-            {
-                velocity.Y = -12;
-                isInAir = true;
-            }
-            if (Globals.keyboard.GetPress("S"))
-                velocity.Y = 12;
-            if (Globals.keyboard.GetPress("A"))
-               velocity.X = -4;
-            if (Globals.keyboard.GetPress("D"))
-                velocity.X = 4;
-
-            pos.X += velocity.X;
-            pos.Y += velocity.Y + Globals.world.gravity.Y;
-
-            if (pos.Y < 0 + dims.Y / 2)
-                pos.Y = 0 + dims.Y / 2;
-            if (pos.Y > Globals.screenHeight - dims.Y / 2)
-            {
-                pos.Y = Globals.screenHeight - dims.Y / 2;
-                isInAir = false;
-            }
-            if (pos.X < 0 + dims.X / 2)
-                pos.X = 0 + dims.X / 2;
-            if (pos.X > Globals.screenWidth - dims.X / 2)
-                pos.X = Globals.screenWidth - dims.X / 2;
+            updateVelocity(this, Globals.keyboard);
+            updatePosition(this);
 
             if(Globals.mouse.LeftClick())
             {
@@ -66,5 +32,68 @@ namespace TestGame.Source.Gameplay.World
         {
             base.Draw(OFFSET);
         }
+
+        public void updateVelocity(Player player, MyKeyboard keyboard)
+        {
+            player.velocity = updateVelWithFriction(player);
+            player.velocity = updateVelWithInput(player, keyboard);
+        }
+
+        public Vector2 updateVelWithFriction(Player player)
+        {
+            Vector2 newVelocity = new Vector2(player.velocity.X, player.velocity.Y);
+
+            if (newVelocity.Y > 0)
+                newVelocity.Y -= 0.5f;
+            if (newVelocity.Y < 0)
+                newVelocity.Y += 0.5f;
+            if (newVelocity.X > 0)
+                newVelocity.X -= 0.25f;
+            if (newVelocity.X < 0)
+                newVelocity.X += 0.25f;
+
+            return newVelocity;
+        }
+
+        public Vector2 updateVelWithInput(Player player, MyKeyboard keyboard)
+        {
+            Vector2 newVelocity = new Vector2(player.velocity.X, player.velocity.Y);
+
+            if (keyboard.GetPress("W") && !isInAir)
+            {
+                newVelocity.Y = -12;
+                player.isInAir = true;
+            }
+            if (keyboard.GetPress("S"))
+                newVelocity.Y = 12;
+            if (keyboard.GetPress("A"))
+                newVelocity.X = -4;
+            if (keyboard.GetPress("D"))
+                newVelocity.X = 4;
+
+            return newVelocity;
+        }
+
+        public void updatePosition(Player player)
+        {
+            Vector2 newPosition = new Vector2(player.velocity.X + player.pos.X, player.velocity.Y + player.pos.Y + Globals.world.gravity.Y);
+
+            if (newPosition.Y < 0 + player.dims.Y / 2)
+                newPosition.Y = 0 + player.dims.Y / 2;
+            if (newPosition.Y > Globals.screenHeight - player.dims.Y / 2)
+            {
+                newPosition.Y = Globals.screenHeight - player.dims.Y / 2;
+                player.isInAir = false;
+            }
+            if (newPosition.X < 0 + player.dims.X / 2)
+                newPosition.X = 0 + player.dims.X / 2;
+            if (newPosition.X > Globals.screenWidth - player.dims.X / 2)
+                newPosition.X = Globals.screenWidth - player.dims.X / 2;
+
+            player.pos = newPosition;
+        }
+        
     }
+
+
 }
