@@ -20,12 +20,14 @@ namespace firstExperiments
         {
             // TODO: Add your initialization logic here
 
+            spriteBatch = new SpriteBatch(GraphicsDevice);
+
+
             base.Initialize();
         }
 
         protected override void LoadContent()
         {
-            spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
         }
@@ -48,5 +50,13 @@ namespace firstExperiments
 
             base.Draw(gameTime);
         }
+
+        static void Main()
+        {
+            using (var game = new Game1())
+                game.Run();
+        }
     }
+
+
 }
