@@ -115,10 +115,16 @@ namespace testGame
             if (timer > 0)
             {
                 spriteBatch.Draw(target_Sprite, new Vector2(targetPosition.X - TARGET_RADIUS, targetPosition.Y - TARGET_RADIUS), Color.White);
+                spriteBatch.DrawString(gameFont, "Score: " + score.ToString(), new Vector2(3, 40), Color.Black);
+                spriteBatch.DrawString(gameFont, "Time Left: " + Math.Ceiling(timer).ToString() + " Seconds", new Vector2(3, 3), Color.Black);
             }
 
-            spriteBatch.DrawString(gameFont, "Score: " + score.ToString(), new Vector2(3, 40), Color.Black);
-            spriteBatch.DrawString(gameFont, "Time Left: " + Math.Ceiling(timer).ToString() + " Seconds", new Vector2(3, 3), Color.Black);
+            if (timer < 0)
+            {
+                spriteBatch.DrawString(gameFont, "GAME OVER", new Vector2(200, 200), Color.Red);
+                spriteBatch.DrawString(gameFont, "Score: " + score.ToString(), new Vector2(200, 240), Color.Black);
+            }
+            
             spriteBatch.Draw(crosshairs_Sprite, new Vector2(mState.X - CROSSHAIRS_RADIUS, mState.Y - CROSSHAIRS_RADIUS), Color.Green);
 
             spriteBatch.End();
