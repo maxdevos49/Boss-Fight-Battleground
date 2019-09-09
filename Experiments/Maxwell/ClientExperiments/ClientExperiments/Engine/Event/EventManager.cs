@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Linq;
+
 using System.Collections.Generic;
 using System.Threading;
 
@@ -75,11 +77,13 @@ namespace ClientExperiments.Engine.Event
 
             if (EventHandelers.ContainsKey(eventKey))
             {
-                //create new thread
-                Thread eventThread = new Thread(() => EventThread(eventKey, eventData));
+                ////create new thread
+                //Thread eventThread = new Thread(() => EventThread(eventKey, eventData));
 
-                //start thread
-                eventThread.Start();
+                ////start thread
+                //eventThread.Start();
+
+                EventThread(eventKey, eventData);
             }
         }
 
@@ -97,14 +101,13 @@ namespace ClientExperiments.Engine.Event
             eventData.EventKey = eventKey;
 
             //loop through existing handleres for that event
-            foreach (var handeler in EventHandelers[eventKey])
+            foreach(var eventHandeler in EventHandelers[eventKey].ToList())
             {
-
                 //Check if propagation was canceled
                 if (eventData.Propagate())
                 {
                     //Call event handler
-                    handeler.Value(eventData);
+                    eventHandeler.Value(eventData);
 
                     //Event log
                     //Console.WriteLine($"EventId: {eventData.EventId}, EventKey: \"{eventData.EventKey}\", EventHandelerId: {handeler.Key}");

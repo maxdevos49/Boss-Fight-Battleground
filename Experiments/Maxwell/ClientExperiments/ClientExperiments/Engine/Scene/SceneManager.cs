@@ -4,6 +4,9 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
 using ClientExperiments.Engine.Event;
+using System;
+using System.Linq;
+
 
 namespace ClientExperiments.Engine.Scene
 {
@@ -93,7 +96,7 @@ namespace ClientExperiments.Engine.Scene
          * */
         public void LaunchScene(string key)
         {
-            if (SceneExist(key))
+            if (SceneExist(key) && !ActiveSceneExist(key))
             {
                 //Add to active scene
                 ActiveScenes.Add(key, AllScenes[key]);
@@ -130,7 +133,6 @@ namespace ClientExperiments.Engine.Scene
         {
             if (ActiveSceneExist(key))
             {
-
                 //Change the scene status/call any methods that may helpful for shutting down the scene
                 ActiveScenes[key].Stop();
 
@@ -148,8 +150,8 @@ namespace ClientExperiments.Engine.Scene
          * */
         public void DrawScenes(GameTime gameTime, SpriteBatch graphics)
         {
-            foreach (var scene in ActiveScenes)
-                scene.Value.Draw(gameTime, graphics);
+            foreach (var scene in ActiveScenes.ToList())
+                scene.Value?.Draw(gameTime, graphics);
         }
 
         #endregion
@@ -161,9 +163,9 @@ namespace ClientExperiments.Engine.Scene
          * */
         public void UpdateScenes(GameTime gameTime)
         {
-            foreach (var scene in ActiveScenes)
-                if (scene.Value.GetStatus() == SceneStatus.ACTIVE)
-                    scene.Value.Update(gameTime);
+            foreach (var scene in ActiveScenes.ToList())
+                if (scene.Value?.GetStatus() == SceneStatus.ACTIVE)
+                    scene.Value?.Update(gameTime);
         }
 
         #endregion
@@ -173,11 +175,10 @@ namespace ClientExperiments.Engine.Scene
         /**
          * Checks if the scene is running or not
          * */
-        private bool ActiveSceneExist(string key)
+        public bool ActiveSceneExist(string key)
         {
             if (!ActiveScenes.ContainsKey(key))
             {
-                //TODO throw exception or something
                 return false;
             }
             return true;
@@ -190,11 +191,10 @@ namespace ClientExperiments.Engine.Scene
         /**
          * Checks if the scene exist regardless if it is running
          * */
-        private bool SceneExist(string key)
+        public bool SceneExist(string key)
         {
             if (!AllScenes.ContainsKey(key))
             {
-                //TODO throw exception or something
                 return false;
             }
             return true;

@@ -9,6 +9,7 @@ using ClientExperiments.Engine.Input;
 
 //Project
 using ClientExperiments.Scenes;
+using Microsoft.Xna.Framework.Input;
 
 namespace ClientExperiments
 {
@@ -51,7 +52,6 @@ namespace ClientExperiments
 
         protected override void Initialize()
         {
-
             //Init spritebatch for drawing
             SpriteBatch = new SpriteBatch(GraphicsDevice);
 
@@ -76,7 +76,24 @@ namespace ClientExperiments
 
             //Launch second scene in parallel
             SceneManager.LaunchScene(nameof(TestScene2));
-            SceneManager.LaunchScene(nameof(DebugScene));
+
+            EventManager.AddEventListener("keypress", (Event) =>
+            {
+                //Enable debug
+                switch (Event.Keyboard.KeyEnum)
+                {
+                    case Keys.F3:
+
+                        Console.WriteLine("Launching Debug Scene");
+
+                        if (SceneManager.ActiveSceneExist(nameof(DebugScene)))
+                            SceneManager.StopScene(nameof(DebugScene));
+                        else
+                            SceneManager.LaunchScene(nameof(DebugScene));
+
+                        break;
+                }
+            });
 
             base.Initialize();
         }
