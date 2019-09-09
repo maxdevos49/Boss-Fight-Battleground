@@ -1,13 +1,17 @@
 using System;
 using Xunit;
+using TestGame.Source.Gameplay.World;
+using Microsoft.Xna.Framework;
 
 namespace TestGame.Tests
 {
-    public class Player
+    public class PlayerTests
     {
         [Fact]
-        public void Test1()
+        public void updatePosition()
         {
+            Vector2 dimensions = new Vector2(1, 1);
+            Player myPlayer = new Player("", null, null);
             String expected = "This should always pass!";
             String actual = "This should always pass!";
 
