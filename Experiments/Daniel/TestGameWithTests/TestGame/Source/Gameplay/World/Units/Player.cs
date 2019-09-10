@@ -17,6 +17,7 @@ namespace TestGame.Source.Gameplay.World
 
         public override void Update()
         {
+            Globals.camera.Follow(this);
             updateVelocity(this, Globals.keyboard);
             updatePosition(this);
 

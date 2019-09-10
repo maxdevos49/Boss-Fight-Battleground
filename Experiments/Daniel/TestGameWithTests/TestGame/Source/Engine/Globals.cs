@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TestGame.Source.Gameplay;
 
 namespace TestGame.Source.Engine
 {
@@ -17,6 +18,9 @@ namespace TestGame.Source.Engine
         public static int screenHeight, screenWidth;
         public static Random rand;
         public static int score;
+
+        public static Camera camera;
+
         public static ContentManager content;
         public static SpriteBatch spriteBatch;
 

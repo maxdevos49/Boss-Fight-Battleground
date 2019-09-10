@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using TestGame.Source;
 using TestGame.Source.Engine;
+using TestGame.Source.Gameplay;
 
 namespace TestGame
 {
@@ -41,8 +42,16 @@ namespace TestGame
             Globals.rand = new System.Random();
             Globals.score = 0;
 
-           // Globals.screenWidth = this.Window.ClientBounds.Width;
-           // Globals.screenHeight = this.Window.ClientBounds.Height;
+            Globals.camera = new Camera();
+
+
+            Viewport newViewport = graphics.GraphicsDevice.Viewport;
+            newViewport.Width = newViewport.Width / 2;
+            graphics.GraphicsDevice.Viewport = newViewport;
+
+
+            // Globals.screenWidth = this.Window.ClientBounds.Width;
+            // Globals.screenHeight = this.Window.ClientBounds.Height;
 
             graphics.PreferredBackBufferWidth = Globals.screenWidth;
             graphics.PreferredBackBufferHeight = Globals.screenHeight;
@@ -113,7 +122,8 @@ namespace TestGame
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             // TODO: Add your drawing code here
-            Globals.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend);
+
+            Globals.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, null, null, null, null, Globals.camera.Transform);
             Globals.world.Draw(Vector2.Zero);
 
             cursor.Draw(new Vector2(Globals.mouse.newMousePos.X, Globals.mouse.newMousePos.Y), new Vector2(0, 0));

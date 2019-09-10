@@ -78,6 +78,7 @@
     <Compile Include="Source\Engine\Input\Keyboard\MyKeys.cs" />
     <Compile Include="Source\Engine\Input\MyKeyboard.cs" />
     <Compile Include="Source\Engine\Input\MyMouseControl.cs" />
+    <Compile Include="Source\Gameplay\Camera.cs" />
     <Compile Include="Source\Gameplay\MyTimer.cs" />
     <Compile Include="Source\Gameplay\World.cs" />
     <Compile Include="Source\Gameplay\World\Background.cs" />
