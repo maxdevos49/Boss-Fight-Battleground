@@ -12,6 +12,11 @@ namespace testGame2
         Texture2D background_Sprite;
         Texture2D player_Sprite;
 
+        const int PLAYER_X_DIAMETER = 50;
+        Vector2 playerPosition = new Vector2(300, 364);
+
+        KeyboardState keyIn;
+
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -42,25 +47,35 @@ namespace testGame2
             // TODO: Unload any non ContentManager content here
         }
 
-        /// <summary>
-        /// Allows the game to run logic such as updating the world,
-        /// checking for collisions, gathering input, and playing audio.
-        /// </summary>
-        /// <param name="gameTime">Provides a snapshot of timing values.</param>
+
         protected override void Update(GameTime gameTime)
         {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
-            // TODO: Add your update logic here
+            keyIn = Keyboard.GetState();
+
+            if (keyIn.IsKeyDown(Keys.Left) || keyIn.IsKeyDown(Keys.A))
+            {
+                if(playerPosition.X > 0)
+                {
+                    playerPosition.X -= 10;
+                }
+            }
+
+            if (keyIn.IsKeyDown(Keys.Right) || keyIn.IsKeyDown(Keys.D))
+            {
+                if (playerPosition.X < graphics.PreferredBackBufferWidth - PLAYER_X_DIAMETER)
+                {
+                    playerPosition.X += 10;
+                }
+            }
+
 
             base.Update(gameTime);
         }
 
-        /// <summary>
-        /// This is called when the game should draw itself.
-        /// </summary>
-        /// <param name="gameTime">Provides a snapshot of timing values.</param>
+
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
@@ -68,6 +83,8 @@ namespace testGame2
             spriteBatch.Begin();
 
             spriteBatch.Draw(background_Sprite, new Vector2(0, 0), Color.White);
+
+            spriteBatch.Draw(player_Sprite, new Vector2(playerPosition.X, playerPosition.Y), Color.White);
 
             spriteBatch.End();
 
