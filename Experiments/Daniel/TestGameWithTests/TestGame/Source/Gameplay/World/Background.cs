@@ -21,11 +21,12 @@ namespace TestGame.Source.Gameplay.World
             base.Update();
         }
 
-        public override void Draw(Vector2 OFFSET)
+        public void Draw(Vector2 OFFSET, int scroll)
         {
             if (texture != null)
             {
-                Globals.spriteBatch.Draw(texture, new Rectangle((int)(pos.X + OFFSET.X), (int)(pos.Y + OFFSET.Y), (int)dims.X, (int)dims.Y), null, Color.White, 0.0f, new Vector2(texture.Bounds.Width / 2, texture.Bounds.Height / 2), new SpriteEffects(), 0);
+                Rectangle source = new Rectangle(scroll, 0, texture.Width, texture.Height);
+                Globals.spriteBatch.Draw(texture, new Rectangle((int)(pos.X + OFFSET.X), (int)(pos.Y + OFFSET.Y), (int)dims.X, (int)dims.Y), source, Color.White, 0.0f, new Vector2(texture.Bounds.Width / 2, texture.Bounds.Height / 2), new SpriteEffects(), 0);
             }
         }
     }

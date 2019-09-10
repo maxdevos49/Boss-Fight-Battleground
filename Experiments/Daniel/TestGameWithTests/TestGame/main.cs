@@ -123,7 +123,7 @@ namespace TestGame
 
             // TODO: Add your drawing code here
 
-            Globals.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, null, null, null, null, Globals.camera.Transform);
+            Globals.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, SamplerState.LinearWrap, null, null, null, Globals.camera.Transform);
             Globals.world.Draw(Vector2.Zero);
 
             cursor.Draw(new Vector2(Globals.mouse.newMousePos.X, Globals.mouse.newMousePos.Y), new Vector2(0, 0));
