@@ -44,12 +44,6 @@ namespace TestGame
 
             Globals.camera = new Camera();
 
-
-            Viewport newViewport = graphics.GraphicsDevice.Viewport;
-            newViewport.Width = newViewport.Width / 2;
-            graphics.GraphicsDevice.Viewport = newViewport;
-
-
             // Globals.screenWidth = this.Window.ClientBounds.Width;
             // Globals.screenHeight = this.Window.ClientBounds.Height;
 
@@ -122,10 +116,11 @@ namespace TestGame
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             // TODO: Add your drawing code here
-
+            Globals.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend);
+            
+            Globals.spriteBatch.End();
             Globals.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, SamplerState.LinearWrap, null, null, null, Globals.camera.Transform);
             Globals.world.Draw(Vector2.Zero);
-
             cursor.Draw(new Vector2(Globals.mouse.newMousePos.X, Globals.mouse.newMousePos.Y), new Vector2(0, 0));
             Globals.spriteBatch.End();
 

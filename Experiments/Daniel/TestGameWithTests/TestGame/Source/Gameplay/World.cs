@@ -72,7 +72,8 @@ namespace TestGame.Source
         }
         public virtual void Draw(Vector2 OFFSET)
         {
-            bg.Draw(OFFSET, (int) player.pos.X);
+            bg.Draw(OFFSET);
+            //bg.Draw(OFFSET, ((int) player.pos.X));
 
             for (int i = 0; i < mobs.Count; i++)
             {

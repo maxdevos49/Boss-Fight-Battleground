@@ -15,7 +15,7 @@ namespace TestGame.Source.Gameplay
         public void Follow(Basic2d sprite)
         {
             Transform = Matrix.CreateTranslation(
-                -sprite.pos.X - (sprite.dims.X / 2),
+                -sprite.pos.X,
                 /*-sprite.pos.Y - (sprite.dims.Y / 2)*/ 0,
                 0) * 
                 Matrix.CreateTranslation(
