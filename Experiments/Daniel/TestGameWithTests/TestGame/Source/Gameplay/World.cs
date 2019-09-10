@@ -13,6 +13,7 @@ namespace TestGame.Source
     {
         public Player player;
         public List<Projectile2d> projectiles = new List<Projectile2d>();
+        public List<Unit> mobs = new List<Unit>();
 
         public Background bg;
 
@@ -31,12 +32,13 @@ namespace TestGame.Source
             offset = new Vector2(0, 0);
 
             GameGlobals.PassProjectile = AddProjectile;
+            GameGlobals.PassMonster = AddMonster;
         }
 
         public virtual void Update()
         {
             bg.Update();
-            player.Update();
+            
 
             for (int i = 0; i < projectiles.Count; i++)
             {
@@ -47,22 +49,40 @@ namespace TestGame.Source
                     i--;
                 }
             }
+            for (int i = 0; i < mobs.Count; i++)
+            {
+                mobs[i].Update();
+                if (mobs[i].health <= 0)
+                {
+                    mobs.RemoveAt(i);
+                    i--;
+                }
+            }
+            player.Update();
         }
 
         public virtual void AddProjectile(object INFO)
         {
             projectiles.Add((Projectile2d)INFO);
         }
-
+        public virtual void AddMonster(object INFO)
+        {
+            mobs.Add((Unit)INFO);
+        }
         public virtual void Draw(Vector2 OFFSET)
         {
             bg.Draw(OFFSET);
-            player.Draw(OFFSET);
 
+            for (int i = 0; i < mobs.Count; i++)
+            {
+                mobs[i].Draw(offset);
+            }
             for (int i = 0; i < projectiles.Count; i++)
             {
                 projectiles[i].Draw(offset);
             }
+
+            player.Draw(OFFSET);
         }
     }
 }

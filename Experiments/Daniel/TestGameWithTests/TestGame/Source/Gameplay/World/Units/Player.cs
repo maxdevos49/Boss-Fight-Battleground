@@ -10,7 +10,6 @@ namespace TestGame.Source.Gameplay.World
 {
     public class Player : Unit
     {
-        private Vector2 velocity;
         public Player(string PATH, Vector2 POS, Vector2 DIMS) : base(PATH, POS, DIMS)
         {
             velocity = new Vector2(0, 0);
@@ -24,6 +23,10 @@ namespace TestGame.Source.Gameplay.World
             if(Globals.mouse.LeftClick())
             {
                 GameGlobals.PassProjectile(new Fireball(new Vector2(pos.X, pos.Y), this, new Vector2(Globals.mouse.newMousePos.X, Globals.mouse.newMousePos.Y)));
+            }
+            if(Globals.mouse.RightClick())
+            {
+               GameGlobals.PassMonster(new Frog(20, new Vector2(Globals.mouse.newMousePos.X, Globals.mouse.newMousePos.Y), new Vector2(100, 100)));
             }
             base.Update();
         }

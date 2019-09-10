@@ -12,5 +12,6 @@ namespace TestGame
     {
 
         public static PassObject PassProjectile;
+        public static PassObject PassMonster;
     }
 }

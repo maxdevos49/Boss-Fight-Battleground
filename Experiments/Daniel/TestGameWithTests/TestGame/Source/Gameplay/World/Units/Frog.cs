@@ -10,14 +10,45 @@ namespace TestGame.Source.Gameplay.World
 {
     public class Frog : Unit
     {
-        private Vector2 velocity;
-        public Frog(string PATH, Vector2 POS, Vector2 DIMS) : base(PATH, POS, DIMS)
+        public Frog(int hp, Vector2 POS, Vector2 DIMS) : base("2d\\frog", POS, DIMS)
         {
-            velocity = new Vector2(0, 0);
+
         }
 
         public override void Update()
         {
+            Random rand = new Random();
+            int rnd = rand.Next(1000);
+
+
+            if (velocity.Y > 0)
+                velocity.Y -= 0.5f;
+            if (velocity.Y < 0)
+                velocity.Y += 0.5f;
+            if (velocity.X > 0)
+                velocity.X -= 0.25f;
+            if (velocity.X < 0)
+                velocity.X += 0.25f;
+
+            if (rnd > 980 && !isInAir)
+            {
+                rnd = rand.Next(3);
+                if (rnd == 0)
+                    velocity.X = 8;
+                if (rnd == 1)
+                    velocity.X = -8;
+                if (rnd == 2)
+                    velocity.Y = -12;
+            }
+
+
+            pos = new Vector2(velocity.X + pos.X, velocity.Y + pos.Y + Globals.world.gravity.Y);
+
+            if (pos.Y > Globals.screenHeight - dims.Y / 2)
+            {
+                pos.Y = Globals.screenHeight - dims.Y / 2;
+                isInAir = false;
+            }
             base.Update();
         }
 
@@ -25,5 +56,6 @@ namespace TestGame.Source.Gameplay.World
         {
             base.Draw(OFFSET);
         }
+
     }
 }

@@ -11,7 +11,7 @@ namespace TestGame.Tests
         public void updatePosition()
         {
             Vector2 dimensions = new Vector2(1, 1);
-            Player myPlayer = new Player("", null, null);
+            Player myPlayer = new Player("", new Vector2(0,0), new Vector2(0,0));
             String expected = "This should always pass!";
             String actual = "This should always pass!";
 

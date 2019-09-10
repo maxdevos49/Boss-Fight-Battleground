@@ -10,10 +10,14 @@ namespace TestGame.Source.Gameplay.World
 {
     public class Unit : Basic2d
     {
-        private Vector2 velocity;
+        public Vector2 velocity;
+        public int health;
+
         public Unit(string PATH, Vector2 POS, Vector2 DIMS) : base(PATH, POS, DIMS)
         {
             velocity = new Vector2(0, 0);
+            health = 20;
+            isInAir = true;
         }
 
         public override void Update()
