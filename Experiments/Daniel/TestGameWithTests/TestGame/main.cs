@@ -38,6 +38,7 @@ namespace TestGame
             Globals.screenWidth = 1600;
             Globals.screenHeight = 900;
 
+            Globals.rand = new System.Random();
            // Globals.screenWidth = this.Window.ClientBounds.Width;
            // Globals.screenHeight = this.Window.ClientBounds.Height;
 

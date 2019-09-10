@@ -17,28 +17,42 @@ namespace TestGame.Source.Gameplay.World
 
         public override void Update()
         {
-            Random rand = new Random();
-            int rnd = rand.Next(1000);
+            int rnd = Globals.rand.Next(1000);
 
 
             if (velocity.Y > 0)
                 velocity.Y -= 0.5f;
             if (velocity.Y < 0)
                 velocity.Y += 0.5f;
-            if (velocity.X > 0)
+            if (velocity.X > 0 && !isInAir)
                 velocity.X -= 0.25f;
-            if (velocity.X < 0)
+            if (velocity.X < 0 && !isInAir)
                 velocity.X += 0.25f;
 
             if (rnd > 980 && !isInAir)
             {
-                rnd = rand.Next(3);
+                rnd = Globals.rand.Next(5);
                 if (rnd == 0)
                     velocity.X = 8;
                 if (rnd == 1)
                     velocity.X = -8;
                 if (rnd == 2)
-                    velocity.Y = -12;
+                {
+                    isInAir = true;
+                    velocity.Y = -18;
+                }
+                if (rnd == 3)
+                {
+                    isInAir = true;
+                    velocity.Y = -18;
+                    velocity.X = 8;
+                }
+                if (rnd == 4)
+                {
+                    isInAir = true;
+                    velocity.Y = -18;
+                    velocity.X = -8;
+                }
             }
 
 

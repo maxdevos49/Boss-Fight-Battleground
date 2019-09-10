@@ -15,7 +15,7 @@ namespace TestGame.Source.Engine
     public class Globals
     {
         public static int screenHeight, screenWidth;
-
+        public static Random rand;
         public static ContentManager content;
         public static SpriteBatch spriteBatch;
 
