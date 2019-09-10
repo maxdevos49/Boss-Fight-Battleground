@@ -1,4 +1,6 @@
-﻿using Microsoft.Xna.Framework;
+﻿using firstExperiments.Source;
+using firstExperiments.Source.Engine;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
@@ -7,7 +9,10 @@ namespace firstExperiments
     public class Game1 : Game
     {
         GraphicsDeviceManager graphics;
+
         SpriteBatch spriteBatch;
+
+        World world;
 
         public Game1()
         {
@@ -20,16 +25,19 @@ namespace firstExperiments
         {
             // TODO: Add your initialization logic here
 
-            spriteBatch = new SpriteBatch(GraphicsDevice);
-
-
             base.Initialize();
         }
 
         protected override void LoadContent()
         {
+            Globals.content = this.Content;
+            Globals.spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            // TODO: use this.Content to load your game content here
+            world = new World();
+        }
+
+        protected override void UnloadContent()
+        {
         }
 
         protected override void Update(GameTime gameTime)
@@ -39,6 +47,8 @@ namespace firstExperiments
 
             // TODO: Add your update logic here
 
+            world.Update();
+
             base.Update(gameTime);
         }
 
@@ -47,6 +57,12 @@ namespace firstExperiments
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             // TODO: Add your drawing code here
+
+            Globals.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend);
+
+            world.Draw();
+
+            Globals.spriteBatch.End();
 
             base.Draw(gameTime);
         }
