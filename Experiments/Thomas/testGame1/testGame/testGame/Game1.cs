@@ -93,10 +93,12 @@ namespace testGame
             if (mState.LeftButton == ButtonState.Pressed && mReleased == true){
                 if (!gameStart)
                 {
-                    gameOverEnable = true;
-                    gameStart = true;
-                    timer = 10;
-                    score = 0;
+                     timer = 10;
+                     score = 0;
+                     gameOverEnable = true;
+                     gameStart = true;
+                        
+                    
                 }
                 else if (mouseTargetDist < TARGET_RADIUS && timer > 0){
                     score++;
