@@ -42,7 +42,7 @@ namespace TestGame.Source
 
             for (int i = 0; i < projectiles.Count; i++)
             {
-                projectiles[i].Update(offset, null);
+                projectiles[i].Update(offset, mobs);
                 if (projectiles[i].done)
                 {
                     projectiles.RemoveAt(i);
@@ -54,6 +54,7 @@ namespace TestGame.Source
                 mobs[i].Update();
                 if (mobs[i].health <= 0)
                 {
+                    Globals.score += 1;
                     mobs.RemoveAt(i);
                     i--;
                 }

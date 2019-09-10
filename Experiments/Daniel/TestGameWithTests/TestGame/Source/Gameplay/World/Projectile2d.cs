@@ -45,6 +45,17 @@ namespace TestGame.Source.Gameplay.World
 
         public virtual bool HitSomething(List<Unit> UNITS)
         {
+            for (int i = 0; i < UNITS.Count; i++)
+            {
+                if (pos.X > UNITS[i].pos.X - UNITS[i].dims.X/2 &&
+                    pos.X < UNITS[i].pos.X + UNITS[i].dims.X/2 &&
+                    pos.Y > UNITS[i].pos.Y - UNITS[i].dims.Y/2 &&
+                    pos.Y < UNITS[i].pos.Y + UNITS[i].dims.Y/2)
+                {
+                    UNITS[i].health -= 5;
+                    return true;
+                }
+            }
             return false;
         }
 

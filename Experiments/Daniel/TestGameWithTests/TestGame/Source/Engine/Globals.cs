@@ -16,6 +16,7 @@ namespace TestGame.Source.Engine
     {
         public static int screenHeight, screenWidth;
         public static Random rand;
+        public static int score;
         public static ContentManager content;
         public static SpriteBatch spriteBatch;
 
