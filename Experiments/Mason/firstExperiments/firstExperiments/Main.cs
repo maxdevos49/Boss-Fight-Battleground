@@ -47,6 +47,17 @@ namespace firstExperiments
 
             // TODO: Add your update logic here
 
+            KeyboardState keyState = Keyboard.GetState();
+
+            if (keyState.IsKeyDown(Keys.W) || keyState.IsKeyDown(Keys.Up))
+                world.hero.UpdatePosRelative(0, -5);
+            else if (keyState.IsKeyDown(Keys.A) || keyState.IsKeyDown(Keys.Left))
+                world.hero.UpdatePosRelative(-5, 0);
+            else if (keyState.IsKeyDown(Keys.S) || keyState.IsKeyDown(Keys.Down))
+                world.hero.UpdatePosRelative(0, 5);
+            else if (keyState.IsKeyDown(Keys.D) || keyState.IsKeyDown(Keys.Right))
+                world.hero.UpdatePosRelative(5, 0);
+
             world.Update();
 
             base.Update(gameTime);
