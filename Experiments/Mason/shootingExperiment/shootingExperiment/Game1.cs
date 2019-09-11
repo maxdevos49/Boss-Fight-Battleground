@@ -3,14 +3,14 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
-namespace experimentGame2
+namespace shootingExperiment
 {
     public class Game1 : Game
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
-        private Sprite _sprite;
+        private List<Sprite> _sprites;
 
         public Game1()
         {
@@ -30,27 +30,45 @@ namespace experimentGame2
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            var texture = Content.Load<Texture2D>("Player");
+            // TODO: use this.Content to load your game content here
 
-            _sprite = new Sprite(texture)
+            var soldierTexture = Content.Load<Texture2D>("player");
+
+            _sprites = new List<Sprite>()
             {
-                Position = new Vector2(100, 100),
-                Origin = new Vector2(22, 27),
-                Input = new Input()
+                new Soldier(soldierTexture)
                 {
-                    Up = Keys.W,
-                    Down = Keys.S,
-                    Left = Keys.A,
-                    Right = Keys.D
+                    Position = new Vector2(100, 100),
+                    Bullet = new Bullet(Content.Load<Texture2D>("bullet"))
                 }
             };
         }
 
         protected override void Update(GameTime gameTime)
         {
-            _sprite.Update();
+            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
+                Exit();
+
+            // TODO: Add your update logic here
+
+            foreach (var sprite in _sprites.ToArray())
+                sprite.Update(gameTime, _sprites);
+
+            PostUpdate();
 
             base.Update(gameTime);
+        }
+
+        private void PostUpdate()
+        {
+            for (int i = 0; i < _sprites.Count; i++)
+            {
+                if (_sprites[i].IsRemoved)
+                {
+                    _sprites.RemoveAt(i);
+                    i--;
+                }
+            }
         }
 
         protected override void Draw(GameTime gameTime)
@@ -61,8 +79,8 @@ namespace experimentGame2
 
             spriteBatch.Begin();
 
-            _sprite.Draw(spriteBatch);
-
+            foreach (var sprite in _sprites)
+                sprite.Draw(spriteBatch);
             spriteBatch.End();
 
             base.Draw(gameTime);
