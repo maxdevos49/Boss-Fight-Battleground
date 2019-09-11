@@ -9,8 +9,8 @@ namespace experimentGame2
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
-        private Texture2D _texture;
-        private Vector2 _position;
+        private Sprite _sprite1;
+        private Sprite _sprite2;
 
         public Game1()
         {
@@ -30,33 +30,24 @@ namespace experimentGame2
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            _texture = Content.Load<Texture2D>("Box");
-            _position = new Vector2(100, 100);
+            var texture = Content.Load<Texture2D>("Box");
+
+            _sprite1 = new Sprite(texture);
+            _sprite1.Position = new Vector2(100, 100);
+
+            _sprite2 = new Sprite(texture)
+            {
+                Position = new Vector2(200, 100),
+                Speed = 3f
+            };
 
             // TODO: use this.Content to load your game content here
         }
 
         protected override void Update(GameTime gameTime)
         {
-            if (Keyboard.GetState().IsKeyDown(Keys.W))
-            {
-                _position.Y -= 5;
-            }
-
-            if (Keyboard.GetState().IsKeyDown(Keys.S))
-            {
-                _position.Y += 5;
-            }
-
-            if (Keyboard.GetState().IsKeyDown(Keys.A))
-            {
-                _position.X -= 5;
-            }
-
-            if (Keyboard.GetState().IsKeyDown(Keys.D))
-            {
-                _position.X += 5;
-            }
+            _sprite1.Update();
+            _sprite2.Update();
 
             base.Update(gameTime);
         }
@@ -69,7 +60,8 @@ namespace experimentGame2
 
             spriteBatch.Begin();
 
-            spriteBatch.Draw(_texture, _position, Color.White);
+            _sprite1.Draw(spriteBatch);
+            _sprite2.Draw(spriteBatch);
 
             spriteBatch.End();
 
