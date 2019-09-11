@@ -77,6 +77,7 @@ namespace ClientExperiments
             //Launch second scene in parallel
             SceneManager.LaunchScene(nameof(TestScene2));
 
+            //global key press event
             EventManager.AddEventListener("keypress", (Event) =>
             {
                 //Enable debug

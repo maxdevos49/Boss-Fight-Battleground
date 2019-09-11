@@ -46,7 +46,7 @@ namespace ClientExperiments.Scenes
             });
 
             //Mouse events
-            _eventManager.AddEventListener("mousemove", (Event) =>
+            var handlerid = _eventManager.AddEventListener("mousemove", (Event) =>
             {
                 MousePos = $"Mouse Position - X: {Event.Mouse.X}, Y: {Event.Mouse.Y}";
             });
@@ -59,6 +59,8 @@ namespace ClientExperiments.Scenes
 
         public override void Unload()
         {
+
+
             //Currently unused
         }
 

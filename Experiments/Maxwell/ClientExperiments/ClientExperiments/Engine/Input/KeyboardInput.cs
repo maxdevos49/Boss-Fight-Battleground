@@ -23,11 +23,14 @@ namespace ClientExperiments.Engine.Input
             _eventManager = eventManager;
 
             PressedKeys = new List<Keys>();
+
         }
 
         public void UpdateKeyboard()
         {
             KeyboardState = Keyboard.GetState();
+
+
             var keysPressed = KeyboardState.GetPressedKeys().OfType<Keys>().ToList();
 
 

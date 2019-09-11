@@ -53,7 +53,7 @@ namespace ClientExperiments.Scenes
         {
             Random rnd = new Random();
 
-            for (int i = 0; i< 10; i++)
+            for (int i = 0; i < 10; i++)
             {
                 x = rnd.Next(_graphicsManager.GraphicsDevice.Viewport.Width);
                 y = rnd.Next(_graphicsManager.GraphicsDevice.Viewport.Height);
