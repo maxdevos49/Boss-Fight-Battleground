@@ -84,6 +84,4 @@ namespace firstExperiments
                 game.Run();
         }
     }
-
-
 }
