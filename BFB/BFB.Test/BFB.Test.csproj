@@ -13,7 +13,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\BFB\BFB.csproj" />
+    <ProjectReference Include="..\BFB.Server\BFB.Server.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Server\" />
+    <Folder Include="Engine\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="UnitTest1.cs" />
+  </ItemGroup>
 </Project>
