@@ -6,7 +6,7 @@ before_script:
   - echo "Restoring NUGET packages"
   - dotnet restore
   - echo "Successfully Restored"
-stage:
+stages:
   - build
   - test
   - deploy
