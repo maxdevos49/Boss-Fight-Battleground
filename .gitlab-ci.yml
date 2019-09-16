@@ -29,5 +29,7 @@ deploy:
   script:
     - echo "Deploying Build"
     - echo "Deploy Build not successful. TODO"
+  only:
+    - master
   dependencies:
     - build
