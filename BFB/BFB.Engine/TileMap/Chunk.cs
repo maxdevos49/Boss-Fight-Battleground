@@ -9,17 +9,16 @@ namespace BFB.Engine.TileMap
         private const int CHUNKSIZE = 16;
 
         private int[,] hardness = new int[CHUNKSIZE, CHUNKSIZE];
-
         private int[,] light = new int[CHUNKSIZE, CHUNKSIZE];
-
         private int[,] wall = new int[CHUNKSIZE, CHUNKSIZE];
-
         private int[,] block = new int[CHUNKSIZE, CHUNKSIZE];
 
         public Chunk()
         {
 
         }
+
+        #region "get" methods
 
         public int getHardness(int x, int y)
         {
@@ -40,5 +39,31 @@ namespace BFB.Engine.TileMap
         {
             return block[x, y];
         }
+
+        #endregion
+
+        #region "set" methods
+
+        public void setHardness(int x, int y, int hardnessValue)
+        {
+            hardness[x, y] = hardnessValue;
+        }
+
+        public void setLight(int x, int y, int lightValue)
+        {
+            light[x, y] = lightValue;
+        }
+
+        public void setWall(int x, int y, int wallValue)
+        {
+            wall[x, y] = wallValue;
+        }
+
+        public void setBlock(int x, int y, int blockValue)
+        {
+            block[x, y] = blockValue;
+        }
+
+        #endregion
     }
 }

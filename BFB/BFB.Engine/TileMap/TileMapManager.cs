@@ -2,9 +2,13 @@
 using System.Collections.Generic;
 using System.Text;
 
+using BFB.Engine.TileMap;
+
 namespace BFB.Engine.TileMap
 {
-    class Class1
+
+    class TileMapManager
     {
+        public Chunk[,] mychunk = new Chunk[2, 2];
     }
 }
