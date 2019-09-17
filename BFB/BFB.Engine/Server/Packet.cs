@@ -8,11 +8,6 @@ namespace BFB.Engine.Server
     {
 
         /**
-         * Identifier in case of multiple games
-         * */
-        public string Namespace { get; set; }
-
-        /**
          * Target endpoint
          * */
         public string Route { get; set; }

@@ -78,12 +78,14 @@ namespace BFB.Engine.Event
             if (EventHandelers.ContainsKey(eventKey))
             {
                 //create new thread
-                Thread eventThread = new Thread(() => EventThread(eventKey, eventData));
+                Thread eventThread = new Thread(() => EventThread(eventKey, eventData))
+                {
+                    IsBackground = true
+                };
 
                 //start thread
                 eventThread.Start();
 
-                //EventThread(eventKey, eventData);
             }
         }
 

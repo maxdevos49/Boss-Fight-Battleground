@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 //Engine
 using BFB.Engine.Scene;
+using Microsoft.Xna.Framework.Input;
 
 namespace BFB.Client.Scenes
 {
@@ -56,10 +57,16 @@ namespace BFB.Client.Scenes
                 MousePosition = new Vector2(Event.Mouse.X, Event.Mouse.Y);
             });
 
-            _eventManager.AddEventListener("mouseclick", (Event) =>
+            _eventManager.AddEventListener("mousedown", (Event) =>
             {
                 Spaceships.Add(new Spaceship(SpaceshipTexture.Width, SpaceshipTexture.Height, new Vector2(Event.Mouse.X, Event.Mouse.Y)));
                 Console.WriteLine($"Test, {Spaceships.Count}");
+            });
+
+            _eventManager.AddEventListener("keydown", (Event) =>
+            {
+                if (Event.Keyboard.KeyEnum == Keys.C)
+                    _sceneManager.StartScene(nameof(ConnectionScene));
             });
 
         }
