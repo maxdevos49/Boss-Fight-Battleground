@@ -29,7 +29,7 @@ Table of Contents:
 
 ## Assert Methods
 
-```c#
+```csharp
 
 Assert.Equal();
 Assert.True();
@@ -41,7 +41,7 @@ Assert.NotEmpty();
 
 ## Setting up a Test Class
 
-```c#
+```csharp
 
 public class TestExample
 {

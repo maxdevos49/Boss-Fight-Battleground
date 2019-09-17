@@ -30,7 +30,7 @@ Enums:
   
 
 ### Example
-```c#
+```csharp
 
 class ExampleScene : Scene
 {
