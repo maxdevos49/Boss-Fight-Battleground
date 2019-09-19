@@ -12,36 +12,31 @@ namespace BFB.Engine.Input
 {
     public class KeyboardInput
     {
+        private readonly EventManager _eventManager;
 
-        public readonly EventManager _eventManager;
-
-        public List<Keys> PressedKeys;
-        public KeyboardState KeyboardState;
+        private readonly List<Keys> _pressedKeys;
+        private KeyboardState _keyboardState;
 
         public KeyboardInput(EventManager eventManager)
         {
             _eventManager = eventManager;
-
-            PressedKeys = new List<Keys>();
-
+            _pressedKeys = new List<Keys>();
         }
 
         public void UpdateKeyboard()
         {
-            KeyboardState = Keyboard.GetState();
+            _keyboardState = Keyboard.GetState();
 
-
-            var keysPressed = KeyboardState.GetPressedKeys().OfType<Keys>().ToList();
-
+            List<Keys> keysPressed = _keyboardState.GetPressedKeys().ToList();
 
             //key press
             for (int i = keysPressed.Count - 1; i >= 0; i--)
             {
-                if (!PressedKeys.Contains(keysPressed[i]))
-                {
-                    EmitKeyPressEvent(CreateKeyboardEvent(keysPressed[i]));
-                    PressedKeys.Add(keysPressed[i]);
-                }
+                if (_pressedKeys.Contains(keysPressed[i])) continue;
+                
+                EmitKeyPressEvent(CreateKeyboardEvent(keysPressed[i]));
+                
+                _pressedKeys.Add(keysPressed[i]);
             }
 
 
@@ -52,13 +47,13 @@ namespace BFB.Engine.Input
             }
 
             //key up
-            for (int i = PressedKeys.Count - 1; i >= 0; i--)
+            for (int i = _pressedKeys.Count - 1; i >= 0; i--)
             {
-                if (!keysPressed.Contains(PressedKeys[i]))
-                {
-                    EmitKeyUpEvent(CreateKeyboardEvent(PressedKeys[i]));
-                    PressedKeys.Remove(PressedKeys[i]);
-                }
+                if (keysPressed.Contains(_pressedKeys[i])) continue;
+                
+                EmitKeyUpEvent(CreateKeyboardEvent(_pressedKeys[i]));
+                
+                _pressedKeys.Remove(_pressedKeys[i]);
             }
 
         }
@@ -68,13 +63,15 @@ namespace BFB.Engine.Input
             //currently pressed key
             Keys key = keyEvent.KeyEnum;
 
-            //Backspace
-            if (key == Keys.Back && outputString.Length > 0)
-                return outputString.Remove(outputString.Length - 1, 1);
-
-            //Space
-            if (key == Keys.Space)
-                return outputString.Insert(outputString.Length, " ");
+            switch (key)
+            {
+                //Backspace
+                case Keys.Back when outputString.Length > 0:
+                    return outputString.Remove(outputString.Length - 1, 1);
+                //Space
+                case Keys.Space:
+                    return outputString.Insert(outputString.Length, " ");
+            }
 
             //Caps lock or shift
             if (key == Keys.LeftShift || key == Keys.RightShift || keyEvent.KeyboardState.CapsLock)
@@ -83,11 +80,9 @@ namespace BFB.Engine.Input
                     return outputString.Insert(outputString.Length, key.ToString().ToUpper());
 
             //Is letter and make Lowercase
-            if (key.ToString().Length == 1)
-                return outputString.Insert(outputString.Length, key.ToString().ToLower());
+            return key.ToString().Length == 1 ? outputString.Insert(outputString.Length, key.ToString().ToLower()) : outputString;
 
             //Unknown character so lets return original string
-            return outputString;
         }
 
         private void EmitKeyPressEvent(Event.Event eventObj)
@@ -113,7 +108,7 @@ namespace BFB.Engine.Input
                 {
                     Key = key.ToString(),
                     KeyEnum = key,
-                    KeyboardState = KeyboardState
+                    KeyboardState = _keyboardState
                 }
             };
         }

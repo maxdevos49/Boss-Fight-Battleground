@@ -11,19 +11,22 @@ using Microsoft.Xna.Framework.Graphics;
 //Engine
 using BFB.Engine.Event;
 
+//Jetbrains
+using JetBrains.Annotations;
+
 
 namespace BFB.Engine.Scene
 {
     public class SceneManager
     {
         //Dependencies
-        public readonly ContentManager _contentManager;
-        public readonly GraphicsDeviceManager _graphicsManager;
-        public readonly EventManager _eventManager;
+        private readonly ContentManager _contentManager;
+        private readonly GraphicsDeviceManager _graphicsManager;
+        private readonly EventManager _eventManager;
 
         //Properties
-        private readonly Dictionary<string, Scene> AllScenes;
-        private readonly Dictionary<string, Scene> ActiveScenes;
+        private readonly Dictionary<string, Scene> _allScenes;
+        private readonly Dictionary<string, Scene> _activeScenes;
 
         #region constructor
 
@@ -33,8 +36,8 @@ namespace BFB.Engine.Scene
             _graphicsManager = graphicsManager;
             _eventManager = eventManager;
 
-            AllScenes = new Dictionary<string, Scene>();
-            ActiveScenes = new Dictionary<string, Scene>();
+            _allScenes = new Dictionary<string, Scene>();
+            _activeScenes = new Dictionary<string, Scene>();
         }
 
         #endregion
@@ -44,9 +47,9 @@ namespace BFB.Engine.Scene
         /**
          * Adds an array of scenes to the scene manager
          * */
-        public void AddScene(Scene[] scenes)
+        public void AddScene(IEnumerable<Scene> scenes)
         {
-            foreach (var scene in scenes)
+            foreach (Scene scene in scenes)
             {
                 AddScene(scene);
             }
@@ -59,13 +62,14 @@ namespace BFB.Engine.Scene
         /**
          * Adds a single scene to the scene manager
          * */
+        [UsedImplicitly]
         public void AddScene(Scene scene)
         {
-            if (!SceneExist(scene.Key))
-            {
-                scene.InjectDependencies(this, _contentManager, _graphicsManager, _eventManager);
-                AllScenes.Add(scene.Key, scene);
-            }
+            if (SceneExist(scene.Key)) return;
+            
+            scene.InjectDependencies(this, _contentManager, _graphicsManager, _eventManager);
+            
+            _allScenes.Add(scene.Key, scene);
         }
 
         #endregion
@@ -77,18 +81,17 @@ namespace BFB.Engine.Scene
          * */
         public void StartScene(string key)
         {
-            if (SceneExist(key))
+            if (!SceneExist(key)) return;
+            
+            //Shutdown any currently active scenes
+            foreach (KeyValuePair<string, Scene> scene in _activeScenes)
             {
-                //Shutdown any currently active scenes
-                foreach (var scene in ActiveScenes)
-                {
-                    //stop the scene
-                    StopScene(scene.Key);
-                }
-
-                //Start the single scene
-                LaunchScene(key);
+                //stop the scene
+                StopScene(scene.Key);
             }
+
+            //Start the single scene
+            LaunchScene(key);
         }
 
         #endregion
@@ -100,14 +103,13 @@ namespace BFB.Engine.Scene
          * */
         public void LaunchScene(string key)
         {
-            if (SceneExist(key) && !ActiveSceneExist(key))
-            {
-                //Add to active scene
-                ActiveScenes.Add(key, AllScenes[key]);
+            if (!SceneExist(key) || ActiveSceneExist(key)) return;
+            
+            //Add to active scene
+            _activeScenes.Add(key, _allScenes[key]);
 
-                //update scene status
-                ActiveScenes[key].Start();
-            }
+            //update scene status
+            _activeScenes[key].Start();
         }
 
         #endregion
@@ -117,12 +119,13 @@ namespace BFB.Engine.Scene
         /**
          * Pauses the scene that is specified
          * */
+        [UsedImplicitly]
         public void PauseScene(string key)
         {
             if (ActiveSceneExist(key))
             {
                 //Update scene status
-                ActiveScenes[key].Pause();
+                _activeScenes[key].Pause();
             }
         }
 
@@ -135,14 +138,13 @@ namespace BFB.Engine.Scene
          * */
         public void StopScene(string key)
         {
-            if (ActiveSceneExist(key))
-            {
-                //Change the scene status/call any methods that may helpful for shutting down the scene
-                ActiveScenes[key].Stop();
+            if (!ActiveSceneExist(key)) return;
+            
+            //Change the scene status/call any methods that may helpful for shutting down the scene
+            _activeScenes[key].Stop();
 
-                //remove the scene from active scenes
-                ActiveScenes.Remove(key);
-            }
+            //remove the scene from active scenes
+            _activeScenes.Remove(key);
         }
 
         #endregion
@@ -156,11 +158,13 @@ namespace BFB.Engine.Scene
         {
             try
             {
-                foreach (var scene in ActiveScenes.ToList())
+                foreach (KeyValuePair<string, Scene> scene in _activeScenes.ToList())
                     scene.Value?.Draw(gameTime, graphics);
             }
-            catch (Exception) { }
-
+            catch (Exception)
+            {
+                // ignored
+            }
         }
 
         #endregion
@@ -174,12 +178,13 @@ namespace BFB.Engine.Scene
         {
             try
             {
-                foreach (var scene in ActiveScenes.ToList())
-                    if (scene.Value?.GetStatus() == SceneStatus.ACTIVE)
-                        scene.Value?.Update(gameTime);
+                foreach (KeyValuePair<string, Scene> scene in _activeScenes.ToList().Where(scene => scene.Value?.GetStatus() == SceneStatus.Active))
+                    scene.Value?.Update(gameTime);
             }
-            catch (Exception) { }
-
+            catch (Exception)
+            {
+                // ignored
+            }
         }
 
         #endregion
@@ -189,13 +194,10 @@ namespace BFB.Engine.Scene
         /**
          * Checks if the scene is running or not
          * */
+        [UsedImplicitly]
         public bool ActiveSceneExist(string key)
         {
-            if (!ActiveScenes.ContainsKey(key))
-            {
-                return false;
-            }
-            return true;
+            return _activeScenes.ContainsKey(key);
         }
 
         #endregion
@@ -205,13 +207,10 @@ namespace BFB.Engine.Scene
         /**
          * Checks if the scene exist regardless if it is running
          * */
+        [UsedImplicitly]
         public bool SceneExist(string key)
         {
-            if (!AllScenes.ContainsKey(key))
-            {
-                return false;
-            }
-            return true;
+            return _allScenes.ContainsKey(key);
         }
 
         #endregion

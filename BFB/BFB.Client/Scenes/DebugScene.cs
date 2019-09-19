@@ -10,12 +10,11 @@ namespace BFB.Client.Scenes
 {
     public class DebugScene : Scene
     {
+        private SpriteFont Font { get; set; }
 
-        public SpriteFont Font { get; set; }
-
-        public string FPS { get; set; }
-        public string MousePos { get; set; }
-        public string KeysPressed { get; set; }
+        private string Fps { get; set; }
+        private string MousePos { get; set; }
+        private string KeysPressed { get; set; }
 
         private readonly FrameCounter _frameCounter;
 
@@ -24,37 +23,37 @@ namespace BFB.Client.Scenes
 
             _frameCounter = new FrameCounter();
 
-            FPS = "0";
+            Fps = "0";
             MousePos = "Mouse Position - X: 0, Y: 0";
             KeysPressed = "Keys Pressed:";
         }
 
-        public override void Init()
+        protected override void Init()
         {
-            _eventManager.AddEventListener("keypress", (Event) =>
+            EventManager.AddEventListener("keypress", (Event) =>
             {
                 KeysPressed = $"Keys Pressed: {string.Join(", ", Event.Keyboard.KeyboardState.GetPressedKeys())}";
             });
 
-            _eventManager.AddEventListener("keyup", (Event) =>
+            EventManager.AddEventListener("keyup", (Event) =>
             {
                 KeysPressed = $"Keys Pressed: {string.Join(", ", Event.Keyboard.KeyboardState.GetPressedKeys())}";
             });
 
-            _eventManager.AddEventListener("mousemove", (Event) =>
+            EventManager.AddEventListener("mousemove", (Event) =>
             {
                 MousePos = $"Mouse Position - X: {Event.Mouse.X}, Y: {Event.Mouse.Y}";
             });
         }
 
-        public override void Load()
+        protected override void Load()
         {
-            Font = _contentManager.Load<SpriteFont>("Fonts\\Papyrus");
+            Font = ContentManager.Load<SpriteFont>("Fonts\\Papyrus");
         }
 
         public override void Update(GameTime gameTime)
         {
-            FPS = $"FPS: {_frameCounter.AverageFramesPerSecond}";
+            Fps = $"FPS: {_frameCounter.AverageFramesPerSecond}";
         }
 
         public override void Draw(GameTime gameTime, SpriteBatch graphics)
@@ -62,7 +61,7 @@ namespace BFB.Client.Scenes
             float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
             _frameCounter.Update(deltaTime);
 
-            graphics.DrawString(Font, FPS, Vector2.Zero, Color.Black);
+            graphics.DrawString(Font, Fps, Vector2.Zero, Color.Black);
             graphics.DrawString(Font, MousePos, new Vector2(0, 13), Color.Black);
             graphics.DrawString(Font, KeysPressed, new Vector2(0, 25), Color.Black);
 

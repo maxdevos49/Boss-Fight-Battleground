@@ -32,7 +32,7 @@ namespace BFB
         [STAThread]
         static void Main()
         {
-            using (var game = new MainGame())
+            using (MainGame game = new MainGame())
                 game.Run();
         }
 

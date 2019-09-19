@@ -14,9 +14,9 @@ namespace BFB.Client.Scenes
 
         }
 
-        public override void Init()
+        protected override void Init()
         {
-            _eventManager.AddEventListener("keydown", (Event) =>
+            EventManager.AddEventListener("keydown", (Event) =>
             {
 
             });

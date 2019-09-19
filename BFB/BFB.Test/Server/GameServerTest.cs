@@ -11,15 +11,15 @@ namespace BFB.Test.Server
         public void Connection()
         {
 
-            TcpClient client = new TcpClient("10.31.97.237", 6969);
+            TcpClient client = new TcpClient("127.0.0.1", 6969);
 
-            var message = new Packet
+            Packet message = new Packet
             {
                 Route = "Server Test",
                 Data = new byte[100]
             };
 
-            var stream = client.GetStream();
+            NetworkStream stream = client.GetStream();
 
             PacketManager.Write(stream, message);
 

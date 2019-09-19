@@ -2,8 +2,9 @@
 using System;
 using System.IO;
 using System.Net.Sockets;
-using Microsoft.Extensions.Configuration;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Collections.Generic;
+using Microsoft.Extensions.Configuration;
 
 //Engine
 using System.Net;
@@ -12,42 +13,50 @@ using System.Threading;
 //Server
 using BFB.Server.Client;
 using BFB.Engine.Server;
+using BFB.Engine.Event;
+using JetBrains.Annotations;
 
 namespace BFB.Server
 {
     public class Server
     {
 
-        public bool LineComplete { get; set; }
-        public TcpListener Listener { get; set; }
-        public ClientManager Clients { get; set; }
+        private readonly TcpListener _listener;
+        private readonly ClientManager _clients;
+        [UsedImplicitly] private readonly IDictionary<string, Command> _commands;
+        [UsedImplicitly] private readonly EventManager _eventManager;
+        private readonly IConfiguration _configuration;
 
-        public IConfiguration Configuration { get; set; }
-
-        public Server(IConfiguration configuration)
+        private Server(IConfiguration configuration)
         {
-            LineComplete = true;
-            Configuration = configuration;
+            _configuration = configuration;
 
-            Clients = new ClientManager();
-            Listener = new TcpListener(IPAddress.Parse(Configuration["Server:IPAddress"]), Convert.ToInt32(Configuration["Server:Port"]));
+            _eventManager = new EventManager();
+            _clients = new ClientManager();
+
+            _listener = new TcpListener(IPAddress.Parse(_configuration["Server:IPAddress"]), Convert.ToInt32(_configuration["Server:Port"]));
+
+            //Load/Register all commands
+            _commands = new Dictionary<string, Command>();
+
+            //Create/Load Simulation World
+
         }
 
         private void HandleTerminalInput()
         {
             while (true)
             {
-                //reads a line
                 string text = Console.ReadLine();
+                
                 PrintToTerminal();
-
-                //exit command
-                if (text.ToLower() == "stop")
-                    break;
-
-
-                if (text == string.Empty)
+                
+                if (string.IsNullOrEmpty(text))
                     continue;
+               
+                //exit command
+                if (text.ToLower() == "stop")//Convert to server command
+                    break;
 
                 //TODO in the future do something with text/make commands emit event??
             }
@@ -61,11 +70,11 @@ namespace BFB.Server
             {
                 while (true)
                 {
-                    if (Listener.Pending())
+                    if (_listener.Pending())
                     {
-                        TcpClient client = Listener.AcceptTcpClient();
+                        TcpClient client = _listener.AcceptTcpClient();
 
-                        Clients.Add(client);//client manager
+                        _clients.Add(client);
                         PrintToTerminal("New client Connected..");
 
                         Thread t = new Thread(() => HandleClientStream(client))
@@ -77,7 +86,7 @@ namespace BFB.Server
                     }
                     else
                     {
-                        Thread.Sleep(300);
+                        Thread.Sleep(500);
                     }
                 }
             }
@@ -91,11 +100,11 @@ namespace BFB.Server
         private void HandleClientStream(TcpClient client)
         {
 
-            var stream = client.GetStream();
+            NetworkStream stream = client.GetStream();
 
+            // ReSharper disable once NotAccessedVariable
             Packet message;
             byte[] packetSize = new byte[4];
-            int i, messageSize;
 
             try
             {
@@ -105,10 +114,10 @@ namespace BFB.Server
                  * stops. If still connected I think this just waits until there for input.
                  * Aka it only returns 0 if its disconnected
                  * */
-                while ((i = stream.Read(packetSize, 0, 4)) != 0)
+                while (stream.Read(packetSize, 0, 4) != 0)
                 {
                     //get message size and create input array size
-                    messageSize = BitConverter.ToInt32(packetSize);
+                    int messageSize = BitConverter.ToInt32(packetSize);
 
                     //Deserializes a packet from the stream
                     byte[] messageData = new byte[messageSize];
@@ -124,7 +133,8 @@ namespace BFB.Server
                     Console.WriteLine($"Total bytes Read: {bytesRead}");
 
                     //do something with message now
-                    using (var memoryStream = new MemoryStream(messageData))
+                    using (MemoryStream memoryStream = new MemoryStream(messageData))
+                        // ReSharper disable once RedundantAssignment
                         message = (Packet)new BinaryFormatter().Deserialize(memoryStream);
 
                     //TODO send message to server side route
@@ -141,13 +151,17 @@ namespace BFB.Server
             client.Close();
         }
 
+        [UsedImplicitly]
         public void Start()
         {
-
-            Listener.Start();
+            //Terminal Prep
+            Console.Clear();
+            Console.Title = "BFB Server";
 
             PrintToTerminal();
-            PrintToTerminal($"BFB Server is now Listening on {Configuration["Server:IPAddress"]}:{Configuration["Server:Port"]}");
+            PrintToTerminal($"BFB Server is now Listening on {_configuration["Server:IPAddress"]}:{_configuration["Server:Port"]}");
+
+            _listener.Start();
 
             Thread t = new Thread(HandleClientConnections)
             {
@@ -160,12 +174,12 @@ namespace BFB.Server
             HandleTerminalInput();
         }
 
+        [UsedImplicitly]
         public void Stop()
         {
             PrintToTerminal("Shutting down...", false);
-            Listener.Stop();
+            _listener.Stop();
             Console.WriteLine();
-            Environment.Exit(Environment.ExitCode);
         }
 
         private void PrintToTerminal(string message = null, bool printHeader = true)
@@ -173,22 +187,25 @@ namespace BFB.Server
             if (message != null)
                 Console.WriteLine(message);
 
-            if (printHeader)
-                Console.Write($"[Server|{DateTime.Now.ToString("h:mm:ss tt")}|c:{Clients.Count()}] ");
+            if (!printHeader) return;
+            
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.Write($"[BFB-Server|{DateTime.Now:h:mm:ss tt}|c:{_clients.Count()}] ");
+            Console.ResetColor();
         }
 
         #region Main
 
-        static void Main(string[] args)
+        private static void Main()
         {
             Thread.CurrentThread.Name = "Main";
 
             //get configuration
-            var builder = new ConfigurationBuilder()
+            IConfigurationBuilder builder = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
                 .AddJsonFile("appsettings.json", false, true);
 
-            var server = new Server(builder.Build());
+            Server server = new Server(builder.Build());
             server.Start();
         }
 

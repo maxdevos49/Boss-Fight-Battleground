@@ -14,7 +14,7 @@ namespace BFB.Engine.Server
          * */
         public static Packet Serialize(object anySerializableObject)
         {
-            using (var memoryStream = new MemoryStream())
+            using (MemoryStream memoryStream = new MemoryStream())
             {
                 new BinaryFormatter().Serialize(memoryStream, anySerializableObject);
                 return new Packet { Data = memoryStream.ToArray() };
@@ -31,7 +31,7 @@ namespace BFB.Engine.Server
         public static object Deserialize(Packet message)
         {
 
-            using (var memoryStream = new MemoryStream(message.Data))
+            using (MemoryStream memoryStream = new MemoryStream(message.Data))
                 return new BinaryFormatter().Deserialize(memoryStream);
         }
 
@@ -41,16 +41,16 @@ namespace BFB.Engine.Server
 
         public static void Write(NetworkStream stream, Packet message)
         {
-            byte[] messageData, messageLength;
+            byte[] messageData;
 
-            using (var memoryStream = new MemoryStream())
+            using (MemoryStream memoryStream = new MemoryStream())
             {
                 new BinaryFormatter().Serialize(memoryStream, message);
                 messageData = memoryStream.ToArray();
             }
 
             //get and convert length to bytes
-            messageLength = BitConverter.GetBytes(messageData.Length);
+            byte[] messageLength = BitConverter.GetBytes(messageData.Length);
 
             //send message length
             stream.Write(messageLength, 0, 4);
@@ -78,7 +78,7 @@ namespace BFB.Engine.Server
             Console.WriteLine($"Total bytes Read: {bytesRead}");
 
             //do something with message now
-            using (var memoryStream = new MemoryStream(messageData))
+            using (MemoryStream memoryStream = new MemoryStream(messageData))
                 return (Packet)new BinaryFormatter().Deserialize(memoryStream);
         }
 

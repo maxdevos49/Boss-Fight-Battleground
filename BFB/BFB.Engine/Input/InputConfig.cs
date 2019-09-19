@@ -11,12 +11,12 @@
         /**
          * Either emit all mouse events or not
          * */
-        public bool CaptureMouse;
+        public bool CaptureMouse { get; private set; }
 
         /**
          * Either emit all keyboard events or not
          * */
-        public bool CaptureKeyboard;
+        public bool CaptureKeyboard { get; private set; }
 
 
     }

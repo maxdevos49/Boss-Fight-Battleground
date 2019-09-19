@@ -9,19 +9,19 @@ namespace BFB.Engine.Server
     {
         private readonly object _lock = new object();
 
-        private Vector2 position;
-        private Vector2 mousePosition;
-        private readonly TcpClient Client;
+        private Vector2 _position;
+        private Vector2 _mousePosition;
+        private readonly TcpClient _client;
 
         public SocketClient()
         {
-            Client = new TcpClient("127.0.0.1", 6969);
+            _client = new TcpClient("127.0.0.1", 6969);
 
-            position = Vector2.Zero;
-            mousePosition = Vector2.Zero;
+            _position = Vector2.Zero;
+            _mousePosition = Vector2.Zero;
 
-            //Start recieving thread
-            Thread t = new Thread(RecieveThread);
+            //Start receiving thread
+            Thread t = new Thread(ReceiveThread);
             t.Start();
         }
 
@@ -30,13 +30,11 @@ namespace BFB.Engine.Server
 
         }
 
-        public void RecieveThread()
+        private void ReceiveThread()
         {
-            NetworkStream stream = Client.GetStream();
+            NetworkStream stream = _client.GetStream();
 
-            Packet message;
             byte[] packetSize = new byte[4];
-            int i, messageSize;
 
             try
             {
@@ -46,13 +44,13 @@ namespace BFB.Engine.Server
                  * stops. If still connected I think this just waits until there is input.
                  * Aka it only returns 0 if its disconnected
                  * */
-                while ((i = stream.Read(packetSize, 0, 4)) != 0)
+                while (stream.Read(packetSize, 0, 4) != 0)
                 {
                     //get message size and create input array size
-                    messageSize = BitConverter.ToInt32(packetSize);
+                    int messageSize = BitConverter.ToInt32(packetSize);
 
                     //Deserializes a packet from the stream
-                    message = PacketManager.Read(stream, messageSize);
+                    Packet message = PacketManager.Read(stream, messageSize);
 
                     //from here we can use the message from the client
                     Console.WriteLine($"Message Route: {message.Route}");
@@ -64,7 +62,7 @@ namespace BFB.Engine.Server
                 Console.WriteLine("Exception: {0}", ex);
             }
 
-            Client.Close();
+            _client.Close();
         }
 
 

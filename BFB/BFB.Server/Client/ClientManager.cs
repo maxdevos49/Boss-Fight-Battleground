@@ -7,24 +7,23 @@ namespace BFB.Server.Client
     public class ClientManager
     {
 
-        private object _lock = new object();
-
-        private int NextClientId;
-        private Dictionary<int, TcpClient> Clients;
+        private readonly object _lock = new object();
+        private readonly Dictionary<int, TcpClient> _clients;
+        private int _nextClientId;
 
         public ClientManager()
         {
-            NextClientId = 0;
-            Clients = new Dictionary<int, TcpClient>();//Will later on have a custom client class that holds more information maybe??
+            _nextClientId = 0;
+            _clients = new Dictionary<int, TcpClient>();//Will later on have a custom client class that holds more information maybe??
         }
 
         public int Add(TcpClient client)
         {
             lock (_lock)
             {
-                NextClientId++;
-                Clients.Add(NextClientId, client);
-                return NextClientId;
+                _nextClientId++;
+                _clients.Add(_nextClientId, client);
+                return _nextClientId;
             }
         }
 
@@ -32,7 +31,7 @@ namespace BFB.Server.Client
         {
             lock (_lock)
             {
-                return Clients.Remove(clientKey);
+                return _clients.Remove(clientKey);
             }
         }
 
@@ -40,7 +39,7 @@ namespace BFB.Server.Client
         {
             lock (_lock)
             {
-                return Clients[clientId];
+                return _clients[clientId];
             }
         }
 
@@ -48,7 +47,7 @@ namespace BFB.Server.Client
         {
             lock (_lock)
             {
-                return Clients.Values.ToList();
+                return _clients.Values.ToList();
             }
         }
 
@@ -56,7 +55,7 @@ namespace BFB.Server.Client
         {
             lock (_lock)
             {
-                return Clients.Count;
+                return _clients.Count;
             }
         }
 
