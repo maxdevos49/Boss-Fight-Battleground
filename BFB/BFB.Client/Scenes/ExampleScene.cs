@@ -56,7 +56,7 @@ namespace BFB.Client.Scenes
                 MousePosition = new Vector2(Event.Mouse.X, Event.Mouse.Y);
             });
 
-            _eventManager.AddEventListener("mousedown", (Event) =>
+            _eventManager.AddEventListener("mouseclick", (Event) =>
             {
                 for (int i = 0; i < 1000; i++)
                 {
