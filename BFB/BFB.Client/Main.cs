@@ -12,7 +12,8 @@ using BFB.Engine.Input;
 
 //Project
 using BFB.Client.Scenes;
-
+using BFB.Engine.Server.Communication;
+using BFB.Engine.Server.Socket;
 using Microsoft.Xna.Framework.Input;
 
 namespace BFB
@@ -26,7 +27,8 @@ namespace BFB
         private EventManager EventManager;
 
         private SpriteBatch SpriteBatch;
-
+        private ClientSocketManager _clientSocketManager;
+        
         #region Main
 
         [STAThread]
@@ -84,11 +86,28 @@ namespace BFB
                             SceneManager.StopScene(nameof(DebugScene));
                         else
                             SceneManager.LaunchScene(nameof(DebugScene));
-
                         break;
-                        //case Keys.F4:
-                        //    GraphicsManager.ToggleFullScreen();
-                        //    break;
+                        case Keys.F4:
+                            _clientSocketManager?.Disconnect();
+                            _clientSocketManager = new ClientSocketManager("127.0.0.1", 6969);
+
+                            bool ponged = false;
+            
+                            _clientSocketManager.On("ping", message =>
+                            {
+                                _clientSocketManager.Emit("pong", new DataMessage{Message = "Pong pong pong"});
+                                ponged = true;
+                            });
+
+                            while (true)
+                            {
+                                if (!ponged) continue;
+                                
+                                Console.WriteLine("Ping Received!!");
+                                _clientSocketManager.Disconnect();
+                                break;
+                            }
+                            break;
                 }
             });
 

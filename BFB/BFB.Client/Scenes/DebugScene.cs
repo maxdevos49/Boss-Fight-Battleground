@@ -1,4 +1,6 @@
 ﻿//MonoGame
+
+using System.Diagnostics;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -15,6 +17,7 @@ namespace BFB.Client.Scenes
         private string Fps { get; set; }
         private string MousePos { get; set; }
         private string KeysPressed { get; set; }
+        private string ThreadCount { get; set; }
 
         private readonly FrameCounter _frameCounter;
 
@@ -26,6 +29,7 @@ namespace BFB.Client.Scenes
             Fps = "0";
             MousePos = "Mouse Position - X: 0, Y: 0";
             KeysPressed = "Keys Pressed:";
+            ThreadCount = "ThreadCount: 0";
         }
 
         protected override void Init()
@@ -54,6 +58,7 @@ namespace BFB.Client.Scenes
         public override void Update(GameTime gameTime)
         {
             Fps = $"FPS: {_frameCounter.AverageFramesPerSecond}";
+            ThreadCount = $"Threads: {Process.GetCurrentProcess().Threads.Count}";
         }
 
         public override void Draw(GameTime gameTime, SpriteBatch graphics)
@@ -64,6 +69,7 @@ namespace BFB.Client.Scenes
             graphics.DrawString(Font, Fps, Vector2.Zero, Color.Black);
             graphics.DrawString(Font, MousePos, new Vector2(0, 13), Color.Black);
             graphics.DrawString(Font, KeysPressed, new Vector2(0, 25), Color.Black);
+            graphics.DrawString(Font, ThreadCount, new Vector2(0, 38), Color.Black);
 
         }
     }

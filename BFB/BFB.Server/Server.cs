@@ -1,55 +1,146 @@
 ﻿//C#
 using System;
+using System.Diagnostics;
 using System.IO;
-using System.Net.Sockets;
-using System.Runtime.Serialization.Formatters.Binary;
-using System.Collections.Generic;
 using Microsoft.Extensions.Configuration;
 
 //Engine
 using System.Net;
 using System.Threading;
-
-//Server
-using BFB.Server.Client;
-using BFB.Engine.Server;
-using BFB.Engine.Event;
-using JetBrains.Annotations;
+using BFB.Engine.Server.Communication;
+using BFB.Engine.Server.Socket;
 
 namespace BFB.Server
 {
     public class Server
     {
-
-        private readonly TcpListener _listener;
-        private readonly ClientManager _clients;
-        [UsedImplicitly] private readonly IDictionary<string, Command> _commands;
-        [UsedImplicitly] private readonly EventManager _eventManager;
+        
+        #region Properties
+        
+        /**
+         * Thread Locker
+         */
+        private readonly object _lock;
+        
+        /**
+         * Server configuration. Contains all settings defined in appsettings.json or settings overridden by environment variables
+         */
         private readonly IConfiguration _configuration;
+        
+        /**
+         * This manages the simulation and does all of the calculations for entities and such
+         */
+        private readonly Simulation _simulation;
+        
+        /**
+         * Manages the server connections and routes all tcp request to the correct handelers
+         */
+        private readonly ServerSocketManager _server;
 
+        #endregion
+
+        #region Constructor
+        
         private Server(IConfiguration configuration)
         {
+            //DI
             _configuration = configuration;
-
-            _eventManager = new EventManager();
-            _clients = new ClientManager();
-
-            _listener = new TcpListener(IPAddress.Parse(_configuration["Server:IPAddress"]), Convert.ToInt32(_configuration["Server:Port"]));
-
-            //Load/Register all commands
-            _commands = new Dictionary<string, Command>();
-
-            //Create/Load Simulation World
+            
+            _lock = new object();
+            _simulation = new Simulation();
+            
+            //server
+            IPAddress ip = IPAddress.Parse(_configuration["Server:IPAddress"]);
+            int port = Convert.ToInt32(_configuration["Server:Port"]);
+            _server = new ServerSocketManager(ip,port);
 
         }
+        
+        #endregion
 
+        #region Init
+
+        private void Init()
+        {
+            //Terminal Prep
+            Console.Clear();
+            Console.Title = "BFB Server";
+            
+            //Terminal Header format
+            _server.SetTerminalHeader(() =>
+            {
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.Write($"[BFB-Server|{DateTime.Now:h:mm:ss tt}|T:{Process.GetCurrentProcess().Threads.Count - System.Diagnostics.}] ");
+                Console.ResetColor();
+            });
+
+            //Client authentication strategy
+            _server.OnClientAuthentication(socket =>
+            {
+                _server.PrintMessage($"Client {socket.Key} Authenticated with Standard Validation(No Validation)");
+                return true;
+            });
+
+            //What to do when a client connects
+            _server.OnClientConnect(socket =>
+            {
+                _server.PrintMessage($"Client {socket.Key} Connected");
+                
+                _server.PrintMessage("Sending Ping...");
+                
+                socket.Emit("ping", new DataMessage{Message = "Hey hey Hey"});
+                
+            });
+
+            //what to do when a client disconnects
+            _server.OnClientDisconnect(socket =>
+            {
+                _server.PrintMessage($"Client {socket.Key} Disconnected");
+            });
+
+            //Test
+            _server.On("pong", message =>
+            {
+                _server.PrintMessage("Pong received!!");
+            });
+            
+            //Print initial console header
+            _server.PrintMessage();
+        }
+        
+        #endregion
+        
+        #region Start
+        
+        public void Start()
+        {
+            Init();
+            _server.Start();
+            _server.PrintMessage($"BFB Server is now Listening on {_configuration["Server:IPAddress"]}:{_configuration["Server:Port"]}");
+            HandleTerminalInput();
+        }
+        
+        #endregion
+
+        #region Stop
+        
+        public void Stop()
+        {
+            _server.Stop();
+            Console.WriteLine();
+        }
+        
+        #endregion
+        
+        #region HandleTerminalInput
+        
         private void HandleTerminalInput()
         {
             while (true)
             {
                 string text = Console.ReadLine();
                 
-                PrintToTerminal();
+                _server.PrintMessage();
                 
                 if (string.IsNullOrEmpty(text))
                     continue;
@@ -63,137 +154,9 @@ namespace BFB.Server
 
             Stop();
         }
-
-        private void HandleClientConnections()
-        {
-            try
-            {
-                while (true)
-                {
-                    if (_listener.Pending())
-                    {
-                        TcpClient client = _listener.AcceptTcpClient();
-
-                        _clients.Add(client);
-                        PrintToTerminal("New client Connected..");
-
-                        Thread t = new Thread(() => HandleClientStream(client))
-                        {
-                            Name = "ClientStream",
-                            IsBackground = true
-                        };
-                        t.Start();
-                    }
-                    else
-                    {
-                        Thread.Sleep(500);
-                    }
-                }
-            }
-            catch (SocketException e)
-            {
-                Console.WriteLine("SocketException: {0}", e);
-                Stop();
-            }
-        }
-
-        private void HandleClientStream(TcpClient client)
-        {
-
-            NetworkStream stream = client.GetStream();
-
-            // ReSharper disable once NotAccessedVariable
-            Packet message;
-            byte[] packetSize = new byte[4];
-
-            try
-            {
-
-                /**
-                 * Read returns number of bytes to read so if nothing was read then looping
-                 * stops. If still connected I think this just waits until there for input.
-                 * Aka it only returns 0 if its disconnected
-                 * */
-                while (stream.Read(packetSize, 0, 4) != 0)
-                {
-                    //get message size and create input array size
-                    int messageSize = BitConverter.ToInt32(packetSize);
-
-                    //Deserializes a packet from the stream
-                    byte[] messageData = new byte[messageSize];
-
-                    //Safe read
-                    int bytesRead = 0;
-                    do
-                    {
-                        Console.WriteLine($"Byte position: {bytesRead}");
-                        bytesRead += stream.Read(messageData, bytesRead, messageSize - bytesRead);
-                    } while (bytesRead < messageSize);
-
-                    Console.WriteLine($"Total bytes Read: {bytesRead}");
-
-                    //do something with message now
-                    using (MemoryStream memoryStream = new MemoryStream(messageData))
-                        // ReSharper disable once RedundantAssignment
-                        message = (Packet)new BinaryFormatter().Deserialize(memoryStream);
-
-                    //TODO send message to server side route
-
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Exception: {0}", ex);
-                client.Close();
-            }
-
-            Console.WriteLine("Client Disconnected");
-            client.Close();
-        }
-
-        [UsedImplicitly]
-        public void Start()
-        {
-            //Terminal Prep
-            Console.Clear();
-            Console.Title = "BFB Server";
-
-            PrintToTerminal();
-            PrintToTerminal($"BFB Server is now Listening on {_configuration["Server:IPAddress"]}:{_configuration["Server:Port"]}");
-
-            _listener.Start();
-
-            Thread t = new Thread(HandleClientConnections)
-            {
-                Name = "ClientConnections",
-                IsBackground = true
-            };
-
-            t.Start();
-
-            HandleTerminalInput();
-        }
-
-        [UsedImplicitly]
-        public void Stop()
-        {
-            PrintToTerminal("Shutting down...", false);
-            _listener.Stop();
-            Console.WriteLine();
-        }
-
-        private void PrintToTerminal(string message = null, bool printHeader = true)
-        {
-            if (message != null)
-                Console.WriteLine(message);
-
-            if (!printHeader) return;
-            
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.Write($"[BFB-Server|{DateTime.Now:h:mm:ss tt}|c:{_clients.Count()}] ");
-            Console.ResetColor();
-        }
-
+        
+        #endregion
+        
         #region Main
 
         private static void Main()
