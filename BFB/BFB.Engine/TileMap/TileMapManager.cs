@@ -7,24 +7,40 @@ using BFB.Engine.TileMap;
 namespace BFB.Engine.TileMap
 {
 
-    class TileMapManager
+    public class TileMapManager
     {
         //Tile Map will be 30x20 Chunks
-        const int XCHUNKS = 30;
-        const int YCHUNKS = 20;
-        const int CHUNKSIZE = 16;
-        public Chunk[,] myChunk = new Chunk[XCHUNKS, YCHUNKS];
+        private const int XCHUNKS = 30;
+        private const int YCHUNKS = 20;
+        private const int CHUNKSIZE = 16;
+        private Chunk[,] myChunk;
 
-        int chunkX = 0;
-        int chunkY = 0;
-        int extraX = 0;
-        int extraY = 0;
+        private int chunkX;
+        private int chunkY;
+        private int extraX;
+        private int extraY;
 
 
         public TileMapManager()
         {
+            myChunk = new Chunk[XCHUNKS, YCHUNKS];
+            chunkX = 0;
+            chunkY = 0;
+            extraX = 0;
+            extraY = 0;
 
+            int x;
+            int y;
+            for (x = 0; x < XCHUNKS; x++)
+            {
+                for (y = 0; y < YCHUNKS; y++)
+                {
+                    myChunk[x, y] = new Chunk();
+                }
+            }
         }
+
+
 
         public void getChunkInfo(int x, int y)
         {

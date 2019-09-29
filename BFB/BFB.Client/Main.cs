@@ -64,11 +64,12 @@ namespace BFB
             //Add scenes to scene manager
             SceneManager.AddScene(new Scene[] {
                 new DebugScene(),
-                new ExampleScene()
+                new ExampleScene(),
+                new TileMapTestScene()
             });
 
             //start first scene
-            SceneManager.StartScene(nameof(ExampleScene));
+            SceneManager.StartScene(nameof(TileMapTestScene));
 
             //global key press events
             EventManager.AddEventListener("keypress", (Event) =>
@@ -140,10 +141,10 @@ namespace BFB
         {
 
             //Clear screens
-            GraphicsDevice.Clear(Color.White);
+            GraphicsDevice.Clear(Color.LightBlue);
 
             //Starts drawing buffer
-            SpriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend);
+            SpriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, SamplerState.PointClamp, DepthStencilState.None, RasterizerState.CullCounterClockwise);
 
             //Draw Active Scenes
             SceneManager.DrawScenes(gameTime, SpriteBatch);

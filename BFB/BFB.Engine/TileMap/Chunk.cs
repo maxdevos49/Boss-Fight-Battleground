@@ -4,18 +4,33 @@ using System.Text;
 
 namespace BFB.Engine.TileMap
 {
-    class Chunk
+    public class Chunk
     {
         private const int CHUNKSIZE = 16;
 
-        private int[,] hardness = new int[CHUNKSIZE, CHUNKSIZE];
-        private int[,] light = new int[CHUNKSIZE, CHUNKSIZE];
-        private int[,] wall = new int[CHUNKSIZE, CHUNKSIZE];
-        private int[,] block = new int[CHUNKSIZE, CHUNKSIZE];
+        private int[,] hardness;
+        private int[,] light;
+        private int[,] wall;
+        private int[,] block;
 
         public Chunk()
         {
-
+            hardness = new int[CHUNKSIZE, CHUNKSIZE];
+            light = new int[CHUNKSIZE, CHUNKSIZE];
+            wall = new int[CHUNKSIZE, CHUNKSIZE];
+            block = new int[CHUNKSIZE, CHUNKSIZE];
+            int x;
+            int y;
+            for (x = 0; x < CHUNKSIZE; x++)
+            {
+                for (y = 0; y < CHUNKSIZE; y++)
+                {
+                    hardness[x, y] = 0;
+                    light[x, y] = 0;
+                    wall[x, y] = 0;
+                    block[x, y] = 0;
+                }
+            }
         }
 
         #region "get" methods
