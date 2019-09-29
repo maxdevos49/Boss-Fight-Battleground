@@ -51,19 +51,19 @@ namespace BFB.Client.Scenes
                 {
                     if(y < 5)
                     {
-                        tileMap.setTileBlock(x, y, (int)blocks.AIR);
+                        tileMap.setBlock(x, y, (int)blocks.AIR);
                     }
                     else if (y < 6)
                     {
-                        tileMap.setTileBlock(x, y, (int)blocks.GRASS);
+                        tileMap.setBlock(x, y, (int)blocks.GRASS);
                     }
                     else if(y < 80)
                     {
-                        tileMap.setTileBlock(x, y, (int)blocks.DIRT);
+                        tileMap.setBlock(x, y, (int)blocks.DIRT);
                     }
                     else
                     {
-                        tileMap.setTileBlock(x, y, (int)blocks.STONE);
+                        tileMap.setBlock(x, y, (int)blocks.STONE);
                     }
                 }
             }
@@ -90,7 +90,7 @@ namespace BFB.Client.Scenes
         public override void Update(GameTime gameTime)
         {
             
-      /*
+        /*
             if (grow){
                 scale++;
             }
@@ -123,7 +123,7 @@ namespace BFB.Client.Scenes
             {
                 for(y = 0; y < heightY; y++)
                 {
-                    switch(tileMap.getTileBlock(x, y))
+                    switch(tileMap.getBlock(x, y))
                     {
                         case (int)blocks.GRASS:
                             graphics.Draw(grassTexture, new Vector2(x * scale, y * scale), Color.White);

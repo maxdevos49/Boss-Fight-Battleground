@@ -50,65 +50,65 @@ namespace BFB.Engine.TileMap
             chunkY = y / CHUNKSIZE;
         }
 
-        #region getTile 
-        public int getTileHardness(int x, int y)
+        #region get 
+        public int getHardness(int x, int y)
         {
             getChunkInfo(x, y);
-            return myChunk[chunkX,chunkY].getHardness(extraX, extraY);
+            return myChunk[chunkX,chunkY].getTileHardness(extraX, extraY);
         }
 
-        public int getTileLight(int x, int y)
+        public int getLight(int x, int y)
         {
             getChunkInfo(x, y);
-            return myChunk[chunkX, chunkY].getLight(extraX, extraY);
+            return myChunk[chunkX, chunkY].getTileLight(extraX, extraY);
         }
 
-        public int getTileWall(int x, int y)
+        public int getWall(int x, int y)
         {
             getChunkInfo(x, y);
-            return myChunk[chunkX, chunkY].getWall(extraX, extraY);
+            return myChunk[chunkX, chunkY].getTileWall(extraX, extraY);
         }
 
-        public int getTileBlock(int x, int y)
+        public int getBlock(int x, int y)
         {
             getChunkInfo(x, y);
-            return myChunk[chunkX, chunkY].getBlock(extraX, extraY);
+            return myChunk[chunkX, chunkY].getTileBlock(extraX, extraY);
         }
 
         #endregion
 
-        #region setTile
-        public void setTileHardness(int x, int y, int hardnessValue)
+        #region set
+        public void setHardness(int x, int y, int hardnessValue)
         {
             getChunkInfo(x, y);
-            myChunk[chunkX, chunkY].setHardness(extraX, extraY, hardnessValue);
+            myChunk[chunkX, chunkY].setTileHardness(extraX, extraY, hardnessValue);
         }
 
-        public void setTileLight(int x, int y, int lightValue)
+        public void setLight(int x, int y, int lightValue)
         {
             getChunkInfo(x, y);
-            myChunk[chunkX, chunkY].setLight(extraX, extraY, lightValue);
+            myChunk[chunkX, chunkY].setTileLight(extraX, extraY, lightValue);
         }
 
-        public void setTileWall(int x, int y, int wallValue)
+        public void setWall(int x, int y, int wallValue)
         {
             getChunkInfo(x, y);
-            myChunk[chunkX, chunkY].setWall(extraX, extraY, wallValue);
+            myChunk[chunkX, chunkY].setTileWall(extraX, extraY, wallValue);
         }
 
-        public void setTileBlock(int x, int y, int blockValue)
+        public void setBlock(int x, int y, int blockValue)
         {
             getChunkInfo(x, y);
-            myChunk[chunkX, chunkY].setBlock(extraX, extraY, blockValue);
+            myChunk[chunkX, chunkY].setTileBlock(extraX, extraY, blockValue);
         }
 
-        public void setTileAll(int x, int y, int hardnessValue, int lightValue, int wallValue, int blockValue)
+        public void setAll(int x, int y, int hardnessValue, int lightValue, int wallValue, int blockValue)
         {
             getChunkInfo(x, y);
-            myChunk[chunkX, chunkY].setHardness(extraX, extraY, hardnessValue);
-            myChunk[chunkX, chunkY].setLight(extraX, extraY, lightValue);
-            myChunk[chunkX, chunkY].setWall(extraX, extraY, wallValue);
-            myChunk[chunkX, chunkY].setBlock(extraX, extraY, blockValue);
+            myChunk[chunkX, chunkY].setTileHardness(extraX, extraY, hardnessValue);
+            myChunk[chunkX, chunkY].setTileLight(extraX, extraY, lightValue);
+            myChunk[chunkX, chunkY].setTileWall(extraX, extraY, wallValue);
+            myChunk[chunkX, chunkY].setTileBlock(extraX, extraY, blockValue);
         }
 
         #endregion

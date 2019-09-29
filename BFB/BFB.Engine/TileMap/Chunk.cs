@@ -35,22 +35,22 @@ namespace BFB.Engine.TileMap
 
         #region "get" methods
 
-        public int getHardness(int x, int y)
+        public int getTileHardness(int x, int y)
         {
             return hardness[x, y];
         }
 
-        public int getLight(int x, int y)
+        public int getTileLight(int x, int y)
         {
             return light[x, y];
         }
 
-        public int getWall(int x, int y)
+        public int getTileWall(int x, int y)
         {
             return wall[x, y];
         }
 
-        public int getBlock(int x, int y)
+        public int getTileBlock(int x, int y)
         {
             return block[x, y];
         }
@@ -59,22 +59,22 @@ namespace BFB.Engine.TileMap
 
         #region "set" methods
 
-        public void setHardness(int x, int y, int hardnessValue)
+        public void setTileHardness(int x, int y, int hardnessValue)
         {
             hardness[x, y] = hardnessValue;
         }
 
-        public void setLight(int x, int y, int lightValue)
+        public void setTileLight(int x, int y, int lightValue)
         {
             light[x, y] = lightValue;
         }
 
-        public void setWall(int x, int y, int wallValue)
+        public void setTileWall(int x, int y, int wallValue)
         {
             wall[x, y] = wallValue;
         }
 
-        public void setBlock(int x, int y, int blockValue)
+        public void setTileBlock(int x, int y, int blockValue)
         {
             block[x, y] = blockValue;
         }
