@@ -117,16 +117,24 @@ namespace BFB.Server
             //Server Game loop
             while (_running)
             {
+                //Ask for new input
+                _server.Emit("/players/getUpdates");
+                
                 lock (_lock)
                 {
+                    //Update entities
                     foreach ((string key, ServerEntity entity) in _entities)
                     {
                         entity.Update( /*Pass in world in the future*/);
                     }
                 }
                 
-                _server.Emit("/players/getUpdates");
+                //Send changes
                 _server.Emit("/players/updates", GetUpdates());
+
+                
+                //TODO In future tick chunks also for dynamic tiles(Fire, gravity updates, grass)
+                
 
                 //Maintain the tick rate here
                 nextTick += _tickSpeed;
@@ -137,7 +145,7 @@ namespace BFB.Server
                 }
                 else
                 {
-                    _server.PrintMessage($"SERVER IS OVERLOADED. ({sleepTime * 1000}TPS).");
+                    _server.PrintMessage($"SERVER IS OVERLOADED. ({sleepTime}TPS).");
                 }
             }
         }

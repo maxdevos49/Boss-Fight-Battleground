@@ -172,6 +172,13 @@ namespace BFB.Client.Scenes
         public override void Update(GameTime gameTime)
         {
             //In the future do some interpolation of entities here to smooth any lag using velocity
+//            lock (_lock)
+//            {
+//                foreach ((string key, Entity entity) in _entities)
+//                {
+//                    entity.Position.Add(entity.Velocity);
+//                }
+//            }
         }
         
         #endregion
@@ -189,7 +196,7 @@ namespace BFB.Client.Scenes
                         new Rectangle(0, 0, 100, 100),
                         Color.White,
                         entity.Rotation,
-                        entity.Origin.ToVector2(),
+                        new Vector2(_spaceshipTexture.Width/2,_spaceshipTexture.Height/2), 
                         1.0f,
                         SpriteEffects.None,
                         1);

@@ -75,7 +75,6 @@ namespace BFB.Engine.Server
                 _active = false;
             }
 
-
         }
         
         #endregion
@@ -119,6 +118,8 @@ namespace BFB.Engine.Server
                     {
                         bytesRead += _stream.Read(messageData, bytesRead, messageSize - bytesRead);
                     } while (bytesRead < messageSize);
+                    
+                    if(messageData.Length == 0) return null;
 
                     using (MemoryStream memoryStream = new MemoryStream(messageData))
                        return (DataMessage)new BinaryFormatter().Deserialize(memoryStream);

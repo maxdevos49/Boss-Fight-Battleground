@@ -100,7 +100,7 @@ namespace BFB.Server
                         Position = new BfbVector(200,200),
                         Dimensions = new BfbVector(100,100),
                         Rotation = 0,
-                        Origin = new BfbVector(),
+                        Origin = new BfbVector(50,50),
                     }, new ComponentOptions
                     {
                         Physics = new AccelerateComponent(),
