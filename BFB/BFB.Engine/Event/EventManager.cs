@@ -8,42 +8,42 @@ namespace BFB.Engine.Event
 {
     public class EventManager
     {
-        //Dictionary<string:EventKey, Dictionary<int:HandelerId, Func<IEvent>>> EventHandelers;
-        private readonly Dictionary<string, Dictionary<int, Action<Event>>> EventHandelers;
+        //Dictionary<string:EventKey, Dictionary<int:HandlerId, Func<IEvent>>> EventHandlers;
+        private readonly Dictionary<string, Dictionary<int, Action<Event>>> EventHandlers;
 
-        private int EventHandelerId;
+        private int EventHandlerId;
         private int EventId;
 
         public EventManager()
         {
-            EventHandelerId = 0;
+            EventHandlerId = 0;
             EventId = 0;
-            EventHandelers = new Dictionary<string, Dictionary<int, Action<Event>>>();
+            EventHandlers = new Dictionary<string, Dictionary<int, Action<Event>>>();
         }
 
 
         /**
-         * Adds a event listener for a specified event
+         * Adds an event listener for a specified event
          * */
         public int AddEventListener(string eventKey, Action<Event> eventCallback)
         {
             //get handlerId
            
-            int id = EventHandelerId++;
+            int id = EventHandlerId++;
 
-            //add event handeler
-            if (EventHandelers.ContainsKey(eventKey))
+            //add event handler
+            if (EventHandlers.ContainsKey(eventKey))
             {
                 //event type already exist
-                EventHandelers[eventKey].Add(id, eventCallback);
+                EventHandlers[eventKey].Add(id, eventCallback);
             }
             else
             {
                 //event type does not exist so add it
-                EventHandelers.Add(eventKey, new Dictionary<int, Action<Event>>());
+                EventHandlers.Add(eventKey, new Dictionary<int, Action<Event>>());
 
-                //add event handeler
-                EventHandelers[eventKey].Add(id, eventCallback);
+                //add event handler
+                EventHandlers[eventKey].Add(id, eventCallback);
             }
 
             return id;
@@ -55,14 +55,14 @@ namespace BFB.Engine.Event
          * */
         public void RemoveEventListener(int eventHandlerId)
         {
-            foreach (var eventType in EventHandelers)
+            foreach (var eventType in EventHandlers)
             {
 
                 //check each event type
                 if (eventType.Value.ContainsKey(eventHandlerId))
                 {
-                    //remove the handeler
-                    EventHandelers[eventType.Key].Remove(eventHandlerId);
+                    //remove the handler
+                    EventHandlers[eventType.Key].Remove(eventHandlerId);
                     break;
                 }
             }
@@ -75,7 +75,7 @@ namespace BFB.Engine.Event
             //All fired events
             Console.WriteLine($"EventKey: \"{eventKey}\", Mouse X/Y: {eventData?.Mouse?.X},{eventData?.Mouse?.Y}, Key: {eventData?.Keyboard?.Key}");
 
-            if (EventHandelers.ContainsKey(eventKey))
+            if (EventHandlers.ContainsKey(eventKey))
             {
                 //create new thread
                 Thread eventThread = new Thread(() => EventThread(eventKey, eventData));
@@ -100,17 +100,17 @@ namespace BFB.Engine.Event
             eventData.EventId = (EventId++);
             eventData.EventKey = eventKey;
 
-            //loop through existing handleres for that event
-            foreach (var eventHandeler in EventHandelers[eventKey].ToList())
+            //loop through existing handlers for that event
+            foreach (var eventHandler in EventHandlers[eventKey].ToList())
             {
                 //Check if propagation was canceled
                 if (eventData.Propagate())
                 {
                     //Call event handler
-                    eventHandeler.Value(eventData);
+                    eventHandler.Value(eventData);
 
                     //Event log
-                    //Console.WriteLine($"EventId: {eventData.EventId}, EventKey: \"{eventData.EventKey}\", EventHandelerId: {handeler.Key}");
+                    //Console.WriteLine($"EventId: {eventData.EventId}, EventKey: \"{eventData.EventKey}\", EventHandlerId: {handler.Key}");
                 }
                 else
                 {
