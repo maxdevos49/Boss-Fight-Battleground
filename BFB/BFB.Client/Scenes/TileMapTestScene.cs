@@ -22,6 +22,9 @@ namespace BFB.Client.Scenes
         private Texture2D dirtTexture;
         private Texture2D stoneTexture;
 
+        private int randNum;
+        private Random random = new Random();
+
         public enum blocks {
             AIR = 0,
             GRASS,
@@ -36,6 +39,7 @@ namespace BFB.Client.Scenes
             tileMap = new TileMapManager();
             scale = 15;
             grow = true;
+            offset = 0;
         }
 
         #region Init
@@ -53,14 +57,59 @@ namespace BFB.Client.Scenes
                     {
                         tileMap.setBlock(x, y, (int)blocks.AIR);
                     }
-                    else if (y < 6)
+                    else if (y < 12)
                     {
-                        tileMap.setBlock(x, y, (int)blocks.GRASS);
+                        if (tileMap.getBlock(x, y - 1) == (int)blocks.AIR)
+                        {
+                            randNum = random.Next(3);
+                            if (randNum == 1)
+                            {
+                                tileMap.setBlock(x, y, (int)blocks.GRASS);
+                            }
+                            else
+                            {
+                                tileMap.setBlock(x, y, (int)blocks.AIR);
+                            }
+                            if(y == 11)
+                            {
+                                tileMap.setBlock(x, y, (int)blocks.GRASS);
+                            }
+                        }
+                        else if(tileMap.getBlock(x, y - 1) == (int)blocks.GRASS || tileMap.getBlock(x, y - 1) == (int)blocks.DIRT)
+                        {
+                            tileMap.setBlock(x, y, (int)blocks.DIRT);
+                        }
                     }
-                    else if(y < 80)
+                    else if(y < 25)
                     {
                         tileMap.setBlock(x, y, (int)blocks.DIRT);
                     }
+
+                    else if (y < 30)
+                    {
+                        if (tileMap.getBlock(x, y - 1) == (int)blocks.STONE)
+                        {
+                            tileMap.setBlock(x, y, (int)blocks.STONE);
+                        }
+                        else
+                        {
+                            randNum = random.Next(3);
+                            if (randNum == 1)
+                            {
+                                tileMap.setBlock(x, y, (int)blocks.STONE);
+                            }
+                            else
+                            {
+                                tileMap.setBlock(x, y, (int)blocks.DIRT);
+                            }
+                            if (y == 29)
+                            {
+                                tileMap.setBlock(x, y, (int)blocks.STONE);
+                            }
+                        }
+
+                    }
+
                     else
                     {
                         tileMap.setBlock(x, y, (int)blocks.STONE);
@@ -89,28 +138,45 @@ namespace BFB.Client.Scenes
         #region Update
         public override void Update(GameTime gameTime)
         {
-            
-        /*
-            if (grow){
-                scale++;
+
+            /*
+                if (grow){
+                    scale++;
+                }
+                else
+                {
+                    scale--;
+                }
+                if(scale > 30)
+                {
+                    grow = false;
+                }
+                if(scale < 15)
+                {
+                    grow = true;
+                }
+            */
+            if (grow)
+            {
+                offset++;
             }
             else
             {
-                scale--;
+                offset--;
             }
-            if(scale > 30)
+            if(offset > 6400)
             {
                 grow = false;
             }
-            if(scale < 15)
+            if(offset == 0)
             {
                 grow = true;
             }
-        */
         }
         #endregion
 
         public int scale { get; set; }
+        public int offset;
         public bool grow;
 
         #region Draw
@@ -126,13 +192,13 @@ namespace BFB.Client.Scenes
                     switch(tileMap.getBlock(x, y))
                     {
                         case (int)blocks.GRASS:
-                            graphics.Draw(grassTexture, new Vector2(x * scale, y * scale), Color.White);
+                            graphics.Draw(grassTexture, new Vector2(x * scale - offset, y * scale), Color.White);
                             break;
                         case (int)blocks.DIRT:
-                            graphics.Draw(dirtTexture, new Vector2(x * scale, y * scale), Color.White);
+                            graphics.Draw(dirtTexture, new Vector2(x * scale - offset, y * scale), Color.White);
                             break;
                         case (int)blocks.STONE:
-                            graphics.Draw(stoneTexture, new Vector2(x * scale, y * scale), Color.White);
+                            graphics.Draw(stoneTexture, new Vector2(x * scale - offset, y * scale), Color.White);
                             break;
                         default:
                             break;
