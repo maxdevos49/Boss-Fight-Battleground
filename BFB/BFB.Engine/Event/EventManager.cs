@@ -32,7 +32,6 @@ namespace BFB.Engine.Event
         public int AddEventListener(string eventKey, Action<Event> eventCallback)
         {
             //get handlerId
-
             int id = _eventHandlerId++;
 
             //add event handler

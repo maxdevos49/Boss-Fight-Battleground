@@ -3,12 +3,16 @@ using System;
 using System.Diagnostics;
 using System.IO;
 using Microsoft.Extensions.Configuration;
-
-//Engine
 using System.Net;
 using System.Threading;
-using BFB.Engine.Server.Communication;
-using BFB.Engine.Server.Socket;
+using BFB.Engine.Entity;
+using BFB.Engine.Entity.Components.Graphics;
+using BFB.Engine.Entity.Components.Input;
+using BFB.Engine.Entity.Components.Physics;
+using BFB.Engine.Math;
+
+//Engine
+using BFB.Engine.Server;
 
 namespace BFB.Server
 {
@@ -43,17 +47,14 @@ namespace BFB.Server
         
         private Server(IConfiguration configuration)
         {
-            //DI
             _configuration = configuration;
             
-            _lock = new object();
-            _simulation = new Simulation();
-            
-            //server
             IPAddress ip = IPAddress.Parse(_configuration["Server:IPAddress"]);
             int port = Convert.ToInt32(_configuration["Server:Port"]);
+            
+            _lock = new object();
             _server = new ServerSocketManager(ip,port);
-
+            _simulation = new Simulation(_server);
         }
         
         #endregion
@@ -62,50 +63,75 @@ namespace BFB.Server
 
         private void Init()
         {
-            //Terminal Prep
-            Console.Clear();
-            Console.Title = "BFB Server";
+            
+            #region Terminal Header
             
             //Terminal Header format
             _server.SetTerminalHeader(() =>
             {
                 Console.ForegroundColor = ConsoleColor.Green;
-                Console.Write($"[BFB-Server|{DateTime.Now:h:mm:ss tt}|T:{Process.GetCurrentProcess().Threads.Count - System.Diagnostics.}] ");
+                Console.Write($"[BFB-Server|{DateTime.Now:h:mm:ss tt}|T:{Process.GetCurrentProcess().Threads.Count}] ");
                 Console.ResetColor();
             });
+            
+            #endregion
 
-            //Client authentication strategy
-            _server.OnClientAuthentication(socket =>
-            {
-                _server.PrintMessage($"Client {socket.Key} Authenticated with Standard Validation(No Validation)");
-                return true;
-            });
+            #region Handle Connection
 
-            //What to do when a client connects
-            _server.OnClientConnect(socket =>
+            _server.OnConnect(socket =>
             {
-                _server.PrintMessage($"Client {socket.Key} Connected");
-                
-                _server.PrintMessage("Sending Ping...");
-                
-                socket.Emit("ping", new DataMessage{Message = "Hey hey Hey"});
-                
-            });
-
-            //what to do when a client disconnects
-            _server.OnClientDisconnect(socket =>
-            {
-                _server.PrintMessage($"Client {socket.Key} Disconnected");
-            });
-
-            //Test
-            _server.On("pong", message =>
-            {
-                _server.PrintMessage("Pong received!!");
+                _server.PrintMessage($"Client {socket.ClientId} Connected");
             });
             
-            //Print initial console header
+            #endregion
+            
+            #region Handle Authentication
+            
+            _server.OnAuthentication(m =>
+            {
+                _server.PrintMessage($"Client {m.ClientId} Authenticated.");
+                
+                
+                //Add to simulation
+                ServerEntity entity = new ServerEntity(
+                    m.ClientId, 
+                    new EntityOptions
+                    {
+                        Position = new BfbVector(200,200),
+                        Dimensions = new BfbVector(100,100),
+                        Rotation = 0,
+                        Origin = new BfbVector(),
+                    }, new ComponentOptions
+                    {
+                        Physics = new AccelerateComponent(),
+                        Input = new RemoteInputComponent(_server.GetClient(m.ClientId))
+                    });
+                
+                _simulation.AddEntity(entity);
+                
+                return true;
+            });
+            
+            #endregion
+
+            #region Handle Disconnect
+            
+            _server.OnDisconnect(socket =>
+            {
+                _simulation.RemoveEntity(socket.ClientId);
+                _server.PrintMessage($"Client {socket.ClientId} Disconnected");
+            });
+            
+            #endregion
+            
+            #region Terminal Prep
+            
+            Console.Clear();
+            Console.Title = "BFB Server";
             _server.PrintMessage();
+            
+            #endregion
+
         }
         
         #endregion
@@ -115,6 +141,7 @@ namespace BFB.Server
         public void Start()
         {
             Init();
+            _simulation.Start();
             _server.Start();
             _server.PrintMessage($"BFB Server is now Listening on {_configuration["Server:IPAddress"]}:{_configuration["Server:Port"]}");
             HandleTerminalInput();
@@ -126,13 +153,15 @@ namespace BFB.Server
         
         public void Stop()
         {
+            _server.PrintMessage("Server shutting down...", false);
             _server.Stop();
+            _simulation.Stop();
             Console.WriteLine();
         }
         
         #endregion
         
-        #region HandleTerminalInput
+        #region Handle Terminal
         
         private void HandleTerminalInput()
         {

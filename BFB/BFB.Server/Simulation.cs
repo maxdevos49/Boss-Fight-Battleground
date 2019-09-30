@@ -1,3 +1,11 @@
+using System;
+using System.Collections.Generic;
+using System.Threading;
+using BFB.Engine.Entity;
+using BFB.Engine.Server;
+using BFB.Engine.Server.Communication;
+using JetBrains.Annotations;
+
 namespace BFB.Server
 {
     public class Simulation
@@ -6,6 +14,10 @@ namespace BFB.Server
         #region Properties
         
         private readonly object _lock;
+        private readonly Dictionary<string, ServerEntity> _entities;
+        private readonly ServerSocketManager _server;
+        private readonly int _tickSpeed;
+        private bool _running;
 
         #endregion
         
@@ -14,21 +26,24 @@ namespace BFB.Server
         /**
          * Thread safe simulation class that can be ticked to move the simulation forward a single step at a time
          */
-        public Simulation()
+        public Simulation(ServerSocketManager server, int? tickSpeed = null)
         {
             _lock = new object();
-            //TODO
+            _server = server;
+            _entities = new Dictionary<string, ServerEntity>();
+            _running = false;
+            _tickSpeed = tickSpeed ?? (1000 / 60);//60 ticks a second are default
         }
         
         #endregion
 
         #region AddEntity
         
-        public void AddEntity()
+        public void AddEntity(ServerEntity serverEntity)
         {
             lock (_lock)
             {
-                //TODO
+                _entities.Add(serverEntity.EntityId, serverEntity);
             }
         }
 
@@ -36,47 +51,94 @@ namespace BFB.Server
         
         #region RemoveEntity
         
-        public void RemoveEntity()
+        public void RemoveEntity(string key)
         {
             lock (_lock)
             {
-                //TODO
+                if(_entities.ContainsKey(key))
+                    _entities.Remove(key);
             }
+
+            _server.Emit("/player/disconnect", new DataMessage {Message = key});
         }
         
         #endregion
+        
+        #region Start
 
-        #region SubmitInputUpdates
-
-        public void SubmitUpdates()
+        public void Start()
         {
-            lock (_lock)
+            _running = true;
+            Thread t = new Thread(Simulate)
             {
-                //TODO
-            }
+                Name = "Simulation",
+                IsBackground = true
+            };
+            t.Start();
         }
+        
+        #endregion   
+        
+        #region Stop
 
+        public void Stop()
+        {
+            _running = false;
+        }
+        
         #endregion
-
+        
         #region GetUpdates
 
-        public void GetUpdates()
+        [UsedImplicitly]
+        public EntityUpdateMessage GetUpdates()
         {
             lock (_lock)
             {
-                //TODO
+                EntityUpdateMessage updates = new EntityUpdateMessage();
+
+                foreach ((string key, ServerEntity entity) in _entities)
+                {
+                    updates.Updates.Add(entity.GetState());
+                }
+                
+                return updates;
             }
         }
 
         #endregion
 
-        #region Tick
+        #region Simulate
         
-        public void Tick()
+        private void Simulate()
         {
-            lock (_lock)
+            long nextTick = DateTime.Now.Ticks / TimeSpan.TicksPerMillisecond;
+
+            //Server Game loop
+            while (_running)
             {
-                //TODO
+                lock (_lock)
+                {
+                    foreach ((string key, ServerEntity entity) in _entities)
+                    {
+                        entity.Update( /*Pass in world in the future*/);
+                    }
+                }
+                
+                _server.Emit("/players/getUpdates");
+                _server.Emit("/players/updates", GetUpdates());
+
+                //Maintain the tick rate here
+                nextTick += _tickSpeed;
+                int sleepTime = (int) (nextTick - (DateTime.Now.Ticks / TimeSpan.TicksPerMillisecond));
+                if (sleepTime >= 0)
+                {
+                    Thread.Sleep(sleepTime);
+                }
+                else
+                {
+                    _server.PrintMessage($"SERVER IS OVERLOADED. ({sleepTime * 1000}TPS).");
+                }
             }
         }
         

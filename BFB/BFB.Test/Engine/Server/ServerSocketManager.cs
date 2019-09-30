@@ -1,25 +1,19 @@
-using System;
 using System.Net.Sockets;
-using BFB.Engine.Server.Communication;
-using BFB.Engine.Server.Socket;
 using Xunit;
-using Xunit.Abstractions;
 
 namespace BFB.Test.Engine.Server
 {
-    public class ServerSocketManager
+    public class ServerSocketManagerTest
     {
-        private readonly ITestOutputHelper _testOutputHelper;
-
-        public ServerSocketManager(ITestOutputHelper testOutputHelper)
-        {
-            _testOutputHelper = testOutputHelper;
-        }
-
         [Fact]
         public void Connection()
         {
+//            ServerSocketManager s = new ServerSocketManager(IPAddress.Parse("127.0.0.1"), 6969);
+//            s.Start();
             
+//            TcpClient t = new TcpClient("127.0.0.1", 6969);
+            
+//            Assert.True(t.Connected);
         }
     }
 }

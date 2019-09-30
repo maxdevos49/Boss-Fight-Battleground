@@ -12,8 +12,8 @@ using BFB.Engine.Input;
 
 //Project
 using BFB.Client.Scenes;
+using BFB.Engine.Server;
 using BFB.Engine.Server.Communication;
-using BFB.Engine.Server.Socket;
 using Microsoft.Xna.Framework.Input;
 
 namespace BFB
@@ -21,13 +21,12 @@ namespace BFB
     public class MainGame : Game
     {
 
-        private InputManager InputManager;
-        private SceneManager SceneManager;
-        private GraphicsDeviceManager GraphicsManager;//Kinda ok name but will probably change later
-        private EventManager EventManager;
+        private InputManager _inputManager;
+        private SceneManager _sceneManager;
+        private readonly GraphicsDeviceManager _graphicsManager;//Kinda ok name but will probably change later
+        private EventManager _eventManager;
 
-        private SpriteBatch SpriteBatch;
-        private ClientSocketManager _clientSocketManager;
+        private SpriteBatch _spriteBatch;
         
         #region Main
 
@@ -49,7 +48,7 @@ namespace BFB
             IsMouseVisible = true;
 
             //Init Graphics manager. (Needs to be in the constructor)
-            GraphicsManager = new GraphicsDeviceManager(this);
+            _graphicsManager = new GraphicsDeviceManager(this);
         }
 
         #endregion
@@ -58,22 +57,23 @@ namespace BFB
 
         protected override void Initialize()
         {
-            SpriteBatch = new SpriteBatch(GraphicsDevice);
-            EventManager = new EventManager();
-            InputManager = new InputManager(EventManager, new InputConfig());
-            SceneManager = new SceneManager(Content, GraphicsManager, EventManager);
+            _spriteBatch = new SpriteBatch(GraphicsDevice);
+            _eventManager = new EventManager();
+            _inputManager = new InputManager(_eventManager, new InputConfig());
+            _sceneManager = new SceneManager(Content, _graphicsManager, _eventManager);
 
             //Add scenes to scene manager
-            SceneManager.AddScene(new Scene[] {
+            _sceneManager.AddScene(new Scene[] {
                 new DebugScene(),
-                new ExampleScene()
+                new ExampleScene(),
+                new ConnectionScene()
             });
 
             //start first scene
-            SceneManager.StartScene(nameof(ExampleScene));
+            _sceneManager.StartScene(nameof(ConnectionScene));
 
             //global key press events
-            EventManager.AddEventListener("keypress", (Event) =>
+            _eventManager.AddEventListener("keypress", (Event) =>
             {
                 //Enable debug
                 switch (Event.Keyboard.KeyEnum)
@@ -82,32 +82,32 @@ namespace BFB
 
                         Console.WriteLine("Launching Debug Scene");
 
-                        if (SceneManager.ActiveSceneExist(nameof(DebugScene)))
-                            SceneManager.StopScene(nameof(DebugScene));
+                        if (_sceneManager.ActiveSceneExist(nameof(DebugScene)))
+                            _sceneManager.StopScene(nameof(DebugScene));
                         else
-                            SceneManager.LaunchScene(nameof(DebugScene));
+                            _sceneManager.LaunchScene(nameof(DebugScene));
                         break;
-                        case Keys.F4:
-                            _clientSocketManager?.Disconnect();
-                            _clientSocketManager = new ClientSocketManager("127.0.0.1", 6969);
-
-                            bool ponged = false;
-            
-                            _clientSocketManager.On("ping", message =>
-                            {
-                                _clientSocketManager.Emit("pong", new DataMessage{Message = "Pong pong pong"});
-                                ponged = true;
-                            });
-
-                            while (true)
-                            {
-                                if (!ponged) continue;
-                                
-                                Console.WriteLine("Ping Received!!");
-                                _clientSocketManager.Disconnect();
-                                break;
-                            }
-                            break;
+//                        case Keys.F4:
+//                            _clientSocketManager?.Disconnect();
+//                            _clientSocketManager = new ClientSocketManager("127.0.0.1", 6969);
+//
+//                            bool ponged = false;
+//            
+//                            _clientSocketManager.On("ping", message =>
+//                            {
+//                                _clientSocketManager.Emit("pong", new DataMessage{Message = "Pong pong pong"});
+//                                ponged = true;
+//                            });
+//
+//                            while (true)
+//                            {
+//                                if (!ponged) continue;
+//                                
+//                                Console.WriteLine("Ping Received!!");
+//                                _clientSocketManager.Disconnect();
+//                                break;
+//                            }
+//                            break;
                 }
             });
 
@@ -143,10 +143,10 @@ namespace BFB
         protected override void Update(GameTime gameTime)
         {
             //Checks for inputs and then fires events for those inputs
-            InputManager.CheckInputs();
+            _inputManager.CheckInputs();
 
             //Call update for active scenes
-            SceneManager.UpdateScenes(gameTime);
+            _sceneManager.UpdateScenes(gameTime);
 
             base.Update(gameTime);
         }
@@ -162,13 +162,13 @@ namespace BFB
             GraphicsDevice.Clear(Color.White);
 
             //Starts drawing buffer
-            SpriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend);
+            _spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend);
 
             //Draw Active Scenes
-            SceneManager.DrawScenes(gameTime, SpriteBatch);
+            _sceneManager.DrawScenes(gameTime, _spriteBatch);
 
             //draws graohics buffer
-            SpriteBatch.End();
+            _spriteBatch.End();
 
             base.Draw(gameTime);
         }

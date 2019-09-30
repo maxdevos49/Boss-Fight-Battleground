@@ -17,5 +17,10 @@ namespace BFB.Engine.Server.Communication
          */
         public string Message { get; set; }
         
+        /**
+         * Client Id
+         */
+        public string ClientId { get; set; }
+        
     }
 }

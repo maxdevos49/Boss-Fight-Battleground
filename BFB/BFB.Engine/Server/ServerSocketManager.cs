@@ -1,70 +1,35 @@
 //C#
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Sockets;
 using System.Threading;
-
-//Jetbrains
+using BFB.Engine.Server.Communication;
 using JetBrains.Annotations;
+//Jetbrains
 
 //engine
-using BFB.Engine.Server.Communication;
 
-namespace BFB.Engine.Server.Socket
+namespace BFB.Engine.Server
 {
     public class ServerSocketManager
     {
 
         #region Properties
         
-        /**
-         * Thread Lock property
-         */
         private readonly object _lock;
-
-        /**
-         * Tcp listener
-         */
         private readonly TcpListener _listener;
-
-        /**
-         * Represents all of the connected tcp clients. Clients are
-         * given a randomly generated client key upon connection.
-         */
         private readonly Dictionary<string, ClientSocket> _clientSockets;
-        
-        /**
-         * Holds all of the server tcp message handlers from the server
-         */
         private readonly Dictionary<string,List<Action<DataMessage>>> _messageHandlers;
-
-        /**
-         * Holds a lambda function detailing the server terminal header
-         */
+        
         private Action _terminalHeader;
-        
-        /**
-         * Holds a lambda function detailing how to authenticate a client
-         */
-        private Func<ClientSocket,bool> _onClientAuthentication;
-        
-        /**
-         * Holds a lambda function detailing what should happen when a client connects
-         */
+        private Func<DataMessage,bool> _onClientAuthentication;
         private Action<ClientSocket> _onClientConnect;
-        
-        /**
-         * Holds a lambda function detailing what should happen when a client disconnects
-         */
         private Action<ClientSocket> _onClientDisconnect;
 
-        /**
-         * Indicates whether the server is running or not
-         */
-        [UsedImplicitly]
-        public bool IsBroadcasting { get; private set; }
+        private bool _isBroadcasting;
         
         #endregion
         
@@ -80,27 +45,27 @@ namespace BFB.Engine.Server.Socket
             _lock = new object();
             _clientSockets = new Dictionary<string, ClientSocket>();
             _messageHandlers = new Dictionary<string, List<Action<DataMessage>>>();
-            IsBroadcasting = false;
+            _isBroadcasting = false;
             
            _terminalHeader = () => Console.Write($"[Server|{DateTime.Now:h:mm:ss tt}] ");
            
             //Default client connect Handlers
-           _onClientConnect = socketClient =>
+           _onClientConnect = client =>
            {
-               PrintMessage($"Client {socketClient.Key} Connected");
+               PrintMessage($"Client {client.ClientId} Connected");
            };
            
            //Default client disconnect handler
-           _onClientDisconnect = socketClient =>
+           _onClientDisconnect = client =>
            {
-               PrintMessage($"Client {socketClient.Key} Disconnected");
-               socketClient.Disconnect("Connection Lost");
+               PrintMessage($"Client {client.ClientId} Disconnected");
+               client.Disconnect("Connection Lost");
            };
            
            //Default client authentication handler
-           _onClientAuthentication = socketClient =>
+           _onClientAuthentication = m =>
            {
-               PrintMessage($"Client {socketClient.Key} Authenticated with Standard Validation(No Validation)");
+               PrintMessage($"Client {m.ClientId} Authenticated with Standard Validation(No Validation)");
                return true;
            };
 
@@ -112,10 +77,10 @@ namespace BFB.Engine.Server.Socket
 
         public void Start()
         {
-            if (IsBroadcasting) return;
+            if (_isBroadcasting) return;
             
             _listener.Start();
-            IsBroadcasting = true;
+            _isBroadcasting = true;
 
             //Start connection thread
             Thread t1 = new Thread(HandleConnection)
@@ -141,7 +106,7 @@ namespace BFB.Engine.Server.Socket
 
         public void Stop(string reason = "Server is Shutting Down")
         {
-            if (!IsBroadcasting) return;
+            if (!_isBroadcasting) return;
             
             lock (_lock)
             {
@@ -149,14 +114,14 @@ namespace BFB.Engine.Server.Socket
                 {
                     
                     socket.Disconnect(reason);
-                    PrintMessage($"Client with Id: {key} Disconnected");
+                    PrintMessage($"Client {key} Disconnected");
                     
                     //remove forced disconnect
                     _clientSockets.Remove(key);
                 }
                 
                 _listener.Stop();
-                IsBroadcasting = false;
+                _isBroadcasting = false;
             }
         }
 
@@ -167,8 +132,11 @@ namespace BFB.Engine.Server.Socket
         /**
          * Sends a message to all connected clients
          */
-        public void Emit(string routeKey, DataMessage dataMessage)
+        public void Emit(string routeKey, DataMessage dataMessage = null)
         {
+            if(dataMessage == null)
+                dataMessage = new DataMessage();
+            
             lock (_lock)
             {
                 foreach (KeyValuePair<string, ClientSocket> client in _clientSockets)
@@ -208,23 +176,40 @@ namespace BFB.Engine.Server.Socket
 
         private void Read()
         {
-            while (IsBroadcasting)
+            while (_isBroadcasting)
             {
                 lock(_lock)
                 {
+                    
                     foreach ((string _, ClientSocket socket) in _clientSockets)
                     {
                         if (!socket.PendingData()) continue;
                         
-                        DataMessage data = socket.Read();
+                        DataMessage message = socket.Read();
 
-                        if (!_messageHandlers.ContainsKey(data.Route)) continue;
-                        
-                        foreach (Action<DataMessage> handler in _messageHandlers[data.Route])
+                        if (message.Route == "authentication")
                         {
-                            handler(data);
-                        }
+                            if (!_onClientAuthentication(message))
+                            {
+                                socket.Disconnect("Authentication Failed");
+                            }
+                            else
+                            {
+                                socket.Emit("ready");
+                            }
 
+                        }
+                        else
+                        {
+                            //Check socket specific handlers
+                            socket.ProcessHandler(message);
+                        
+                            //check global handlers
+                            if (!_messageHandlers.ContainsKey(message.Route)) continue;
+                            foreach (Action<DataMessage> handler in _messageHandlers[message.Route])
+                                handler(message);
+                        }
+                       
                     }
                 }
                 
@@ -233,6 +218,18 @@ namespace BFB.Engine.Server.Socket
             }
         }
 
+        #endregion
+        
+        #region GetClient
+
+        public ClientSocket GetClient(string clientId)
+        {
+            lock (_lock)
+            {
+                return _clientSockets.ContainsKey(clientId) ? _clientSockets[clientId] : null;
+            }
+        }
+        
         #endregion
 
         #region HandleConnection
@@ -258,22 +255,21 @@ namespace BFB.Engine.Server.Socket
                     //Check for new connections
                     if (_listener.Pending())
                     {
+                        //Accept new client
                         ClientSocket newSocket = new ClientSocket(Guid.NewGuid().ToString(), _listener.AcceptTcpClient());
                         
+                        //Add new client to list
                         lock (_lock)
                         {
-                            
-                            if (_onClientAuthentication(newSocket))
-                            {
-                                _clientSockets.Add(newSocket.Key, newSocket);
-                                _onClientConnect(newSocket);
-                            }
-                            else
-                            {
-                                newSocket.Disconnect("Authentication Failed");
-                                _onClientDisconnect(newSocket);
-                            }
+                            _clientSockets.Add(newSocket.ClientId, newSocket);
                         }
+                        
+                        //Fire on connection event
+                        _onClientConnect(newSocket);
+                        
+                        //Fire client connection and authentication events
+                        newSocket.Emit("connect");
+                        newSocket.Emit("authentication");
                         
                     }
                     else
@@ -301,27 +297,27 @@ namespace BFB.Engine.Server.Socket
         
         #endregion
 
-        #region OnClientAuthentication
+        #region OnAuthentication
 
-        public void OnClientAuthentication(Func<ClientSocket,bool> handler)
+        public void OnAuthentication(Func<DataMessage,bool> handler)
         {
             _onClientAuthentication= handler;
         }
 
         #endregion
         
-        #region OnClientConnect
+        #region OnConnect
 
-        public void OnClientConnect(Action<ClientSocket> handler)
+        public void OnConnect(Action<ClientSocket> handler)
         {
             _onClientConnect= handler;
         }
 
         #endregion
         
-        #region OnClientDisconnect
+        #region OnDisconnect
 
-        public void OnClientDisconnect(Action<ClientSocket> handler)
+        public void OnDisconnect(Action<ClientSocket> handler)
         {
             _onClientDisconnect= handler;
         }
