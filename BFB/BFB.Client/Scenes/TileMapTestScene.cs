@@ -158,17 +158,17 @@ namespace BFB.Client.Scenes
             */
             if (grow)
             {
-                offset++;
+                offset+=1;
             }
             else
             {
-                offset--;
+                offset-=1;
             }
             if(offset > 6400)
             {
                 grow = false;
             }
-            if(offset == 0)
+            if(offset <= 0)
             {
                 grow = true;
             }
@@ -184,7 +184,6 @@ namespace BFB.Client.Scenes
         {
             int x = 0;
             int y = 0;
-            //graphics.Draw(grassTexture, new Vector2(100, 100), new Rectangle(0, 0, 100, 100), Color.White, 0, Vector2.Zero, 1.0f, SpriteEffects.None, 1);
             for (x = 0; x < widthX; x++)
             {
                 for(y = 0; y < heightY; y++)
