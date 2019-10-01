@@ -124,6 +124,9 @@ namespace BFB
 
         protected override void Update(GameTime gameTime)
         {
+            //Process the events in the queue
+            EventManager.ProcessEvents();
+            
             //Checks for inputs and then fires events for those inputs
             InputManager.CheckInputs();
 
