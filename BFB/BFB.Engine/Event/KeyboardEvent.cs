@@ -1,5 +1,6 @@
 ﻿//C#
 using System.Collections.Generic;
+using JetBrains.Annotations;
 
 //Monogame
 using Microsoft.Xna.Framework.Input;
@@ -14,6 +15,7 @@ namespace BFB.Engine.Event
 
     public class KeyboardEvent
     {
+        [UsedImplicitly]
         public string Key { get; set; }
 
         public Keys KeyEnum { get; set; }

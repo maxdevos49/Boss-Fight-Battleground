@@ -4,34 +4,31 @@ namespace BFB.Engine.Input
 {
     public class InputManager
     {
-        private readonly EventManager _eventManager;
         private readonly InputConfig _configuration;
 
-        private readonly MouseInput MouseInput;
-        private readonly KeyboardInput KeyboardInput;
+        private readonly MouseInput _mouseInput;
+        private readonly KeyboardInput _keyboardInput;
 
         public InputManager(EventManager eventManager, InputConfig configuration)
         {
-            _eventManager = eventManager;
             _configuration = configuration;
 
             if (_configuration.CaptureMouse)
-                MouseInput = new MouseInput(_eventManager);
+                _mouseInput = new MouseInput(eventManager);
 
             if (_configuration.CaptureKeyboard)
-                KeyboardInput = new KeyboardInput(_eventManager);
-
+                _keyboardInput = new KeyboardInput(eventManager);
         }
 
         public void CheckInputs()
         {
             //Mouse input
             if (_configuration.CaptureMouse)
-                MouseInput.UpdateMouse();
+                _mouseInput.UpdateMouse();
 
             //Keyboard input
             if (_configuration.CaptureKeyboard)
-                KeyboardInput.UpdateKeyboard();
+                _keyboardInput.UpdateKeyboard();
         }
     }
 }

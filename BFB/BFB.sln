@@ -115,4 +115,7 @@ Global
 		{FED0A2D1-7DBF-4A88-85E5-31F77B2977AA}.Release|x86.ActiveCfg = Release|Any CPU
 		{FED0A2D1-7DBF-4A88-85E5-31F77B2977AA}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		version = 0.0.0.1
+	EndGlobalSection
 EndGlobal

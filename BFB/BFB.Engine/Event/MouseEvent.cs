@@ -1,4 +1,4 @@
-﻿//Monogame
+﻿using JetBrains.Annotations;
 using Microsoft.Xna.Framework.Input;
 
 namespace BFB.Engine.Event
@@ -14,10 +14,13 @@ namespace BFB.Engine.Event
 
         public int Y { get; set; }
 
+        [UsedImplicitly]
         public ButtonState LeftButton { get; set; }
 
+        [UsedImplicitly]
         public ButtonState RightButton { get; set; }
 
+        [UsedImplicitly]
         public ButtonState MiddleButton { get; set; }
     }
 }

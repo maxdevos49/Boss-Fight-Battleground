@@ -11,15 +11,18 @@ using Microsoft.Xna.Framework.Graphics;
 //Engine
 using BFB.Engine.Event;
 
+//Jetbrains
+using JetBrains.Annotations;
+
 
 namespace BFB.Engine.Scene
 {
     public class SceneManager
     {
         //Dependencies
-        public readonly ContentManager _contentManager;
-        public readonly GraphicsDeviceManager _graphicsManager;
-        public readonly EventManager _eventManager;
+        private readonly ContentManager _contentManager;
+        private readonly GraphicsDeviceManager _graphicsManager;
+        private readonly EventManager _eventManager;
 
         //Properties
         private readonly Dictionary<string, Scene> AllScenes;
@@ -44,9 +47,9 @@ namespace BFB.Engine.Scene
         /**
          * Adds an array of scenes to the scene manager
          * */
-        public void AddScene(Scene[] scenes)
+        public void AddScene(IEnumerable<Scene> scenes)
         {
-            foreach (var scene in scenes)
+            foreach (Scene scene in scenes)
             {
                 AddScene(scene);
             }
@@ -59,6 +62,7 @@ namespace BFB.Engine.Scene
         /**
          * Adds a single scene to the scene manager
          * */
+        [UsedImplicitly]
         public void AddScene(Scene scene)
         {
             if (SceneExist(scene.Key)) return;
@@ -114,6 +118,7 @@ namespace BFB.Engine.Scene
         /**
          * Pauses the scene that is specified
          * */
+        [UsedImplicitly]
         public void PauseScene(string key)
         {
             if (!ActiveSceneExist(key)) return;
@@ -180,6 +185,7 @@ namespace BFB.Engine.Scene
         /**
          * Checks if the scene is running or not
          * */
+        [UsedImplicitly]
         public bool ActiveSceneExist(string key)
         {
             return ActiveScenes.Any(scene => key == scene.Key);
@@ -192,13 +198,10 @@ namespace BFB.Engine.Scene
         /**
          * Checks if the scene exist regardless if it is running
          * */
+        [UsedImplicitly]
         public bool SceneExist(string key)
         {
-            if (!AllScenes.ContainsKey(key))
-            {
-                return false;
-            }
-            return true;
+            return _allScenes.ContainsKey(key);
         }
 
         #endregion

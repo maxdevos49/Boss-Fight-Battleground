@@ -5,11 +5,17 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
 using BFB.Engine.Event;
+using JetBrains.Annotations;
 
 namespace BFB.Engine.Scene
 {
     public abstract class Scene
     {
+        protected SceneManager SceneManager;
+        protected ContentManager ContentManager;
+        
+        [UsedImplicitly] 
+        protected GraphicsDeviceManager GraphicsDeviceManager;
 
         public SceneManager _sceneManager;
         public ContentManager _contentManager;
@@ -20,7 +26,7 @@ namespace BFB.Engine.Scene
         
         //TODO State Manager
 
-        private SceneStatus Status;
+        private SceneStatus _status;
         public readonly string Key;
 
         protected Scene(string key)
@@ -33,13 +39,13 @@ namespace BFB.Engine.Scene
         //Inject the scene dependencies
         public void InjectDependencies(SceneManager sceneManager, ContentManager contentManager, GraphicsDeviceManager graphicsManager, EventManager eventManager)
         {
-            _sceneManager = sceneManager;
-            _contentManager = contentManager;
-            _graphicsManager = graphicsManager;
-            _eventManager = eventManager;
+            SceneManager = sceneManager;
+            ContentManager = contentManager;
+            GraphicsDeviceManager = graphicsManager;
+            EventManager = eventManager;
 
             //Indicate the scene is now in a operable state but inactive
-            Status = SceneStatus.INACTIVE;
+            _status = SceneStatus.Inactive;
         }
 
         /**
@@ -48,7 +54,7 @@ namespace BFB.Engine.Scene
         public void Stop()
         {
             //unload textures
-            Status = SceneStatus.INACTIVE;
+            _status = SceneStatus.Inactive;
             Unload();
         }
 
@@ -57,7 +63,7 @@ namespace BFB.Engine.Scene
          * */
         public void Pause()
         {
-            Status = SceneStatus.PAUSED;
+            _status = SceneStatus.Paused;
         }
 
         /**
@@ -65,13 +71,13 @@ namespace BFB.Engine.Scene
          * */
         public void Start()
         {
-            if (Status == SceneStatus.INACTIVE)
+            if (_status == SceneStatus.Inactive)
             {
-                Status = SceneStatus.LOADING;
+                _status = SceneStatus.Loading;
                 Load();
                 Init();
             }
-            Status = SceneStatus.ACTIVE;
+            _status = SceneStatus.Active;
         }
 
         /**
@@ -79,12 +85,12 @@ namespace BFB.Engine.Scene
          * */
         public SceneStatus GetStatus()
         {
-            return Status;
+            return _status;
         }
 
-        public virtual void Init() { }
+        protected virtual void Init() { }
 
-        public virtual void Load() { }
+        protected virtual void Load() { }
 
         public virtual void Unload()
         {
@@ -92,7 +98,7 @@ namespace BFB.Engine.Scene
                 _eventManager.RemoveEventListener(id);
         }
 
-        public virtual void Update(GameTime gameTime) { }
+        public virtual void Update([UsedImplicitly] GameTime gameTime) { }
 
         public virtual void Draw(GameTime gameTime, SpriteBatch graphics) { }
 

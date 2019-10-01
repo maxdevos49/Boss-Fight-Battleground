@@ -8,15 +8,14 @@ namespace BFB.Engine.Debug
 {
     public class FrameCounter
     {
-
-        public long TotalFrames { get; private set; }
-        public float TotalSeconds { get; private set; }
+        private long TotalFrames { get; set; }
+        private float TotalSeconds { get; set; }
         public float AverageFramesPerSecond { get; private set; }
-        public float CurrentFramesPerSecond { get; private set; }
+        private float CurrentFramesPerSecond { get; set; }
 
-        public const int MAXIMUM_SAMPLES = 100;
+        private const int MaximumSamples = 100;
 
-        private Queue<float> _sampleBuffer = new Queue<float>();
+        private readonly Queue<float> _sampleBuffer = new Queue<float>();
 
         public bool Update(float deltaTime)
         {
@@ -24,7 +23,7 @@ namespace BFB.Engine.Debug
 
             _sampleBuffer.Enqueue(CurrentFramesPerSecond);
 
-            if (_sampleBuffer.Count > MAXIMUM_SAMPLES)
+            if (_sampleBuffer.Count > MaximumSamples)
             {
                 _sampleBuffer.Dequeue();
                 AverageFramesPerSecond = _sampleBuffer.Average(i => i);

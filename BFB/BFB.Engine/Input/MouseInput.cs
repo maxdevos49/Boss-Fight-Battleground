@@ -11,26 +11,22 @@ namespace BFB.Engine.Input
 
         private readonly EventManager _eventManager;
 
-        private int X;
+        private int _x;
+        private int _y;
+        private ButtonState _leftButton;
+        private ButtonState _rightButton;
+        private ButtonState _middleButton;
 
-        private int Y;
-
-        private ButtonState LeftButton;
-
-        private ButtonState RightButton;
-
-        private ButtonState MiddleButton;
-
-        public MouseInput(EventManager eventmanager)
+        public MouseInput(EventManager eventManager)
         {
-            _eventManager = eventmanager;
+            _eventManager = eventManager;
 
             //Defaults
-            X = 0;
-            Y = 0;
-            LeftButton = ButtonState.Released;
-            RightButton = ButtonState.Released;
-            MiddleButton = ButtonState.Released;
+            _x = 0;
+            _y = 0;
+            _leftButton = ButtonState.Released;
+            _rightButton = ButtonState.Released;
+            _middleButton = ButtonState.Released;
         }
 
         public void UpdateMouse()
@@ -38,13 +34,13 @@ namespace BFB.Engine.Input
             MouseState mouseState = Mouse.GetState();
 
             //Mouse move
-            if (X != mouseState.X || Y != mouseState.Y)
+            if (_x != mouseState.X || _y != mouseState.Y)
                 EmitMouseMovedEvent(mouseState);
 
             //Mouse click
-            if ((LeftButton == ButtonState.Released && mouseState.LeftButton == ButtonState.Pressed)
-                || (RightButton == ButtonState.Released && mouseState.RightButton == ButtonState.Pressed)
-                || (MiddleButton == ButtonState.Released && mouseState.MiddleButton == ButtonState.Pressed))
+            if ((_leftButton == ButtonState.Released && mouseState.LeftButton == ButtonState.Pressed)
+                || (_rightButton == ButtonState.Released && mouseState.RightButton == ButtonState.Pressed)
+                || (_middleButton == ButtonState.Released && mouseState.MiddleButton == ButtonState.Pressed))
                 EmitMouseClick(mouseState);
 
             //Mouse down
@@ -54,22 +50,22 @@ namespace BFB.Engine.Input
                 EmitMousePressed(mouseState);
 
             //Mouse released
-            if ((LeftButton == ButtonState.Pressed && mouseState.LeftButton == ButtonState.Released)
-                || (RightButton == ButtonState.Pressed && mouseState.RightButton == ButtonState.Released)
-                || (MiddleButton == ButtonState.Pressed && mouseState.MiddleButton == ButtonState.Released))
+            if ((_leftButton == ButtonState.Pressed && mouseState.LeftButton == ButtonState.Released)
+                || (_rightButton == ButtonState.Pressed && mouseState.RightButton == ButtonState.Released)
+                || (_middleButton == ButtonState.Pressed && mouseState.MiddleButton == ButtonState.Released))
                 EmitMouseReleased(mouseState);
 
             //Save value so we know when changes happened
-            X = mouseState.X;
-            Y = mouseState.Y;
-            LeftButton = mouseState.LeftButton;
-            RightButton = mouseState.RightButton;
-            MiddleButton = mouseState.MiddleButton;
+            _x = mouseState.X;
+            _y = mouseState.Y;
+            _leftButton = mouseState.LeftButton;
+            _rightButton = mouseState.RightButton;
+            _middleButton = mouseState.MiddleButton;
 
         }
 
         /**
-         * Emited whenever the mouse position is changed
+         * Emitted whenever the mouse position is changed
          * */
         private void EmitMouseMovedEvent(MouseState mouseState)
         {
@@ -77,7 +73,7 @@ namespace BFB.Engine.Input
         }
 
         /**
-         * Emited whenever any mouse button is down
+         * Emitted whenever any mouse button is down
          * */
         private void EmitMousePressed(MouseState mouseState)
         {
@@ -85,7 +81,7 @@ namespace BFB.Engine.Input
         }
 
         /**
-         * Emited whenever any mouse button is released
+         * Emitted whenever any mouse button is released
          * */
         private void EmitMouseReleased(MouseState mouseState)
         {
@@ -93,17 +89,17 @@ namespace BFB.Engine.Input
         }
 
         /**
-         * Emited whenever any button is pressed
+         * Emitted whenever any button is pressed
          * */
         private void EmitMouseClick(MouseState mouseState)
         {
             _eventManager.Emit("mouseclick", GetMouseEventPayload(mouseState));
         }
 
-        private Event.Event GetMouseEventPayload(MouseState mouseState)
+        private static Event.Event GetMouseEventPayload(MouseState mouseState)
         {
 
-            Event.Event eventdata = new Event.Event
+            Event.Event eventData = new Event.Event
             {
                 Mouse = new MouseEvent
                 {
@@ -115,7 +111,7 @@ namespace BFB.Engine.Input
                 }
             };
 
-            return eventdata;
+            return eventData;
         }
 
     }

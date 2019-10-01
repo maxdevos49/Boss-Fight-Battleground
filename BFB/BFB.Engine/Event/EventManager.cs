@@ -4,6 +4,9 @@ using System.Linq;
 using System.Collections.Generic;
 using System.Threading;
 
+//Jetbrains
+using JetBrains.Annotations;
+
 namespace BFB.Engine.Event
 {
     public class EventManager
@@ -28,6 +31,7 @@ namespace BFB.Engine.Event
         /**
          * Adds an event listener for a specified event
          * */
+        [UsedImplicitly]
         public int AddEventListener(string eventKey, Action<Event> eventCallback)
         {
             //get handlerId
@@ -55,6 +59,7 @@ namespace BFB.Engine.Event
         /**
          * Removes a event listener for a specified event handler id
          * */
+        [UsedImplicitly]
         public void RemoveEventListener(int eventHandlerId)
         {
             foreach (var eventType in EventHandlers)
@@ -115,6 +120,5 @@ namespace BFB.Engine.Event
                 }
             }
         }
-
     }
 }

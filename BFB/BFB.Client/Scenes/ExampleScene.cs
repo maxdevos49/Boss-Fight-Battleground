@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 //Engine
 using BFB.Engine.Scene;
+using Microsoft.Xna.Framework.Input;
 
 namespace BFB.Client.Scenes
 {
@@ -45,7 +46,7 @@ namespace BFB.Client.Scenes
          * constructor. This is because the scene may be reset during the course of the game and the
          * constructor is only ever called once.
          * */
-        public override void Init()
+        protected override void Init()
         {
             MousePosition = Vector2.Zero;
 
@@ -65,6 +66,12 @@ namespace BFB.Client.Scenes
                 Console.WriteLine($"Test, {Spaceships.Count}");
             });
 
+            AddEventListener("keydown", (Event) =>
+            {
+                if (Event.Keyboard.KeyEnum == Keys.C)
+                    SceneManager.StartScene(nameof(ConnectionScene));
+            });
+
         }
 
         #endregion
@@ -74,13 +81,30 @@ namespace BFB.Client.Scenes
         /**
          * This is fired once when a scene is started/launched. Use it to load content needed for the scene only.
          * */
-        public override void Load()
+        protected override void Load()
         {
-            SpaceshipTexture = _contentManager.Load<Texture2D>("Sprites\\spaceship");
+            SpaceshipTexture = ContentManager.Load<Texture2D>("Sprites\\spaceship");
         }
 
         #endregion
 
+<<<<<<< HEAD
+=======
+        #region Unload
+
+        /**
+         * Use this method to unload/deinit anything that isnt needed after the scene is shut down.
+         *
+         * Also Methods that are not used do not need to be implemented. If we didnt need to remove the event listener then we could remove this method
+         * 
+         * */
+        protected override void Unload()
+        {
+        }
+
+        #endregion
+
+>>>>>>> feature/BFB-0003.75
         #region Update
 
         /**
@@ -88,7 +112,7 @@ namespace BFB.Client.Scenes
          * */
         public override void Update(GameTime gameTime)
         {
-            foreach (var ship in Spaceships)
+            foreach (Spaceship ship in Spaceships)
             {
                 ship.Update(MousePosition);
             }
@@ -104,7 +128,7 @@ namespace BFB.Client.Scenes
          * */
         public override void Draw(GameTime gameTime, SpriteBatch graphics)
         {
-            foreach (var ship in Spaceships)
+            foreach (Spaceship ship in Spaceships)
             {
                 ship.Draw(SpaceshipTexture, graphics);
             }
@@ -132,7 +156,7 @@ namespace BFB.Client.Scenes
                 Width = width;
                 Height = height;
 
-                var rnd = new Random();
+                Random rnd = new Random();
 
                 MaxForce = (float)rnd.NextDouble();
                 MaxSpeed = rnd.Next() * 5;
@@ -145,15 +169,15 @@ namespace BFB.Client.Scenes
             private void ApplySteering(Vector2 desiredVector)
             {
                 //calculate steering vector
-                var desMag = desiredVector.Length();
+                float desMag = desiredVector.Length();
                 desiredVector.X = desiredVector.X * MaxSpeed / desMag;
                 desiredVector.Y = desiredVector.Y * MaxSpeed / desMag;
-                var steering = Vector2.Subtract(desiredVector, Velocity);
+                Vector2 steering = Vector2.Subtract(desiredVector, Velocity);
 
                 //enforce max force
                 if (steering.Length() > MaxForce)
                 {
-                    var steerMag = steering.Length();
+                    float steerMag = steering.Length();
                     steering.X = steering.X * MaxForce / steerMag;
                     steering.Y = steering.Y * MaxForce / steerMag;
                 }
