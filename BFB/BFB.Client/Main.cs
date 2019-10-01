@@ -66,11 +66,12 @@ namespace BFB
             _sceneManager.AddScene(new Scene[] {
                 new DebugScene(),
                 new ExampleScene(),
-                new ConnectionScene()
+                new ConnectionScene(),
+                new MenuScene(), 
             });
 
             //start first scene
-            _sceneManager.StartScene(nameof(ConnectionScene));
+            _sceneManager.StartScene(nameof(MenuScene));
 
             //global key press events
             _eventManager.AddEventListener("keypress", (Event) =>
@@ -159,7 +160,7 @@ namespace BFB
         {
 
             //Clear screens
-            GraphicsDevice.Clear(Color.White);
+            GraphicsDevice.Clear(Color.LightBlue);
 
             //Starts drawing buffer
             _spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend);
