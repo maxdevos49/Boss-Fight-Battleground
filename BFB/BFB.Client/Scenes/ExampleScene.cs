@@ -38,7 +38,7 @@ namespace BFB.Client.Scenes
             Spaceships = new List<Spaceship>();
         }
 
-        #region
+        #region Init
 
         /**
          * This is fired when a scene is newly started and should be used for initilizing values and not the
@@ -58,7 +58,10 @@ namespace BFB.Client.Scenes
 
             _eventManager.AddEventListener("mouseclick", (Event) =>
             {
-                Spaceships.Add(new Spaceship(SpaceshipTexture.Width, SpaceshipTexture.Height, new Vector2(Event.Mouse.X, Event.Mouse.Y)));
+                for (int i = 0; i < 1000; i++)
+                {
+                    Spaceships.Add(new Spaceship(SpaceshipTexture.Width, SpaceshipTexture.Height, new Vector2(Event.Mouse.X, Event.Mouse.Y)));
+                }
                 Console.WriteLine($"Test, {Spaceships.Count}");
             });
 
