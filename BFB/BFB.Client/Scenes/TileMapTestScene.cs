@@ -44,7 +44,7 @@ namespace BFB.Client.Scenes
 
         #region Init
 
-        public override void Init()
+        protected override void Init()
         {
 
             for(int x = 0; x < widthX; x++)
@@ -118,11 +118,11 @@ namespace BFB.Client.Scenes
         #endregion
 
         #region Load
-        public override void Load()
+        protected override void Load()
         {
-            grassTexture = _contentManager.Load<Texture2D>("Sprites\\grass");
-            dirtTexture = _contentManager.Load<Texture2D>("Sprites\\dirt");
-            stoneTexture = _contentManager.Load<Texture2D>("Sprites\\stone");
+            grassTexture = ContentManager.Load<Texture2D>("Sprites\\grass");
+            dirtTexture = ContentManager.Load<Texture2D>("Sprites\\dirt");
+            stoneTexture = ContentManager.Load<Texture2D>("Sprites\\stone");
         }
         #endregion
 

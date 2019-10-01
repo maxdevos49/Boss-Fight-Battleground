@@ -15,24 +15,31 @@ namespace BFB.Client.Scenes
         private SpriteFont _font;
         private Button _b1;
         private Button _b2;
-        
+        private Button _b3;
         public MenuScene(): base(nameof(MenuScene))
         { }
 
         protected override void Init()
         {
-            _b1 = new Button(Vector2.One*120, new Vector2(100,30), "Connection Scene", EventManager);
+            _b1 = new Button(Vector2.One*120, new Vector2(100,30), "Connection Scene", _eventManager);
             
             _b1.Onclick(() =>
             {
                 SceneManager.StartScene(nameof(ConnectionScene));
             });
             
-            _b2 = new Button(new Vector2(120,160), new Vector2(100,30), "Non Connected Spaceships", EventManager);
+            _b2 = new Button(new Vector2(120,160), new Vector2(100,30), "Non Connected Spaceships", _eventManager);
             
             _b2.Onclick(() =>
             {
                 SceneManager.StartScene(nameof(ExampleScene));
+            });
+            
+            _b3 = new Button(new Vector2(120,200), new Vector2(100,30), "Tile Map Scene", _eventManager);
+            
+            _b3.Onclick(() =>
+            {
+                SceneManager.StartScene(nameof(TileMapTestScene));
             });
             
         }
@@ -44,16 +51,13 @@ namespace BFB.Client.Scenes
             _rec.SetData(new[] { Color.White });//Fills it white. Can be tinted
         }
         
-        protected override void Unload()
-        {
-        }
-
         public override void Draw(GameTime gameTime, SpriteBatch graphics)
         {
             graphics.DrawString(_font, "Boss Fight Battlegrounds", new Vector2(100,50), Color.Black,0,Vector2.Zero,3.0f,SpriteEffects.None,1);
 
             _b1.Draw(graphics,_font);
             _b2.Draw(graphics,_font);
+            _b3.Draw(graphics,_font);
             base.Draw(gameTime, graphics);
         }
     }
@@ -77,7 +81,7 @@ namespace BFB.Client.Scenes
             _text = text;
 
             _onClick = () => Console.WriteLine("Clicked!");
-            _onHover = () => Console.WriteLine("Hover");
+            _onHover = () => { };
 
             events.AddEventListener("mousemove", (e) =>
             {

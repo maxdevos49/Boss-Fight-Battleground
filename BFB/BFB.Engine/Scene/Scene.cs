@@ -13,13 +13,7 @@ namespace BFB.Engine.Scene
     {
         protected SceneManager SceneManager;
         protected ContentManager ContentManager;
-        
-        [UsedImplicitly] 
         protected GraphicsDeviceManager GraphicsDeviceManager;
-
-        public SceneManager _sceneManager;
-        public ContentManager _contentManager;
-        public GraphicsDeviceManager _graphicsManager;
         public EventManager _eventManager;
 
         private List<int> eventListenerIds;
@@ -32,7 +26,7 @@ namespace BFB.Engine.Scene
         protected Scene(string key)
         {
             Key = key;
-            Status = SceneStatus.INOPERABLE;
+            _status = SceneStatus.Inoperable;
             eventListenerIds = new List<int>();
         }
 
@@ -42,7 +36,7 @@ namespace BFB.Engine.Scene
             SceneManager = sceneManager;
             ContentManager = contentManager;
             GraphicsDeviceManager = graphicsManager;
-            EventManager = eventManager;
+            _eventManager = eventManager;
 
             //Indicate the scene is now in a operable state but inactive
             _status = SceneStatus.Inactive;

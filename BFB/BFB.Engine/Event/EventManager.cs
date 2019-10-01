@@ -79,7 +79,7 @@ namespace BFB.Engine.Event
         public void Emit(string eventKey, Event eventData = null)
         {
             //All fired events
-            Console.WriteLine($"EventKey: \"{eventKey}\", Mouse X/Y: {eventData?.Mouse?.X},{eventData?.Mouse?.Y}, Key: {eventData?.Keyboard?.Key}");
+//            Console.WriteLine($"EventKey: \"{eventKey}\", Mouse X/Y: {eventData?.Mouse?.X},{eventData?.Mouse?.Y}, Key: {eventData?.Keyboard?.Key}");
             
             if (eventData == null)
                 eventData = new Event();

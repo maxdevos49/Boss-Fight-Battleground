@@ -59,11 +59,7 @@ namespace BFB.Client.Scenes
 
             AddEventListener("mousedown", (Event) =>
             {
-                for (int i = 0; i < 1000; i++)
-                {
-                    Spaceships.Add(new Spaceship(SpaceshipTexture.Width, SpaceshipTexture.Height, new Vector2(Event.Mouse.X, Event.Mouse.Y)));
-                }
-                Console.WriteLine($"Test, {Spaceships.Count}");
+                Spaceships.Add(new Spaceship(SpaceshipTexture.Width, SpaceshipTexture.Height, new Vector2(Event.Mouse.X, Event.Mouse.Y)));
             });
 
             AddEventListener("keydown", (Event) =>
@@ -88,23 +84,6 @@ namespace BFB.Client.Scenes
 
         #endregion
 
-<<<<<<< HEAD
-=======
-        #region Unload
-
-        /**
-         * Use this method to unload/deinit anything that isnt needed after the scene is shut down.
-         *
-         * Also Methods that are not used do not need to be implemented. If we didnt need to remove the event listener then we could remove this method
-         * 
-         * */
-        protected override void Unload()
-        {
-        }
-
-        #endregion
-
->>>>>>> feature/BFB-0003.75
         #region Update
 
         /**

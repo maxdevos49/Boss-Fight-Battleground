@@ -72,7 +72,7 @@ namespace BFB
             });
 
             //start first scene
-            SceneManager.StartScene(nameof(MenuScene));
+            _sceneManager.StartScene(nameof(MenuScene));
 
             //global key press events
             _eventManager.AddEventListener("keypress", (Event) =>
@@ -89,27 +89,10 @@ namespace BFB
                         else
                             _sceneManager.LaunchScene(nameof(DebugScene));
                         break;
-//                        case Keys.F4:
-//                            _clientSocketManager?.Disconnect();
-//                            _clientSocketManager = new ClientSocketManager("127.0.0.1", 6969);
-//
-//                            bool ponged = false;
-//            
-//                            _clientSocketManager.On("ping", message =>
-//                            {
-//                                _clientSocketManager.Emit("pong", new DataMessage{Message = "Pong pong pong"});
-//                                ponged = true;
-//                            });
-//
-//                            while (true)
-//                            {
-//                                if (!ponged) continue;
-//                                
-//                                Console.WriteLine("Ping Received!!");
-//                                _clientSocketManager.Disconnect();
-//                                break;
-//                            }
-//                            break;
+                    case Keys.M:
+                        Console.WriteLine("Going to main menu");
+                            _sceneManager.StartScene(nameof(MenuScene));
+                        break;
                 }
             });
 
@@ -145,7 +128,7 @@ namespace BFB
         protected override void Update(GameTime gameTime)
         {
             //Process the events in the queue
-            EventManager.ProcessEvents();
+            _eventManager.ProcessEvents();
             
             //Checks for inputs and then fires events for those inputs
             _inputManager.CheckInputs();
@@ -167,7 +150,7 @@ namespace BFB
             GraphicsDevice.Clear(Color.LightBlue);
 
             //Starts drawing buffer
-            SpriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, SamplerState.PointClamp, DepthStencilState.None, RasterizerState.CullCounterClockwise);
+            _spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, SamplerState.PointClamp, DepthStencilState.None, RasterizerState.CullCounterClockwise);
 
             //Draw Active Scenes
             _sceneManager.DrawScenes(gameTime, _spriteBatch);

@@ -40,7 +40,7 @@ namespace BFB.Client.Scenes
              */
             #region Update Input State
             
-            EventManager.AddEventListener("mousemove", (e) =>
+            AddEventListener("mousemove", (e) =>
             {
                 lock (_lock)
                 {
