@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace BFB.Engine.Entity.Components.Graphics
 {
@@ -22,6 +23,8 @@ namespace BFB.Engine.Entity.Components.Graphics
         public int Columns { get; set; }
         public int Width { get; private set; }
         public int Height { get; private set; }
+
+        public Rectangle DrawRectangle { get; set; }
 
         private readonly int _framesPerSecond; // Technically it isn't FramesPerSecond. The formula in the update function with timeLeft needs to be altered.
         private int _timeLeft;                 // It is misleading because a lower FramesPerSecond variable leads to an actually faster cycle through the animation.
@@ -91,14 +94,23 @@ namespace BFB.Engine.Entity.Components.Graphics
                 int currentRow = (int)((float)_currentFrame / (float)Columns);
                 int currentCol = _currentFrame % Columns;
 
-                entity.DrawRectangle =
+                DrawRectangle =
                     new Rectangle(Width * currentCol, Height * currentRow + 1, Width - 1, Height - 1);
             }
         }
 
-        public void Draw(ServerEntity entity)
+        public void Draw(ServerEntity entity, SpriteBatch graphics, Texture2D texture)
         {
-
+            Console.WriteLine("GOT TO DRAW OF ANIMATION COMPONENT");
+            graphics.Draw(texture,
+                entity.Position.ToVector2(),
+                DrawRectangle,
+                Color.White,
+                entity.Rotation,
+                new Vector2(texture.Width / 2, texture.Height / 2),
+                5.0f,
+                SpriteEffects.None,
+                1);
         }
     }
 }

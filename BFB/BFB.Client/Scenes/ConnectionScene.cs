@@ -172,13 +172,22 @@ namespace BFB.Client.Scenes
         public override void Update(GameTime gameTime)
         {
             //In the future do some interpolation of entities here to smooth any lag using velocity
-//            lock (_lock)
-//            {
-//                foreach ((string key, Entity entity) in _entities)
-//                {
-//                    entity.Position.Add(entity.Velocity);
-//                }
-//            }
+            //            lock (_lock)
+            //            {
+            //                foreach ((string key, Entity entity) in _entities)
+            //                {
+            //                    entity.Position.Add(entity.Velocity);
+            //                }
+            //            }
+
+            lock (_lock)
+            {
+                foreach ((string key, Entity entity) in _entities)
+                {
+                    ((ServerEntity)entity).Update();
+                    ((ServerEntity)entity)._animation.Update((ServerEntity)entity);
+                }
+            }
         }
         
         #endregion
@@ -192,15 +201,8 @@ namespace BFB.Client.Scenes
             {
                 foreach ((string key, Entity entity) in _entities)
                 {
-                    graphics.Draw(_spaceshipTexture,
-                        entity.Position.ToVector2(),
-                        entity.DrawRectangle,
-                        Color.White,
-                        entity.Rotation,
-                        new Vector2(_spaceshipTexture.Width/2,_spaceshipTexture.Height/2), 
-                        5.0f,
-                        SpriteEffects.None,
-                        1);
+                    Console.Write("DRAW PLEASE");
+                    ((ServerEntity)entity).Draw(graphics, _spaceshipTexture);
                 }
             }
 

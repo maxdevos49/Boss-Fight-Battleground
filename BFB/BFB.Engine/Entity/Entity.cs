@@ -17,7 +17,5 @@ namespace BFB.Engine.Entity
         
         public float Rotation { get; set; }
 
-        public Rectangle DrawRectangle { get; set; }
-
     }
 }

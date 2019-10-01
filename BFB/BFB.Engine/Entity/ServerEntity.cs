@@ -10,6 +10,7 @@ using BFB.Engine.Entity.Components.Physics;
 using BFB.Engine.Math;
 using BFB.Engine.Server.Communication;
 using JetBrains.Annotations;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace BFB.Engine.Entity
 {
@@ -26,7 +27,7 @@ namespace BFB.Engine.Entity
         private readonly IInputComponent _input;
         private readonly IPhysicsComponent _physics;
         private readonly IGraphicsComponent _graphics;
-        private AnimationComponent _animation;
+        public AnimationComponent _animation;
         
         #endregion
 
@@ -45,19 +46,22 @@ namespace BFB.Engine.Entity
             _input = components.Input;
             _graphics = components.Graphics;
             _physics = components.Physics;
-            _animation = components.Animation;
+            _animation = new AnimationComponent();
         }
 
         public void Update()
         {
+            Console.WriteLine("Update?");
             _input?.Update(this);
             _physics?.Update(this);
-            _animation.Update(this);
+            
         }
 
-        public void Draw()
+        public void Draw(SpriteBatch graphics, Texture2D texture)
         {
+            Console.WriteLine("DRAW DRAW DRAW WOOT");
             _graphics?.Draw(this);
+            _animation.Draw(this, graphics, texture);
         }
 
         public EntityMessage GetState()
@@ -82,7 +86,6 @@ namespace BFB.Engine.Entity
         public IInputComponent Input { get; set; }
         public IPhysicsComponent Physics { get; set; }
         public IGraphicsComponent Graphics { get; set; }
-        public AnimationComponent Animation { get; set; }
     }
 
     public class EntityOptions
