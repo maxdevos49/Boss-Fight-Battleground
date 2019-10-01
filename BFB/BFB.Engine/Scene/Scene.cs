@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
@@ -14,8 +15,10 @@ namespace BFB.Engine.Scene
         public ContentManager _contentManager;
         public GraphicsDeviceManager _graphicsManager;
         public EventManager _eventManager;
-        //TODO State Manager
 
+        private List<int> eventListenerIds;
+        
+        //TODO State Manager
 
         private SceneStatus Status;
         public readonly string Key;
@@ -24,6 +27,7 @@ namespace BFB.Engine.Scene
         {
             Key = key;
             Status = SceneStatus.INOPERABLE;
+            eventListenerIds = new List<int>();
         }
 
         //Inject the scene dependencies
@@ -82,11 +86,19 @@ namespace BFB.Engine.Scene
 
         public virtual void Load() { }
 
-        public virtual void Unload() { }
+        public virtual void Unload()
+        {
+            foreach (int id in eventListenerIds)
+                _eventManager.RemoveEventListener(id);
+        }
 
         public virtual void Update(GameTime gameTime) { }
 
         public virtual void Draw(GameTime gameTime, SpriteBatch graphics) { }
 
+        public void AddEventListener(string eventKey, Action<Event.Event> eventHandler)
+        {
+            eventListenerIds.Add(_eventManager.AddEventListener(eventKey, eventHandler));
+        }
     }
 }

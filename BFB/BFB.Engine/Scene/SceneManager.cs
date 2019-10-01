@@ -154,13 +154,8 @@ namespace BFB.Engine.Scene
          * */
         public void DrawScenes(GameTime gameTime, SpriteBatch graphics)
         {
-            try
-            {
-                foreach (var scene in ActiveScenes.ToList())
-                    scene.Value?.Draw(gameTime, graphics);
-            }
-            catch (Exception) { }
-
+            foreach (var scene in ActiveScenes.ToList())
+                scene.Value?.Draw(gameTime, graphics);
         }
 
         #endregion
@@ -172,14 +167,9 @@ namespace BFB.Engine.Scene
          * */
         public void UpdateScenes(GameTime gameTime)
         {
-            try
-            {
-                foreach (var scene in ActiveScenes.ToList())
-                    if (scene.Value?.GetStatus() == SceneStatus.ACTIVE)
-                        scene.Value?.Update(gameTime);
-            }
-            catch (Exception) { }
-
+            foreach (var scene in ActiveScenes.ToList())
+                if (scene.Value?.GetStatus() == SceneStatus.ACTIVE)
+                    scene.Value?.Update(gameTime);
         }
 
         #endregion

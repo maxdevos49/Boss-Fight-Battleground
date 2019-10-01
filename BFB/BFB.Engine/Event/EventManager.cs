@@ -14,11 +14,14 @@ namespace BFB.Engine.Event
         private int EventHandlerId;
         private int EventId;
 
+        private Queue<Event> EventQueue;
+
         public EventManager()
         {
             EventHandlerId = 0;
             EventId = 0;
             EventHandlers = new Dictionary<string, Dictionary<int, Action<Event>>>();
+            EventQueue = new Queue<Event>();
         }
 
 
@@ -28,7 +31,6 @@ namespace BFB.Engine.Event
         public int AddEventListener(string eventKey, Action<Event> eventCallback)
         {
             //get handlerId
-           
             int id = EventHandlerId++;
 
             //add event handler
@@ -71,51 +73,45 @@ namespace BFB.Engine.Event
 
         public void Emit(string eventKey, Event eventData = null)
         {
-
             //All fired events
             Console.WriteLine($"EventKey: \"{eventKey}\", Mouse X/Y: {eventData?.Mouse?.X},{eventData?.Mouse?.Y}, Key: {eventData?.Keyboard?.Key}");
-
-            if (EventHandlers.ContainsKey(eventKey))
-            {
-                //create new thread
-                Thread eventThread = new Thread(() => EventThread(eventKey, eventData));
-
-                //start thread
-                eventThread.Start();
-
-                //EventThread(eventKey, eventData);
-            }
-        }
-
-        /**
-         * Event processing thread.
-         * */
-        private void EventThread(string eventKey, Event eventData = null)
-        {
+            
             if (eventData == null)
-            {
                 eventData = new Event();
-            }
 
             eventData.EventId = (EventId++);
             eventData.EventKey = eventKey;
 
-            //loop through existing handlers for that event
-            foreach (var eventHandler in EventHandlers[eventKey].ToList())
-            {
-                //Check if propagation was canceled
-                if (eventData.Propagate())
-                {
-                    //Call event handler
-                    eventHandler.Value(eventData);
+            if (EventHandlers.ContainsKey(eventKey))
+                EventQueue.Enqueue(eventData);
+        }
 
-                    //Event log
-                    //Console.WriteLine($"EventId: {eventData.EventId}, EventKey: \"{eventData.EventKey}\", EventHandlerId: {handler.Key}");
-                }
-                else
+        /**
+         * Processes the events in the EventQueue
+         * */
+        public void ProcessEvents()
+        {
+            while (EventQueue.Count > 0)
+            {
+                Event currentEvent = EventQueue.Dequeue();
+                
+                //loop through existing handlers for that event
+                foreach (var eventHandler in EventHandlers[currentEvent.EventKey].ToList())
                 {
-                    //event was canceled
-                    break;
+                    //Check if propagation was canceled
+                    if (currentEvent.Propagate())
+                    {
+                        //Call event handler
+                        eventHandler.Value(currentEvent);
+
+                        //Event log
+                        //Console.WriteLine($"EventId: {eventData.EventId}, EventKey: \"{eventData.EventKey}\", EventHandlerId: {handler.Key}");
+                    }
+                    else
+                    {
+                        //event was canceled
+                        break;
+                    }
                 }
             }
         }
