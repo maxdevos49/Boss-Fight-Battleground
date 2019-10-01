@@ -169,6 +169,16 @@ namespace BFB.Client.Scenes
         
         #endregion
 
+        #region Unload
+
+        public override void Unload()
+        {
+            _server.Disconnect();
+            base.Unload();
+        }
+        
+        #endregion
+        
         #region Update
         
         public override void Update(GameTime gameTime)

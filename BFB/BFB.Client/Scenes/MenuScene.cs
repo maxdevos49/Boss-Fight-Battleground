@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Net.Mime;
 using System.Numerics;
 using BFB.Engine.Event;
@@ -21,27 +22,24 @@ namespace BFB.Client.Scenes
 
         protected override void Init()
         {
-            _b1 = new Button(Vector2.One*120, new Vector2(100,30), "Connection Scene", _eventManager);
-            
-            _b1.Onclick(() =>
+            _b1 = new Button(Vector2.One * 120, new Vector2(100, 30), "Connection Scene", _eventManager)
             {
-                SceneManager.StartScene(nameof(ConnectionScene));
-            });
-            
-            _b2 = new Button(new Vector2(120,160), new Vector2(100,30), "Non Connected Spaceships", _eventManager);
-            
-            _b2.Onclick(() =>
+                OnClick = () => { SceneManager.StartScene(nameof(ConnectionScene)); }
+            };
+
+
+            _b2 = new Button(new Vector2(120, 160), new Vector2(100, 30), "Non Connected Spaceships", _eventManager)
             {
-                SceneManager.StartScene(nameof(ExampleScene));
-            });
-            
-            _b3 = new Button(new Vector2(120,200), new Vector2(100,30), "Tile Map Scene", _eventManager);
-            
-            _b3.Onclick(() =>
+                OnClick = () => { SceneManager.StartScene(nameof(ExampleScene)); }
+            };
+
+
+            _b3 = new Button(new Vector2(120, 200), new Vector2(100, 30), "Tile Map Scene", _eventManager)
             {
-                SceneManager.StartScene(nameof(TileMapTestScene));
-            });
-            
+                OnClick = () => { SceneManager.StartScene(nameof(TileMapTestScene)); }
+            };
+
+
         }
         
         protected override void Load()
@@ -49,6 +47,15 @@ namespace BFB.Client.Scenes
             _font = ContentManager.Load<SpriteFont>("Fonts\\Papyrus");
             _rec = new Texture2D(GraphicsDeviceManager.GraphicsDevice, 1,1);
             _rec.SetData(new[] { Color.White });//Fills it white. Can be tinted
+        }
+
+        public override void Unload()
+        {
+
+            _b1.Dispose();
+            _b2.Dispose();
+            _b3.Dispose();
+            base.Unload();
         }
         
         public override void Draw(GameTime gameTime, SpriteBatch graphics)
@@ -67,58 +74,61 @@ namespace BFB.Client.Scenes
 
         private string _text;
         
-        private Vector2 _position;
-        private Vector2 _dimensions;
+        private readonly Vector2 _position;
+        private readonly Vector2 _dimensions;
+        private readonly EventManager _eventManager;
+        private List<int> _listeners;
 
-        private Action _onHover;
-        private Action _onClick;
+        public Action OnHover { get; set; }
+        public Action OnClick { get; set; }
+        
         private int _offset;
         
-        public Button(Vector2 position, Vector2 dimensions, string text, EventManager events)
+        public Button(Vector2 position, Vector2 dimensions, string text, EventManager eventManager)
         {
             _position = position;
             _dimensions = dimensions;
             _text = text;
+            _eventManager = eventManager;
+            _listeners = new List<int>();
 
-            _onClick = () => Console.WriteLine("Clicked!");
-            _onHover = () => { };
+            OnClick = () => { };
+            OnHover = () => { };
 
-            events.AddEventListener("mousemove", (e) =>
+            _listeners.Add(_eventManager.AddEventListener("mousemove", (e) =>
             {
                 //Is mouse over
                 if (e.Mouse.X > _position.X && e.Mouse.Y > _position.Y && e.Mouse.X < _position.X + _dimensions.X &&
                     e.Mouse.Y < _position.Y + _dimensions.Y)
                 {
                     _offset = 10;
-                    _onHover();
+                    OnHover();
                 }
                 else
                 {
                     _offset = 0;
                 }
-            });
+            }));
             
-            events.AddEventListener("mouseclick", (e) =>
+            _listeners.Add(_eventManager.AddEventListener("mouseclick", (e) =>
             {
                 //Is mouse over
                 if (e.Mouse.X > _position.X && e.Mouse.Y > _position.Y && e.Mouse.X < _position.X + _dimensions.X &&
                     e.Mouse.Y < _position.Y + _dimensions.Y)
                 {
-                    _onClick();
+                    OnClick();
                 }
-            });
-
+            }));
         }
 
-        public void OnHover(Action handler)
+        public void Dispose()
         {
-            _onHover = handler;
+            foreach (int listener in _listeners)
+            {
+                _eventManager.RemoveEventListener(listener);
+            }
         }
 
-        public void Onclick(Action handler)
-        {
-            _onClick = handler;
-        }
 
         public void Draw(SpriteBatch graphics, SpriteFont font)
         {

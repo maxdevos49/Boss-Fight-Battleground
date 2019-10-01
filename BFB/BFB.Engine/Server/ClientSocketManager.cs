@@ -18,7 +18,7 @@ namespace BFB.Engine.Server
         private readonly object _lock;
         private readonly string _ip;
         private readonly int _port;
-        private readonly Dictionary<string, List<Action<DataMessage>>> _handlers;
+        private Dictionary<string, List<Action<DataMessage>>> _handlers;
 
         private TcpClient _socket;
         private NetworkStream _stream;
@@ -65,6 +65,21 @@ namespace BFB.Engine.Server
         {
             _stream.Dispose();
             _socket.Dispose();
+        }
+        
+        #endregion
+        
+        #region Dispose
+
+        public void Dispose()
+        {
+            _allowEmit = false;
+            _acceptData = false;
+            Thread.Sleep(100);
+            Disconnect();
+            _handlers = new Dictionary<string, List<Action<DataMessage>>>();
+            _socket = null;
+            _stream = null;
         }
         
         #endregion
