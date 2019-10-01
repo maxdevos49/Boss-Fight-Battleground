@@ -51,12 +51,12 @@ namespace BFB.Client.Scenes
 
             Spaceships.Add(new Spaceship(SpaceshipTexture.Width, SpaceshipTexture.Height));
 
-            _eventManager.AddEventListener("mousemove", (Event) =>
+            AddEventListener("mousemove", (Event) =>
             {
                 MousePosition = new Vector2(Event.Mouse.X, Event.Mouse.Y);
             });
 
-            _eventManager.AddEventListener("mouseclick", (Event) =>
+            AddEventListener("mousedown", (Event) =>
             {
                 Spaceships.Add(new Spaceship(SpaceshipTexture.Width, SpaceshipTexture.Height, new Vector2(Event.Mouse.X, Event.Mouse.Y)));
                 Console.WriteLine($"Test, {Spaceships.Count}");
@@ -74,20 +74,6 @@ namespace BFB.Client.Scenes
         public override void Load()
         {
             SpaceshipTexture = _contentManager.Load<Texture2D>("Sprites\\spaceship");
-        }
-
-        #endregion
-
-        #region Unload
-
-        /**
-         * Use this method to unload/deinit anything that isnt needed after the scene is shut down.
-         *
-         * Also Methods that are not used do not need to be implemented. If we didnt need to remove the event listener then we could remove this method
-         * 
-         * */
-        public override void Unload()
-        {
         }
 
         #endregion

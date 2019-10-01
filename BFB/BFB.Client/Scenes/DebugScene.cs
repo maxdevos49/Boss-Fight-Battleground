@@ -31,17 +31,17 @@ namespace BFB.Client.Scenes
 
         public override void Init()
         {
-            _eventManager.AddEventListener("keypress", (Event) =>
+            AddEventListener("keypress", (Event) =>
             {
                 KeysPressed = $"Keys Pressed: {string.Join(", ", Event.Keyboard.KeyboardState.GetPressedKeys())}";
             });
 
-            _eventManager.AddEventListener("keyup", (Event) =>
+            AddEventListener("keyup", (Event) =>
             {
                 KeysPressed = $"Keys Pressed: {string.Join(", ", Event.Keyboard.KeyboardState.GetPressedKeys())}";
             });
 
-            _eventManager.AddEventListener("mousemove", (Event) =>
+            AddEventListener("mousemove", (Event) =>
             {
                 MousePos = $"Mouse Position - X: {Event.Mouse.X}, Y: {Event.Mouse.Y}";
             });
