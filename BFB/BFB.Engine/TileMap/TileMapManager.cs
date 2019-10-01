@@ -9,7 +9,7 @@ namespace BFB.Engine.TileMap
 
     public class TileMapManager
     {
-        //Tile Map will be 30x20 Chunks
+        //Tile Map will be XCHUNKSxYCHUNKS in size
         private const int XCHUNKS = 30;
         private const int YCHUNKS = 20;
         private const int CHUNKSIZE = 16;
@@ -29,11 +29,9 @@ namespace BFB.Engine.TileMap
             extraX = 0;
             extraY = 0;
 
-            int x;
-            int y;
-            for (x = 0; x < XCHUNKS; x++)
+            for (int x = 0; x < XCHUNKS; x++)
             {
-                for (y = 0; y < YCHUNKS; y++)
+                for (int y = 0; y < YCHUNKS; y++)
                 {
                     myChunk[x, y] = new Chunk();
                 }
@@ -42,7 +40,7 @@ namespace BFB.Engine.TileMap
 
 
 
-        public void getChunkInfo(int x, int y)
+        public void createChunkInfo(int x, int y)
         {
             extraX = x % CHUNKSIZE;
             extraY = y % CHUNKSIZE;
@@ -53,25 +51,25 @@ namespace BFB.Engine.TileMap
         #region get 
         public int getHardness(int x, int y)
         {
-            getChunkInfo(x, y);
+            createChunkInfo(x, y);
             return myChunk[chunkX,chunkY].getTileHardness(extraX, extraY);
         }
 
         public int getLight(int x, int y)
         {
-            getChunkInfo(x, y);
+            createChunkInfo(x, y);
             return myChunk[chunkX, chunkY].getTileLight(extraX, extraY);
         }
 
         public int getWall(int x, int y)
         {
-            getChunkInfo(x, y);
+            createChunkInfo(x, y);
             return myChunk[chunkX, chunkY].getTileWall(extraX, extraY);
         }
 
         public int getBlock(int x, int y)
         {
-            getChunkInfo(x, y);
+            createChunkInfo(x, y);
             return myChunk[chunkX, chunkY].getTileBlock(extraX, extraY);
         }
 
@@ -80,31 +78,31 @@ namespace BFB.Engine.TileMap
         #region set
         public void setHardness(int x, int y, int hardnessValue)
         {
-            getChunkInfo(x, y);
+            createChunkInfo(x, y);
             myChunk[chunkX, chunkY].setTileHardness(extraX, extraY, hardnessValue);
         }
 
         public void setLight(int x, int y, int lightValue)
         {
-            getChunkInfo(x, y);
+            createChunkInfo(x, y);
             myChunk[chunkX, chunkY].setTileLight(extraX, extraY, lightValue);
         }
 
         public void setWall(int x, int y, int wallValue)
         {
-            getChunkInfo(x, y);
+            createChunkInfo(x, y);
             myChunk[chunkX, chunkY].setTileWall(extraX, extraY, wallValue);
         }
 
         public void setBlock(int x, int y, int blockValue)
         {
-            getChunkInfo(x, y);
+            createChunkInfo(x, y);
             myChunk[chunkX, chunkY].setTileBlock(extraX, extraY, blockValue);
         }
 
         public void setAll(int x, int y, int hardnessValue, int lightValue, int wallValue, int blockValue)
         {
-            getChunkInfo(x, y);
+            createChunkInfo(x, y);
             myChunk[chunkX, chunkY].setTileHardness(extraX, extraY, hardnessValue);
             myChunk[chunkX, chunkY].setTileLight(extraX, extraY, lightValue);
             myChunk[chunkX, chunkY].setTileWall(extraX, extraY, wallValue);

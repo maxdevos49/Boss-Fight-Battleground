@@ -19,11 +19,10 @@ namespace BFB.Engine.TileMap
             light = new int[CHUNKSIZE, CHUNKSIZE];
             wall = new int[CHUNKSIZE, CHUNKSIZE];
             block = new int[CHUNKSIZE, CHUNKSIZE];
-            int x;
-            int y;
-            for (x = 0; x < CHUNKSIZE; x++)
+
+            for (int x = 0; x < CHUNKSIZE; x++)
             {
-                for (y = 0; y < CHUNKSIZE; y++)
+                for (int y = 0; y < CHUNKSIZE; y++)
                 {
                     hardness[x, y] = 0;
                     light[x, y] = 0;

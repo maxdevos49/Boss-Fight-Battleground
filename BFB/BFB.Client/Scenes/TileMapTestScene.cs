@@ -46,12 +46,10 @@ namespace BFB.Client.Scenes
 
         public override void Init()
         {
-            int x;
-            int y;
 
-            for(x = 0; x < widthX; x++)
+            for(int x = 0; x < widthX; x++)
             {
-                for(y = 0; y < heightY; y++)
+                for(int y = 0; y < heightY; y++)
                 {
                     if(y < 5)
                     {
@@ -138,24 +136,6 @@ namespace BFB.Client.Scenes
         #region Update
         public override void Update(GameTime gameTime)
         {
-
-            /*
-                if (grow){
-                    scale++;
-                }
-                else
-                {
-                    scale--;
-                }
-                if(scale > 30)
-                {
-                    grow = false;
-                }
-                if(scale < 15)
-                {
-                    grow = true;
-                }
-            */
             if (grow)
             {
                 offset+=1;
@@ -182,11 +162,9 @@ namespace BFB.Client.Scenes
         #region Draw
         public override void Draw(GameTime gameTime, SpriteBatch graphics)
         {
-            int x = 0;
-            int y = 0;
-            for (x = 0; x < widthX; x++)
+            for (int x = 0; x < widthX; x++)
             {
-                for(y = 0; y < heightY; y++)
+                for(int y = 0; y < heightY; y++)
                 {
                     switch(tileMap.getBlock(x, y))
                     {
