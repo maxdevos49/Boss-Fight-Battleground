@@ -36,7 +36,7 @@ namespace BFB.Engine.Entity.Components.Physics
             serverEntity.Position.Add(serverEntity.Velocity);
 
             //update Rotation with degrees
-            serverEntity.Rotation = Convert.ToSingle(System.Math.Atan2(serverEntity.Velocity.Y, serverEntity.Velocity.X) - System.Math.PI / 2);
+            serverEntity.Rotation = Convert.ToSingle(System.Math.Atan2(serverEntity.Velocity.Y, serverEntity.Velocity.X));
             
         }
         

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Threading;
 using BFB.Engine.Entity;
+using BFB.Engine.Entity.Components.Graphics;
 using BFB.Engine.Math;
 using BFB.Engine.Scene;
 using BFB.Engine.Server;
@@ -15,15 +16,18 @@ namespace BFB.Client.Scenes
     {
 
         private readonly object _lock;
-        private readonly ClientSocketManager _server;
-        private readonly Dictionary<string, Entity> _entities;
+        
+        //Temp
         private readonly BfbVector _mouse;
         private Texture2D _spaceshipTexture;
+
+        private readonly ClientSocketManager _server;
+        private readonly Dictionary<string, ClientEntity> _entities;
 
         public ConnectionScene() : base(nameof(ConnectionScene))
         {
             _lock = new object();
-            _entities = new Dictionary<string, Entity>();
+            _entities = new Dictionary<string, ClientEntity>();
             _server = new ClientSocketManager("127.0.0.1", 6969);
             _mouse = new BfbVector();
         }
@@ -76,7 +80,7 @@ namespace BFB.Client.Scenes
             _server.OnReady(() =>
             {
                 Console.WriteLine("Client Ready!");
-                //Do something when client is fully ready
+                //Do something when client is fully ready after authentication is confirmed
             });
             
             #endregion
@@ -104,7 +108,7 @@ namespace BFB.Client.Scenes
             
             #endregion
             
-            #region Handle Player Disconnect. (ICP)
+            #region Handle Player Disconnect
             
             _server.On("/player/disconnect", message =>
             {
@@ -136,17 +140,15 @@ namespace BFB.Client.Scenes
                         }
                         else
                         {
-                            _entities.Add(em.EntityId,new Entity
-                            {
-                                EntityId = em.EntityId,
-                                Dimensions = em.Dimensions,
-                                Position = em.Position,
-                                Velocity = em.Velocity,
-                                Rotation = em.Rotation,
-                                Origin = em.Origin
-                            });
+                            _entities.Add(em.EntityId,new ClientEntity(em.EntityId,
+                                new EntityOptions
+                                {
+                                    Dimensions = em.Dimensions,
+                                    Position = em.Position,
+                                    Rotation = em.Rotation,
+                                    Origin = em.Origin
+                                }, new AnimationComponent(_spaceshipTexture)));
                         }
-                        
                     }
                 }
             });
@@ -171,21 +173,11 @@ namespace BFB.Client.Scenes
         
         public override void Update(GameTime gameTime)
         {
-            //In the future do some interpolation of entities here to smooth any lag using velocity
-            //            lock (_lock)
-            //            {
-            //                foreach ((string key, Entity entity) in _entities)
-            //                {
-            //                    entity.Position.Add(entity.Velocity);
-            //                }
-            //            }
-
             lock (_lock)
             {
-                foreach ((string key, Entity entity) in _entities)
+                foreach ((string key, ClientEntity entity) in _entities)
                 {
-                    ((ServerEntity)entity).Update();
-                    ((ServerEntity)entity)._animation.Update((ServerEntity)entity);
+                    entity.Update();
                 }
             }
         }
@@ -196,13 +188,11 @@ namespace BFB.Client.Scenes
         
         public override void Draw(GameTime gameTime, SpriteBatch graphics)
         {
-            
             lock (_lock)
             {
-                foreach ((string key, Entity entity) in _entities)
+                foreach ((string key, ClientEntity entity) in _entities)
                 {
-                    Console.Write("DRAW PLEASE");
-                    ((ServerEntity)entity).Draw(graphics, _spaceshipTexture);
+                    entity.Draw(graphics);
                 }
             }
 
