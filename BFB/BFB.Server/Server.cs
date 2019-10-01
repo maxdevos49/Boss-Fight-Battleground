@@ -104,7 +104,8 @@ namespace BFB.Server
                     }, new ComponentOptions
                     {
                         Physics = new AccelerateComponent(),
-                        Input = new RemoteInputComponent(_server.GetClient(m.ClientId))
+                        Input = new RemoteInputComponent(_server.GetClient(m.ClientId)),
+                        Animation = new AnimationComponent()
                     });
                 
                 _simulation.AddEntity(entity);

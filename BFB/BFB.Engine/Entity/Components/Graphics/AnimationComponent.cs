@@ -72,7 +72,7 @@ namespace BFB.Engine.Entity.Components.Graphics
             IsPaused = true;
         }
 
-        public void Update(Entity entity)
+        public void Update(ServerEntity entity)
         {
             _timeLeft -= 1;
             if (IsPlaying && !IsPaused && _timeLeft <= 0)
@@ -82,21 +82,23 @@ namespace BFB.Engine.Entity.Components.Graphics
                     _currentFrame = _lowerFrameBound;
                 _timeLeft = _framesPerSecond;
             }
-        }
 
-        public void Draw(Entity entity)
-        {
             if (IsPlaying && !IsPaused)
             {
-                Width = (int) (entity.Position.X / Columns);
-                Height = (int) (entity.Position.Y / Rows);
+                Width = (int)(entity.Dimensions.X / Columns);
+                Height = (int)(entity.Dimensions.Y / Rows);
 
-                int currentRow = (int) ((float) _currentFrame / (float) Columns);
+                int currentRow = (int)((float)_currentFrame / (float)Columns);
                 int currentCol = _currentFrame % Columns;
 
                 entity.DrawRectangle =
                     new Rectangle(Width * currentCol, Height * currentRow + 1, Width - 1, Height - 1);
             }
+        }
+
+        public void Draw(ServerEntity entity)
+        {
+
         }
     }
 }

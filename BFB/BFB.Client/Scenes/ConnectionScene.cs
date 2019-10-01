@@ -187,6 +187,7 @@ namespace BFB.Client.Scenes
         
         public override void Draw(GameTime gameTime, SpriteBatch graphics)
         {
+            
             lock (_lock)
             {
                 foreach ((string key, Entity entity) in _entities)
@@ -197,7 +198,7 @@ namespace BFB.Client.Scenes
                         Color.White,
                         entity.Rotation,
                         new Vector2(_spaceshipTexture.Width/2,_spaceshipTexture.Height/2), 
-                        1.0f,
+                        5.0f,
                         SpriteEffects.None,
                         1);
                 }

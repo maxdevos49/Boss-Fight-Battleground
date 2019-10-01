@@ -1,4 +1,6 @@
 //Monogame
+
+using System;
 using Microsoft.Xna.Framework;
 
 //Engine
@@ -24,7 +26,7 @@ namespace BFB.Engine.Entity
         private readonly IInputComponent _input;
         private readonly IPhysicsComponent _physics;
         private readonly IGraphicsComponent _graphics;
-        private readonly AnimationComponent _animation;
+        private AnimationComponent _animation;
         
         #endregion
 
@@ -50,7 +52,7 @@ namespace BFB.Engine.Entity
         {
             _input?.Update(this);
             _physics?.Update(this);
-            _animation?.Update(this);
+            _animation.Update(this);
         }
 
         public void Draw()
