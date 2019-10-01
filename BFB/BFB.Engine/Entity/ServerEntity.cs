@@ -24,6 +24,7 @@ namespace BFB.Engine.Entity
         private readonly IInputComponent _input;
         private readonly IPhysicsComponent _physics;
         private readonly IGraphicsComponent _graphics;
+        private readonly AnimationComponent _animation;
         
         #endregion
 
@@ -42,12 +43,14 @@ namespace BFB.Engine.Entity
             _input = components.Input;
             _graphics = components.Graphics;
             _physics = components.Physics;
+            _animation = components.Animation;
         }
 
         public void Update()
         {
             _input?.Update(this);
             _physics?.Update(this);
+            _animation?.Update(this);
         }
 
         public void Draw()
@@ -77,6 +80,7 @@ namespace BFB.Engine.Entity
         public IInputComponent Input { get; set; }
         public IPhysicsComponent Physics { get; set; }
         public IGraphicsComponent Graphics { get; set; }
+        public AnimationComponent Animation { get; set; }
     }
 
     public class EntityOptions

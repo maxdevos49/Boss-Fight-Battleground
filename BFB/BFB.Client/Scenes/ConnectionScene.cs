@@ -162,7 +162,7 @@ namespace BFB.Client.Scenes
         
         protected override void Load()
         {
-            _spaceshipTexture = ContentManager.Load<Texture2D>("Sprites\\spaceship");
+            _spaceshipTexture = ContentManager.Load<Texture2D>("Sprites\\SpaceshipSpritesheet");
         }
         
         #endregion
@@ -193,7 +193,7 @@ namespace BFB.Client.Scenes
                 {
                     graphics.Draw(_spaceshipTexture,
                         entity.Position.ToVector2(),
-                        new Rectangle(0, 0, 100, 100),
+                        entity.DrawRectangle,
                         Color.White,
                         entity.Rotation,
                         new Vector2(_spaceshipTexture.Width/2,_spaceshipTexture.Height/2), 

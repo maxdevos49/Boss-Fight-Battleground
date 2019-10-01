@@ -1,4 +1,5 @@
 using BFB.Engine.Math;
+using Microsoft.Xna.Framework;
 
 namespace BFB.Engine.Entity
 {
@@ -15,5 +16,7 @@ namespace BFB.Engine.Entity
         public BfbVector Velocity { get; set; }
         
         public float Rotation { get; set; }
+
+        public Rectangle DrawRectangle { get; set; }
     }
 }
