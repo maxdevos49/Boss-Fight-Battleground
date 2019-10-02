@@ -28,7 +28,7 @@ namespace BFB.Client.Scenes
         {
             _lock = new object();
             _entities = new Dictionary<string, ClientEntity>();
-            _server = new ClientSocketManager("127.0.0.1", 6969);
+            _server = new ClientSocketManager("10.31.31.42", 6969);
             _mouse = new BfbVector();
         }
 

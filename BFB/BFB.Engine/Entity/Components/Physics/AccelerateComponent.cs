@@ -14,8 +14,8 @@ namespace BFB.Engine.Entity.Components.Physics
 
         public AccelerateComponent()
         {
-            _maxForce = 0.2f;
-            _maxSpeed = 15;
+            _maxForce = 0.7f;
+            _maxSpeed = 10;
         }
 
         public void Update(ServerEntity serverEntity)
@@ -27,7 +27,7 @@ namespace BFB.Engine.Entity.Components.Physics
             BfbVector steering = BfbVector.Sub(serverEntity.DesiredVector, serverEntity.Velocity);
 
             //enforce max force
-//            steering.Limit(_maxForce);
+            steering.Limit(_maxForce);
 
             //Apply steering to velocity
             serverEntity.Velocity.Add(steering);
