@@ -1,0 +1,35 @@
+variables:
+  PROJECT_NAME: "Boss Fight Battlegrounds"
+before_script:
+  - echo "Starting CI for %PROJECT_NAME%"
+  - cd BFB
+  - echo "Restoring NUGET packages"
+  - dotnet restore
+  - echo "Successfully Restored"
+stages:
+  - build
+  - test
+  - deploy
+build:
+  stage: build
+  script:
+    - echo "Building %PROJECT_NAME%"
+    - dotnet build
+    - echo "Completed Build"
+test:
+  stage: test
+  script:
+    - echo "Running Tests"
+    - dotnet test
+    - echo "Completed Tests"
+  dependencies:
+    - build
+deploy:
+  stage: deploy
+  script:
+    - echo "Deploying Build"
+    - echo "Deploy Build not successful. TODO"
+  only:
+    - master
+  dependencies:
+    - build
