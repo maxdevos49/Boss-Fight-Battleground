@@ -81,7 +81,7 @@ namespace BFB.Client.Scenes
 
         public Action OnHover { get; set; }
         public Action OnClick { get; set; }
-        
+
         private int _offset;
         
         public Button(Vector2 position, Vector2 dimensions, string text, EventManager eventManager)
@@ -136,4 +136,5 @@ namespace BFB.Client.Scenes
             graphics.DrawString(font, _text, new Vector2(_position.X + _offset,_position.Y), Color.Black);
         }
     }
+    
 }

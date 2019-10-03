@@ -119,35 +119,43 @@ namespace BFB.Engine.Server
         
         public void Emit(string routeKey, DataMessage message = null)
         {
-            if (!_allowEmit)
+            try
             {
-                Console.WriteLine("Emits are not yet enabled. Server must make first contact");
-                return;
+                if (!_allowEmit)
+                {
+                    Console.WriteLine("Emits are not enabled. Server must allow them.");
+                    return;
+                }
+
+                if (message == null)
+                    message = new DataMessage();
+
+                //Assign message to route
+                message.Route = routeKey;
+                message.ClientId = ClientId;
+
+                byte[] messageData;
+
+                using (MemoryStream memoryStream = new MemoryStream())
+                {
+                    new BinaryFormatter().Serialize(memoryStream, message);
+                    messageData = memoryStream.ToArray();
+                }
+
+                //get and convert length to bytes
+                byte[] messageLength = BitConverter.GetBytes(messageData.Length);
+
+                //send message length
+                _stream.Write(messageLength, 0, 4);
+
+                //send message
+                _stream.Write(messageData, 0, messageData.Length);
             }
-
-            if(message == null)
-                message = new DataMessage();
-            
-            //Assign message to route
-            message.Route = routeKey;
-            message.ClientId = ClientId;
-            
-            byte[] messageData;
-
-            using (MemoryStream memoryStream = new MemoryStream())
+            catch (Exception ex)
             {
-                new BinaryFormatter().Serialize(memoryStream, message);
-                messageData = memoryStream.ToArray();
+                Console.WriteLine("Write Exception: {0}", ex);
+                Disconnect();
             }
-
-            //get and convert length to bytes
-            byte[] messageLength = BitConverter.GetBytes(messageData.Length);
-
-            //send message length
-            _stream.Write(messageLength, 0, 4);
-
-            //send message
-            _stream.Write(messageData, 0, messageData.Length);
         }
         
         #endregion
@@ -219,24 +227,33 @@ namespace BFB.Engine.Server
 
                 while (_stream.Read(packetSize, 0, 4) != 0)
                 {
+                    #region Deserialize Message Size
+                    
                     int messageSize = BitConverter.ToInt32(packetSize);
+                    if (messageSize <= 3) return;
                     byte[] messageData = new byte[messageSize];
+                    
+                    #endregion
 
-                    //Safe read that will guarantee a full message
+                    #region Read Message
+                    
                     int bytesRead = 0;
                     do
                     {
                         bytesRead += _stream.Read(messageData, bytesRead, messageSize - bytesRead);
                     } while (bytesRead < messageSize);
 
-                    if(messageData.Length == 0) continue;
+                    #endregion
                     
-                    //Get full message
+                    #region Deserialize Message
+                    
                     DataMessage message;
                     using (MemoryStream memoryStream = new MemoryStream(messageData))
                     {
                         message =  (DataMessage)new BinaryFormatter().Deserialize(memoryStream);
                     }
+                    
+                    #endregion
                     
                     lock (_lock)
                     {
@@ -281,10 +298,9 @@ namespace BFB.Engine.Server
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Exception: {0}", ex);
-                _socket.Dispose();
+                Console.WriteLine("Read Exception: {0}", ex);
             }
-            
+            Disconnect();
         }
         
         #endregion

@@ -21,20 +21,21 @@ namespace BFB.Client.Scenes
         private readonly BfbVector _mouse;
         private Texture2D _spaceshipTexture;
 
-        private readonly ClientSocketManager _server;
+        private ClientSocketManager _server;
         private readonly Dictionary<string, ClientEntity> _entities;
 
         public ConnectionScene() : base(nameof(ConnectionScene))
         {
             _lock = new object();
             _entities = new Dictionary<string, ClientEntity>();
-            _server = new ClientSocketManager("10.31.31.42", 6969);
+            _server = null;
             _mouse = new BfbVector();
         }
 
         protected override void Init()
         {
-            
+            _server = new ClientSocketManager("127.0.0.1", 6969);//This must be reset every time we reconnect. It gets very very slow if we do not
+
             /**
              * Scene events
              */
@@ -98,7 +99,6 @@ namespace BFB.Client.Scenes
             /**
              * Custom Socket Routes
              */
-            
             #region SendInput
             
             _server.On("/players/getUpdates", (m) =>
@@ -154,7 +154,7 @@ namespace BFB.Client.Scenes
             });
             
             #endregion
-
+            
             if (!_server.Connect())
                 Console.WriteLine("Connection Failed.");
 
