@@ -88,11 +88,10 @@ namespace BFB.Client.Scenes
             
             #region Client Disconnect
             
-            _server.OnDisconnect =(m) =>
+            _server.OnDisconnect = () =>
             {
                 //Anything that needs done when this client disconnects
                 Console.WriteLine("Disconnected");
-                _server = null;
             };
             
             #endregion

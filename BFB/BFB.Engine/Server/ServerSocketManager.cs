@@ -1,17 +1,11 @@
-//C#
-
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Sockets;
 using System.Threading;
-using System.Threading.Tasks;
 using BFB.Engine.Server.Communication;
 using JetBrains.Annotations;
-//Jetbrains
-
-//engine
 
 namespace BFB.Engine.Server
 {
@@ -22,16 +16,22 @@ namespace BFB.Engine.Server
         
         private readonly object _lock;
         private readonly object _consoleLock;
+        
         private readonly TcpListener _listener;
         private readonly Dictionary<string, ClientSocket> _clientSockets;
         private readonly Dictionary<string,List<Action<DataMessage>>> _messageHandlers;
-        
         private Action _terminalHeader;
+        private bool _isBroadcasting;
+        
+        #region Server Event Properties
         public Func<DataMessage,bool> OnClientAuthentication { get; set; }
         public Action<ClientSocket> OnClientConnect { get; set; }
-        public Action<ClientSocket> OnClientDisconnect { get; set; }
+        public Action<ClientSocket> OnClientReady { get; set; }
+        public Action<string> OnClientDisconnect { get; set; }
+        public Action OnServerStart { get; set; }
+        public Action OnServerStop { get; set; }
 
-        private bool _isBroadcasting;
+        #endregion
         
         #endregion
         
@@ -52,10 +52,7 @@ namespace BFB.Engine.Server
             
            _terminalHeader = () => Console.Write($"[Server|{DateTime.Now:h:mm:ss tt}] ");
            
-           OnClientConnect = null;
-           OnClientDisconnect = null;
            OnClientAuthentication = m => true;
-
         }
         
         #endregion
@@ -85,31 +82,28 @@ namespace BFB.Engine.Server
             
             t1.Start();
             t2.Start();
+            
+            OnServerStart?.Invoke();
         }
 
         #endregion
 
         #region Stop
 
-        public void Stop(string reason = "Server is Shutting Down")
+        public void Stop()
         {
             if (!_isBroadcasting) return;
             
+            OnServerStop?.Invoke();
+
             lock (_lock)
             {
-                foreach ((string key, ClientSocket socket) in _clientSockets.ToList())
-                {
-                    
-                    socket.Disconnect(reason);
-                    PrintMessage($"Client {key} Disconnected");
-                    
-                    //remove forced disconnect
-                    _clientSockets.Remove(key);
-                }
-                
-                _listener.Stop();
-                _isBroadcasting = false;
+                //Disconnect all clients
+                foreach ((string _, ClientSocket socket) in _clientSockets.ToList())
+                    socket.Disconnect();
             }
+            
+            Dispose();
         }
 
         #endregion
@@ -163,45 +157,53 @@ namespace BFB.Engine.Server
 
         private void Read()
         {
-            while (_isBroadcasting)
+            try
             {
-                lock(_lock)
+                while (_isBroadcasting)
                 {
-                    
-                    foreach ((string _, ClientSocket socket) in _clientSockets)
+                    lock (_lock)
                     {
-                        if (!socket.PendingData()) continue;
-                        
-                        DataMessage message = socket.Read();
 
-                        if (message.Route == "authentication")
+                        foreach ((string _, ClientSocket socket) in _clientSockets.Where(s => s.Value.IsConnected()))
                         {
-                            if (OnClientAuthentication?.Invoke(message) ?? true)
+                            if (!socket.PendingData()) continue;
+
+                            DataMessage message = socket.Read();
+
+                            if (message.Route == "authentication")
                             {
-                                socket.Disconnect("Authentication Failed");
+                                if (!OnClientAuthentication?.Invoke(message) ?? false)
+                                {
+                                    socket.Disconnect();
+                                }
+                                else
+                                {
+                                    OnClientReady?.Invoke(socket);
+                                    socket.Emit("ready");
+                                }
+
                             }
                             else
                             {
-                                socket.Emit("ready");
+                                //Check socket specific handlers
+                                socket.ProcessHandler(message);
+
+                                //check global handlers
+                                if (!_messageHandlers.ContainsKey(message.Route)) continue;
+                                foreach (Action<DataMessage> handler in _messageHandlers[message.Route])
+                                    handler(message);
                             }
 
                         }
-                        else
-                        {
-                            //Check socket specific handlers
-                            socket.ProcessHandler(message);
-                        
-                            //check global handlers
-                            if (!_messageHandlers.ContainsKey(message.Route)) continue;
-                            foreach (Action<DataMessage> handler in _messageHandlers[message.Route])
-                                handler(message);
-                        }
-                       
                     }
+
+                    //check reading 200x a second
+                    Thread.Sleep(1000/200);
                 }
-                
-                //Read only 100 times a second
-                Thread.Sleep(1000/100);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Server Read Exception: {0}", ex);
             }
         }
 
@@ -230,12 +232,11 @@ namespace BFB.Engine.Server
                     //Check status of current connections
                     lock (_lock)
                     {
-                        foreach ((string key, ClientSocket socket) in _clientSockets.ToList())
+                        foreach ((string key, ClientSocket socket) in _clientSockets.ToList().Where(x => !x.Value.IsConnected()))
                         {
-                            if (socket.IsConnected()) continue;
-
-                            OnClientDisconnect?.Invoke(socket);
+                            socket.Disconnect();
                             _clientSockets.Remove(key);
+                            OnClientDisconnect?.Invoke(socket.ClientId);
                         }
                     }
                     
@@ -251,7 +252,6 @@ namespace BFB.Engine.Server
                             _clientSockets.Add(newSocket.ClientId, newSocket);
                         }
                         
-                        //Fire on connection event
                         OnClientConnect?.Invoke(newSocket);
                         
                         //Fire client connection and authentication events
@@ -298,6 +298,22 @@ namespace BFB.Engine.Server
                 if (!printHeader) return;
 
                 _terminalHeader();
+            }
+        }
+        
+        #endregion
+        
+        #region Dispose
+
+        [UsedImplicitly]
+        public void Dispose()
+        {
+            lock (_lock)
+            {
+                _listener.Stop();
+                _clientSockets.Clear();
+                _messageHandlers.Clear();
+                _isBroadcasting = false;
             }
         }
         

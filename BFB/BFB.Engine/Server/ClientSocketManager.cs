@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Net.Sockets;
-using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Threading;
 using BFB.Engine.Server.Communication;
@@ -15,25 +14,22 @@ namespace BFB.Engine.Server
         
         #region Properties
 
+        [UsedImplicitly]
+        public string ClientId { get;  private set; }
+        public Func<DataMessage,DataMessage> OnAuthentication { get; set; }
+        public Action<string> OnConnect { get; set; }
+        public Action OnDisconnect { get; set; }
+        public Action OnReady { get; set; }
+        
         private readonly object _lock;
         private readonly string _ip;
         private readonly int _port;
-        private Dictionary<string, List<Action<DataMessage>>> _handlers;
-
+        private readonly Dictionary<string, List<Action<DataMessage>>> _handlers;
         private TcpClient _socket;
         private NetworkStream _stream;
-        
-        public Func<DataMessage,DataMessage> OnAuthentication { get; set; }
-        public Action<DataMessage> OnConnect { get; set; }
-        public Action<DataMessage> OnDisconnect { get; set; }
-        public Action OnReady { get; set; }
-        
         private bool _acceptData;
         private bool _allowEmit;
 
-        [UsedImplicitly]
-        public string ClientId { get;  set; }
-        
         #endregion
 
         #region Constructor
@@ -63,23 +59,22 @@ namespace BFB.Engine.Server
 
         public void Disconnect()
         {
-            _stream.Dispose();
-            _socket.Dispose();
+            OnDisconnect?.Invoke();
+            Dispose();
         }
         
         #endregion
         
         #region Dispose
 
+        [UsedImplicitly]
         public void Dispose()
         {
-            _allowEmit = false;
+            _stream.Dispose();
+            _socket.Dispose();
+            _handlers.Clear();
             _acceptData = false;
-            Thread.Sleep(100);
-            Disconnect();
-            _handlers = new Dictionary<string, List<Action<DataMessage>>>();
-            _socket = null;
-            _stream = null;
+            _allowEmit = false;
         }
         
         #endregion
@@ -100,7 +95,7 @@ namespace BFB.Engine.Server
                 Thread t = new Thread(Read)
                 {
                     IsBackground = true,
-                    Name = "ClientReadThread"
+                    Name = "Client Read Thread"
                 };
                 
                 t.Start();
@@ -123,7 +118,7 @@ namespace BFB.Engine.Server
             {
                 if (!_allowEmit)
                 {
-                    Console.WriteLine("Emits are not enabled. Server must allow them.");
+                    Console.WriteLine("Emits are not enabled. Server must allow them after official connection.");
                     return;
                 }
 
@@ -192,9 +187,8 @@ namespace BFB.Engine.Server
                 while (_stream.Read(packetSize, 0, 4) != 0)
                 {
                     #region Deserialize Message Size
-                    
+
                     int messageSize = BitConverter.ToInt32(packetSize);
-                    if (messageSize <= 3) return;
                     byte[] messageData = new byte[messageSize];
                     
                     #endregion
@@ -219,6 +213,8 @@ namespace BFB.Engine.Server
                     
                     #endregion
                     
+                    #region Distribute Messages
+                    
                     lock (_lock)
                     {
                         //Check reserved routes firsts
@@ -228,11 +224,12 @@ namespace BFB.Engine.Server
                                 //assign client id
                                 ClientId = message.ClientId;
                                 _allowEmit = true;
-                                OnConnect?.Invoke(message);
+                                OnConnect?.Invoke(message.ClientId);
+
                                 break;
                             case "authentication":
                             {
-                                Emit("authentication", OnAuthentication(message));
+                                Emit("authentication", OnAuthentication?.Invoke(message));
                                 break;
                             }
                             case "ready":
@@ -240,23 +237,27 @@ namespace BFB.Engine.Server
                                 OnReady?.Invoke();
                                 break;
                             case "disconnect":
-                                OnDisconnect?.Invoke(message);
                                 Disconnect();
                                 break;
                             default:
                             {
+                                #region Distribute Messages to Routes
                                 
                                 if (!_handlers.ContainsKey(message.Route) && !_acceptData) continue;
-                        
+                                
                                 foreach (Action<DataMessage> handler in _handlers[message.Route])
                                 {
                                     handler(message);
                                 }
 
                                 break;
+                                
+                                #endregion
                             }
                         }
                     }
+                    
+                    #endregion
                 }
             }
             catch (Exception ex)
