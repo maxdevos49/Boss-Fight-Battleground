@@ -53,46 +53,47 @@ namespace BFB.Client.Scenes
             #endregion
 
             /**
-             * Reserved Socket Manager routes
+             * Reserved Socket Manager route events
              */
             #region Client Connect
 
-            _server.OnConnect((m) =>
+            _server.OnConnect = (m) =>
             {
                 //Anything that needs done when this client connects
                 Console.WriteLine("Client Connected");
-            });
+            };
             
             #endregion
             
             #region Client Authentication
             
-            _server.OnAuthentication((m) =>
+            _server.OnAuthentication = (m) =>
             {
                 //Anything that needs done when this client authenticates.
                 Console.WriteLine("Client Authenticating");
                 return null;
-            });
+            };
             
             #endregion
 
             #region Client Ready
             
-            _server.OnReady(() =>
+            _server.OnReady = () =>
             {
                 Console.WriteLine("Client Ready!");
                 //Do something when client is fully ready after authentication is confirmed
-            });
+            };
             
             #endregion
             
             #region Client Disconnect
             
-            _server.OnDisconnect((m) =>
+            _server.OnDisconnect =(m) =>
             {
                 //Anything that needs done when this client disconnects
                 Console.WriteLine("Disconnected");
-            });
+                _server = null;
+            };
             
             #endregion
             

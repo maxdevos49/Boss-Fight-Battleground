@@ -78,16 +78,16 @@ namespace BFB.Server
 
             #region Handle Connection
 
-            _server.OnConnect(socket =>
+            _server.OnClientConnect = socket =>
             {
                 _server.PrintMessage($"Client {socket.ClientId} Connected");
-            });
+            };
             
             #endregion
             
             #region Handle Authentication
             
-            _server.OnAuthentication(m =>
+            _server.OnClientAuthentication = m =>
             {
                 _server.PrintMessage($"Client {m.ClientId} Authenticated.");
                 
@@ -110,17 +110,17 @@ namespace BFB.Server
                 _simulation.AddEntity(entity);
                 
                 return true;
-            });
+            };
             
             #endregion
 
             #region Handle Disconnect
             
-            _server.OnDisconnect(socket =>
+            _server.OnClientDisconnect = socket =>
             {
                 _simulation.RemoveEntity(socket.ClientId);
                 _server.PrintMessage($"Client {socket.ClientId} Disconnected");
-            });
+            };
             
             #endregion
             

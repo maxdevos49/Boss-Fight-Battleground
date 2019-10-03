@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Sockets;
 using System.Threading;
+using System.Threading.Tasks;
 using BFB.Engine.Server.Communication;
 using JetBrains.Annotations;
 //Jetbrains
@@ -20,14 +21,15 @@ namespace BFB.Engine.Server
         #region Properties
         
         private readonly object _lock;
+        private readonly object _consoleLock;
         private readonly TcpListener _listener;
         private readonly Dictionary<string, ClientSocket> _clientSockets;
         private readonly Dictionary<string,List<Action<DataMessage>>> _messageHandlers;
         
         private Action _terminalHeader;
-        private Func<DataMessage,bool> _onClientAuthentication;
-        private Action<ClientSocket> _onClientConnect;
-        private Action<ClientSocket> _onClientDisconnect;
+        public Func<DataMessage,bool> OnClientAuthentication { get; set; }
+        public Action<ClientSocket> OnClientConnect { get; set; }
+        public Action<ClientSocket> OnClientDisconnect { get; set; }
 
         private bool _isBroadcasting;
         
@@ -43,31 +45,16 @@ namespace BFB.Engine.Server
             _listener = new TcpListener(ip, port);
 
             _lock = new object();
+            _consoleLock = new object();
             _clientSockets = new Dictionary<string, ClientSocket>();
             _messageHandlers = new Dictionary<string, List<Action<DataMessage>>>();
             _isBroadcasting = false;
             
            _terminalHeader = () => Console.Write($"[Server|{DateTime.Now:h:mm:ss tt}] ");
            
-            //Default client connect Handlers
-           _onClientConnect = client =>
-           {
-               PrintMessage($"Client {client.ClientId} Connected");
-           };
-           
-           //Default client disconnect handler
-           _onClientDisconnect = client =>
-           {
-               PrintMessage($"Client {client.ClientId} Disconnected");
-               client.Disconnect("Connection Lost");
-           };
-           
-           //Default client authentication handler
-           _onClientAuthentication = m =>
-           {
-               PrintMessage($"Client {m.ClientId} Authenticated with Standard Validation(No Validation)");
-               return true;
-           };
+           OnClientConnect = null;
+           OnClientDisconnect = null;
+           OnClientAuthentication = m => true;
 
         }
         
@@ -189,7 +176,7 @@ namespace BFB.Engine.Server
 
                         if (message.Route == "authentication")
                         {
-                            if (!_onClientAuthentication(message))
+                            if (OnClientAuthentication?.Invoke(message) ?? true)
                             {
                                 socket.Disconnect("Authentication Failed");
                             }
@@ -247,7 +234,7 @@ namespace BFB.Engine.Server
                         {
                             if (socket.IsConnected()) continue;
 
-                            _onClientDisconnect(socket);
+                            OnClientDisconnect?.Invoke(socket);
                             _clientSockets.Remove(key);
                         }
                     }
@@ -265,7 +252,7 @@ namespace BFB.Engine.Server
                         }
                         
                         //Fire on connection event
-                        _onClientConnect(newSocket);
+                        OnClientConnect?.Invoke(newSocket);
                         
                         //Fire client connection and authentication events
                         newSocket.Emit("connect");
@@ -292,48 +279,26 @@ namespace BFB.Engine.Server
 
         public void SetTerminalHeader(Action action)
         {
-            _terminalHeader = action;
+            lock(_consoleLock){
+                _terminalHeader = action;
+            }
         }
         
         #endregion
 
-        #region OnAuthentication
-
-        public void OnAuthentication(Func<DataMessage,bool> handler)
-        {
-            _onClientAuthentication= handler;
-        }
-
-        #endregion
-        
-        #region OnConnect
-
-        public void OnConnect(Action<ClientSocket> handler)
-        {
-            _onClientConnect= handler;
-        }
-
-        #endregion
-        
-        #region OnDisconnect
-
-        public void OnDisconnect(Action<ClientSocket> handler)
-        {
-            _onClientDisconnect= handler;
-        }
-
-        #endregion
-        
         #region PrintMessage
 
         public void PrintMessage(string message = null, bool printHeader = true)
         {
-            if (message != null)
-                Console.WriteLine(message);
+            lock (_consoleLock)
+            {
+                if (message != null)
+                    Console.WriteLine(message);
 
-            if (!printHeader) return;
-            
-            _terminalHeader();
+                if (!printHeader) return;
+
+                _terminalHeader();
+            }
         }
         
         #endregion

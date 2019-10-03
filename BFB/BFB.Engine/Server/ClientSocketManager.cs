@@ -23,10 +23,10 @@ namespace BFB.Engine.Server
         private TcpClient _socket;
         private NetworkStream _stream;
         
-        private Func<DataMessage,DataMessage> _onAuthentication;
-        private Action<DataMessage> _onConnect;
-        private Action<DataMessage> _onDisconnect;
-        private Action _onReady;
+        public Func<DataMessage,DataMessage> OnAuthentication { get; set; }
+        public Action<DataMessage> OnConnect { get; set; }
+        public Action<DataMessage> OnDisconnect { get; set; }
+        public Action OnReady { get; set; }
         
         private bool _acceptData;
         private bool _allowEmit;
@@ -50,10 +50,10 @@ namespace BFB.Engine.Server
             _acceptData = false;
             _allowEmit = false;
             
-            _onConnect = (m) =>  ClientId = m.Message;
-            _onDisconnect = (m) => ClientId = null;
-            _onAuthentication = (m) => null;
-            _onReady = () => { };
+            OnConnect = null;
+            OnDisconnect = null;
+            OnAuthentication = null;
+            OnReady = null;
             
         }
         
@@ -180,42 +180,6 @@ namespace BFB.Engine.Server
         
         #endregion
         
-        #region OnConnect
-
-        public void OnConnect(Action<DataMessage> handler)
-        {
-            _onConnect = handler;
-        }
-        
-        #endregion
-        
-        #region OnDisconnect
-
-        public void OnDisconnect(Action<DataMessage> handler)
-        {
-            _onDisconnect = handler;
-        }
-        
-        #endregion
-        
-        #region OnAuthentication
-
-        public void OnAuthentication(Func<DataMessage,DataMessage> handler)
-        {
-            _onAuthentication = handler;
-        }
-        
-        #endregion
-        
-        #region OnReady
-
-        public void OnReady(Action handler)
-        {
-            _onReady = handler;
-        }
-        
-        #endregion
-        
         #region Read
         
         private void Read()
@@ -264,20 +228,19 @@ namespace BFB.Engine.Server
                                 //assign client id
                                 ClientId = message.ClientId;
                                 _allowEmit = true;
-                                _onConnect(message);
+                                OnConnect?.Invoke(message);
                                 break;
                             case "authentication":
                             {
-                                DataMessage authMessage = _onAuthentication(message);
-                                Emit("authentication", message);
+                                Emit("authentication", OnAuthentication(message));
                                 break;
                             }
                             case "ready":
                                 _acceptData = true;
-                                _onReady();
+                                OnReady?.Invoke();
                                 break;
                             case "disconnect":
-                                _onDisconnect(message);
+                                OnDisconnect?.Invoke(message);
                                 Disconnect();
                                 break;
                             default:

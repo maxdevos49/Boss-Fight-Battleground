@@ -117,7 +117,7 @@ namespace BFB.Server
             //Server Game loop
             while (_running)
             {
-                //Ask for new input
+                //Ask for input from all players
                 _server.Emit("/players/getUpdates");
                 
                 lock (_lock)
@@ -125,13 +125,12 @@ namespace BFB.Server
                     //Update entities
                     foreach ((string key, ServerEntity entity) in _entities)
                     {
-                        entity.Update( /*Pass in world in the future*/);
+                        entity.Tick( /*Pass in world in the future*/);
                     }
                 }
                 
-                //Send changes
+                //Send changes. In future cull updates per player to reduce sending un needed data to some clients(because that thing may not be on there screen)
                 _server.Emit("/players/updates", GetUpdates());
-
                 
                 //TODO In future tick chunks also for dynamic tiles(Fire, gravity updates, grass)
                 
