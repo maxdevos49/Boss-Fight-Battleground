@@ -18,7 +18,7 @@ namespace BFB.Engine.Server
         public string ClientId { get;  private set; }
         public Func<DataMessage,DataMessage> OnAuthentication { get; set; }
         public Action<string> OnConnect { get; set; }
-        public Action OnDisconnect { get; set; }
+        public Action<string> OnDisconnect { get; set; }
         public Action OnReady { get; set; }
         
         private readonly object _lock;
@@ -57,9 +57,9 @@ namespace BFB.Engine.Server
         
         #region Disconnect
 
-        public void Disconnect()
+        public void Disconnect(string reason)
         {
-            OnDisconnect?.Invoke();
+            OnDisconnect?.Invoke(reason);
             Dispose();
         }
         
@@ -70,9 +70,11 @@ namespace BFB.Engine.Server
         [UsedImplicitly]
         public void Dispose()
         {
-            _stream.Dispose();
-            _socket.Dispose();
-            _handlers.Clear();
+            _stream?.Dispose();
+            _stream = null;
+            _socket?.Dispose();
+            _socket = null;
+            _handlers?.Clear();
             _acceptData = false;
             _allowEmit = false;
         }
@@ -146,11 +148,13 @@ namespace BFB.Engine.Server
                 //send message
                 _stream.Write(messageData, 0, messageData.Length);
             }
+            catch (IOException) { /*If this happens we do not care*/ }
+            catch (ObjectDisposedException) { /*If this happens we do not care*/ }
             catch (Exception ex)
             {
                 Console.WriteLine("Write Exception: {0}", ex);
-                Disconnect();
             }
+           
         }
         
         #endregion
@@ -183,18 +187,17 @@ namespace BFB.Engine.Server
 
             try
             {
-
                 while (_stream.Read(packetSize, 0, 4) != 0)
                 {
                     #region Deserialize Message Size
 
                     int messageSize = BitConverter.ToInt32(packetSize);
                     byte[] messageData = new byte[messageSize];
-                    
+
                     #endregion
 
                     #region Read Message
-                    
+
                     int bytesRead = 0;
                     do
                     {
@@ -202,19 +205,19 @@ namespace BFB.Engine.Server
                     } while (bytesRead < messageSize);
 
                     #endregion
-                    
+
                     #region Deserialize Message
-                    
+
                     DataMessage message;
                     using (MemoryStream memoryStream = new MemoryStream(messageData))
                     {
-                        message =  (DataMessage)new BinaryFormatter().Deserialize(memoryStream);
+                        message = (DataMessage) new BinaryFormatter().Deserialize(memoryStream);
                     }
-                    
+
                     #endregion
-                    
+
                     #region Distribute Messages
-                    
+
                     lock (_lock)
                     {
                         //Check reserved routes firsts
@@ -225,7 +228,6 @@ namespace BFB.Engine.Server
                                 ClientId = message.ClientId;
                                 _allowEmit = true;
                                 OnConnect?.Invoke(message.ClientId);
-
                                 break;
                             case "authentication":
                             {
@@ -237,34 +239,39 @@ namespace BFB.Engine.Server
                                 OnReady?.Invoke();
                                 break;
                             case "disconnect":
-                                Disconnect();
+                                Disconnect("Server Requested Disconnect");
                                 break;
                             default:
                             {
                                 #region Distribute Messages to Routes
-                                
+
                                 if (!_handlers.ContainsKey(message.Route) && !_acceptData) continue;
-                                
+
                                 foreach (Action<DataMessage> handler in _handlers[message.Route])
                                 {
                                     handler(message);
                                 }
 
                                 break;
-                                
+
                                 #endregion
                             }
                         }
                     }
-                    
+
                     #endregion
                 }
             }
+            catch (IOException)
+            {
+                Disconnect("Read Error");
+            }
+            catch (ObjectDisposedException) { /*If this happens we do not care*/ }
             catch (Exception ex)
             {
-                Console.WriteLine("Read Exception: {0}", ex);
+                Console.WriteLine("Write Exception: {0}", ex);
             }
-            Disconnect();
+            
         }
         
         #endregion

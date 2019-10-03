@@ -34,6 +34,7 @@ namespace BFB.Client.Scenes
 
         protected override void Init()
         {
+            _server?.Dispose();
             _server = new ClientSocketManager("127.0.0.1", 6969);//This must be reset every time we reconnect. It gets very very slow if we do not
 
             /**
@@ -88,10 +89,10 @@ namespace BFB.Client.Scenes
             
             #region Client Disconnect
             
-            _server.OnDisconnect = () =>
+            _server.OnDisconnect = (reason) =>
             {
                 //Anything that needs done when this client disconnects
-                Console.WriteLine("Disconnected");
+                Console.WriteLine($"Disconnected: {reason}");
             };
             
             #endregion
@@ -173,7 +174,8 @@ namespace BFB.Client.Scenes
 
         public override void Unload()
         {
-            _server.Disconnect();
+            _server.Disconnect("Scene Close");
+            _entities.Clear();
             base.Unload();
         }
         

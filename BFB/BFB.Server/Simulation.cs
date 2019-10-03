@@ -127,12 +127,14 @@ namespace BFB.Server
                     {
                         entity.Tick( /*Pass in world in the future*/);
                     }
+                
+                    //Send changes. In future cull updates per player to reduce sending un needed data to some clients(because that thing may not be on there screen)
+                    if(_entities.Count > 0){
+                        _server.Emit("/players/updates", GetUpdates());
+                    }
+                    
+                    //TODO In future tick chunks also for dynamic tiles(Fire, gravity updates, grass)
                 }
-                
-                //Send changes. In future cull updates per player to reduce sending un needed data to some clients(because that thing may not be on there screen)
-                _server.Emit("/players/updates", GetUpdates());
-                
-                //TODO In future tick chunks also for dynamic tiles(Fire, gravity updates, grass)
                 
 
                 //Maintain the tick rate here
