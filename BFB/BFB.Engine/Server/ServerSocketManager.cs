@@ -101,6 +101,7 @@ namespace BFB.Engine.Server
                 //Disconnect all clients
                 foreach ((string _, ClientSocket socket) in _clientSockets.ToList())
                     socket.Disconnect();
+                _clientSockets.Clear();
             }
             
             Dispose();

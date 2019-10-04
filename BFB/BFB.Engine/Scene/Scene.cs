@@ -14,12 +14,9 @@ namespace BFB.Engine.Scene
         protected SceneManager SceneManager;
         protected ContentManager ContentManager;
         protected GraphicsDeviceManager GraphicsDeviceManager;
-        public EventManager _eventManager;
-
-        private List<int> eventListenerIds;
+        protected EventManager EventManager;
+        private readonly List<int> _eventListenerIds;
         
-        //TODO State Manager
-
         private SceneStatus _status;
         public readonly string Key;
 
@@ -27,7 +24,7 @@ namespace BFB.Engine.Scene
         {
             Key = key;
             _status = SceneStatus.Inoperable;
-            eventListenerIds = new List<int>();
+            _eventListenerIds = new List<int>();
         }
 
         //Inject the scene dependencies
@@ -36,7 +33,7 @@ namespace BFB.Engine.Scene
             SceneManager = sceneManager;
             ContentManager = contentManager;
             GraphicsDeviceManager = graphicsManager;
-            _eventManager = eventManager;
+            EventManager = eventManager;
 
             //Indicate the scene is now in a operable state but inactive
             _status = SceneStatus.Inactive;
@@ -88,8 +85,8 @@ namespace BFB.Engine.Scene
 
         public virtual void Unload()
         {
-            foreach (int id in eventListenerIds)
-                _eventManager.RemoveEventListener(id);
+            foreach (int id in _eventListenerIds)
+                EventManager.RemoveEventListener(id);
         }
 
         public virtual void Update([UsedImplicitly] GameTime gameTime) { }
@@ -98,7 +95,7 @@ namespace BFB.Engine.Scene
 
         public void AddEventListener(string eventKey, Action<Event.Event> eventHandler)
         {
-            eventListenerIds.Add(_eventManager.AddEventListener(eventKey, eventHandler));
+            _eventListenerIds.Add(EventManager.AddEventListener(eventKey, eventHandler));
         }
     }
 }
