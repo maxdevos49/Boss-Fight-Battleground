@@ -26,8 +26,8 @@ struct MyView : View
 
         v.TextBox(m => m.filter)
             .Background(Color.Red)
-            .Color(Color.Red)
-            .Font(Font.Subtle);
+            .Color(Color.Green)
+            .Font(Font.Subtitle);
 
         v.List(m => m.Items, (item) => {
             v.Image(m => m.Image).AspectRatio(1)
@@ -44,4 +44,6 @@ struct MyView : View
 
 ```
 
-Basicaly makes a view that has an input at the top of the view followed by a list container. Each row(horizontal stacked by default) contains a image and then a vertical stack displaying two text components with modifiers to change default appearance of the components.
+Basically makes a view that has an input at the top of the view followed by a list container. 
+Each row(horizontal stacked by default) contains a image and then a vertical stack displaying 
+two text components with modifiers to change default appearance of the components.
