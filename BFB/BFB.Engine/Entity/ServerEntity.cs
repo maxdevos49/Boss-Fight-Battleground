@@ -38,7 +38,7 @@ namespace BFB.Engine.Entity
 
         #region Update
         
-        public void Update()
+        public void Tick()
         {
             _input?.Update(this);
             _physics?.Update(this);

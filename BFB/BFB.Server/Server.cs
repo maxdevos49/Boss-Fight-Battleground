@@ -6,13 +6,13 @@ using Microsoft.Extensions.Configuration;
 using System.Net;
 using System.Threading;
 using BFB.Engine.Entity;
-using BFB.Engine.Entity.Components.Graphics;
 using BFB.Engine.Entity.Components.Input;
 using BFB.Engine.Entity.Components.Physics;
 using BFB.Engine.Math;
 
 //Engine
 using BFB.Engine.Server;
+using JetBrains.Annotations;
 
 namespace BFB.Server
 {
@@ -21,24 +21,8 @@ namespace BFB.Server
         
         #region Properties
         
-        /**
-         * Thread Locker
-         */
-        private readonly object _lock;
-        
-        /**
-         * Server configuration. Contains all settings defined in appsettings.json or settings overridden by environment variables
-         */
         private readonly IConfiguration _configuration;
-        
-        /**
-         * This manages the simulation and does all of the calculations for entities and such
-         */
         private readonly Simulation _simulation;
-        
-        /**
-         * Manages the server connections and routes all tcp request to the correct handelers
-         */
         private readonly ServerSocketManager _server;
 
         #endregion
@@ -51,8 +35,6 @@ namespace BFB.Server
             
             IPAddress ip = IPAddress.Parse(_configuration["Server:IPAddress"]);
             int port = Convert.ToInt32(_configuration["Server:Port"]);
-            
-            _lock = new object();
             _server = new ServerSocketManager(ip,port);
             _simulation = new Simulation(_server);
         }
@@ -76,51 +58,57 @@ namespace BFB.Server
             
             #endregion
 
-            #region Handle Connection
+            #region Handle Client Connection
 
-            _server.OnConnect(socket =>
+            _server.OnClientConnect = socket =>
             {
                 _server.PrintMessage($"Client {socket.ClientId} Connected");
-            });
+            };
             
             #endregion
             
-            #region Handle Authentication
+            #region Handle Client Authentication
             
-            _server.OnAuthentication(m =>
+            _server.OnClientAuthentication = m =>
             {
                 _server.PrintMessage($"Client {m.ClientId} Authenticated.");
-                
-                
+                return true;
+            };
+            
+            #endregion
+
+            #region Handle Client Ready
+
+            _server.OnClientReady = (socket) =>
+            {
                 //Add to simulation
-                ServerEntity entity = new ServerEntity(
-                    m.ClientId, 
+                _simulation.AddEntity(new ServerEntity(
+                    socket.ClientId,
                     new EntityOptions
                     {
-                        Position = new BfbVector(200,200),
-                        Dimensions = new BfbVector(100,100),
+                        Position = new BfbVector(200, 200),
+                        Dimensions = new BfbVector(100, 100),
                         Rotation = 0,
-                        Origin = new BfbVector(50,50),
+                        Origin = new BfbVector(50, 50),
                     }, new ComponentOptions
                     {
                         Physics = new AccelerateComponent(),
-                        Input = new RemoteInputComponent(_server.GetClient(m.ClientId))
-                    });
+                        Input = new RemoteInputComponent(socket)
+                    }));
                 
-                _simulation.AddEntity(entity);
-                
-                return true;
-            });
+                _server.PrintMessage($"Client {socket.ClientId} Ready and added to Simulation");
+
+            };
             
             #endregion
-
-            #region Handle Disconnect
             
-            _server.OnDisconnect(socket =>
+            #region Handle Client Disconnect
+            
+            _server.OnClientDisconnect = id =>
             {
-                _simulation.RemoveEntity(socket.ClientId);
-                _server.PrintMessage($"Client {socket.ClientId} Disconnected");
-            });
+                _simulation.RemoveEntity(id);
+                _server.PrintMessage($"Client {id} Disconnected");
+            };
             
             #endregion
             
@@ -138,6 +126,7 @@ namespace BFB.Server
         
         #region Start
         
+        [UsedImplicitly]
         public void Start()
         {
             Init();
@@ -151,6 +140,7 @@ namespace BFB.Server
 
         #region Stop
         
+        [UsedImplicitly]
         public void Stop()
         {
             _server.PrintMessage("Server shutting down...", false);
@@ -178,7 +168,7 @@ namespace BFB.Server
                 if (text.ToLower() == "stop")//Convert to server command
                     break;
 
-                //TODO in the future do something with text/make commands emit event??
+                //TODO in the future do something with text/make commands emit events??
             }
 
             Stop();

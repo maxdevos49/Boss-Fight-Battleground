@@ -11,13 +11,12 @@ namespace BFB.Engine.Server
     {
         
         #region Properties
-        
         public string ClientId { get; }
+        
         private readonly object _lock;
         private readonly TcpClient _socket;
         private readonly NetworkStream _stream;
         private readonly Dictionary<string, List<Action<DataMessage>>> _handlers;
-        private bool _active;
         
         #endregion
         
@@ -33,7 +32,6 @@ namespace BFB.Engine.Server
             _handlers = new Dictionary<string, List<Action<DataMessage>>>();
             _socket = socket;
             _stream = _socket.GetStream();
-            _active = true;
         }
         
         #endregion
@@ -42,7 +40,7 @@ namespace BFB.Engine.Server
         
         public void Emit(string routeKey, DataMessage message = null)
         {
-            if (!_active) return;
+            if (!IsConnected()) return;
             
             try
             {
@@ -70,11 +68,12 @@ namespace BFB.Engine.Server
                 //send message
                 _stream.Write(messageData, 0, messageData.Length);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                _active = false;
+                Console.WriteLine("Write Exception {0}", ex);
+                Disconnect();
             }
-
+            
         }
         
         #endregion
@@ -102,7 +101,7 @@ namespace BFB.Engine.Server
 
         public DataMessage Read()
         {
-            if (!_active) return null;
+            if (!IsConnected()) return null;
             
             byte[] packetSize = new byte[4];
             try
@@ -119,18 +118,17 @@ namespace BFB.Engine.Server
                         bytesRead += _stream.Read(messageData, bytesRead, messageSize - bytesRead);
                     } while (bytesRead < messageSize);
                     
-                    if(messageData.Length == 0) return null;
-
                     using (MemoryStream memoryStream = new MemoryStream(messageData))
                        return (DataMessage)new BinaryFormatter().Deserialize(memoryStream);
                 }
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Exception: {0}", ex);
-                _socket.Dispose();
+                Console.WriteLine("Client Read Exception: {0}", ex);
+                Disconnect();
             }
-
+            
+            Console.WriteLine("Read Error");
             return null;
         }
         
@@ -142,7 +140,7 @@ namespace BFB.Engine.Server
         {
             lock (_lock)
             {
-                if (!_handlers.ContainsKey(message.Route) || !_active) return;
+                if (!_handlers.ContainsKey(message.Route)) return;
                 foreach (Action<DataMessage> handler in _handlers[message.Route])
                     handler(message);
             }
@@ -154,7 +152,14 @@ namespace BFB.Engine.Server
 
         public bool PendingData()
         {
-            return _stream.DataAvailable;
+            try
+            {
+                return _stream.DataAvailable;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
         
         #endregion
@@ -163,28 +168,31 @@ namespace BFB.Engine.Server
 
         public bool IsConnected()
         {
-            if (!_active) return false;
-            
-            if (!_socket.Client.Poll(0, SelectMode.SelectRead)) return true;
-            
-            byte[] buff = new byte[1];
-            
-            return _socket.Client.Receive( buff, SocketFlags.Peek ) != 0;
+            try
+            {
+                if (!_socket.Client.Poll(0, SelectMode.SelectRead)) return true;
+
+                byte[] buff = new byte[1];
+
+                return _socket.Client.Receive(buff, SocketFlags.Peek) != 0;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
         
         #endregion
         
         #region Disconnect
 
-        public void Disconnect(string reason = "", bool force = false)
+        public void Disconnect()
         {
-            _active = false;
-            
-            if(!force)
-                Emit("disconnect", new DataMessage{Message = reason});
-            
-            _stream.Dispose();
-            _socket.Dispose();
+            lock(_lock){
+                _stream.Dispose();
+                _socket.Dispose();
+                _handlers.Clear();
+            }
         }
         
         #endregion

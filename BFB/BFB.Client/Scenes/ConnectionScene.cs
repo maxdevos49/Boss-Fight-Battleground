@@ -21,20 +21,22 @@ namespace BFB.Client.Scenes
         private readonly BfbVector _mouse;
         private Texture2D _spaceshipTexture;
 
-        private readonly ClientSocketManager _server;
+        private ClientSocketManager _server;
         private readonly Dictionary<string, ClientEntity> _entities;
 
         public ConnectionScene() : base(nameof(ConnectionScene))
         {
             _lock = new object();
             _entities = new Dictionary<string, ClientEntity>();
-            _server = new ClientSocketManager("10.31.31.42", 6969);
+            _server = null;
             _mouse = new BfbVector();
         }
 
         protected override void Init()
         {
-            
+            _server?.Dispose();
+            _server = new ClientSocketManager("127.0.0.1", 6969);//This must be reset every time we reconnect. It gets very very slow if we do not
+
             /**
              * Scene events
              */
@@ -52,53 +54,52 @@ namespace BFB.Client.Scenes
             #endregion
 
             /**
-             * Reserved Socket Manager routes
+             * Reserved Socket Manager route events
              */
             #region Client Connect
 
-            _server.OnConnect((m) =>
+            _server.OnConnect = (m) =>
             {
                 //Anything that needs done when this client connects
                 Console.WriteLine("Client Connected");
-            });
+            };
             
             #endregion
             
             #region Client Authentication
             
-            _server.OnAuthentication((m) =>
+            _server.OnAuthentication = (m) =>
             {
                 //Anything that needs done when this client authenticates.
                 Console.WriteLine("Client Authenticating");
                 return null;
-            });
+            };
             
             #endregion
 
             #region Client Ready
             
-            _server.OnReady(() =>
+            _server.OnReady = () =>
             {
                 Console.WriteLine("Client Ready!");
                 //Do something when client is fully ready after authentication is confirmed
-            });
+            };
             
             #endregion
             
             #region Client Disconnect
             
-            _server.OnDisconnect((m) =>
+            _server.OnDisconnect = (reason) =>
             {
                 //Anything that needs done when this client disconnects
-                Console.WriteLine("Disconnected");
-            });
+                Console.WriteLine($"Disconnected: {reason}");
+            };
             
             #endregion
             
             /**
              * Custom Socket Routes
              */
-            
             #region SendInput
             
             _server.On("/players/getUpdates", (m) =>
@@ -154,7 +155,7 @@ namespace BFB.Client.Scenes
             });
             
             #endregion
-
+            
             if (!_server.Connect())
                 Console.WriteLine("Connection Failed.");
 
@@ -173,7 +174,8 @@ namespace BFB.Client.Scenes
 
         public override void Unload()
         {
-            _server.Disconnect();
+            _server.Disconnect("Scene Close");
+            _entities.Clear();
             base.Unload();
         }
         

@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Net.Sockets;
-using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Threading;
 using BFB.Engine.Server.Communication;
@@ -15,25 +14,22 @@ namespace BFB.Engine.Server
         
         #region Properties
 
+        [UsedImplicitly]
+        public string ClientId { get;  private set; }
+        public Func<DataMessage,DataMessage> OnAuthentication { get; set; }
+        public Action<string> OnConnect { get; set; }
+        public Action<string> OnDisconnect { get; set; }
+        public Action OnReady { get; set; }
+        
         private readonly object _lock;
         private readonly string _ip;
         private readonly int _port;
-        private Dictionary<string, List<Action<DataMessage>>> _handlers;
-
+        private readonly Dictionary<string, List<Action<DataMessage>>> _handlers;
         private TcpClient _socket;
         private NetworkStream _stream;
-        
-        private Func<DataMessage,DataMessage> _onAuthentication;
-        private Action<DataMessage> _onConnect;
-        private Action<DataMessage> _onDisconnect;
-        private Action _onReady;
-        
         private bool _acceptData;
         private bool _allowEmit;
 
-        [UsedImplicitly]
-        public string ClientId { get;  set; }
-        
         #endregion
 
         #region Constructor
@@ -50,10 +46,10 @@ namespace BFB.Engine.Server
             _acceptData = false;
             _allowEmit = false;
             
-            _onConnect = (m) =>  ClientId = m.Message;
-            _onDisconnect = (m) => ClientId = null;
-            _onAuthentication = (m) => null;
-            _onReady = () => { };
+            OnConnect = null;
+            OnDisconnect = null;
+            OnAuthentication = null;
+            OnReady = null;
             
         }
         
@@ -61,25 +57,26 @@ namespace BFB.Engine.Server
         
         #region Disconnect
 
-        public void Disconnect()
+        public void Disconnect(string reason)
         {
-            _stream.Dispose();
-            _socket.Dispose();
+            OnDisconnect?.Invoke(reason);
+            Dispose();
         }
         
         #endregion
         
         #region Dispose
 
+        [UsedImplicitly]
         public void Dispose()
         {
-            _allowEmit = false;
-            _acceptData = false;
-            Thread.Sleep(100);
-            Disconnect();
-            _handlers = new Dictionary<string, List<Action<DataMessage>>>();
-            _socket = null;
+            _stream?.Dispose();
             _stream = null;
+            _socket?.Dispose();
+            _socket = null;
+            _handlers?.Clear();
+            _acceptData = false;
+            _allowEmit = false;
         }
         
         #endregion
@@ -100,7 +97,7 @@ namespace BFB.Engine.Server
                 Thread t = new Thread(Read)
                 {
                     IsBackground = true,
-                    Name = "ClientReadThread"
+                    Name = "Client Read Thread"
                 };
                 
                 t.Start();
@@ -119,35 +116,45 @@ namespace BFB.Engine.Server
         
         public void Emit(string routeKey, DataMessage message = null)
         {
-            if (!_allowEmit)
+            try
             {
-                Console.WriteLine("Emits are not yet enabled. Server must make first contact");
-                return;
+                if (!_allowEmit)
+                {
+                    Console.WriteLine("Emits are not enabled. Server must allow them after official connection.");
+                    return;
+                }
+
+                if (message == null)
+                    message = new DataMessage();
+
+                //Assign message to route
+                message.Route = routeKey;
+                message.ClientId = ClientId;
+
+                byte[] messageData;
+
+                using (MemoryStream memoryStream = new MemoryStream())
+                {
+                    new BinaryFormatter().Serialize(memoryStream, message);
+                    messageData = memoryStream.ToArray();
+                }
+
+                //get and convert length to bytes
+                byte[] messageLength = BitConverter.GetBytes(messageData.Length);
+
+                //send message length
+                _stream.Write(messageLength, 0, 4);
+
+                //send message
+                _stream.Write(messageData, 0, messageData.Length);
             }
-
-            if(message == null)
-                message = new DataMessage();
-            
-            //Assign message to route
-            message.Route = routeKey;
-            message.ClientId = ClientId;
-            
-            byte[] messageData;
-
-            using (MemoryStream memoryStream = new MemoryStream())
+            catch (IOException) { /*If this happens we do not care*/ }
+            catch (ObjectDisposedException) { /*If this happens we do not care*/ }
+            catch (Exception ex)
             {
-                new BinaryFormatter().Serialize(memoryStream, message);
-                messageData = memoryStream.ToArray();
+                Console.WriteLine("Write Exception: {0}", ex);
             }
-
-            //get and convert length to bytes
-            byte[] messageLength = BitConverter.GetBytes(messageData.Length);
-
-            //send message length
-            _stream.Write(messageLength, 0, 4);
-
-            //send message
-            _stream.Write(messageData, 0, messageData.Length);
+           
         }
         
         #endregion
@@ -172,42 +179,6 @@ namespace BFB.Engine.Server
         
         #endregion
         
-        #region OnConnect
-
-        public void OnConnect(Action<DataMessage> handler)
-        {
-            _onConnect = handler;
-        }
-        
-        #endregion
-        
-        #region OnDisconnect
-
-        public void OnDisconnect(Action<DataMessage> handler)
-        {
-            _onDisconnect = handler;
-        }
-        
-        #endregion
-        
-        #region OnAuthentication
-
-        public void OnAuthentication(Func<DataMessage,DataMessage> handler)
-        {
-            _onAuthentication = handler;
-        }
-        
-        #endregion
-        
-        #region OnReady
-
-        public void OnReady(Action handler)
-        {
-            _onReady = handler;
-        }
-        
-        #endregion
-        
         #region Read
         
         private void Read()
@@ -216,28 +187,37 @@ namespace BFB.Engine.Server
 
             try
             {
-
                 while (_stream.Read(packetSize, 0, 4) != 0)
                 {
+                    #region Deserialize Message Size
+
                     int messageSize = BitConverter.ToInt32(packetSize);
                     byte[] messageData = new byte[messageSize];
 
-                    //Safe read that will guarantee a full message
+                    #endregion
+
+                    #region Read Message
+
                     int bytesRead = 0;
                     do
                     {
                         bytesRead += _stream.Read(messageData, bytesRead, messageSize - bytesRead);
                     } while (bytesRead < messageSize);
 
-                    if(messageData.Length == 0) continue;
-                    
-                    //Get full message
+                    #endregion
+
+                    #region Deserialize Message
+
                     DataMessage message;
                     using (MemoryStream memoryStream = new MemoryStream(messageData))
                     {
-                        message =  (DataMessage)new BinaryFormatter().Deserialize(memoryStream);
+                        message = (DataMessage) new BinaryFormatter().Deserialize(memoryStream);
                     }
-                    
+
+                    #endregion
+
+                    #region Distribute Messages
+
                     lock (_lock)
                     {
                         //Check reserved routes firsts
@@ -247,42 +227,49 @@ namespace BFB.Engine.Server
                                 //assign client id
                                 ClientId = message.ClientId;
                                 _allowEmit = true;
-                                _onConnect(message);
+                                OnConnect?.Invoke(message.ClientId);
                                 break;
                             case "authentication":
                             {
-                                DataMessage authMessage = _onAuthentication(message);
-                                Emit("authentication", message);
+                                Emit("authentication", OnAuthentication?.Invoke(message));
                                 break;
                             }
                             case "ready":
                                 _acceptData = true;
-                                _onReady();
+                                OnReady?.Invoke();
                                 break;
                             case "disconnect":
-                                _onDisconnect(message);
-                                Disconnect();
+                                Disconnect("Server Requested Disconnect");
                                 break;
                             default:
                             {
-                                
+                                #region Distribute Messages to Routes
+
                                 if (!_handlers.ContainsKey(message.Route) && !_acceptData) continue;
-                        
+
                                 foreach (Action<DataMessage> handler in _handlers[message.Route])
                                 {
                                     handler(message);
                                 }
 
                                 break;
+
+                                #endregion
                             }
                         }
                     }
+
+                    #endregion
                 }
             }
+            catch (IOException)
+            {
+                Disconnect("Read Error");
+            }
+            catch (ObjectDisposedException) { /*If this happens we do not care*/ }
             catch (Exception ex)
             {
-                Console.WriteLine("Exception: {0}", ex);
-                _socket.Dispose();
+                Console.WriteLine("Write Exception: {0}", ex);
             }
             
         }

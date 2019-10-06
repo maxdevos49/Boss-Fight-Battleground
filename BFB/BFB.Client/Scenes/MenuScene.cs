@@ -22,19 +22,19 @@ namespace BFB.Client.Scenes
 
         protected override void Init()
         {
-            _b1 = new Button(Vector2.One * 120, new Vector2(100, 30), "Connection Scene", _eventManager)
+            _b1 = new Button(Vector2.One * 120, new Vector2(100, 30), "Connection Scene", EventManager)
             {
                 OnClick = () => { SceneManager.StartScene(nameof(ConnectionScene)); }
             };
 
 
-            _b2 = new Button(new Vector2(120, 160), new Vector2(100, 30), "Non Connected Spaceships", _eventManager)
+            _b2 = new Button(new Vector2(120, 160), new Vector2(100, 30), "Non Connected Spaceships", EventManager)
             {
                 OnClick = () => { SceneManager.StartScene(nameof(ExampleScene)); }
             };
 
 
-            _b3 = new Button(new Vector2(120, 200), new Vector2(100, 30), "Tile Map Scene", _eventManager)
+            _b3 = new Button(new Vector2(120, 200), new Vector2(100, 30), "Tile Map Scene", EventManager)
             {
                 OnClick = () => { SceneManager.StartScene(nameof(TileMapTestScene)); }
             };
@@ -81,7 +81,7 @@ namespace BFB.Client.Scenes
 
         public Action OnHover { get; set; }
         public Action OnClick { get; set; }
-        
+
         private int _offset;
         
         public Button(Vector2 position, Vector2 dimensions, string text, EventManager eventManager)
@@ -136,4 +136,5 @@ namespace BFB.Client.Scenes
             graphics.DrawString(font, _text, new Vector2(_position.X + _offset,_position.Y), Color.Black);
         }
     }
+    
 }
