@@ -2,8 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Net.Mime;
 using System.Numerics;
+using BFB.Client.UI;
 using BFB.Engine.Event;
 using BFB.Engine.Scene;
+using BFB.Engine.UI;
+using BFB.Engine.UI.Components;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Vector2 = Microsoft.Xna.Framework.Vector2;
@@ -17,6 +20,8 @@ namespace BFB.Client.Scenes
         private Button _b1;
         private Button _b2;
         private Button _b3;
+        private UITest _menuUi;
+        private UIContext<object> _menuUiContext;
         public MenuScene(): base(nameof(MenuScene))
         { }
 
@@ -39,7 +44,9 @@ namespace BFB.Client.Scenes
                 OnClick = () => { SceneManager.StartScene(nameof(TileMapTestScene)); }
             };
 
-
+            //UI testing
+            _menuUi = new UITest();
+            _menuUiContext = new UIContext<object>(GraphicsDeviceManager.GraphicsDevice, new object());
         }
         
         protected override void Load()
@@ -65,6 +72,15 @@ namespace BFB.Client.Scenes
             _b1.Draw(graphics,_font);
             _b2.Draw(graphics,_font);
             _b3.Draw(graphics,_font);
+            
+            _menuUiContext.Clear();
+            IComponent structure = _menuUi.Body(_menuUiContext);
+            
+            Texture2D recTex = new Texture2D(GraphicsDeviceManager.GraphicsDevice, 1, 1);
+            recTex.SetData(new[] { Color.White });
+            
+            UIManager.RenderUI(structure, graphics, recTex, 0);
+            
             base.Draw(gameTime, graphics);
         }
     }

@@ -1,17 +1,31 @@
 using System;
+using System.Collections;
 using System.Linq.Expressions;
 using JetBrains.Annotations;
 
-namespace BFB.Engine.UI
+namespace BFB.Engine.UI.Components
 {
     public static class UIComponentExtension
     {
+        #region View
+
+        public static IComponent View<TModel>(this UIContext<TModel> uiContext, Action<IComponent> handler)
+        {
+            handler(uiContext.GetRoot());
+            return uiContext.GetRoot();
+        }
+        
+        #endregion
+        
         #region Vstack
         
         [UsedImplicitly]
-        public static void Vstack<TModel>(this UIBuilder<TModel> uiBuilder)
+        public static IComponent Vstack(this IComponent component, Action<IComponent> handler)
         {
-            //TODO
+            Component c = new Component();//TODO
+            component.AddChild(c);
+            handler(c);
+            return c;
         }
         
         #endregion;
@@ -19,9 +33,10 @@ namespace BFB.Engine.UI
         #region Hstack
         
         [UsedImplicitly]
-        public static void Hstack<TModel>(this UIBuilder<TModel> uiBuilder)
+        public static IComponent Hstack(this IComponent component, Action<IComponent> handler)
         {
             //TODO
+            return null;
         }
         
         #endregion
@@ -29,9 +44,10 @@ namespace BFB.Engine.UI
         #region List
         
         [UsedImplicitly]
-        public static void List<TModel,TProperty>(this UIBuilder<TModel> uiBuilder, Expression<Func<TModel,TProperty>> property)
+        public static IComponent List<TModel,TProperty>(this IComponent component, Expression<Func<TModel,TProperty>> property, Action<IComponent> handler) where TProperty: IEnumerable
          {
              //TODO
+             return null;
          }
         
         #endregion
@@ -39,9 +55,10 @@ namespace BFB.Engine.UI
         #region Text
         
         [UsedImplicitly]
-        public static void Text<TModel,TProperty>(this UIBuilder<TModel> uiBuilder, Func<TModel,TProperty> property)
+        public static IComponent Text<TModel,TProperty>(this IComponent component, Func<UIContext<TModel>,TModel,TProperty> property)
         {
             //TODO
+            return null;
         }
         
         #endregion
@@ -49,9 +66,10 @@ namespace BFB.Engine.UI
         #region Spacer
         
         [UsedImplicitly]
-        public static void Spacer<TModel>(this UIBuilder<TModel> uiBuilder)
+        public static IComponent Spacer(this IComponent component)
         {
             //TODO
+            return null;
         }
         
         #endregion
