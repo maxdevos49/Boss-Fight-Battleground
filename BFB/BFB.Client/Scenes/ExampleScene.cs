@@ -161,8 +161,10 @@ namespace BFB.Client.Scenes
                     steering.Y = steering.Y * MaxForce / steerMag;
                 }
 
+                
                 //Apply steering to velocity
                 Velocity = Vector2.Add(steering, Velocity);
+                Velocity = Vector2.Multiply(Velocity, new Vector2(0.5f, 0.5f));
 
                 //update position
                 Position = Vector2.Add(Velocity, Position);

@@ -1,42 +1,46 @@
 using BFB.Engine.UI;
 using BFB.Engine.UI.Components;
+using BFB.Engine.UI.Modifiers;
 using Microsoft.Xna.Framework;
 
 namespace BFB.Client.UI
 {
-   
-    public class UITest: UIView
+
+    public class UITest : UILayer
     {
+        public UITest() :base(nameof(UITest)) { }
         
-        public IComponent Body<TModel>(UIContext<TModel> ui)
+        public override void Body()
         {
-            //gets root 
-            ui.View(root =>
+            RootUI.Vstack((v1) =>
             {
-                //Creates a vertical stack
-                root.Vstack(vs =>
+                v1.Vstack((v2) =>
+                {
+                    v2.Vstack((v3) =>
                     {
-                        vs.Vstack(vs2 =>
-                            {
-                                
-                            })
-                            .Top(100)
-                            .Left(100)
-                            .Height(1f)
-                            .Width(2f)
-                            .Background(Color.Red)
-                            .Name("Stack Layer 2");
+                        
                     })
-                    .Top(50)
-                    .Left(50)
-                    .Height(0.7f)
-                    .Width(0.5f)
-                    .Background(Color.Green)
-                    .Name("Stack Layer 1");
+                        .Width(0.8f)
+                        .Height(0.5f)
+                        .Background(Color.Yellow);
+                    
+                })
+                    .Width(0.8f)
+                    .Height(0.5f)
+                    .Background(Color.Green);
+                
+            })
+                .Width(0.5f)
+                .Height(0.5f)
+                .Background(Color.Red);
+            /**
+             * Evaluate the entire structure and then generate its
+             * positions. That way we know number of elements
+             * everywhere and we can then have all constraints
+             * stored for full processing and we dont get have
+             * issues embedding elements inside of other elements
+             */
 
-            }).Name("Root");
-
-            return ui.GetRoot();
         }
     }
 }

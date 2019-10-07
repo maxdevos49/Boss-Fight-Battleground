@@ -1,8 +1,10 @@
 ﻿using System;
 using BFB.Client.Scenes;
+using BFB.Client.UI;
 using BFB.Engine.Event;
 using BFB.Engine.Input;
 using BFB.Engine.Scene;
+using BFB.Engine.UI;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -14,11 +16,13 @@ namespace BFB.Client
 
         private InputManager _inputManager;
         private SceneManager _sceneManager;
-        private readonly GraphicsDeviceManager _graphicsManager;//Kinda ok name but will probably change later to graphics device manager
+        private readonly GraphicsDeviceManager _graphicsDeviceManager;
+        private UIManager _uiManager;
         private EventManager _eventManager;
         private SpriteBatch _spriteBatch;
+        
         private bool _windowSizeIsBeingChanged;
-
+            
         
         #region Main
 
@@ -40,7 +44,7 @@ namespace BFB.Client
             IsMouseVisible = true;
 
             //Init Graphics manager. (Needs to be in the constructor)
-            _graphicsManager = new GraphicsDeviceManager(this);
+            _graphicsDeviceManager = new GraphicsDeviceManager(this);
             _windowSizeIsBeingChanged = false;
         }
 
@@ -63,8 +67,9 @@ namespace BFB.Client
             _spriteBatch = new SpriteBatch(GraphicsDevice);
             _eventManager = new EventManager();
             _inputManager = new InputManager(_eventManager, new InputConfig());
-            _sceneManager = new SceneManager(Content, _graphicsManager, _eventManager);
-
+            _sceneManager = new SceneManager(Content, _graphicsDeviceManager, _eventManager);
+            _uiManager = new UIManager(_graphicsDeviceManager.GraphicsDevice);
+            
             #endregion
             
             #region Register Scenes/Start Main Scene
@@ -80,6 +85,19 @@ namespace BFB.Client
 
             //start first scene
             _sceneManager.StartScene(nameof(MenuScene));
+            
+            #endregion
+            
+            #region Register UILayers
+            
+            _uiManager.AddUILayer(new UILayer[]
+            {
+                new UITest()
+            });
+            
+            //Start first UI
+            
+            _uiManager.Start(nameof(UITest));
             
             #endregion
 
@@ -148,6 +166,8 @@ namespace BFB.Client
 
             //Call update for active scenes
             _sceneManager.UpdateScenes(gameTime);
+            
+            _uiManager.Update();
 
             base.Update(gameTime);
         }
@@ -167,6 +187,8 @@ namespace BFB.Client
 
             //Draw Active Scenes
             _sceneManager.DrawScenes(gameTime, _spriteBatch);
+            
+            _uiManager.Draw(_spriteBatch);
 
             //draws graphics buffer
             _spriteBatch.End();
@@ -183,9 +205,9 @@ namespace BFB.Client
             _windowSizeIsBeingChanged = !_windowSizeIsBeingChanged;
             
             if (!_windowSizeIsBeingChanged) return;
-            _graphicsManager.PreferredBackBufferWidth = Window.ClientBounds.Width;
-            _graphicsManager.PreferredBackBufferHeight = Window.ClientBounds.Height;
-            _graphicsManager.ApplyChanges();
+            _graphicsDeviceManager.PreferredBackBufferWidth = Window.ClientBounds.Width;
+            _graphicsDeviceManager.PreferredBackBufferHeight = Window.ClientBounds.Height;
+            _graphicsDeviceManager.ApplyChanges();
 
             _eventManager.Emit("window-resize");
         }
