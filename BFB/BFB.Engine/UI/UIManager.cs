@@ -127,13 +127,32 @@ namespace BFB.Engine.UI
          */
         private void RenderComponent(UIComponent node, SpriteBatch graphics)
         {
-            Console.WriteLine($"{node.Name}");
             node.Render(graphics, _UITextures[node.TextureKey]);
+            DrawBorder(new Rectangle(node.X,node.Y,node.Width,node.Height),1,Color.Black, graphics,_UITextures["default"]);
 
             foreach (UIComponent childNode in node.Children)
             {
                 RenderComponent(childNode, graphics);
             }
+        }
+        
+        /**
+         * Draws a border
+         * TODO move to a drawing class with more drawing helpers. (Extension methods for drawing??)
+         */
+        private void DrawBorder(Rectangle rectangleToDraw, int thicknessOfBorder, Color borderColor, SpriteBatch graphics, Texture2D texture)
+        {
+            // Draw top line
+            graphics.Draw(texture, new Rectangle(rectangleToDraw.X, rectangleToDraw.Y, rectangleToDraw.Width, thicknessOfBorder), borderColor);
+            
+            // Draw left line
+            graphics.Draw(texture, new Rectangle(rectangleToDraw.X, rectangleToDraw.Y, thicknessOfBorder, rectangleToDraw.Height), borderColor);
+
+            // Draw right line
+            graphics.Draw(texture, new Rectangle((rectangleToDraw.X + rectangleToDraw.Width - thicknessOfBorder), rectangleToDraw.Y, thicknessOfBorder, rectangleToDraw.Height), borderColor);
+            
+            // Draw bottom line
+            graphics.Draw(texture, new Rectangle(rectangleToDraw.X, rectangleToDraw.Y + rectangleToDraw.Height - thicknessOfBorder, rectangleToDraw.Width, thicknessOfBorder), borderColor);
         }
 
      #endregion

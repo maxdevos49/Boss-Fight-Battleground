@@ -43,6 +43,25 @@ namespace BFB.Engine.UI.Modifiers
 
         #endregion
         
+        #region Center
+
+        public static UIComponent Center(this UIComponent component)
+        {
+            return component.AddConstraint(new UICenterConstraint());
+        }
+
+        #endregion
+        
+        #region Grow
+
+        public static UIComponent Grow(this UIComponent component, int proportion)
+        {
+            component.Grow = proportion;
+            return component;
+        }
+        
+        #endregion
+        
         #region Color
 
         public static UIComponent Color(this UIComponent component, Color color)

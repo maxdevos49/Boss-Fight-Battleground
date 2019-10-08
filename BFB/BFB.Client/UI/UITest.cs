@@ -1,3 +1,4 @@
+using System.Runtime.ConstrainedExecution;
 using BFB.Engine.UI;
 using BFB.Engine.UI.Components;
 using BFB.Engine.UI.Modifiers;
@@ -12,35 +13,96 @@ namespace BFB.Client.UI
         
         public override void Body()
         {
-            RootUI.Vstack((v1) =>
+            RootUI.Hstack((h1) =>
             {
-                v1.Vstack((v2) =>
-                {
-                    v2.Vstack((v3) =>
-                    {
-                        
-                    })
-                        .Width(0.8f)
-                        .Height(0.5f)
-                        .Background(Color.Yellow);
-                    
-                })
-                    .Width(0.8f)
-                    .Height(0.5f)
-                    .Background(Color.Green);
+                h1.Spacer();//Spacers have a default grow proportion of 1
                 
-            })
-                .Width(0.5f)
-                .Height(0.5f)
-                .Background(Color.Red);
-            /**
-             * Evaluate the entire structure and then generate its
-             * positions. That way we know number of elements
-             * everywhere and we can then have all constraints
-             * stored for full processing and we dont get have
-             * issues embedding elements inside of other elements
-             */
+                h1.Vstack(v1 =>
+                    {
+                        v1.Spacer().Background(Color.Green).Width(0.7f).Center();
+                        
+                        v1.Hstack(h2 =>
+                        {
+                            h2.Spacer().Background(Color.Blue);
+                            h2.Spacer().Background(Color.Blue);
+                        });
+                        
+                        v1.Hstack(h2 =>
+                        {
+                            h2.Spacer().Background(Color.Red);
+                            h2.Spacer().Background(Color.Red);
+                        });
+                        
+                        v1.Hstack(h2 =>
+                        {
+                            h2.Spacer()
+                                .Background(Color.Yellow);
+                            h2.Spacer()
+                                .Background(Color.Yellow);
+                            h2.Spacer()
+                                .Background(Color.Yellow);
+                        });
 
+                        v1.Hstack(h2 =>
+                        {
+                            h2.Spacer().Background(Color.Orange).Width(0.7f).Center();
+                        });
+
+                    })
+                    .Background(Color.Beige)
+                    .Grow(4);
+                
+                h1.Spacer();//Could just apply a width instead of these but oh well they still work
+            })
+                .Height(0.8f)
+                .Center();
+
+//            RootUI.Hstack((h1) =>
+//            {
+//                h1.Spacer();
+//
+//                //Main menu panel
+//                h1.Vstack((v2) =>
+//                    {
+//                        //Title
+//                        v2.Hstack((h2) =>
+//                            {
+//                                
+//                            })
+//                            .Background(Color.Red)
+//                            .Grow(2);
+//
+//                        //Connection
+//                        v2.Hstack((h2) =>
+//                        {
+//                            
+//                        }).Background(Color.Yellow);
+//
+//                        //Non Connection
+//                        v2.Hstack((h2) =>
+//                        {
+//                            
+//                        }).Background(Color.Yellow);
+//
+//                        //Tile map
+//                        v2.Hstack((h2) =>
+//                        {
+//                            
+//                        }).Background(Color.Yellow);
+//
+//                        //bottom spacer
+//                        v2.Spacer(1).Background(Color.Green);
+//                        
+//                    })
+//                        .Background(Color.Firebrick)
+//                        .Grow(3);
+//
+//                h1.Spacer();
+//
+//            })
+//                .Width(0.8f)
+//                .Height(0.8f)
+//                .Center();
         }
     }
 }
