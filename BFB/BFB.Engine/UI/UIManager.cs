@@ -15,7 +15,8 @@ namespace BFB.Engine.UI
         private readonly GraphicsDevice _graphicsDevice;
         private readonly Dictionary<string,UILayer> _ActiveUILayers;
         private readonly Dictionary<string, UILayer> _AllUILayers;
-        private readonly Dictionary<string, Texture2D> _UITextures;
+        private readonly Dictionary<string, Texture2D> _UITexture;
+        private readonly Dictionary<string, SpriteFont> _UIFont;
         
         #endregion
         
@@ -27,13 +28,8 @@ namespace BFB.Engine.UI
             
             _ActiveUILayers = new Dictionary<string, UILayer>();
             _AllUILayers = new Dictionary<string, UILayer>();
-            _UITextures = new Dictionary<string, Texture2D>();
-            
-            //Init default panel texture
-            Texture2D rectangleTexture = new Texture2D(_graphicsDevice, 1, 1);
-            rectangleTexture.SetData(new[] { Color.White });
-            
-            _UITextures.Add("default", rectangleTexture);
+            _UITexture = new Dictionary<string, Texture2D>();
+            _UIFont = new Dictionary<string, SpriteFont>();
         }
         
         #endregion
@@ -60,6 +56,26 @@ namespace BFB.Engine.UI
 
         #endregion
 
+        #region AddFont
+
+        public void AddFont(string fontName, SpriteFont font)
+        {
+            if(!_UIFont.ContainsKey(fontName))
+                _UIFont.Add(fontName, font);
+        }
+        
+        #endregion
+        
+        #region AddTexture
+
+        public void AddTexture(string textureName, Texture2D texture)
+        {
+            if(!_UITexture.ContainsKey(textureName)) 
+                _UITexture.Add(textureName, texture);
+        }
+        
+        #endregion
+        
         public void Start(string key)
         {
             if (_AllUILayers.ContainsKey(key) && !_ActiveUILayers.ContainsKey(key))
@@ -127,8 +143,8 @@ namespace BFB.Engine.UI
          */
         private void RenderComponent(UIComponent node, SpriteBatch graphics)
         {
-            node.Render(graphics, _UITextures[node.TextureKey]);
-            DrawBorder(new Rectangle(node.X,node.Y,node.Width,node.Height),1,Color.Black, graphics,_UITextures["default"]);
+            node.Render(graphics, _UITexture[node.TextureKey], _UIFont[node.FontKey]);
+            DrawBorder(new Rectangle(node.X,node.Y,node.Width,node.Height),1,Color.Black, graphics,_UITexture["default"]);//For debug
 
             foreach (UIComponent childNode in node.Children)
             {
@@ -161,12 +177,12 @@ namespace BFB.Engine.UI
 
          public void Dispose()
          {
-             foreach ((string key,Texture2D texture) in _UITextures)
+             foreach ((string key,Texture2D texture) in _UITexture)
              {
                  texture.Dispose();
              }
              
-             _UITextures.Clear();
+             _UITexture.Clear();
              _ActiveUILayers.Clear();
              _AllUILayers.Clear();
          }

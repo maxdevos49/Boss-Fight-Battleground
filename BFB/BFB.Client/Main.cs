@@ -8,6 +8,7 @@ using BFB.Engine.UI;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using NVorbis.Ogg;
 
 namespace BFB.Client
 {
@@ -20,6 +21,9 @@ namespace BFB.Client
         private UIManager _uiManager;
         private EventManager _eventManager;
         private SpriteBatch _spriteBatch;
+
+        private Texture2D _defaultTexture;
+        private SpriteFont _defaultFont;
         
         private bool _windowSizeIsBeingChanged;
             
@@ -138,7 +142,14 @@ namespace BFB.Client
         protected override void LoadContent()
         {
             //global font load
-            Content.Load<SpriteFont>("Fonts\\Papyrus");
+            _defaultFont = Content.Load<SpriteFont>("Fonts\\Papyrus");
+            _uiManager.AddFont("default", _defaultFont);
+            
+            //Global texture load
+            _defaultTexture = new Texture2D(_graphicsDeviceManager.GraphicsDevice, 1, 1);
+            _defaultTexture.SetData(new[] { Color.White });
+            _uiManager.AddTexture("default", _defaultTexture);
+            
         }
 
         #endregion

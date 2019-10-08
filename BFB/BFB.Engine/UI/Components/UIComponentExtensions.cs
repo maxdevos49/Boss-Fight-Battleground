@@ -31,6 +31,20 @@ namespace BFB.Engine.UI.Components
         
         #endregion
         
+        #region Text
+
+        public static UIComponent TextFor<TModel>(this UIComponent component, TModel model, Func<TModel, string> stringSelector)
+        {
+            return AddNode(component, new UITextComponent<TModel>(model, stringSelector), null);
+        }
+        
+        public static UIComponent Text(this UIComponent component, string text)
+        {
+            return AddNode(component, new UITextComponent<string>(text), null);
+        }
+        
+        #endregion
+        
         #region AddNode (Private)
         
         private static UIComponent AddNode(UIComponent parent, UIComponent newChild, Action<UIComponent> handler)

@@ -17,6 +17,10 @@ namespace BFB.Engine.UI.Components
         public int Index { get; set; }
         
         public string TextureKey { get; set; }
+        
+        public string FontKey { get; set; }
+        
+        public float FontSize { get; set; }
 
         public int X { get; set; }
         
@@ -51,6 +55,8 @@ namespace BFB.Engine.UI.Components
             Name = name;
             Index = 0;
             TextureKey = "default";
+            FontKey = "default";
+            FontSize = 1f;
             X = 0;
             Y = 0;
             Width = 0;
@@ -125,8 +131,8 @@ namespace BFB.Engine.UI.Components
                 case StackDirection.Horizontal:
 
                     int oneProportionWidth = Width / totalProportionNumber;
-
-                    X += leadingProportionNumber * oneProportionWidth;
+                    
+                    X += leadingProportionNumber * oneProportionWidth ;
                     Width = oneProportionWidth * Grow;
                     Height = Height;
                     
@@ -146,7 +152,7 @@ namespace BFB.Engine.UI.Components
         /**
          * Used to render the UIComponent by default as a simple panel
          */
-        public virtual void Render(SpriteBatch graphics, Texture2D texture)
+        public virtual void Render(SpriteBatch graphics, Texture2D texture, SpriteFont font)
         {
             graphics.Draw(texture, new Rectangle(X, Y, Width,Height), Background);
         }

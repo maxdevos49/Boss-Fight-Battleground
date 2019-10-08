@@ -19,33 +19,123 @@ namespace BFB.Client.UI
                 
                 h1.Vstack(v1 =>
                     {
-                        v1.Spacer().Background(Color.Green).Width(0.7f).Center();
-                        
                         v1.Hstack(h2 =>
                         {
-                            h2.Spacer().Background(Color.Blue);
-                            h2.Spacer().Background(Color.Blue);
+                            h2.Vstack(v2 =>
+                            {
+                                v2.Text("Title")
+                                    .Width(0.8f)
+                                    .Height(0.8f)//Class and Id selectors on on there way after making this layout. They will include default styles for some elements
+                                    .Color(Color.Red)
+                                    .Background(Color.White)
+                                    .FontSize(3)
+                                    .Center();
+                            });
                         });
                         
                         v1.Hstack(h2 =>
                         {
-                            h2.Spacer().Background(Color.Red);
-                            h2.Spacer().Background(Color.Red);
-                        });
-                        
-                        v1.Hstack(h2 =>
-                        {
-                            h2.Spacer()
-                                .Background(Color.Yellow);
-                            h2.Spacer()
-                                .Background(Color.Yellow);
-                            h2.Spacer()
-                                .Background(Color.Yellow);
-                        });
+                            h2.Vstack(v2 =>
+                            {
+                                v2.Text("Test Text")
+                                    .Width(0.8f)
+                                    .Height(0.8f)
+                                    .Color(Color.Red)
+                                    .Background(Color.White)
+                                    .Center();
+                            });
+                           
 
+                            h2.Vstack(v2 =>
+                            {
+                                v2.Text("Test Text")
+                                    .Width(0.8f)
+                                    .Height(0.8f)
+                                    .Color(Color.Red)
+                                    .Background(Color.White)
+                                    .Center();
+                            });
+                        });
+                        
+                        
+                        
+                        
+                        
                         v1.Hstack(h2 =>
                         {
-                            h2.Spacer().Background(Color.Orange).Width(0.7f).Center();
+                            h2.Vstack(v2 =>
+                            {
+                                v2.Text("Test Text")
+                                    .Width(0.8f)
+                                    .Height(0.8f)
+                                    .Color(Color.Red)
+                                    .Background(Color.White)
+                                    .Center();
+                            });
+                            
+                            h2.Vstack(v2 =>
+                            {
+                                v2.Text("Test Text")
+                                    .Width(0.8f)
+                                    .Height(0.8f)
+                                    .Color(Color.Red)
+                                    .Background(Color.White)
+                                    .Center();
+                            });
+                        });
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        v1.Hstack(h2 =>
+                        {
+                            h2.Vstack(v2 =>
+                            {
+                                v2.Text("Test Text")
+                                    .Width(0.8f)
+                                    .Height(0.8f)
+                                    .Color(Color.Red)
+                                    .Background(Color.White)
+                                    .Center();
+                            });
+                            
+                            h2.Vstack(v2 =>
+                            {
+                                v2.Text("Test Text")
+                                    .Width(0.8f)
+                                    .Height(0.8f)
+                                    .Color(Color.Red)
+                                    .Background(Color.White)
+                                    .Center();
+                            });
+                            
+                            h2.Vstack(v2 =>
+                            {
+                                v2.Text("Test Text")
+                                    .Width(0.8f)
+                                    .Height(0.8f)
+                                    .Color(Color.Red)
+                                    .Background(Color.White)
+                                    .Center();
+                            });
+                        });
+                        
+                        
+                        
+                        
+                        
+
+                        v1.Vstack(v2 =>
+                        {
+                            v2.Text("Back")
+                                .Width(0.8f)
+                                .Height(0.8f)
+                                .Color(Color.Red)
+                                .Background(Color.White)
+                                .Center();
                         });
 
                     })

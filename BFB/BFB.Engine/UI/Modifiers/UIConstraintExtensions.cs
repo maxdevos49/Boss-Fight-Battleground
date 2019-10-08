@@ -62,6 +62,15 @@ namespace BFB.Engine.UI.Modifiers
         
         #endregion
         
+        #region FontSize
+
+        public static UIComponent FontSize(this UIComponent component, float fontScale)
+        {
+            return component.AddConstraint(new UIFontSizeConstraint(fontScale));
+        }   
+        
+        #endregion
+        
         #region Color
 
         public static UIComponent Color(this UIComponent component, Color color)
