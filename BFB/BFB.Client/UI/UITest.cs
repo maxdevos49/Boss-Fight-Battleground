@@ -15,8 +15,6 @@ namespace BFB.Client.UI
         {
             RootUI.Hstack((h1) =>
             {
-                h1.Spacer();//Spacers have a default grow proportion of 1
-                
                 h1.Vstack(v1 =>
                     {
                         v1.Hstack(h2 =>
@@ -25,14 +23,13 @@ namespace BFB.Client.UI
                             {
                                 v2.Text("Title")
                                     .Width(0.8f)
-                                    .Height(0.8f)//Class and Id selectors on on there way after making this layout. They will include default styles for some elements
-                                    .Color(Color.Red)
-                                    .Background(Color.White)
+                                    .Height(
+                                        0.8f) //Class and Id selectors on on there way after making this layout. They will include default styles for some elements
                                     .FontSize(3)
                                     .Center();
                             });
                         });
-                        
+
                         v1.Hstack(h2 =>
                         {
                             h2.Vstack(v2 =>
@@ -40,27 +37,23 @@ namespace BFB.Client.UI
                                 v2.Text("Test Text")
                                     .Width(0.8f)
                                     .Height(0.8f)
-                                    .Color(Color.Red)
-                                    .Background(Color.White)
                                     .Center();
                             });
-                           
+
 
                             h2.Vstack(v2 =>
                             {
                                 v2.Text("Test Text")
                                     .Width(0.8f)
                                     .Height(0.8f)
-                                    .Color(Color.Red)
-                                    .Background(Color.White)
                                     .Center();
                             });
                         });
-                        
-                        
-                        
-                        
-                        
+
+
+
+
+
                         v1.Hstack(h2 =>
                         {
                             h2.Vstack(v2 =>
@@ -68,28 +61,24 @@ namespace BFB.Client.UI
                                 v2.Text("Test Text")
                                     .Width(0.8f)
                                     .Height(0.8f)
-                                    .Color(Color.Red)
-                                    .Background(Color.White)
                                     .Center();
                             });
-                            
+
                             h2.Vstack(v2 =>
                             {
                                 v2.Text("Test Text")
                                     .Width(0.8f)
                                     .Height(0.8f)
-                                    .Color(Color.Red)
-                                    .Background(Color.White)
                                     .Center();
                             });
                         });
-                        
-                        
-                        
-                        
-                        
-                        
-                        
+
+
+
+
+
+
+
                         v1.Hstack(h2 =>
                         {
                             h2.Vstack(v2 =>
@@ -97,64 +86,56 @@ namespace BFB.Client.UI
                                 v2.Text("Test Text")
                                     .Width(0.8f)
                                     .Height(0.8f)
-                                    .Color(Color.Red)
-                                    .Background(Color.White)
                                     .Center();
                             });
-                            
+
                             h2.Vstack(v2 =>
                             {
                                 v2.Text("Test Text")
                                     .Width(0.8f)
                                     .Height(0.8f)
-                                    .Color(Color.Red)
-                                    .Background(Color.White)
                                     .Center();
                             });
-                            
+
                             h2.Vstack(v2 =>
                             {
                                 v2.Text("Test Text")
                                     .Width(0.8f)
                                     .Height(0.8f)
-                                    .Color(Color.Red)
-                                    .Background(Color.White)
                                     .Center();
                             });
                         });
-                        
-                        
-                        
-                        
-                        
+
+
+
+
+
 
                         v1.Vstack(v2 =>
                         {
                             v2.Text("Back")
                                 .Width(0.8f)
                                 .Height(0.8f)
-                                .Color(Color.Red)
-                                .Background(Color.White)
                                 .Center();
                         });
 
                     })
-                    .Background(Color.Beige)
-                    .Grow(4);
-                
-                h1.Spacer();//Could just apply a width instead of these but oh well they still work
-            })
-                .Height(0.8f)
-                .Center();
+                    .Grow(4)
+                    .AspectRatio(1.78f)
+                    .Top(100)
+                    .Right(100)
+                    .Center();
+            });
+
 
 //            RootUI.Hstack((h1) =>
 //            {
 //                h1.Spacer();
+//                    {
+//                        //Title
 //
 //                //Main menu panel
 //                h1.Vstack((v2) =>
-//                    {
-//                        //Title
 //                        v2.Hstack((h2) =>
 //                            {
 //                                

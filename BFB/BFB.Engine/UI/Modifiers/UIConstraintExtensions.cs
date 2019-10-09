@@ -34,13 +34,48 @@ namespace BFB.Engine.UI.Modifiers
         
         #endregion
         
-        #region Background
+        #region Top
 
-        public static UIComponent Background(this UIComponent component, Color color)
+        public static UIComponent Top(this UIComponent component, int pixels)
         {
-            return component.AddConstraint(new UIBackgroundConstraint(color));
+            return component.AddConstraint(new UIPositionConstraint(top: pixels));
         }
-
+        
+        #endregion
+        
+        #region Right
+        
+        public static UIComponent Right(this UIComponent component, int pixels)
+        {
+            return component.AddConstraint(new UIPositionConstraint(right: pixels));
+        }
+        
+        #endregion
+        
+        #region Bottom
+        
+        public static UIComponent Bottom(this UIComponent component, int pixels)
+        {
+            return component.AddConstraint(new UIPositionConstraint(bottom: pixels));
+        }
+        
+        #endregion
+        
+        #region Left
+        
+        public static UIComponent Left(this UIComponent component, int pixels)
+        {
+            return component.AddConstraint(new UIPositionConstraint(left: pixels));
+        }
+        
+        #endregion
+        
+        #region Scale (TODO)
+        
+        #endregion 
+        
+        #region Animate (TODO)
+        
         #endregion
         
         #region Center
@@ -62,6 +97,18 @@ namespace BFB.Engine.UI.Modifiers
         
         #endregion
         
+        #region AspectRatio
+
+        /**
+         * Define the aspect ratio as a float. Ex: 16:9 ~= 1.78f
+         */
+        public static UIComponent AspectRatio(this UIComponent component, float ratio)
+        {
+            return component.AddConstraint(new UIAspectRatioConstraint(ratio));
+        }
+        
+        #endregion
+        
         #region FontSize
 
         public static UIComponent FontSize(this UIComponent component, float fontScale)
@@ -71,6 +118,15 @@ namespace BFB.Engine.UI.Modifiers
         
         #endregion
         
+        #region Background
+
+        public static UIComponent Background(this UIComponent component, Color color)
+        {
+            return component.AddConstraint(new UIBackgroundConstraint(color));
+        }
+
+        #endregion
+
         #region Color
 
         public static UIComponent Color(this UIComponent component, Color color)
