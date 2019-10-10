@@ -1,6 +1,7 @@
 ﻿using System;
 using BFB.Client.Scenes;
 using BFB.Client.UI;
+using BFB.Engine.Content;
 using BFB.Engine.Event;
 using BFB.Engine.Input;
 using BFB.Engine.Scene;
@@ -15,16 +16,14 @@ namespace BFB.Client
     public class MainGame : Game
     {
 
+        private readonly GraphicsDeviceManager _graphicsDeviceManager;
         private InputManager _inputManager;
         private SceneManager _sceneManager;
-        private readonly GraphicsDeviceManager _graphicsDeviceManager;
         private UIManager _uiManager;
         private EventManager _eventManager;
-        private SpriteBatch _spriteBatch;
+        private BFBContentManager _contentManager;
 
-        private Texture2D _defaultTexture;
-        private SpriteFont _defaultFont;
-        
+        private SpriteBatch _spriteBatch;
         private bool _windowSizeIsBeingChanged;
             
         
@@ -58,6 +57,7 @@ namespace BFB.Client
 
         protected override void Initialize()
         {
+            
             #region Window Options
             
             Window.Title = "Boss Fight Battlegrounds";
@@ -69,10 +69,12 @@ namespace BFB.Client
             #region Init Managers
             
             _spriteBatch = new SpriteBatch(GraphicsDevice);
+            
             _eventManager = new EventManager();
             _inputManager = new InputManager(_eventManager, new InputConfig());
             _sceneManager = new SceneManager(Content, _graphicsDeviceManager, _eventManager);
-            _uiManager = new UIManager(_graphicsDeviceManager.GraphicsDevice);
+            _contentManager = new BFBContentManager(Content);
+            _uiManager = new UIManager(_graphicsDeviceManager.GraphicsDevice, _contentManager);
             
             #endregion
             
@@ -141,14 +143,15 @@ namespace BFB.Client
 
         protected override void LoadContent()
         {
+            _contentManager.ParseContent(/*TODO make this work*/);
+            
             //global font load
-            _defaultFont = Content.Load<SpriteFont>("Fonts\\Papyrus");
-            _uiManager.AddFont("default", _defaultFont);
+            _contentManager.AddFont("default", Content.Load<SpriteFont>("Fonts\\Papyrus"));
             
             //Global texture load
-            _defaultTexture = new Texture2D(_graphicsDeviceManager.GraphicsDevice, 1, 1);
-            _defaultTexture.SetData(new[] { Color.White });
-            _uiManager.AddTexture("default", _defaultTexture);
+            Texture2D defaultTexture = new Texture2D(_graphicsDeviceManager.GraphicsDevice, 1, 1);
+            defaultTexture.SetData(new[] { Color.White });
+            _contentManager.AddTexture("default", defaultTexture);
             
         }
 

@@ -1,5 +1,5 @@
-using System;
 using System.Collections.Generic;
+using BFB.Engine.Content;
 using BFB.Engine.UI.Components;
 using JetBrains.Annotations;
 using Microsoft.Xna.Framework;
@@ -13,23 +13,21 @@ namespace BFB.Engine.UI
         #region Properties
         
         private readonly GraphicsDevice _graphicsDevice;
-        private readonly Dictionary<string,UILayer> _ActiveUILayers;
-        private readonly Dictionary<string, UILayer> _AllUILayers;
-        private readonly Dictionary<string, Texture2D> _UITexture;
-        private readonly Dictionary<string, SpriteFont> _UIFont;
+        private readonly BFBContentManager _contentManager;
+        private readonly Dictionary<string,UILayer> _activeUILayers;
+        private readonly Dictionary<string, UILayer> _allUILayers;
         
         #endregion
         
         #region Constructor
         
-        public UIManager(GraphicsDevice graphicsDevice)
+        public UIManager(GraphicsDevice graphicsDevice, BFBContentManager contentManager)
         {
             _graphicsDevice = graphicsDevice;
+            _contentManager = contentManager;
             
-            _ActiveUILayers = new Dictionary<string, UILayer>();
-            _AllUILayers = new Dictionary<string, UILayer>();
-            _UITexture = new Dictionary<string, Texture2D>();
-            _UIFont = new Dictionary<string, SpriteFont>();
+            _activeUILayers = new Dictionary<string, UILayer>();
+            _allUILayers = new Dictionary<string, UILayer>();
         }
         
         #endregion
@@ -50,37 +48,17 @@ namespace BFB.Engine.UI
 
         public void AddUILayer(UILayer uiLayer)
         {
-            if(!_AllUILayers.ContainsKey(uiLayer.Key))
-                _AllUILayers.Add(uiLayer.Key, uiLayer);
+            if(!_allUILayers.ContainsKey(uiLayer.Key))
+                _allUILayers.Add(uiLayer.Key, uiLayer);
         }
 
-        #endregion
-
-        #region AddFont
-
-        public void AddFont(string fontName, SpriteFont font)
-        {
-            if(!_UIFont.ContainsKey(fontName))
-                _UIFont.Add(fontName, font);
-        }
-        
-        #endregion
-        
-        #region AddTexture
-
-        public void AddTexture(string textureName, Texture2D texture)
-        {
-            if(!_UITexture.ContainsKey(textureName)) 
-                _UITexture.Add(textureName, texture);
-        }
-        
         #endregion
         
         public void Start(string key)
         {
-            if (_AllUILayers.ContainsKey(key) && !_ActiveUILayers.ContainsKey(key))
+            if (_allUILayers.ContainsKey(key) && !_activeUILayers.ContainsKey(key))
             {
-                _ActiveUILayers.Add(key, _AllUILayers[key]);
+                _activeUILayers.Add(key, _allUILayers[key]);
             }
         }
         
@@ -88,7 +66,7 @@ namespace BFB.Engine.UI
 
         public void Update()
         {
-            foreach ((string key, UILayer uiLayer) in _ActiveUILayers)
+            foreach ((string _, UILayer uiLayer) in _activeUILayers)
             {
                 uiLayer.SetRoot(new UIRootComponent(_graphicsDevice.Viewport.Bounds));
                 uiLayer.Body();
@@ -103,7 +81,7 @@ namespace BFB.Engine.UI
 
         public void Draw(SpriteBatch graphics)
         {
-            foreach ((string key,UILayer uiLayer) in _ActiveUILayers)
+            foreach ((string _,UILayer uiLayer) in _activeUILayers)
             {
                 RenderComponent(uiLayer.RootUI, graphics);
             }
@@ -143,8 +121,9 @@ namespace BFB.Engine.UI
          */
         private void RenderComponent(UIComponent node, SpriteBatch graphics)
         {
-            node.Render(graphics, _UITexture[node.TextureKey], _UIFont[node.FontKey]);
-            DrawBorder(new Rectangle(node.X,node.Y,node.Width,node.Height),1,Color.Black, graphics,_UITexture["default"]);//For debug
+            node.Render(graphics, _contentManager.GetTexture(node.TextureKey), _contentManager.GetFont(node.TextureKey));
+            
+            DrawBorder(new Rectangle(node.X,node.Y,node.Width,node.Height),1,Color.Black, graphics,_contentManager.GetTexture("default"));//For debug
 
             foreach (UIComponent childNode in node.Children)
             {
@@ -177,14 +156,8 @@ namespace BFB.Engine.UI
 
          public void Dispose()
          {
-             foreach ((string key,Texture2D texture) in _UITexture)
-             {
-                 texture.Dispose();
-             }
-             
-             _UITexture.Clear();
-             _ActiveUILayers.Clear();
-             _AllUILayers.Clear();
+             _activeUILayers.Clear();
+             _allUILayers.Clear();
          }
          
          #endregion

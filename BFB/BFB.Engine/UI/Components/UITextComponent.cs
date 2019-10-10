@@ -1,3 +1,4 @@
+
 using System;
 using System.Text;
 using Microsoft.Xna.Framework;
@@ -28,9 +29,29 @@ namespace BFB.Engine.UI.Components
             base.Render(graphics, texture, font);
 
             string text = _propertySelector == null ? WrapText(font,_text, Width,Height) : WrapText(font, _propertySelector(_model), Width, Height);
-            (float x, float y) = font.MeasureString(text);
-            graphics.DrawString(font, text, new Vector2(X + Width/2,Y + Height/2) , Color,0,new Vector2(x/2,y/2), FontSize,SpriteEffects.None,1);
             
+//            (float x, float y) = font.MeasureString(text);
+//            graphics.DrawString(font, text, new Vector2(X + Width/2,Y + Height/2) , Color,0,new Vector2(x/2,y/2), FontSize,SpriteEffects.None,1);
+            
+            DrawString(graphics, font, text, new Rectangle(X,Y,Width,Height));
+        }
+        
+        private static void DrawString(SpriteBatch graphics, SpriteFont font, string strToDraw, Rectangle boundaries)
+        {
+            
+            (float x, float y) = font.MeasureString(strToDraw);
+
+            // Taking the smaller scaling value will result in the text always fitting in the boundaries.
+            float scale = System.Math.Min(boundaries.Width / x, boundaries.Height / y);
+
+            Vector2 position = new Vector2()
+            {
+                X = boundaries.X - (int)(x * scale / 2) + boundaries.Width / 2,
+                Y = boundaries.Y - (int)(y * scale / 2) + boundaries.Height / 2
+            };
+
+            // Draw the string to the sprite batch!
+            graphics.DrawString(font, strToDraw, position, Color.White, 0, Vector2.Zero, scale, SpriteEffects.None, 0);
         }
         
         #region TextWrapping
