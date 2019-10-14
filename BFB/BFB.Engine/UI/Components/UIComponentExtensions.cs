@@ -14,12 +14,21 @@ namespace BFB.Engine.UI.Components
         #endregion
         
         #region Hstack
-        
+                          
         public static UIComponent Hstack(this UIComponent parentNode, Action<UIComponent> handler)
         {
             return AddNode(parentNode, new UIHstackComponent(), handler);
         }
-        
+      
+      #endregion
+      
+        #region Zstack
+
+        public static UIComponent Zstack(this UIComponent parentNode, Action<UIComponent> handler)
+        {
+            return AddNode(parentNode, new UIZstackComponent(), handler);
+        }
+
         #endregion
 
         #region Spacer

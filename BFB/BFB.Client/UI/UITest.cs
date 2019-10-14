@@ -1,3 +1,4 @@
+using System.Net.Mime;
 using System.Runtime.ConstrainedExecution;
 using BFB.Engine.UI;
 using BFB.Engine.UI.Components;
@@ -37,7 +38,8 @@ namespace BFB.Client.UI
                                 v2.Text("Test Text")
                                     .Width(0.8f)
                                     .Height(0.8f)
-                                    .Center();
+                                    .Center()
+                                    .Image("button");
                             });
 
 
@@ -46,13 +48,10 @@ namespace BFB.Client.UI
                                 v2.Text("Test Text")
                                     .Width(0.8f)
                                     .Height(0.8f)
-                                    .Center();
+                                    .Center()
+                                    .Image("button");
                             });
                         });
-
-
-
-
 
                         v1.Hstack(h2 =>
                         {
@@ -61,7 +60,8 @@ namespace BFB.Client.UI
                                 v2.Text("Test Text")
                                     .Width(0.8f)
                                     .Height(0.8f)
-                                    .Center();
+                                    .Center()
+                                    .Image("button");
                             });
 
                             h2.Vstack(v2 =>
@@ -69,15 +69,10 @@ namespace BFB.Client.UI
                                 v2.Text("Test Text")
                                     .Width(0.8f)
                                     .Height(0.8f)
-                                    .Center();
+                                    .Center()
+                                    .Image("button");
                             });
                         });
-
-
-
-
-
-
 
                         v1.Hstack(h2 =>
                         {
@@ -86,7 +81,8 @@ namespace BFB.Client.UI
                                 v2.Text("Test Text")
                                     .Width(0.8f)
                                     .Height(0.8f)
-                                    .Center();
+                                    .Center()
+                                    .Image("button");
                             });
 
                             h2.Vstack(v2 =>
@@ -94,7 +90,8 @@ namespace BFB.Client.UI
                                 v2.Text("Test Text")
                                     .Width(0.8f)
                                     .Height(0.8f)
-                                    .Center();
+                                    .Center()
+                                    .Image("button");
                             });
 
                             h2.Vstack(v2 =>
@@ -102,21 +99,18 @@ namespace BFB.Client.UI
                                 v2.Text("Test Text")
                                     .Width(0.8f)
                                     .Height(0.8f)
-                                    .Center();
+                                    .Center()
+                                    .Image("button");
                             });
                         });
-
-
-
-
-
 
                         v1.Vstack(v2 =>
                         {
                             v2.Text("Back")
                                 .Width(0.8f)
                                 .Height(0.8f)
-                                .Center();
+                                .Center()
+                                .Image("button");
                         });
 
                     })

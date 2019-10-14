@@ -121,9 +121,9 @@ namespace BFB.Engine.UI
          */
         private void RenderComponent(UIComponent node, SpriteBatch graphics)
         {
-            node.Render(graphics, _contentManager.GetTexture(node.TextureKey), _contentManager.GetFont(node.TextureKey));
+            node.Render(graphics, _contentManager.GetTexture(node.TextureKey), _contentManager.GetFont(node.FontKey));
             
-            DrawBorder(new Rectangle(node.X,node.Y,node.Width,node.Height),1,Color.Black, graphics,_contentManager.GetTexture("default"));//For debug
+//            DrawBorder(new Rectangle(node.X,node.Y,node.Width,node.Height),1,Color.Black, graphics,_contentManager.GetTexture("default"));//For debug
 
             foreach (UIComponent childNode in node.Children)
             {

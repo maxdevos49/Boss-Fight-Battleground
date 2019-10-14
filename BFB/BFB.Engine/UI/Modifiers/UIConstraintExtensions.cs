@@ -70,9 +70,16 @@ namespace BFB.Engine.UI.Modifiers
         
         #endregion
         
-        #region Scale (TODO)
+        #region Image
+
+        public static UIComponent Image(this UIComponent component, string textureKey)
+        {
+            component.TextureKey = textureKey;
+            component.Background = Microsoft.Xna.Framework.Color.White;
+            return component;
+        }
         
-        #endregion 
+        #endregion
         
         #region Animate (TODO)
         

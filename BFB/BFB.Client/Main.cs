@@ -9,7 +9,6 @@ using BFB.Engine.UI;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using NVorbis.Ogg;
 
 namespace BFB.Client
 {
@@ -153,6 +152,8 @@ namespace BFB.Client
             defaultTexture.SetData(new[] { Color.White });
             _contentManager.AddTexture("default", defaultTexture);
             
+            _contentManager.AddTexture("spaceship", Content.Load<Texture2D>("Sprites\\spaceship"));
+            _contentManager.AddTexture("button", Content.Load<Texture2D>("Sprites\\button"));
         }
 
         #endregion
@@ -161,7 +162,6 @@ namespace BFB.Client
 
         protected override void UnloadContent()
         {
-
             Content.Unload();
             base.UnloadContent();
         }
