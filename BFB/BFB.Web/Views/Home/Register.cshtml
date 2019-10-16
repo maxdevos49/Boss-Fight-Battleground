@@ -1,42 +1,39 @@
 ﻿@section head{
     <style type="text/css">
-        body {
-            background-image: url('https://cdn.discordapp.com/attachments/615650273637040224/616784907875909632/SPOILER_the_cooler_team_better_lines.png');
-            margin: 0;
-        }
-
         form {
             background: rgba(204, 204, 204, 0.6);
             border: 2px solid black;
             padding: 10px;
         }
         .text-center {
-            color: white;
-            text-shadow: 2px 2px #000000;
+            color: black;
+            
         }
     </style>
 }
 @{
     ViewData["Title"] = "Register";
 }
-        <div class="text-center">
-            <h1 class="display-4">Create an Account</h1>
-            <p>Join the mayhem.</p>
-        </div>
+@model BFB.Web.Models.RegisterFormModel
 
-        <form>
-            <div class="form-group">
-                <label for="registerUsername">Username</label>
-                <input type="text" class="form-control" id="registerUsername" placeholder="Username" />
-            </div>
-            <div class="form-group">
-                <label for="registerEmail">Email</label>
-                <input type="email" class="form-control" id="registerEmail" placeholder="Enter email">
-            </div>
-            <div class="form-group">
-                <label for="registerPassword">Password</label>
-                <input type="password" class="form-control" id="registerPassword" aria-describedby="registerHelp" placeholder="Password">
-                <small id="registerHelp" class="form-text text-muted">Boss Fight Battlegrounds will never share your information with anyone.</small>
-            </div>
-            <button type="submit" class="btn btn-primary">Create Account</button>
-        </form>
+    <div class="text-center">
+        <h1 class="display-4">Create an Account</h1>
+        <p>Join the mayhem.</p>
+    </div>
+
+    <form asp-action="Register" asp-controller="RegisterForm">
+        <div class="form-group">
+            <label asp-for="Username">Username</label>
+            <input asp-for="Username" type="text" class="form-control" placeholder="Username" />
+        </div>
+        <div class="form-group">
+            <label asp-for="Email">Email</label>
+            <input asp-for="Email" type="email" class="form-control" id="registerEmail" placeholder="Enter email">
+        </div>
+        <div class="form-group">
+            <label asp-for="Password">Password</label>
+            <input asp-for="Password" type="password" class="form-control" id="registerPassword" aria-describedby="registerHelp" placeholder="Password">
+            <small id="registerHelp" class="form-text text-muted">Boss Fight Battlegrounds will never share your information with anyone.</small>
+        </div>
+        <button type="submit" class="btn btn-primary">Create Account</button>
+    </form>
