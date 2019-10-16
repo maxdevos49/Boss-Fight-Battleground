@@ -1,5 +1,3 @@
-using System.Net.Mime;
-using System.Runtime.ConstrainedExecution;
 using BFB.Engine.UI;
 using BFB.Engine.UI.Components;
 using BFB.Engine.UI.Modifiers;
@@ -18,100 +16,68 @@ namespace BFB.Client.UI
             {
                 h1.Vstack(v1 =>
                     {
-                        v1.Hstack(h2 =>
-                        {
-                            h2.Vstack(v2 =>
-                            {
-                                v2.Text("Title")
-                                    .Width(0.8f)
-                                    .Height(
-                                        0.8f) //Class and Id selectors on on there way after making this layout. They will include default styles for some elements
-                                    .FontSize(3)
-                                    .Center();
-                            });
-                        });
+                        
+                        v1.Button("test")
+                            .Width(0.5f)
+                            .Center()
+                            .Image("button");
 
                         v1.Hstack(h2 =>
                         {
-                            h2.Vstack(v2 =>
-                            {
-                                v2.Text("Test Text")
-                                    .Width(0.8f)
-                                    .Height(0.8f)
-                                    .Center()
-                                    .Image("button");
-                            });
+                            
+                            h2.Text("Test Text")
+                                .Width(0.8f)
+                                .Height(0.8f)
+                                .Center()
+                                .Image("button");
 
 
-                            h2.Vstack(v2 =>
-                            {
-                                v2.Text("Test Text")
-                                    .Width(0.8f)
-                                    .Height(0.8f)
-                                    .Center()
-                                    .Image("button");
-                            });
-                        });
-
-                        v1.Hstack(h2 =>
-                        {
-                            h2.Vstack(v2 =>
-                            {
-                                v2.Text("Test Text")
-                                    .Width(0.8f)
-                                    .Height(0.8f)
-                                    .Center()
-                                    .Image("button");
-                            });
-
-                            h2.Vstack(v2 =>
-                            {
-                                v2.Text("Test Text")
-                                    .Width(0.8f)
-                                    .Height(0.8f)
-                                    .Center()
-                                    .Image("button");
-                            });
-                        });
-
-                        v1.Hstack(h2 =>
-                        {
-                            h2.Vstack(v2 =>
-                            {
-                                v2.Text("Test Text")
-                                    .Width(0.8f)
-                                    .Height(0.8f)
-                                    .Center()
-                                    .Image("button");
-                            });
-
-                            h2.Vstack(v2 =>
-                            {
-                                v2.Text("Test Text")
-                                    .Width(0.8f)
-                                    .Height(0.8f)
-                                    .Center()
-                                    .Image("button");
-                            });
-
-                            h2.Vstack(v2 =>
-                            {
-                                v2.Text("Test Text")
-                                    .Width(0.8f)
-                                    .Height(0.8f)
-                                    .Center()
-                                    .Image("button");
-                            });
-                        });
-
-                        v1.Vstack(v2 =>
-                        {
-                            v2.Text("Back")
+                            
+                            h2.Text("Test Text")
                                 .Width(0.8f)
                                 .Height(0.8f)
                                 .Center()
                                 .Image("button");
                         });
+
+                        v1.Hstack(h2 =>
+                        {
+                            h2.Text("Test Text")
+                                .Width(0.8f)
+                                .Height(0.8f)
+                                .Center()
+                                .Image("button");
+
+                            h2.Text("Test Text")
+                                .Width(0.8f)
+                                .Height(0.8f)
+                                .Center()
+                                .Image("button");
+                        });
+
+                        v1.Hstack(h2 =>
+                        {
+                            h2.Text("Test Text")
+                                .Width(0.8f)
+                                .Height(0.8f)
+                                .Center()
+                                .Image("button");
+
+                            h2.Text("Test Text")
+                                .Width(0.8f)
+                                .Height(0.8f)
+                                .Center()
+                                .Image("button");
+                            
+                            h2.Text("Test Text")
+                                .Width(0.8f)
+                                .Height(0.8f)
+                                .Center()
+                                .Image("button");
+                        });
+
+                        v1.Text("Back")
+                            .Image("button");
 
                     })
                     .Grow(4)
@@ -125,15 +91,13 @@ namespace BFB.Client.UI
 //            RootUI.Hstack((h1) =>
 //            {
 //                h1.Spacer();
-//                    {
+//                    
 //                        //Title
 //
 //                //Main menu panel
 //                h1.Vstack((v2) =>
-//                        v2.Hstack((h2) =>
-//                            {
-//                                
-//                            })
+//                    {
+//                        v2.Hstack((h2) => {})
 //                            .Background(Color.Red)
 //                            .Grow(2);
 //

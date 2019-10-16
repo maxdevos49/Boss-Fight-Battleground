@@ -62,7 +62,13 @@ namespace BFB.Engine.UI.Components
         
         #endregion
         
-        #region Button (TODO)
+        #region Button
+
+        public static UIComponent Button(this UIComponent component, string text)
+        {
+            return AddNode(component, new UIButtonComponent(text), null);
+        }
+       
         
         #endregion
         

@@ -68,9 +68,9 @@ namespace BFB.Engine.UI
         {
             foreach ((string _, UILayer uiLayer) in _activeUILayers)
             {
-                uiLayer.SetRoot(new UIRootComponent(_graphicsDevice.Viewport.Bounds));
+                uiLayer.InitializeRoot(new UIRootComponent(_graphicsDevice.Viewport.Bounds));
                 uiLayer.Body();
-                BuildComponent(uiLayer.RootUI);
+                BuildComponent(uiLayer, uiLayer.RootUI);
             }
            
         }
@@ -102,13 +102,13 @@ namespace BFB.Engine.UI
         /**
          * Recursively generates the UI structure and applies the UIConstraints and modifiers
          */
-        public void BuildComponent(UIComponent node)
+        private void BuildComponent(UILayer layer, UIComponent  node)
         {
-            node.Build();
+            node.Build(layer);
 
             foreach (UIComponent childNode in node.Children)
             {
-                BuildComponent(childNode);
+                BuildComponent(layer, childNode);
             }
         }
 

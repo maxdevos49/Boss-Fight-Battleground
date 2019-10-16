@@ -8,9 +8,6 @@ namespace BFB.Engine.UI.Components
         public UIHstackComponent() : base(nameof(UIHstackComponent))
         {
             StackDirection = StackDirection.Horizontal;
-            AddConstraint(new UIHeightConstraint(1f));
-            AddConstraint(new UIWidthConstraint(1f));
-            AddConstraint(new UICenterConstraint());
         }
     }
 }

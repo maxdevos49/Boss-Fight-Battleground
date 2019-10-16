@@ -8,9 +8,6 @@ namespace BFB.Engine.UI.Components
         public UIVstackComponent() : base(nameof(UIVstackComponent))
         {
             StackDirection = StackDirection.Vertical;
-            AddConstraint(new UIHeightConstraint(1f));
-            AddConstraint(new UIWidthConstraint(1f));
-            AddConstraint(new UICenterConstraint());
         }
     }
 }

@@ -36,7 +36,7 @@ namespace BFB.Engine.UI.Components
             DrawString(graphics, font, text, new Rectangle(X,Y,Width,Height));
         }
         
-        private static void DrawString(SpriteBatch graphics, SpriteFont font, string strToDraw, Rectangle boundaries)
+        private void DrawString(SpriteBatch graphics, SpriteFont font, string strToDraw, Rectangle boundaries)
         {
             
             (float x, float y) = font.MeasureString(strToDraw);
@@ -51,7 +51,7 @@ namespace BFB.Engine.UI.Components
             };
 
             // Draw the string to the sprite batch!
-            graphics.DrawString(font, strToDraw, position, Color.White, 0, Vector2.Zero, scale, SpriteEffects.None, 0);
+            graphics.DrawString(font, strToDraw, position, Color, 0, Vector2.Zero, scale, SpriteEffects.None, 0);
         }
         
         #region TextWrapping
