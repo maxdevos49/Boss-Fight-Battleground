@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using BFB.Web.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
+using MySql.Data.MySqlClient;
 
 namespace BFB.Web.Controllers
 {
@@ -23,10 +24,16 @@ namespace BFB.Web.Controllers
         [HttpPost, ValidateAntiForgeryToken]
         public IActionResult Register(RegisterFormModel model)
         {
-            using (SqlConnection db = new SqlConnection(connString))
+            using (MySqlConnection db = new MySqlConnection(connString))
             {
-
-                db.Open();
+                try
+                {
+                    db.Open();
+                }
+                catch(Exception e)
+                {
+                    return Content(e.ToString());
+                }
             }
             return Content($"Hello {model.Username}");
         }
