@@ -5,8 +5,7 @@ namespace BFB.Engine.Event
     public class UIEvent : Event
     {
         
-        public UIEvent()
-        {
-        }
+        public UIComponent Component { get; set; }
+        
     }
 }

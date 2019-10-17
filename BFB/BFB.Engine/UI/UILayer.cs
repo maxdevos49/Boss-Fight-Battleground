@@ -11,7 +11,7 @@ namespace BFB.Engine.UI
         
         public UIRootComponent RootUI { get; set; }
 
-        private List<UIComponent> _eventComponents;
+        private readonly List<UIComponent> _eventComponents;
 
         protected UILayer(string key)
         {
@@ -30,12 +30,21 @@ namespace BFB.Engine.UI
             RootUI = rootNode;
         }
 
-        public void ProcessEvents(UIEvent e)
+        /**
+         * Returning true is to return as if nothing happened
+         */
+        public bool ProcessEvents(UIEvent e)
         {
             foreach (UIComponent eventComponent in _eventComponents)
             {
+                //TODO add a tab index/active component. (For key events and tabbing)
+                //TODO only pick elements focused or at location depending on if mouse or key events
                 
+                if (eventComponent.ProcessEvent(e))
+                    return false;
             }
+
+            return true;
         }
 
         public void AddEventComponent(UIComponent component)

@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using BFB.Engine.Content;
+using BFB.Engine.Event;
 using BFB.Engine.UI.Components;
 using JetBrains.Annotations;
 using Microsoft.Xna.Framework;
@@ -54,6 +55,8 @@ namespace BFB.Engine.UI
 
         #endregion
         
+        #region Start
+        
         public void Start(string key)
         {
             if (_allUILayers.ContainsKey(key) && !_activeUILayers.ContainsKey(key))
@@ -61,6 +64,8 @@ namespace BFB.Engine.UI
                 _activeUILayers.Add(key, _allUILayers[key]);
             }
         }
+        
+        #endregion
         
         #region Update
 
@@ -151,6 +156,20 @@ namespace BFB.Engine.UI
         }
 
      #endregion
+
+         public bool ProcessEvents(InputEvent inputEvent)
+         {
+             
+             //TODO convert to UIEvent
+             
+             foreach ((string _, UILayer uiLayer) in _activeUILayers)
+             {
+                 if (uiLayer.ProcessEvents(null))
+                     return false;
+             }
+             
+             return true;
+         }
         
         #region Dispose
 

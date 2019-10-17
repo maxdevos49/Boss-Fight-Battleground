@@ -9,7 +9,7 @@ namespace BFB.Engine.Input
         private readonly MouseInput _mouseInput;
         private readonly KeyboardInput _keyboardInput;
 
-        public InputManager(EventManager eventManager, InputConfig configuration)
+        public InputManager(EventManager<InputEvent> eventManager, InputConfig configuration)
         {
             _configuration = configuration;
 

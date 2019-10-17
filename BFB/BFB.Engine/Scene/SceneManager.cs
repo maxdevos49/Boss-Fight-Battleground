@@ -22,7 +22,7 @@ namespace BFB.Engine.Scene
         //Dependencies
         private readonly ContentManager _contentManager;
         private readonly GraphicsDeviceManager _graphicsManager;
-        private readonly EventManager _eventManager;
+        private readonly EventManager<GlobalEvent> _eventManager;
 
         //Properties
         private readonly Dictionary<string, Scene> _allScenes;
@@ -30,7 +30,7 @@ namespace BFB.Engine.Scene
 
         #region constructor
 
-        public SceneManager(ContentManager contentManager, GraphicsDeviceManager graphicsManager, EventManager eventManager)
+        public SceneManager(ContentManager contentManager, GraphicsDeviceManager graphicsManager, EventManager<GlobalEvent> eventManager)
         {
             _contentManager = contentManager;
             _graphicsManager = graphicsManager;
@@ -67,7 +67,7 @@ namespace BFB.Engine.Scene
         {
             if (SceneExist(scene.Key)) return;
             
-            scene.InjectDependencies(this, _contentManager, _graphicsManager, _eventManager);
+//            scene.InjectDependencies(this, _contentManager, _graphicsManager, _eventManager);
             _allScenes.Add(scene.Key, scene);
         }
 

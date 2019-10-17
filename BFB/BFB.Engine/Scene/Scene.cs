@@ -1,20 +1,49 @@
 ﻿using System;
 using System.Collections.Generic;
+using BFB.Engine.Content;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
 using BFB.Engine.Event;
+using BFB.Engine.UI;
 using JetBrains.Annotations;
 
 namespace BFB.Engine.Scene
 {
     public abstract class Scene
     {
-        protected SceneManager SceneManager;
-        protected ContentManager ContentManager;
-        protected GraphicsDeviceManager GraphicsDeviceManager;
-        protected EventManager EventManager;
+        /**
+         * Scene manager used to control scene state
+         */
+        public static SceneManager SceneManager { get; set; }
+        
+        /**
+         * UI Manager for controlling UI related things
+         */
+        public static UIManager UIManager { get; set; }
+        
+        /**
+         * Used to distribute content across the application without loading things twice and so on
+         */
+        public static BFBContentManager ContentManager { get; set; }
+        
+        /**
+         * Contains useful drawing stuff
+         */
+        public static GraphicsDeviceManager GraphicsDeviceManager { get; set; }
+        
+        /**
+         * Used for global events
+         */
+        public static EventManager<GlobalEvent> GlobalEventManager { get; set; }
+        
+        /**
+         * Used for input events only
+         */
+        public static EventManager<InputEvent> InputEventManager { get; set; }
+        
+        
         private readonly List<int> _eventListenerIds;
         
         private SceneStatus _status;
@@ -23,20 +52,8 @@ namespace BFB.Engine.Scene
         protected Scene(string key)
         {
             Key = key;
-            _status = SceneStatus.Inoperable;
-            _eventListenerIds = new List<int>();
-        }
-
-        //Inject the scene dependencies
-        public void InjectDependencies(SceneManager sceneManager, ContentManager contentManager, GraphicsDeviceManager graphicsManager, EventManager eventManager)
-        {
-            SceneManager = sceneManager;
-            ContentManager = contentManager;
-            GraphicsDeviceManager = graphicsManager;
-            EventManager = eventManager;
-
-            //Indicate the scene is now in a operable state but inactive
             _status = SceneStatus.Inactive;
+            _eventListenerIds = new List<int>();
         }
 
         /**
@@ -83,10 +100,10 @@ namespace BFB.Engine.Scene
 
         protected virtual void Load() { }
 
-        public virtual void Unload()
+        protected virtual void Unload()
         {
             foreach (int id in _eventListenerIds)
-                EventManager.RemoveEventListener(id);
+                GlobalEventManager.RemoveEventListener(id);
         }
 
         public virtual void Update([UsedImplicitly] GameTime gameTime) { }
@@ -95,7 +112,7 @@ namespace BFB.Engine.Scene
 
         public void AddEventListener(string eventKey, Action<Event.Event> eventHandler)
         {
-            _eventListenerIds.Add(EventManager.AddEventListener(eventKey, eventHandler));
+            _eventListenerIds.Add(GlobalEventManager.AddEventListener(eventKey, eventHandler));
         }
     }
 }

@@ -103,7 +103,10 @@ namespace BFB.Engine.UI.Components
         
         #region ProcessEvent
 
-        public void ProcessEvent(UIEvent e)
+        /**
+         * Returning true means do everything as normal or no event was caught
+         */
+        public bool ProcessEvent(UIEvent e)
         {
             foreach ((string key, Action<UIEvent> value) in _eventHandlers)
             {
@@ -111,8 +114,10 @@ namespace BFB.Engine.UI.Components
                     value.Invoke(e);
 
                 if (!e.Propagate())
-                    break;
+                    return false;
             }
+
+            return true;
         }
         
         #endregion

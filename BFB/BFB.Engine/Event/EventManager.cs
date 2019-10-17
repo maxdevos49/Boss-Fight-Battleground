@@ -2,29 +2,29 @@
 using System;
 using System.Linq;
 using System.Collections.Generic;
-using System.Threading;
 
 //Jetbrains
 using JetBrains.Annotations;
 
 namespace BFB.Engine.Event
 {
-    public class EventManager
+    public class EventManager<TEvent> where TEvent : Event, new()
     {
-        //Dictionary<string:EventKey, Dictionary<int:HandlerId, Func<IEvent>>> EventHandlers;
-        private readonly Dictionary<string, Dictionary<int, Action<Event>>> EventHandlers;
+        private readonly Dictionary<string, Dictionary<int, Action<TEvent>>> _eventHandlers;
+        public Func<TEvent,bool> OnEventProcess { get; set; }
 
-        private int EventHandlerId;
-        private int EventId;
+        private int _eventHandlerId;
+        private int _eventId;
 
-        private Queue<Event> EventQueue;
+        private readonly Queue<TEvent> _eventQueue;
 
         public EventManager()
         {
-            EventHandlerId = 0;
-            EventId = 0;
-            EventHandlers = new Dictionary<string, Dictionary<int, Action<Event>>>();
-            EventQueue = new Queue<Event>();
+            _eventHandlerId = 0;
+            _eventId = 0;
+            _eventHandlers = new Dictionary<string, Dictionary<int, Action<TEvent>>>();
+            _eventQueue = new Queue<TEvent>();
+            OnEventProcess = null;
         }
 
 
@@ -32,24 +32,24 @@ namespace BFB.Engine.Event
          * Adds an event listener for a specified event
          * */
         [UsedImplicitly]
-        public int AddEventListener(string eventKey, Action<Event> eventCallback)
+        public int AddEventListener(string eventKey, Action<TEvent> eventCallback)
         {
             //get handlerId
-            int id = EventHandlerId++;
+            int id = _eventHandlerId++;
 
             //add event handler
-            if (EventHandlers.ContainsKey(eventKey))
+            if (_eventHandlers.ContainsKey(eventKey))
             {
                 //event type already exist
-                EventHandlers[eventKey].Add(id, eventCallback);
+                _eventHandlers[eventKey].Add(id, eventCallback);
             }
             else
             {
                 //event type does not exist so add it
-                EventHandlers.Add(eventKey, new Dictionary<int, Action<Event>>());
+                _eventHandlers.Add(eventKey, new Dictionary<int, Action<TEvent>>());
 
                 //add event handler
-                EventHandlers[eventKey].Add(id, eventCallback);
+                _eventHandlers[eventKey].Add(id, eventCallback);
             }
 
             return id;
@@ -62,33 +62,25 @@ namespace BFB.Engine.Event
         [UsedImplicitly]
         public void RemoveEventListener(int eventHandlerId)
         {
-            foreach (var eventType in EventHandlers)
+            foreach ((string key, Dictionary<int, Action<TEvent>> _) in _eventHandlers.Where(eventType => eventType.Value.ContainsKey(eventHandlerId)))
             {
-
-                //check each event type
-                if (eventType.Value.ContainsKey(eventHandlerId))
-                {
-                    //remove the handler
-                    EventHandlers[eventType.Key].Remove(eventHandlerId);
-                    break;
-                }
+                //remove the handler
+                _eventHandlers[key].Remove(eventHandlerId);
+                break;
             }
         }
 
 
-        public void Emit(string eventKey, Event eventData = null)
+        public void Emit(string eventKey, TEvent eventData = null)
         {
-            //All fired events
-//            Console.WriteLine($"EventKey: \"{eventKey}\", Mouse X/Y: {eventData?.Mouse?.X},{eventData?.Mouse?.Y}, Key: {eventData?.Keyboard?.Key}");
-            
             if (eventData == null)
-                eventData = new Event();
+                eventData = new TEvent();
 
-            eventData.EventId = (EventId++);
+            eventData.EventId = (_eventId++);
             eventData.EventKey = eventKey;
 
-            if (EventHandlers.ContainsKey(eventKey))
-                EventQueue.Enqueue(eventData);
+            if (_eventHandlers.ContainsKey(eventKey))
+                _eventQueue.Enqueue(eventData);
         }
 
         /**
@@ -96,28 +88,20 @@ namespace BFB.Engine.Event
          * */
         public void ProcessEvents()
         {
-            while (EventQueue.Count > 0)
+            while (_eventQueue.Count > 0)
             {
-                Event currentEvent = EventQueue.Dequeue();
+                TEvent currentEvent = _eventQueue.Dequeue();
+
+                //True means continue as normal. false means cancel event. Aka dont process it
+                if (!(OnEventProcess?.Invoke(currentEvent) ?? true)) continue;
                 
                 //loop through existing handlers for that event
-                foreach (var eventHandler in EventHandlers[currentEvent.EventKey].ToList())
+                foreach ((int _, Action<TEvent> eventHandler) in _eventHandlers[currentEvent.EventKey].ToList().TakeWhile(eventHandler => currentEvent.Propagate()))
                 {
-                    //Check if propagation was canceled
-                    if (currentEvent.Propagate())
-                    {
-                        //Call event handler
-                        eventHandler.Value(currentEvent);
-
-                        //Event log
-                        //Console.WriteLine($"EventId: {eventData.EventId}, EventKey: \"{eventData.EventKey}\", EventHandlerId: {handler.Key}");
-                    }
-                    else
-                    {
-                        //event was canceled
-                        break;
-                    }
+                    //Call event handler
+                    eventHandler(currentEvent);
                 }
+
             }
         }
     }

@@ -19,7 +19,10 @@ namespace BFB.Client
         private InputManager _inputManager;
         private SceneManager _sceneManager;
         private UIManager _uiManager;
-        private EventManager _eventManager;
+        
+        private EventManager<GlobalEvent> _globalEventManager;
+        private EventManager<InputEvent> _inputEventManager;
+        
         private BFBContentManager _contentManager;
 
         private SpriteBatch _spriteBatch;
@@ -60,7 +63,7 @@ namespace BFB.Client
             #region Window Options
             
             Window.Title = "Boss Fight Battlegrounds";
-            Window.ClientSizeChanged += new EventHandler<EventArgs>(Window_ClientSizeChanged);
+            Window.ClientSizeChanged += Window_ClientSizeChanged;
             Window.AllowUserResizing = true;
             
             #endregion
@@ -69,11 +72,25 @@ namespace BFB.Client
             
             _spriteBatch = new SpriteBatch(GraphicsDevice);
             
-            _eventManager = new EventManager();
-            _inputManager = new InputManager(_eventManager, new InputConfig());
-            _sceneManager = new SceneManager(Content, _graphicsDeviceManager, _eventManager);
+            _globalEventManager = new EventManager<GlobalEvent>();
+            _inputEventManager = new EventManager<InputEvent>();
+            
+            _inputManager = new InputManager(_inputEventManager, new InputConfig());
             _contentManager = new BFBContentManager(Content);
+
+            _sceneManager = new SceneManager(Content, _graphicsDeviceManager, _globalEventManager);
             _uiManager = new UIManager(_graphicsDeviceManager.GraphicsDevice, _contentManager);
+
+            //Dependencies on scenes
+            Scene.SceneManager = _sceneManager;
+            Scene.UIManager = _uiManager;
+            Scene.ContentManager = _contentManager;
+            Scene.GraphicsDeviceManager = _graphicsDeviceManager;
+            Scene.GlobalEventManager = _globalEventManager;
+            Scene.InputEventManager = _inputEventManager;
+
+            //catch inputevents
+            _inputEventManager.OnEventProcess = _uiManager.ProcessEvents;
             
             #endregion
             
@@ -81,15 +98,11 @@ namespace BFB.Client
             
             //Register a scene here
             _sceneManager.AddScene(new Scene[] {
-                new DebugScene(),
-                new ExampleScene(),
-                new TileMapTestScene(),
-                new ConnectionScene(),
-                new MenuScene(),
+                new MainMenuScene(),
             });
 
             //start first scene
-            _sceneManager.StartScene(nameof(MenuScene));
+            _sceneManager.StartScene(nameof(MainMenuScene));
             
             #endregion
             
@@ -108,24 +121,24 @@ namespace BFB.Client
 
             #region Global Keypress Event Registration
             
-            _eventManager.AddEventListener("keypress", (Event) =>
+            _inputEventManager.AddEventListener("keypress", (e) =>
             {
                 // ReSharper disable once SwitchStatementMissingSomeCases
-                switch (Event.Keyboard.KeyEnum)
+                switch (e.Keyboard.KeyEnum)
                 {
                     case Keys.F3:
                         
-                        //Toggle debug scene
-                        if (_sceneManager.ActiveSceneExist(nameof(DebugScene)))
-                            _sceneManager.StopScene(nameof(DebugScene));
-                        else
-                            _sceneManager.LaunchScene(nameof(DebugScene));
-                        
-                        break;
+//                        //Toggle debug scene
+//                        if (_sceneManager.ActiveSceneExist(nameof(DebugScene)))
+//                            _sceneManager.StopScene(nameof(DebugScene));
+//                        else
+//                            _sceneManager.LaunchScene(nameof(DebugScene));
+//                        
+//                        break;
                     case Keys.M:
                         
                         //Return to main menu
-                        _sceneManager.StartScene(nameof(MenuScene));
+                        _sceneManager.StartScene(nameof(MainMenuScene));
                             
                         break;
                 }
@@ -176,7 +189,7 @@ namespace BFB.Client
             _inputManager.CheckInputs();
             
             //Process the events in the queue
-            _eventManager.ProcessEvents();
+            _globalEventManager.ProcessEvents();
 
             //Call update for active scenes
             _sceneManager.UpdateScenes(gameTime);
@@ -223,7 +236,7 @@ namespace BFB.Client
             _graphicsDeviceManager.PreferredBackBufferHeight = Window.ClientBounds.Height;
             _graphicsDeviceManager.ApplyChanges();
 
-            _eventManager.Emit("window-resize");
+            _globalEventManager.Emit("window-resize");
         }
         
         #endregion
