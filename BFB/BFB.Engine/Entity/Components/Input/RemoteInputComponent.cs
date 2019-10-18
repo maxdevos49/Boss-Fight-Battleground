@@ -13,21 +13,21 @@ namespace BFB.Engine.Entity.Components.Input
 
         private readonly object _lock;
 
-        private BfbVector _mouse;
+        private PlayerState _playerState;
         
         #endregion
 
         public RemoteInputComponent(ClientSocket socket)
         {
             _lock = new object();
-            _mouse = new BfbVector();
+            _playerState = new PlayerState();
             
             socket.On("/player/input", (m) =>
             {
                 InputMessage mm = (InputMessage) m;
                 lock (_lock)
                 {
-                    _mouse = mm.MousePosition;//Update new position
+                    _playerState = mm.PlayerInputState;//Update new position
                 }
             });
             
@@ -37,7 +37,26 @@ namespace BFB.Engine.Entity.Components.Input
         {
             lock (_lock)
             {
-                serverEntity.DesiredVector = BfbVector.Sub(_mouse, serverEntity.Position);
+                
+                //Resets the player movement
+                serverEntity.DesiredVector.X = 0;
+                serverEntity.DesiredVector.Y = 0;
+                //Moves player left
+                if (_playerState.Left)
+                {
+                    serverEntity.DesiredVector.Add(new BfbVector(-1,0));
+                }
+                //Moves player right
+                if (_playerState.Right)
+                {
+                    serverEntity.DesiredVector.Add(new BfbVector(1,0));
+                }
+                //Moves player up
+                if (_playerState.Jump)
+                {
+                    serverEntity.DesiredVector.Add(new BfbVector(0,1));
+                }
+                //serverEntity.DesiredVector = BfbVector.Sub(serverEntity.DesiredVector, serverEntity.Position);
             }
         }
     }

@@ -5,6 +5,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace BFB.Engine.Entity
 {
+    [Serializable]
     public class PlayerState
     {
         public bool Left;

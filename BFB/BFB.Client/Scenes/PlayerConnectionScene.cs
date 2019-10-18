@@ -18,7 +18,7 @@ namespace BFB.Client.Scenes
         private readonly object _lock;
         
         //Temp
-        private readonly BfbVector _mouse;
+        private PlayerInput _playerInput;
         private Texture2D _playerTexture;
 
         private readonly ClientSocketManager _server;
@@ -28,8 +28,7 @@ namespace BFB.Client.Scenes
         {
             _lock = new object();
             _entities = new Dictionary<string, ClientEntity>();
-            _server = new ClientSocketManager("10.31.31.42", 6969);
-            _mouse = new BfbVector();
+            _server = new ClientSocketManager("127.0.0.1", 6969);
         }
 
         protected override void Init()
@@ -39,15 +38,8 @@ namespace BFB.Client.Scenes
              * Scene events
              */
             #region Update Input State
+            _playerInput = new PlayerInput(this);
             
-            AddEventListener("mousemove", (e) =>
-            {
-                lock (_lock)
-                {
-                    _mouse.X = e.Mouse.X;
-                    _mouse.Y = e.Mouse.Y;
-                }
-            });
             
             #endregion
 
@@ -103,7 +95,7 @@ namespace BFB.Client.Scenes
             
             _server.On("/players/getUpdates", (m) =>
             {
-                _server.Emit("/player/input", new InputMessage {MousePosition = _mouse});
+                _server.Emit("/player/input", new InputMessage {PlayerInputState = _playerInput.GetPlayerState()});
             });
             
             #endregion
@@ -147,7 +139,7 @@ namespace BFB.Client.Scenes
                                     Position = em.Position,
                                     Rotation = em.Rotation,
                                     Origin = em.Origin
-                                }, new AnimationComponent(_playerTexture)));
+                                }, new AnimationComponent(_playerTexture)));//Change this to have sprite work correctly.
                         }
                     }
                 }
@@ -164,7 +156,7 @@ namespace BFB.Client.Scenes
         
         protected override void Load()
         {
-            _playerTexture = ContentManager.Load<Texture2D>("Sprites\\SpaceshipSpritesheet");
+            _playerTexture = ContentManager.Load<Texture2D>("Sprites\\PlayerIdleRight"); //Change this for requested texture or spritesheet.
         }
         
         #endregion

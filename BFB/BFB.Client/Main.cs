@@ -68,6 +68,7 @@ namespace BFB
                 new ExampleScene(),
                 new TileMapTestScene(),
                 new ConnectionScene(),
+                new PlayerConnectionScene(), 
                 new MenuScene(),
             });
 

@@ -103,7 +103,7 @@ namespace BFB.Server
                         Origin = new BfbVector(50,50),
                     }, new ComponentOptions
                     {
-                        Physics = new AccelerateComponent(),
+                        Physics = new AccelerateComponent(),//change this to new player Physics Componetnt.cs
                         Input = new RemoteInputComponent(_server.GetClient(m.ClientId))
                     });
                 

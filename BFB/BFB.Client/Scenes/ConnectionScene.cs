@@ -103,7 +103,7 @@ namespace BFB.Client.Scenes
             
             _server.On("/players/getUpdates", (m) =>
             {
-                _server.Emit("/player/input", new InputMessage {MousePosition = _mouse});
+               // _server.Emit("/player/input", new InputMessage {PlayerInputState = _mouse});
             });
             
             #endregion
