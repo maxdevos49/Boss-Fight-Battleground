@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using BFB.Web.Controllers;
 using BFB.Web.Models;
+using BFB.Web.Services;
 using JetBrains.Annotations;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -66,6 +67,7 @@ namespace BFB.Web
 
             var db = app.ApplicationServices.GetRequiredService<DatabaseConfig>();
             db.Database.EnsureCreated();
+            DatabaseService.db = db;
 
             app.UseMvc(routes =>
             {
