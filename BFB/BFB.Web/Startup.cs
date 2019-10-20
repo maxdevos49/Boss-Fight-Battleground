@@ -38,14 +38,9 @@ namespace BFB.Web
 
             });
 
-            services.Configure<DatabaseConfig>(Configuration.GetSection("BFBDatabase"));
-
+            var connectionString = Configuration.GetSection("BFBDatabase");
             services.AddDbContextPool<DatabaseConfig>(
-                options => options.UseMySql(Configuration.GetSection("BFBDatabase").ToString(),
-                    mySqlOptions =>
-                    {
-                        mySqlOptions.ServerVersion(new Version(1, 0, 0), ServerType.MySql);
-                    }
+                x => x.UseMySql("Data Source = coms-309-ks-5.misc.iastate.edu; Initial Catalog = BFB; Uid = teamks5; Pwd = KS_5projectuser;"
                 ));
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
@@ -68,6 +63,9 @@ namespace BFB.Web
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
+
+            var db = app.ApplicationServices.GetRequiredService<DatabaseConfig>();
+            db.Database.EnsureCreated();
 
             app.UseMvc(routes =>
             {
