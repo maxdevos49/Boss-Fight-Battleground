@@ -17,8 +17,8 @@ namespace BFB.Web.Models
         public Boolean IsVerified { get; set; }
         public Boolean IsBanned { get; set; }
         public Boolean IsActive { get; set; }
-        public string InsertedOn { get; set; }
-        public string UpdatedOn { get; set; }
-        public string UpdatedBy { get; set; }
+        public DateTime InsertedOn { get; set; }
+        public DateTime UpdatedOn { get; set; }
+        public DateTime UpdatedBy { get; set; }
     }
 }

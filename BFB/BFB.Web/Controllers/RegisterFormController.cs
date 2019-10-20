@@ -17,7 +17,7 @@ namespace BFB.Web.Controllers
         [HttpPost, ValidateAntiForgeryToken]
         public IActionResult Register(RegisterFormModel model)
         {
-            DatabaseService.AddUserEntry(model.Username, model.Email, model.Password, DateTime.Now);
+            DatabaseService.AddUserEntry(model.Username, model.Email, model.Password);
             return Content($"Hello {model.Username}");
         }
     }

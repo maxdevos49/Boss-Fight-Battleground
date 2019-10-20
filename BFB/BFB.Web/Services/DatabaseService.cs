@@ -12,10 +12,11 @@ namespace BFB.Web.Services
     {
         public static DatabaseConfig db { get; set; }
 
+        #region BFB_User
         // Add a user to BFB_User table
-        public static void AddUserEntry(string username, string email, string password, DateTime currentTime)
+        public static void AddUserEntry(string username, string email, string password)
         {
-            string currentDate = currentTime.ToString("yyyy-MM-dd");
+            DateTime currentDate = DateTime.Now;
             db.BFB_User.Add(new BFB_User
             {
                 Username = username,
@@ -32,6 +33,7 @@ namespace BFB.Web.Services
             db.SaveChanges();
         }
 
+        // Check if a user with the given username and password exists in the database.
         public static Boolean ValidateUser(string username, string password)
         {
             var user = db.BFB_User
@@ -40,5 +42,6 @@ namespace BFB.Web.Services
 
             return (user.Count == 1);
         }
+        #endregion
     }
 }
