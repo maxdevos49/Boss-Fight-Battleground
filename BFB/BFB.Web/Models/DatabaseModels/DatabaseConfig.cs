@@ -13,12 +13,12 @@ namespace BFB.Web.Models
         public string ConnectionString { get; set; }
 
         public DbSet<BFB_User> BFB_User { get; set; }
-        public DbSet<BFB_UserRole> UserRoles { get; set; }
-        public DbSet<BFB_UserStats> UserStats { get; set; }
-        public DbSet<BFB_Role> Roles { get; set; }
-        public DbSet<BFB_Login> Logins { get; set; }
-        public DbSet<BFB_Game> Games { get; set; }
-        public DbSet<BFB_GameMembers> GameMembers { get; set; }
+        public DbSet<BFB_UserRole> BFB_UserRole { get; set; }
+        public DbSet<BFB_UserStats> BFB_UserStats { get; set; }
+        public DbSet<BFB_Role> BFB_Role { get; set; }
+        public DbSet<BFB_Login> BFB_Login { get; set; }
+        public DbSet<BFB_Game> BFB_Game { get; set; }
+        public DbSet<BFB_GameMembers> BFB_GameMembers { get; set; }
 
         
     }
