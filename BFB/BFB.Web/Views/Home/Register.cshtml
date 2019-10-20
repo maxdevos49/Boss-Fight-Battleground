@@ -24,15 +24,15 @@
     <form asp-action="Register" asp-controller="RegisterForm">
         <div class="form-group">
             <label asp-for="Username">Username</label>
-            <input asp-for="Username" type="text" class="form-control" placeholder="Username" />
+            <input asp-for="Username" type="text" class="form-control" placeholder="Username" required />
         </div>
         <div class="form-group">
             <label asp-for="Email">Email</label>
-            <input asp-for="Email" type="email" class="form-control" id="registerEmail" placeholder="Enter email">
+            <input asp-for="Email" type="email" class="form-control" id="registerEmail" placeholder="Enter email" required />
         </div>
         <div class="form-group">
             <label asp-for="Password">Password</label>
-            <input asp-for="Password" type="password" class="form-control" id="registerPassword" aria-describedby="registerHelp" placeholder="Password">
+            <input asp-for="Password" type="password" class="form-control" id="registerPassword" aria-describedby="registerHelp" placeholder="Password" required />
             <small id="registerHelp" class="form-text text-muted">Boss Fight Battlegrounds will never share your information with anyone.</small>
         </div>
         <button type="submit" class="btn btn-primary">Create Account</button>
