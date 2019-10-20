@@ -16,31 +16,6 @@ namespace BFB.Web.Controllers
         [HttpPost, ValidateAntiForgeryToken]
         public IActionResult Register(RegisterFormModel model, [FromServices] DatabaseConfig db)
         {
-            /*
-            using (MySqlConnection db = new MySqlConnection(connString))
-            {
-                try
-                {
-                    db.Open();
-
-                    string query = "INSERT INTO BFB_User (Username, Email, Password, IsVerified, IsBanned, IsActive, InsertedOn, UpdatedOn, UpdatedBy, EmailToken) VALUES(@username, @email, @pass, false, false, false, @time, @time, @time, null)";
-                    MySqlCommand command = new MySqlCommand(query, db);
-
-                    // Add parameters as values here rather than in the initial string to prevent SQL injection.
-                    command.Parameters.AddWithValue("@username", model.Username);
-                    command.Parameters.AddWithValue("@email", model.Email);
-                    command.Parameters.AddWithValue("@pass", model.Password);
-                    string currentDate = DateTime.Now.ToString("yyyy-MM-dd");
-                    command.Parameters.AddWithValue("@time", currentDate);
-
-                    command.ExecuteNonQuery();
-                }
-                catch(Exception e)
-                {
-                    return Content(e.ToString());
-                }
-                
-            } */
             string currentDate = DateTime.Now.ToString("yyyy-MM-dd");
             db.BFB_User.Add(new BFB_User
             {
