@@ -13,6 +13,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
 
 namespace BFB.Web
 {
@@ -38,6 +39,14 @@ namespace BFB.Web
             });
 
             services.Configure<DatabaseConfig>(Configuration.GetSection("BFBDatabase"));
+
+            services.AddDbContextPool<DatabaseConfig>(
+                options => options.UseMySql(Configuration.GetSection("BFBDatabase").ToString(),
+                    mySqlOptions =>
+                    {
+                        mySqlOptions.ServerVersion(new Version(1, 0, 0), ServerType.MySql);
+                    }
+                ));
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }

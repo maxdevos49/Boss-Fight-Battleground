@@ -24,6 +24,7 @@ namespace BFB.Web.Controllers
         [HttpPost, ValidateAntiForgeryToken]
         public IActionResult Register(RegisterFormModel model)
         {
+            /*
             using (MySqlConnection db = new MySqlConnection(connString))
             {
                 try
@@ -46,7 +47,8 @@ namespace BFB.Web.Controllers
                 {
                     return Content(e.ToString());
                 }
-            }
+                
+            } */
             return Content($"Hello {model.Username}");
         }
     }
