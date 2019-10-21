@@ -1,4 +1,6 @@
 using System;
+using System.Linq.Expressions;
+using System.Net.NetworkInformation;
 using BFB.Engine.Event;
 
 namespace BFB.Engine.UI.Components
@@ -60,6 +62,29 @@ namespace BFB.Engine.UI.Components
         #endregion
         
         #region Textbox (TODO)
+
+        public static UIComponent TextBoxFor<TModel>(
+            this UIComponent component,
+            TModel model,
+            Expression<Func<TModel, string>> selector,
+            Action<UIEvent,UIComponentAttributes> clickAction = null,
+            Action<UIEvent,UIComponentAttributes> focusAction = null,
+            Action<UIEvent,UIComponentAttributes> keyPressAction = null,
+            Action<UIEvent,UIComponentAttributes> hoverAction = null
+            )
+        {
+            return AddNode(
+                component,
+                new UITextBoxComponent<TModel>(
+                    model, 
+                    selector,
+                    clickAction,
+                    focusAction,
+                    keyPressAction,
+                    hoverAction
+                    ),
+                null);
+        }
         
         #endregion
         

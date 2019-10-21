@@ -41,6 +41,15 @@ namespace BFB.Engine.Event
                     });
                     
                     break;
+                case "mouseup":
+                    
+                    //click event
+                    eventList.Add(new UIEvent(inputEvent)
+                    {
+                        EventKey = "mouseup"
+                    });
+                    
+                    break;
                 case "keypress":
                     
                     //keypress, focus, unfocus
@@ -57,10 +66,10 @@ namespace BFB.Engine.Event
                             EventKey = "focus"
                         });
 
-                        eventList.Add(new UIEvent(inputEvent)
-                        {
-                            EventKey = "unfocus"
-                        });
+//                        eventList.Add(new UIEvent(inputEvent)
+//                        {
+//                            EventKey = "unfocus"
+//                        });
                     }
 
                     break;

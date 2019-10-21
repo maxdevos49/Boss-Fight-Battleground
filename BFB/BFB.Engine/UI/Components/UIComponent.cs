@@ -36,6 +36,10 @@ namespace BFB.Engine.UI.Components
          */
         public bool Focusable { get; protected set; }
         
+        /**
+         * Indicates whether the element is focused or not
+         */
+        public bool Focused { get; set; }
 
         /**
          * Contains the constraints that will be applied to the component
@@ -294,6 +298,18 @@ namespace BFB.Engine.UI.Components
         
         #endregion
 
+        #region Constructor
+
+        public UIComponentAttributes()
+        {
+            Background = Color.Transparent;
+            Color = Color.Black;
+            FontSize = 1;
+            Grow = 1;
+        }
+        
+        #endregion
+        
         /**
          * This methods takes a attribute object and overrides styles that
          * are present and not null. All properties are null by default and

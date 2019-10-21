@@ -9,7 +9,18 @@ namespace BFB.Client.UI
 
     public class MainMenuUI : UILayer
     {
-        public MainMenuUI() :base(nameof(MainMenuUI)) { }
+
+        private TestModel model;
+
+        public MainMenuUI() : base(nameof(MainMenuUI))
+        {
+            model = new TestModel
+            {
+                Test1 = "Boss Fight Battlegrounds"
+            };
+        }
+        
+        
         
         public override void Body()
         {
@@ -24,7 +35,7 @@ namespace BFB.Client.UI
                         //Game title
                         v1.Hstack(h2 =>
                         {
-                            h2.Text("Boss Fight Battlegrounds");
+                            h2.TextFor(model,x => x.Test1);
 
                         })
                             .Grow(2);
@@ -43,6 +54,14 @@ namespace BFB.Client.UI
                                 .Height(0.8f)
                                 .Center()
                                 .Image("button");
+
+                            h2.TextBoxFor(model, x => x.Test1)
+                                .Width(0.8f)
+                                .Height(0.8f)
+                                .Center()
+                                .Background(Color.White)
+                                .Color(Color.Black);
+                            
                         });
                         
                         //Settings
@@ -83,5 +102,11 @@ namespace BFB.Client.UI
                 .AspectRatio(1.78f)
                 .Center();
         }
+    }
+
+    public class TestModel
+    {
+        public string Test1 { get; set; }
+        public string Test2 { get; set; }
     }
 }

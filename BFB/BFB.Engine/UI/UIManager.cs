@@ -135,7 +135,8 @@ namespace BFB.Engine.UI
             
             node.Render(graphics, _contentManager.GetTexture(node.RenderAttributes.TextureKey), _contentManager.GetFont(node.RenderAttributes.FontKey));
             
-            DrawBorder(new Rectangle(node.RenderAttributes.X,node.RenderAttributes.Y,node.RenderAttributes.Width,node.RenderAttributes.Height),1,Color.Black, graphics,_contentManager.GetTexture("default"));//For debug
+            if(node.Focused)
+                DrawBorder(new Rectangle(node.RenderAttributes.X,node.RenderAttributes.Y,node.RenderAttributes.Width,node.RenderAttributes.Height),3,Color.Red, graphics,_contentManager.GetTexture("default"));//For debug
 
             foreach (UIComponent childNode in node.Children)
             {

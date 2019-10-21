@@ -4,6 +4,7 @@ using System.Linq;
 using BFB.Engine.Event;
 using BFB.Engine.Scene;
 using BFB.Engine.UI.Components;
+using Microsoft.Xna.Framework.Input;
 
 namespace BFB.Engine.UI
 {
@@ -71,10 +72,11 @@ namespace BFB.Engine.UI
         /**
          * Returning true is to return as if nothing happened
          */
-        public bool ProcessEvents(List<UIEvent> events)
+        public bool ProcessEvents(IEnumerable<UIEvent> events)
         {
 
             bool eventNotAccepted = true;
+            
             foreach (UIEvent uiEvent in events)
             {
 
@@ -96,14 +98,22 @@ namespace BFB.Engine.UI
                                                                 .ToList();
                     
 
-                    //If any components were clicked
-                    if (!components.Any()) continue;
+                    //If any components were found
+                    if (!components.Any()) 
+                        continue;
+
+                    if (uiEvent.EventKey == "click")
+                    {
+                        if (_tabPosition != null)
+                            _tabIndex[(int)_tabPosition].Focused = false;
+                            
+                        components[0].Focused = true;
+                        _tabPosition = _tabIndex.FindIndex(x => x == components[0]);
+                    }
                     
                     //Start processing each component
                     foreach (UIComponent component in components)
                     {
-
-                        
                         uiEvent.Component = component;
                         
                         //Process event
@@ -115,11 +125,49 @@ namespace BFB.Engine.UI
                 }
                 else
                 {
-                    Console.WriteLine($"UIEvent: Other");    
+
+                    if (uiEvent.Keyboard.KeyboardState.IsKeyDown(Keys.Escape))
+                    {
+                        if(_tabPosition!= null)
+                            _tabIndex[(int) _tabPosition].Focused = false;
+
+                        _tabPosition = null;
+                    }
                     
-                    if (_tabPosition != null)
-                        uiEvent.Component = _tabIndex[_tabPosition ?? 0];
+                    if (uiEvent.EventKey == "focus" && _tabIndex.Any())
+                    {
+                        if(_tabPosition != null)
+                            _tabIndex[(int) _tabPosition].Focused = false;
+                        
+                        if (_tabPosition == null)
+                            _tabPosition = 0;
+                        else if (uiEvent.Keyboard.KeyboardState.IsKeyDown(Keys.LeftShift))
+                            _tabPosition--;//shift + tab
+                        else
+                            _tabPosition++;//tab
+
+                        if (_tabPosition > _tabIndex.Count - 1)
+                            _tabPosition = 0;
+                        else if (_tabPosition < 0)
+                            _tabPosition = _tabIndex.Count - 1;
+
+                        _tabIndex[(int) _tabPosition].Focused = true;
+                        
+                        Console.WriteLine("Refocusing: " + _tabPosition);
+
+                    }
+
+                    //If no focusable elements then we are done
+                    if (!_tabIndex.Any()) 
+                        continue;
+
+                    if (_tabPosition == null) 
+                        continue;
                     
+                    uiEvent.Component = _tabIndex[(int) _tabPosition];
+                        
+                    _tabIndex[(int) _tabPosition].ProcessEvent(uiEvent);
+
                 }
             }
 

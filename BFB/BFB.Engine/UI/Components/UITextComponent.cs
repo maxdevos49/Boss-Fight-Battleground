@@ -24,11 +24,6 @@ namespace BFB.Engine.UI.Components
             _propertySelector = null;
         }
 
-        public string GetText()
-        {
-            return _propertySelector == null ? _text : _propertySelector(_model);
-        }
-
         public override void Render(SpriteBatch graphics, Texture2D texture, SpriteFont font)
         {
             base.Render(graphics, texture, font);
