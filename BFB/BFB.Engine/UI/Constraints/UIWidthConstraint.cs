@@ -1,6 +1,6 @@
 using BFB.Engine.UI.Components;
 
-namespace BFB.Engine.UI.Modifiers
+namespace BFB.Engine.UI.Constraints
 {
     public class UIWidthConstraint : UIConstraint
     {
@@ -24,12 +24,12 @@ namespace BFB.Engine.UI.Modifiers
             if (_pixels == null)
             {
                 //Percent
-                component.Width = (int)((_percent ?? 0) * component.Parent.Width);
+                component.DefaultAttributes.Width = (int)((_percent ?? 0) * component.Parent.DefaultAttributes.Width);
             }
             else
             {
                 //Pixel
-                component.Width = _pixels ?? 0;
+                component.DefaultAttributes.Width = _pixels ?? 0;
             }
         }
     }

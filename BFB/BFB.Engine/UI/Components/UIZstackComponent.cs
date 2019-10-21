@@ -1,4 +1,3 @@
-using BFB.Engine.UI.Modifiers;
 using Microsoft.Xna.Framework;
 
 namespace BFB.Engine.UI.Components
@@ -7,7 +6,7 @@ namespace BFB.Engine.UI.Components
     {
         public UIZstackComponent() : base(nameof(UIZstackComponent))
         {
-            StackDirection = StackDirection.None;
+            DefaultAttributes.StackDirection = StackDirection.None;
         }
     }
 }

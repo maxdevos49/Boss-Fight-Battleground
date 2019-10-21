@@ -1,6 +1,6 @@
 using BFB.Engine.UI.Components;
 
-namespace BFB.Engine.UI.Modifiers
+namespace BFB.Engine.UI.Constraints
 {
     public class UIHeightConstraint : UIConstraint
     {
@@ -24,12 +24,12 @@ namespace BFB.Engine.UI.Modifiers
             if (_pixels == null)
             {
                 //Percent
-                component.Height = (int)((_percent ?? 0) * component.Parent.Height);
+                component.DefaultAttributes.Height = (int)((_percent ?? 0) * component.Parent.DefaultAttributes.Height);
             }
             else
             {
                 //Pixel
-                component.Height = _pixels ?? 0;
+                component.DefaultAttributes.Height = _pixels ?? 0;
             }
         }
     }

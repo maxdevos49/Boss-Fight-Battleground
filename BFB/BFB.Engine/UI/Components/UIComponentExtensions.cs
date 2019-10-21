@@ -1,4 +1,5 @@
 using System;
+using BFB.Engine.Event;
 
 namespace BFB.Engine.UI.Components
 {
@@ -64,9 +65,9 @@ namespace BFB.Engine.UI.Components
         
         #region Button
 
-        public static UIComponent Button(this UIComponent component, string text)
+        public static UIComponent Button(this UIComponent component, string text, Action<UIEvent,UIComponentAttributes> clickAction = null, Action<UIEvent,UIComponentAttributes> hoverAction = null)
         {
-            return AddNode(component, new UIButtonComponent(text), null);
+            return AddNode(component, new UIButtonComponent(text, clickAction, hoverAction), null);
         }
        
         

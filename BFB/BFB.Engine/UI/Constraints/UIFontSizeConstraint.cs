@@ -1,6 +1,6 @@
 using BFB.Engine.UI.Components;
 
-namespace BFB.Engine.UI.Modifiers
+namespace BFB.Engine.UI.Constraints
 {
     public class UIFontSizeConstraint : UIConstraint
     {
@@ -14,7 +14,7 @@ namespace BFB.Engine.UI.Modifiers
 
         public override void Apply(UIComponent component)
         {
-            component.FontSize = _fontScale;
+            component.DefaultAttributes.FontSize = _fontScale;
         }
     }
 }

@@ -79,8 +79,7 @@ namespace BFB.Engine.Event
             eventData.EventId = (_eventId++);
             eventData.EventKey = eventKey;
 
-            if (_eventHandlers.ContainsKey(eventKey))
-                _eventQueue.Enqueue(eventData);
+            _eventQueue.Enqueue(eventData);//This could be a setting to cull events with no listeners
         }
 
         /**
@@ -92,8 +91,10 @@ namespace BFB.Engine.Event
             {
                 TEvent currentEvent = _eventQueue.Dequeue();
 
-                //True means continue as normal. false means cancel event. Aka dont process it
-                if (!(OnEventProcess?.Invoke(currentEvent) ?? true)) continue;
+                if (!(OnEventProcess?.Invoke(currentEvent) ?? false)) continue;
+                
+
+                if(!_eventHandlers.ContainsKey(currentEvent.EventKey)) continue;
                 
                 //loop through existing handlers for that event
                 foreach ((int _, Action<TEvent> eventHandler) in _eventHandlers[currentEvent.EventKey].ToList().TakeWhile(eventHandler => currentEvent.Propagate()))

@@ -24,19 +24,19 @@ namespace BFB.Client.Scenes
         protected override void Unload()
         {
 
-           Console.WriteLine("Stop Complaining jetbrains");
+//           Console.WriteLine("Stop Complaining jetbrains");
             base.Unload();
         }
 
         public override void Update(GameTime gameTime)
         {
-            Console.WriteLine("Stop Complaining jetbrains");
+//            Console.WriteLine("Stop Complaining jetbrains");
             base.Update(gameTime);
         }
 
         public override void Draw(GameTime gameTime, SpriteBatch graphics)
         {
-            Console.WriteLine("Stop Complaining jetbrains");
+//            Console.WriteLine("Stop Complaining jetbrains");
             base.Draw(gameTime, graphics);
         }
     }

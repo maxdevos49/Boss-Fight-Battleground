@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using BFB.Engine.Content;
 using BFB.Engine.Event;
 using BFB.Engine.UI.Components;
@@ -59,25 +60,16 @@ namespace BFB.Engine.UI
         
         public void Start(string key)
         {
-            if (_allUILayers.ContainsKey(key) && !_activeUILayers.ContainsKey(key))
+            foreach ((string _, UILayer layer) in _activeUILayers)
+                layer.Stop();
+            
+            _activeUILayers.Clear();
+            
+            if (_allUILayers.ContainsKey(key))
             {
                 _activeUILayers.Add(key, _allUILayers[key]);
+                BuildUILayer(key);
             }
-        }
-        
-        #endregion
-        
-        #region Update
-
-        public void Update()
-        {
-            foreach ((string _, UILayer uiLayer) in _activeUILayers)
-            {
-                uiLayer.InitializeRoot(new UIRootComponent(_graphicsDevice.Viewport.Bounds));
-                uiLayer.Body();
-                BuildComponent(uiLayer, uiLayer.RootUI);
-            }
-           
         }
         
         #endregion
@@ -88,22 +80,36 @@ namespace BFB.Engine.UI
         {
             foreach ((string _,UILayer uiLayer) in _activeUILayers)
             {
-                RenderComponent(uiLayer.RootUI, graphics);
+                RenderComponents(uiLayer.RootUI, graphics);
             }
+        }
+        
+        #endregion
+        
+        #region Window Resize
+
+        public void WindowResize()
+        {
+            
+            foreach ((string key, UILayer _) in _activeUILayers)
+                BuildUILayer(key);
+        }
+        
+        #endregion
+        
+        #region Build UI Layer
+
+        private void BuildUILayer(string layer)
+        {
+                _activeUILayers[layer].InitializeRoot(new UIRootComponent(_graphicsDevice.Viewport.Bounds));
+                _activeUILayers[layer].Body();
+                BuildComponent(_activeUILayers[layer], _activeUILayers[layer].RootUI);
         }
         
         #endregion
         
         #region BuildComponents
 
-        /**
-         * Builds a 
-         */
-        public void Build(string layer)
-        {
-            //TODO
-        }
-        
         /**
          * Recursively generates the UI structure and applies the UIConstraints and modifiers
          */
@@ -124,16 +130,18 @@ namespace BFB.Engine.UI
         /**
          * Recursive method to draw the UI
          */
-        private void RenderComponent(UIComponent node, SpriteBatch graphics)
+        private void RenderComponents(UIComponent node, SpriteBatch graphics)
         {
-            node.Render(graphics, _contentManager.GetTexture(node.TextureKey), _contentManager.GetFont(node.FontKey));
             
-//            DrawBorder(new Rectangle(node.X,node.Y,node.Width,node.Height),1,Color.Black, graphics,_contentManager.GetTexture("default"));//For debug
+            node.Render(graphics, _contentManager.GetTexture(node.RenderAttributes.TextureKey), _contentManager.GetFont(node.RenderAttributes.FontKey));
+            
+            DrawBorder(new Rectangle(node.RenderAttributes.X,node.RenderAttributes.Y,node.RenderAttributes.Width,node.RenderAttributes.Height),1,Color.Black, graphics,_contentManager.GetTexture("default"));//For debug
 
             foreach (UIComponent childNode in node.Children)
             {
-                RenderComponent(childNode, graphics);
+                RenderComponents(childNode, graphics);
             }
+
         }
         
         /**
@@ -157,19 +165,24 @@ namespace BFB.Engine.UI
 
      #endregion
 
-         public bool ProcessEvents(InputEvent inputEvent)
+        #region ProcessEvents
+     
+         public bool GatherEvents(InputEvent inputEvent)
          {
+             //gets all possible events based on input event
+             List<UIEvent> uiEvent = UIEvent.ConvertInputEventToUIEvent(inputEvent);
              
-             //TODO convert to UIEvent
-             
-             foreach ((string _, UILayer uiLayer) in _activeUILayers)
+             //Passes a fresh list to each layer
+             foreach ((string _, UILayer uiLayer) in _activeUILayers.ToList())
              {
-                 if (uiLayer.ProcessEvents(null))
+                 if (uiLayer.ProcessEvents(uiEvent))
                      return false;
              }
              
              return true;
          }
+         
+         #endregion
         
         #region Dispose
 
@@ -181,6 +194,5 @@ namespace BFB.Engine.UI
          
          #endregion
     }
-    
     
 }

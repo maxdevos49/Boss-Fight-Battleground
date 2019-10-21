@@ -1,7 +1,6 @@
-using System;
 using BFB.Engine.UI.Components;
 
-namespace BFB.Engine.UI.Modifiers
+namespace BFB.Engine.UI.Constraints
 {
     public class UIAspectRatioConstraint : UIConstraint
     {
@@ -13,13 +12,13 @@ namespace BFB.Engine.UI.Modifiers
 
         public override void Apply(UIComponent component)
         {
-            if ((component.Width / _ratio) > component.Parent.Height)
+            if ((component.DefaultAttributes.Width / _ratio) > component.Parent.DefaultAttributes.Height)
             {
-                component.Width = (int)(component.Height *_ratio);
+                component.DefaultAttributes.Width = (int)(component.DefaultAttributes.Height  *_ratio);
             }
             else
             {
-                component.Height = (int)(component.Width /_ratio);
+                component.DefaultAttributes.Height = (int)(component.DefaultAttributes.Width /_ratio);
             }
 
         }

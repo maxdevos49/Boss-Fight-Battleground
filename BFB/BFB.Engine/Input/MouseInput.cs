@@ -9,23 +9,24 @@ namespace BFB.Engine.Input
     public class MouseInput
     {
 
-        private readonly EventManager<InputEvent> _eventManager;
-
         private readonly MouseStatus _mouseStatus;
+        
+        private readonly EventManager<InputEvent> _eventManager;
 
         public MouseInput(EventManager<InputEvent> eventManager)
         {
             _eventManager = eventManager;
 
+            //initial
             _mouseStatus = new MouseStatus
             {
                 X = 0,
                 Y = 0,
                 LeftButton = ButtonState.Released,
                 RightButton = ButtonState.Released,
-                MiddleButton = ButtonState.Released
+                MiddleButton = ButtonState.Released,
+                MouseState = Mouse.GetState()
             };
-            //Defaults
         }
 
         public void UpdateMouse()
@@ -60,6 +61,7 @@ namespace BFB.Engine.Input
             _mouseStatus.LeftButton = mouseState.LeftButton;
             _mouseStatus.RightButton = mouseState.RightButton;
             _mouseStatus.MiddleButton = mouseState.MiddleButton;
+            _mouseStatus.MouseState = mouseState;
 
         }
 

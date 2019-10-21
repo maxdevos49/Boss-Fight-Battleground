@@ -1,4 +1,3 @@
-using BFB.Engine.UI.Modifiers;
 using Microsoft.Xna.Framework;
 
 namespace BFB.Engine.UI.Components
@@ -7,7 +6,7 @@ namespace BFB.Engine.UI.Components
     {
         public UIHstackComponent() : base(nameof(UIHstackComponent))
         {
-            StackDirection = StackDirection.Horizontal;
+            DefaultAttributes.StackDirection = StackDirection.Horizontal;
         }
     }
 }

@@ -24,16 +24,21 @@ namespace BFB.Engine.UI.Components
             _propertySelector = null;
         }
 
+        public string GetText()
+        {
+            return _propertySelector == null ? _text : _propertySelector(_model);
+        }
+
         public override void Render(SpriteBatch graphics, Texture2D texture, SpriteFont font)
         {
             base.Render(graphics, texture, font);
 
-            string text = _propertySelector == null ? WrapText(font,_text, Width,Height) : WrapText(font, _propertySelector(_model), Width, Height);
+            string text = _propertySelector == null ? WrapText(font,_text, RenderAttributes.Width,RenderAttributes.Height) : WrapText(font, _propertySelector(_model), RenderAttributes.Width, RenderAttributes.Height);
             
 //            (float x, float y) = font.MeasureString(text);
 //            graphics.DrawString(font, text, new Vector2(X + Width/2,Y + Height/2) , Color,0,new Vector2(x/2,y/2), FontSize,SpriteEffects.None,1);
             
-            DrawString(graphics, font, text, new Rectangle(X,Y,Width,Height));
+            DrawString(graphics, font, text, new Rectangle(RenderAttributes.X,RenderAttributes.Y,RenderAttributes.Width ,RenderAttributes.Height ));
         }
         
         private void DrawString(SpriteBatch graphics, SpriteFont font, string strToDraw, Rectangle boundaries)
@@ -51,7 +56,7 @@ namespace BFB.Engine.UI.Components
             };
 
             // Draw the string to the sprite batch!
-            graphics.DrawString(font, strToDraw, position, Color, 0, Vector2.Zero, scale, SpriteEffects.None, 0);
+            graphics.DrawString(font, strToDraw, position, RenderAttributes.Color, 0, Vector2.Zero, scale, SpriteEffects.None, 0);
         }
         
         #region TextWrapping

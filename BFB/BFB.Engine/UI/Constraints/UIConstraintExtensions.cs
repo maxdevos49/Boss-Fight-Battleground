@@ -1,7 +1,7 @@
 using BFB.Engine.UI.Components;
 using Microsoft.Xna.Framework;
 
-namespace BFB.Engine.UI.Modifiers
+namespace BFB.Engine.UI.Constraints
 {
     public static class UIConstraintExtensions
     {
@@ -74,8 +74,8 @@ namespace BFB.Engine.UI.Modifiers
 
         public static UIComponent Image(this UIComponent component, string textureKey)
         {
-            component.TextureKey = textureKey;
-            component.Background = Microsoft.Xna.Framework.Color.White;
+            component.DefaultAttributes.TextureKey = textureKey;
+            component.DefaultAttributes.Background = Microsoft.Xna.Framework.Color.White;
             return component;
         }
         
@@ -98,7 +98,7 @@ namespace BFB.Engine.UI.Modifiers
 
         public static UIComponent Grow(this UIComponent component, int proportion)
         {
-            component.Grow = proportion;
+            component.DefaultAttributes.Grow = proportion;
             return component;
         }
         
@@ -127,18 +127,18 @@ namespace BFB.Engine.UI.Modifiers
         
         #region Background
 
-        public static UIComponent Background(this UIComponent component, Color color)
+        public static UIComponent Background(this UIComponent component, Color? color)
         {
-            return component.AddConstraint(new UIBackgroundConstraint(color));
+            return component.AddConstraint(new UIBackgroundConstraint(color ?? Microsoft.Xna.Framework.Color.Transparent));
         }
 
         #endregion
 
         #region Color
 
-        public static UIComponent Color(this UIComponent component, Color color)
+        public static UIComponent Color(this UIComponent component, Color? color)
         {
-            return component.AddConstraint(new UIColorConstraint(color));
+            return component.AddConstraint(new UIColorConstraint(color ?? Microsoft.Xna.Framework.Color.Black));
         }
 
         #endregion

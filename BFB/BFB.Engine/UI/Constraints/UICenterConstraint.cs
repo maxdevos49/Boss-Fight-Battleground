@@ -1,6 +1,6 @@
 using BFB.Engine.UI.Components;
 
-namespace BFB.Engine.UI.Modifiers
+namespace BFB.Engine.UI.Constraints
 {
     public class UICenterConstraint : UIConstraint
     {
@@ -9,8 +9,8 @@ namespace BFB.Engine.UI.Modifiers
 
         public override void Apply(UIComponent component)
         {
-            component.X = component.Parent.X + ((component.Parent.Width - component.Width) / 2);
-            component.Y = component.Parent.Y + ((component.Parent.Height - component.Height) / 2);
+            component.DefaultAttributes.X = component.Parent.DefaultAttributes.X + ((component.Parent.DefaultAttributes.Width - component.DefaultAttributes.Width) / 2);
+            component.DefaultAttributes.Y = component.Parent.DefaultAttributes.Y + ((component.Parent.DefaultAttributes.Height - component.DefaultAttributes.Height) / 2);
         }
     }
 }

@@ -1,6 +1,4 @@
-using System;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 
 namespace BFB.Engine.UI.Components
 {
@@ -8,11 +6,10 @@ namespace BFB.Engine.UI.Components
     {
         public UIRootComponent(Rectangle bounds) : base(nameof(UIRootComponent))
         {
-            X = bounds.X;
-            Y = bounds.Y;
-            Width = bounds.Width;
-            Height = bounds.Height;
-            Background = Color.Transparent;
+            DefaultAttributes.X = bounds.X;
+            DefaultAttributes.Y = bounds.Y;
+            DefaultAttributes.Width = bounds.Width;
+            DefaultAttributes.Height = bounds.Height;
         }
     }
 }

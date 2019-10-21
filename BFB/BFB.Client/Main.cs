@@ -75,22 +75,26 @@ namespace BFB.Client
             _globalEventManager = new EventManager<GlobalEvent>();
             _inputEventManager = new EventManager<InputEvent>();
             
-            _inputManager = new InputManager(_inputEventManager, new InputConfig());
+            _inputManager = new InputManager(_inputEventManager);
             _contentManager = new BFBContentManager(Content);
 
             _sceneManager = new SceneManager(Content, _graphicsDeviceManager, _globalEventManager);
             _uiManager = new UIManager(_graphicsDeviceManager.GraphicsDevice, _contentManager);
 
-            //Dependencies on scenes
+            //Map Dependencies on scenes
             Scene.SceneManager = _sceneManager;
             Scene.UIManager = _uiManager;
             Scene.ContentManager = _contentManager;
             Scene.GraphicsDeviceManager = _graphicsDeviceManager;
             Scene.GlobalEventManager = _globalEventManager;
             Scene.InputEventManager = _inputEventManager;
+            
+            //Map dependencies on UILayers
+            UILayer.SceneManager = _sceneManager;
+            UILayer.UIManager = _uiManager;
 
-            //catch inputevents
-            _inputEventManager.OnEventProcess = _uiManager.ProcessEvents;
+            //catch input events
+            _inputEventManager.OnEventProcess = _uiManager.GatherEvents;
             
             #endregion
             
@@ -110,12 +114,14 @@ namespace BFB.Client
             
             _uiManager.AddUILayer(new UILayer[]
             {
-                new UITest()
+                new MainMenuUI(),
+                new SettingsUI(),
+                new HelpUI(), 
             });
             
             //Start first UI
             
-            _uiManager.Start(nameof(UITest));
+            _uiManager.Start(nameof(MainMenuUI));
             
             #endregion
 
@@ -190,12 +196,11 @@ namespace BFB.Client
             
             //Process the events in the queue
             _globalEventManager.ProcessEvents();
+            _inputEventManager.ProcessEvents();
 
             //Call update for active scenes
             _sceneManager.UpdateScenes(gameTime);
             
-            _uiManager.Update();
-
             base.Update(gameTime);
         }
 
@@ -230,13 +235,15 @@ namespace BFB.Client
         private void Window_ClientSizeChanged(object sender, EventArgs e)
         {
             _windowSizeIsBeingChanged = !_windowSizeIsBeingChanged;
-            
+            _uiManager.WindowResize();
+
             if (!_windowSizeIsBeingChanged) return;
+            
             _graphicsDeviceManager.PreferredBackBufferWidth = Window.ClientBounds.Width;
             _graphicsDeviceManager.PreferredBackBufferHeight = Window.ClientBounds.Height;
+            
             _graphicsDeviceManager.ApplyChanges();
-
-            _globalEventManager.Emit("window-resize");
+            
         }
         
         #endregion

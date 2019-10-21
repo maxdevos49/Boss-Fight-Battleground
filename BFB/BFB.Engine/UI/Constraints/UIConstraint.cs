@@ -1,6 +1,6 @@
 using BFB.Engine.UI.Components;
 
-namespace BFB.Engine.UI.Modifiers
+namespace BFB.Engine.UI.Constraints
 {
     public abstract class UIConstraint
     {

@@ -1,7 +1,7 @@
 using BFB.Engine.UI.Components;
 using Microsoft.Xna.Framework;
 
-namespace BFB.Engine.UI.Modifiers
+namespace BFB.Engine.UI.Constraints
 {
     public class UIColorConstraint : UIConstraint
     {
@@ -14,7 +14,7 @@ namespace BFB.Engine.UI.Modifiers
 
         public override void Apply(UIComponent component)
         {
-            component.Color = _color;
+            component.DefaultAttributes.Color = _color;
         }
     }
 }

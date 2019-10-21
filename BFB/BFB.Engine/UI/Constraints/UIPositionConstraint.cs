@@ -1,6 +1,6 @@
 using BFB.Engine.UI.Components;
 
-namespace BFB.Engine.UI.Modifiers
+namespace BFB.Engine.UI.Constraints
 {
     public class UIPositionConstraint : UIConstraint
     {
@@ -21,24 +21,24 @@ namespace BFB.Engine.UI.Modifiers
         {
             if (_top != null)
             {
-                component.Y = component.Parent.Y + (int) _top;
-                component.Height -= (int) _top;
+                component.DefaultAttributes.Y = component.Parent.DefaultAttributes.Y + (int) _top;
+                component.DefaultAttributes.Height -= (int) _top;
             }
 
             if (_right != null)
             {
-                component.Width -= (int) _right;
+                component.DefaultAttributes.Width -= (int) _right;
             }
 
             if (_bottom != null)
             {
-                component.Height -= (int) _bottom;
+                component.DefaultAttributes.Height -= (int) _bottom;
             }
 
             if (_left != null)
             {
-                component.X = component.Parent.X + (int) _left;
-                component.Width -= (int) _left;
+                component.DefaultAttributes.X = component.Parent.DefaultAttributes.X + (int) _left;
+                component.DefaultAttributes.Width -= (int) _left;
             }
                 
         }
