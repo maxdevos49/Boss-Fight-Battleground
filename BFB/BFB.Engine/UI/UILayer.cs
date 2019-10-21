@@ -70,7 +70,7 @@ namespace BFB.Engine.UI
         #region ProcessEvents
         
         /**
-         * Returning true is to return as if nothing happened
+         * Routes events to there correct receivers. 
          */
         public bool ProcessEvents(IEnumerable<UIEvent> events)
         {
@@ -85,23 +85,17 @@ namespace BFB.Engine.UI
                     component.RenderAttributes = component.DefaultAttributes.CascadeAttributes(component.DefaultAttributes);
                 }
                 
-                if (uiEvent.EventKey == "click"
-                    || uiEvent.EventKey == "mouseup"
-                    || uiEvent.EventKey == "hover")
+                if (uiEvent.EventKey == "click" || uiEvent.EventKey == "mouseup" || uiEvent.EventKey == "hover")
                 {
-                    List<UIComponent> components = _eventIndex.Where(c =>
-                                                                        c.DefaultAttributes.X <= uiEvent.Mouse.X 
-                                                                        && (c.DefaultAttributes.X + c.DefaultAttributes.Width) >= uiEvent.Mouse.X 
-                                                                        && c.DefaultAttributes.Y <= uiEvent.Mouse.Y 
-                                                                        && (c.DefaultAttributes.Y + c.DefaultAttributes.Height) >= uiEvent.Mouse.Y)
+                    List<UIComponent> components = _eventIndex.Where(c => c.DefaultAttributes.X <= uiEvent.Mouse.X  && (c.DefaultAttributes.X + c.DefaultAttributes.Width) >= uiEvent.Mouse.X 
+                                                                        && c.DefaultAttributes.Y <= uiEvent.Mouse.Y  && (c.DefaultAttributes.Y + c.DefaultAttributes.Height) >= uiEvent.Mouse.Y)
                                                                 .OrderBy(c => c.DefaultAttributes.Width * c.DefaultAttributes.Height)//Smaller areas are closer to the top
                                                                 .ToList();
-                    
 
-                    //If any components were found
                     if (!components.Any()) 
                         continue;
 
+                    //Focus component if it is focusable
                     if (uiEvent.EventKey == "click")
                     {
                         if (_tabPosition != null)
@@ -116,7 +110,7 @@ namespace BFB.Engine.UI
                     {
                         uiEvent.Component = component;
                         
-                        //Process event
+                        //Process event here
                         component.ProcessEvent(uiEvent);
                        
                         if ( uiEvent.Propagate())
@@ -153,7 +147,7 @@ namespace BFB.Engine.UI
 
                         _tabIndex[(int) _tabPosition].Focused = true;
                         
-                        Console.WriteLine("Refocusing: " + _tabPosition);
+//                        Console.WriteLine("Refocusing: " + _tabPosition);
 
                     }
 
