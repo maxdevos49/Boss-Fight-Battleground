@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading;
+using BFB.Client.UI;
 using BFB.Engine.Content;
 using BFB.Engine.Entity;
 using BFB.Engine.Entity.Components.Graphics;
@@ -150,6 +151,9 @@ namespace BFB.Client.Scenes
             
             #endregion
 
+            //Launch hud ui
+            UIManager.Start(nameof(HudUI));
+            
             if (!_server.Connect())
                 Console.WriteLine("Connection Failed.");
 
@@ -197,7 +201,6 @@ namespace BFB.Client.Scenes
                 foreach ((string key, ClientEntity entity) in _entities)
                 {
                     entity.Draw(graphics);
-                    Console.WriteLine(entity.AnimationState);
                 }
             }
 

@@ -102,7 +102,7 @@ namespace BFB.Engine.UI
         {
             foreach ((string _,UILayer uiLayer) in _activeUILayers)
             {
-                RenderComponents(uiLayer.RootUI, graphics);
+                RenderComponents(uiLayer.RootUI, graphics, uiLayer);
             }
         }
         
@@ -152,17 +152,20 @@ namespace BFB.Engine.UI
         /**
          * Recursive method to draw the UI
          */
-        private void RenderComponents(UIComponent node, SpriteBatch graphics)
+        private void RenderComponents(UIComponent node, SpriteBatch graphics, UILayer layer)
         {
             
             node.Render(graphics, _contentManager.GetTexture(node.RenderAttributes.TextureKey), _contentManager.GetFont(node.RenderAttributes.FontKey));
             
+            if(layer.Debug)
+                DrawBorder(new Rectangle(node.RenderAttributes.X,node.RenderAttributes.Y,node.RenderAttributes.Width,node.RenderAttributes.Height),1,Color.Black, graphics,_contentManager.GetTexture("default"));//For debug
+            
             if(node.Focused)
-                DrawBorder(new Rectangle(node.RenderAttributes.X,node.RenderAttributes.Y,node.RenderAttributes.Width,node.RenderAttributes.Height),3,Color.Red, graphics,_contentManager.GetTexture("default"));//For debug
+                DrawBorder(new Rectangle(node.RenderAttributes.X,node.RenderAttributes.Y,node.RenderAttributes.Width,node.RenderAttributes.Height),3,Color.Red, graphics,_contentManager.GetTexture("default"));//For Focus
 
             foreach (UIComponent childNode in node.Children)
             {
-                RenderComponents(childNode, graphics);
+                RenderComponents(childNode, graphics, layer);
             }
 
         }
@@ -190,16 +193,17 @@ namespace BFB.Engine.UI
 
         #region ProcessEvents
      
-         public bool GatherEvents(InputEvent inputEvent)
+         public bool ProcessEvents(InputEvent inputEvent)
          {
              //gets all possible events based on input event
              List<UIEvent> uiEvent = UIEvent.ConvertInputEventToUIEvent(inputEvent);
              
              //Passes a fresh list to each layer
+             // ReSharper disable once ForeachCanBeConvertedToQueryUsingAnotherGetEnumerator. This suggestion does not compile
              foreach ((string _, UILayer uiLayer) in _activeUILayers.ToList())
              {
                  if (uiLayer.ProcessEvents(uiEvent))
-                     return false;
+                     return true;
              }
              
              return true;

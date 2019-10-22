@@ -11,12 +11,14 @@ namespace BFB.Engine.UI
     public abstract class UILayer
     {
         #region Properties
-        
+
+        public string Key { get; }
+
         public static UIManager UIManager { get; set; }
         
         public static SceneManager SceneManager { get; set; }
         
-        public string Key { get; }
+        public bool Debug { get; set; }
         
         /**
          * Represents the foundation of the root UI
@@ -45,6 +47,7 @@ namespace BFB.Engine.UI
         {
             Key = key;
             RootUI = null;
+            Debug = false;
             
             _tabPosition = null;
             _tabIndex = new List<UIComponent>();

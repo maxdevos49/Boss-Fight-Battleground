@@ -97,7 +97,7 @@ namespace BFB.Client
             UILayer.UIManager = _uiManager;
 
             //catch input events
-            _inputEventManager.OnEventProcess = _uiManager.GatherEvents;
+            _inputEventManager.OnEventProcess = _uiManager.ProcessEvents;
             
             #endregion
             
@@ -109,9 +109,6 @@ namespace BFB.Client
                 new PlayerConnectionScene(),
             });
 
-            //start first scene
-            _sceneManager.StartScene(nameof(MainMenuScene));
-            
             #endregion
             
             #region Register UILayers
@@ -121,13 +118,14 @@ namespace BFB.Client
                 new MainMenuUI(),
                 new SettingsUI(),
                 new HelpUI(), 
+                new HudUI(),
+                new GameMenu()
             });
             
-            //Start first UI
-            
-            _uiManager.Start(nameof(MainMenuUI));
-            
             #endregion
+            
+            //start first scene
+            _sceneManager.StartScene(nameof(MainMenuScene));
 
             #region Global Keypress Event Registration
             
@@ -165,16 +163,14 @@ namespace BFB.Client
 
         protected override void LoadContent()
         {
-            _contentManager.ParseContent();
             
+            //Loads the content.json file. TODO Later on the file should probably be in a special location like the home directory of the user similar to how 327 we stored the dungeons
+            _contentManager.ParseContent();
             
             //Global texture load
             Texture2D defaultTexture = new Texture2D(_graphicsDeviceManager.GraphicsDevice, 1, 1);
             defaultTexture.SetData(new[] { Color.White });
             _contentManager.AddTexture("default", defaultTexture);
-            
-//            _contentManager.AddTexture("player", Content.Load<Texture2D>("Sprites\\PlayerIdleRight"));
-//            _contentManager.AddTexture("button", Content.Load<Texture2D>("Sprites\\button"));
         }
 
         #endregion

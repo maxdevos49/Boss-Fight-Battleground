@@ -56,8 +56,12 @@ namespace BFB.Engine.Entity.Components.Physics
                 serverEntity.Velocity.Mult(_friction);
             }
 
-            if (System.Math.Abs(serverEntity.Velocity.X) < 1)
+            // ReSharper disable once CompareOfFloatsByEqualityOperator
+            if (System.Math.Abs(serverEntity.Velocity.X) < 1 && serverEntity.Velocity.X != 0)
+            {
                 serverEntity.Velocity.X = 0;
+                serverEntity.AnimationState = _previousAnimationState == AnimationState.MoveLeft ? AnimationState.IdleLeft : AnimationState.IdleRight;
+            }
 
             //Updates the position
             serverEntity.Position.Add(serverEntity.Velocity);
@@ -71,23 +75,9 @@ namespace BFB.Engine.Entity.Components.Physics
 
             //Animation states
             if (serverEntity.Velocity.X > 1)
-            {
                 serverEntity.AnimationState = AnimationState.MoveRight;
-            }
-            else if (serverEntity.Velocity.X < 1)
-            {
-
+            else if (serverEntity.Velocity.X < -1)
                 serverEntity.AnimationState = AnimationState.MoveLeft;
-            }
-            else if (_previousAnimationState == AnimationState.MoveLeft &&  _previousAnimationState != AnimationState.IdleRight)
-            {
-                serverEntity.AnimationState = AnimationState.IdleLeft;
-            }
-            else if(_previousAnimationState != AnimationState.IdleLeft)
-            {
-                serverEntity.AnimationState = AnimationState.IdleRight;
-            }
-
 
             _previousAnimationState = serverEntity.AnimationState;
 

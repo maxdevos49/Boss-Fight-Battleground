@@ -14,6 +14,18 @@
         {
             "Key": "button",
             "Location": "Sprites\\button"
+        },
+        {
+            "Key": "dirt",
+            "Location": "Sprites\\dirt"
+        },
+        {
+            "Key": "grass",
+            "Location": "Sprites\\grass"
+        },
+        {
+            "Key": "stone",
+            "Location": "Sprites\\stone"
         }
     ],
     "AnimatedTextures": [
@@ -25,7 +37,7 @@
             "FrameHeight": 45,
             "Columns": 4,
             "Rows": 3,
-            "Scale": 2,
+            "Scale": 1.5,
             "AnimationSets": {
                 "IdleLeft": {
                     "Fps": 5,
@@ -40,13 +52,13 @@
                     "Mirror": false
                 },
                 "MoveLeft": {
-                    "Fps": 5,
+                    "Fps": 9,
                     "FrameStart": 0,
                     "FrameEnd": 7,
                     "Mirror": true
                 },
                 "MoveRight": {
-                    "Fps": 5,
+                    "Fps": 9,
                     "FrameStart": 0,
                     "FrameEnd": 7,
                     "Mirror": false

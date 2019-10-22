@@ -38,13 +38,15 @@ namespace BFB.Engine.UI.Components
         {
             
             (float x, float y) = font.MeasureString(strToDraw);
-
+            
             // Taking the smaller scaling value will result in the text always fitting in the boundaries.
             float scale = System.Math.Min(boundaries.Width / x, boundaries.Height / y);
 
+            scale *= (8f / 10f);//Applies a padding to the scale
+            
             Vector2 position = new Vector2()
             {
-                X = boundaries.X - (int)(x * scale / 2) + boundaries.Width / 2,
+                X = boundaries.X  - (int)(x * scale / 2) + (boundaries.Width) / 2,
                 Y = boundaries.Y - (int)(y * scale / 2) + boundaries.Height / 2 + (y*scale/10)
             };
 

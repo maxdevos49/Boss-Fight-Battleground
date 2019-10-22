@@ -272,19 +272,15 @@ namespace BFB.Engine.Content
     public class ContentFileSchema
     {
         [UsedImplicitly]
-
         public List<ContentGroupSchema> Fonts { get; set; }
         
         [UsedImplicitly]
-
         public List<ContentGroupSchema> Textures { get; set; }
         
         [UsedImplicitly]
-
         public List<ContentGroupSchema> Audio { get; set; }
 
         [UsedImplicitly]
-
         public List<AnimatedTexture> AnimatedTextures { get; set; }
 
     }
