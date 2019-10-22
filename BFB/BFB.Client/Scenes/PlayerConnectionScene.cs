@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading;
+using BFB.Engine.Content;
 using BFB.Engine.Entity;
 using BFB.Engine.Entity.Components.Graphics;
 using BFB.Engine.Math;
@@ -19,7 +20,6 @@ namespace BFB.Client.Scenes
         
         //Temp
         private PlayerInput _playerInput;
-        private Texture2D _playerTexture;
 
         private readonly ClientSocketManager _server;
         private readonly Dictionary<string, ClientEntity> _entities;
@@ -48,42 +48,42 @@ namespace BFB.Client.Scenes
              */
             #region Client Connect
 
-            _server.OnConnect((m) =>
+            _server.OnConnect = (m) =>
             {
                 //Anything that needs done when this client connects
                 Console.WriteLine("Client Connected");
-            });
+            };
             
             #endregion
             
             #region Client Authentication
             
-            _server.OnAuthentication((m) =>
+            _server.OnAuthentication = (m) =>
             {
                 //Anything that needs done when this client authenticates.
                 Console.WriteLine("Client Authenticating");
                 return null;
-            });
+            };
             
             #endregion
 
             #region Client Ready
             
-            _server.OnReady(() =>
+            _server.OnReady = () =>
             {
                 Console.WriteLine("Client Ready!");
                 //Do something when client is fully ready after authentication is confirmed
-            });
+            };
             
             #endregion
             
             #region Client Disconnect
             
-            _server.OnDisconnect((m) =>
+            _server.OnDisconnect = (m) =>
             {
                 //Anything that needs done when this client disconnects
                 Console.WriteLine("Disconnected");
-            });
+            };
             
             #endregion
             
@@ -139,7 +139,7 @@ namespace BFB.Client.Scenes
                                     Position = em.Position,
                                     Rotation = em.Rotation,
                                     Origin = em.Origin
-                                }, new AnimationComponent(_playerTexture)));//Change this to have sprite work correctly.
+                                }, new AnimationComponent(ContentManager.GetTexture("player"))));//Change this to have sprite work correctly.
                         }
                     }
                 }
@@ -156,16 +156,15 @@ namespace BFB.Client.Scenes
         
         protected override void Load()
         {
-            _playerTexture = ContentManager.Load<Texture2D>("Sprites\\PlayerIdleRight"); //Change this for requested texture or spritesheet.
         }
         
         #endregion
 
         #region Unload
 
-        public override void Unload()
+        protected override void Unload()
         {
-            _server.Disconnect();
+            _server.Disconnect("Scene Close");
             base.Unload();
         }
         

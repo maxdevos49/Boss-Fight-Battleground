@@ -92,9 +92,9 @@ namespace BFB.Server
                         Origin = new BfbVector(50, 50),
                     }, new ComponentOptions
                     {
-                        Physics = new PlayerPhysicsComponent(),//change this to new player Physics Componetnt.cs
-                        Input = new RemoteInputComponent(_server.GetClient(m.ClientId))
-                    });
+                        Physics = new PlayerPhysicsComponent(),
+                        Input = new RemoteInputComponent(socket)
+                    }));
                 
                 _server.PrintMessage($"Client {socket.ClientId} Ready and added to Simulation");
 

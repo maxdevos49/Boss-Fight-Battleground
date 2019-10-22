@@ -1,9 +1,9 @@
 
 #----------------------------- Global Properties ----------------------------#
 
-/outputDir:bin/$(Platform)
-/intermediateDir:obj/$(Platform)
-/platform:DesktopGL
+/outputDir:bin
+/intermediateDir:obj
+/platform:Windows
 /config:
 /profile:Reach
 /compress:False
@@ -12,11 +12,6 @@
 
 
 #---------------------------------- Content ---------------------------------#
-
-#begin Sprites/.gitkeep
-/importer:
-/processor:
-/build:Sprites/.gitkeep
 
 #begin Sprites/dirt.png
 /importer:TextureImporter

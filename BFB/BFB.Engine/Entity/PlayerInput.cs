@@ -14,7 +14,7 @@ namespace BFB.Engine.Entity
         public PlayerInput(Scene.Scene scene)
         {
             _playerState = new PlayerState();
-            scene.AddEventListener("keypress", (e) =>
+            scene.AddInputListener("keypress", (e) =>
             {
                 switch (e.Keyboard.KeyEnum)
                 {
@@ -35,7 +35,7 @@ namespace BFB.Engine.Entity
                 }
             });
             
-            scene.AddEventListener("keyup", (e) =>
+            scene.AddInputListener("keyup", (e) =>
             {
                 switch (e.Keyboard.KeyEnum)
                 {
@@ -56,19 +56,19 @@ namespace BFB.Engine.Entity
                 }
             });
             
-            scene.AddEventListener("mousemove", (e) =>
+            scene.AddInputListener("mousemove", (e) =>
             {
                 _playerState.Mouse.X = e.Mouse.X;
                 _playerState.Mouse.Y = e.Mouse.Y;
             });
             
-            scene.AddEventListener("mouseclick", (e) =>
+            scene.AddInputListener("mouseclick", (e) =>
             {
                 _playerState.LeftClick = e.Mouse.LeftButton == ButtonState.Pressed;
                 _playerState.RightClick = e.Mouse.RightButton == ButtonState.Pressed;
             });
             
-            scene.AddEventListener("mouseup", (e) =>
+            scene.AddInputListener("mouseup", (e) =>
             {
                 _playerState.LeftClick = e.Mouse.LeftButton == ButtonState.Released;
                 _playerState.RightClick = e.Mouse.RightButton == ButtonState.Released;

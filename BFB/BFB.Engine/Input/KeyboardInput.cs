@@ -12,12 +12,12 @@ namespace BFB.Engine.Input
 {
     public class KeyboardInput
     {
-        private readonly EventManager _eventManager;
+        private readonly EventManager<InputEvent> _eventManager;
 
         private readonly List<Keys> _pressedKeys;
         private KeyboardState _keyboardState;
 
-        public KeyboardInput(EventManager eventManager)
+        public KeyboardInput(EventManager<InputEvent> eventManager)
         {
             _eventManager = eventManager;
             _pressedKeys = new List<Keys>();
@@ -58,10 +58,10 @@ namespace BFB.Engine.Input
 
         }
 
-        public static string KeyToString(KeyboardEvent keyEvent, string outputString)
+        public static string KeyToString(KeyboardStatus keyStatus, string outputString)
         {
             //currently pressed key
-            Keys key = keyEvent.KeyEnum;
+            Keys key = keyStatus.KeyEnum;
 
             switch (key)
             {
@@ -74,7 +74,7 @@ namespace BFB.Engine.Input
             }
 
             //Caps lock or shift
-            if (key == Keys.LeftShift || key == Keys.RightShift || keyEvent.KeyboardState.CapsLock)
+            if (key == Keys.LeftShift || key == Keys.RightShift || keyStatus.KeyboardState.CapsLock)
                 //Is Letter and make Uppercase
                 if (key.ToString().Length == 1)
                     return outputString.Insert(outputString.Length, key.ToString().ToUpper());
@@ -85,30 +85,41 @@ namespace BFB.Engine.Input
             //Unknown character so lets return original string
         }
 
-        private void EmitKeyPressEvent(Event.Event eventObj)
+        private void EmitKeyPressEvent(InputEvent eventObj)
         {
             _eventManager.Emit("keypress", eventObj);
         }
 
-        private void EmitKeyDownEvent(Event.Event eventObj)
+        private void EmitKeyDownEvent(InputEvent eventObj)
         {
             _eventManager.Emit("keydown", eventObj);
         }
 
-        private void EmitKeyUpEvent(Event.Event eventObj)
+        private void EmitKeyUpEvent(InputEvent eventObj)
         {
             _eventManager.Emit("keyup", eventObj);
         }
 
-        private Event.Event CreateKeyboardEvent(Keys key)
+        private InputEvent CreateKeyboardEvent(Keys key)
         {
-            return new Event.Event
+            //Fill in mouse event state
+            MouseState mouseState = Mouse.GetState();
+            
+            return new InputEvent
             {
-                Keyboard = new KeyboardEvent
+                Keyboard = new KeyboardStatus
                 {
-                    Key = key.ToString(),
                     KeyEnum = key,
                     KeyboardState = _keyboardState
+                },
+                Mouse = new MouseStatus
+                {
+                    X = mouseState.X,
+                    Y = mouseState.Y,
+                    LeftButton = mouseState.LeftButton,
+                    RightButton = mouseState.RightButton,
+                    MiddleButton = mouseState.MiddleButton,
+                    MouseState = mouseState
                 }
             };
         }

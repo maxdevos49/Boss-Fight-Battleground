@@ -1,26 +1,20 @@
-﻿using JetBrains.Annotations;
 using Microsoft.Xna.Framework.Input;
 
-namespace BFB.Engine.Event
+namespace BFB.Engine.Input
 {
-    public partial class Event
-    {
-        public MouseEvent Mouse { get; set; }
-    }
-
-    public class MouseEvent
+    public class MouseStatus
     {
         public int X { get; set; }
 
         public int Y { get; set; }
 
-        [UsedImplicitly]
         public ButtonState LeftButton { get; set; }
 
-        [UsedImplicitly]
         public ButtonState RightButton { get; set; }
 
-        [UsedImplicitly]
         public ButtonState MiddleButton { get; set; }
+        
+        public MouseState MouseState { get; set; }
     }
+
 }
