@@ -41,8 +41,15 @@ namespace BFB.Test.Web.Database
             var mock = new Mock<DatabaseConfig>();
             mock.Setup(foo => foo.BFB_User.Add(fakeUser)).Verifiable();
 
+            IList<BFB_User> users = new List<BFB_User>();
+            users.Add(fakeUser);
+            DbContextOptions options = new DbContextOptions<DbContext>();
+            var mockedDatabaseConfig = new Mock<BFB.Web.Models.DatabaseConfig>(options);
+            mockedDatabaseConfig.Setup(foo => foo.BFB_User).ReturnsDbSet(users);
+            BFB.Web.Services.DatabaseService.db = mockedDatabaseConfig.Object;
 
-            //BFB.Web.Services.DatabaseService.AddUserEntry(username, email, password);
+
+            BFB.Web.Services.DatabaseService.AddUserEntry(username, email, password);
             Mock.Verify();
         }
 
