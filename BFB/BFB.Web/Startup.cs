@@ -9,6 +9,7 @@ using JetBrains.Annotations;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -39,9 +40,9 @@ namespace BFB.Web
 
             });
 
-            var connectionString = Configuration.GetSection("BFBDatabase");
+            var connectionString = Configuration.GetSection("BFBDatabase").GetSection("ConnectionString").Value;
             services.AddDbContextPool<DatabaseConfig>(
-                x => x.UseMySql("Data Source = coms-309-ks-5.misc.iastate.edu; Initial Catalog = BFB; Uid = teamks5; Pwd = KS_5projectuser;"
+                x => x.UseMySql(connectionString
                 ));
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
@@ -60,6 +61,13 @@ namespace BFB.Web
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+
+            app.UseForwardedHeaders(new ForwardedHeadersOptions
+            {
+                ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
+            });
+
+            app.UseAuthentication();
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
