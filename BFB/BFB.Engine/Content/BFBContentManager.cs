@@ -1,7 +1,12 @@
+using System;
 using System.Collections.Generic;
+using System.Data;
+using System.IO;
+using JetBrains.Annotations;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Media;
+using Newtonsoft.Json;
 
 namespace BFB.Engine.Content
 {
@@ -13,7 +18,8 @@ namespace BFB.Engine.Content
         private readonly ContentManager _contentManager;
         
         //Dictionary<contentKey, Content>
-        private readonly  Dictionary<string, Texture2D> _textureContent;//Create a custom Texture2d wrapper class to hold animation details
+        private readonly  Dictionary<string, Texture2D> _textureContent;
+        private readonly Dictionary<string, AnimatedTexture> _animatedTexturesContent;
         private readonly  Dictionary<string, SpriteFont> _fontContent;
         private readonly  Dictionary<string, Song> _audioContent;//Probably in future when ready to use this create a wrapper class
         
@@ -27,6 +33,7 @@ namespace BFB.Engine.Content
             _contentManager = contentManager;
             
             _textureContent = new Dictionary<string, Texture2D>();
+            _animatedTexturesContent = new Dictionary<string, AnimatedTexture>();
             _fontContent = new Dictionary<string, SpriteFont>();
             _audioContent = new  Dictionary<string, Song>();
             
@@ -53,7 +60,7 @@ namespace BFB.Engine.Content
         }
         
         #endregion
-        
+
         #region UnloadTexture
 
         public void UnloadTexture(string textureKey)
@@ -133,14 +140,170 @@ namespace BFB.Engine.Content
         
         #endregion
         
-        #region ParseContent
+        #region AddAnimatedTexture
 
-        public void ParseContent()
+        public void AddAnimatedTexture(string textureKey, AnimatedTexture texture)
         {
-            //TODO fills in textures, audio, and fonts, and anything else that may be important
+            if (!_animatedTexturesContent.ContainsKey(textureKey))
+                _animatedTexturesContent.Add(textureKey, texture);
+        }
+        
+        #endregion
+        
+        #region GetAnimatedTexture
+
+        public AnimatedTexture GetAnimatedTexture(string textureKey)
+        {
+            return _animatedTexturesContent.ContainsKey(textureKey) ? _animatedTexturesContent[textureKey] : throw new KeyNotFoundException($"The animated texture Key: {textureKey} was not found.");
         }
         
         #endregion
 
+        #region UnloadAnimatedTexture
+
+        public void UnloadAnimatedTexture(string textureKey)
+        {
+            if (_animatedTexturesContent.ContainsKey(textureKey)) 
+                return;
+            
+            _animatedTexturesContent[textureKey].Texture.Dispose();
+            _animatedTexturesContent.Remove(textureKey);
+        }
+
+        
+        #endregion
+        
+        #region ParseContent
+
+        public void ParseContent()
+        {
+            string json;
+            
+            //Get file for Parsing
+            using (StreamReader r = new StreamReader("content.json"))
+            {
+                json = r.ReadToEnd();
+            }
+            
+            ContentFileSchema content = JsonConvert.DeserializeObject<ContentFileSchema>(json);
+            
+            //Parse texture
+            ParseTextures(content.Textures);
+            
+            //Parse fonts
+            ParseFonts(content.Fonts);
+            
+            //Parse animated textures
+            ParseAnimatedTextures(content.AnimatedTextures);
+            
+            //Parse audio
+            ParseAudio(/*TODO*/);
+        }
+        
+        #endregion
+        
+        #region ParseTextures
+
+        private void ParseTextures(IEnumerable<ContentGroupSchema> textures)
+        {
+            foreach (ContentGroupSchema texture in textures)
+            {
+                Console.WriteLine("Loading Texture: " + texture.Key);
+                
+                if(_textureContent.ContainsKey(texture.Key))
+                    throw new DuplicateNameException($"The texture key: {texture.Key} was found more then once while parsing textures");
+                
+                _textureContent.Add(texture.Key, _contentManager.Load<Texture2D>(texture.Location));
+            }
+        }
+        
+        #endregion
+        
+        #region ParseAnimatedTextures
+
+        private void ParseAnimatedTextures(List<AnimatedTexture> textures)
+        {
+            foreach (AnimatedTexture texture in textures)
+            {
+                Console.WriteLine("Loading Animated Texture: " + texture.Key);
+                
+                if(_animatedTexturesContent.ContainsKey(texture.Key))
+                    throw new DuplicateNameException($"The animated texture key: {texture.Key} was found more then once while parsing animated textures");
+
+                texture.Texture = _contentManager.Load<Texture2D>(texture.Location);
+                
+                _animatedTexturesContent.Add(texture.Key, texture);
+
+            }
+        }
+        
+        #endregion
+        
+        #region ParseFonts
+
+        private void ParseFonts(List<ContentGroupSchema> fonts)
+        {
+            foreach (ContentGroupSchema font in fonts)
+            {
+                Console.WriteLine("Loading font: " + font.Key);
+                
+                if(_textureContent.ContainsKey(font.Key))
+                    throw new DuplicateNameException($"The font key: {font.Key} was found more then once while parsing fonts");
+                
+                _fontContent.Add(font.Key, _contentManager.Load<SpriteFont>(font.Location));
+            }
+        }
+        
+        #endregion
+        
+        #region ParseAudio
+
+        private void ParseAudio()
+        {
+            //TODO
+        }
+        
+        #endregion
     }
+
+    #region Content Schema Classes
+    
+    [UsedImplicitly]
+    public class ContentFileSchema
+    {
+        [UsedImplicitly]
+
+        public List<ContentGroupSchema> Fonts { get; set; }
+        
+        [UsedImplicitly]
+
+        public List<ContentGroupSchema> Textures { get; set; }
+        
+        [UsedImplicitly]
+
+        public List<ContentGroupSchema> Audio { get; set; }
+
+        [UsedImplicitly]
+
+        public List<AnimatedTexture> AnimatedTextures { get; set; }
+
+    }
+    
+    [UsedImplicitly]
+
+    public class ContentGroupSchema
+    {
+        [UsedImplicitly]
+
+        public string Key { get; set; }
+
+        [UsedImplicitly]
+
+        public string Location { get; set; }
+    }
+
+
+    
+    #endregion
+    
 }

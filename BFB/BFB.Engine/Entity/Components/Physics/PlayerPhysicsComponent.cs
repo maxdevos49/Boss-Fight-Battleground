@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Reflection.PortableExecutable;
+using BFB.Engine.Content;
 using BFB.Engine.Entity.Components.Input;
 using BFB.Engine.Math;
 using JetBrains.Annotations;
@@ -14,6 +15,7 @@ namespace BFB.Engine.Entity.Components.Physics
         private readonly BfbVector _maxSpeed;
         private readonly BfbVector _gravity;
         private readonly float _friction;
+        private AnimationState _previousAnimationState;
         
         
         public PlayerPhysicsComponent()
@@ -53,7 +55,10 @@ namespace BFB.Engine.Entity.Components.Physics
                 //This will affects changing directions back and forth -- so its like smash bros switching directions
                 serverEntity.Velocity.Mult(_friction);
             }
-            
+
+            if (System.Math.Abs(serverEntity.Velocity.X) < 1)
+                serverEntity.Velocity.X = 0;
+
             //Updates the position
             serverEntity.Position.Add(serverEntity.Velocity);
 
@@ -63,7 +68,29 @@ namespace BFB.Engine.Entity.Components.Physics
                 serverEntity.Velocity.Y = 0;
                 serverEntity.Grounded = true;
             }
-            
+
+            //Animation states
+            if (serverEntity.Velocity.X > 1)
+            {
+                serverEntity.AnimationState = AnimationState.MoveRight;
+            }
+            else if (serverEntity.Velocity.X < 1)
+            {
+
+                serverEntity.AnimationState = AnimationState.MoveLeft;
+            }
+            else if (_previousAnimationState == AnimationState.MoveLeft &&  _previousAnimationState != AnimationState.IdleRight)
+            {
+                serverEntity.AnimationState = AnimationState.IdleLeft;
+            }
+            else if(_previousAnimationState != AnimationState.IdleLeft)
+            {
+                serverEntity.AnimationState = AnimationState.IdleRight;
+            }
+
+
+            _previousAnimationState = serverEntity.AnimationState;
+
         }
     }
 }

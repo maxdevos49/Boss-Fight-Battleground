@@ -1,0 +1,57 @@
+{
+    "Fonts": [
+        {
+            "Key": "default",
+            "Location": "Fonts\\Papyrus"
+        }
+    ],
+    "Audio": [
+        {
+
+        }
+    ],
+    "Textures": [
+        {
+            "Key": "button",
+            "Location": "Sprites\\button"
+        }
+    ],
+    "AnimatedTextures": [
+        {
+            "Key": "Player",
+            "Location": "Sprites\\Player",
+            "Frames": 9,
+            "FrameWidth": 30,
+            "FrameHeight": 45,
+            "Columns": 4,
+            "Rows": 3,
+            "Scale": 2,
+            "AnimationSets": {
+                "IdleLeft": {
+                    "Fps": 5,
+                    "FrameStart": 8,
+                    "FrameEnd": 8,
+                    "Mirror": true
+                },
+                "IdleRight": {
+                    "Fps": 5,
+                    "FrameStart": 8,
+                    "FrameEnd": 8,
+                    "Mirror": false
+                },
+                "MoveLeft": {
+                    "Fps": 5,
+                    "FrameStart": 0,
+                    "FrameEnd": 7,
+                    "Mirror": true
+                },
+                "MoveRight": {
+                    "Fps": 5,
+                    "FrameStart": 0,
+                    "FrameEnd": 7,
+                    "Mirror": false
+                }
+            }
+        }
+    ]
+}

@@ -129,17 +129,20 @@ namespace BFB.Client.Scenes
                             _entities[em.EntityId].Position = em.Position;
                             _entities[em.EntityId].Velocity = em.Velocity;
                             _entities[em.EntityId].Rotation = em.Rotation;
+                            _entities[em.EntityId].AnimationState = em.AnimationState;
                         }
                         else
                         {
+                            Console.WriteLine("Test: " + em.AnimationTextureKey);
+                            
                             _entities.Add(em.EntityId,new ClientEntity(em.EntityId,
                                 new EntityOptions
                                 {
                                     Dimensions = em.Dimensions,
                                     Position = em.Position,
                                     Rotation = em.Rotation,
-                                    Origin = em.Origin
-                                }, new AnimationComponent(ContentManager.GetTexture("player"))));//Change this to have sprite work correctly.
+                                    Origin = em.Origin,
+                                }, new AnimationComponent(ContentManager.GetAnimatedTexture(em.AnimationTextureKey))));
                         }
                     }
                 }
@@ -194,8 +197,7 @@ namespace BFB.Client.Scenes
                 foreach ((string key, ClientEntity entity) in _entities)
                 {
                     entity.Draw(graphics);
-                    Console.WriteLine($"x:{entity.Position.X}");//Get rid of these later
-                    Console.WriteLine($"y:{entity.Position.Y}");
+                    Console.WriteLine(entity.AnimationState);
                 }
             }
 

@@ -56,7 +56,6 @@ namespace BFB.Engine.Entity.Components.Input
                 {
                     serverEntity.DesiredVector.Add(new BfbVector(0,-1));
                     serverEntity.Grounded = false;
-
                 }
             }
         }

@@ -165,18 +165,16 @@ namespace BFB.Client
 
         protected override void LoadContent()
         {
-            _contentManager.ParseContent(/*TODO make this work*/);
+            _contentManager.ParseContent();
             
-            //global font load
-            _contentManager.AddFont("default", Content.Load<SpriteFont>("Fonts\\Papyrus"));
             
             //Global texture load
             Texture2D defaultTexture = new Texture2D(_graphicsDeviceManager.GraphicsDevice, 1, 1);
             defaultTexture.SetData(new[] { Color.White });
             _contentManager.AddTexture("default", defaultTexture);
             
-            _contentManager.AddTexture("player", Content.Load<Texture2D>("Sprites\\PlayerIdleRight"));
-            _contentManager.AddTexture("button", Content.Load<Texture2D>("Sprites\\button"));
+//            _contentManager.AddTexture("player", Content.Load<Texture2D>("Sprites\\PlayerIdleRight"));
+//            _contentManager.AddTexture("button", Content.Load<Texture2D>("Sprites\\button"));
         }
 
         #endregion

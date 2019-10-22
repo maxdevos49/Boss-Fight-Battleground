@@ -18,6 +18,9 @@
 
   <ItemGroup>
     <None Remove="Content\Sprites\SpaceshipSpritesheet.xnb" />
+    <None Update="content.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
   <ItemGroup>

@@ -1,3 +1,4 @@
+using BFB.Engine.Content;
 using BFB.Engine.Math;
 using BFB.Engine.Server.Communication;
 using Microsoft.Xna.Framework;
@@ -9,6 +10,10 @@ namespace BFB.Engine.Entity
         #region Properties
         
         public string EntityId { get; set; }
+
+        public string AnimatedTextureKey { get; set; }
+        
+        public AnimationState AnimationState { get; set; }
         
         public BfbVector Position { get; set; }
         
@@ -21,14 +26,17 @@ namespace BFB.Engine.Entity
         public float Rotation { get; set; }
         
         public bool Grounded { get; set; }
+
         
         #endregion
 
         #region Constructor
-        
-        public Entity(string entityId, EntityOptions options)
+
+        protected Entity(string entityId, EntityOptions options)
         {
             EntityId = entityId;
+            AnimatedTextureKey = options.AnimatedTextureKey;
+            AnimationState = AnimationState.IdleRight;
             Position = options.Position;
             Dimensions = options.Dimensions;
             Origin = options.Origin;
@@ -46,6 +54,8 @@ namespace BFB.Engine.Entity
             return new EntityMessage
             {
                 EntityId = EntityId,
+                AnimationTextureKey = AnimatedTextureKey,
+                AnimationState = AnimationState,
                 Position = Position,
                 Dimensions = Dimensions,
                 Origin = Origin,
@@ -62,6 +72,7 @@ namespace BFB.Engine.Entity
     
     public class EntityOptions
     {
+        public string AnimatedTextureKey { get; set; }
         public BfbVector Position { get; set; }
         public BfbVector Dimensions { get; set; }
         public BfbVector Origin { get; set; }
