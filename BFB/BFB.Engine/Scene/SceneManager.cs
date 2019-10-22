@@ -10,6 +10,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 //Engine
 using BFB.Engine.Event;
+using BFB.Engine.UI;
 
 //Jetbrains
 using JetBrains.Annotations;
@@ -22,20 +23,22 @@ namespace BFB.Engine.Scene
         //Dependencies
         private readonly ContentManager _contentManager;
         private readonly GraphicsDeviceManager _graphicsManager;
-        private readonly EventManager _eventManager;
+        private readonly EventManager<GlobalEvent> _eventManager;
+        private readonly UIManager _uiManager;
 
         //Properties
         private readonly Dictionary<string, Scene> _allScenes;
-        private List<Scene> _activeScenes;
+        private readonly List<Scene> _activeScenes;
 
         #region constructor
 
-        public SceneManager(ContentManager contentManager, GraphicsDeviceManager graphicsManager, EventManager eventManager)
+        public SceneManager(ContentManager contentManager, GraphicsDeviceManager graphicsManager, EventManager<GlobalEvent> eventManager, UIManager uiManager)
         {
             _contentManager = contentManager;
             _graphicsManager = graphicsManager;
             _eventManager = eventManager;
-
+            _uiManager = uiManager;
+            
             _allScenes = new Dictionary<string, Scene>();
             _activeScenes = new List<Scene>();
         }
@@ -67,7 +70,7 @@ namespace BFB.Engine.Scene
         {
             if (SceneExist(scene.Key)) return;
             
-            scene.InjectDependencies(this, _contentManager, _graphicsManager, _eventManager);
+//            scene.InjectDependencies(this, _contentManager, _graphicsManager, _eventManager);
             _allScenes.Add(scene.Key, scene);
         }
 
@@ -83,7 +86,10 @@ namespace BFB.Engine.Scene
             if (!SceneExist(key)) return;
             
             //Shutdown any currently active scenes
-            StopScene();
+            StopScenes();
+            
+            //Shutdown active UI layers
+            _uiManager.StopLayers();
 
             //Start the single scene
             LaunchScene(key);
@@ -148,7 +154,8 @@ namespace BFB.Engine.Scene
             }
         }
 
-        public void StopScene()
+        [UsedImplicitly]
+        public void StopScenes()
         {
             foreach (Scene scene in _activeScenes)
             {
@@ -156,7 +163,7 @@ namespace BFB.Engine.Scene
                 scene.Stop();
             }
             
-            _activeScenes = new List<Scene>();
+            _activeScenes.Clear();
         }
 
         #endregion

@@ -5,7 +5,9 @@ using Microsoft.Xna.Framework;
 
 namespace BFB.Engine.Entity.Components.Physics
 {
-    public class AccelerateComponent: IPhysicsComponent
+    public class 
+        
+        AccelerateComponent: IPhysicsComponent
     {
         
         private readonly float _maxForce;
@@ -14,7 +16,7 @@ namespace BFB.Engine.Entity.Components.Physics
 
         public AccelerateComponent()
         {
-            _maxForce = 0.7f;
+            _maxForce = 0.7f; 
             _maxSpeed = 10;
         }
 

@@ -9,24 +9,24 @@ namespace BFB.Engine.Input
     public class MouseInput
     {
 
-        private readonly EventManager _eventManager;
+        private readonly MouseStatus _mouseStatus;
+        
+        private readonly EventManager<InputEvent> _eventManager;
 
-        private int _x;
-        private int _y;
-        private ButtonState _leftButton;
-        private ButtonState _rightButton;
-        private ButtonState _middleButton;
-
-        public MouseInput(EventManager eventManager)
+        public MouseInput(EventManager<InputEvent> eventManager)
         {
             _eventManager = eventManager;
 
-            //Defaults
-            _x = 0;
-            _y = 0;
-            _leftButton = ButtonState.Released;
-            _rightButton = ButtonState.Released;
-            _middleButton = ButtonState.Released;
+            //initial
+            _mouseStatus = new MouseStatus
+            {
+                X = 0,
+                Y = 0,
+                LeftButton = ButtonState.Released,
+                RightButton = ButtonState.Released,
+                MiddleButton = ButtonState.Released,
+                MouseState = Mouse.GetState()
+            };
         }
 
         public void UpdateMouse()
@@ -34,13 +34,13 @@ namespace BFB.Engine.Input
             MouseState mouseState = Mouse.GetState();
 
             //Mouse move
-            if (_x != mouseState.X || _y != mouseState.Y)
+            if (_mouseStatus.X != mouseState.X || _mouseStatus.Y != mouseState.Y)
                 EmitMouseMovedEvent(mouseState);
 
             //Mouse click
-            if ((_leftButton == ButtonState.Released && mouseState.LeftButton == ButtonState.Pressed)
-                || (_rightButton == ButtonState.Released && mouseState.RightButton == ButtonState.Pressed)
-                || (_middleButton == ButtonState.Released && mouseState.MiddleButton == ButtonState.Pressed))
+            if ((_mouseStatus.LeftButton == ButtonState.Released && mouseState.LeftButton == ButtonState.Pressed)
+                || (_mouseStatus.RightButton == ButtonState.Released && mouseState.RightButton == ButtonState.Pressed)
+                || (_mouseStatus.MiddleButton == ButtonState.Released && mouseState.MiddleButton == ButtonState.Pressed))
                 EmitMouseClick(mouseState);
 
             //Mouse down
@@ -50,17 +50,18 @@ namespace BFB.Engine.Input
                 EmitMousePressed(mouseState);
 
             //Mouse released
-            if ((_leftButton == ButtonState.Pressed && mouseState.LeftButton == ButtonState.Released)
-                || (_rightButton == ButtonState.Pressed && mouseState.RightButton == ButtonState.Released)
-                || (_middleButton == ButtonState.Pressed && mouseState.MiddleButton == ButtonState.Released))
+            if ((_mouseStatus.LeftButton == ButtonState.Pressed && mouseState.LeftButton == ButtonState.Released)
+                || (_mouseStatus.RightButton == ButtonState.Pressed && mouseState.RightButton == ButtonState.Released)
+                || (_mouseStatus.MiddleButton == ButtonState.Pressed && mouseState.MiddleButton == ButtonState.Released))
                 EmitMouseReleased(mouseState);
 
             //Save value so we know when changes happened
-            _x = mouseState.X;
-            _y = mouseState.Y;
-            _leftButton = mouseState.LeftButton;
-            _rightButton = mouseState.RightButton;
-            _middleButton = mouseState.MiddleButton;
+            _mouseStatus.X = mouseState.X;
+            _mouseStatus.Y = mouseState.Y;
+            _mouseStatus.LeftButton = mouseState.LeftButton;
+            _mouseStatus.RightButton = mouseState.RightButton;
+            _mouseStatus.MiddleButton = mouseState.MiddleButton;
+            _mouseStatus.MouseState = mouseState;
 
         }
 
@@ -96,22 +97,27 @@ namespace BFB.Engine.Input
             _eventManager.Emit("mouseclick", GetMouseEventPayload(mouseState));
         }
 
-        private static Event.Event GetMouseEventPayload(MouseState mouseState)
+        private static InputEvent GetMouseEventPayload(MouseState mouseState)
         {
 
-            Event.Event eventData = new Event.Event
+            return new InputEvent()
             {
-                Mouse = new MouseEvent
+                Mouse = new MouseStatus
                 {
                     X = mouseState.X,
                     Y = mouseState.Y,
                     LeftButton = mouseState.LeftButton,
                     RightButton = mouseState.RightButton,
-                    MiddleButton = mouseState.MiddleButton
+                    MiddleButton = mouseState.MiddleButton,
+                    MouseState = mouseState
+                },
+                Keyboard = new KeyboardStatus
+                {
+                    KeyEnum = Keys.None,
+                    KeyboardState = Keyboard.GetState()
                 }
             };
 
-            return eventData;
         }
 
     }

@@ -86,13 +86,14 @@ namespace BFB.Server
                     socket.ClientId,
                     new EntityOptions
                     {
+                        AnimatedTextureKey = "Player",
                         Position = new BfbVector(200, 200),
                         Dimensions = new BfbVector(100, 100),
                         Rotation = 0,
                         Origin = new BfbVector(50, 50),
                     }, new ComponentOptions
                     {
-                        Physics = new AccelerateComponent(),
+                        Physics = new PlayerPhysicsComponent(),
                         Input = new RemoteInputComponent(socket)
                     }));
                 
