@@ -30,12 +30,10 @@ namespace BFB.Engine.UI.Components
 
             string text = _propertySelector == null ? WrapText(font,_text, RenderAttributes.Width,RenderAttributes.Height) : WrapText(font, _propertySelector(_model), RenderAttributes.Width, RenderAttributes.Height);
             
-//            (float x, float y) = font.MeasureString(text);
-//            graphics.DrawString(font, text, new Vector2(X + Width/2,Y + Height/2) , Color,0,new Vector2(x/2,y/2), FontSize,SpriteEffects.None,1);
-            
             DrawString(graphics, font, text, new Rectangle(RenderAttributes.X,RenderAttributes.Y,RenderAttributes.Width ,RenderAttributes.Height ));
         }
         
+        //TODO make into helper
         private void DrawString(SpriteBatch graphics, SpriteFont font, string strToDraw, Rectangle boundaries)
         {
             
@@ -47,7 +45,7 @@ namespace BFB.Engine.UI.Components
             Vector2 position = new Vector2()
             {
                 X = boundaries.X - (int)(x * scale / 2) + boundaries.Width / 2,
-                Y = boundaries.Y - (int)(y * scale / 2) + boundaries.Height / 2
+                Y = boundaries.Y - (int)(y * scale / 2) + boundaries.Height / 2 + (y*scale/10)
             };
 
             // Draw the string to the sprite batch!

@@ -68,7 +68,6 @@ namespace BFB.Engine.UI.Components
             TModel model,
             Expression<Func<TModel, string>> selector,
             Action<UIEvent,UIComponentAttributes> clickAction = null,
-            Action<UIEvent,UIComponentAttributes> focusAction = null,
             Action<UIEvent,UIComponentAttributes> keyPressAction = null,
             Action<UIEvent,UIComponentAttributes> hoverAction = null
             )
@@ -79,7 +78,6 @@ namespace BFB.Engine.UI.Components
                     model, 
                     selector,
                     clickAction,
-                    focusAction,
                     keyPressAction,
                     hoverAction
                     ),

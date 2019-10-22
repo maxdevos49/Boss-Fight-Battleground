@@ -37,12 +37,18 @@ namespace BFB.Engine.UI.Components
             
             AddEvent("click", ClickEventHandler);
             AddEvent("hover", HoverEventHandler);
-            AddEvent("keypress", (e) =>
-            {
-                if(e.Keyboard.KeyEnum == Keys.Enter)
-                    ClickEventHandler(e);
-            });
+            AddEvent("keypress", KeyPressEventHandler);
             
+        }
+        
+        #endregion
+        
+        #region keyPressEventHandler
+
+        private void KeyPressEventHandler(UIEvent e)
+        {
+            if(e.Keyboard.KeyEnum == Keys.Enter)
+                ClickEventHandler(e);
         }
         
         #endregion

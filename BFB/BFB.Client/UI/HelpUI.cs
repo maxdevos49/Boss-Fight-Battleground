@@ -41,17 +41,18 @@ namespace BFB.Client.UI
                     v1.Hstack(h2 =>
                     {
                         h2.Hstack(h3 =>
-                            {
-                                h3.Button("Back",
-                                    clickAction: (e, a) =>
-                                    {
-                                        UIManager.Start(nameof(MainMenuUI));
-                                    });
-                            })
+                        {
+                            h3.Button("Back",
+                                clickAction: (e, a) =>
+                                {
+                                    UIManager.Start(nameof(MainMenuUI)); 
+                                    
+                                })
                                 .Height(0.8f)
                                 .Width(0.8f)
                                 .Image("button")
-                                .Center();
+                                .Center();;
+                        });
                     });
                     
                     v1.Spacer();

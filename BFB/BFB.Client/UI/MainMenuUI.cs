@@ -43,13 +43,7 @@ namespace BFB.Client.UI
                         //Play
                         v1.Hstack(h2 =>
                         {
-                            h2.Button("Play", hoverAction: (e, a) =>
-                                {
-                                    a.Background = Color.Blue;
-                                }, clickAction: (e, a) =>
-                                {
-                                    a.Background = Color.Green;
-                                })
+                            h2.Button("Play")
                                 .Width(0.8f)
                                 .Height(0.8f)
                                 .Center()
@@ -58,6 +52,7 @@ namespace BFB.Client.UI
                             h2.TextBoxFor(model, x => x.Test1)
                                 .Width(0.8f)
                                 .Height(0.8f)
+                                .Grow(3)
                                 .Center()
                                 .Background(Color.White)
                                 .Color(Color.Black);

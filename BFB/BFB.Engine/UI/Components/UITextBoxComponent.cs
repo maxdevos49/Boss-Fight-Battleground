@@ -16,13 +16,14 @@ namespace BFB.Engine.UI.Components
         private readonly TModel _model;
         private readonly Expression<Func<TModel, string>> _selector;
 
-        private Action<UIEvent, UIComponentAttributes> _clickAction;
-        private Action<UIEvent, UIComponentAttributes> _focusAction;
-        private Action<UIEvent, UIComponentAttributes> _keyPressAction;
-        private Action<UIEvent, UIComponentAttributes> _hoverAction;
+        private readonly Action<UIEvent, UIComponentAttributes> _clickAction;
+        private readonly Action<UIEvent, UIComponentAttributes> _keyPressAction;
+        private readonly Action<UIEvent, UIComponentAttributes> _hoverAction;
 
         private Keys _previousKey;
         private int _keyRepeatCounter;
+        private int _tick;
+        private bool _showCursor;
         
         #endregion
         
@@ -32,25 +33,25 @@ namespace BFB.Engine.UI.Components
             TModel model, 
             Expression<Func<TModel,string>> selector, 
             Action<UIEvent,UIComponentAttributes> clickAction = null,
-            Action<UIEvent,UIComponentAttributes> focusAction = null,
             Action<UIEvent,UIComponentAttributes> keyPressAction = null,
             Action<UIEvent,UIComponentAttributes> hoverAction = null) : base(nameof(UITextBoxComponent<TModel>))
         {
+            Focusable = true;
+            
             _model = model;
             _selector = selector;
 
             _clickAction = clickAction;
-            _focusAction = focusAction;
             _keyPressAction = keyPressAction;
             _hoverAction = hoverAction;
 
-            Focusable = true;
+            _tick = 0;
+            _showCursor = false;
             
             AddEvent("keypress", KeyPressEvent);
             AddEvent("keydown", KeyDownEvent);
             AddEvent("hover", HoverEvent);
             AddEvent("click", ClickEvent);
-            
             AddEvent("keyup", e =>
             {
                 _keyRepeatCounter = 0;
@@ -151,14 +152,62 @@ namespace BFB.Engine.UI.Components
             base.Render(graphics, texture, font);
 
             string text =  _selector.Compile().Invoke(_model);
+
+            _tick++;
+            if (Focused && _tick % 30 == 0)
+                _showCursor = !_showCursor;
+
+            if (Focused)
+            {
+                if (_showCursor)
+                    text += "  ";
+                else
+                    text += "_";
+            }
+                
             
-//            (float x, float y) = font.MeasureString(text);
-            graphics.DrawString(font, text, new Vector2(RenderAttributes.X + RenderAttributes.Width/2,RenderAttributes.Y + RenderAttributes.Height/2) , RenderAttributes.Color,0,new Vector2(RenderAttributes.Width/2,RenderAttributes.Height/2), RenderAttributes.FontSize,SpriteEffects.None,1);
+            //Stop global buffer
+            graphics.End();
+            
+            //indicate how we are redrawing the text
+            RasterizerState r = new RasterizerState {ScissorTestEnable = true};
+            graphics.GraphicsDevice.ScissorRectangle = new Rectangle(RenderAttributes.X,RenderAttributes.Y,RenderAttributes.Width,RenderAttributes.Height);
+            
+            //Start new special buffer
+            graphics.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, SamplerState.PointClamp, DepthStencilState.None,r);
+            
+            //Draw our text
+            DrawString(graphics, font,text,new Rectangle(RenderAttributes.X, RenderAttributes.Y,RenderAttributes.Width,RenderAttributes.Height));
+//            graphics.DrawString(font, text, new Vector2(RenderAttributes.X + width/2 ,RenderAttributes.Y + height/2) , RenderAttributes.Color,0,new Vector2(RenderAttributes.Width/2,RenderAttributes.Height/2), RenderAttributes.FontSize,SpriteEffects.None,1);
+
+            //Begin next drawing after ending the special buffer
+            graphics.End();
+            graphics.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, SamplerState.PointClamp, DepthStencilState.None, RasterizerState.CullCounterClockwise);
             
 //            DrawString(graphics, font, text, new Rectangle(RenderAttributes.X,RenderAttributes.Y,RenderAttributes.Width ,RenderAttributes.Height ));
         }
         
         #endregion
+        
+        //TODO make into helper
+        private void DrawString(SpriteBatch graphics, SpriteFont font, string strToDraw, Rectangle boundaries)
+        {
+            
+            (float x, float y) = font.MeasureString(strToDraw);
+
+            // Taking the smaller scaling value will result in the text always fitting in the boundaries.
+            float scale = boundaries.Height / y;
+
+            int hPadding = 10;
+            Vector2 position = new Vector2()//Centers the sprite
+            {
+                X = (x*scale + hPadding < boundaries.Width) ? boundaries.X + hPadding : boundaries.X - ((x*scale - boundaries.Width) + hPadding),
+                Y = boundaries.Y - (int)(y * scale / 2) + boundaries.Height / 2 + (y*scale/7)//Centering
+            };
+
+            // Draw the string to the sprite batch!
+            graphics.DrawString(font, strToDraw, position, RenderAttributes.Color, 0, Vector2.Zero, scale, SpriteEffects.None, 0);
+        }
     }
     
     //TODO move to own file in a helpers folder??
