@@ -69,11 +69,12 @@ namespace BFB.Test.Web.Database
             };
             IList<BFB_User> users = new List<BFB_User>();
             users.Add(fakeUser);
-            var mockedDatabaseConfig = new Mock<DatabaseConfig>();
+            DbContextOptions options = new DbContextOptions<DbContext>();
+            var mockedDatabaseConfig = new Mock<BFB.Web.Models.DatabaseConfig>(options);
             mockedDatabaseConfig.Setup(foo => foo.BFB_User).ReturnsDbSet(users);
-            //BFB.Web.Services.DatabaseService.db = mockedDatabaseConfig.Object;
+            BFB.Web.Services.DatabaseService.db = mockedDatabaseConfig.Object;
 
-            //Assert.True(BFB.Web.Services.DatabaseService.ValidateUser(username, password));
+            Assert.True(BFB.Web.Services.DatabaseService.ValidateUser(username, password));
         }
 
         #endregion
