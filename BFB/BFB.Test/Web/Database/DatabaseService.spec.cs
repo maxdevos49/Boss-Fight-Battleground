@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using BFB.Web.Models;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure;
 using Xunit;
 using Moq;
 using DatabaseConfig = BFB.Test.Web.Resources.DatabaseConfig;
+using Moq.EntityFrameworkCore;
 
 namespace BFB.Test.Web.Database
 {
@@ -37,7 +40,10 @@ namespace BFB.Test.Web.Database
 
             var mock = new Mock<DatabaseConfig>();
             mock.Setup(foo => foo.BFB_User.Add(fakeUser)).Verifiable();
+
+
             //BFB.Web.Services.DatabaseService.AddUserEntry(username, email, password);
+            Mock.Verify();
         }
 
         [Fact]
@@ -61,8 +67,12 @@ namespace BFB.Test.Web.Database
                 UpdatedBy = currentDate,
                 EmailToken = null
             };
-            var mock = new Mock<DatabaseConfig>();
-            mock.Setup(foo => foo.BFB_User.Add(fakeUser));
+            IList<BFB_User> users = new List<BFB_User>();
+            users.Add(fakeUser);
+            var mockedDatabaseConfig = new Mock<DatabaseConfig>();
+            mockedDatabaseConfig.Setup(foo => foo.BFB_User).ReturnsDbSet(users);
+            //BFB.Web.Services.DatabaseService.db = mockedDatabaseConfig.Object;
+
             //Assert.True(BFB.Web.Services.DatabaseService.ValidateUser(username, password));
         }
 
