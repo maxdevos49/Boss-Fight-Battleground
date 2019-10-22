@@ -1,0 +1,22 @@
+﻿
+@{
+    ViewData["Title"] = "Login";
+}
+@model BFB.Web.Models.LoginFormModel
+
+<div class="text-center">
+    <h1 class="display-4">Login to your Account</h1>
+    <p>Join the mayhem.</p>
+</div>
+
+<form asp-action="Login" asp-controller="LoginForm">
+    <div class="form-group">
+        <label asp-for="Username">Username</label>
+        <input asp-for="Username" type="text" class="form-control" placeholder="Username" required />
+    </div>
+    <div class="form-group">
+        <label asp-for="Password">Password</label>
+        <input asp-for="Password" type="password" class="form-control" placeholder="Password" required />
+    </div>
+    <button type="submit" class="btn btn-primary">Create Account</button>
+</form>
