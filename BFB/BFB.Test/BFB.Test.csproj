@@ -16,6 +16,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\BFB.Server\BFB.Server.csproj" />
+    <ProjectReference Include="..\BFB.Web\BFB.Web.csproj" />
   </ItemGroup>
 
   <ItemGroup>
