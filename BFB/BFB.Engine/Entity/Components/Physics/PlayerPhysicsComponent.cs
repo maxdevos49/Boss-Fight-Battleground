@@ -10,52 +10,47 @@ namespace BFB.Engine.Entity.Components.Physics
     public class 
         PlayerPhysicsComponent: IPhysicsComponent
     {
-        private readonly float _maxForce;
-        private readonly float _accelerationSpeed;
-        private readonly float _maxSpeed;
+        private readonly BfbVector _acceleration;
+        private readonly BfbVector _maxSpeed;
         private readonly BfbVector _gravity;
         private readonly float _friction;
         
         
         public PlayerPhysicsComponent()
         {
-            _accelerationSpeed = 6;
-            _maxForce = 0.7f;
-            _maxSpeed = 50;
+            _acceleration = new BfbVector(1,15);
+            _maxSpeed = new BfbVector(10,20);
             _gravity = new BfbVector(0, 0.98f);
-            _friction = 0.5f;
+            _friction = 0.2f;
 
         }
 
         public void Update(ServerEntity serverEntity)
         {
-
-
-            // ReSharper disable once CompareOfFloatsByEqualityOperator
-            if (!serverEntity.Grounded)
-            {
-                serverEntity.Velocity.Add(_gravity);
-            }
-            
             
             //Gives us the speed to move left and right
-            serverEntity.DesiredVector.Magnitude = _accelerationSpeed;
+            serverEntity.DesiredVector.X *= _acceleration.X;
+            serverEntity.DesiredVector.Y *= _acceleration.Y;
+            
+            if (!serverEntity.Grounded)
+                serverEntity.DesiredVector.Add(_gravity);
             
             
-
             //Creates the new velocity
             serverEntity.Velocity.Add(serverEntity.DesiredVector);
-            
+
 
             //Caps your speed
-            serverEntity.Velocity.Limit(_maxSpeed);
-
+            if(System.Math.Abs(serverEntity.Velocity.X) > _maxSpeed.X)
+                serverEntity.Velocity.X = serverEntity.Velocity.X > 0 ? _maxSpeed.X : -_maxSpeed.X;
+            
+            if(System.Math.Abs(serverEntity.Velocity.Y) > _maxSpeed.Y)
+                serverEntity.Velocity.Y = serverEntity.Velocity.Y > 0 ? _maxSpeed.Y : -_maxSpeed.Y;
             
             // ReSharper disable once CompareOfFloatsByEqualityOperator
             if (serverEntity.Grounded && serverEntity.DesiredVector.X == 0)
             {
                 //This will affects changing directions back and forth -- so its like smash bros switching directions
-                serverEntity.DesiredVector.Limit(_maxForce);
                 serverEntity.Velocity.Mult(_friction);
             }
             

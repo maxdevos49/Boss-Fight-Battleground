@@ -54,7 +54,7 @@ namespace BFB.Engine.Entity.Components.Input
                 //Moves player up
                 if (_playerState.Jump && serverEntity.Grounded)
                 {
-                    serverEntity.DesiredVector.Add(new BfbVector(0,-150));
+                    serverEntity.DesiredVector.Add(new BfbVector(0,-1));
                     serverEntity.Grounded = false;
 
                 }
