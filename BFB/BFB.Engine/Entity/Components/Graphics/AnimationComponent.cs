@@ -34,18 +34,18 @@ namespace BFB.Engine.Entity.Components.Graphics
         {
             _texture = texture;//should be reference
             
-            _rows = 5; // Hard coded values for the sake of not reading in from JSON. Will be changed later.
-            _columns = 9;
+            _rows = 1; // Hard coded values for the sake of not reading in from JSON. Will be changed later.
+            _columns = 1;
             
             _timeLeft = 0;
-            _framesPerSecond = 10;
+            _framesPerSecond = 1;
             _currentFrame = 0;
             
             _totalFrames = _rows * _columns;
 
             _animationStates = null;
-            _isLooping = true;
-            _isPaused = false;
+            _isLooping = false;
+            _isPaused = true;
             
             //rectangle selection size
             _drawRectangle.Width = _texture.Width / _columns;

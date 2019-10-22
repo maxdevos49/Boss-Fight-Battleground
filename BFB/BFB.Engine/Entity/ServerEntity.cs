@@ -34,6 +34,8 @@ namespace BFB.Engine.Entity
             //Components
             _input = components.Input;
             _physics = components.Physics;
+            
+            DesiredVector = new BfbVector();
         }
 
         #region Update

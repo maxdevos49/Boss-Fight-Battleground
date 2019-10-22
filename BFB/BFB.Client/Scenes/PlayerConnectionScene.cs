@@ -12,99 +12,90 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace BFB.Client.Scenes
 {
-    public class ConnectionScene : Scene
+    public class PlayerConnectionScene : Scene
     {
 
         private readonly object _lock;
         
         //Temp
-        private readonly BfbVector _mouse;
-        private Texture2D _spaceshipTexture;
+        private PlayerInput _playerInput;
+        private Texture2D _playerTexture;
 
-        private ClientSocketManager _server;
+        private readonly ClientSocketManager _server;
         private readonly Dictionary<string, ClientEntity> _entities;
 
-        public ConnectionScene() : base(nameof(ConnectionScene))
+        public PlayerConnectionScene() : base(nameof(PlayerConnectionScene))
         {
             _lock = new object();
             _entities = new Dictionary<string, ClientEntity>();
-            _server = null;
-            _mouse = new BfbVector();
+            _server = new ClientSocketManager("127.0.0.1", 6969);
         }
 
         protected override void Init()
         {
-            _server?.Dispose();
-            _server = new ClientSocketManager("127.0.0.1", 6969);//This must be reset every time we reconnect. It gets very very slow if we do not
-
+            
             /**
              * Scene events
              */
             #region Update Input State
+            _playerInput = new PlayerInput(this);
             
-            AddEventListener("mousemove", (e) =>
-            {
-                lock (_lock)
-                {
-                    _mouse.X = e.Mouse.X;
-                    _mouse.Y = e.Mouse.Y;
-                }
-            });
             
             #endregion
 
             /**
-             * Reserved Socket Manager route events
+             * Reserved Socket Manager routes
              */
             #region Client Connect
 
-            _server.OnConnect = (m) =>
+            _server.OnConnect((m) =>
             {
                 //Anything that needs done when this client connects
                 Console.WriteLine("Client Connected");
-            };
+            });
             
             #endregion
             
             #region Client Authentication
             
-            _server.OnAuthentication = (m) =>
+            _server.OnAuthentication((m) =>
             {
                 //Anything that needs done when this client authenticates.
                 Console.WriteLine("Client Authenticating");
                 return null;
-            };
+            });
             
             #endregion
 
             #region Client Ready
             
-            _server.OnReady = () =>
+            _server.OnReady(() =>
             {
                 Console.WriteLine("Client Ready!");
                 //Do something when client is fully ready after authentication is confirmed
-            };
+            });
             
             #endregion
             
             #region Client Disconnect
             
-            _server.OnDisconnect = (reason) =>
+            _server.OnDisconnect((m) =>
             {
                 //Anything that needs done when this client disconnects
-                Console.WriteLine($"Disconnected: {reason}");
-            };
+                Console.WriteLine("Disconnected");
+            });
             
             #endregion
             
             /**
              * Custom Socket Routes
              */
+            
             #region SendInput
             
             _server.On("/players/getUpdates", (m) =>
             {
-               // _server.Emit("/player/input", new InputMessage {PlayerInputState = _mouse});
+                _server.Emit("/player/input", new InputMessage {PlayerInputState = _playerInput.GetPlayerState()});
             });
             
             #endregion
@@ -148,14 +139,14 @@ namespace BFB.Client.Scenes
                                     Position = em.Position,
                                     Rotation = em.Rotation,
                                     Origin = em.Origin
-                                }, new AnimationComponent(_spaceshipTexture)));
+                                }, new AnimationComponent(_playerTexture)));//Change this to have sprite work correctly.
                         }
                     }
                 }
             });
             
             #endregion
-            
+
             if (!_server.Connect())
                 Console.WriteLine("Connection Failed.");
 
@@ -165,7 +156,7 @@ namespace BFB.Client.Scenes
         
         protected override void Load()
         {
-            _spaceshipTexture = ContentManager.Load<Texture2D>("Sprites\\SpaceshipSpritesheet");
+            _playerTexture = ContentManager.Load<Texture2D>("Sprites\\PlayerIdleRight"); //Change this for requested texture or spritesheet.
         }
         
         #endregion
@@ -174,8 +165,7 @@ namespace BFB.Client.Scenes
 
         public override void Unload()
         {
-            _server.Disconnect("Scene Close");
-            _entities.Clear();
+            _server.Disconnect();
             base.Unload();
         }
         
@@ -205,6 +195,8 @@ namespace BFB.Client.Scenes
                 foreach ((string key, ClientEntity entity) in _entities)
                 {
                     entity.Draw(graphics);
+                    Console.WriteLine($"x:{entity.Position.X}");//Get rid of these later
+                    Console.WriteLine($"y:{entity.Position.Y}");
                 }
             }
 

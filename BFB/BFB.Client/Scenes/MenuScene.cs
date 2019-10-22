@@ -22,9 +22,9 @@ namespace BFB.Client.Scenes
 
         protected override void Init()
         {
-            _b1 = new Button(Vector2.One * 120, new Vector2(100, 30), "Connection Scene", EventManager)
+            _b1 = new Button(Vector2.One * 120, new Vector2(100, 30), "Player Connection Scene", _eventManager)
             {
-                OnClick = () => { SceneManager.StartScene(nameof(ConnectionScene)); }
+                OnClick = () => { SceneManager.StartScene(nameof(PlayerConnectionScene)); }
             };
 
 

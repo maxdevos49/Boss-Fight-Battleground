@@ -108,8 +108,16 @@ namespace BFB.Engine.Math
         public void Normalize()
         {
             float mag = Magnitude;
-            X /= mag;
-            Y /= mag;
+            // ReSharper disable once CompareOfFloatsByEqualityOperator
+            if (X != 0)
+            {
+                X /= mag;
+            }
+            // ReSharper disable once CompareOfFloatsByEqualityOperator
+            if (Y != 0)
+            {
+                Y /= mag;
+            }
         }
         
         #endregion
