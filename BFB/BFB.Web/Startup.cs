@@ -2,14 +2,20 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BFB.Web.Controllers;
+using BFB.Web.Models;
+using BFB.Web.Services;
 using JetBrains.Annotations;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
 
 namespace BFB.Web
 {
@@ -31,8 +37,13 @@ namespace BFB.Web
                 // This lambda determines whether user consent for non-essential cookies is needed for a given request.
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
+
             });
 
+            var connectionString = Configuration.GetSection("BFBDatabase").GetSection("ConnectionString").Value;
+            services.AddDbContextPool<DatabaseConfig>(
+                x => x.UseMySql(connectionString
+                ));
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
@@ -51,9 +62,20 @@ namespace BFB.Web
                 app.UseHsts();
             }
 
+            app.UseForwardedHeaders(new ForwardedHeadersOptions
+            {
+                ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
+            });
+
+            app.UseAuthentication();
+
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
+
+            var db = app.ApplicationServices.GetRequiredService<DatabaseConfig>();
+            db.Database.EnsureCreated();
+            DatabaseService.db = db;
 
             app.UseMvc(routes =>
             {
