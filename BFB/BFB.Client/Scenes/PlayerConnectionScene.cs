@@ -9,6 +9,7 @@ using BFB.Engine.Math;
 using BFB.Engine.Scene;
 using BFB.Engine.Server;
 using BFB.Engine.Server.Communication;
+using BFB.Engine.TileMap;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -24,16 +25,45 @@ namespace BFB.Client.Scenes
 
         private readonly ClientSocketManager _server;
         private readonly Dictionary<string, ClientEntity> _entities;
+        
+        private const int HeightY = 320;
+        private const int WidthX = 480;
+
+        private readonly Random _random;
+
+        private readonly int _scale;
+        private int _offset;
+        private bool _grow;
+
+        private enum Blocks {
+            Air = 0,
+            Grass,
+            Dirt,
+            Stone
+        }
+        
+        private readonly TileMapManager _tileMap;
+
 
         public PlayerConnectionScene() : base(nameof(PlayerConnectionScene))
         {
             _lock = new object();
             _entities = new Dictionary<string, ClientEntity>();
             _server = new ClientSocketManager("127.0.0.1", 6969);
+            
+            _tileMap = new TileMapManager();
+            _random = new Random();
+            _scale = 15;
+            _grow = true;
+            _offset = 0;
         }
 
         protected override void Init()
         {
+            MainMenuUI layer = (MainMenuUI)UIManager.GetLayer(nameof(MainMenuUI));
+
+            _server.Ip = layer.model.Ip.Split(":")[0];
+            _server.Port = Convert.ToInt32(layer.model.Ip.Split(":")[1]);
             
             /**
              * Scene events
@@ -156,6 +186,43 @@ namespace BFB.Client.Scenes
             
             if (!_server.Connect())
                 Console.WriteLine("Connection Failed.");
+            
+            
+            for (int x = 0; x < WidthX; x++)
+            {
+                for (int y = 0; y < HeightY; y++)
+                {
+                    
+                    if(y < 16)
+                    {
+                        _tileMap.setBlock(x, y, (int)Blocks.Air);
+                    }
+                    else if (y < 17)
+                    {
+                        _tileMap.setBlock(x, y, (int)Blocks.Grass);
+                    }
+                    else if (y < 18)
+                    {
+                        _tileMap.setBlock(x, y, (int)Blocks.Dirt);
+                    }
+                    else if (y < 25)
+                    {
+                        if (_random.Next(y) + 2 > 25)
+                        {
+                            _tileMap.setBlock(x,y,(int)Blocks.Stone);
+                        }
+                        else
+                        {
+                            _tileMap.setBlock(x, y, (int) Blocks.Dirt);
+                        }
+
+                    }
+                    else
+                    {
+                        _tileMap.setBlock(x, y, (int)Blocks.Stone);
+                    }
+                }
+            }
 
         }
 
@@ -201,6 +268,33 @@ namespace BFB.Client.Scenes
                 foreach ((string key, ClientEntity entity) in _entities)
                 {
                     entity.Draw(graphics);
+                }
+            }
+            
+            int height = 450;
+            int width = 800;
+
+            int xTile = _offset/_scale;
+            int yTile = 0;
+            int widthTile = (_offset / _scale + width / _scale) + 2;
+            int heightTile = 50;
+            
+            for (int x = xTile; x < widthTile; x++)
+            {
+                for(int y = yTile; y < heightTile; y++)
+                {
+                    switch(_tileMap.getBlock(x, y))
+                    {
+                        case (int)Blocks.Grass:
+                            graphics.Draw(ContentManager.GetTexture("grass"), new Vector2(x * _scale - _offset, y * _scale), Color.White);
+                            break;
+                        case (int)Blocks.Dirt:
+                            graphics.Draw(ContentManager.GetTexture("dirt"), new Vector2(x * _scale - _offset, y * _scale), Color.White);
+                            break;
+                        case (int)Blocks.Stone:
+                            graphics.Draw(ContentManager.GetTexture("stone"), new Vector2(x * _scale - _offset, y * _scale), Color.White);
+                            break;
+                    }
                 }
             }
 

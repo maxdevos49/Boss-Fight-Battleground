@@ -131,11 +131,61 @@ namespace BFB.Engine.UI.Components
                     break;
                 default:
                 {
-                    if(e.Keyboard.KeyEnum.ToString().Length == 1)
-                        if (e.Keyboard.KeyboardState.IsKeyDown(Keys.LeftShift) || e.Keyboard.KeyboardState.IsKeyDown(Keys.RightShift)) //if shift is held down
-                            text += e.Keyboard.KeyEnum.ToString().ToUpper(); //convert the Key enum member to uppercase string
+                    if (e.Keyboard.KeyEnum.ToString().Length == 1)
+                    {
+                        if (e.Keyboard.KeyboardState.IsKeyDown(Keys.LeftShift) ||
+                            e.Keyboard.KeyboardState.IsKeyDown(Keys.RightShift)) //if shift is held down
+                            text += e.Keyboard.KeyEnum.ToString()
+                                .ToUpper(); //convert the Key enum member to uppercase string
                         else
-                            text += e.Keyboard.KeyEnum.ToString().ToLower(); //convert the Key enum member to lowercase string
+                            text += e.Keyboard.KeyEnum.ToString()
+                                .ToLower(); //convert the Key enum member to lowercase string
+                    }
+                    else
+                    {
+                        switch (e.Keyboard.KeyEnum)
+                        {
+                            case Keys.D0:
+                                text += "0";
+                                break;
+                            case Keys.D1:
+                                text += "1";
+                                break;
+                            case Keys.D2:
+                                text += "2";
+                                break;
+                            case Keys.D3:
+                                text += "3";
+                                break;
+                            case Keys.D4:
+                                text += "4";
+                                break;
+                            case Keys.D5:
+                                text += "5";
+                                break;
+                            case Keys.D6:
+                                text += "6";
+                                break;
+                            case Keys.D7:
+                                text += "7";
+                                break;
+                            case Keys.D8:
+                                text += "8";
+                                break;
+                            case Keys.D9:
+                                text += "9";
+                                break;
+                            case Keys.OemPeriod:
+                                text += ".";
+                                break;
+                            case Keys.OemSemicolon:
+                                text += ":";
+                                break;
+                            default:
+                                Console.WriteLine(e.Keyboard.KeyEnum);
+                                break;
+                        }
+                    }
                     break;
                 }
             }

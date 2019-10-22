@@ -22,8 +22,8 @@ namespace BFB.Engine.Server
         public Action OnReady { get; set; }
         
         private readonly object _lock;
-        private readonly string _ip;
-        private readonly int _port;
+        public string Ip { get; set; }
+        public int Port { get; set; }
         private readonly Dictionary<string, List<Action<DataMessage>>> _handlers;
         private TcpClient _socket;
         private NetworkStream _stream;
@@ -37,8 +37,8 @@ namespace BFB.Engine.Server
         public ClientSocketManager(string ip, int port)
         {
             _lock = new object();
-            _ip = ip;
-            _port = port;
+            Ip = ip;
+            Port = port;
             _socket = null;
             _stream = null;
             _handlers = new Dictionary<string, List<Action<DataMessage>>>();
@@ -90,7 +90,7 @@ namespace BFB.Engine.Server
         {
             try
             {
-                _socket = new TcpClient(_ip,_port);
+                _socket = new TcpClient(Ip,Port);
                 _stream = _socket.GetStream();
                 
                 //Setup the read thread

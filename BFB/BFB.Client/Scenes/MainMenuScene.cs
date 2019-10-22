@@ -35,6 +35,8 @@ namespace BFB.Client.Scenes
             _scale = 15;
             _grow = true;
             _offset = 0;
+            
+           
         }
 
         protected override void Init()
@@ -110,9 +112,18 @@ namespace BFB.Client.Scenes
         #region Draw
         public override void Draw(GameTime gameTime, SpriteBatch graphics)
         {
-            for (int x = 0; x < WidthX; x++)
+            int height = 450;
+            int width = 800;
+
+            int xTile = _offset/_scale;
+            int yTile = 0;
+            int widthTile = (_offset / _scale + width / _scale) + 2;
+            int heightTile = 50;
+            
+            
+            for (int x = xTile; x < widthTile; x++)
             {
-                for(int y = 0; y < HeightY; y++)
+                for(int y = yTile; y < heightTile; y++)
                 {
                     switch(_tileMap.getBlock(x, y))
                     {
@@ -125,8 +136,6 @@ namespace BFB.Client.Scenes
                         case (int)Blocks.Stone:
                             graphics.Draw(ContentManager.GetTexture("stone"), new Vector2(x * _scale - _offset, y * _scale), Color.White);
                             break;
-                        default:
-                            break;
                     }
                 }
             }
@@ -135,4 +144,5 @@ namespace BFB.Client.Scenes
 
     }
     
+   
 }

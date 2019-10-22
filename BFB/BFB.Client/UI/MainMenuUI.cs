@@ -11,13 +11,14 @@ namespace BFB.Client.UI
     public class MainMenuUI : UILayer
     {
 
-        public readonly TestModel model;
+        public MainMenuModel model { get; set; }
+
 
         public MainMenuUI() : base(nameof(MainMenuUI))
         {
-            model = new TestModel
+            model = new MainMenuModel
             {
-                Test1 = "Boss Fight Battlegrounds"
+                Ip = "127.0.0.1:6969"
             };
         }
 
@@ -41,7 +42,7 @@ namespace BFB.Client.UI
                         //Game title
                         v1.Hstack(h2 =>
                         {
-                            h2.TextFor(model,x => x.Test1);
+                            h2.Text("Boss Fight Battlegrounds");
                         })
                             .Grow(2);
                         
@@ -58,7 +59,7 @@ namespace BFB.Client.UI
                                 .Center()
                                 .Image("button");
 
-                            h2.TextBoxFor(model, x => x.Test1)
+                            h2.TextBoxFor(model, x => x.Ip)
                                 .Width(0.8f)
                                 .Height(0.8f)
                                 .Grow(3)
@@ -108,9 +109,8 @@ namespace BFB.Client.UI
         }
     }
 
-    public class TestModel
+    public class MainMenuModel
     {
-        public string Test1 { get; set; }
-        public string Test2 { get; set; }
+        public string Ip { get; set; }
     }
 }

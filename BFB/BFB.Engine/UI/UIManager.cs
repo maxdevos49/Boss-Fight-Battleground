@@ -95,6 +95,11 @@ namespace BFB.Engine.UI
         }
         
         #endregion
+
+        public UILayer GetLayer(string layerKey)
+        {
+            return _allUILayers.ContainsKey(layerKey) ? _allUILayers[layerKey] : null;
+        }
         
         #region Draw
 

@@ -6,9 +6,9 @@ using Microsoft.Xna.Framework;
 
 namespace BFB.Client.UI
 {
-    public class GameMenu : UILayer
+    public class GameMenuUI : UILayer
     {
-        public GameMenu() : base(nameof(GameMenu)) { }
+        public GameMenuUI() : base(nameof(GameMenuUI)) { }
 
         public override void Body()
         {
@@ -62,4 +62,6 @@ namespace BFB.Client.UI
                 .Background(new Color(0, 0, 0, 100));
         }
     }
+
+    
 }

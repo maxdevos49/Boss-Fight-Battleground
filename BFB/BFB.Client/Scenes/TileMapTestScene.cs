@@ -38,7 +38,7 @@ namespace BFB.Client.Scenes
         {
             tileMap = new TileMapManager();
             scale = 15;
-            grow = true;
+            direction = true;
             offset = 0;
         }
 
@@ -122,7 +122,7 @@ namespace BFB.Client.Scenes
         #region Update
         public override void Update(GameTime gameTime)
         {
-            if (grow)
+            if (direction)
             {
                 offset+=1;
             }
@@ -130,20 +130,22 @@ namespace BFB.Client.Scenes
             {
                 offset-=1;
             }
+            
+            
             if(offset > 6400)
             {
-                grow = false;
+                direction = false;
             }
             if(offset <= 0)
             {
-                grow = true;
+                direction = true;
             }
         }
         #endregion
 
         public int scale { get; set; }
         public int offset;
-        public bool grow;
+        public bool direction;
 
         #region Draw
         public override void Draw(GameTime gameTime, SpriteBatch graphics)
