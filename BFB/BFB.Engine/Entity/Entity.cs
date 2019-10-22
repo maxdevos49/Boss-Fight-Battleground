@@ -20,6 +20,8 @@ namespace BFB.Engine.Entity
         
         public float Rotation { get; set; }
         
+        public bool Grounded { get; set; }
+        
         #endregion
 
         #region Constructor
@@ -32,6 +34,7 @@ namespace BFB.Engine.Entity
             Origin = options.Origin;
             Rotation = options.Rotation;
             Velocity = new BfbVector();
+            Grounded = false;
         }
         
         #endregion
@@ -47,7 +50,8 @@ namespace BFB.Engine.Entity
                 Dimensions = Dimensions,
                 Origin = Origin,
                 Rotation = Rotation,
-                Velocity = Velocity
+                Velocity = Velocity,
+                Grounded = Grounded
             };
         }
         

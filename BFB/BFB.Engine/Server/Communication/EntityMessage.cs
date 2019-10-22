@@ -18,5 +18,7 @@ namespace BFB.Engine.Server.Communication
         public BfbVector Origin { get; set; }
         
         public float Rotation { get; set; }
+
+        public bool Grounded { get; set; }
     }
 }

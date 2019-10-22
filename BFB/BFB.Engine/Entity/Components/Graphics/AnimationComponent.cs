@@ -38,14 +38,14 @@ namespace BFB.Engine.Entity.Components.Graphics
             _columns = 1;
             
             _timeLeft = 0;
-            _framesPerSecond = 10;
+            _framesPerSecond = 1;
             _currentFrame = 0;
             
             _totalFrames = _rows * _columns;
 
             _animationStates = null;
-            _isLooping = true;
-            _isPaused = false;
+            _isLooping = false;
+            _isPaused = true;
             
             //rectangle selection size
             _drawRectangle.Width = _texture.Width / _columns;

@@ -16,7 +16,7 @@ namespace BFB.Engine.Entity.Components.Physics
 
         public AccelerateComponent()
         {
-            _maxForce = 0.7f;
+            _maxForce = 0.7f; 
             _maxSpeed = 10;
         }
 

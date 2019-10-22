@@ -195,6 +195,8 @@ namespace BFB.Client.Scenes
                 foreach ((string key, ClientEntity entity) in _entities)
                 {
                     entity.Draw(graphics);
+                    Console.WriteLine($"x:{entity.Position.X}");//Get rid of these later
+                    Console.WriteLine($"y:{entity.Position.Y}");
                 }
             }
 

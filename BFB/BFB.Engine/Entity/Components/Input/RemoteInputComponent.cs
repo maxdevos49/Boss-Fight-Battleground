@@ -52,11 +52,12 @@ namespace BFB.Engine.Entity.Components.Input
                     serverEntity.DesiredVector.Add(new BfbVector(1,0));
                 }
                 //Moves player up
-                if (_playerState.Jump)
+                if (_playerState.Jump && serverEntity.Grounded)
                 {
-                    serverEntity.DesiredVector.Add(new BfbVector(0,1));
+                    serverEntity.DesiredVector.Add(new BfbVector(0,-150));
+                    serverEntity.Grounded = false;
+
                 }
-                //serverEntity.DesiredVector = BfbVector.Sub(serverEntity.DesiredVector, serverEntity.Position);
             }
         }
     }
