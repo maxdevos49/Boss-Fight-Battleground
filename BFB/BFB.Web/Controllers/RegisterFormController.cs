@@ -6,6 +6,7 @@ using System.Security;
 using System.Threading.Tasks;
 using BFB.Web.Models;
 using BFB.Web.Services;
+using BFB.Web.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using MySql.Data.MySqlClient;

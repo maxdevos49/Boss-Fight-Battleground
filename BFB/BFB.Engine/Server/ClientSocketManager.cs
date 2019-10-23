@@ -13,23 +13,23 @@ namespace BFB.Engine.Server
     {
         
         #region Properties
+        
+        private readonly object _lock;
+        private TcpClient _socket;
+        private NetworkStream _stream;
+        private bool _acceptData;
+        private bool _allowEmit;
+        private readonly Dictionary<string, List<Action<DataMessage>>> _handlers;
 
-        [UsedImplicitly]
+        
         public string ClientId { get;  private set; }
+        public string Ip { get; set; }
+        public int Port { get; set; }
         public Func<DataMessage,DataMessage> OnAuthentication { get; set; }
         public Action<string> OnConnect { get; set; }
         public Action<string> OnDisconnect { get; set; }
         public Action OnReady { get; set; }
         
-        private readonly object _lock;
-        public string Ip { get; set; }
-        public int Port { get; set; }
-        private readonly Dictionary<string, List<Action<DataMessage>>> _handlers;
-        private TcpClient _socket;
-        private NetworkStream _stream;
-        private bool _acceptData;
-        private bool _allowEmit;
-
         #endregion
 
         #region Constructor

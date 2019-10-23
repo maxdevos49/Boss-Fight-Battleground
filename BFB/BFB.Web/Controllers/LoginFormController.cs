@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using BFB.Web.Models;
 using BFB.Web.Services;
+using BFB.Web.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BFB.Web.Controllers

@@ -17,14 +17,14 @@ namespace BFB.Web.Services
         public static void AddUserEntry(string username, string email, string password)
         {
             DateTime currentDate = DateTime.Now;
-            db.BFB_User.Add(new BFB_User
+            db.BFB_User.Add(new BfbUser
             {
                 Username = username,
                 Email = email,
                 Password = password,
-                IsVerified = false,
-                IsBanned = false,
-                IsActive = false,
+                IsVerified = 0,
+                IsBanned = 0,
+                IsActive = 0,
                 InsertedOn = currentDate,
                 UpdatedOn = currentDate,
                 UpdatedBy = currentDate,
@@ -44,4 +44,6 @@ namespace BFB.Web.Services
         }
         #endregion
     }
+
+
 }

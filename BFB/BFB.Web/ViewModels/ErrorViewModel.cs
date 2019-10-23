@@ -1,6 +1,4 @@
-using System;
-
-namespace BFB.WebServer.Models
+namespace BFB.Web.ViewModels
 {
     public class ErrorViewModel
     {

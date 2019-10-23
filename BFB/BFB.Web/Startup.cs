@@ -39,6 +39,8 @@ namespace BFB.Web
                 options.MinimumSameSitePolicy = SameSiteMode.None;
 
             });
+            
+            services.AddDbContext<BFBContext>(options => options.UseSqlServer(Configuration["ConnectionStrings:DefaultConnection"]));
 
             var connectionString = Configuration.GetSection("BFBDatabase").GetSection("ConnectionString").Value;
             services.AddDbContextPool<DatabaseConfig>(
@@ -75,6 +77,7 @@ namespace BFB.Web
 
             var db = app.ApplicationServices.GetRequiredService<DatabaseConfig>();
             db.Database.EnsureCreated();
+            
             DatabaseService.db = db;
 
             app.UseMvc(routes =>
