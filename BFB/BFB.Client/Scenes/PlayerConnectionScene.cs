@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Threading;
 using BFB.Client.UI;
-using BFB.Engine.Camera;
 using BFB.Engine.Content;
 using BFB.Engine.Entity;
+using BFB.Engine.Entity.Components.Camera;
 using BFB.Engine.Entity.Components.Graphics;
 using BFB.Engine.Math;
 using BFB.Engine.Scene;
