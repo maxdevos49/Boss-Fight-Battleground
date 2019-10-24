@@ -17,8 +17,10 @@ namespace BFB.Engine.Entity.Components.Camera
         BfbVector ScreenCenter { get; }
 
         Matrix Transform { get; }
+        
+        Entity Focus { get; set; }
     }
-    public class Camera : IGraphicsComponent, ICamera
+    public class Camera : ICamera
     {
         private GraphicsDeviceManager _graphicsDeviceManager;
 
@@ -39,6 +41,7 @@ namespace BFB.Engine.Entity.Components.Camera
         public BfbVector Origin { get; set; }
         public BfbVector ScreenCenter { get; protected set; }
         public Matrix Transform { get; set; }
+        public Entity Focus { get; set; }
         public float MoveSpeed { get; set; }
 
         public void Init()
@@ -48,17 +51,18 @@ namespace BFB.Engine.Entity.Components.Camera
             
             ScreenCenter = new BfbVector(_viewportWidth/2, _viewportHeight/2);
             MoveSpeed = 1.25f;
+            
+            Position = ScreenCenter;
         }
 
         public void Update(GameTime gameTime)
         {
-            Transform = Matrix.Identity *
-                        Matrix.CreateTranslation(-Position.X, -Position.Y, 0) *
-                        Matrix.CreateTranslation(Origin.X, Origin.Y, 0);
+//            Transform = Matrix.Identity *
+//                        Matrix.CreateTranslation(-Position.X, -Position.Y, 0) *
+//                        Matrix.CreateTranslation(Origin.X, Origin.Y, 0);
 
             Origin = ScreenCenter;
-
-            // Move the Camera to the position that it needs to go
+            
             var delta = (float) gameTime.ElapsedGameTime.TotalSeconds;
 
             _position.X += (Focus.Position.X - Position.X) * MoveSpeed * delta;

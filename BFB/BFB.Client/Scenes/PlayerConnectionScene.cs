@@ -11,6 +11,7 @@ using BFB.Engine.Scene;
 using BFB.Engine.Server;
 using BFB.Engine.Server.Communication;
 using BFB.Engine.TileMap;
+using BFB.Engine.UI.Components;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -54,7 +55,7 @@ namespace BFB.Client.Scenes
             _entities = new Dictionary<string, ClientEntity>();
             _server = new ClientSocketManager("127.0.0.1", 6969);
 
-            _camera = new Camera();
+            _camera = new Camera(GraphicsDeviceManager);
             
             _tileMap = new TileMapManager();
             _random = new Random();
@@ -71,6 +72,8 @@ namespace BFB.Client.Scenes
 
             _server.Ip = layer.model.Ip.Split(":")[0];
             _server.Port = Convert.ToInt32(layer.model.Ip.Split(":")[1]);
+            
+            _camera.Init();
             
             /**
              * Scene events
@@ -170,7 +173,7 @@ namespace BFB.Client.Scenes
                             _entities[em.EntityId].AnimationState = em.AnimationState;
                             if (em.EntityId == _server.ClientId)
                             {
-                                
+                                _camera.Position = em.Position;
                             }
                         }
                         else
@@ -267,6 +270,8 @@ namespace BFB.Client.Scenes
                     entity.Update();
                 }
             }
+            
+            _camera.Update(gameTime);
         }
         
         #endregion
