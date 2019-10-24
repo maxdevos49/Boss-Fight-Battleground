@@ -13,7 +13,7 @@ namespace BFB.Web.Models
         public int RoleId { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public sbyte? IsActive { get; set; }
+        public bool? IsActive { get; set; }
         public DateTime? InsertedOn { get; set; }
         public DateTime? InsertedBy { get; set; }
         public DateTime? UpdatedOn { get; set; }

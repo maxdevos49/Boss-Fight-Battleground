@@ -8,7 +8,7 @@ namespace BFB.Web.Models
         public int UserRoleId { get; set; }
         public int UserId { get; set; }
         public int RoleId { get; set; }
-        public sbyte? IsActive { get; set; }
+        public bool? IsActive { get; set; }
         public DateTime? InsertedOn { get; set; }
         public DateTime? InsertedBy { get; set; }
         public DateTime? UpdatedOn { get; set; }

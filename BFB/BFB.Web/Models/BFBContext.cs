@@ -80,7 +80,10 @@ namespace BFB.Web.Models
 
                 entity.Property(e => e.InsertedOn).HasColumnType("date");
 
-                entity.Property(e => e.IsActive).HasColumnType("tinyint(1)");
+                entity.Property(e => e.IsActive)
+                    .IsRequired()
+                    .HasColumnType("bit(1)")
+                    .HasDefaultValueSql("'b\\'0\\''");
 
                 entity.Property(e => e.MonsterKills).HasColumnType("int(11)");
 
@@ -127,7 +130,10 @@ namespace BFB.Web.Models
 
                 entity.Property(e => e.InsertedOn).HasColumnType("date");
 
-                entity.Property(e => e.IsActive).HasColumnType("tinyint(1)");
+                entity.Property(e => e.IsActive)
+                    .IsRequired()
+                    .HasColumnType("bit(1)")
+                    .HasDefaultValueSql("'b\\'0\\''");
 
                 entity.Property(e => e.Token).HasColumnType("varchar(50)");
 
@@ -161,7 +167,10 @@ namespace BFB.Web.Models
 
                 entity.Property(e => e.InsertedOn).HasColumnType("date");
 
-                entity.Property(e => e.IsActive).HasColumnType("tinyint(1)");
+                entity.Property(e => e.IsActive)
+                    .IsRequired()
+                    .HasColumnType("bit(1)")
+                    .HasDefaultValueSql("'b\\'0\\''");
 
                 entity.Property(e => e.Name)
                     .IsRequired()
@@ -189,11 +198,20 @@ namespace BFB.Web.Models
 
                 entity.Property(e => e.InsertedOn).HasColumnType("date");
 
-                entity.Property(e => e.IsActive).HasColumnType("tinyint(1)");
+                entity.Property(e => e.IsActive)
+                    .IsRequired()
+                    .HasColumnType("bit(1)")
+                    .HasDefaultValueSql("'b\\'0\\''");
 
-                entity.Property(e => e.IsBanned).HasColumnType("tinyint(1)");
+                entity.Property(e => e.IsBanned)
+                    .IsRequired()
+                    .HasColumnType("bit(1)")
+                    .HasDefaultValueSql("'b\\'0\\''");
 
-                entity.Property(e => e.IsVerified).HasColumnType("tinyint(1)");
+                entity.Property(e => e.IsVerified)
+                    .IsRequired()
+                    .HasColumnType("bit(1)")
+                    .HasDefaultValueSql("'b\\'0\\''");
 
                 entity.Property(e => e.Password)
                     .IsRequired()
@@ -227,7 +245,10 @@ namespace BFB.Web.Models
 
                 entity.Property(e => e.InsertedOn).HasColumnType("date");
 
-                entity.Property(e => e.IsActive).HasColumnType("tinyint(1)");
+                entity.Property(e => e.IsActive)
+                    .IsRequired()
+                    .HasColumnType("bit(1)")
+                    .HasDefaultValueSql("'b\\'0\\''");
 
                 entity.Property(e => e.RoleId).HasColumnType("int(11)");
 
@@ -268,7 +289,10 @@ namespace BFB.Web.Models
 
                 entity.Property(e => e.InsertedOn).HasColumnType("date");
 
-                entity.Property(e => e.IsActive).HasColumnType("tinyint(1)");
+                entity.Property(e => e.IsActive)
+                    .IsRequired()
+                    .HasColumnType("bit(1)")
+                    .HasDefaultValueSql("'b\\'0\\''");
 
                 entity.Property(e => e.UpdatedBy).HasColumnType("date");
 

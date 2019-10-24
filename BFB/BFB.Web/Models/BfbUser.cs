@@ -17,9 +17,9 @@ namespace BFB.Web.Models
         public string Email { get; set; }
         public string Username { get; set; }
         public string Password { get; set; }
-        public sbyte IsVerified { get; set; }
-        public sbyte IsBanned { get; set; }
-        public sbyte IsActive { get; set; }
+        public bool? IsVerified { get; set; }
+        public bool? IsBanned { get; set; }
+        public bool? IsActive { get; set; }
         public DateTime? InsertedOn { get; set; }
         public DateTime? UpdatedOn { get; set; }
         public DateTime? UpdatedBy { get; set; }

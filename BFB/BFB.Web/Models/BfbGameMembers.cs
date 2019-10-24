@@ -14,7 +14,7 @@ namespace BFB.Web.Models
         public int TimeAsBoss { get; set; }
         public int TimeAsMonster { get; set; }
         public int TimeAsPlayer { get; set; }
-        public sbyte? IsActive { get; set; }
+        public bool? IsActive { get; set; }
         public DateTime? InsertedBy { get; set; }
         public DateTime? InsertedOn { get; set; }
         public DateTime? UpdatedOn { get; set; }

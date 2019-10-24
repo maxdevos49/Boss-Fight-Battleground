@@ -32,6 +32,8 @@ namespace BFB.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<BFBContext>(options => options.UseMySql(Configuration.GetConnectionString("DefaultConnection")));
+            
             services.Configure<CookiePolicyOptions>(options =>
             {
                 // This lambda determines whether user consent for non-essential cookies is needed for a given request.
@@ -40,12 +42,11 @@ namespace BFB.Web
 
             });
             
-            services.AddDbContext<BFBContext>(options => options.UseSqlServer(Configuration["ConnectionStrings:DefaultConnection"]));
 
-            var connectionString = Configuration.GetSection("BFBDatabase").GetSection("ConnectionString").Value;
-            services.AddDbContextPool<DatabaseConfig>(
-                x => x.UseMySql(connectionString
-                ));
+//            var connectionString = Configuration.GetSection("BFBDatabase").GetSection("ConnectionString").Value;
+//            services.AddDbContextPool<BFBContext>(
+//                x => x.UseMySql(connectionString
+//                ));
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
@@ -68,23 +69,30 @@ namespace BFB.Web
             {
                 ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
             });
-
-            app.UseAuthentication();
-
+            
             app.UseHttpsRedirection();
+
+//            app.UseAuthentication();
             app.UseStaticFiles();
             app.UseCookiePolicy();
 
-            var db = app.ApplicationServices.GetRequiredService<DatabaseConfig>();
-            db.Database.EnsureCreated();
-            
-            DatabaseService.db = db;
+//            var db = app.ApplicationServices.GetRequiredService<BFBContext>();
+//            db.Database.EnsureCreated();
+//            
+//            DatabaseService.db = db;
 
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
+                    name: "areas",
+                    template: "{area:exists}/{controller=PriorityLevel}/{action=Index}/{id?}"
+                );
+
+                routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{controller=Home}/{action=Index}/{id?}"
+                );
+
             });
         }
     }

@@ -15,10 +15,17 @@ namespace BFB.Web.Controllers
 {
     public class RegisterFormController : Controller
     {
+        private readonly BFBContext _db;
+            
+        public RegisterFormController(BFBContext db)
+        {
+            _db = db;
+        }
+        
         [HttpPost, ValidateAntiForgeryToken]
         public IActionResult Register(RegisterFormModel model)
         {
-            DatabaseService.AddUserEntry(model.Username, model.Email, model.Password);
+            DatabaseService.AddUserEntry(_db,model.Username, model.Email, model.Password);
             return Content($"Hello {model.Username}");
         }
     }
