@@ -37,12 +37,11 @@ deploy:
   stage: deploy
   script:
     - echo "Deploying BFB.Web"
+    - sshpass -p $USER_PASS ssh -o StrictHostKeyChecking=no BfbDeployUser@coms-309-ks-5.misc.iastate.edu
+    - pwd
+    - cd /var/www
     - ls
-    - cd ./BFB.Web/
-    - dotnet publish --configuration Release
-    - cd bin/Release/netcoreapp2.2/publish
-    - sshpass -p $USER_PASS scp -r . BfbDeployUser@coms-309-ks-5.misc.iastate.edu:/var/www/BFBServer
-    - cd ../../../../
+    - exit
   # only:
   #   - master
   # dependencies:
