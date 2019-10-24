@@ -22,9 +22,6 @@ build:
     - echo "Building %PROJECT_NAME%"
     - dotnet build
     - echo "Completed Build"
-  artifacts:
-    - ./BFB
-
 
 
 test:
@@ -35,9 +32,6 @@ test:
     - echo "Completed Tests"
   dependencies:
     - build
-    artifacts:
-    - ./BFB
-
 
 deploy:
   stage: deploy
