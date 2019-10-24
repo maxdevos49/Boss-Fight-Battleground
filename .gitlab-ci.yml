@@ -11,8 +11,8 @@ before_script:
 
 
 stages:
-  - build
-  - test
+  # - build
+  # - test
   - deploy
 
 
@@ -38,7 +38,7 @@ deploy:
   script:
     - echo "Deploying BFB.Web"
     - ls
-    - cd ./BFB/BFB.Web/
+    - cd ./BFB.Web/
     - dotnet publish --configuration Release
     - cd bin/Release/netcoreapp2.2/publish
     - sshpass -V
