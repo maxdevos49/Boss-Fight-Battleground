@@ -8,6 +8,15 @@ before_script:
   - echo "Restoring NUGET packages"
   - dotnet restore
   - echo "Successfully Restored"
+  - echo "SSH Setup"
+  - 'which ssh-agent || ( yum update -y && yum install openssh-client git -y )'
+  - eval $(ssh-agent -s)
+  - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add - > /dev/null
+  - mkdir -p ~/.ssh
+  - chmod 700 ~/.ssh
+  - ssh-keyscan coms-309-ks-5.misc.iastate.edu >> ~/.ssh/known_hosts
+  - chmod 644 ~/.ssh/known_hosts
+
 
 
 stages:
