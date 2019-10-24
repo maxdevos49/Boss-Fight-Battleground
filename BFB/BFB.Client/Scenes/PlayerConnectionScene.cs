@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Threading;
 using BFB.Client.UI;
+using BFB.Engine.Camera;
 using BFB.Engine.Content;
 using BFB.Engine.Entity;
 using BFB.Engine.Entity.Components.Graphics;
@@ -25,6 +26,8 @@ namespace BFB.Client.Scenes
 
         private readonly ClientSocketManager _server;
         private readonly Dictionary<string, ClientEntity> _entities;
+
+        private Camera _camera;
         
         private const int HeightY = 320;
         private const int WidthX = 480;
@@ -50,6 +53,8 @@ namespace BFB.Client.Scenes
             _lock = new object();
             _entities = new Dictionary<string, ClientEntity>();
             _server = new ClientSocketManager("127.0.0.1", 6969);
+
+            _camera = new Camera();
             
             _tileMap = new TileMapManager();
             _random = new Random();
@@ -58,6 +63,8 @@ namespace BFB.Client.Scenes
             _offset = 0;
         }
 
+        
+        #region Init
         protected override void Init()
         {
             MainMenuUI layer = (MainMenuUI)UIManager.GetLayer(nameof(MainMenuUI));
@@ -161,6 +168,10 @@ namespace BFB.Client.Scenes
                             _entities[em.EntityId].Velocity = em.Velocity;
                             _entities[em.EntityId].Rotation = em.Rotation;
                             _entities[em.EntityId].AnimationState = em.AnimationState;
+                            if (em.EntityId == _server.ClientId)
+                            {
+                                
+                            }
                         }
                         else
                         {
@@ -186,7 +197,6 @@ namespace BFB.Client.Scenes
             
             if (!_server.Connect())
                 Console.WriteLine("Connection Failed.");
-            
             
             for (int x = 0; x < WidthX; x++)
             {
@@ -225,6 +235,8 @@ namespace BFB.Client.Scenes
             }
 
         }
+        
+        #endregion
 
         #region Load
         
