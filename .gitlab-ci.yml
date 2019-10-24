@@ -7,6 +7,7 @@ before_script:
   - cd BFB
   - echo "Restoring NUGET packages"
   - dotnet restore
+  - 'which sshpass || ( yum update -y && yum install sshpass -y )'
   - echo "Successfully Restored"
 
 stages:
