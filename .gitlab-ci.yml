@@ -45,8 +45,8 @@ deploy:
     - export SSHPASS=$USER_PASS
     - sshpass -e scp -o stricthostkeychecking=no -r . BfbDeployUser@coms-309-ks-5.misc.iastate.edu:/var/www/BFBServer
     - cd ../../../../
-  only:
-    - master
+  # only:
+  #   - master
   dependencies:
     - build
     - test
