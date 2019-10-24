@@ -7,17 +7,8 @@ before_script:
   - cd BFB
   - echo "Restoring NUGET packages"
   - dotnet restore
+  - 'which sshpass || ( apt-get update -y && apt-get install sshpass -y )'
   - echo "Successfully Restored"
-  - echo "SSH Setup"
-  - 'which ssh-agent || ( yum update -y && yum install openssh-client git -y )'
-  - eval $(ssh-agent -s)
-  - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add - > /dev/null
-  - mkdir -p ~/.ssh
-  - chmod 700 ~/.ssh
-  - ssh-keyscan coms-309-ks-5.misc.iastate.edu >> ~/.ssh/known_hosts
-  - chmod 644 ~/.ssh/known_hosts
-
-
 
 stages:
   # - build
@@ -50,7 +41,7 @@ deploy:
     - cd ./BFB.Web/
     - dotnet publish --configuration Release
     - cd bin/Release/netcoreapp2.2/publish
-    - scp -r . BfbDeployUser@coms-309-ks-5.misc.iastate.edu:/var/www/BFBServer
+    - sshpass -p $USER_PASS scp -r . BfbDeployUser@coms-309-ks-5.misc.iastate.edu:/var/www/BFBServer
     - cd ../../../../
   # only:
   #   - master
