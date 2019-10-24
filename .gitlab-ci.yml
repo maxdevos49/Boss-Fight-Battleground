@@ -16,22 +16,22 @@ stages:
   - deploy
 
 
-build:
-  stage: build
-  script:
-    - echo "Building %PROJECT_NAME%"
-    - dotnet build
-    - echo "Completed Build"
+# build:
+#   stage: build
+#   script:
+#     - echo "Building %PROJECT_NAME%"
+#     - dotnet build
+#     - echo "Completed Build"
 
 
-test:
-  stage: test
-  script:
-    - echo "Running Tests"
-    - dotnet test
-    - echo "Completed Tests"
-  dependencies:
-    - build
+# test:
+#   stage: test
+#   script:
+#     - echo "Running Tests"
+#     - dotnet test
+#     - echo "Completed Tests"
+#   dependencies:
+#     - build
 
 deploy:
   stage: deploy
@@ -47,6 +47,6 @@ deploy:
     - cd ../../../../
   # only:
   #   - master
-  dependencies:
-    - build
-    - test
+  # dependencies:
+  #   - build
+  #   - test
