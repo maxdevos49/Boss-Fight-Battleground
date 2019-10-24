@@ -1,21 +1,32 @@
 variables:
   PROJECT_NAME: "Boss Fight Battlegrounds"
+
+
 before_script:
   - echo "Starting CI for %PROJECT_NAME%"
   - cd BFB
   - echo "Restoring NUGET packages"
   - dotnet restore
   - echo "Successfully Restored"
+
+
 stages:
   - build
   - test
   - deploy
+
+
 build:
   stage: build
   script:
     - echo "Building %PROJECT_NAME%"
     - dotnet build
     - echo "Completed Build"
+  artifacts:
+    - ./BFB
+
+
+
 test:
   stage: test
   script:
@@ -24,12 +35,24 @@ test:
     - echo "Completed Tests"
   dependencies:
     - build
+    artifacts:
+    - ./BFB
+
+
 deploy:
   stage: deploy
   script:
-    - echo "Deploying Build"
-    - echo "Deploy Build not successful. TODO"
+    - echo "Deploying BFB.Web"
+    - ls
+    - cd ./BFB/BFB.Web/
+    - dotnet publish --configuration Release
+    - cd bin/Release/netcoreapp2.2/publish
+    - sshpass -V
+    - export SSHPASS=$USER_PASS
+    - sshpass -e scp -o stricthostkeychecking=no -r . BfbDeployUser@coms-309-ks-5.misc.iastate.edu:/var/www/BFBServer
+    - cd ../../../../
   only:
     - master
   dependencies:
     - build
+    - test
