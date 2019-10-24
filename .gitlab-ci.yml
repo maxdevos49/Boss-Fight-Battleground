@@ -50,9 +50,7 @@ deploy:
     - cd ./BFB.Web/
     - dotnet publish --configuration Release
     - cd bin/Release/netcoreapp2.2/publish
-    - sshpass -V
-    - export SSHPASS=$USER_PASS
-    - sshpass -e scp -o stricthostkeychecking=no -r . BfbDeployUser@coms-309-ks-5.misc.iastate.edu:/var/www/BFBServer
+    - scp -r . BfbDeployUser@coms-309-ks-5.misc.iastate.edu:/var/www/BFBServer
     - cd ../../../../
   # only:
   #   - master
