@@ -1,35 +1,59 @@
 variables:
   PROJECT_NAME: "Boss Fight Battlegrounds"
+
+
 before_script:
   - echo "Starting CI for %PROJECT_NAME%"
   - cd BFB
   - echo "Restoring NUGET packages"
   - dotnet restore
   - echo "Successfully Restored"
+  - echo "SSH Setup"
+  - 'which ssh-agent || ( yum update -y && yum install openssh-client git -y )'
+  - eval $(ssh-agent -s)
+  - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add - > /dev/null
+  - mkdir -p ~/.ssh
+  - chmod 700 ~/.ssh
+  - ssh-keyscan coms-309-ks-5.misc.iastate.edu >> ~/.ssh/known_hosts
+  - chmod 644 ~/.ssh/known_hosts
+
+
+
 stages:
-  - build
-  - test
+  # - build
+  # - test
   - deploy
-build:
-  stage: build
-  script:
-    - echo "Building %PROJECT_NAME%"
-    - dotnet build
-    - echo "Completed Build"
-test:
-  stage: test
-  script:
-    - echo "Running Tests"
-    - dotnet test
-    - echo "Completed Tests"
-  dependencies:
-    - build
+
+
+# build:
+#   stage: build
+#   script:
+#     - echo "Building %PROJECT_NAME%"
+#     - dotnet build
+#     - echo "Completed Build"
+
+
+# test:
+#   stage: test
+#   script:
+#     - echo "Running Tests"
+#     - dotnet test
+#     - echo "Completed Tests"
+#   dependencies:
+#     - build
+
 deploy:
   stage: deploy
   script:
-    - echo "Deploying Build"
-    - echo "Deploy Build not successful. TODO"
-  only:
-    - master
-  dependencies:
-    - build
+    - echo "Deploying BFB.Web"
+    - ls
+    - cd ./BFB.Web/
+    - dotnet publish --configuration Release
+    - cd bin/Release/netcoreapp2.2/publish
+    - scp -r . BfbDeployUser@coms-309-ks-5.misc.iastate.edu:/var/www/BFBServer
+    - cd ../../../../
+  # only:
+  #   - master
+  # dependencies:
+  #   - build
+  #   - test

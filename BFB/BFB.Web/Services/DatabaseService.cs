@@ -10,14 +10,13 @@ namespace BFB.Web.Services
 {
     public static class DatabaseService
     {
-        public static DatabaseConfig db { get; set; }
 
         #region BFB_User
         // Add a user to BFB_User table
-        public static void AddUserEntry(string username, string email, string password)
+        public static void AddUserEntry(BFBContext db, string username, string email, string password)
         {
             DateTime currentDate = DateTime.Now;
-            db.BFB_User.Add(new BFB_User
+            db.BfbUser.Add(new BfbUser
             {
                 Username = username,
                 Email = email,
@@ -34,14 +33,16 @@ namespace BFB.Web.Services
         }
 
         // Check if a user with the given username and password exists in the database.
-        public static Boolean ValidateUser(string username, string password)
+        public static bool ValidateUser(BFBContext db, string username, string password)
         {
-            var user = db.BFB_User
+            List<BfbUser> user = db.BfbUser
                 .Where(u => u.Username == username && u.Password == password)
                 .ToList();
 
-            return (user.Count == 1);
+            return user.Count == 1;
         }
         #endregion
     }
+
+
 }

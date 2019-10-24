@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace BFB.Web.Models
+﻿namespace BFB.Web.ViewModels
 {
     public class LoginFormModel
     {

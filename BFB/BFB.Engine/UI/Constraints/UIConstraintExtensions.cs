@@ -81,10 +81,6 @@ namespace BFB.Engine.UI.Constraints
         
         #endregion
         
-        #region Animate (TODO)
-        
-        #endregion
-        
         #region Center
 
         public static UIComponent Center(this UIComponent component)

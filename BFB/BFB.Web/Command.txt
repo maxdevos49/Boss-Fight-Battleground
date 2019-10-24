@@ -1,0 +1,12 @@
+BFB.Web Development CLI Commands
+================================
+
+
+Use the below command to scaffold the db context when database changes have occured:
+----------------------------------------------------------------------------------
+
+dotnet ef dbcontext scaffold Name=DefaultConnection Pomelo.EntityFrameworkCore.MySql --context BFBContext --output-dir Models --table BFB_Game --table BFB_GameMembers --table BFB_Login --table BFB_Role --table BFB_User --table BFB_UserRole --table BFB_UserStats --force
+
+If the CLI does not recognize the "dotnet ef" command then you need to install it:
+----------------------------------------------------------------------------------
+dotnet tool install --global dotnet-ef

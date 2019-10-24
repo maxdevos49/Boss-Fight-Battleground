@@ -1,13 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using BFB.Web.Models;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Infrastructure;
 using Xunit;
 using Moq;
-using DatabaseConfig = BFB.Test.Web.Resources.DatabaseConfig;
 using Moq.EntityFrameworkCore;
 
 namespace BFB.Test.Web.Database
@@ -24,7 +20,7 @@ namespace BFB.Test.Web.Database
             string email = "test@test.org";
             DateTime currentDate = DateTime.Now;
 
-            BFB_User fakeUser = new BFB_User
+            BfbUser fakeUser = new BfbUser
             {
                 Username = username,
                 Email = email,
@@ -38,18 +34,23 @@ namespace BFB.Test.Web.Database
                 EmailToken = null
             };
 
-            var mock = new Mock<DatabaseConfig>();
-            mock.Setup(foo => foo.BFB_User.Add(fakeUser)).Verifiable();
+            //Create context mock
+            Mock<BFBContext> mockedDatabaseConfig = new Mock<BFBContext>();
+            IList<BfbUser> users = new List<BfbUser>();
 
-            IList<BFB_User> users = new List<BFB_User>();
+            //mock setup adding a user
+            mockedDatabaseConfig.Setup(foo => foo.BfbUser.Add(fakeUser)).Verifiable();
+            
+            //mock setup getting a user
+            mockedDatabaseConfig.Setup(foo => foo.BfbUser).ReturnsDbSet(users);
+
+            //mock test add
             users.Add(fakeUser);
-            DbContextOptions options = new DbContextOptions<DbContext>();
-            var mockedDatabaseConfig = new Mock<BFB.Web.Models.DatabaseConfig>(options);
-            mockedDatabaseConfig.Setup(foo => foo.BFB_User).ReturnsDbSet(users);
-            BFB.Web.Services.DatabaseService.db = mockedDatabaseConfig.Object;
-
-
-            BFB.Web.Services.DatabaseService.AddUserEntry(username, email, password);
+            
+            //mock test Adding a new user
+            BFB.Web.Services.DatabaseService.AddUserEntry(mockedDatabaseConfig.Object, username, email, password);
+            
+            //Verify if mock expectations worked
             Mock.Verify();
         }
 
@@ -61,7 +62,7 @@ namespace BFB.Test.Web.Database
             string email = "test@test.test";
             DateTime currentDate = DateTime.Now;
 
-            BFB_User fakeUser = new BFB_User
+            BfbUser fakeUser = new BfbUser
             {
                 Username = username,
                 Email = email,
@@ -74,14 +75,12 @@ namespace BFB.Test.Web.Database
                 UpdatedBy = currentDate,
                 EmailToken = null
             };
-            IList<BFB_User> users = new List<BFB_User>();
+            IList<BfbUser> users = new List<BfbUser>();
             users.Add(fakeUser);
-            DbContextOptions options = new DbContextOptions<DbContext>();
-            var mockedDatabaseConfig = new Mock<BFB.Web.Models.DatabaseConfig>(options);
-            mockedDatabaseConfig.Setup(foo => foo.BFB_User).ReturnsDbSet(users);
-            BFB.Web.Services.DatabaseService.db = mockedDatabaseConfig.Object;
+            var mockedDatabaseConfig = new Mock<BFBContext>();
+            mockedDatabaseConfig.Setup(foo => foo.BfbUser).ReturnsDbSet(users);
 
-            Assert.True(BFB.Web.Services.DatabaseService.ValidateUser(username, password));
+            Assert.True(BFB.Web.Services.DatabaseService.ValidateUser(mockedDatabaseConfig.Object,username, password));
         }
 
         #endregion

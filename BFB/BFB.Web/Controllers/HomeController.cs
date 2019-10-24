@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using BFB.Web.ViewModels;
 using Microsoft.AspNetCore.Mvc;
-using BFB.WebServer.Models;
 
 namespace BFB.WebServer.Controllers
 {
