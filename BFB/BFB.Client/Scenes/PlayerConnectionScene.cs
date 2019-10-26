@@ -4,7 +4,6 @@ using System.Threading;
 using BFB.Client.UI;
 using BFB.Engine.Content;
 using BFB.Engine.Entity;
-using BFB.Engine.Entity.Components.Camera;
 using BFB.Engine.Entity.Components.Graphics;
 using BFB.Engine.Math;
 using BFB.Engine.Scene;
@@ -28,7 +27,8 @@ namespace BFB.Client.Scenes
         private readonly ClientSocketManager _server;
         private readonly Dictionary<string, ClientEntity> _entities;
 
-        private Camera _camera;
+//        private Camera _camera;
+        private Camera2D _camera2;
         
         private const int HeightY = 320;
         private const int WidthX = 480;
@@ -55,7 +55,8 @@ namespace BFB.Client.Scenes
             _entities = new Dictionary<string, ClientEntity>();
             _server = new ClientSocketManager("127.0.0.1", 6969);
 
-            _camera = new Camera(GraphicsDeviceManager);
+//            _camera = new Camera(GraphicsDeviceManager);
+            _camera2 = new Camera2D();
             
             _tileMap = new TileMapManager();
             _random = new Random();
@@ -73,7 +74,7 @@ namespace BFB.Client.Scenes
             _server.Ip = layer.model.Ip.Split(":")[0];
             _server.Port = Convert.ToInt32(layer.model.Ip.Split(":")[1]);
             
-            _camera.Init();
+            _camera2.Initialize(GraphicsDeviceManager.GraphicsDevice);
             
             /**
              * Scene events
@@ -173,7 +174,7 @@ namespace BFB.Client.Scenes
                             _entities[em.EntityId].AnimationState = em.AnimationState;
                             if (em.EntityId == _server.ClientId)
                             {
-                                _camera.Position = em.Position;
+                                _camera2.Focus = em.Position.ToVector2();
                             }
                         }
                         else
@@ -271,7 +272,7 @@ namespace BFB.Client.Scenes
                 }
             }
             
-            _camera.Update(gameTime);
+            _camera2.Update(gameTime);
         }
         
         #endregion
@@ -280,6 +281,11 @@ namespace BFB.Client.Scenes
         
         public override void Draw(GameTime gameTime, SpriteBatch graphics)
         {
+            
+            graphics.End();
+//            var viewMatrix = _camera2.GetTransform();
+            graphics.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, SamplerState.PointClamp, DepthStencilState.None, RasterizerState.CullCounterClockwise, null, _camera2.Transform);
+            
             lock (_lock)
             {
                 foreach ((string key, ClientEntity entity) in _entities)
@@ -314,6 +320,11 @@ namespace BFB.Client.Scenes
                     }
                 }
             }
+            
+            graphics.End();
+            
+            graphics.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, SamplerState.PointClamp, DepthStencilState.None, RasterizerState.CullCounterClockwise);
+
 
         }
         

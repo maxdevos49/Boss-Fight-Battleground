@@ -158,18 +158,25 @@ namespace BFB.Server
         {
             while (true)
             {
-                string text = Console.ReadLine();
-                
-                _server.PrintMessage();
-                
-                if (string.IsNullOrEmpty(text))
-                    continue;
-               
-                //exit command
-                if (text.ToLower() == "stop")//Convert to server command
-                    break;
+                if (Environment.UserInteractive)//As a service we dont want to read the console because we cant
+                {
+                    string text = Console.ReadLine();
 
-                //TODO in the future do something with text/make commands emit events??
+                    _server.PrintMessage();
+
+                    if (string.IsNullOrEmpty(text))
+                        continue;
+
+                    //exit command
+                    if (text.ToLower() == "stop") //Convert to server command
+                        break;
+
+                    //TODO in the future do something with text/make commands emit events??
+                }
+                else
+                {
+                    Thread.Sleep(1000);
+                }
             }
 
             Stop();
