@@ -23,3 +23,5 @@ dotnet publish --configuration Release;
 
 rm -rf /var/www/BfbServer
 mv ./bin/Release/netcoreapp2.2/publish/ /var/www/BfbServer;
+
+cd /var/Bfb;
