@@ -38,7 +38,7 @@ deploy:
   script:
     - echo "Deploying BFB.Web"
     - sshpass -p $USER_PASS ssh -o StrictHostKeyChecking=no BfbDeployUser@coms-309-ks-5.misc.iastate.edu
-    - /var/deploy.sh
+    - /var/Bfb/deploy.sh
     - exit
   # only:
   #   - master
