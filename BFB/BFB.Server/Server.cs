@@ -135,10 +135,7 @@ namespace BFB.Server
             _server.Start();
             _server.PrintMessage($"BFB Server is now Listening on {_configuration["Server:IPAddress"]}:{_configuration["Server:Port"]}");
             
-            
-            
-            if(Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") != "Production")
-                HandleTerminalInput();
+            HandleTerminalInput();
         }
         
         #endregion
@@ -162,18 +159,25 @@ namespace BFB.Server
         {
             while (true)
             {
-                string text = Console.ReadLine();
+                if (Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") != "Production")
+                {
+                    string text = Console.ReadLine();
 
-                _server.PrintMessage();
+                    _server.PrintMessage();
 
-                if (string.IsNullOrEmpty(text))
-                    continue;
+                    if (string.IsNullOrEmpty(text))
+                        continue;
 
-                //exit command
-                if (text.ToLower() == "stop") //Convert to server command
-                    break;
+                    //exit command
+                    if (text.ToLower() == "stop") //Convert to server command
+                        break;
 
-                //TODO in the future do something with text/make commands emit events??
+                    //TODO in the future do something with text/make commands emit events??
+                }
+                else
+                {
+                    Thread.Sleep(1000);
+                }
             }
 
             Stop();
