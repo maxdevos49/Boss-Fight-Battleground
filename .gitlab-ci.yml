@@ -1,13 +1,11 @@
 variables:
   PROJECT_NAME: "Boss Fight Battlegrounds"
 
-
 before_script:
   - echo "Starting CI for %PROJECT_NAME%"
   - cd BFB
   - echo "Restoring NUGET packages"
   - dotnet restore
-  - 'which sshpass || ( apt-get update -y && apt-get install sshpass -y )'
   - echo "Successfully Restored"
 
 stages:
@@ -37,6 +35,7 @@ deploy:
   stage: deploy
   script:
     - echo "Deploying BFB.Web"
+    - 'which sshpass || ( apt-get update -y && apt-get install sshpass -y )'
     - script -qc "sshpass -p $USER_PASS ssh -o StrictHostKeyChecking=no BfbDeployUser@coms-309-ks-5.misc.iastate.edu /var/Bfb/deploy.sh"
   dependencies:
     - build
