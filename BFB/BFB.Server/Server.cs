@@ -134,7 +134,11 @@ namespace BFB.Server
             _simulation.Start();
             _server.Start();
             _server.PrintMessage($"BFB Server is now Listening on {_configuration["Server:IPAddress"]}:{_configuration["Server:Port"]}");
-            HandleTerminalInput();
+            
+            
+            
+            if(Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") != "Production")
+                HandleTerminalInput();
         }
         
         #endregion
@@ -158,25 +162,18 @@ namespace BFB.Server
         {
             while (true)
             {
-                if (Environment.UserInteractive)//As a service we dont want to read the console because we cant
-                {
-                    string text = Console.ReadLine();
+                string text = Console.ReadLine();
 
-                    _server.PrintMessage();
+                _server.PrintMessage();
 
-                    if (string.IsNullOrEmpty(text))
-                        continue;
+                if (string.IsNullOrEmpty(text))
+                    continue;
 
-                    //exit command
-                    if (text.ToLower() == "stop") //Convert to server command
-                        break;
+                //exit command
+                if (text.ToLower() == "stop") //Convert to server command
+                    break;
 
-                    //TODO in the future do something with text/make commands emit events??
-                }
-                else
-                {
-                    Thread.Sleep(2000);
-                }
+                //TODO in the future do something with text/make commands emit events??
             }
 
             Stop();
@@ -193,8 +190,10 @@ namespace BFB.Server
             //get configuration
             IConfigurationBuilder builder = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("appsettings.json", false, true);
-
+                .AddJsonFile("appsettings.json", false, true)
+                .AddJsonFile($"appsettings.{Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") ?? "Development"}.json", true, true)
+                .AddEnvironmentVariables();
+                
             Server server = new Server(builder.Build());
             server.Start();
         }

@@ -69,11 +69,15 @@ namespace BFB.Client.Scenes
         #region Init
         protected override void Init()
         {
-            MainMenuUI layer = (MainMenuUI)UIManager.GetLayer(nameof(MainMenuUI));
 
+            //TODO Change how the connection is supplied where its started to better handle a server menu style choice
+            MainMenuUI layer = (MainMenuUI)UIManager.GetLayer(nameof(MainMenuUI));
             _server.Ip = layer.model.Ip.Split(":")[0];
             _server.Port = Convert.ToInt32(layer.model.Ip.Split(":")[1]);
             
+            /**
+             * Init Camera
+             */
             _camera2.Initialize(GraphicsDeviceManager.GraphicsDevice);
             
             /**
@@ -202,6 +206,7 @@ namespace BFB.Client.Scenes
             if (!_server.Connect())
                 Console.WriteLine("Connection Failed.");
             
+            //TODO remove once map is loaded from server
             for (int x = 0; x < WidthX; x++)
             {
                 for (int y = 0; y < HeightY; y++)
@@ -254,6 +259,10 @@ namespace BFB.Client.Scenes
 
         protected override void Unload()
         {
+            lock (_lock)
+            {
+                _entities.Clear();
+            }
             _server.Disconnect("Scene Close");
             base.Unload();
         }
@@ -266,6 +275,7 @@ namespace BFB.Client.Scenes
         {
             lock (_lock)
             {
+                //Interpolation
                 foreach ((string key, ClientEntity entity) in _entities)
                 {
                     entity.Update();
