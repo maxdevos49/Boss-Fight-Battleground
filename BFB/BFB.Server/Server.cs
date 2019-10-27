@@ -175,7 +175,7 @@ namespace BFB.Server
                 }
                 else
                 {
-                    Thread.Sleep(1000);
+                    Thread.Sleep(2000);
                 }
             }
 

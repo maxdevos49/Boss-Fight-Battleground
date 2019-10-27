@@ -43,7 +43,13 @@ namespace BFB.Server
         {
             lock (_lock)
             {
-                _entities.Add(serverEntity.EntityId, serverEntity);
+                if(!_entities.ContainsKey(serverEntity.EntityId))
+                    _entities.Add(serverEntity.EntityId, serverEntity);
+
+                if (_entities.Count <= 0 || _running) return;
+                
+                Start();
+                _server.PrintMessage("Simulation Stopping Hibernation.");
             }
         }
 
@@ -55,8 +61,15 @@ namespace BFB.Server
         {
             lock (_lock)
             {
-                if(_entities.ContainsKey(key))
+                if (_entities.ContainsKey(key))
                     _entities.Remove(key);
+
+                if (_entities.Count == 0 && _running)
+                {
+                    Stop();
+                    _server.PrintMessage("Simulation Starting Hibernation.");
+                }
+
             }
 
             _server.Emit("/player/disconnect", new DataMessage {Message = key});
@@ -135,19 +148,16 @@ namespace BFB.Server
                     
                     //TODO In future tick chunks also for dynamic tiles(Fire, gravity updates, grass)
                 }
-                
+
 
                 //Maintain the tick rate here
                 nextTick += _tickSpeed;
                 int sleepTime = (int) (nextTick - (DateTime.Now.Ticks / TimeSpan.TicksPerMillisecond));
+        
                 if (sleepTime >= 0)
-                {
                     Thread.Sleep(sleepTime);
-                }
                 else
-                {
                     _server.PrintMessage($"SERVER IS OVERLOADED. ({sleepTime}TPS).");
-                }
             }
         }
         
