@@ -15,31 +15,15 @@
 <!-- code_chunk_output -->
 
 - [Boss Fight Battlegrounds](#boss-fight-battlegrounds)
-  - [About](#about)
-  - [Setup](#setup)
-  - [All Projects](#all-projects)
-    - [Build](#build)
-    - [Run](#run)
-    - [Test](#test)
-  - [Game Client](#game-client)
-    - [Build](#build-1)
-    - [Run](#run-1)
-    - [Test](#test-1)
-  - [Game Server](#game-server)
-    - [Build](#build-2)
-    - [Run](#run-2)
-    - [Test](#test-2)
-  - [Authentication Server](#authentication-server)
-    - [Build](#build-3)
-    - [Run](#run-3)
-    - [Test](#test-3)
-  - [Web Server](#web-server)
-    - [Build](#build-4)
-    - [Run](#run-4)
-    - [Test](#test-4)
-  - [Deploy](#deploy)
-    - [Development](#development)
-    - [Release](#release)
+  - [COM S 309](#com-s-309)
+  - [Group Members](#group-members)
+- [Table of Contents](#table-of-contents)
+    - [About](#about)
+    - [Setup](#setup)
+    - [Running Game Server](#running-game-server)
+    - [Running Game Client](#running-game-client)
+    - [Running Web and Authentication Server](#running-web-and-authentication-server)
+    - [Running Test](#running-test)
 
 <!-- /code_chunk_output -->
 
@@ -47,7 +31,7 @@
 
 ### About
 
-About the project
+Boss Fight battlground is a 2d Sidescroller written in C# with the help of the Monogame. Monogame is a very basic game engine that simply gives you access to a abstract rendering system api that works across almost every platform and then a simple game loop. This leaves the rest for us to create and develop into our game.
 
 ### Setup
 
@@ -57,62 +41,31 @@ Dependencies:
 - Mono (on MacOS and Linux)
 - MonoGame
 
-### All Projects
+### Running Game Server
 
----
+Navigate to the BFB/BFB.Server folder and run:
+```sh
+dotnet run
+```
 
-##### Build
+### Running Game Client
 
-##### Run
+Navigate to the BFB/BFB.Client folder and run:
+```sh
+dotnet run
+```
 
-##### Test
+### Running Web and Authentication Server
 
+Navigate to the BFB/BFB.Web folder and run:
+```sh
+dotnet run
+```
 
-### Game Client
+### Running Test
 
----
+Navigate to the BFB/BFB.Test folder and run:
+```sh
+dotnet test
+```
 
-##### Build
-
-##### Run
-
-##### Test
-
-
-### Game Server
-
----
-
-##### Build
-
-##### Run
-
-##### Test
-
-### Authentication Server
-
----
-
-##### Build
-
-##### Run
-
-##### Test
-
-### Web Server
-
----
-
-##### Build
-
-##### Run
-
-##### Test
-
-### Deploy
-
----
-
-##### Development
-
-##### Release

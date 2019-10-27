@@ -1,41 +1,61 @@
 ﻿using System;
+using System.Collections.Generic;
+using BFB.Engine.Content;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
 using BFB.Engine.Event;
+using BFB.Engine.UI;
+using JetBrains.Annotations;
 
 namespace BFB.Engine.Scene
 {
     public abstract class Scene
     {
-
-        public SceneManager _sceneManager;
-        public ContentManager _contentManager;
-        public GraphicsDeviceManager _graphicsManager;
-        public EventManager _eventManager;
-        //TODO State Manager
-
-
-        private SceneStatus Status;
+        /**
+         * Scene manager used to control scene state
+         */
+        public static SceneManager SceneManager { get; set; }
+        
+        /**
+         * UI Manager for controlling UI related things
+         */
+        public static UIManager UIManager { get; set; }
+        
+        /**
+         * Used to distribute content across the application without loading things twice and so on
+         */
+        public static BFBContentManager ContentManager { get; set; }
+        
+        /**
+         * Contains useful drawing stuff
+         */
+        public static GraphicsDeviceManager GraphicsDeviceManager { get; set; }
+        
+        /**
+         * Used for global events
+         */
+        public static EventManager<GlobalEvent> GlobalEventManager { get; set; }
+        
+        /**
+         * Used for input events only
+         */
+        public static EventManager<InputEvent> InputEventManager { get; set; }
+        
+        
+        private readonly List<int> _eventInputListenerIds;
+        private readonly List<int> _eventGlobalListenerIds;
+        
+        private SceneStatus _status;
         public readonly string Key;
 
         protected Scene(string key)
         {
             Key = key;
-            Status = SceneStatus.INOPERABLE;
-        }
-
-        //Inject the scene dependencies
-        public void InjectDependencies(SceneManager sceneManager, ContentManager contentManager, GraphicsDeviceManager graphicsManager, EventManager eventManager)
-        {
-            _sceneManager = sceneManager;
-            _contentManager = contentManager;
-            _graphicsManager = graphicsManager;
-            _eventManager = eventManager;
-
-            //Indicate the scene is now in a operable state but inactive
-            Status = SceneStatus.INACTIVE;
+            _status = SceneStatus.Inactive;
+            _eventInputListenerIds = new List<int>();
+            _eventGlobalListenerIds = new List<int>();
         }
 
         /**
@@ -44,7 +64,7 @@ namespace BFB.Engine.Scene
         public void Stop()
         {
             //unload textures
-            Status = SceneStatus.INACTIVE;
+            _status = SceneStatus.Inactive;
             Unload();
         }
 
@@ -53,7 +73,7 @@ namespace BFB.Engine.Scene
          * */
         public void Pause()
         {
-            Status = SceneStatus.PAUSED;
+            _status = SceneStatus.Paused;
         }
 
         /**
@@ -61,13 +81,13 @@ namespace BFB.Engine.Scene
          * */
         public void Start()
         {
-            if (Status == SceneStatus.INACTIVE)
+            if (_status == SceneStatus.Inactive)
             {
-                Status = SceneStatus.LOADING;
+                _status = SceneStatus.Loading;
                 Load();
                 Init();
             }
-            Status = SceneStatus.ACTIVE;
+            _status = SceneStatus.Active;
         }
 
         /**
@@ -75,18 +95,34 @@ namespace BFB.Engine.Scene
          * */
         public SceneStatus GetStatus()
         {
-            return Status;
+            return _status;
         }
 
-        public virtual void Init() { }
+        protected virtual void Init() { }
 
-        public virtual void Load() { }
+        protected virtual void Load() { }
 
-        public virtual void Unload() { }
+        protected virtual void Unload()
+        {
+            foreach (int id in _eventGlobalListenerIds)
+                GlobalEventManager.RemoveEventListener(id);
+            
+            foreach (int id in _eventInputListenerIds)
+                InputEventManager.RemoveEventListener(id);
+        }
 
-        public virtual void Update(GameTime gameTime) { }
+        public virtual void Update([UsedImplicitly] GameTime gameTime) { }
 
         public virtual void Draw(GameTime gameTime, SpriteBatch graphics) { }
 
+        public void AddInputListener(string eventKey, Action<InputEvent> eventHandler)
+        {
+            _eventInputListenerIds.Add(InputEventManager.AddEventListener(eventKey, eventHandler));
+        }
+        
+        public void AddGlobalListener(string eventKey, Action<GlobalEvent> eventHandler)
+        {
+            _eventGlobalListenerIds.Add(GlobalEventManager.AddEventListener(eventKey, eventHandler));
+        }
     }
 }

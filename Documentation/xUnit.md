@@ -2,30 +2,56 @@
 
 How to use xUnit and tips and tricks you find along the way
 
-# Table of Contents
+Table of Contents:
 
-- [Setup](#setup)
+<!-- code_chunk_output -->
 
- 
-  ### Setup
+- [xUnit Testing](#xunit-testing)
+  - [Setup](#setup)
+  - [Assert Methods](#assert-methods)
+  - [Setting up a Test Class](#setting-up-a-test-class)
 
-  To create a xUnit test directory to coincide with your monogame directory, go through the following steps:
+<!-- /code_chunk_output -->
 
-   1. Configure your Monogame project as you would normally. For this example, lets say we have the following directory:
-    ```
-     /myMonogame
-     	/Game
-     	myMonogame.sln
-    ```
-   2. In the directory with your .sln file, create a new directory labelled "/DirectoryName.Tests"
-   ```
-    /myMonogame
-    	/Game
-    	/Game.Tests
-    	myMonogame.sln
-    ```
-    3. Go into the new /DirectoryName.Tests directory and run the command `dotnet new xunit` to add the correct dependencies for xUnit.
-    4. Next, add your initial game directory as a dependency for the project by running `dotnet add reference ../DirectoryName/DirectoryName.csproj`
-    5. Finally, go up one directory and add the new .Tests directory to the solution file with `dotnet sln add ./DirectoryName.Tests/DirectoryName.Tests.csproj`
 
- ---
+## Setup
+
+1. Create a new project or skip this step if the project already exist.
+2. Right click the solution in the project explorer.
+3. Select the option `add->add new project`.
+4. Select a xUnit Test Project under the `.NET Core -> Test` Section.
+5. Select the .Net Core SDK to Use(Probably .NET Core 2.2).
+6. Give the test project a name and then Select finish.
+7. Unfold the newly created project and right click the dependicies folder.
+8. Select edit references.
+9. Select the project/projects you want to test and then click ok.
+10. You should now be able to write test.    
+
+## Assert Methods
+
+```csharp
+
+Assert.Equal();
+Assert.True();
+Assert.False();
+Assert.NotNull();
+Assert.NotEmpty();
+
+```
+
+## Setting up a Test Class
+
+```csharp
+
+public class TestExample
+{
+
+   [Fact]//This makes it a test
+   public void TestTruth()
+   {
+      Assert.True(true);//Assert is the testing
+   }
+
+}
+
+```

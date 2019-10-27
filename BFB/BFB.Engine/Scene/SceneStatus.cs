@@ -2,12 +2,12 @@
 {
     public enum SceneStatus
     {
-        ACTIVE,
-        INACTIVE,
-        PAUSED,
-        LOADING,
-        UNLOADING,
-        HIDDEN,
-        INOPERABLE
+        Active,
+        Inactive,
+        Paused,
+        Loading,
+        Unloading,
+        Hidden,
+        Inoperable
     }
 }

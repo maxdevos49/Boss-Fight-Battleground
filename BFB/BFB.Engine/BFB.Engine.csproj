@@ -1,9 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
+    <ReleaseVersion>0.0.0.1</ReleaseVersion>
   </PropertyGroup>
-
   <ItemGroup>
     <Compile Remove="Class1.cs" />
   </ItemGroup>
@@ -15,6 +15,9 @@
     <Folder Include="Debug\" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="JetBrains.Annotations" Version="2019.1.3" />
     <PackageReference Include="MonoGame.Framework.DesktopGL.Core" Version="3.7.0.7" />
+    <Content Include="Scene\Scene.cs" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
   </ItemGroup>
 </Project>

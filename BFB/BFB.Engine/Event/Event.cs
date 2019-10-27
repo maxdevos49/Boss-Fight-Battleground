@@ -1,6 +1,6 @@
 ﻿namespace BFB.Engine.Event
 {
-    public partial class Event
+    public abstract class Event
     {
 
         public int EventId { get; set; }
@@ -11,7 +11,7 @@
 
         #region Constructor
 
-        public Event()
+        protected Event()
         {
             PropagateEvent = true;
         }

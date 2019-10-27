@@ -8,7 +8,7 @@ using System.Threading;
 
 class Server
 {
-    TcpListener server = null;
+    readonly TcpListener server = null;
 
     public Server(string ip, int port)
     {
@@ -50,10 +50,7 @@ class Server
         }
         catch (SocketException e)
         {
-            Console.WriteLine("SocketException: {0}", e);
-
-            //Stop the server when we get a server exception
-            server.Stop();
+           
         }
     }
 
@@ -70,13 +67,14 @@ class Server
 
         string data = null;
 
-        Byte[] bytes = new Byte[256];
+        byte[] bytes = null;
         int i;
 
         try
         {
             while ((i = stream.Read(bytes, 0, bytes.Length)) != 0)
             {
+                //object = BitConverter.ToObject
                 string hex = BitConverter.ToString(bytes);
                 data = Encoding.ASCII.GetString(bytes, 0, i);
                 Console.WriteLine("{1}: Received: {0}", data, Thread.CurrentThread.ManagedThreadId);

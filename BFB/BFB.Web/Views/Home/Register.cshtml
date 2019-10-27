@@ -1,0 +1,39 @@
+﻿@section head{
+    <style type="text/css">
+        form {
+            background: rgba(204, 204, 204, 0.6);
+            border: 2px solid black;
+            padding: 10px;
+        }
+        .text-center {
+            color: black;
+            
+        }
+    </style>
+}
+@{
+    ViewData["Title"] = "Register";
+}
+@model BFB.Web.ViewModels.RegisterFormModel
+
+    <div class="text-center">
+        <h1 class="display-4">Create an Account</h1>
+        <p>Join the mayhem.</p>
+    </div>
+
+    <form asp-action="Register" asp-controller="RegisterForm">
+        <div class="form-group">
+            <label asp-for="Username">Username</label>
+            <input asp-for="Username" type="text" class="form-control" placeholder="Username" required />
+        </div>
+        <div class="form-group">
+            <label asp-for="Email">Email</label>
+            <input asp-for="Email" type="email" class="form-control" id="registerEmail" placeholder="Enter email" required />
+        </div>
+        <div class="form-group">
+            <label asp-for="Password">Password</label>
+            <input asp-for="Password" type="password" class="form-control" id="registerPassword" aria-describedby="registerHelp" placeholder="Password" required />
+            <small id="registerHelp" class="form-text text-muted">Boss Fight Battlegrounds will never share your information with anyone.</small>
+        </div>
+        <button type="submit" class="btn btn-primary">Create Account</button>
+    </form>

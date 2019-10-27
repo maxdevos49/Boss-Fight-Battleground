@@ -1,38 +1,43 @@
-﻿//c#
-using System;
-
-//Monogame
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-
-//Engine
-using BFB.Engine.Scene;
+﻿using System;
+using BFB.Client.Scenes;
+using BFB.Client.UI;
+using BFB.Engine.Content;
 using BFB.Engine.Event;
 using BFB.Engine.Input;
-
-//Project
-using BFB.Client.Scenes;
-
+using BFB.Engine.Scene;
+using BFB.Engine.UI;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
-namespace BFB
+namespace BFB.Client
 {
     public class MainGame : Game
     {
 
-        private InputManager InputManager;
-        private SceneManager SceneManager;
-        private GraphicsDeviceManager GraphicsManager;//Kinda ok name but will probably change later
-        private EventManager EventManager;
+        #region Properties
+        
+        private readonly GraphicsDeviceManager _graphicsDeviceManager;
+        private InputManager _inputManager;
+        private SceneManager _sceneManager;
+        private UIManager _uiManager;
+        
+        private EventManager<GlobalEvent> _globalEventManager;
+        private EventManager<InputEvent> _inputEventManager;
+        
+        private BFBContentManager _contentManager;
 
-        private SpriteBatch SpriteBatch;
-
+        private SpriteBatch _spriteBatch;
+        private bool _windowSizeIsBeingChanged;
+            
+        #endregion
+        
         #region Main
 
         [STAThread]
-        static void Main()
+        private static void Main()
         {
-            using (var game = new MainGame())
+            using (MainGame game = new MainGame())
                 game.Run();
         }
 
@@ -40,14 +45,15 @@ namespace BFB
 
         #region Constructor
 
-        public MainGame()
+        private MainGame()
         {
             //Monogame Setup
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
 
             //Init Graphics manager. (Needs to be in the constructor)
-            GraphicsManager = new GraphicsDeviceManager(this);
+            _graphicsDeviceManager = new GraphicsDeviceManager(this);
+            _windowSizeIsBeingChanged = false;
         }
 
         #endregion
@@ -56,42 +62,98 @@ namespace BFB
 
         protected override void Initialize()
         {
-            SpriteBatch = new SpriteBatch(GraphicsDevice);
-            EventManager = new EventManager();
-            InputManager = new InputManager(EventManager, new InputConfig());
-            SceneManager = new SceneManager(Content, GraphicsManager, EventManager);
+            
+            #region Window Options
+            
+            Window.Title = "Boss Fight Battlegrounds";
+            Window.ClientSizeChanged += Window_ClientSizeChanged;
+            Window.AllowUserResizing = true;
+            
+            #endregion
+            
+            #region Init Managers
+            
+            _spriteBatch = new SpriteBatch(GraphicsDevice);
+            
+            _globalEventManager = new EventManager<GlobalEvent>();
+            _inputEventManager = new EventManager<InputEvent>();
+            
+            _inputManager = new InputManager(_inputEventManager);
+            _contentManager = new BFBContentManager(Content);
 
-            //Add scenes to scene manager
-            SceneManager.AddScene(new Scene[] {
-                new DebugScene(),
-                new ExampleScene()
+            _uiManager = new UIManager(_graphicsDeviceManager.GraphicsDevice, _contentManager);
+            _sceneManager = new SceneManager(Content, _graphicsDeviceManager, _globalEventManager, _uiManager);
+
+            //Map Dependencies on scenes
+            Scene.SceneManager = _sceneManager;
+            Scene.UIManager = _uiManager;
+            Scene.ContentManager = _contentManager;
+            Scene.GraphicsDeviceManager = _graphicsDeviceManager;
+            Scene.GlobalEventManager = _globalEventManager;
+            Scene.InputEventManager = _inputEventManager;
+            
+            //Map dependencies on UILayers
+            UILayer.SceneManager = _sceneManager;
+            UILayer.UIManager = _uiManager;
+
+            //catch input events
+            _inputEventManager.OnEventProcess = _uiManager.ProcessEvents;
+            
+            #endregion
+            
+            #region Register Scenes/Start Main Scene
+            
+            //Register a scene here
+            _sceneManager.AddScene(new Scene[] {
+                new MainMenuScene(),
+                new PlayerConnectionScene(),
             });
 
-            //start first scene
-            SceneManager.StartScene(nameof(ExampleScene));
-
-            //global key press events
-            EventManager.AddEventListener("keypress", (Event) =>
+            #endregion
+            
+            #region Register UILayers
+            
+            _uiManager.AddUILayer(new UILayer[]
             {
-                //Enable debug
-                switch (Event.Keyboard.KeyEnum)
+                new MainMenuUI(),
+                new SettingsUI(),
+                new HelpUI(), 
+                new HudUI(),
+                new GameMenuUI()
+            });
+            
+            #endregion
+            
+            //start first scene
+            _sceneManager.StartScene(nameof(MainMenuScene));
+
+            #region Global Keypress Event Registration
+            
+            _inputEventManager.AddEventListener("keypress", (e) =>
+            {
+                // ReSharper disable once SwitchStatementMissingSomeCases
+                switch (e.Keyboard.KeyEnum)
                 {
                     case Keys.F3:
-
-                        Console.WriteLine("Launching Debug Scene");
-
-                        if (SceneManager.ActiveSceneExist(nameof(DebugScene)))
-                            SceneManager.StopScene(nameof(DebugScene));
-                        else
-                            SceneManager.LaunchScene(nameof(DebugScene));
-
+                        
+//                        //Toggle debug scene
+//                        if (_sceneManager.ActiveSceneExist(nameof(DebugScene)))
+//                            _sceneManager.StopScene(nameof(DebugScene));
+//                        else
+//                            _sceneManager.LaunchScene(nameof(DebugScene));
+//                        
+//                        break;
+                    case Keys.M:
+                        
+                        //Return to main menu
+                        _sceneManager.StartScene(nameof(MainMenuScene));
+                            
                         break;
-                        //case Keys.F4:
-                        //    GraphicsManager.ToggleFullScreen();
-                        //    break;
                 }
             });
 
+            #endregion
+            
             base.Initialize();
         }
 
@@ -101,8 +163,14 @@ namespace BFB
 
         protected override void LoadContent()
         {
-            //global font load
-            Content.Load<SpriteFont>("Fonts\\Papyrus");
+            
+            //Loads the content.json file. TODO Later on the file should probably be in a special location like the home directory of the user similar to how 327 we stored the dungeons
+            _contentManager.ParseContent();
+            
+            //Global texture load
+            Texture2D defaultTexture = new Texture2D(_graphicsDeviceManager.GraphicsDevice, 1, 1);
+            defaultTexture.SetData(new[] { Color.White });
+            _contentManager.AddTexture("default", defaultTexture);
         }
 
         #endregion
@@ -111,9 +179,7 @@ namespace BFB
 
         protected override void UnloadContent()
         {
-
             Content.Unload();
-
             base.UnloadContent();
         }
 
@@ -124,11 +190,15 @@ namespace BFB
         protected override void Update(GameTime gameTime)
         {
             //Checks for inputs and then fires events for those inputs
-            InputManager.CheckInputs();
+            _inputManager.CheckInputs();
+            
+            //Process the events in the queue
+            _globalEventManager.ProcessEvents();
+            _inputEventManager.ProcessEvents();
 
             //Call update for active scenes
-            SceneManager.UpdateScenes(gameTime);
-
+            _sceneManager.UpdateScenes(gameTime);
+            
             base.Update(gameTime);
         }
 
@@ -140,20 +210,40 @@ namespace BFB
         {
 
             //Clear screens
-            GraphicsDevice.Clear(Color.White);
+            GraphicsDevice.Clear(Color.LightBlue);
 
             //Starts drawing buffer
-            SpriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend);
+            _spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, SamplerState.PointClamp, DepthStencilState.None, RasterizerState.CullCounterClockwise);
 
             //Draw Active Scenes
-            SceneManager.DrawScenes(gameTime, SpriteBatch);
+            _sceneManager.DrawScenes(gameTime, _spriteBatch);
+            
+            _uiManager.Draw(_spriteBatch);
 
-            //draws graohics buffer
-            SpriteBatch.End();
+            //draws graphics buffer
+            _spriteBatch.End();
 
             base.Draw(gameTime);
         }
 
+        #endregion
+        
+        #region Window Resizing
+
+        private void Window_ClientSizeChanged(object sender, EventArgs e)
+        {
+            _windowSizeIsBeingChanged = !_windowSizeIsBeingChanged;
+            _uiManager.WindowResize();
+
+            if (!_windowSizeIsBeingChanged) return;
+            
+            _graphicsDeviceManager.PreferredBackBufferWidth = Window.ClientBounds.Width;
+            _graphicsDeviceManager.PreferredBackBufferHeight = Window.ClientBounds.Height;
+            
+            _graphicsDeviceManager.ApplyChanges();
+            
+        }
+        
         #endregion
     }
 }

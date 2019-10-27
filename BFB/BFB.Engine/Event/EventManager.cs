@@ -2,48 +2,54 @@
 using System;
 using System.Linq;
 using System.Collections.Generic;
-using System.Threading;
+
+//Jetbrains
+using JetBrains.Annotations;
 
 namespace BFB.Engine.Event
 {
-    public class EventManager
+    public class EventManager<TEvent> where TEvent : Event, new()
     {
-        //Dictionary<string:EventKey, Dictionary<int:HandelerId, Func<IEvent>>> EventHandelers;
-        private readonly Dictionary<string, Dictionary<int, Action<Event>>> EventHandelers;
+        private readonly Dictionary<string, Dictionary<int, Action<TEvent>>> _eventHandlers;
+        public Func<TEvent,bool> OnEventProcess { get; set; }
 
-        private int EventHandelerId;
-        private int EventId;
+        private int _eventHandlerId;
+        private int _eventId;
+
+        private readonly Queue<TEvent> _eventQueue;
 
         public EventManager()
         {
-            EventHandelerId = 0;
-            EventId = 0;
-            EventHandelers = new Dictionary<string, Dictionary<int, Action<Event>>>();
+            _eventHandlerId = 0;
+            _eventId = 0;
+            _eventHandlers = new Dictionary<string, Dictionary<int, Action<TEvent>>>();
+            _eventQueue = new Queue<TEvent>();
+            OnEventProcess = null;
         }
 
 
         /**
-         * Adds a event listener for a specified event
+         * Adds an event listener for a specified event
          * */
-        public int AddEventListener(string eventKey, Action<Event> eventCallback)
+        [UsedImplicitly]
+        public int AddEventListener(string eventKey, Action<TEvent> eventCallback)
         {
             //get handlerId
-           
-            int id = EventHandelerId++;
+            int id = _eventHandlerId++;
 
-            //add event handeler
-            if (EventHandelers.ContainsKey(eventKey))
+            //add event handler
+            if (_eventHandlers.ContainsKey(eventKey))
             {
                 //event type already exist
-                EventHandelers[eventKey].Add(id, eventCallback);
+                _eventHandlers[eventKey].Add(id, eventCallback);
             }
             else
             {
                 //event type does not exist so add it
-                EventHandelers.Add(eventKey, new Dictionary<int, Action<Event>>());
+                _eventHandlers.Add(eventKey, new Dictionary<int, Action<TEvent>>());
 
-                //add event handeler
-                EventHandelers[eventKey].Add(id, eventCallback);
+                //add event handler
+                _eventHandlers[eventKey].Add(id, eventCallback);
             }
 
             return id;
@@ -53,72 +59,51 @@ namespace BFB.Engine.Event
         /**
          * Removes a event listener for a specified event handler id
          * */
+        [UsedImplicitly]
         public void RemoveEventListener(int eventHandlerId)
         {
-            foreach (var eventType in EventHandelers)
+            foreach ((string key, Dictionary<int, Action<TEvent>> _) in _eventHandlers.Where(eventType => eventType.Value.ContainsKey(eventHandlerId)))
             {
-
-                //check each event type
-                if (eventType.Value.ContainsKey(eventHandlerId))
-                {
-                    //remove the handeler
-                    EventHandelers[eventType.Key].Remove(eventHandlerId);
-                    break;
-                }
+                //remove the handler
+                _eventHandlers[key].Remove(eventHandlerId);
+                break;
             }
         }
 
 
-        public void Emit(string eventKey, Event eventData = null)
+        public void Emit(string eventKey, TEvent eventData = null)
         {
+            if (eventData == null)
+                eventData = new TEvent();
 
-            //All fired events
-            Console.WriteLine($"EventKey: \"{eventKey}\", Mouse X/Y: {eventData?.Mouse?.X},{eventData?.Mouse?.Y}, Key: {eventData?.Keyboard?.Key}");
+            eventData.EventId = (_eventId++);
+            eventData.EventKey = eventKey;
 
-            if (EventHandelers.ContainsKey(eventKey))
-            {
-                //create new thread
-                Thread eventThread = new Thread(() => EventThread(eventKey, eventData));
-
-                //start thread
-                eventThread.Start();
-
-                //EventThread(eventKey, eventData);
-            }
+            _eventQueue.Enqueue(eventData);//This could be a setting to cull events with no listeners
         }
 
         /**
-         * Event processing thread.
+         * Processes the events in the EventQueue
          * */
-        private void EventThread(string eventKey, Event eventData = null)
+        public void ProcessEvents()
         {
-            if (eventData == null)
+            while (_eventQueue.Count > 0)
             {
-                eventData = new Event();
-            }
+                TEvent currentEvent = _eventQueue.Dequeue();
 
-            eventData.EventId = (EventId++);
-            eventData.EventKey = eventKey;
+                if (!(OnEventProcess?.Invoke(currentEvent) ?? false)) continue;
+                
 
-            //loop through existing handleres for that event
-            foreach (var eventHandeler in EventHandelers[eventKey].ToList())
-            {
-                //Check if propagation was canceled
-                if (eventData.Propagate())
+                if(!_eventHandlers.ContainsKey(currentEvent.EventKey)) continue;
+                
+                //loop through existing handlers for that event
+                foreach ((int _, Action<TEvent> eventHandler) in _eventHandlers[currentEvent.EventKey].ToList().TakeWhile(eventHandler => currentEvent.Propagate()))
                 {
                     //Call event handler
-                    eventHandeler.Value(eventData);
+                    eventHandler(currentEvent);
+                }
 
-                    //Event log
-                    //Console.WriteLine($"EventId: {eventData.EventId}, EventKey: \"{eventData.EventKey}\", EventHandelerId: {handeler.Key}");
-                }
-                else
-                {
-                    //event was canceled
-                    break;
-                }
             }
         }
-
     }
 }
