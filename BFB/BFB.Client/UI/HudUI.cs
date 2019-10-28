@@ -39,7 +39,6 @@ namespace BFB.Client.UI
                                     .Background(new Color(0, 0, 0, 100));
                                 h2.Button("Slot 1")
                                     .Background(new Color(0, 0, 0, 100));
-//                                    .AspectRatio(1);
                                 h2.Button("Slot 2")
                                     .Background(new Color(0, 0, 0, 100));
                                 h2.Button("Slot 3")

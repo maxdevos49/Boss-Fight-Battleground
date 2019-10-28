@@ -3,6 +3,7 @@ using System.Reflection.PortableExecutable;
 using BFB.Engine.Content;
 using BFB.Engine.Entity.Components.Input;
 using BFB.Engine.Math;
+using BFB.Engine.TileMap;
 using JetBrains.Annotations;
 using Microsoft.Xna.Framework;
 
@@ -27,12 +28,14 @@ namespace BFB.Engine.Entity.Components.Physics
 
         }
 
-        public void Update(ServerEntity serverEntity)
+        public void Update(ServerEntity serverEntity, Chunk[,] chunks)
         {
             
             //Gives us the speed to move left and right
             serverEntity.DesiredVector.X *= _acceleration.X;
             serverEntity.DesiredVector.Y *= _acceleration.Y;
+            
+            //TODO
             
             if (!serverEntity.Grounded)
                 serverEntity.DesiredVector.Add(_gravity);

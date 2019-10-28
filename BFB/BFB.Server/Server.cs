@@ -12,6 +12,8 @@ using BFB.Engine.Math;
 
 //Engine
 using BFB.Engine.Server;
+using BFB.Engine.TileMap;
+using BFB.Engine.TileMap.Generators;
 using JetBrains.Annotations;
 
 namespace BFB.Server
@@ -35,8 +37,17 @@ namespace BFB.Server
             
             IPAddress ip = IPAddress.Parse(_configuration["Server:IPAddress"]);
             int port = Convert.ToInt32(_configuration["Server:Port"]);
+            
             _server = new ServerSocketManager(ip,port);
-            _simulation = new Simulation(_server);
+            
+            _simulation = new Simulation(_server, new WorldOptions
+            {
+                Seed = 1234,
+                ChunkSize = 16,
+                WorldChunkWidth = 10,
+                WorldChunkHeight = 10,
+                WorldGenerator = options => new FlatWorld(options)
+            });
         }
         
         #endregion
@@ -121,6 +132,11 @@ namespace BFB.Server
             
             #endregion
 
+            #region GenerateWorld
+
+            _server.OnServerStart = () => _simulation.GenerateWorld();
+
+            #endregion
         }
         
         #endregion
@@ -131,10 +147,10 @@ namespace BFB.Server
         public void Start()
         {
             Init();
-            _simulation.Start();
-            _server.Start();
             _server.PrintMessage($"BFB Server is now Listening on {_configuration["Server:IPAddress"]}:{_configuration["Server:Port"]}");
-            
+            _server.Start();
+            _simulation.Start();
+
             HandleTerminalInput();
         }
         
@@ -195,7 +211,7 @@ namespace BFB.Server
             IConfigurationBuilder builder = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
                 .AddJsonFile("appsettings.json", false, true)
-                .AddJsonFile($"appsettings.{Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") ?? "Development"}.json", true, true)
+                .AddJsonFile($"appsettings.{Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") ?? "Development"}.json"/*Development settings by default*/, true, true)
                 .AddEnvironmentVariables();
                 
             Server server = new Server(builder.Build());

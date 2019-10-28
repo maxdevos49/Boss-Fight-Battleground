@@ -41,7 +41,7 @@ namespace BFB.Engine.TileMap
             _viewportHeight = graphicsDevice.Viewport.Height;
 
             ScreenCenter = new Vector2(_viewportWidth / 2, _viewportHeight / 2);
-            Scale = 1;
+            Scale = 1f;
             MoveSpeed = 15.25f;
             Position = new Vector2();
             Rotation = 0;
@@ -51,6 +51,7 @@ namespace BFB.Engine.TileMap
 
         public void Update(GameTime gameTime)
         {
+            //TODO check if screen size changed
 
             // Create the Transform used by any
             // spritebatch process

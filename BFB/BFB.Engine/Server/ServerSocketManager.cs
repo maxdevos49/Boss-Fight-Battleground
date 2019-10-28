@@ -63,6 +63,8 @@ namespace BFB.Engine.Server
         {
             if (_isBroadcasting) return;
             
+            OnServerStart?.Invoke();
+            
             _listener.Start();
             _isBroadcasting = true;
 
@@ -83,7 +85,6 @@ namespace BFB.Engine.Server
             t1.Start();
             t2.Start();
             
-            OnServerStart?.Invoke();
         }
 
         #endregion

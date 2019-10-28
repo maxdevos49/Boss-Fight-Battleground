@@ -4,6 +4,8 @@ using System.Threading;
 using BFB.Engine.Entity;
 using BFB.Engine.Server;
 using BFB.Engine.Server.Communication;
+using BFB.Engine.TileMap;
+using BFB.Engine.TileMap.Generators;
 using JetBrains.Annotations;
 
 namespace BFB.Server
@@ -14,10 +16,12 @@ namespace BFB.Server
         #region Properties
         
         private readonly object _lock;
-        private readonly Dictionary<string, ServerEntity> _entities;
         private readonly ServerSocketManager _server;
         private readonly int _tickSpeed;
         private bool _running;
+        
+        private readonly Dictionary<string, ServerEntity> _entities;
+        private readonly WorldManager _world;
 
         #endregion
         
@@ -26,17 +30,34 @@ namespace BFB.Server
         /**
          * Thread safe simulation class that can be ticked to move the simulation forward a single step at a time
          */
-        public Simulation(ServerSocketManager server, int? tickSpeed = null)
+        public Simulation(ServerSocketManager server, WorldOptions worldOptions, int? tickSpeed = null)
         {
             _lock = new object();
             _server = server;
-            _entities = new Dictionary<string, ServerEntity>();
             _running = false;
             _tickSpeed = tickSpeed ?? (1000 / 60);//60 ticks a second are default
+            
+            _world = new WorldManager(worldOptions)
+            {
+                WorldGeneratorCallback = p => _server.PrintMessage("World Generated: " + p)
+            };
+
+            //entities
+            _entities = new Dictionary<string, ServerEntity>();
+            
         }
         
         #endregion
 
+        #region GenerateWorld
+
+        public void GenerateWorld()
+        {
+            _world.GenerateWorld();
+        } 
+        
+        #endregion
+        
         #region AddEntity
         
         public void AddEntity(ServerEntity serverEntity)
@@ -135,10 +156,13 @@ namespace BFB.Server
                 
                 lock (_lock)
                 {
+                    
                     //Update entities
-                    foreach ((string key, ServerEntity entity) in _entities)
+                    foreach ((string _, ServerEntity entity) in _entities)
                     {
-                        entity.Tick( /*Pass in world in the future*/);
+                        Chunk[,] chunks = _world.GetChunks();
+
+                        entity.Tick(chunks);
                     }
                 
                     //Send changes. In future cull updates per player to reduce sending un needed data to some clients(because that thing may not be on there screen)
@@ -146,7 +170,6 @@ namespace BFB.Server
                         _server.Emit("/players/updates", GetUpdates());
                     }
                     
-                    //TODO In future tick chunks also for dynamic tiles(Fire, gravity updates, grass)
                 }
 
 

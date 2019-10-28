@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Reflection.Metadata.Ecma335;
 using System.Threading;
 using BFB.Client.UI;
 using BFB.Engine.Content;
@@ -10,6 +11,7 @@ using BFB.Engine.Scene;
 using BFB.Engine.Server;
 using BFB.Engine.Server.Communication;
 using BFB.Engine.TileMap;
+using BFB.Engine.TileMap.Generators;
 using BFB.Engine.UI.Components;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -21,32 +23,12 @@ namespace BFB.Client.Scenes
 
         private readonly object _lock;
         
-        //Temp
         private PlayerInput _playerInput;
 
         private readonly ClientSocketManager _server;
         private readonly Dictionary<string, ClientEntity> _entities;
-
-//        private Camera _camera;
-        private Camera2D _camera2;
-        
-        private const int HeightY = 320;
-        private const int WidthX = 480;
-
-        private readonly Random _random;
-
-        private readonly int _scale;
-        private int _offset;
-        private bool _grow;
-
-        private enum Blocks {
-            Air = 0,
-            Grass,
-            Dirt,
-            Stone
-        }
-        
-        private readonly TileMapManager _tileMap;
+        private readonly Camera2D _camera2;
+        private readonly WorldManager _world;
 
 
         public PlayerConnectionScene() : base(nameof(PlayerConnectionScene))
@@ -55,14 +37,17 @@ namespace BFB.Client.Scenes
             _entities = new Dictionary<string, ClientEntity>();
             _server = new ClientSocketManager("127.0.0.1", 6969);
 
-//            _camera = new Camera(GraphicsDeviceManager);
             _camera2 = new Camera2D();
             
-            _tileMap = new TileMapManager();
-            _random = new Random();
-            _scale = 15;
-            _grow = true;
-            _offset = 0;
+            _world = new WorldManager(new WorldOptions
+            {
+                Seed = 1234,
+                ChunkSize = 16,
+                WorldChunkWidth = 10,
+                WorldChunkHeight = 10,
+                WorldGenerator = options => new FlatWorld(options)
+            });
+            
         }
 
         
@@ -71,6 +56,7 @@ namespace BFB.Client.Scenes
         {
 
             //TODO Change how the connection is supplied where its started to better handle a server menu style choice
+            
             MainMenuUI layer = (MainMenuUI)UIManager.GetLayer(nameof(MainMenuUI));
             _server.Ip = layer.model.Ip.Split(":")[0];
             _server.Port = Convert.ToInt32(layer.model.Ip.Split(":")[1]);
@@ -206,43 +192,7 @@ namespace BFB.Client.Scenes
             if (!_server.Connect())
                 Console.WriteLine("Connection Failed.");
             
-            //TODO remove once map is loaded from server
-            for (int x = 0; x < WidthX; x++)
-            {
-                for (int y = 0; y < HeightY; y++)
-                {
-                    
-                    if(y < 16)
-                    {
-                        _tileMap.setBlock(x, y, (int)Blocks.Air);
-                    }
-                    else if (y < 17)
-                    {
-                        _tileMap.setBlock(x, y, (int)Blocks.Grass);
-                    }
-                    else if (y < 18)
-                    {
-                        _tileMap.setBlock(x, y, (int)Blocks.Dirt);
-                    }
-                    else if (y < 25)
-                    {
-                        if (_random.Next(y) + 2 > 25)
-                        {
-                            _tileMap.setBlock(x,y,(int)Blocks.Stone);
-                        }
-                        else
-                        {
-                            _tileMap.setBlock(x, y, (int) Blocks.Dirt);
-                        }
-
-                    }
-                    else
-                    {
-                        _tileMap.setBlock(x, y, (int)Blocks.Stone);
-                    }
-                }
-            }
-
+            _world.GenerateWorld();
         }
         
         #endregion
@@ -276,10 +226,8 @@ namespace BFB.Client.Scenes
             lock (_lock)
             {
                 //Interpolation
-                foreach ((string key, ClientEntity entity) in _entities)
-                {
+                foreach ((string _, ClientEntity entity) in _entities)
                     entity.Update();
-                }
             }
             
             _camera2.Update(gameTime);
@@ -291,51 +239,40 @@ namespace BFB.Client.Scenes
         
         public override void Draw(GameTime gameTime, SpriteBatch graphics)
         {
-            
             graphics.End();
-//            var viewMatrix = _camera2.GetTransform();
             graphics.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, SamplerState.PointClamp, DepthStencilState.None, RasterizerState.CullCounterClockwise, null, _camera2.Transform);
             
-            lock (_lock)
-            {
-                foreach ((string key, ClientEntity entity) in _entities)
-                {
-                    entity.Draw(graphics);
-                }
-            }
+            const int scale = 15;
             
-            int height = 450;
-            int width = 800;
-
-            int xTile = _offset/_scale;
-            int yTile = 0;
-            int widthTile = (_offset / _scale + width / _scale) + 2;
-            int heightTile = 50;
-            
-            for (int x = xTile; x < widthTile; x++)
+            for(int y = 0; y < _world.WorldOptions.WorldChunkHeight * _world.WorldOptions.ChunkSize; y++)
             {
-                for(int y = yTile; y < heightTile; y++)
+                for (int x = 0; x < _world.WorldOptions.WorldChunkWidth * _world.WorldOptions.ChunkSize; x++)
                 {
-                    switch(_tileMap.getBlock(x, y))
+                    switch(_world.GetBlock(x, y))
                     {
-                        case (int)Blocks.Grass:
-                            graphics.Draw(ContentManager.GetTexture("grass"), new Vector2(x * _scale - _offset, y * _scale), Color.White);
+                        case WorldTile.Grass:
+                            graphics.Draw(ContentManager.GetTexture("grass"), new Vector2(x * scale, y * scale), Color.White);
                             break;
-                        case (int)Blocks.Dirt:
-                            graphics.Draw(ContentManager.GetTexture("dirt"), new Vector2(x * _scale - _offset, y * _scale), Color.White);
+                        case WorldTile.Dirt:
+                            graphics.Draw(ContentManager.GetTexture("dirt"), new Vector2(x * scale, y * scale), Color.White);
                             break;
-                        case (int)Blocks.Stone:
-                            graphics.Draw(ContentManager.GetTexture("stone"), new Vector2(x * _scale - _offset, y * _scale), Color.White);
+                        case WorldTile.Stone:
+                            graphics.Draw(ContentManager.GetTexture("stone"), new Vector2(x * scale, y * scale), Color.White);
                             break;
                     }
                 }
             }
             
-            graphics.End();
+            lock (_lock)
+            {
+                foreach ((string _, ClientEntity entity) in _entities)
+                    entity.Draw(graphics);
+            }
             
+            graphics.End();
             graphics.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, SamplerState.PointClamp, DepthStencilState.None, RasterizerState.CullCounterClockwise);
-
-
+            
+            
         }
         
         #endregion

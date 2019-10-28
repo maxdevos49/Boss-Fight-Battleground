@@ -9,6 +9,7 @@ using BFB.Engine.Entity.Components.Input;
 using BFB.Engine.Entity.Components.Physics;
 using BFB.Engine.Math;
 using BFB.Engine.Server.Communication;
+using BFB.Engine.TileMap;
 using JetBrains.Annotations;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -40,10 +41,10 @@ namespace BFB.Engine.Entity
 
         #region Update
         
-        public void Tick()
+        public void Tick(Chunk[,] chunks)
         {
             _input?.Update(this);
-            _physics?.Update(this);
+            _physics?.Update(this, chunks);
         }
         
         #endregion

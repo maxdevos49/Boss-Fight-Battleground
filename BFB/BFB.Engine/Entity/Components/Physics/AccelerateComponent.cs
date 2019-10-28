@@ -1,5 +1,6 @@
 using System;
 using BFB.Engine.Math;
+using BFB.Engine.TileMap;
 using JetBrains.Annotations;
 using Microsoft.Xna.Framework;
 
@@ -20,7 +21,7 @@ namespace BFB.Engine.Entity.Components.Physics
             _maxSpeed = 10;
         }
 
-        public void Update(ServerEntity serverEntity)
+        public void Update(ServerEntity serverEntity, Chunk[,] chunks)
         {
 
             //Enforce max speed

@@ -6,76 +6,89 @@ namespace BFB.Engine.TileMap
 {
     public class Chunk
     {
-        private const int CHUNKSIZE = 16;
+        public readonly int ChunkSize;
+        private readonly int[,] _hardness;
+        private readonly int[,] _light;
+        private readonly int[,] _wall;
+        private readonly int[,] _block;
 
-        private int[,] hardness;
-        private int[,] light;
-        private int[,] wall;
-        private int[,] block;
-
-        public Chunk()
+        public Chunk(int chunkSize)
         {
-            hardness = new int[CHUNKSIZE, CHUNKSIZE];
-            light = new int[CHUNKSIZE, CHUNKSIZE];
-            wall = new int[CHUNKSIZE, CHUNKSIZE];
-            block = new int[CHUNKSIZE, CHUNKSIZE];
-
-            for (int x = 0; x < CHUNKSIZE; x++)
-            {
-                for (int y = 0; y < CHUNKSIZE; y++)
-                {
-                    hardness[x, y] = 0;
-                    light[x, y] = 0;
-                    wall[x, y] = 0;
-                    block[x, y] = 0;
-                }
-            }
+            ChunkSize = chunkSize;
+            _hardness = new int[ChunkSize, ChunkSize];
+            _light = new int[ChunkSize, ChunkSize];
+            _wall = new int[ChunkSize, ChunkSize];
+            _block = new int[ChunkSize, ChunkSize];
         }
 
-        #region "get" methods
+        #region GetTileHardness
 
-        public int getTileHardness(int x, int y)
+        public int GetTileHardness(int x, int y)
         {
-            return hardness[x, y];
+            return _hardness[x, y];
         }
+        
+        #endregion
 
-        public int getTileLight(int x, int y)
+        #region GetTileLight
+        
+        public int GetTileLight(int x, int y)
         {
-            return light[x, y];
+            return _light[x, y];
         }
+        
+        #endregion
+        
+        #region GetTileWall
 
-        public int getTileWall(int x, int y)
+        public int GetTileWall(int x, int y)
         {
-            return wall[x, y];
+            return _wall[x, y];
         }
+        
+        #endregion
 
-        public int getTileBlock(int x, int y)
+        #region GetTileBlock
+        
+        public WorldTile GetTileBlock(int x, int y)
         {
-            return block[x, y];
+            return (WorldTile)_block[x,y];
         }
 
         #endregion
 
-        #region "set" methods
+        #region SetTileHardness
 
-        public void setTileHardness(int x, int y, int hardnessValue)
+        public void SetTileHardness(int x, int y, int hardnessValue)
         {
-            hardness[x, y] = hardnessValue;
+            _hardness[x, y] = hardnessValue;
+        }
+        
+        #endregion
+
+        #region SetTileLight
+
+        public void SetTileLight(int x, int y, int lightValue)
+        {
+            _light[x, y] = lightValue;
         }
 
-        public void setTileLight(int x, int y, int lightValue)
+        #endregion
+        
+        #region SetTileWall
+        
+        public void SetTileWall(int x, int y, int wallValue)
         {
-            light[x, y] = lightValue;
+            _wall[x, y] = wallValue;
         }
+        
+        #endregion
 
-        public void setTileWall(int x, int y, int wallValue)
+        #region SetTileBlock
+        
+        public void SetTileBlock(int x, int y, WorldTile blockValue)
         {
-            wall[x, y] = wallValue;
-        }
-
-        public void setTileBlock(int x, int y, int blockValue)
-        {
-            block[x, y] = blockValue;
+            _block[x, y] = (int)blockValue;
         }
 
         #endregion
