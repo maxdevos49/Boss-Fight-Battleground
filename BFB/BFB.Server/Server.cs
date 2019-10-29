@@ -47,7 +47,7 @@ namespace BFB.Server
                 WorldChunkWidth = 10,
                 WorldChunkHeight = 10,
                 WorldGenerator = options => new FlatWorld(options)
-            });
+            }, 60);
         }
         
         #endregion
@@ -93,7 +93,7 @@ namespace BFB.Server
             _server.OnClientReady = (socket) =>
             {
                 //Add to simulation
-                _simulation.AddEntity(new ServerEntity(
+                _simulation.AddEntity(new SimulationEntity(
                     socket.ClientId,
                     new EntityOptions
                     {

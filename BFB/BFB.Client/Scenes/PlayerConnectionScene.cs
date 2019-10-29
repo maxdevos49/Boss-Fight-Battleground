@@ -192,7 +192,7 @@ namespace BFB.Client.Scenes
             if (!_server.Connect())
                 Console.WriteLine("Connection Failed.");
             
-            _world.GenerateWorld();
+//            _world.GenerateWorld();
         }
         
         #endregion

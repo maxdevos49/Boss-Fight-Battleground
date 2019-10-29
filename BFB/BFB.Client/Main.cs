@@ -51,6 +51,8 @@ namespace BFB.Client
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
 
+//            TargetElapsedTime = TimeSpan.FromSeconds(1d / 60d);
+
             //Init Graphics manager. (Needs to be in the constructor)
             _graphicsDeviceManager = new GraphicsDeviceManager(this);
             _windowSizeIsBeingChanged = false;

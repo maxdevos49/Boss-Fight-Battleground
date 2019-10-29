@@ -1,7 +1,7 @@
 using System;
-using BFB.Engine.TileMap.Generators;
+using Newtonsoft.Json;
 
-namespace BFB.Engine.TileMap
+namespace BFB.Engine.TileMap.Generators
 {
     public class WorldOptions
     {
@@ -12,6 +12,7 @@ namespace BFB.Engine.TileMap
 
         public int WorldChunkHeight { get; set; }
         
+        [JsonIgnore]
         public Func<WorldOptions, WorldGenerator> WorldGenerator { get; set; }
     }
 }

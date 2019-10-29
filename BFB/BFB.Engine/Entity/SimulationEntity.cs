@@ -15,7 +15,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace BFB.Engine.Entity
 {
-    public class ServerEntity : Entity
+    public class SimulationEntity : Entity
     {
         
         #region Properties
@@ -30,7 +30,7 @@ namespace BFB.Engine.Entity
         
         #endregion
 
-        public ServerEntity(string entityId, EntityOptions options, ComponentOptions components) : base(entityId, options)
+        public SimulationEntity(string entityId, EntityOptions options, ComponentOptions components) : base(entityId, options)
         {
             //Components
             _input = components.Input;

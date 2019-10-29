@@ -1,8 +1,8 @@
 ﻿using System;
 using System.IO;
-using BFB.Engine.Content;
+using BFB.Engine.Entity;
 using BFB.Engine.TileMap.Generators;
-using JetBrains.Annotations;
+using BFB.Engine.TileMap.IO;
 using Newtonsoft.Json;
 
 namespace BFB.Engine.TileMap
@@ -10,19 +10,30 @@ namespace BFB.Engine.TileMap
 
     public class WorldManager
     {
+        
+        #region Properties
+        
         public WorldOptions WorldOptions { get; private set; }
-        private Chunk[,] _world;
+        
+        private Chunk[,] _chunks;
         public Action<string> WorldGeneratorCallback { get; set; }
         
         private readonly WorldGenerator _worldGenerator;
 
+        #endregion
+        
+        #region Constructor
+        
         public WorldManager(WorldOptions worldOptions)
         {
             WorldOptions = worldOptions;
             _worldGenerator = worldOptions.WorldGenerator?.Invoke(WorldOptions);
-            _world = new Chunk[WorldOptions.WorldChunkWidth, WorldOptions.WorldChunkHeight];
+            _chunks = new Chunk[WorldOptions.WorldChunkWidth, WorldOptions.WorldChunkHeight];
         }
+        
+        #endregion
 
+        //Move to world generator?
         #region GenerateWorld
         
         /**
@@ -39,7 +50,7 @@ namespace BFB.Engine.TileMap
             {
                 for (int x = 0; x < WorldOptions.WorldChunkWidth; x++)
                 {
-                    _world[x, y] = _worldGenerator.GenerateChunk(x * WorldOptions.ChunkSize, y * WorldOptions.ChunkSize);
+                    _chunks[x, y] = _worldGenerator.GenerateChunk(x * WorldOptions.ChunkSize, y * WorldOptions.ChunkSize);
 
                     int currentPercent = (int)(progress++ / (WorldOptions.WorldChunkHeight * WorldOptions.WorldChunkWidth) * 100f);
                     
@@ -59,11 +70,12 @@ namespace BFB.Engine.TileMap
         
         public Chunk[,] GetChunks()
         {
-            return _world;
+            return _chunks;
         }
         
         #endregion
         
+        //move to world IO?
         #region SaveWorld
         
         /**
@@ -71,18 +83,30 @@ namespace BFB.Engine.TileMap
          */
         public bool SaveWorld(string fileName)
         {
-            WorldData worldData = new WorldData
+            WorldDataSchema worldData = new WorldDataSchema
             {
                 WorldConfig = WorldOptions,
-                Chunks = _world
+                Chunks = GetChunks()
             };
 
-            string serializedWorldData = JsonConvert.SerializeObject(worldData);
+            string serializedWorldData = JsonConvert.SerializeObject(worldData, Formatting.None,
+                new JsonSerializerSettings()
+                { 
+                    ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+                });
 
             try
             {
-                Console.WriteLine(Directory.GetCurrentDirectory() + "/Worlds/" + fileName);
-                File.WriteAllText(Directory.GetCurrentDirectory() + "/Worlds/" + fileName, serializedWorldData);
+                string path = Directory.GetCurrentDirectory() + "/Worlds/" + fileName + ".json";
+                
+                //Create directory. If exist it does nothing
+                Directory.CreateDirectory(Directory.GetCurrentDirectory() + "/Worlds/");
+                
+                using (StreamWriter s = File.CreateText(path))
+                {
+                    s.Write(serializedWorldData);
+                }
+                
                 return true;
             }
             catch (Exception ex)
@@ -94,29 +118,81 @@ namespace BFB.Engine.TileMap
         
         #endregion
 
+        //move to world IO?
         #region LoadWorld
         
-        public void LoadWorld(string filePath)
+        public bool LoadWorld(string fileName)
         {
-            //TODO check if file exist
-            
-            string json;
-            
-            //Get file for Parsing
-            using (StreamReader r = new StreamReader("~/Worlds/" + filePath))
-            {
-                json = r.ReadToEnd();
-            }
-            
-            WorldData worldData = JsonConvert.DeserializeObject<WorldData>(json);
+            //TODO not sure if works at all
+            string path = Directory.GetCurrentDirectory() + "/Worlds/" + fileName + ".json";
 
-            WorldOptions = worldData.WorldConfig;
-            _world = worldData.Chunks;
+            try
+            {
+                //Get file contents for Parsing
+                string json;
+                using (StreamReader r = new StreamReader(path))
+                {
+                    json = r.ReadToEnd();
+                }
+
+                WorldDataSchema worldData = JsonConvert.DeserializeObject<WorldDataSchema>(json);
+
+                WorldOptions = worldData.WorldConfig;
+                _chunks = worldData.Chunks;
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                Console.WriteLine("No world with filename: \"" + fileName + "\" exists.");
+                return false;
+            }
+
 
         }
         
         #endregion
 
+//        #region MoveEntity
+//
+//        /**
+//         * Moves entity from one chunk to another
+//         */
+//        public void MoveEntity(string entityKey, Chunk originalChunk, Chunk newChunk)
+//        {
+//            if (!originalChunk.Entities.ContainsKey(entityKey))
+//                return;
+//            
+//            ServerEntity entity = originalChunk.Entities[entityKey];
+//            
+//            //Remove from original chunk
+//            originalChunk.Entities.Remove(entityKey);
+//            
+//            //Add to new chunk
+//            newChunk.Entities.Add(entityKey, entity);
+//            
+//        }
+//        
+//        #endregion
+        
+        #region ChunkFromBlockLocation
+
+        public Chunk ChunkFromTileLocation(int blockX, int blockY)
+        {
+            int chunkX = blockX / WorldOptions.ChunkSize;
+            int chunkY = blockY / WorldOptions.ChunkSize;
+
+            if (chunkX < 0 || chunkX > WorldOptions.WorldChunkWidth)
+                return null;
+
+            if (chunkY < 0 || chunkY > WorldOptions.WorldChunkHeight)
+                return null;
+            
+            return _chunks[chunkX, chunkY];
+        }
+        
+        #endregion
+        
         #region TranslatePosition
 
         private Tuple<int,int,int,int> TranslatePosition(int xBlock, int yBlock)
@@ -135,7 +211,7 @@ namespace BFB.Engine.TileMap
         public int GetHardness(int xBlock, int yBlock)
         {
             (int chunkX, int chunkY, int relativeX, int relativeY) = TranslatePosition(xBlock, yBlock);
-            return ChunkExist(chunkX,chunkY) ? _world[chunkX,chunkY].GetTileHardness(relativeX, relativeY) : 0;
+            return ChunkExist(chunkX,chunkY) ? _chunks[chunkX,chunkY].Hardness[relativeX, relativeY] : 0;
         }
         
         #endregion
@@ -145,7 +221,7 @@ namespace BFB.Engine.TileMap
         public int GetLight(int xBlock, int yBlock)
         {
             (int chunkX, int chunkY, int relativeX, int relativeY) = TranslatePosition(xBlock, yBlock);
-            return ChunkExist(chunkX,chunkY) ? _world[chunkX, chunkY].GetTileLight(relativeX, relativeY) : 0;
+            return ChunkExist(chunkX,chunkY) ? _chunks[chunkX, chunkY].Light[relativeX, relativeY] : 0;
         }
         
         #endregion
@@ -155,7 +231,7 @@ namespace BFB.Engine.TileMap
         public int GetWall(int xBlock, int yBlock)
         {
             (int chunkX, int chunkY, int relativeX, int relativeY) = TranslatePosition(xBlock, yBlock);
-            return ChunkExist(chunkX, chunkY) ? _world[chunkX, chunkY].GetTileWall(relativeX, relativeY) : 0;
+            return ChunkExist(chunkX, chunkY) ? _chunks[chunkX, chunkY].Wall[relativeX, relativeY] : 0;
         }
         
         #endregion
@@ -167,7 +243,7 @@ namespace BFB.Engine.TileMap
             (int chunkX, int chunkY, int relativeX, int relativeY) = TranslatePosition(xBlock, yBlock);
             
             return ChunkExist(chunkX, chunkY) 
-                ?  _world[chunkX, chunkY].GetTileBlock(relativeX, relativeY) 
+                ?  (WorldTile)_chunks[chunkX, chunkY].Block[relativeX, relativeY] 
                 : WorldTile.Air;
         }
 
@@ -175,22 +251,22 @@ namespace BFB.Engine.TileMap
 
         #region SetHardness
         
-        public void SetHardness(int xBlock, int yBlock, int hardnessValue)
+        public void SetHardness(int xBlock, int yBlock, ushort hardnessValue)
         {
             (int chunkX, int chunkY, int relativeX, int relativeY) = TranslatePosition(xBlock, yBlock);
             if(ChunkExist(chunkX,chunkY))    
-                _world[chunkX, chunkY].SetTileHardness(relativeX, relativeY, hardnessValue);
+                _chunks[chunkX, chunkY].Hardness[relativeX, relativeY] = hardnessValue;
         }
         
         #endregion
         
         #region SetLight
 
-        public void SetLight(int xBlock, int yBlock, int lightValue)
+        public void SetLight(int xBlock, int yBlock, byte lightValue)
         {
             (int chunkX, int chunkY, int relativeX, int relativeY) = TranslatePosition(xBlock, yBlock);
             if(ChunkExist(chunkX,chunkY))
-                _world[chunkX, chunkY].SetTileLight(relativeX, relativeY, lightValue);
+                _chunks[chunkX, chunkY].Light[relativeX, relativeY] = lightValue;
         }
         
         #endregion
@@ -201,7 +277,7 @@ namespace BFB.Engine.TileMap
         {
             (int chunkX, int chunkY, int relativeX, int relativeY) = TranslatePosition(xBlock, yBlock);
             if(ChunkExist(chunkX,chunkY))
-                _world[chunkX, chunkY].SetTileWall(relativeX, relativeY, wallValue);
+                _chunks[chunkX, chunkY].Wall[relativeX, relativeY] = wallValue;
         }
         
         #endregion
@@ -213,20 +289,20 @@ namespace BFB.Engine.TileMap
             (int chunkX, int chunkY, int relativeX, int relativeY) = TranslatePosition(xBlock, yBlock);
             
             if(ChunkExist(chunkX,chunkY))
-                _world[chunkX, chunkY].SetTileBlock(relativeX, relativeY, blockValue);
+                _chunks[chunkX, chunkY].Block[relativeX, relativeY] = (int)blockValue;
         }
 
         #endregion
         
         #region SetAll
         
-        public void SetAll(int xBlock, int yBlock, int hardnessValue, int lightValue, int wallValue, WorldTile tile)
+        public void SetAll(int xBlock, int yBlock, ushort hardnessValue, byte lightValue, int wallValue, WorldTile tile)
         {
             (int chunkX, int chunkY, int relativeX, int relativeY) = TranslatePosition(xBlock, yBlock);
-            _world[chunkX, chunkY].SetTileHardness(relativeX, relativeY, hardnessValue);
-            _world[chunkX, chunkY].SetTileLight(relativeX, relativeY, lightValue);
-            _world[chunkX, chunkY].SetTileWall(relativeX, relativeY, wallValue);
-            _world[chunkX, chunkY].SetTileBlock(relativeX, relativeY, tile);
+            _chunks[chunkX, chunkY].Hardness[relativeX, relativeY] = hardnessValue;
+            _chunks[chunkX, chunkY].Light[relativeX, relativeY] = lightValue;
+            _chunks[chunkX, chunkY].Wall[relativeX, relativeY] = wallValue;
+            _chunks[chunkX, chunkY].Block[relativeX, relativeY] = (int)tile;
         }
 
         #endregion
@@ -235,11 +311,10 @@ namespace BFB.Engine.TileMap
 
         private bool ChunkExist(int chunkX, int chunkY)
         {
-            return _world[chunkX,chunkY] != null;
+            return _chunks[chunkX,chunkY] != null;
         }
         
         #endregion
-        
     }
-    
+
 }

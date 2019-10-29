@@ -1,96 +1,51 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using BFB.Engine.Entity;
+using BFB.Engine.TileMap.Generators;
+using JetBrains.Annotations;
 
 namespace BFB.Engine.TileMap
 {
     public class Chunk
     {
+        #region Properties
+        
+        public readonly string ChunkId;
+        public readonly int ChunkX;
+        public readonly int ChunkY;
+        
         public readonly int ChunkSize;
-        private readonly int[,] _hardness;
-        private readonly int[,] _light;
-        private readonly int[,] _wall;
-        private readonly int[,] _block;
+        public ushort[,] Hardness { get; }
+        public byte[,] Light { get; }
+        public int[,] Wall { get;}
+        public  int[,] Block { get; }
+        
+//        public Dictionary<string,ServerEntity> Entities { get; }
 
-        public Chunk(int chunkSize)
+        #endregion
+
+        #region Constructor
+
+        public Chunk(int chunkSize, int chunkX, int chunkY)
         {
+            //Chunk Meta data
+            ChunkId = Guid.NewGuid().ToString();
             ChunkSize = chunkSize;
-            _hardness = new int[ChunkSize, ChunkSize];
-            _light = new int[ChunkSize, ChunkSize];
-            _wall = new int[ChunkSize, ChunkSize];
-            _block = new int[ChunkSize, ChunkSize];
-        }
-
-        #region GetTileHardness
-
-        public int GetTileHardness(int x, int y)
-        {
-            return _hardness[x, y];
-        }
-        
-        #endregion
-
-        #region GetTileLight
-        
-        public int GetTileLight(int x, int y)
-        {
-            return _light[x, y];
-        }
-        
-        #endregion
-        
-        #region GetTileWall
-
-        public int GetTileWall(int x, int y)
-        {
-            return _wall[x, y];
+            ChunkX = chunkX/ChunkSize;
+            ChunkY = chunkY/ChunkSize;
+            
+            //Tile information
+            Hardness = new ushort[ChunkSize, ChunkSize];
+            Light = new byte[ChunkSize, ChunkSize];
+            
+            Wall = new int[ChunkSize, ChunkSize];
+            Block = new int[ChunkSize, ChunkSize];
+            
+            //Entities
+//            Entities = new Dictionary<string, ServerEntity>();
         }
         
         #endregion
 
-        #region GetTileBlock
-        
-        public WorldTile GetTileBlock(int x, int y)
-        {
-            return (WorldTile)_block[x,y];
-        }
-
-        #endregion
-
-        #region SetTileHardness
-
-        public void SetTileHardness(int x, int y, int hardnessValue)
-        {
-            _hardness[x, y] = hardnessValue;
-        }
-        
-        #endregion
-
-        #region SetTileLight
-
-        public void SetTileLight(int x, int y, int lightValue)
-        {
-            _light[x, y] = lightValue;
-        }
-
-        #endregion
-        
-        #region SetTileWall
-        
-        public void SetTileWall(int x, int y, int wallValue)
-        {
-            _wall[x, y] = wallValue;
-        }
-        
-        #endregion
-
-        #region SetTileBlock
-        
-        public void SetTileBlock(int x, int y, WorldTile blockValue)
-        {
-            _block[x, y] = (int)blockValue;
-        }
-
-        #endregion
     }
 }

@@ -1,6 +1,8 @@
-namespace BFB.Engine.TileMap
+using BFB.Engine.TileMap.Generators;
+
+namespace BFB.Engine.TileMap.IO
 {
-    public class WorldData
+    public class WorldDataSchema
     {
         public WorldOptions WorldConfig { get; set; }
 

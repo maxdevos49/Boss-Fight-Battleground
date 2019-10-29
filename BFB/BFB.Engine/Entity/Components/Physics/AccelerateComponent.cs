@@ -21,25 +21,25 @@ namespace BFB.Engine.Entity.Components.Physics
             _maxSpeed = 10;
         }
 
-        public void Update(ServerEntity serverEntity, Chunk[,] chunks)
+        public void Update(SimulationEntity simulationEntity, Chunk[,] chunks)
         {
 
             //Enforce max speed
-            serverEntity.DesiredVector.Magnitude = _maxSpeed;
+            simulationEntity.DesiredVector.Magnitude = _maxSpeed;
             
-            BfbVector steering = BfbVector.Sub(serverEntity.DesiredVector, serverEntity.Velocity);
+            BfbVector steering = BfbVector.Sub(simulationEntity.DesiredVector, simulationEntity.Velocity);
 
             //enforce max force
             steering.Limit(_maxForce);
 
             //Apply steering to velocity
-            serverEntity.Velocity.Add(steering);
+            simulationEntity.Velocity.Add(steering);
 
             //update position
-            serverEntity.Position.Add(serverEntity.Velocity);
+            simulationEntity.Position.Add(simulationEntity.Velocity);
 
             //update Rotation with degrees
-            serverEntity.Rotation = Convert.ToSingle(System.Math.Atan2(serverEntity.Velocity.Y, serverEntity.Velocity.X));
+            simulationEntity.Rotation = Convert.ToSingle(System.Math.Atan2(simulationEntity.Velocity.Y, simulationEntity.Velocity.X));
             
         }
         

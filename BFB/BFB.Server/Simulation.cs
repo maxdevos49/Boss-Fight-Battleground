@@ -6,6 +6,7 @@ using BFB.Engine.Server;
 using BFB.Engine.Server.Communication;
 using BFB.Engine.TileMap;
 using BFB.Engine.TileMap.Generators;
+using BFB.Engine.TileMap.TileComponent;
 using JetBrains.Annotations;
 
 namespace BFB.Server
@@ -16,12 +17,18 @@ namespace BFB.Server
         #region Properties
         
         private readonly object _lock;
-        private readonly ServerSocketManager _server;
         private readonly int _tickSpeed;
+        private readonly Random _random;
         private bool _running;
         
-        private readonly Dictionary<string, ServerEntity> _entities;
+        private readonly Dictionary<string, SimulationEntity> _entities;
+        private readonly List<string> _playerEntities;
+        
         private readonly WorldManager _world;
+        private readonly Dictionary<string,Chunk> _activeChunks;
+
+        private readonly ServerSocketManager _server;//TODO try to remove from simulation later on by use of callbacks and/or events so this can be used on client for local simulations
+        
 
         #endregion
         
@@ -35,7 +42,9 @@ namespace BFB.Server
             _lock = new object();
             _server = server;
             _running = false;
-            _tickSpeed = tickSpeed ?? (1000 / 60);//60 ticks a second are default
+            _tickSpeed = 1000/tickSpeed ?? (1000 / 60);//60 ticks a second are default
+            _random = new Random();
+            _activeChunks = new Dictionary<string, Chunk>();
             
             _world = new WorldManager(worldOptions)
             {
@@ -43,7 +52,8 @@ namespace BFB.Server
             };
 
             //entities
-            _entities = new Dictionary<string, ServerEntity>();
+            _entities = new Dictionary<string, SimulationEntity>();
+            _playerEntities = new List<string>();
             
         }
         
@@ -54,18 +64,28 @@ namespace BFB.Server
         public void GenerateWorld()
         {
             _world.GenerateWorld();
+
+            //Testing of saving world
+            if(_world.SaveWorld("Debug"))
+            {
+                _server.PrintMessage("World Save succeeded");
+                
+                _server.PrintMessage(_world.LoadWorld("Debug") ? "World Loading succeeded" : "World Load Failed");
+            }
+            else
+                _server.PrintMessage("World Save Failed");
         } 
         
         #endregion
         
         #region AddEntity
         
-        public void AddEntity(ServerEntity serverEntity)
+        public void AddEntity(SimulationEntity simulationEntity, bool isPlayer = false)
         {
             lock (_lock)
             {
-                if(!_entities.ContainsKey(serverEntity.EntityId))
-                    _entities.Add(serverEntity.EntityId, serverEntity);
+                if(!_entities.ContainsKey(simulationEntity.EntityId))
+                    _entities.Add(simulationEntity.EntityId, simulationEntity);
 
                 if (_entities.Count <= 0 || _running) return;
                 
@@ -131,7 +151,7 @@ namespace BFB.Server
             {
                 EntityUpdateMessage updates = new EntityUpdateMessage();
 
-                foreach ((string key, ServerEntity entity) in _entities)
+                foreach ((string key, SimulationEntity entity) in _entities)
                 {
                     updates.Updates.Add(entity.GetState());
                 }
@@ -151,27 +171,41 @@ namespace BFB.Server
             //Server Game loop
             while (_running)
             {
-                //Ask for input from all players
-                _server.Emit("/players/getUpdates");
-                
+
                 lock (_lock)
                 {
-                    
-                    //Update entities
-                    foreach ((string _, ServerEntity entity) in _entities)
-                    {
-                        Chunk[,] chunks = _world.GetChunks();
+                    Chunk[,] chunks = _world.GetChunks();
 
+                    //Update all entities
+                    foreach ((string _, SimulationEntity entity) in _entities)
+                    {
                         entity.Tick(chunks);
                     }
-                
-                    //Send changes. In future cull updates per player to reduce sending un needed data to some clients(because that thing may not be on there screen)
-                    if(_entities.Count > 0){
-                        _server.Emit("/players/updates", GetUpdates());
+
+                    //Tick all chunks
+                    foreach ((string key, Chunk chunk) in _activeChunks)
+                    {
+
+                        //randomly choose three blocks in the chunk to tick
+                        for (int i = 0; i < 3; i++)
+                        {
+                            int xBlock = _random.Next(_world.WorldOptions.ChunkSize);
+                            int yBlock = _random.Next(_world.WorldOptions.ChunkSize);
+
+                            TileComponentManager.TickTile(chunk,xBlock,yBlock);
+                        }
                     }
+                    
+                    //update player active chunks
+                    //TODO track remote users(actual players)
                     
                 }
 
+                //Send changes. In future cull updates per player to reduce sending un needed data to some clients(because that thing may not be on there screen)
+                _server.Emit("/players/updates", GetUpdates());//TODO change
+                
+                //Ask for input from all players
+                _server.Emit("/players/getUpdates");
 
                 //Maintain the tick rate here
                 nextTick += _tickSpeed;

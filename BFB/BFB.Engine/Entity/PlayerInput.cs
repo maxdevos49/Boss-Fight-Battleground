@@ -1,5 +1,4 @@
-﻿using System.Reflection.Metadata;
-using Microsoft.Xna.Framework.Input;
+﻿using Microsoft.Xna.Framework.Input;
 
 namespace BFB.Engine.Entity
 {
@@ -14,6 +13,7 @@ namespace BFB.Engine.Entity
         public PlayerInput(Scene.Scene scene)
         {
             _playerState = new PlayerState();
+            
             scene.AddInputListener("keypress", (e) =>
             {
                 switch (e.Keyboard.KeyEnum)
@@ -26,11 +26,9 @@ namespace BFB.Engine.Entity
                     case Keys.D:
                         _playerState.Right = true;
                         break;
-                    case Keys.Up:
                     case Keys.W:
+                    case Keys.Space:
                         _playerState.Jump = true;
-                        break;
-                    default:
                         break;
                 }
             });
@@ -47,11 +45,9 @@ namespace BFB.Engine.Entity
                     case Keys.D:
                         _playerState.Right = false;
                         break;
-                    case Keys.Up:
                     case Keys.W:
+                    case Keys.Space:
                         _playerState.Jump = false;
-                        break;
-                    default:
                         break;
                 }
             });

@@ -6,11 +6,6 @@ namespace BFB.Engine.TileMap.Generators
     {
         private readonly Random _random;
 
-        public FlatWorld()
-        {
-            
-        }
-        
         /**
          * Generates a flat world
          */
@@ -24,7 +19,7 @@ namespace BFB.Engine.TileMap.Generators
          */
         public override Chunk GenerateChunk(int x, int y)
         {
-            Chunk chunk = new Chunk(WorldOptions.ChunkSize);
+            Chunk chunk = new Chunk(WorldOptions.ChunkSize, x, y);
 
             for (int yBlock = 0; yBlock < chunk.ChunkSize; yBlock++)
             {
@@ -36,20 +31,20 @@ namespace BFB.Engine.TileMap.Generators
                     
                     if(yActual < 16)
                     {
-                        chunk.SetTileBlock(xBlock,yBlock,WorldTile.Air);
+                        chunk.Block[xBlock,yBlock] = (int)WorldTile.Air;
                     }
                     else if (yActual < 17)
                     {
-                        chunk.SetTileBlock(xBlock,yBlock,WorldTile.Grass);
+                        chunk.Block[xBlock,yBlock] = (int)WorldTile.Grass;
                     }
                     else if(yActual < 35)
                     {
-                        chunk.SetTileBlock(xBlock, yBlock,
-                            _random.Next(yActual) + 4 > 22 ? WorldTile.Stone : WorldTile.Dirt);
+                        chunk.Block[xBlock,yBlock] =
+                            _random.Next(yActual) + 4 > 22 ? (int)WorldTile.Stone : (int)WorldTile.Dirt;
                     }
                     else
                     {
-                        chunk.SetTileBlock(xBlock, yBlock, WorldTile.Stone);
+                        chunk.Block[xBlock,yBlock] = (int)WorldTile.Stone;
                     }
                 }
             }

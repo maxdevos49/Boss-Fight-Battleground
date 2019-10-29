@@ -4,8 +4,6 @@ namespace BFB.Engine.TileMap.Generators
     {
         protected WorldOptions WorldOptions { get; }
 
-        protected WorldGenerator() { }
-        
         protected WorldGenerator(WorldOptions options)
         {
             WorldOptions = options;

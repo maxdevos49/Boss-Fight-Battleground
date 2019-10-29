@@ -28,61 +28,61 @@ namespace BFB.Engine.Entity.Components.Physics
 
         }
 
-        public void Update(ServerEntity serverEntity, Chunk[,] chunks)
+        public void Update(SimulationEntity simulationEntity, Chunk[,] chunks)
         {
             
             //Gives us the speed to move left and right
-            serverEntity.DesiredVector.X *= _acceleration.X;
-            serverEntity.DesiredVector.Y *= _acceleration.Y;
+            simulationEntity.DesiredVector.X *= _acceleration.X;
+            simulationEntity.DesiredVector.Y *= _acceleration.Y;
             
             //TODO
             
-            if (!serverEntity.Grounded)
-                serverEntity.DesiredVector.Add(_gravity);
+            if (!simulationEntity.Grounded)
+                simulationEntity.DesiredVector.Add(_gravity);
             
             
             //Creates the new velocity
-            serverEntity.Velocity.Add(serverEntity.DesiredVector);
+            simulationEntity.Velocity.Add(simulationEntity.DesiredVector);
 
 
             //Caps your speed
-            if(System.Math.Abs(serverEntity.Velocity.X) > _maxSpeed.X)
-                serverEntity.Velocity.X = serverEntity.Velocity.X > 0 ? _maxSpeed.X : -_maxSpeed.X;
+            if(System.Math.Abs(simulationEntity.Velocity.X) > _maxSpeed.X)
+                simulationEntity.Velocity.X = simulationEntity.Velocity.X > 0 ? _maxSpeed.X : -_maxSpeed.X;
             
-            if(System.Math.Abs(serverEntity.Velocity.Y) > _maxSpeed.Y)
-                serverEntity.Velocity.Y = serverEntity.Velocity.Y > 0 ? _maxSpeed.Y : -_maxSpeed.Y;
+            if(System.Math.Abs(simulationEntity.Velocity.Y) > _maxSpeed.Y)
+                simulationEntity.Velocity.Y = simulationEntity.Velocity.Y > 0 ? _maxSpeed.Y : -_maxSpeed.Y;
             
             // ReSharper disable once CompareOfFloatsByEqualityOperator
-            if (serverEntity.Grounded && serverEntity.DesiredVector.X == 0)
+            if (simulationEntity.Grounded && simulationEntity.DesiredVector.X == 0)
             {
                 //This will affects changing directions back and forth -- so its like smash bros switching directions
-                serverEntity.Velocity.Mult(_friction);
+                simulationEntity.Velocity.Mult(_friction);
             }
 
             // ReSharper disable once CompareOfFloatsByEqualityOperator
-            if (System.Math.Abs(serverEntity.Velocity.X) < 1 && serverEntity.Velocity.X != 0)
+            if (System.Math.Abs(simulationEntity.Velocity.X) < 1 && simulationEntity.Velocity.X != 0)
             {
-                serverEntity.Velocity.X = 0;
-                serverEntity.AnimationState = _previousAnimationState == AnimationState.MoveLeft ? AnimationState.IdleLeft : AnimationState.IdleRight;
+                simulationEntity.Velocity.X = 0;
+                simulationEntity.AnimationState = _previousAnimationState == AnimationState.MoveLeft ? AnimationState.IdleLeft : AnimationState.IdleRight;
             }
 
             //Updates the position
-            serverEntity.Position.Add(serverEntity.Velocity);
+            simulationEntity.Position.Add(simulationEntity.Velocity);
 
-            if(serverEntity.Position.Y > 200)
+            if(simulationEntity.Position.Y > 200)
             {
-                serverEntity.Position.Y = 200;
-                serverEntity.Velocity.Y = 0;
-                serverEntity.Grounded = true;
+                simulationEntity.Position.Y = 200;
+                simulationEntity.Velocity.Y = 0;
+                simulationEntity.Grounded = true;
             }
 
             //Animation states
-            if (serverEntity.Velocity.X > 1)
-                serverEntity.AnimationState = AnimationState.MoveRight;
-            else if (serverEntity.Velocity.X < -1)
-                serverEntity.AnimationState = AnimationState.MoveLeft;
+            if (simulationEntity.Velocity.X > 1)
+                simulationEntity.AnimationState = AnimationState.MoveRight;
+            else if (simulationEntity.Velocity.X < -1)
+                simulationEntity.AnimationState = AnimationState.MoveLeft;
 
-            _previousAnimationState = serverEntity.AnimationState;
+            _previousAnimationState = simulationEntity.AnimationState;
 
         }
     }

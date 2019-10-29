@@ -4,6 +4,6 @@ namespace BFB.Engine.Entity.Components.Physics
 {
     public interface IPhysicsComponent
     {
-        void Update(ServerEntity serverEntity, Chunk[,] chunks);
+        void Update(SimulationEntity simulationEntity, Chunk[,] chunks);
     }
 }
