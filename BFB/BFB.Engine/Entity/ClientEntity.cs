@@ -1,4 +1,4 @@
-using BFB.Engine.Entity.Components.Graphics;
+using BFB.Engine.Entity.GraphicsComponents;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace BFB.Engine.Entity

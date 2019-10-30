@@ -1,10 +1,9 @@
-using System;
+using BFB.Engine.Input.PlayerInput;
 using BFB.Engine.Math;
 using BFB.Engine.Server;
 using BFB.Engine.Server.Communication;
-using Microsoft.Xna.Framework;
 
-namespace BFB.Engine.Entity.Components.Input
+namespace BFB.Engine.Entity.InputComponents
 {
     public class RemoteInputComponent : IInputComponent
     {

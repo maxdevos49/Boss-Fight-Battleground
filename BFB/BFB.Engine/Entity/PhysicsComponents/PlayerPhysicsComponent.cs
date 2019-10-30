@@ -1,13 +1,8 @@
-﻿using System;
-using System.Reflection.PortableExecutable;
-using BFB.Engine.Content;
-using BFB.Engine.Entity.Components.Input;
+﻿using BFB.Engine.Content;
 using BFB.Engine.Math;
 using BFB.Engine.TileMap;
-using JetBrains.Annotations;
-using Microsoft.Xna.Framework;
 
-namespace BFB.Engine.Entity.Components.Physics
+namespace BFB.Engine.Entity.PhysicsComponents
 {
     public class 
         PlayerPhysicsComponent: IPhysicsComponent
@@ -28,7 +23,7 @@ namespace BFB.Engine.Entity.Components.Physics
 
         }
 
-        public void Update(SimulationEntity simulationEntity, Chunk[,] chunks)
+        public void Update(SimulationEntity simulationEntity, WorldManager worldManager)
         {
             
             //Gives us the speed to move left and right

@@ -1,6 +1,7 @@
-﻿using Microsoft.Xna.Framework.Input;
+﻿using BFB.Engine.Entity;
+using Microsoft.Xna.Framework.Input;
 
-namespace BFB.Engine.Entity
+namespace BFB.Engine.Input.PlayerInput
 {
     public class PlayerInput
     {

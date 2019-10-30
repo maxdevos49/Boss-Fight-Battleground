@@ -5,7 +5,8 @@ using System.Threading;
 using BFB.Client.UI;
 using BFB.Engine.Content;
 using BFB.Engine.Entity;
-using BFB.Engine.Entity.Components.Graphics;
+using BFB.Engine.Entity.GraphicsComponents;
+using BFB.Engine.Input.PlayerInput;
 using BFB.Engine.Math;
 using BFB.Engine.Scene;
 using BFB.Engine.Server;
@@ -45,7 +46,7 @@ namespace BFB.Client.Scenes
                 ChunkSize = 16,
                 WorldChunkWidth = 10,
                 WorldChunkHeight = 10,
-                WorldGenerator = options => new FlatWorld(options)
+                GetWorldGenerator = options => new FlatWorld(options)
             });
             
         }
@@ -186,6 +187,41 @@ namespace BFB.Client.Scenes
             
             #endregion
 
+            #region Handle Chunk Updates
+
+            _server.On("/players/chunkUpdates", message =>
+            {
+                ChunkUpdatesMessage m = (ChunkUpdatesMessage) message;
+
+                Console.WriteLine("Initial");
+
+                //Process full chunk updates
+                foreach (ChunkUpdate chunkUpdate in m.ChunkUpdates)
+                {
+                    Console.WriteLine("Test");
+                    Chunk chunk = _world.ChunkMap[chunkUpdate.ChunkX, chunkUpdate.ChunkY];
+
+                    chunkUpdate.Block = chunkUpdate.Block;
+                    chunkUpdate.Wall = chunkUpdate.Wall;
+                }
+                
+                //process tile map updates
+                foreach (ChunkTileUpdates chunkTileUpdates in m.ChunkTileUpdates)
+                {
+                    Chunk chunk = _world.ChunkMap[chunkTileUpdates.ChunkX, chunkTileUpdates.ChunkY];
+
+                    foreach (TileUpdate chunkTileUpdate in chunkTileUpdates.TileChanges)
+                    {
+                        chunk.ApplyBlockUpdate(chunkTileUpdate, true);
+                    }
+                    Console.WriteLine("Test2");
+
+                }
+
+            });
+            
+            #endregion
+            
             //Launch hud ui
             UIManager.Start(nameof(HudUI));
             

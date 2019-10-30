@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using BFB.Engine.Entity;
 using BFB.Engine.TileMap.Generators;
@@ -15,8 +16,12 @@ namespace BFB.Engine.TileMap
         
         public WorldOptions WorldOptions { get; private set; }
         
-        private Chunk[,] _chunks;
+        public Chunk[,] ChunkMap { get; private set; }
+        
+        public Dictionary<string, Chunk> ChunkIndex { get; }
+        
         public Action<string> WorldGeneratorCallback { get; set; }
+        
         
         private readonly WorldGenerator _worldGenerator;
 
@@ -27,8 +32,9 @@ namespace BFB.Engine.TileMap
         public WorldManager(WorldOptions worldOptions)
         {
             WorldOptions = worldOptions;
-            _worldGenerator = worldOptions.WorldGenerator?.Invoke(WorldOptions);
-            _chunks = new Chunk[WorldOptions.WorldChunkWidth, WorldOptions.WorldChunkHeight];
+            _worldGenerator = worldOptions.GetWorldGenerator?.Invoke(WorldOptions);
+            ChunkMap = new Chunk[WorldOptions.WorldChunkWidth, WorldOptions.WorldChunkHeight];
+            ChunkIndex = new Dictionary<string, Chunk>();
         }
         
         #endregion
@@ -50,7 +56,7 @@ namespace BFB.Engine.TileMap
             {
                 for (int x = 0; x < WorldOptions.WorldChunkWidth; x++)
                 {
-                    _chunks[x, y] = _worldGenerator.GenerateChunk(x * WorldOptions.ChunkSize, y * WorldOptions.ChunkSize);
+                    ChunkMap[x, y] = _worldGenerator.GenerateChunk(x * WorldOptions.ChunkSize, y * WorldOptions.ChunkSize);
 
                     int currentPercent = (int)(progress++ / (WorldOptions.WorldChunkHeight * WorldOptions.WorldChunkWidth) * 100f);
                     
@@ -61,16 +67,28 @@ namespace BFB.Engine.TileMap
                 }
             }
             
+            MapChunksToIndex();
+            
             WorldGeneratorCallback?.Invoke("100% - Generation Complete");
         }
         
         #endregion
         
-        #region GetChunks
-        
-        public Chunk[,] GetChunks()
+        #region MapChunksToIndex
+
+        /**
+         * Simply adds each chunk to a dictionary so depending on if you have the x/y position or the chunk key then you always have O(1) lookup
+         */
+        private void MapChunksToIndex()
         {
-            return _chunks;
+            ChunkIndex.Clear();
+            for (int y = 0; y < WorldOptions.WorldChunkHeight; y++)
+            {
+                for (int x = 0; x < WorldOptions.WorldChunkWidth; x++)
+                {
+                    ChunkIndex.Add(ChunkMap[x, y].ChunkKey, ChunkMap[x, y]);
+                }
+            }
         }
         
         #endregion
@@ -86,7 +104,7 @@ namespace BFB.Engine.TileMap
             WorldDataSchema worldData = new WorldDataSchema
             {
                 WorldConfig = WorldOptions,
-                Chunks = GetChunks()
+                Chunks = ChunkMap
             };
 
             string serializedWorldData = JsonConvert.SerializeObject(worldData, Formatting.None,
@@ -138,7 +156,10 @@ namespace BFB.Engine.TileMap
                 WorldDataSchema worldData = JsonConvert.DeserializeObject<WorldDataSchema>(json);
 
                 WorldOptions = worldData.WorldConfig;
-                _chunks = worldData.Chunks;
+                ChunkMap = worldData.Chunks;
+                
+                MapChunksToIndex();
+                
                 return true;
             }
             catch (Exception ex)
@@ -148,32 +169,62 @@ namespace BFB.Engine.TileMap
                 return false;
             }
 
-
+            
         }
         
         #endregion
 
-//        #region MoveEntity
-//
-//        /**
-//         * Moves entity from one chunk to another
-//         */
-//        public void MoveEntity(string entityKey, Chunk originalChunk, Chunk newChunk)
-//        {
-//            if (!originalChunk.Entities.ContainsKey(entityKey))
-//                return;
-//            
-//            ServerEntity entity = originalChunk.Entities[entityKey];
-//            
-//            //Remove from original chunk
-//            originalChunk.Entities.Remove(entityKey);
-//            
-//            //Add to new chunk
-//            newChunk.Entities.Add(entityKey, entity);
-//            
-//        }
-//        
-//        #endregion
+        #region MoveEntity
+
+        /**
+         * Moves entity from one chunk to another
+         */
+        public void MoveEntity(string entityKey, Chunk originalChunk, Chunk newChunk)
+        {
+            if (!originalChunk.Entities.ContainsKey(entityKey))
+                return;
+            
+            SimulationEntity entity = originalChunk.Entities[entityKey];
+            
+            //Remove from original chunk
+            originalChunk.Entities.Remove(entityKey);
+            
+            //Add to new chunk
+            newChunk.Entities.Add(entityKey, entity);
+            
+        }
+        
+        #endregion
+        
+        #region ChunkFromChunkLocation
+
+        public Chunk ChunkFromChunkLocation(int chunkX, int chunkY)
+        {
+            if (chunkX < 0 || chunkY < 0)
+                return null;
+
+            if (chunkX > WorldOptions.WorldChunkWidth - 1 || chunkY > WorldOptions.WorldChunkHeight - 1)
+                return null;
+
+            return ChunkMap[chunkX, chunkY];
+        }
+        
+        #endregion
+        
+        #region ChunkKeyFromChunkLocation
+
+        public string ChunkKeyFromChunkLocation(int chunkX, int chunkY)
+        {
+            if (chunkX < 0 || chunkY < 0)
+                return null;
+
+            if (chunkX > WorldOptions.WorldChunkWidth - 1 || chunkY > WorldOptions.WorldChunkHeight - 1)
+                return null;
+
+            return ChunkMap[chunkX, chunkY].ChunkKey;
+        }
+        
+        #endregion
         
         #region ChunkFromBlockLocation
 
@@ -182,13 +233,16 @@ namespace BFB.Engine.TileMap
             int chunkX = blockX / WorldOptions.ChunkSize;
             int chunkY = blockY / WorldOptions.ChunkSize;
 
-            if (chunkX < 0 || chunkX > WorldOptions.WorldChunkWidth)
-                return null;
+            return ChunkFromChunkLocation(chunkX, chunkY);
+        }
+        
+        #endregion
+        
+        #region ChunkFromPixelLocation
 
-            if (chunkY < 0 || chunkY > WorldOptions.WorldChunkHeight)
-                return null;
-            
-            return _chunks[chunkX, chunkY];
+        public Chunk ChunkFromPixelLocation(int pixelX, int pixelY)
+        {
+            return ChunkFromTileLocation(pixelX/WorldOptions.WorldScale, pixelY/WorldOptions.WorldScale);
         }
         
         #endregion
@@ -211,7 +265,7 @@ namespace BFB.Engine.TileMap
         public int GetHardness(int xBlock, int yBlock)
         {
             (int chunkX, int chunkY, int relativeX, int relativeY) = TranslatePosition(xBlock, yBlock);
-            return ChunkExist(chunkX,chunkY) ? _chunks[chunkX,chunkY].Hardness[relativeX, relativeY] : 0;
+            return ChunkExist(chunkX,chunkY) ? ChunkMap[chunkX,chunkY].Hardness[relativeX, relativeY] : 0;
         }
         
         #endregion
@@ -221,7 +275,7 @@ namespace BFB.Engine.TileMap
         public int GetLight(int xBlock, int yBlock)
         {
             (int chunkX, int chunkY, int relativeX, int relativeY) = TranslatePosition(xBlock, yBlock);
-            return ChunkExist(chunkX,chunkY) ? _chunks[chunkX, chunkY].Light[relativeX, relativeY] : 0;
+            return ChunkExist(chunkX,chunkY) ? ChunkMap[chunkX, chunkY].Light[relativeX, relativeY] : 0;
         }
         
         #endregion
@@ -231,7 +285,7 @@ namespace BFB.Engine.TileMap
         public int GetWall(int xBlock, int yBlock)
         {
             (int chunkX, int chunkY, int relativeX, int relativeY) = TranslatePosition(xBlock, yBlock);
-            return ChunkExist(chunkX, chunkY) ? _chunks[chunkX, chunkY].Wall[relativeX, relativeY] : 0;
+            return ChunkExist(chunkX, chunkY) ? ChunkMap[chunkX, chunkY].Wall[relativeX, relativeY] : 0;
         }
         
         #endregion
@@ -243,7 +297,7 @@ namespace BFB.Engine.TileMap
             (int chunkX, int chunkY, int relativeX, int relativeY) = TranslatePosition(xBlock, yBlock);
             
             return ChunkExist(chunkX, chunkY) 
-                ?  (WorldTile)_chunks[chunkX, chunkY].Block[relativeX, relativeY] 
+                ?  (WorldTile)ChunkMap[chunkX, chunkY].Block[relativeX, relativeY] 
                 : WorldTile.Air;
         }
 
@@ -255,7 +309,7 @@ namespace BFB.Engine.TileMap
         {
             (int chunkX, int chunkY, int relativeX, int relativeY) = TranslatePosition(xBlock, yBlock);
             if(ChunkExist(chunkX,chunkY))    
-                _chunks[chunkX, chunkY].Hardness[relativeX, relativeY] = hardnessValue;
+                ChunkMap[chunkX, chunkY].Hardness[relativeX, relativeY] = hardnessValue;
         }
         
         #endregion
@@ -266,18 +320,18 @@ namespace BFB.Engine.TileMap
         {
             (int chunkX, int chunkY, int relativeX, int relativeY) = TranslatePosition(xBlock, yBlock);
             if(ChunkExist(chunkX,chunkY))
-                _chunks[chunkX, chunkY].Light[relativeX, relativeY] = lightValue;
+                ChunkMap[chunkX, chunkY].Light[relativeX, relativeY] = lightValue;
         }
         
         #endregion
         
         #region SetWall
 
-        public void SetWall(int xBlock, int yBlock, int wallValue)
+        public void SetWall(int xBlock, int yBlock, ushort wallValue)
         {
             (int chunkX, int chunkY, int relativeX, int relativeY) = TranslatePosition(xBlock, yBlock);
             if(ChunkExist(chunkX,chunkY))
-                _chunks[chunkX, chunkY].Wall[relativeX, relativeY] = wallValue;
+                ChunkMap[chunkX, chunkY].Wall[relativeX, relativeY] = wallValue;
         }
         
         #endregion
@@ -289,20 +343,20 @@ namespace BFB.Engine.TileMap
             (int chunkX, int chunkY, int relativeX, int relativeY) = TranslatePosition(xBlock, yBlock);
             
             if(ChunkExist(chunkX,chunkY))
-                _chunks[chunkX, chunkY].Block[relativeX, relativeY] = (int)blockValue;
+                ChunkMap[chunkX, chunkY].Block[relativeX, relativeY] = (ushort)blockValue;
         }
 
         #endregion
         
         #region SetAll
         
-        public void SetAll(int xBlock, int yBlock, ushort hardnessValue, byte lightValue, int wallValue, WorldTile tile)
+        public void SetAll(int xBlock, int yBlock, ushort hardnessValue, byte lightValue, ushort wallValue, WorldTile tile)
         {
             (int chunkX, int chunkY, int relativeX, int relativeY) = TranslatePosition(xBlock, yBlock);
-            _chunks[chunkX, chunkY].Hardness[relativeX, relativeY] = hardnessValue;
-            _chunks[chunkX, chunkY].Light[relativeX, relativeY] = lightValue;
-            _chunks[chunkX, chunkY].Wall[relativeX, relativeY] = wallValue;
-            _chunks[chunkX, chunkY].Block[relativeX, relativeY] = (int)tile;
+            ChunkMap[chunkX, chunkY].Hardness[relativeX, relativeY] = hardnessValue;
+            ChunkMap[chunkX, chunkY].Light[relativeX, relativeY] = lightValue;
+            ChunkMap[chunkX, chunkY].Wall[relativeX, relativeY] = wallValue;
+            ChunkMap[chunkX, chunkY].Block[relativeX, relativeY] = (ushort)tile;
         }
 
         #endregion
@@ -311,7 +365,7 @@ namespace BFB.Engine.TileMap
 
         private bool ChunkExist(int chunkX, int chunkY)
         {
-            return _chunks[chunkX,chunkY] != null;
+            return ChunkMap[chunkX,chunkY] != null;
         }
         
         #endregion

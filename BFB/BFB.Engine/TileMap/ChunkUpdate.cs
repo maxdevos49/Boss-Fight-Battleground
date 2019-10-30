@@ -1,23 +1,18 @@
-using System.Collections.Generic;
+using System;
 
 namespace BFB.Engine.TileMap
 {
+    [Serializable]
     public class ChunkUpdate
     {
         public string ChunkKey { get; set; }
-        
-        public List<TileUpdate> TileChanges { get; set; }
-    }
 
-    public class TileUpdate
-    {
-        public int X { get; set; }
-        public int Y { get; set; }
-        
-        //True = wall, False = block
-        public bool Mode { get; set; }
+        public int ChunkX { get; set; }
 
-        public int TileValue { get; set; }
+        public int ChunkY { get; set; }
         
+        public ushort[,] Wall { get; set; }
+        
+        public  ushort[,] Block { get; set; }
     }
 }

@@ -55,6 +55,11 @@ namespace BFB.Client
 
             //Init Graphics manager. (Needs to be in the constructor)
             _graphicsDeviceManager = new GraphicsDeviceManager(this);
+            _graphicsDeviceManager.PreparingDeviceSettings += (sender, e) => 
+            {//Enables vsync
+                e.GraphicsDeviceInformation.PresentationParameters.PresentationInterval = PresentInterval.Two;
+            };
+            
             _windowSizeIsBeingChanged = false;
         }
 

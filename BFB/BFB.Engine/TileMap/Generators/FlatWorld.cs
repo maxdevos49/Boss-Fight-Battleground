@@ -27,7 +27,6 @@ namespace BFB.Engine.TileMap.Generators
                 {
 
                     int yActual = y + yBlock;
-                    int xActual = x + xBlock;
                     
                     if(yActual < 16)
                     {
@@ -40,7 +39,7 @@ namespace BFB.Engine.TileMap.Generators
                     else if(yActual < 35)
                     {
                         chunk.Block[xBlock,yBlock] =
-                            _random.Next(yActual) + 4 > 22 ? (int)WorldTile.Stone : (int)WorldTile.Dirt;
+                            _random.Next(yActual) + 4 > 22 ? (ushort)WorldTile.Stone : (ushort)WorldTile.Dirt;
                     }
                     else
                     {

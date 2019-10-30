@@ -6,13 +6,12 @@ using Microsoft.Extensions.Configuration;
 using System.Net;
 using System.Threading;
 using BFB.Engine.Entity;
-using BFB.Engine.Entity.Components.Input;
-using BFB.Engine.Entity.Components.Physics;
+using BFB.Engine.Entity.InputComponents;
+using BFB.Engine.Entity.PhysicsComponents;
 using BFB.Engine.Math;
 
 //Engine
 using BFB.Engine.Server;
-using BFB.Engine.TileMap;
 using BFB.Engine.TileMap.Generators;
 using JetBrains.Annotations;
 
@@ -44,9 +43,10 @@ namespace BFB.Server
             {
                 Seed = 1234,
                 ChunkSize = 16,
-                WorldChunkWidth = 10,
+                WorldChunkWidth = 20,
                 WorldChunkHeight = 10,
-                WorldGenerator = options => new FlatWorld(options)
+                WorldScale = 15,
+                GetWorldGenerator = options => new FlatWorld(options)
             }, 60);
         }
         
@@ -106,7 +106,7 @@ namespace BFB.Server
                     {
                         Physics = new PlayerPhysicsComponent(),
                         Input = new RemoteInputComponent(socket)
-                    }));
+                    }), true);
                 
                 _server.PrintMessage($"Client {socket.ClientId} Ready and added to Simulation");
 
