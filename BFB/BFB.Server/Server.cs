@@ -6,12 +6,13 @@ using Microsoft.Extensions.Configuration;
 using System.Net;
 using System.Threading;
 using BFB.Engine.Entity;
-using BFB.Engine.Entity.Components.Input;
-using BFB.Engine.Entity.Components.Physics;
 using BFB.Engine.Math;
-
-//Engine
 using BFB.Engine.Server;
+using BFB.Engine.Server.Communication;
+using BFB.Engine.Simulation;
+using BFB.Engine.Simulation.InputComponents;
+using BFB.Engine.Simulation.PhysicsComponents;
+using BFB.Engine.TileMap.Generators;
 using JetBrains.Annotations;
 
 namespace BFB.Server
@@ -35,8 +36,18 @@ namespace BFB.Server
             
             IPAddress ip = IPAddress.Parse(_configuration["Server:IPAddress"]);
             int port = Convert.ToInt32(_configuration["Server:Port"]);
+            
             _server = new ServerSocketManager(ip,port);
-            _simulation = new Simulation(_server);
+            
+            _simulation = new Simulation(new WorldOptions
+            {
+                Seed = 1234,
+                ChunkSize = 16,
+                WorldChunkWidth = 20,
+                WorldChunkHeight = 10,
+                WorldScale = 15,
+                GetWorldGenerator = options => new FlatWorld(options)
+            }, 60);
         }
         
         #endregion
@@ -45,6 +56,7 @@ namespace BFB.Server
 
         private void Init()
         {
+            #region Server Callbacks
             
             #region Terminal Header
             
@@ -82,7 +94,7 @@ namespace BFB.Server
             _server.OnClientReady = (socket) =>
             {
                 //Add to simulation
-                _simulation.AddEntity(new ServerEntity(
+                _simulation.AddEntity(new SimulationEntity(
                     socket.ClientId,
                     new EntityOptions
                     {
@@ -95,7 +107,7 @@ namespace BFB.Server
                     {
                         Physics = new PlayerPhysicsComponent(),
                         Input = new RemoteInputComponent(socket)
-                    }));
+                    }), true);
                 
                 _server.PrintMessage($"Client {socket.ClientId} Ready and added to Simulation");
 
@@ -113,6 +125,81 @@ namespace BFB.Server
             
             #endregion
             
+            #region GenerateWorld
+            
+            //probably should just be triggered to generate the first time the simulation starts
+            _server.OnServerStart = () => _simulation.GenerateWorld();
+            
+            #endregion
+            
+            #endregion
+
+            #region Simulation Callbacks
+            
+            #region OnSimulationStart
+
+            _simulation.OnSimulationStart = () => _server.PrintMessage("Simulation exiting Hibernation");
+            
+            #endregion
+            
+            #region OnSimulationStop
+
+            _simulation.OnSimulationStop = () => _server.PrintMessage("Simulation entering Hibernation");
+            
+            #endregion
+            
+            #region OnWorldGenerationProgress
+
+            _simulation.OnWorldGenerationProgress = (progress) => _server.PrintMessage("World Generation: " + progress); 
+            
+            #endregion
+            
+            #region OnEntityAdd
+
+            _simulation.OnEntityAdd = (entityKey, isPlayer) =>
+            {
+                //do something here for entities if needed
+            };
+            
+            #endregion
+            
+            #region OnEntityRemove
+
+            _simulation.OnEntityRemove = (entityKey, isPlayer) =>
+            {
+                _server.Emit("/player/disconnect", new DataMessage {Message = entityKey});
+            };
+            
+            #endregion
+            
+            #region OnEntityUpdates
+
+            _simulation.OnEntityUpdates = (entityKey, updates) =>
+            {
+                _server.GetClient(entityKey).Emit("/players/updates", updates);
+            };
+            
+            #endregion
+            
+            #region OnChunkUpdates
+
+            _simulation.OnChunkUpdates = (entityKey, updates) =>
+            {
+                _server.GetClient(entityKey).Emit("/players/chunkUpdates", updates);
+            };
+            
+            #endregion
+            
+            #region OnSimulationOverload
+
+            _simulation.OnSimulationOverLoad = ticksBehind => _server.PrintMessage($"SERVER IS OVERLOADED. ({ticksBehind}).");
+            
+            #endregion
+            
+
+
+            #endregion
+
             #region Terminal Prep
             
             Console.Clear();
@@ -131,10 +218,9 @@ namespace BFB.Server
         public void Start()
         {
             Init();
-            _simulation.Start();
-            _server.Start();
             _server.PrintMessage($"BFB Server is now Listening on {_configuration["Server:IPAddress"]}:{_configuration["Server:Port"]}");
-            
+            _server.Start();
+
             HandleTerminalInput();
         }
         
@@ -195,7 +281,7 @@ namespace BFB.Server
             IConfigurationBuilder builder = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
                 .AddJsonFile("appsettings.json", false, true)
-                .AddJsonFile($"appsettings.{Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") ?? "Development"}.json", true, true)
+                .AddJsonFile($"appsettings.{Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") ?? "Development"}.json"/*Development settings by default*/, true, true)
                 .AddEnvironmentVariables();
                 
             Server server = new Server(builder.Build());

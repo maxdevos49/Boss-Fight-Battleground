@@ -1,5 +1,6 @@
 using System;
 using BFB.Engine.Entity;
+using BFB.Engine.Input.PlayerInput;
 using BFB.Engine.Math;
 
 namespace BFB.Engine.Server.Communication

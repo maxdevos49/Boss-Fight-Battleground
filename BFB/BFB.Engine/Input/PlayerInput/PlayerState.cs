@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Numerics;
 using BFB.Engine.Math;
-using Microsoft.Xna.Framework.Input;
 
-namespace BFB.Engine.Entity
+namespace BFB.Engine.Input.PlayerInput
 {
     [Serializable]
     public class PlayerState
