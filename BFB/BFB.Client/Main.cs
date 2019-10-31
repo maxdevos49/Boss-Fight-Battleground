@@ -119,7 +119,8 @@ namespace BFB.Client
                 new SettingsUI(),
                 new HelpUI(), 
                 new HudUI(),
-                new GameMenuUI()
+                new GameMenuUI(),
+                new ChatUI()
             });
             
             #endregion

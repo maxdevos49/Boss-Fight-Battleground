@@ -11,12 +11,12 @@ namespace BFB.Client.UI
     public class MainMenuUI : UILayer
     {
 
-        public MainMenuModel model { get; set; }
+        public MainMenuModel Model { get; set; }
 
 
         public MainMenuUI() : base(nameof(MainMenuUI))
         {
-            model = new MainMenuModel
+            Model = new MainMenuModel
             {
                 Ip = "127.0.0.1:6969"
             };
@@ -24,7 +24,7 @@ namespace BFB.Client.UI
 
         public override void Init()
         {
-            model = new MainMenuModel
+            Model = new MainMenuModel
             {
                 Ip = "127.0.0.1:6969"
             };
@@ -64,7 +64,7 @@ namespace BFB.Client.UI
                                 .Center()
                                 .Image("button");
 
-                            h2.TextBoxFor(model, x => x.Ip)
+                            h2.TextBoxFor(Model, x => x.Ip)
                                 .Width(0.8f)
                                 .Height(0.8f)
                                 .Grow(3)
