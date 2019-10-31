@@ -6,14 +6,12 @@ using Microsoft.Extensions.Configuration;
 using System.Net;
 using System.Threading;
 using BFB.Engine.Entity;
-using BFB.Engine.Entity.InputComponents;
-using BFB.Engine.Entity.PhysicsComponents;
 using BFB.Engine.Math;
-
-//Engine
 using BFB.Engine.Server;
 using BFB.Engine.Server.Communication;
-using BFB.Engine.TileMap;
+using BFB.Engine.Simulation;
+using BFB.Engine.Simulation.InputComponents;
+using BFB.Engine.Simulation.PhysicsComponents;
 using BFB.Engine.TileMap.Generators;
 using JetBrains.Annotations;
 

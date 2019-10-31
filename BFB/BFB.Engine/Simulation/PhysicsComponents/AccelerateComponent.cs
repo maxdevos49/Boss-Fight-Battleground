@@ -1,12 +1,7 @@
-using System;
-using BFB.Engine.Math;
-using BFB.Engine.TileMap;
-
-namespace BFB.Engine.Entity.PhysicsComponents
+/**
+namespace BFB.Engine.Simulation.PhysicsComponents
 {
-    public class 
-        
-        AccelerateComponent: IPhysicsComponent
+    public class AccelerateComponent : IPhysicsComponent
     {
         
         private readonly float _maxForce;
@@ -19,7 +14,7 @@ namespace BFB.Engine.Entity.PhysicsComponents
             _maxSpeed = 10;
         }
 
-        public void Update(SimulationEntity simulationEntity, WorldManager worldManager)
+        public void Update(SimulationEntity simulationEntity, Simulation simulation)
         {
 
             //Enforce max speed
@@ -40,6 +35,5 @@ namespace BFB.Engine.Entity.PhysicsComponents
             simulationEntity.Rotation = Convert.ToSingle(System.Math.Atan2(simulationEntity.Velocity.Y, simulationEntity.Velocity.X));
             
         }
-        
     }
-}
+}**/

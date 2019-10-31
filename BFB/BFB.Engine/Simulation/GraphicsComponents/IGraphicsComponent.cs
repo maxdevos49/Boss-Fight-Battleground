@@ -1,6 +1,7 @@
+using BFB.Engine.Entity;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace BFB.Engine.Entity.GraphicsComponents
+namespace BFB.Engine.Simulation.GraphicsComponents
 {
     public interface IGraphicsComponent
     {

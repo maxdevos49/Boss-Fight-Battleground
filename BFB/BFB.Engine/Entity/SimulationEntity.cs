@@ -1,7 +1,7 @@
 using System.Collections.Generic;
-using BFB.Engine.Entity.InputComponents;
-using BFB.Engine.Entity.PhysicsComponents;
 using BFB.Engine.Math;
+using BFB.Engine.Simulation.InputComponents;
+using BFB.Engine.Simulation.PhysicsComponents;
 using BFB.Engine.TileMap;
 
 namespace BFB.Engine.Entity
@@ -56,19 +56,19 @@ namespace BFB.Engine.Entity
 
         #region Update
         
-        public void Tick(WorldManager worldManager, int simulationDistance)
+        public void Tick(Simulation.Simulation simulation)
         {
             
             //Component Processing
-            _input?.Update(this);
-            _physics?.Update(this, worldManager);
+            _input?.Update(this, simulation);
+            _physics?.Update(this, simulation);
             
             //Place entity in correct chunk if in new position
-            string chunkKey = worldManager.ChunkFromPixelLocation((int)Position.X, (int)Position.Y)?.ChunkKey; //If this is null then we are outside of map... Bad
+            string chunkKey = simulation.WorldManager.ChunkFromPixelLocation((int)Position.X, (int)Position.Y)?.ChunkKey; //If this is null then we are outside of map... Bad
             
             if (chunkKey != ChunkKey && chunkKey != null)
             {
-                worldManager.MoveEntity(EntityId, worldManager.ChunkIndex[ChunkKey], worldManager.ChunkIndex[chunkKey]);
+                simulation.WorldManager.MoveEntity(EntityId, simulation.WorldManager.ChunkIndex[ChunkKey], simulation.WorldManager.ChunkIndex[chunkKey]);
                 ChunkKey = chunkKey;
             }
 
@@ -76,16 +76,16 @@ namespace BFB.Engine.Entity
             
             //Clear visible chunks so we dont have to figure out which chunks are no longer being seen
             VisibleChunks.Clear();
-            Chunk rootChunk = worldManager.ChunkIndex[ChunkKey];
+            Chunk rootChunk = simulation.WorldManager.ChunkIndex[ChunkKey];
             
             //find the chunks that the player is currently simulating
-            for (int y = rootChunk.ChunkY - simulationDistance; y < rootChunk.ChunkY + simulationDistance; y++)
+            for (int y = rootChunk.ChunkY - simulation.SimulationDistance; y < rootChunk.ChunkY + simulation.SimulationDistance; y++)
             {
-                for (int x = rootChunk.ChunkX - simulationDistance; x < rootChunk.ChunkX + simulationDistance; x++)
+                for (int x = rootChunk.ChunkX - simulation.SimulationDistance; x < rootChunk.ChunkX + simulation.SimulationDistance; x++)
                 {
                     //Get a chunk if it exist at the location
                     Chunk visibleChunk;
-                    if ((visibleChunk = worldManager.ChunkFromChunkLocation(x, y)) == null) 
+                    if ((visibleChunk = simulation.WorldManager.ChunkFromChunkLocation(x, y)) == null) 
                         continue;
                     
                     //Add chunk to visible chunks

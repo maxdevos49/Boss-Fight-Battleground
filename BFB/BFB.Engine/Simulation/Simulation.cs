@@ -4,10 +4,11 @@ using System.Linq;
 using System.Threading;
 using BFB.Engine.Entity;
 using BFB.Engine.Server.Communication;
+using BFB.Engine.TileMap;
 using BFB.Engine.TileMap.Generators;
 using BFB.Engine.TileMap.TileComponent;
 
-namespace BFB.Engine.TileMap
+namespace BFB.Engine.Simulation
 {
     public class Simulation
     {
@@ -18,9 +19,10 @@ namespace BFB.Engine.TileMap
         
         private bool _simulating;
         private readonly int _tickSpeed;
-        private readonly int _simulationDistance;
         private readonly Random _random;
-        private readonly WorldManager _world;
+        
+        public readonly int SimulationDistance;
+        public readonly WorldManager WorldManager;
         
         private readonly Dictionary<string,SimulationEntity> _entitiesIndex;
         private readonly Dictionary<string,SimulationEntity> _playerEntitiesIndex;
@@ -50,9 +52,9 @@ namespace BFB.Engine.TileMap
             _tickSpeed = 1000/tickSpeed ?? (1000 / 60);//60 ticks a second are default
             _random = new Random();
 
-            _world = new WorldManager(worldOptions);
+            WorldManager = new WorldManager(worldOptions);
 
-            _simulationDistance = 3;
+            SimulationDistance = 3;
 
             //entities
             _entitiesIndex = new Dictionary<string, SimulationEntity>();
@@ -69,7 +71,7 @@ namespace BFB.Engine.TileMap
         {
             lock (_lock)
             {
-                _world.GenerateWorld(OnWorldGenerationProgress);
+                WorldManager.GenerateWorld(OnWorldGenerationProgress);
             }
 
 //            //Testing of saving world
@@ -99,7 +101,7 @@ namespace BFB.Engine.TileMap
                     OnEntityAdd?.Invoke(simulationEntity.EntityId, isPlayer);
                     
                     //add entity to starting chunk
-                    _world.ChunkFromPixelLocation((int) simulationEntity.Position.X, (int) simulationEntity.Position.Y)
+                    WorldManager.ChunkFromPixelLocation((int) simulationEntity.Position.X, (int) simulationEntity.Position.Y)
                         .Entities.Add(simulationEntity.EntityId, simulationEntity);
 
                     if (isPlayer)
@@ -110,7 +112,7 @@ namespace BFB.Engine.TileMap
                         simulationEntity.IsPlayer = true;
                     }
 
-                    simulationEntity.ChunkKey = _world.ChunkFromPixelLocation(
+                    simulationEntity.ChunkKey = WorldManager.ChunkFromPixelLocation(
                                                                     (int) simulationEntity.Position.X,
                                                                     (int) simulationEntity.Position.Y).ChunkKey;
                 }
@@ -136,7 +138,7 @@ namespace BFB.Engine.TileMap
                     SimulationEntity entity = _entitiesIndex[key];
 
                     //Remove from chunk
-                    _world.ChunkIndex[entity.ChunkKey].Entities.Remove(key);
+                    WorldManager.ChunkIndex[entity.ChunkKey].Entities.Remove(key);
 
                     //remove from entity index
                     _entitiesIndex.Remove(key);
@@ -211,7 +213,7 @@ namespace BFB.Engine.TileMap
 
             //Loop through visible chunks and grab entities that should be displayed
             foreach (string visibleChunkKey in playerEntity.VisibleChunks)
-                foreach ((string _, SimulationEntity entity) in _world.ChunkIndex[visibleChunkKey].Entities)
+                foreach ((string _, SimulationEntity entity) in WorldManager.ChunkIndex[visibleChunkKey].Entities)
                     updates.Updates.Add(entity.GetState());
 
             OnEntityUpdates?.Invoke(playerEntity.EntityId, updates);
@@ -229,15 +231,15 @@ namespace BFB.Engine.TileMap
             foreach (string visibleChunkKey in playerEntity.VisibleChunks)
             {
                 //If the versions are the same we do not need to send the chunk
-                if(playerEntity.ChunkVersions[visibleChunkKey] == _world.ChunkIndex[visibleChunkKey].ChunkVersion) 
+                if(playerEntity.ChunkVersions[visibleChunkKey] == WorldManager.ChunkIndex[visibleChunkKey].ChunkVersion) 
                     continue;
                 
-                if (_world.ChunkIndex[visibleChunkKey].NeedChunkUpdate(playerEntity.ChunkVersions[visibleChunkKey]))//Gets an entire chunk for updating
-                    updates.ChunkUpdates.Add(_world.ChunkIndex[visibleChunkKey].GetChunkUpdate());
+                if (WorldManager.ChunkIndex[visibleChunkKey].NeedChunkUpdate(playerEntity.ChunkVersions[visibleChunkKey]))//Gets an entire chunk for updating
+                    updates.ChunkUpdates.Add(WorldManager.ChunkIndex[visibleChunkKey].GetChunkUpdate());
                 else
-                    updates.ChunkTileUpdates.Add(_world.ChunkIndex[visibleChunkKey].GetChunkTileUpdates(playerEntity.ChunkVersions[visibleChunkKey]));//Gets individual tile updates in a chunk
+                    updates.ChunkTileUpdates.Add(WorldManager.ChunkIndex[visibleChunkKey].GetChunkTileUpdates(playerEntity.ChunkVersions[visibleChunkKey]));//Gets individual tile updates in a chunk
 
-                playerEntity.ChunkVersions[visibleChunkKey] = _world.ChunkIndex[visibleChunkKey].ChunkVersion;
+                playerEntity.ChunkVersions[visibleChunkKey] = WorldManager.ChunkIndex[visibleChunkKey].ChunkVersion;
             }
             
             if(updates.ChunkUpdates.Any() || updates.ChunkTileUpdates.Any())
@@ -258,19 +260,19 @@ namespace BFB.Engine.TileMap
                 lock (_lock)
                 {
                     //Tick all active chunks
-                    foreach ((string _, Chunk chunk) in _world.ChunkIndex)
+                    foreach ((string _, Chunk chunk) in WorldManager.ChunkIndex)
                     {
                         //Tick all entities in active chunks
                         foreach ((string _, SimulationEntity entity) in chunk.Entities.ToList())
-                            entity.Tick(_world, _simulationDistance);//entity components are processed here
+                            entity.Tick(this);//entity components are processed here
                         
                         //randomly choose three tiles in the chunk to tick
                         for (int i = 0; i < 5; i++)
                         {
-                            int xBlock = _random.Next(_world.WorldOptions.ChunkSize);
-                            int yBlock = _random.Next(_world.WorldOptions.ChunkSize);
+                            int xBlock = _random.Next(WorldManager.WorldOptions.ChunkSize);
+                            int yBlock = _random.Next(WorldManager.WorldOptions.ChunkSize);
                             
-                            TileComponentManager.TickTile(_world, chunk, xBlock, yBlock);
+                            TileComponentManager.TickTile(WorldManager, chunk, xBlock, yBlock);
                         }
                     }
                 }
@@ -286,7 +288,6 @@ namespace BFB.Engine.TileMap
                     Thread.Sleep(sleepTime);
                 else
                     OnSimulationOverLoad?.Invoke($"{sleepTime}TPS");
-//                    _server.PrintMessage($"SERVER IS OVERLOADED. ({sleepTime}TPS).");
             }
         }
         

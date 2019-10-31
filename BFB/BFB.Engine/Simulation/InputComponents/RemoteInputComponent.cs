@@ -1,9 +1,10 @@
+using BFB.Engine.Entity;
 using BFB.Engine.Input.PlayerInput;
 using BFB.Engine.Math;
 using BFB.Engine.Server;
 using BFB.Engine.Server.Communication;
 
-namespace BFB.Engine.Entity.InputComponents
+namespace BFB.Engine.Simulation.InputComponents
 {
     public class RemoteInputComponent : IInputComponent
     {
@@ -32,7 +33,7 @@ namespace BFB.Engine.Entity.InputComponents
             
         }
 
-        public void Update(SimulationEntity simulationEntity)
+        public void Update(SimulationEntity simulationEntity, Simulation simulation)
         {
             lock (_lock)
             {

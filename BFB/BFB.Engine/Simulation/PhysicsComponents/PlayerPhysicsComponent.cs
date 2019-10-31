@@ -1,11 +1,10 @@
 ﻿using BFB.Engine.Content;
+using BFB.Engine.Entity;
 using BFB.Engine.Math;
-using BFB.Engine.TileMap;
 
-namespace BFB.Engine.Entity.PhysicsComponents
+namespace BFB.Engine.Simulation.PhysicsComponents
 {
-    public class 
-        PlayerPhysicsComponent: IPhysicsComponent
+    public class  PlayerPhysicsComponent: IPhysicsComponent
     {
         private readonly BfbVector _acceleration;
         private readonly BfbVector _maxSpeed;
@@ -23,7 +22,7 @@ namespace BFB.Engine.Entity.PhysicsComponents
 
         }
 
-        public void Update(SimulationEntity simulationEntity, WorldManager worldManager)
+        public void Update(SimulationEntity simulationEntity, Simulation simulation)
         {
             
             //Gives us the speed to move left and right
