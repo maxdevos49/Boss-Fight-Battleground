@@ -1,83 +1,139 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
+using BFB.Engine.Entity;
 
 namespace BFB.Engine.TileMap
 {
     public class Chunk
     {
-        private const int CHUNKSIZE = 16;
+        #region Properties
+        
+        public string ChunkKey { get; set; }
+        public readonly int ChunkX;
+        public readonly int ChunkY;
+        
+        public readonly int ChunkSize;
+        
+        public int ChunkVersion { get; private set; }
+        
+        public ushort[,] Hardness { get; }
+        public byte[,] Light { get; set; }
+        public ushort[,] Wall { get; set;  }
+        public  ushort[,] Block { get; set; }
+        
+        public Dictionary<string,SimulationEntity> Entities { get; }
 
-        private int[,] hardness;
-        private int[,] light;
-        private int[,] wall;
-        private int[,] block;
+        private readonly Dictionary<int, TileUpdate> _tileHistory;
+        private readonly int _tileHistorySize;
 
-        public Chunk()
+        #endregion
+
+        #region Constructor
+
+        public Chunk(int chunkSize, int chunkX, int chunkY)
         {
-            hardness = new int[CHUNKSIZE, CHUNKSIZE];
-            light = new int[CHUNKSIZE, CHUNKSIZE];
-            wall = new int[CHUNKSIZE, CHUNKSIZE];
-            block = new int[CHUNKSIZE, CHUNKSIZE];
+            //Chunk Meta data
+            ChunkKey = Guid.NewGuid().ToString();
+            ChunkSize = chunkSize;
+            ChunkX = chunkX/ChunkSize;
+            ChunkY = chunkY/ChunkSize;
+            
+            //Tile information
+            Wall = new ushort[ChunkSize, ChunkSize];
+            Block = new ushort[ChunkSize, ChunkSize];
+            
+            Hardness = new ushort[ChunkSize, ChunkSize];
+            Light = new byte[ChunkSize, ChunkSize];
+            
+            //Entities
+            Entities = new Dictionary<string, SimulationEntity>();
+            
+            ChunkVersion = 0;
+            _tileHistorySize = 30;
+            _tileHistory = new Dictionary<int, TileUpdate>();
+        }
+        
+        #endregion
+        
+        #region ApplyBlockUpdate
 
-            for (int x = 0; x < CHUNKSIZE; x++)
+        public void ApplyBlockUpdate(TileUpdate tileUpdate, bool doNotRecord = false)
+        {
+
+            if (tileUpdate.Mode)
+                Block[tileUpdate.X, tileUpdate.Y] = tileUpdate.TileValue;
+            else
+                Wall[tileUpdate.X, tileUpdate.Y] = tileUpdate.TileValue;
+
+            if (doNotRecord) return; //For on client
+            
+            _tileHistory.Add(ChunkVersion, tileUpdate);
+            
+            ChunkVersion++;
+            
+            if (_tileHistory.Count > _tileHistorySize)
+                _tileHistory.Remove(ChunkVersion - _tileHistorySize);//Remove oldest history
+        }
+        
+        #endregion
+        
+        #region NeedChunkTileUpdate
+
+        public bool NeedChunkTileUpdate(int playerChunkVersion)
+        {
+            return ChunkVersion - _tileHistorySize <= playerChunkVersion;
+        }
+        
+        #endregion
+
+        #region GetChunkTileUpdate
+
+        public ChunkTileUpdates GetChunkTileUpdates(int playerChunkVersion)
+        {
+            ChunkTileUpdates chunkTileUpdates = new ChunkTileUpdates
             {
-                for (int y = 0; y < CHUNKSIZE; y++)
-                {
-                    hardness[x, y] = 0;
-                    light[x, y] = 0;
-                    wall[x, y] = 0;
-                    block[x, y] = 0;
-                }
+                ChunkKey = ChunkKey,
+                ChunkX = ChunkX,
+                ChunkY = ChunkY,
+                TileChanges = new List<TileUpdate>()
+            };
+
+            foreach ((int _, TileUpdate update) in _tileHistory.Where(x => x.Key < playerChunkVersion))
+            {
+                chunkTileUpdates.TileChanges.Add(update);
             }
+
+            return chunkTileUpdates;
         }
+        
+        #endregion
+        
+        #region NeedChunkUpdate
 
-        #region "get" methods
-
-        public int getTileHardness(int x, int y)
+        public bool NeedChunkUpdate(int playerChunkVersion)
         {
-            return hardness[x, y];
+            return ChunkVersion - _tileHistorySize > playerChunkVersion || playerChunkVersion < 0;
         }
-
-        public int getTileLight(int x, int y)
-        {
-            return light[x, y];
-        }
-
-        public int getTileWall(int x, int y)
-        {
-            return wall[x, y];
-        }
-
-        public int getTileBlock(int x, int y)
-        {
-            return block[x, y];
-        }
-
+        
         #endregion
 
-        #region "set" methods
+        #region GetChunkUpdate
 
-        public void setTileHardness(int x, int y, int hardnessValue)
+        public ChunkUpdate GetChunkUpdate()
         {
-            hardness[x, y] = hardnessValue;
+            return new ChunkUpdate
+            {
+                ChunkKey = ChunkKey,
+                ChunkX = ChunkX,
+                ChunkY = ChunkY,
+                Block = Block,
+                Wall = Wall,
+            };
         }
-
-        public void setTileLight(int x, int y, int lightValue)
-        {
-            light[x, y] = lightValue;
-        }
-
-        public void setTileWall(int x, int y, int wallValue)
-        {
-            wall[x, y] = wallValue;
-        }
-
-        public void setTileBlock(int x, int y, int blockValue)
-        {
-            block[x, y] = blockValue;
-        }
-
+        
         #endregion
+        
     }
+    
 }

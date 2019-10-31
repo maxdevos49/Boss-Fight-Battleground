@@ -1,13 +1,13 @@
 ﻿//C#
 
-using System;
-using System.Collections.Generic;
 using BFB.Engine.Content;
-//Monogame
+using BFB.Engine.Entity;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace BFB.Engine.Entity.Components.Graphics
+//Monogame
+
+namespace BFB.Engine.Simulation.GraphicsComponents
 {
     public class AnimationComponent : IGraphicsComponent
     {

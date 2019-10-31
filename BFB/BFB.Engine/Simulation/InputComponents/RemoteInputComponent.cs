@@ -1,10 +1,10 @@
-using System;
+using BFB.Engine.Entity;
+using BFB.Engine.Input.PlayerInput;
 using BFB.Engine.Math;
 using BFB.Engine.Server;
 using BFB.Engine.Server.Communication;
-using Microsoft.Xna.Framework;
 
-namespace BFB.Engine.Entity.Components.Input
+namespace BFB.Engine.Simulation.InputComponents
 {
     public class RemoteInputComponent : IInputComponent
     {
@@ -33,29 +33,29 @@ namespace BFB.Engine.Entity.Components.Input
             
         }
 
-        public void Update(ServerEntity serverEntity)
+        public void Update(SimulationEntity simulationEntity, Simulation simulation)
         {
             lock (_lock)
             {
                 
                 //Resets the player movement
-                serverEntity.DesiredVector.X = 0;
-                serverEntity.DesiredVector.Y = 0;
+                simulationEntity.DesiredVector.X = 0;
+                simulationEntity.DesiredVector.Y = 0;
                 //Moves player left
                 if (_playerState.Left)
                 {
-                    serverEntity.DesiredVector.Add(new BfbVector(-1,0));
+                    simulationEntity.DesiredVector.Add(new BfbVector(-1,0));
                 }
                 //Moves player right
                 if (_playerState.Right)
                 {
-                    serverEntity.DesiredVector.Add(new BfbVector(1,0));
+                    simulationEntity.DesiredVector.Add(new BfbVector(1,0));
                 }
                 //Moves player up
-                if (_playerState.Jump && serverEntity.Grounded)
+                if (_playerState.Jump && simulationEntity.Grounded)
                 {
-                    serverEntity.DesiredVector.Add(new BfbVector(0,-1));
-                    serverEntity.Grounded = false;
+                    simulationEntity.DesiredVector.Add(new BfbVector(0,-1));
+                    simulationEntity.Grounded = false;
                 }
             }
         }

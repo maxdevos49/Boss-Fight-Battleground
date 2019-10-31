@@ -245,7 +245,9 @@ namespace BFB.Engine.Server
                             {
                                 #region Distribute Messages to Routes
 
-                                if (!_handlers.ContainsKey(message.Route) && !_acceptData) continue;
+                                if (!_acceptData) continue;
+                                
+                                if(!_handlers.ContainsKey(message.Route)) continue;
 
                                 foreach (Action<DataMessage> handler in _handlers[message.Route])
                                 {

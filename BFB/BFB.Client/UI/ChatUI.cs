@@ -51,9 +51,10 @@ namespace BFB.Client.UI
 
     public class ChatModel
     {
+        public const int MaxMessages = 8;
+
         public string TextBoxText { get; set; }
 
-        public const int NumMessages = 8;
 
         public List<string> Messages;
     }
