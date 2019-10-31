@@ -3,14 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using BFB.Engine.Entity;
-using BFB.Engine.Server;
 using BFB.Engine.Server.Communication;
-using BFB.Engine.TileMap;
 using BFB.Engine.TileMap.Generators;
 using BFB.Engine.TileMap.TileComponent;
-using JetBrains.Annotations;
 
-namespace BFB.Server
+namespace BFB.Engine.TileMap
 {
     public class Simulation
     {
@@ -21,16 +18,22 @@ namespace BFB.Server
         
         private bool _simulating;
         private readonly int _tickSpeed;
+        private readonly int _simulationDistance;
         private readonly Random _random;
+        private readonly WorldManager _world;
         
         private readonly Dictionary<string,SimulationEntity> _entitiesIndex;
         private readonly Dictionary<string,SimulationEntity> _playerEntitiesIndex;
         
-        private readonly int _simulationDistance;
-        
-        private readonly WorldManager _world;
-
-        private readonly ServerSocketManager _server;//TODO try to remove from simulation later on by use of callbacks and/or events so this can be used on client for local simulations
+        //Simulation callbacks
+        public Action<string> OnWorldGenerationProgress { get; set; }
+        public Action OnSimulationStart { get; set; }
+        public Action OnSimulationStop { get; set; }
+        public Action<string,bool> OnEntityAdd { get; set; }
+        public Action<string,bool> OnEntityRemove { get; set; }
+        public Action<string,EntityUpdateMessage> OnEntityUpdates { get; set; }
+        public Action<string,ChunkUpdatesMessage> OnChunkUpdates { get; set; }
+        public Action<string> OnSimulationOverLoad { get; set; }
         
 
         #endregion
@@ -40,18 +43,14 @@ namespace BFB.Server
         /**
          * Thread safe simulation class that can be ticked to move the simulation forward a single step at a time
          */
-        public Simulation(ServerSocketManager server, WorldOptions worldOptions, int? tickSpeed = null)
+        public Simulation(WorldOptions worldOptions, int? tickSpeed = null)
         {
             _lock = new object();
-            _server = server;
             _simulating = false;
             _tickSpeed = 1000/tickSpeed ?? (1000 / 60);//60 ticks a second are default
             _random = new Random();
-            
-            _world = new WorldManager(worldOptions)
-            {
-                WorldGeneratorCallback = p => _server.PrintMessage("World Generated: " + p)//Remove this or add to world options
-            };
+
+            _world = new WorldManager(worldOptions);
 
             _simulationDistance = 3;
 
@@ -70,7 +69,7 @@ namespace BFB.Server
         {
             lock (_lock)
             {
-                _world.GenerateWorld();
+                _world.GenerateWorld(OnWorldGenerationProgress);
             }
 
 //            //Testing of saving world
@@ -97,6 +96,8 @@ namespace BFB.Server
                     //Add to all entities
                     _entitiesIndex.Add(simulationEntity.EntityId,simulationEntity);
                     
+                    OnEntityAdd?.Invoke(simulationEntity.EntityId, isPlayer);
+                    
                     //add entity to starting chunk
                     _world.ChunkFromPixelLocation((int) simulationEntity.Position.X, (int) simulationEntity.Position.Y)
                         .Entities.Add(simulationEntity.EntityId, simulationEntity);
@@ -116,7 +117,6 @@ namespace BFB.Server
 
                 if (_playerEntitiesIndex.Count <= 0 || _simulating) return;
                 
-                _server.PrintMessage("Simulation Stopping Hibernation.");
                 Start();
             }
         }
@@ -127,6 +127,8 @@ namespace BFB.Server
         
         public void RemoveEntity(string key)
         {
+            bool isPlayer = false;
+            
             lock (_lock)
             {
                 if (_entitiesIndex.ContainsKey(key))
@@ -141,18 +143,20 @@ namespace BFB.Server
                     
                     //remove from player index if a player
                     if (_playerEntitiesIndex.ContainsKey(key))
+                    {
                         _playerEntitiesIndex.Remove(key);
+                        isPlayer = true;
+                    }
                 }
 
                 if (_playerEntitiesIndex.Count == 0 && _simulating)
                 {
                     Stop();
-                    _server.PrintMessage("Simulation Starting Hibernation.");
                 }
 
             }
 
-            _server.Emit("/player/disconnect", new DataMessage {Message = key});
+            OnEntityRemove?.Invoke(key,isPlayer);
         }
         
         #endregion
@@ -161,6 +165,7 @@ namespace BFB.Server
 
         public void Start()
         {
+            OnSimulationStart?.Invoke();
             _simulating = true;
             Thread t = new Thread(Simulate)
             {
@@ -176,6 +181,7 @@ namespace BFB.Server
 
         public void Stop()
         {
+            OnSimulationStop?.Invoke();
             _simulating = false;
         }
         
@@ -208,7 +214,7 @@ namespace BFB.Server
                 foreach ((string _, SimulationEntity entity) in _world.ChunkIndex[visibleChunkKey].Entities)
                     updates.Updates.Add(entity.GetState());
 
-            _server.GetClient(playerEntity.EntityId).Emit("/players/updates", updates);//TODO change route
+            OnEntityUpdates?.Invoke(playerEntity.EntityId, updates);
         }
         
         #endregion
@@ -235,7 +241,7 @@ namespace BFB.Server
             }
             
             if(updates.ChunkUpdates.Any() || updates.ChunkTileUpdates.Any())
-                _server.GetClient(playerEntity.EntityId).Emit("/players/chunkUpdates", updates);
+                OnChunkUpdates?.Invoke(playerEntity.EntityId,updates);
         }
         
         #endregion
@@ -259,7 +265,7 @@ namespace BFB.Server
                             entity.Tick(_world, _simulationDistance);//entity components are processed here
                         
                         //randomly choose three tiles in the chunk to tick
-                        for (int i = 0; i < 2; i++)
+                        for (int i = 0; i < 5; i++)
                         {
                             int xBlock = _random.Next(_world.WorldOptions.ChunkSize);
                             int yBlock = _random.Next(_world.WorldOptions.ChunkSize);
@@ -279,7 +285,8 @@ namespace BFB.Server
                 if (sleepTime >= 0)
                     Thread.Sleep(sleepTime);
                 else
-                    _server.PrintMessage($"SERVER IS OVERLOADED. ({sleepTime}TPS).");
+                    OnSimulationOverLoad?.Invoke($"{sleepTime}TPS");
+//                    _server.PrintMessage($"SERVER IS OVERLOADED. ({sleepTime}TPS).");
             }
         }
         

@@ -45,7 +45,7 @@ namespace BFB.Engine.TileMap
         /**
          * Generates the entire map at once
          */
-        public void GenerateWorld()
+        public void GenerateWorld(Action<string> progressCallback)
         {
             if (_worldGenerator == null)
                 return;
@@ -62,14 +62,14 @@ namespace BFB.Engine.TileMap
                     
                     if (previousPercent == currentPercent) continue;
                     
-                    WorldGeneratorCallback?.Invoke(currentPercent + "%");
+                    progressCallback?.Invoke(currentPercent + "%");
                     previousPercent = currentPercent;
                 }
             }
             
             MapChunksToIndex();
             
-            WorldGeneratorCallback?.Invoke("100% - Generation Complete");
+            progressCallback?.Invoke("100% - Generation Complete");
         }
         
         #endregion

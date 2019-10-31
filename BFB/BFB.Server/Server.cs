@@ -12,6 +12,8 @@ using BFB.Engine.Math;
 
 //Engine
 using BFB.Engine.Server;
+using BFB.Engine.Server.Communication;
+using BFB.Engine.TileMap;
 using BFB.Engine.TileMap.Generators;
 using JetBrains.Annotations;
 
@@ -39,7 +41,7 @@ namespace BFB.Server
             
             _server = new ServerSocketManager(ip,port);
             
-            _simulation = new Simulation(_server, new WorldOptions
+            _simulation = new Simulation(new WorldOptions
             {
                 Seed = 1234,
                 ChunkSize = 16,
@@ -56,6 +58,7 @@ namespace BFB.Server
 
         private void Init()
         {
+            #region Server Callbacks
             
             #region Terminal Header
             
@@ -124,6 +127,81 @@ namespace BFB.Server
             
             #endregion
             
+            #region GenerateWorld
+            
+            //probably should just be triggered to generate the first time the simulation starts
+            _server.OnServerStart = () => _simulation.GenerateWorld();
+            
+            #endregion
+            
+            #endregion
+
+            #region Simulation Callbacks
+            
+            #region OnSimulationStart
+
+            _simulation.OnSimulationStart = () => _server.PrintMessage("Simulation exiting Hibernation");
+            
+            #endregion
+            
+            #region OnSimulationStop
+
+            _simulation.OnSimulationStop = () => _server.PrintMessage("Simulation entering Hibernation");
+            
+            #endregion
+            
+            #region OnWorldGenerationProgress
+
+            _simulation.OnWorldGenerationProgress = (progress) => _server.PrintMessage("World Generation: " + progress); 
+            
+            #endregion
+            
+            #region OnEntityAdd
+
+            _simulation.OnEntityAdd = (entityKey, isPlayer) =>
+            {
+                //do something here for entities if needed
+            };
+            
+            #endregion
+            
+            #region OnEntityRemove
+
+            _simulation.OnEntityRemove = (entityKey, isPlayer) =>
+            {
+                _server.Emit("/player/disconnect", new DataMessage {Message = entityKey});
+            };
+            
+            #endregion
+            
+            #region OnEntityUpdates
+
+            _simulation.OnEntityUpdates = (entityKey, updates) =>
+            {
+                _server.GetClient(entityKey).Emit("/players/updates", updates);
+            };
+            
+            #endregion
+            
+            #region OnChunkUpdates
+
+            _simulation.OnChunkUpdates = (entityKey, updates) =>
+            {
+                _server.GetClient(entityKey).Emit("/players/chunkUpdates", updates);
+            };
+            
+            #endregion
+            
+            #region OnSimulationOverload
+
+            _simulation.OnSimulationOverLoad = ticksBehind => _server.PrintMessage($"SERVER IS OVERLOADED. ({ticksBehind}).");
+            
+            #endregion
+            
+
+
+            #endregion
+
             #region Terminal Prep
             
             Console.Clear();
@@ -132,11 +210,6 @@ namespace BFB.Server
             
             #endregion
 
-            #region GenerateWorld
-
-            _server.OnServerStart = () => _simulation.GenerateWorld();
-
-            #endregion
         }
         
         #endregion

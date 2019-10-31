@@ -11,8 +11,8 @@ namespace BFB.Engine.TileMap.TileComponent
             _components = new Dictionary<WorldTile, ITileComponent>
             {
                 {WorldTile.Grass, new SpreadTileComponent(WorldTile.Grass, WorldTile.Dirt, WorldTile.Air, 70)},
-//                {WorldTile.Stone, new SpreadTileComponent(WorldTile.Stone, WorldTile.Dirt,randomness:255)},
-//                {WorldTile.Dirt, new SpreadTileComponent(WorldTile.Dirt, WorldTile.Stone,randomness:255)},
+                {WorldTile.Stone, new SpreadTileComponent(WorldTile.Stone, WorldTile.Dirt,randomness:255)},
+                {WorldTile.Dirt, new SpreadTileComponent(WorldTile.Dirt, WorldTile.Stone,randomness:255)},
 //                {WorldTile.Dirt, new SpreadTileComponent(WorldTile.Air, WorldTile.Dirt, WorldTile.Air)},
             };
 

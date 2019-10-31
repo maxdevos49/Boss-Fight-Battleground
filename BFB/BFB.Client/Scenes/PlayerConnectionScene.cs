@@ -123,11 +123,11 @@ namespace BFB.Client.Scenes
              * Custom Socket Routes
              */
 
-            #region Handle Player Disconnect
+            #region Handle Entity Disconnect
             
             _server.On("/player/disconnect", message =>
             {
-                //Remove player who disconnected
+                //Remove entity who disconnected
                 lock(_lock)
                 {
                     _entities.Remove(message.Message);
@@ -136,7 +136,7 @@ namespace BFB.Client.Scenes
             
             #endregion
             
-            #region Handle player Updates
+            #region Handle Entity Updates
             
             _server.On("/players/updates", message =>
             {
@@ -160,7 +160,6 @@ namespace BFB.Client.Scenes
                         }
                         else
                         {
-                            Console.WriteLine("Test: " + em.AnimationTextureKey);
                             
                             _entities.Add(em.EntityId,new ClientEntity(em.EntityId,
                                 new EntityOptions
@@ -217,7 +216,7 @@ namespace BFB.Client.Scenes
             if (!_server.Connect())
                 Console.WriteLine("Connection Failed.");
             
-            _world.GenerateWorld();
+            _world.GenerateWorld(null);
         }
         
         #endregion
