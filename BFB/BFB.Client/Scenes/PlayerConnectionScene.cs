@@ -38,7 +38,6 @@ namespace BFB.Client.Scenes
             _entities = new Dictionary<string, ClientEntity>();
             _server = new ClientSocketManager("127.0.0.1", 6969);
 
-            _camera2 = new Camera2D();
             
             _world = new WorldManager(new WorldOptions
             {
@@ -46,8 +45,12 @@ namespace BFB.Client.Scenes
                 ChunkSize = 16,
                 WorldChunkWidth = 20,
                 WorldChunkHeight = 10,
+                WorldScale = 15,
                 GetWorldGenerator = options => new RemoteWorld(options)
             });
+            
+            _camera2 = new Camera2D(_world,GraphicsDeviceManager.GraphicsDevice);
+
             
         }
 
@@ -62,10 +65,6 @@ namespace BFB.Client.Scenes
             _server.Ip = layer.model.Ip.Split(":")[0];
             _server.Port = Convert.ToInt32(layer.model.Ip.Split(":")[1]);
             
-            /**
-             * Init Camera
-             */
-            _camera2.Initialize(GraphicsDeviceManager.GraphicsDevice);
             
             /**
              * Scene events
@@ -268,6 +267,8 @@ namespace BFB.Client.Scenes
         
         public override void Draw(GameTime gameTime, SpriteBatch graphics)
         {
+            
+            //TODO make a client world renderer that houses information including the camera, world options, and the tile map
             graphics.End();
             graphics.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, SamplerState.PointClamp, DepthStencilState.None, RasterizerState.CullCounterClockwise, null, _camera2.Transform);
             
@@ -280,13 +281,16 @@ namespace BFB.Client.Scenes
                     switch(_world.GetBlock(x, y))
                     {
                         case WorldTile.Grass:
-                            graphics.Draw(ContentManager.GetTexture("grass"), new Vector2(x * scale, y * scale), Color.White);
+                            if(_camera2.IsInView(new Vector2(x * scale, y * scale),ContentManager.GetTexture("grass")))
+                                graphics.Draw(ContentManager.GetTexture("grass"), new Vector2(x * scale, y * scale), Color.White);
                             break;
                         case WorldTile.Dirt:
-                            graphics.Draw(ContentManager.GetTexture("dirt"), new Vector2(x * scale, y * scale), Color.White);
+                            if(_camera2.IsInView(new Vector2(x * scale, y * scale),ContentManager.GetTexture("dirt")))
+                                graphics.Draw(ContentManager.GetTexture("dirt"), new Vector2(x * scale, y * scale), Color.White);
                             break;
                         case WorldTile.Stone:
-                            graphics.Draw(ContentManager.GetTexture("stone"), new Vector2(x * scale, y * scale), Color.White);
+                            if(_camera2.IsInView(new Vector2(x * scale, y * scale),ContentManager.GetTexture("stone")))
+                                graphics.Draw(ContentManager.GetTexture("stone"), new Vector2(x * scale, y * scale), Color.White);
                             break;
                     }
                 }
