@@ -17,6 +17,7 @@ namespace BFB.Engine.Simulation.InputComponents
         
         #endregion
 
+        
         public RemoteInputComponent(ClientSocket socket)
         {
             _lock = new object();
