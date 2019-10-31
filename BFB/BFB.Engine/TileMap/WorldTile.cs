@@ -5,6 +5,7 @@ namespace BFB.Engine.TileMap
         Air,
         Grass,
         Dirt,
-        Stone
+        Stone,
+        Unknown
     }
 }

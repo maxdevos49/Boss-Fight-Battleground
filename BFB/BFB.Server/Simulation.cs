@@ -59,6 +59,7 @@ namespace BFB.Server
             _entitiesIndex = new Dictionary<string, SimulationEntity>();
             _playerEntitiesIndex = new Dictionary<string, SimulationEntity>();
             
+            TileComponentManager.LoadTileComponents();
         }
         
         #endregion
@@ -67,17 +68,20 @@ namespace BFB.Server
 
         public void GenerateWorld()
         {
-            _world.GenerateWorld();
-
-            //Testing of saving world
-            if(_world.SaveWorld("Debug"))
+            lock (_lock)
             {
-                _server.PrintMessage("World Save succeeded");
-                
-                _server.PrintMessage(_world.LoadWorld("Debug") ? "World Loading succeeded" : "World Load Failed");
+                _world.GenerateWorld();
             }
-            else
-                _server.PrintMessage("World Save Failed");
+
+//            //Testing of saving world
+//            if(_world.SaveWorld("Debug"))
+//            {
+//                _server.PrintMessage("World Save succeeded");
+//                
+//                _server.PrintMessage(_world.LoadWorld("Debug") ? "World Loading succeeded" : "World Load Failed");
+//            }
+//            else
+//                _server.PrintMessage("World Save Failed");
         } 
         
         #endregion
@@ -195,18 +199,14 @@ namespace BFB.Server
         
         #region SendPlayerUpdates
 
-        public void SendPlayerUpdates(SimulationEntity playerEntity)
+        private void SendPlayerUpdates(SimulationEntity playerEntity)
         {
             EntityUpdateMessage updates = new EntityUpdateMessage();
 
             //Loop through visible chunks and grab entities that should be displayed
             foreach (string visibleChunkKey in playerEntity.VisibleChunks)
-            {
                 foreach ((string _, SimulationEntity entity) in _world.ChunkIndex[visibleChunkKey].Entities)
-                {
                     updates.Updates.Add(entity.GetState());
-                }
-            }
 
             _server.GetClient(playerEntity.EntityId).Emit("/players/updates", updates);//TODO change route
         }
@@ -222,19 +222,20 @@ namespace BFB.Server
             //Loop through visible chunks and grab entities that should be displayed
             foreach (string visibleChunkKey in playerEntity.VisibleChunks)
             {
-                (ChunkUpdate chunkUpdate, ChunkTileUpdates tileUpdates) = _world.ChunkIndex[visibleChunkKey].GetChunkUpdate(playerEntity.ChunkVersions[visibleChunkKey]);
-
-                if (chunkUpdate.ChunkKey?.Length > 0)
-                {
-                    updates.ChunkUpdates.Add(chunkUpdate);
-                }
+                //If the versions are the same we do not need to send the chunk
+                if(playerEntity.ChunkVersions[visibleChunkKey] == _world.ChunkIndex[visibleChunkKey].ChunkVersion) 
+                    continue;
+                
+                if (_world.ChunkIndex[visibleChunkKey].NeedChunkUpdate(playerEntity.ChunkVersions[visibleChunkKey]))//Gets an entire chunk for updating
+                    updates.ChunkUpdates.Add(_world.ChunkIndex[visibleChunkKey].GetChunkUpdate());
                 else
-                {
-                    updates.ChunkTileUpdates.Add(tileUpdates);
-                }
-            }
+                    updates.ChunkTileUpdates.Add(_world.ChunkIndex[visibleChunkKey].GetChunkTileUpdates(playerEntity.ChunkVersions[visibleChunkKey]));//Gets individual tile updates in a chunk
 
-            _server.GetClient(playerEntity.EntityId).Emit("/players/chunkUpdates", updates);
+                playerEntity.ChunkVersions[visibleChunkKey] = _world.ChunkIndex[visibleChunkKey].ChunkVersion;
+            }
+            
+            if(updates.ChunkUpdates.Any() || updates.ChunkTileUpdates.Any())
+                _server.GetClient(playerEntity.EntityId).Emit("/players/chunkUpdates", updates);
         }
         
         #endregion
@@ -258,12 +259,12 @@ namespace BFB.Server
                             entity.Tick(_world, _simulationDistance);//entity components are processed here
                         
                         //randomly choose three tiles in the chunk to tick
-                        for (int i = 0; i < 3; i++)
+                        for (int i = 0; i < 2; i++)
                         {
                             int xBlock = _random.Next(_world.WorldOptions.ChunkSize);
                             int yBlock = _random.Next(_world.WorldOptions.ChunkSize);
-
-                            TileComponentManager.TickTile(chunk, xBlock, yBlock);//TODO
+                            
+                            TileComponentManager.TickTile(_world, chunk, xBlock, yBlock);
                         }
                     }
                 }
@@ -271,9 +272,6 @@ namespace BFB.Server
                 //This is 
                 SendUpdates();
                 
-                //Ask for input from all players
-                _server.Emit("/players/getUpdates");//TODO only send input if there is input to send?
-
                 //Maintain the tick rate here
                 nextTick += _tickSpeed;
                 int sleepTime = (int) (nextTick - DateTime.Now.Ticks / TimeSpan.TicksPerMillisecond);

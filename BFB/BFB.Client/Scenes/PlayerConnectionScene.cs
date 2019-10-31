@@ -44,9 +44,9 @@ namespace BFB.Client.Scenes
             {
                 Seed = 1234,
                 ChunkSize = 16,
-                WorldChunkWidth = 10,
+                WorldChunkWidth = 20,
                 WorldChunkHeight = 10,
-                GetWorldGenerator = options => new FlatWorld(options)
+                GetWorldGenerator = options => new RemoteWorld(options)
             });
             
         }
@@ -123,16 +123,7 @@ namespace BFB.Client.Scenes
             /**
              * Custom Socket Routes
              */
-            
-            #region SendInput
-            
-            _server.On("/players/getUpdates", (m) =>
-            {
-                _server.Emit("/player/input", new InputMessage {PlayerInputState = _playerInput.GetPlayerState()});
-            });
-            
-            #endregion
-            
+
             #region Handle Player Disconnect
             
             _server.On("/player/disconnect", message =>
@@ -189,35 +180,34 @@ namespace BFB.Client.Scenes
 
             #region Handle Chunk Updates
 
+            //TODO Chunk data does not seem to actually be sent. Initialize entire chunk map?
+            
             _server.On("/players/chunkUpdates", message =>
             {
                 ChunkUpdatesMessage m = (ChunkUpdatesMessage) message;
 
-                Console.WriteLine("Initial");
-
                 //Process full chunk updates
                 foreach (ChunkUpdate chunkUpdate in m.ChunkUpdates)
                 {
-                    Console.WriteLine("Test");
-                    Chunk chunk = _world.ChunkMap[chunkUpdate.ChunkX, chunkUpdate.ChunkY];
+                    Console.WriteLine("New Chunk Loaded: " + chunkUpdate.ChunkKey);
+                    _world.ChunkMap[chunkUpdate.ChunkX, chunkUpdate.ChunkY].ChunkKey = chunkUpdate.ChunkKey;
+                    _world.ChunkMap[chunkUpdate.ChunkX, chunkUpdate.ChunkY].Block = chunkUpdate.Block;
+                    _world.ChunkMap[chunkUpdate.ChunkX, chunkUpdate.ChunkY].Wall = chunkUpdate.Wall;
 
-                    chunkUpdate.Block = chunkUpdate.Block;
-                    chunkUpdate.Wall = chunkUpdate.Wall;
                 }
                 
                 //process tile map updates
                 foreach (ChunkTileUpdates chunkTileUpdates in m.ChunkTileUpdates)
                 {
+                    Console.WriteLine("ChunkTileUpdates loaded: " + chunkTileUpdates.ChunkKey);
+
                     Chunk chunk = _world.ChunkMap[chunkTileUpdates.ChunkX, chunkTileUpdates.ChunkY];
 
                     foreach (TileUpdate chunkTileUpdate in chunkTileUpdates.TileChanges)
                     {
                         chunk.ApplyBlockUpdate(chunkTileUpdate, true);
                     }
-                    Console.WriteLine("Test2");
-
                 }
-
             });
             
             #endregion
@@ -228,7 +218,7 @@ namespace BFB.Client.Scenes
             if (!_server.Connect())
                 Console.WriteLine("Connection Failed.");
             
-//            _world.GenerateWorld();
+            _world.GenerateWorld();
         }
         
         #endregion
@@ -265,6 +255,9 @@ namespace BFB.Client.Scenes
                 foreach ((string _, ClientEntity entity) in _entities)
                     entity.Update();
             }
+            
+            if(_playerInput.InputChanged())
+                _server.Emit("/player/input", new InputMessage {PlayerInputState = _playerInput.GetPlayerState()});
             
             _camera2.Update(gameTime);
         }

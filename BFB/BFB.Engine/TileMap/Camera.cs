@@ -41,7 +41,7 @@ namespace BFB.Engine.TileMap
             _viewportHeight = graphicsDevice.Viewport.Height;
 
             ScreenCenter = new Vector2(_viewportWidth / 2, _viewportHeight / 2);
-            Scale = 1f;
+            Scale = 1.0f;
             MoveSpeed = 15.25f;
             Position = new Vector2();
             Rotation = 0;

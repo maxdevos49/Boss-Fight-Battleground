@@ -34,7 +34,10 @@ namespace BFB.Engine.TileMap.Generators
                     }
                     else if (yActual < 17)
                     {
-                        chunk.Block[xBlock,yBlock] = (int)WorldTile.Grass;
+                        if(_random.Next(1) == 1)
+                            chunk.Block[xBlock,yBlock] = (int)WorldTile.Grass;
+                        else
+                            chunk.Block[xBlock,yBlock] = (int)WorldTile.Dirt;
                     }
                     else if(yActual < 35)
                     {

@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using BFB.Engine.Entity;
-using BFB.Engine.Server.Communication;
 
 namespace BFB.Engine.TileMap
 {
@@ -10,7 +9,7 @@ namespace BFB.Engine.TileMap
     {
         #region Properties
         
-        public readonly string ChunkKey;
+        public string ChunkKey { get; set; }
         public readonly int ChunkX;
         public readonly int ChunkY;
         
@@ -19,9 +18,9 @@ namespace BFB.Engine.TileMap
         public int ChunkVersion { get; private set; }
         
         public ushort[,] Hardness { get; }
-        public byte[,] Light { get; }
-        public ushort[,] Wall { get;}
-        public  ushort[,] Block { get; }
+        public byte[,] Light { get; set; }
+        public ushort[,] Wall { get; set;  }
+        public  ushort[,] Block { get; set; }
         
         public Dictionary<string,SimulationEntity> Entities { get; }
 
@@ -79,46 +78,58 @@ namespace BFB.Engine.TileMap
         
         #endregion
         
+        #region NeedChunkTileUpdate
+
+        public bool NeedChunkTileUpdate(int playerChunkVersion)
+        {
+            return ChunkVersion - _tileHistorySize <= playerChunkVersion;
+        }
+        
+        #endregion
+
+        #region GetChunkTileUpdate
+
+        public ChunkTileUpdates GetChunkTileUpdates(int playerChunkVersion)
+        {
+            ChunkTileUpdates chunkTileUpdates = new ChunkTileUpdates
+            {
+                ChunkKey = ChunkKey,
+                ChunkX = ChunkX,
+                ChunkY = ChunkY,
+                TileChanges = new List<TileUpdate>()
+            };
+
+            foreach ((int _, TileUpdate update) in _tileHistory.Where(x => x.Key < playerChunkVersion))
+            {
+                chunkTileUpdates.TileChanges.Add(update);
+            }
+
+            return chunkTileUpdates;
+        }
+        
+        #endregion
+        
+        #region NeedChunkUpdate
+
+        public bool NeedChunkUpdate(int playerChunkVersion)
+        {
+            return ChunkVersion - _tileHistorySize > playerChunkVersion || playerChunkVersion < 0;
+        }
+        
+        #endregion
+
         #region GetChunkUpdate
 
-        /**
-         * Generates a data message of either a Chunk update or a ChunkTileUpdate
-         */
-        public Tuple<ChunkUpdate,ChunkTileUpdates> GetChunkUpdate(int ownersOldVersion)
+        public ChunkUpdate GetChunkUpdate()
         {
-            ChunkUpdate chunkUpdate = new ChunkUpdate();
-            ChunkTileUpdates chunkTileUpdates = new ChunkTileUpdates();
-
-            if (ownersOldVersion < ChunkVersion - _tileHistorySize)
+            return new ChunkUpdate
             {
-                chunkUpdate = new ChunkUpdate
-                {
-                    ChunkKey = ChunkKey,
-                    ChunkX = ChunkX,
-                    ChunkY = ChunkY,
-                    Block = Block,
-                    Wall = Wall,
-                };
-            }
-            else
-            {
-
-                chunkTileUpdates = new ChunkTileUpdates
-                {
-                    ChunkKey = ChunkKey,
-                    ChunkX = ChunkX,
-                    ChunkY = ChunkY,
-                    TileChanges = new List<TileUpdate>()
-                };
-
-                foreach ((int _, TileUpdate update) in _tileHistory.Where(x => x.Key > ownersOldVersion))
-                {
-                    chunkTileUpdates.TileChanges.Add(update);
-                }
-            }
-
-            return new Tuple<ChunkUpdate, ChunkTileUpdates>(chunkUpdate,chunkTileUpdates);
-
+                ChunkKey = ChunkKey,
+                ChunkX = ChunkX,
+                ChunkY = ChunkY,
+                Block = Block,
+                Wall = Wall,
+            };
         }
         
         #endregion

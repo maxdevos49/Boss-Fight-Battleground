@@ -149,7 +149,6 @@ namespace BFB.Server
             Init();
             _server.PrintMessage($"BFB Server is now Listening on {_configuration["Server:IPAddress"]}:{_configuration["Server:Port"]}");
             _server.Start();
-            _simulation.Start();
 
             HandleTerminalInput();
         }

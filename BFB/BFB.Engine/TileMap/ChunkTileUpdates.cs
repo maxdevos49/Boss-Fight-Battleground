@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using BFB.Engine.Server.Communication;
 
 namespace BFB.Engine.TileMap
 {
