@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using BFB.Engine.UI;
 using BFB.Engine.UI.Components;
 using BFB.Engine.UI.Constraints;
@@ -25,7 +27,7 @@ namespace BFB.Client.UI
             {
                 z1.Vstack(v1 =>
                 {
-                    v1.Spacer();
+                    v1.Spacer(3);
                     
                     v1.Hstack(h1 =>
                     {
@@ -39,11 +41,9 @@ namespace BFB.Client.UI
                             v2.Text("Test message").Background(new Color(0, 0, 0, 100));
                             v2.Text("Test message").Background(new Color(0, 0, 0, 100));
                             v2.Text("Test message").Background(new Color(0, 0, 0, 100));
-                            v2.Text("Test message").Background(new Color(0, 0, 0, 100));
-                            v2.Text("Test message").Background(new Color(0, 0, 0, 100));
                             v2.TextBoxFor(Model, t => t.TextBoxText).Background(new Color(0, 0, 0, 100));
                         }).Grow(2);
-                    });
+                    }).Grow(2);
                 });
             });
         }
@@ -52,5 +52,9 @@ namespace BFB.Client.UI
     public class ChatModel
     {
         public string TextBoxText { get; set; }
+
+        public const int NumMessages = 8;
+
+        public List<string> Messages;
     }
 }
