@@ -62,7 +62,7 @@ namespace BFB.Engine.Scene
         }
 
         /// <summary>
-        /// Stops the scene by updating the scene status
+        /// Stops the scene by updating the scene status and calling unload on the scene
         /// </summary>
         public void Stop()
         {

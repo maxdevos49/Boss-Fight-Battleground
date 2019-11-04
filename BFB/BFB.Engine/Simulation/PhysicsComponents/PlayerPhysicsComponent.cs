@@ -4,6 +4,9 @@ using BFB.Engine.Math;
 
 namespace BFB.Engine.Simulation.PhysicsComponents
 {
+    /// <summary>
+    /// A player physics component that is used for normal walking like physics
+    /// </summary>
     public class  PlayerPhysicsComponent: IPhysicsComponent
     {
         private readonly BfbVector _acceleration;
@@ -13,6 +16,9 @@ namespace BFB.Engine.Simulation.PhysicsComponents
         private AnimationState _previousAnimationState;
         
         
+        /// <summary>
+        /// Constructs a player physics component.
+        /// </summary>
         public PlayerPhysicsComponent()
         {
             _acceleration = new BfbVector(1,15);
