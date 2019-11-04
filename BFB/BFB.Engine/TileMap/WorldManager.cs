@@ -249,7 +249,13 @@ namespace BFB.Engine.TileMap
         
         #region TranslatePosition
 
-        private Tuple<int,int,int,int> TranslatePosition(int xBlock, int yBlock)
+        /// <summary>
+        /// Finds information about a blocks position based on a world block position
+        /// </summary>
+        /// <param name="xBlock">World block x position</param>
+        /// <param name="yBlock">World block y position</param>
+        /// <returns>A tuple representing the chunk x/y and the relative x/y blocks in the chunk</returns>
+        public Tuple<int,int,int,int> TranslateBlockPosition(int xBlock, int yBlock)
         {
             return new Tuple<int, int, int, int>(
                 xBlock/WorldOptions.ChunkSize,
@@ -260,11 +266,26 @@ namespace BFB.Engine.TileMap
         
         #endregion 
         
+        #region TranslatePixelPosition
+
+        /// <summary>
+        /// Finds information about a block and chunk position based on a pixel world position
+        /// </summary>
+        /// <param name="xPixel">Pixel x world position</param>
+        /// <param name="yPixel">Pixel y world postiion</param>
+        /// <returns>A tuple representing the chunk x/y and the relative x/y blocks in the chunk</returns>
+        public Tuple<int, int, int, int> TranslatePixelPosition(int xPixel, int yPixel)
+        {
+            return TranslateBlockPosition(xPixel / WorldOptions.WorldScale, yPixel / WorldOptions.WorldScale);
+        }
+        
+        #endregion
+        
         #region GetHardness
         
         public int GetHardness(int xBlock, int yBlock)
         {
-            (int chunkX, int chunkY, int relativeX, int relativeY) = TranslatePosition(xBlock, yBlock);
+            (int chunkX, int chunkY, int relativeX, int relativeY) = TranslateBlockPosition(xBlock, yBlock);
             return ChunkExist(chunkX,chunkY) ? ChunkMap[chunkX,chunkY].Hardness[relativeX, relativeY] : 0;
         }
         
@@ -274,7 +295,7 @@ namespace BFB.Engine.TileMap
         
         public int GetLight(int xBlock, int yBlock)
         {
-            (int chunkX, int chunkY, int relativeX, int relativeY) = TranslatePosition(xBlock, yBlock);
+            (int chunkX, int chunkY, int relativeX, int relativeY) = TranslateBlockPosition(xBlock, yBlock);
             return ChunkExist(chunkX,chunkY) ? ChunkMap[chunkX, chunkY].Light[relativeX, relativeY] : 0;
         }
         
@@ -284,7 +305,7 @@ namespace BFB.Engine.TileMap
 
         public int GetWall(int xBlock, int yBlock)
         {
-            (int chunkX, int chunkY, int relativeX, int relativeY) = TranslatePosition(xBlock, yBlock);
+            (int chunkX, int chunkY, int relativeX, int relativeY) = TranslateBlockPosition(xBlock, yBlock);
             return ChunkExist(chunkX, chunkY) ? ChunkMap[chunkX, chunkY].Wall[relativeX, relativeY] : 0;
         }
         
@@ -294,7 +315,7 @@ namespace BFB.Engine.TileMap
         
         public WorldTile GetBlock(int xBlock, int yBlock)
         {
-            (int chunkX, int chunkY, int relativeX, int relativeY) = TranslatePosition(xBlock, yBlock);
+            (int chunkX, int chunkY, int relativeX, int relativeY) = TranslateBlockPosition(xBlock, yBlock);
             
             return ChunkExist(chunkX, chunkY) 
                 ?  (WorldTile)ChunkMap[chunkX, chunkY].Block[relativeX, relativeY] 
@@ -307,7 +328,7 @@ namespace BFB.Engine.TileMap
         
         public void SetHardness(int xBlock, int yBlock, ushort hardnessValue)
         {
-            (int chunkX, int chunkY, int relativeX, int relativeY) = TranslatePosition(xBlock, yBlock);
+            (int chunkX, int chunkY, int relativeX, int relativeY) = TranslateBlockPosition(xBlock, yBlock);
             if(ChunkExist(chunkX,chunkY))    
                 ChunkMap[chunkX, chunkY].Hardness[relativeX, relativeY] = hardnessValue;
         }
@@ -318,7 +339,7 @@ namespace BFB.Engine.TileMap
 
         public void SetLight(int xBlock, int yBlock, byte lightValue)
         {
-            (int chunkX, int chunkY, int relativeX, int relativeY) = TranslatePosition(xBlock, yBlock);
+            (int chunkX, int chunkY, int relativeX, int relativeY) = TranslateBlockPosition(xBlock, yBlock);
             if(ChunkExist(chunkX,chunkY))
                 ChunkMap[chunkX, chunkY].Light[relativeX, relativeY] = lightValue;
         }
@@ -329,7 +350,7 @@ namespace BFB.Engine.TileMap
 
         public void SetWall(int xBlock, int yBlock, ushort wallValue)
         {
-            (int chunkX, int chunkY, int relativeX, int relativeY) = TranslatePosition(xBlock, yBlock);
+            (int chunkX, int chunkY, int relativeX, int relativeY) = TranslateBlockPosition(xBlock, yBlock);
             if(ChunkExist(chunkX,chunkY))
                 ChunkMap[chunkX, chunkY].Wall[relativeX, relativeY] = wallValue;
         }
@@ -340,7 +361,7 @@ namespace BFB.Engine.TileMap
 
         public void SetBlock(int xBlock, int yBlock, WorldTile blockValue)
         {
-            (int chunkX, int chunkY, int relativeX, int relativeY) = TranslatePosition(xBlock, yBlock);
+            (int chunkX, int chunkY, int relativeX, int relativeY) = TranslateBlockPosition(xBlock, yBlock);
             
             if(ChunkExist(chunkX,chunkY))
                 ChunkMap[chunkX, chunkY].Block[relativeX, relativeY] = (ushort)blockValue;
@@ -352,7 +373,7 @@ namespace BFB.Engine.TileMap
         
         public void SetAll(int xBlock, int yBlock, ushort hardnessValue, byte lightValue, ushort wallValue, WorldTile tile)
         {
-            (int chunkX, int chunkY, int relativeX, int relativeY) = TranslatePosition(xBlock, yBlock);
+            (int chunkX, int chunkY, int relativeX, int relativeY) = TranslateBlockPosition(xBlock, yBlock);
             ChunkMap[chunkX, chunkY].Hardness[relativeX, relativeY] = hardnessValue;
             ChunkMap[chunkX, chunkY].Light[relativeX, relativeY] = lightValue;
             ChunkMap[chunkX, chunkY].Wall[relativeX, relativeY] = wallValue;

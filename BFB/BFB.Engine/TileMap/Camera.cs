@@ -1,3 +1,4 @@
+using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -40,17 +41,17 @@ namespace BFB.Engine.TileMap
             Origin = Vector2.Zero;
             ScreenCenter = Vector2.Zero;
             
-            Zoom = 1.0f;
+            Zoom = 0.3f;
             MoveSpeed = 5.25f;
             Rotation = 0;
         }
 
-        private Vector3 CheckScreenScale()
+        private float CheckScreenScale()
         {
             //Player is positioned wrong after this
             float scaleX = (float)_graphicsDevice.Viewport.Width / CameraWidth;
             float scaleY = (float)_graphicsDevice.Viewport.Height / CameraHeight;
-            return new Vector3(scaleX, scaleY, 1.0f);
+            return scaleX;
         }
         
         
@@ -58,19 +59,20 @@ namespace BFB.Engine.TileMap
         public void Update(GameTime gameTime)
         {
             ScreenCenter = new Vector2((float)_graphicsDevice.Viewport.Width / 2, (float)_graphicsDevice.Viewport.Height / 2);
-
+            float screenScale = CheckScreenScale();
+            
             // Create the Transform
             Transform = Matrix.Identity *
                         Matrix.CreateTranslation(-Position.X, -Position.Y, 0) *
                         Matrix.CreateRotationZ(Rotation) *
                         Matrix.CreateTranslation(Origin.X, Origin.Y, 0) *
-                        Matrix.CreateScale(new Vector3(Zoom, Zoom, Zoom));
-//                       * Matrix.CreateScale(CheckScreenScale());
+                        Matrix.CreateScale(new Vector3(Zoom + screenScale, Zoom + screenScale, 0));
 
-            Origin = ScreenCenter / Zoom;
+            
+            Origin = ScreenCenter / (Zoom + screenScale);
 
             // Move the Camera to the position that it needs to go
-            float delta = (float) gameTime.ElapsedGameTime.TotalSeconds;
+            float delta = (float) gameTime.ElapsedGameTime.TotalSeconds ;
 
             _position.X += (Focus.X - Position.X) * MoveSpeed * delta;
             _position.Y += (Focus.Y - Position.Y) * MoveSpeed * delta;
@@ -81,11 +83,6 @@ namespace BFB.Engine.TileMap
             else if(_position.X > _worldManager.WorldOptions.WorldChunkWidth * _worldManager.WorldOptions.ChunkSize * _worldManager.WorldOptions.WorldScale - Origin.X)
                 _position.X = _worldManager.WorldOptions.WorldChunkWidth * _worldManager.WorldOptions.ChunkSize * _worldManager.WorldOptions.WorldScale - Origin.X;
            
-//            if (_position.Y < Origin.Y)
-//                _position.Y = Origin.Y;
-//            else if(_position.Y > _worldManager.WorldOptions.WorldChunkHeight * _worldManager.WorldOptions.ChunkSize * _worldManager.WorldOptions.WorldScale - Origin.Y)
-//                _position.Y = _worldManager.WorldOptions.WorldChunkHeight * _worldManager.WorldOptions.ChunkSize * _worldManager.WorldOptions.WorldScale - Origin.Y;
-////                
         }
         
         public bool IsInView(Vector2 position, Texture2D texture)

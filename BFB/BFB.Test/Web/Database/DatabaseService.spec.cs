@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using BFB.Web.Models;
-using Microsoft.EntityFrameworkCore;
 using Xunit;
 using Moq;
 using Moq.EntityFrameworkCore;

@@ -20,6 +20,7 @@ namespace BFB.Engine.Simulation
         private bool _simulating;
         private readonly int _tickSpeed;
         private readonly Random _random;
+        public int Tick { get; private set; } 
         
         public readonly int SimulationDistance;
         public readonly WorldManager WorldManager;
@@ -51,6 +52,7 @@ namespace BFB.Engine.Simulation
             _simulating = false;
             _tickSpeed = 1000/tickSpeed ?? (1000 / 60);//60 ticks a second are default
             _random = new Random();
+            Tick = 0;
 
             WorldManager = new WorldManager(worldOptions);
 
@@ -152,9 +154,7 @@ namespace BFB.Engine.Simulation
                 }
 
                 if (_playerEntitiesIndex.Count == 0 && _simulating)
-                {
                     Stop();
-                }
 
             }
 
@@ -257,6 +257,8 @@ namespace BFB.Engine.Simulation
             //Server Game loop
             while (_simulating)
             {
+                Tick++;
+
                 lock (_lock)
                 {
                     //Tick all active chunks
@@ -267,7 +269,7 @@ namespace BFB.Engine.Simulation
                             entity.Tick(this);//entity components are processed here
                         
                         //randomly choose three tiles in the chunk to tick
-                        for (int i = 0; i < 5; i++)
+                        for (int i = 0; i < 19; i++)
                         {
                             int xBlock = _random.Next(WorldManager.WorldOptions.ChunkSize);
                             int yBlock = _random.Next(WorldManager.WorldOptions.ChunkSize);
@@ -277,7 +279,7 @@ namespace BFB.Engine.Simulation
                     }
                 }
                 
-                //This is 
+                //This is the communication aspect
                 SendUpdates();
                 
                 //Maintain the tick rate here

@@ -1,19 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Reflection.Metadata.Ecma335;
-using System.Threading;
 using BFB.Client.UI;
-using BFB.Engine.Content;
 using BFB.Engine.Entity;
 using BFB.Engine.Input.PlayerInput;
-using BFB.Engine.Math;
 using BFB.Engine.Scene;
 using BFB.Engine.Server;
 using BFB.Engine.Server.Communication;
 using BFB.Engine.Simulation.GraphicsComponents;
 using BFB.Engine.TileMap;
 using BFB.Engine.TileMap.Generators;
-using BFB.Engine.UI.Components;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -28,7 +23,8 @@ namespace BFB.Client.Scenes
 
         private readonly ClientSocketManager _server;
         private readonly Dictionary<string, ClientEntity> _entities;
-        private readonly Camera2D _camera2;
+        
+        private readonly Camera2D _camera;
         private readonly WorldManager _world;
 
 
@@ -49,7 +45,7 @@ namespace BFB.Client.Scenes
                 GetWorldGenerator = options => new RemoteWorld(options)
             });
             
-            _camera2 = new Camera2D(_world,GraphicsDeviceManager.GraphicsDevice);
+            _camera = new Camera2D(_world,GraphicsDeviceManager.GraphicsDevice);
 
             
         }
@@ -60,7 +56,6 @@ namespace BFB.Client.Scenes
         {
 
             //TODO Change how the connection is supplied where its started to better handle a server menu style choice
-            
             MainMenuUI layer = (MainMenuUI)UIManager.GetLayer(nameof(MainMenuUI));
             _server.Ip = layer.model.Ip.Split(":")[0];
             _server.Port = Convert.ToInt32(layer.model.Ip.Split(":")[1]);
@@ -155,7 +150,7 @@ namespace BFB.Client.Scenes
                             _entities[em.EntityId].AnimationState = em.AnimationState;
                             if (em.EntityId == _server.ClientId)
                             {
-                                _camera2.Focus = em.Position.ToVector2();
+                                _camera.Focus = em.Position.ToVector2();
                             }
                         }
                         else
@@ -187,7 +182,7 @@ namespace BFB.Client.Scenes
                 //Process full chunk updates
                 foreach (ChunkUpdate chunkUpdate in m.ChunkUpdates)
                 {
-                    Console.WriteLine("New Chunk Loaded: " + chunkUpdate.ChunkKey);
+//                    Console.WriteLine("New Chunk Loaded: " + chunkUpdate.ChunkKey);
                     _world.ChunkMap[chunkUpdate.ChunkX, chunkUpdate.ChunkY].ChunkKey = chunkUpdate.ChunkKey;
                     _world.ChunkMap[chunkUpdate.ChunkX, chunkUpdate.ChunkY].Block = chunkUpdate.Block;
                     _world.ChunkMap[chunkUpdate.ChunkX, chunkUpdate.ChunkY].Wall = chunkUpdate.Wall;
@@ -197,7 +192,7 @@ namespace BFB.Client.Scenes
                 //process tile map updates
                 foreach (ChunkTileUpdates chunkTileUpdates in m.ChunkTileUpdates)
                 {
-                    Console.WriteLine("ChunkTileUpdates loaded: " + chunkTileUpdates.ChunkKey);
+//                    Console.WriteLine("ChunkTileUpdates loaded: " + chunkTileUpdates.ChunkKey);
 
                     Chunk chunk = _world.ChunkMap[chunkTileUpdates.ChunkX, chunkTileUpdates.ChunkY];
 
@@ -257,7 +252,7 @@ namespace BFB.Client.Scenes
             if(_playerInput.InputChanged())
                 _server.Emit("/player/input", new InputMessage {PlayerInputState = _playerInput.GetPlayerState()});
             
-            _camera2.Update(gameTime);
+            _camera.Update(gameTime);
         }
         
         #endregion
@@ -269,7 +264,7 @@ namespace BFB.Client.Scenes
             
             //TODO make a client world renderer that houses information including the camera, world options, and the tile map
             graphics.End();
-            graphics.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, SamplerState.PointClamp, DepthStencilState.None, RasterizerState.CullCounterClockwise, null, _camera2.Transform);
+            graphics.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, SamplerState.PointClamp, DepthStencilState.None, RasterizerState.CullCounterClockwise, null, _camera.Transform);
             
             const int scale = 15;
             
@@ -280,15 +275,15 @@ namespace BFB.Client.Scenes
                     switch(_world.GetBlock(x, y))
                     {
                         case WorldTile.Grass:
-                            if(_camera2.IsInView(new Vector2(x * scale, y * scale),ContentManager.GetTexture("grass")))
+                            if(_camera.IsInView(new Vector2(x * scale, y * scale),ContentManager.GetTexture("grass")))
                                 graphics.Draw(ContentManager.GetTexture("grass"), new Vector2(x * scale, y * scale), Color.White);
                             break;
                         case WorldTile.Dirt:
-                            if(_camera2.IsInView(new Vector2(x * scale, y * scale),ContentManager.GetTexture("dirt")))
+                            if(_camera.IsInView(new Vector2(x * scale, y * scale),ContentManager.GetTexture("dirt")))
                                 graphics.Draw(ContentManager.GetTexture("dirt"), new Vector2(x * scale, y * scale), Color.White);
                             break;
                         case WorldTile.Stone:
-                            if(_camera2.IsInView(new Vector2(x * scale, y * scale),ContentManager.GetTexture("stone")))
+                            if(_camera.IsInView(new Vector2(x * scale, y * scale),ContentManager.GetTexture("stone")))
                                 graphics.Draw(ContentManager.GetTexture("stone"), new Vector2(x * scale, y * scale), Color.White);
                             break;
                     }

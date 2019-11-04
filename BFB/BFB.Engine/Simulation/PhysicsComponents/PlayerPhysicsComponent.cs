@@ -15,9 +15,9 @@ namespace BFB.Engine.Simulation.PhysicsComponents
         
         public PlayerPhysicsComponent()
         {
-            _acceleration = new BfbVector(1,15);
-            _maxSpeed = new BfbVector(10,20);
-            _gravity = new BfbVector(0, 0.98f);
+            _acceleration = new BfbVector(3,25);
+            _maxSpeed = new BfbVector(20,40);
+            _gravity = new BfbVector(0, 4f);
             _friction = 0.2f;
 
         }
@@ -29,15 +29,11 @@ namespace BFB.Engine.Simulation.PhysicsComponents
             simulationEntity.DesiredVector.X *= _acceleration.X;
             simulationEntity.DesiredVector.Y *= _acceleration.Y;
             
-            //TODO
-            
             if (!simulationEntity.Grounded)
                 simulationEntity.DesiredVector.Add(_gravity);
             
-            
             //Creates the new velocity
             simulationEntity.Velocity.Add(simulationEntity.DesiredVector);
-
 
             //Caps your speed
             if(System.Math.Abs(simulationEntity.Velocity.X) > _maxSpeed.X)

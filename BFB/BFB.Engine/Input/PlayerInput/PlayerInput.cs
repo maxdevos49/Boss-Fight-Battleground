@@ -65,6 +65,10 @@ namespace BFB.Engine.Input.PlayerInput
             {
                 _playerState.Mouse.X = e.Mouse.X;
                 _playerState.Mouse.Y = e.Mouse.Y;
+                
+//                _playerState.LeftClick = e.Mouse.LeftButton == ButtonState.Pressed;
+//                _playerState.RightClick = e.Mouse.RightButton == ButtonState.Pressed;
+                
                 _inputChange = true;
             });
             
@@ -72,13 +76,15 @@ namespace BFB.Engine.Input.PlayerInput
             {
                 _playerState.LeftClick = e.Mouse.LeftButton == ButtonState.Pressed;
                 _playerState.RightClick = e.Mouse.RightButton == ButtonState.Pressed;
+                
                 _inputChange = true;
             });
             
             scene.AddInputListener("mouseup", (e) =>
             {
-                _playerState.LeftClick = e.Mouse.LeftButton == ButtonState.Released;
-                _playerState.RightClick = e.Mouse.RightButton == ButtonState.Released;
+                _playerState.LeftClick = e.Mouse.LeftButton == ButtonState.Pressed;
+                _playerState.RightClick = e.Mouse.RightButton == ButtonState.Pressed;
+                
                 _inputChange = true;
             });
         }

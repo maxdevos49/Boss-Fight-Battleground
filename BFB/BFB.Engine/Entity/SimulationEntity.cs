@@ -19,6 +19,8 @@ namespace BFB.Engine.Entity
         public bool IsPlayer { get; set; }
         
         public BfbVector DesiredVector { get; }
+
+        private int _lastTick;
         
         /**
          * Indicates the chunks that the client can see. Only used if IsPlayer equals true
@@ -50,6 +52,8 @@ namespace BFB.Engine.Entity
             DesiredVector = new BfbVector();
             VisibleChunks = new List<string>();
             ChunkVersions = new Dictionary<string, int>();
+
+            _lastTick = -1;
         }
         
         #endregion
@@ -58,6 +62,12 @@ namespace BFB.Engine.Entity
         
         public void Tick(Simulation.Simulation simulation)
         {
+            //Only tick entity once per frame
+            if (simulation.Tick == _lastTick)
+                return;
+            
+            //Record last tick
+            _lastTick = simulation.Tick;
             
             //Component Processing
             _input?.Update(this, simulation);

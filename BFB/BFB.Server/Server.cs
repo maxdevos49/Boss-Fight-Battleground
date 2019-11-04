@@ -47,7 +47,7 @@ namespace BFB.Server
                 WorldChunkHeight = 10,
                 WorldScale = 15,
                 GetWorldGenerator = options => new FlatWorld(options)
-            }, 60);
+            }, 20);
         }
         
         #endregion
