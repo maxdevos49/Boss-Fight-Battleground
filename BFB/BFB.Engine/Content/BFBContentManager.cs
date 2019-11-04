@@ -10,17 +10,35 @@ using Newtonsoft.Json;
 
 namespace BFB.Engine.Content
 {
+    /// <summary>
+    /// A modified version of the Monogame ContentManager. Rather than extending it, one of the properties is a Monogame ContentManager.
+    /// </summary>
     public class BFBContentManager
     {
 
         #region Properties
 
+        /// <summary>
+        /// The Monogame Content Manager. USed to store loaded content, and access it when rendering.
+        /// </summary>
         private readonly ContentManager _contentManager;
         
         //Dictionary<contentKey, Content>
+        /// <summary>
+        /// A dictionary that stores the loaded static textures.
+        /// </summary>
         private readonly  Dictionary<string, Texture2D> _textureContent;
+        /// <summary>
+        /// A dictionary that stores the loaded animated textures.
+        /// </summary>
         private readonly Dictionary<string, AnimatedTexture> _animatedTexturesContent;
+        /// <summary>
+        /// A dictionary that stores the loaded fonts.
+        /// </summary>
         private readonly  Dictionary<string, SpriteFont> _fontContent;
+        /// <summary>
+        /// A dictionary that stores the loaded audio.
+        /// </summary>
         private readonly  Dictionary<string, Song> _audioContent;//Probably in future when ready to use this create a wrapper class
         
         
@@ -28,6 +46,10 @@ namespace BFB.Engine.Content
         
         #region Constructor
 
+        /// <summary>
+        /// A constructor that does constructor things: initliazes parameters.
+        /// </summary>
+        /// <param name="contentManager"></param>
         public BFBContentManager(ContentManager contentManager)
         {
             _contentManager = contentManager;
@@ -44,6 +66,11 @@ namespace BFB.Engine.Content
         
         #region AddTexture
 
+        /// <summary>
+        /// Adds a static texture to the dictionary, provided it does not already exist.
+        /// </summary>
+        /// <param name="textureKey"></param>
+        /// <param name="texture"></param>
         public void AddTexture(string textureKey, Texture2D texture)
         {
             if (!_textureContent.ContainsKey(textureKey))
@@ -53,16 +80,25 @@ namespace BFB.Engine.Content
         #endregion
         
         #region GetTexture
-
+        /// <summary>
+        /// Returns a loaded texture.
+        ///
+        /// Throws a KeyNotFoundException when the key is not found.
+        /// </summary>
+        /// <param name="textureKey"></param>
+        /// <returns></returns>
         public Texture2D GetTexture(string textureKey)
         {
             return _textureContent.ContainsKey(textureKey) ? _textureContent[textureKey] : throw new KeyNotFoundException($"The textureKey: {textureKey} was not found.");
-        }
+        } 
         
         #endregion
 
         #region UnloadTexture
-
+        /// <summary>
+        /// Unloads the texture if it will never be used again.
+        /// </summary>
+        /// <param name="textureKey"></param>
         public void UnloadTexture(string textureKey)
         {
             if (_textureContent.ContainsKey(textureKey)) 
@@ -76,7 +112,11 @@ namespace BFB.Engine.Content
         #endregion
         
         #region AddAudio
-
+        /// <summary>
+        /// Adds the loaded audio to the dictionary, provided it does not already exist.
+        /// </summary>
+        /// <param name="audioKey"></param>
+        /// <param name="audio"></param>
         public void AddAudio(string audioKey, Song audio)
         {
             if (!_audioContent.ContainsKey(audioKey))
@@ -86,7 +126,11 @@ namespace BFB.Engine.Content
         #endregion
         
         #region GetAudio
-
+        /// <summary>
+        /// Returns the loaded audio from the dictionary.
+        /// </summary>
+        /// <param name="audioKey"></param>
+        /// <returns></returns>
         public Song GetAudio(string audioKey)
         {
             return _audioContent.ContainsKey(audioKey) ? _audioContent[audioKey] :  throw new KeyNotFoundException($"The audioKey: {audioKey} was not found.");
@@ -95,7 +139,10 @@ namespace BFB.Engine.Content
         #endregion
         
         #region UnloadAudio
-
+        /// <summary>
+        /// Unloads the loaded audio if we'll never use it again. Also disposes it.
+        /// </summary>
+        /// <param name="audioKey"></param>
         public void UnloadAudio(string audioKey)
         {
             if (_audioContent.ContainsKey(audioKey)) 
@@ -109,7 +156,11 @@ namespace BFB.Engine.Content
         #endregion
         
         #region AddFont
-
+        /// <summary>
+        /// Adds the loaded font to the dictionary, provided it does not already exist.
+        /// </summary>
+        /// <param name="fontKey"></param>
+        /// <param name="font"></param>
         public void AddFont(string fontKey, SpriteFont font)
         {
             if (!_fontContent.ContainsKey(fontKey))
@@ -119,7 +170,11 @@ namespace BFB.Engine.Content
         #endregion
         
         #region getFont
-
+        /// <summary>
+        /// Returns the loaded font that you wanna use.
+        /// </summary>
+        /// <param name="fontKey"></param>
+        /// <returns></returns>
         public SpriteFont GetFont(string fontKey)
         {
             return _fontContent.ContainsKey(fontKey) ? _fontContent[fontKey] :  throw new KeyNotFoundException($"The fontKey: {fontKey} was not found.");
@@ -128,7 +183,10 @@ namespace BFB.Engine.Content
         #endregion
         
         #region UnloadFont
-
+        /// <summary>
+        /// Unloads the font.
+        /// </summary>
+        /// <param name="fontKey"></param>
         public void UnloadFont(string fontKey)
         {
             if (_fontContent.ContainsKey(fontKey)) 
@@ -141,7 +199,11 @@ namespace BFB.Engine.Content
         #endregion
         
         #region AddAnimatedTexture
-
+        /// <summary>
+        /// Adds an animated texture to the dictionary, provided it does not already exist.
+        /// </summary>
+        /// <param name="textureKey"></param>
+        /// <param name="texture"></param>
         public void AddAnimatedTexture(string textureKey, AnimatedTexture texture)
         {
             if (!_animatedTexturesContent.ContainsKey(textureKey))
@@ -151,7 +213,11 @@ namespace BFB.Engine.Content
         #endregion
         
         #region GetAnimatedTexture
-
+        /// <summary>
+        /// Gives the animated texture that has already been loaded.
+        /// </summary>
+        /// <param name="textureKey"></param>
+        /// <returns>Returns the correct animated texture</returns>
         public AnimatedTexture GetAnimatedTexture(string textureKey)
         {
             return _animatedTexturesContent.ContainsKey(textureKey) ? _animatedTexturesContent[textureKey] : throw new KeyNotFoundException($"The animated texture Key: {textureKey} was not found.");
@@ -160,7 +226,10 @@ namespace BFB.Engine.Content
         #endregion
 
         #region UnloadAnimatedTexture
-
+        /// <summary>
+        /// Unloads the animated texture.
+        /// </summary>
+        /// <param name="textureKey"></param>
         public void UnloadAnimatedTexture(string textureKey)
         {
             if (_animatedTexturesContent.ContainsKey(textureKey)) 
@@ -174,7 +243,9 @@ namespace BFB.Engine.Content
         #endregion
         
         #region ParseContent
-
+        /// <summary>
+        /// Parses content.json to figure out what content needs to be loaded.
+        /// </summary>
         public void ParseContent()
         {
             string json;
@@ -203,7 +274,10 @@ namespace BFB.Engine.Content
         #endregion
         
         #region ParseTextures
-
+        /// <summary>
+        /// PArses the textures and loads them.
+        /// </summary>
+        /// <param name="textures"></param>
         private void ParseTextures(IEnumerable<ContentGroupSchema> textures)
         {
             foreach (ContentGroupSchema texture in textures)
@@ -220,7 +294,10 @@ namespace BFB.Engine.Content
         #endregion
         
         #region ParseAnimatedTextures
-
+        /// <summary>
+        /// Parses and loads the animated textures.
+        /// </summary>
+        /// <param name="textures"></param>
         private void ParseAnimatedTextures(List<AnimatedTexture> textures)
         {
             foreach (AnimatedTexture texture in textures)
@@ -240,7 +317,10 @@ namespace BFB.Engine.Content
         #endregion
         
         #region ParseFonts
-
+        /// <summary>
+        /// Parses and loads the fonts.
+        /// </summary>
+        /// <param name="fonts"></param>
         private void ParseFonts(List<ContentGroupSchema> fonts)
         {
             foreach (ContentGroupSchema font in fonts)
@@ -257,7 +337,9 @@ namespace BFB.Engine.Content
         #endregion
         
         #region ParseAudio
-
+        /// <summary>
+        /// Parses and loads the audio.
+        /// </summary>
         private void ParseAudio()
         {
             //TODO
@@ -267,7 +349,9 @@ namespace BFB.Engine.Content
     }
 
     #region Content Schema Classes
-    
+    /// <summary>
+    /// Schema for what the content will look like.
+    /// </summary>
     [UsedImplicitly]
     public class ContentFileSchema
     {
@@ -285,8 +369,10 @@ namespace BFB.Engine.Content
 
     }
     
+    /// <summary>
+    /// Schema for what a specific content group will look like.
+    /// </summary>
     [UsedImplicitly]
-
     public class ContentGroupSchema
     {
         [UsedImplicitly]
