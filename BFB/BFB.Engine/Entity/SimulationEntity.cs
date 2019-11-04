@@ -6,28 +6,37 @@ using BFB.Engine.TileMap;
 
 namespace BFB.Engine.Entity
 {
+    /// <summary>
+    /// An entity stored in the game server's simulation 
+    /// </summary>
     public class SimulationEntity : Entity
     {
         
         #region Properties
         
-        /**
-         * Indicates the chunk that the entity is currently in
-         */
+        /// <summary>
+        /// Indicates the chunk that the entity is currently in
+        /// </summary>
         public string ChunkKey { get; set; }
         
+        /// <summary>
+        /// Whether this is a player entity or not
+        /// </summary>
         public bool IsPlayer { get; set; }
         
+        /// <summary>
+        /// Vector describing a position an entity is attempting to move to 
+        /// </summary>
         public BfbVector DesiredVector { get; }
         
-        /**
-         * Indicates the chunks that the client can see. Only used if IsPlayer equals true
-         */
+        /// <summary>
+        /// Indicates the chunks that the client can see. Only used if IsPlayer equals true
+        /// </summary>
         public List<string> VisibleChunks { get; }
         
-        /**
-         * Used to determine if the chunk needs to be sent to the client
-         */
+        /// <summary>
+        /// Used to determine if the chunk needs to be sent to the client
+        /// </summary>
         public Dictionary<string, int> ChunkVersions { get; }
         
         #endregion
@@ -41,6 +50,12 @@ namespace BFB.Engine.Entity
 
         #region Constructor
         
+        /// <summary>
+        /// Creates a new entity for the game simulations
+        /// </summary>
+        /// <param name="entityId">Unique ID for this entity</param>
+        /// <param name="options">Sets the initial properties of this entity</param>
+        /// <param name="components">The components this entity contains</param>
         public SimulationEntity(string entityId, EntityOptions options, ComponentOptions components) : base(entityId, options)
         {
             //Components
@@ -56,6 +71,10 @@ namespace BFB.Engine.Entity
 
         #region Update
         
+        /// <summary>
+        /// Updates this entity as part of the chunks in the simulation of this entity
+        /// </summary>
+        /// <param name="simulation"></param>
         public void Tick(Simulation.Simulation simulation)
         {
             
@@ -104,9 +123,18 @@ namespace BFB.Engine.Entity
     
     #region ComponentOptions
     
+    /// <summary>
+    /// Options object used for creating a component
+    /// </summary>
     public class ComponentOptions
     {
+        /// <summary>
+        /// Input component to be applied
+        /// </summary>
         public IInputComponent Input { get; set; }
+        /// <summary>
+        /// Physics component to be applied
+        /// </summary>
         public IPhysicsComponent Physics { get; set; }
     }
     

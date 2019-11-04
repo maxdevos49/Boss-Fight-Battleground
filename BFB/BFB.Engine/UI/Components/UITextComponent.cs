@@ -18,6 +18,7 @@ namespace BFB.Engine.UI.Components
             _propertySelector = propertySelector;
         }
         
+        
         public UITextComponent(string text) : base(nameof(UITextComponent<TModel>))
         {
             _text = text;
