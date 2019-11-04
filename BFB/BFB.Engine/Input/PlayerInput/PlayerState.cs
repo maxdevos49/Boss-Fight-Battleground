@@ -3,6 +3,9 @@ using BFB.Engine.Math;
 
 namespace BFB.Engine.Input.PlayerInput
 {
+    /// <summary>
+    /// Holds what state a player is. Is serializable to be sent from the server to the client.
+    /// </summary>
     [Serializable]
     public class PlayerState
     {

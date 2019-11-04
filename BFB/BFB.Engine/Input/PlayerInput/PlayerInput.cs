@@ -3,15 +3,20 @@ using Microsoft.Xna.Framework.Input;
 
 namespace BFB.Engine.Input.PlayerInput
 {
+    /// <summary>
+    ///  This class will handle the input that the player gives
+    /// transforming mouse & keyboard input to game controls.
+    /// </summary>
     public class PlayerInput
     {
-        /*
-         * This class will handle the input that the player gives
-         * transforming mouse & keyboard input to game controls.
-         */
+
         private PlayerState _playerState;
         private bool _inputChange;
 
+        /// <summary>
+        /// Handles the input for each scene here.
+        /// </summary>
+        /// <param name="scene"></param>
         public PlayerInput(Scene.Scene scene)
         {
             _playerState = new PlayerState();
@@ -83,11 +88,19 @@ namespace BFB.Engine.Input.PlayerInput
             });
         }
 
+        /// <summary>
+        /// Gets the player state, shockingly enough.
+        /// </summary>
+        /// <returns></returns>
         public PlayerState GetPlayerState()
         {
             return _playerState;
         }
 
+        /// <summary>
+        /// Returns if the input has changed from the last game update.
+        /// </summary>
+        /// <returns></returns>
         public bool InputChanged()
         {
             return _inputChange;
