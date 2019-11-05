@@ -2,21 +2,28 @@ using System;
 
 namespace BFB.Engine.TileMap.Generators
 {
+    /// <summary>
+    /// Used to generate a flat world.
+    /// </summary>
     public class FlatWorld : WorldGenerator
     {
         private readonly Random _random;
-
-        /**
-         * Generates a flat world
-         */
+        
+        /// <summary>
+        /// Generates a flat world.
+        /// </summary>
+        /// <param name="options">Options used to generate the world.</param>
         public FlatWorld(WorldOptions options) : base(options)
         {
             _random = new Random(WorldOptions.Seed);
         }
-
-        /**
-         * Generates the chunk at the given x,y block position
-         */
+        
+        /// <summary>
+        /// Generates the chunk at the given x,y block position.
+        /// </summary>
+        /// <param name="x">The chunk X location with the given block X location.</param>
+        /// <param name="y">The chunk Y location with the given block Y location.</param>
+        /// <returns>Returns the generated chuck.</returns>
         public override Chunk GenerateChunk(int x, int y)
         {
             Chunk chunk = new Chunk(WorldOptions.ChunkSize, x, y);

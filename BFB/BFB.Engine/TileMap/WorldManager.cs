@@ -14,12 +14,22 @@ namespace BFB.Engine.TileMap
         
         #region Properties
         
+        /// <summary>
+        /// The options for the world.
+        /// </summary>
         public WorldOptions WorldOptions { get; private set; }
         
+        /// <summary>
+        /// The map for a chunk.
+        /// </summary>
         public Chunk[,] ChunkMap { get; private set; }
-        
+        /// <summary>
+        /// The index for the chunk.
+        /// </summary>
         public Dictionary<string, Chunk> ChunkIndex { get; }
-        
+        /// <summary>
+        /// The callback action for the world generator.
+        /// </summary>
         public Action<string> WorldGeneratorCallback { get; set; }
         
         
@@ -29,6 +39,10 @@ namespace BFB.Engine.TileMap
         
         #region Constructor
         
+        /// <summary>
+        /// The constructor for worldManager.
+        /// </summary>
+        /// <param name="worldOptions">The options for the world configuration.</param>
         public WorldManager(WorldOptions worldOptions)
         {
             WorldOptions = worldOptions;
@@ -42,9 +56,11 @@ namespace BFB.Engine.TileMap
         //Move to world generator?
         #region GenerateWorld
         
-        /**
-         * Generates the entire map at once
-         */
+
+        /// <summary>
+        /// Generates the entire map at once.
+        /// </summary>
+        /// <param name="progressCallback">Gets the progress from the world generation.</param>
         public void GenerateWorld(Action<string> progressCallback)
         {
             if (_worldGenerator == null)
@@ -76,9 +92,10 @@ namespace BFB.Engine.TileMap
         
         #region MapChunksToIndex
 
-        /**
-         * Simply adds each chunk to a dictionary so depending on if you have the x/y position or the chunk key then you always have O(1) lookup
-         */
+
+        /// <summary>
+        /// Adds each chunk to a dictionary so depending on if you have the x/y position or the chunk key then you always have O(1) lookup.
+        /// </summary>
         private void MapChunksToIndex()
         {
             ChunkIndex.Clear();
@@ -96,9 +113,12 @@ namespace BFB.Engine.TileMap
         //move to world IO?
         #region SaveWorld
         
-        /**
-         * Saves the current state of the world with a given in the world folder
-         */
+
+        /// <summary>
+        /// Saves the current state of the world with a given name in the world folder.
+        /// </summary>
+        /// <param name="fileName">The name to save the file as.</param>
+        /// <returns>Returns true if world is saved, false otherwise.</returns>
         public bool SaveWorld(string fileName)
         {
             WorldDataSchema worldData = new WorldDataSchema
@@ -139,6 +159,11 @@ namespace BFB.Engine.TileMap
         //move to world IO?
         #region LoadWorld
         
+        /// <summary>
+        /// Loads a world from a given filename.
+        /// </summary>
+        /// <param name="fileName">The name of the file.</param>
+        /// <returns>Returns true if file is loaded.</returns>
         public bool LoadWorld(string fileName)
         {
             //TODO not sure if works at all
@@ -175,10 +200,13 @@ namespace BFB.Engine.TileMap
         #endregion
 
         #region MoveEntity
-
-        /**
-         * Moves entity from one chunk to another
-         */
+        
+        /// <summary>
+        /// Moves entity from one chunk to another.
+        /// </summary>
+        /// <param name="entityKey">The given entity.</param>
+        /// <param name="originalChunk">The chunk the entity is in.</param>
+        /// <param name="newChunk">The chunk the entity is going to be in.</param>
         public void MoveEntity(string entityKey, Chunk originalChunk, Chunk newChunk)
         {
             if (!originalChunk.Entities.ContainsKey(entityKey))
@@ -198,6 +226,12 @@ namespace BFB.Engine.TileMap
         
         #region ChunkFromChunkLocation
 
+        /// <summary>
+        /// Gets a chunk from a chunk location.
+        /// </summary>
+        /// <param name="chunkX">The X location of the chunk.</param>
+        /// <param name="chunkY">The Y location of the chunk.</param>
+        /// <returns>Returns the specified chunk.</returns>
         public Chunk ChunkFromChunkLocation(int chunkX, int chunkY)
         {
             if (chunkX < 0 || chunkY < 0)
@@ -213,6 +247,12 @@ namespace BFB.Engine.TileMap
         
         #region ChunkKeyFromChunkLocation
 
+        /// <summary>
+        /// Retrieves the key of the chunk location.
+        /// </summary>
+        /// <param name="chunkX">The X location of the chunk.</param>
+        /// <param name="chunkY">The Y location of the chunk.</param>
+        /// <returns>Returns the key of the specified chunk.</returns>
         public string ChunkKeyFromChunkLocation(int chunkX, int chunkY)
         {
             if (chunkX < 0 || chunkY < 0)
@@ -228,6 +268,12 @@ namespace BFB.Engine.TileMap
         
         #region ChunkFromBlockLocation
 
+        /// <summary>
+        /// Retrieves the chunk where the tile is located.
+        /// </summary>
+        /// <param name="blockX">The X block location of the tileMap.</param>
+        /// <param name="blockY">The Y block location of the tileMap.</param>
+        /// <returns>Returns the chunk from the specified block locations.</returns>
         public Chunk ChunkFromTileLocation(int blockX, int blockY)
         {
             int chunkX = blockX / WorldOptions.ChunkSize;
@@ -240,6 +286,12 @@ namespace BFB.Engine.TileMap
         
         #region ChunkFromPixelLocation
 
+        /// <summary>
+        /// Retrieves the chunk from the pixel location on the screen.
+        /// </summary>
+        /// <param name="pixelX">The X pixel location on the screen.</param>
+        /// <param name="pixelY">The Y pixel location on the screen.</param>
+        /// <returns>Returns the chunk from the pixel locations.</returns>
         public Chunk ChunkFromPixelLocation(int pixelX, int pixelY)
         {
             return ChunkFromTileLocation(pixelX/WorldOptions.WorldScale, pixelY/WorldOptions.WorldScale);
@@ -261,7 +313,12 @@ namespace BFB.Engine.TileMap
         #endregion 
         
         #region GetHardness
-        
+        /// <summary>
+        /// Retrieves the hardness value of a block.
+        /// </summary>
+        /// <param name="xBlock">The X location of a block.</param>
+        /// <param name="yBlock">The Y location of a block.</param>
+        /// <returns>Returns the hardness value based on the block locations.</returns>
         public int GetHardness(int xBlock, int yBlock)
         {
             (int chunkX, int chunkY, int relativeX, int relativeY) = TranslatePosition(xBlock, yBlock);
@@ -271,7 +328,12 @@ namespace BFB.Engine.TileMap
         #endregion
         
         #region GetLight
-        
+        /// <summary>
+        /// Retrieves the light value of a block.
+        /// </summary>
+        /// <param name="xBlock">The X location of a block.</param>
+        /// <param name="yBlock">The Y location of a block.</param>
+        /// <returns>Returns the light value based on the block locations.</returns>
         public int GetLight(int xBlock, int yBlock)
         {
             (int chunkX, int chunkY, int relativeX, int relativeY) = TranslatePosition(xBlock, yBlock);
@@ -281,7 +343,12 @@ namespace BFB.Engine.TileMap
         #endregion
         
         #region GetWall
-
+        /// <summary>
+        /// Retrieves the wall value of a block.
+        /// </summary>
+        /// <param name="xBlock">The X location of a block.</param>
+        /// <param name="yBlock">The Y location of a block.</param>
+        /// <returns>Returns the wall value based on the block locations.</returns>
         public int GetWall(int xBlock, int yBlock)
         {
             (int chunkX, int chunkY, int relativeX, int relativeY) = TranslatePosition(xBlock, yBlock);
@@ -291,7 +358,12 @@ namespace BFB.Engine.TileMap
         #endregion
 
         #region GetBlock
-        
+        /// <summary>
+        /// Retrieves the block value of a block.
+        /// </summary>
+        /// <param name="xBlock">The X location of a block.</param>
+        /// <param name="yBlock">The Y location of a block.</param>
+        /// <returns>Returns the block value based on the block locations.</returns>
         public WorldTile GetBlock(int xBlock, int yBlock)
         {
             (int chunkX, int chunkY, int relativeX, int relativeY) = TranslatePosition(xBlock, yBlock);
@@ -304,7 +376,12 @@ namespace BFB.Engine.TileMap
         #endregion
 
         #region SetHardness
-        
+        /// <summary>
+        /// Sets the hardness value of a block.
+        /// </summary>
+        /// <param name="xBlock">The X location of a block.</param>
+        /// <param name="yBlock">The Y location of a block.</param>
+        /// <param name="hardnessValue">The value of the hardness to be set.</param>
         public void SetHardness(int xBlock, int yBlock, ushort hardnessValue)
         {
             (int chunkX, int chunkY, int relativeX, int relativeY) = TranslatePosition(xBlock, yBlock);
@@ -315,7 +392,12 @@ namespace BFB.Engine.TileMap
         #endregion
         
         #region SetLight
-
+        /// <summary>
+        /// Sets the light value of a block.
+        /// </summary>
+        /// <param name="xBlock">The X location of a block.</param>
+        /// <param name="yBlock">The Y location of a block.</param>
+        /// <param name="lightValue">The value of the light to be set.</param>
         public void SetLight(int xBlock, int yBlock, byte lightValue)
         {
             (int chunkX, int chunkY, int relativeX, int relativeY) = TranslatePosition(xBlock, yBlock);
@@ -326,7 +408,12 @@ namespace BFB.Engine.TileMap
         #endregion
         
         #region SetWall
-
+        /// <summary>
+        /// Sets the wall value of a block.
+        /// </summary>
+        /// <param name="xBlock">The X location of a block.</param>
+        /// <param name="yBlock">The Y location of a block.</param>
+        /// <param name="wallValue">The value of the wall to be set.</param>
         public void SetWall(int xBlock, int yBlock, ushort wallValue)
         {
             (int chunkX, int chunkY, int relativeX, int relativeY) = TranslatePosition(xBlock, yBlock);
@@ -337,7 +424,12 @@ namespace BFB.Engine.TileMap
         #endregion
         
         #region SetBlock
-
+        /// <summary>
+        /// Sets the block value of a block.
+        /// </summary>
+        /// <param name="xBlock">The X location of a block.</param>
+        /// <param name="yBlock">The Y location of a block.</param>
+        /// <param name="blockValue">The value of the block to be set.</param>
         public void SetBlock(int xBlock, int yBlock, WorldTile blockValue)
         {
             (int chunkX, int chunkY, int relativeX, int relativeY) = TranslatePosition(xBlock, yBlock);
@@ -349,7 +441,15 @@ namespace BFB.Engine.TileMap
         #endregion
         
         #region SetAll
-        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="xBlock">The X location of a block.</param>
+        /// <param name="yBlock">The Y location of a block.</param>
+        /// <param name="hardnessValue">The value of the hardness to be set.</param>
+        /// <param name="lightValue">The value of the light to be set.</param>
+        /// <param name="wallValue">The value of the wall to be set.</param>
+        /// <param name="tile">The value of the block to be set.</param>
         public void SetAll(int xBlock, int yBlock, ushort hardnessValue, byte lightValue, ushort wallValue, WorldTile tile)
         {
             (int chunkX, int chunkY, int relativeX, int relativeY) = TranslatePosition(xBlock, yBlock);
@@ -362,7 +462,12 @@ namespace BFB.Engine.TileMap
         #endregion
 
         #region ChunkExist
-
+        /// <summary>
+        /// Checks if a chunk exists.
+        /// </summary>
+        /// <param name="chunkX">The X location of a chunk.</param>
+        /// <param name="chunkY">The Y location of a chunk.</param>
+        /// <returns>Returns true if the chunk does exist.</returns>
         private bool ChunkExist(int chunkX, int chunkY)
         {
             return ChunkMap[chunkX,chunkY] != null;

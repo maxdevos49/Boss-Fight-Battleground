@@ -4,6 +4,9 @@ using Microsoft.Xna.Framework.Graphics;
 namespace BFB.Engine.TileMap
 {
 
+    /// <summary>
+    /// Used to give a camera on an object.
+    /// </summary>
     public class Camera2D
     {
         private Vector2 _position;
@@ -15,22 +18,50 @@ namespace BFB.Engine.TileMap
         private const int CameraHeight = 450;
             
         
-        
+        /// <summary>
+        /// The vector of the current position.
+        /// </summary>
         public Vector2 Position
         {
             get { return _position; }
             set { _position = value; }
         }
         
+        /// <summary>
+        /// The focus point.
+        /// </summary>
         public Vector2 Focus { get; set; }
 
+        /// <summary>
+        /// The rotation value.
+        /// </summary>
         public float Rotation { get; set; }
+        /// <summary>
+        /// The origin location.
+        /// </summary>
         public Vector2 Origin { get; set; }
+        /// <summary>
+        /// The zoom value.
+        /// </summary>
         public float Zoom { get; set; }
+        /// <summary>
+        /// The center of the screen location.
+        /// </summary>
         public Vector2 ScreenCenter { get; protected set; }
+        /// <summary>
+        /// The matrix to transform the camera.
+        /// </summary>
         public Matrix Transform { get; set; }
+        /// <summary>
+        /// The speed value of the movement.
+        /// </summary>
         public float MoveSpeed { get; set; }
 
+        /// <summary>
+        /// The camera configuration of the camera.
+        /// </summary>
+        /// <param name="worldManager">The manager of the world.</param>
+        /// <param name="graphicsDevice">The graphics of the device.</param>
         public Camera2D(WorldManager worldManager, GraphicsDevice graphicsDevice)
         {
             _worldManager = worldManager;
@@ -45,6 +76,10 @@ namespace BFB.Engine.TileMap
             Rotation = 0;
         }
 
+        /// <summary>
+        /// Checks the screen scale.
+        /// </summary>
+        /// <returns>Returns the Vector3 of the scale.</returns>
         private Vector3 CheckScreenScale()
         {
             //Player is positioned wrong after this
@@ -54,7 +89,10 @@ namespace BFB.Engine.TileMap
         }
         
         
-
+        /// <summary>
+        /// Updates the camera.
+        /// </summary>
+        /// <param name="gameTime">The time of the game.</param>
         public void Update(GameTime gameTime)
         {
             ScreenCenter = new Vector2((float)_graphicsDevice.Viewport.Width / 2, (float)_graphicsDevice.Viewport.Height / 2);
@@ -88,6 +126,12 @@ namespace BFB.Engine.TileMap
 ////                
         }
         
+        /// <summary>
+        /// Checks if the object is in view.
+        /// </summary>
+        /// <param name="position">The position of the object.</param>
+        /// <param name="texture">The texture of the object.</param>
+        /// <returns>Returns true if the object is in view.</returns>
         public bool IsInView(Vector2 position, Texture2D texture)
         {
             // If the object is not within the horizontal bounds of the screen
