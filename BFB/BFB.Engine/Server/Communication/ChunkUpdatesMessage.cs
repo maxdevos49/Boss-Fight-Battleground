@@ -4,6 +4,9 @@ using BFB.Engine.TileMap;
 
 namespace BFB.Engine.Server.Communication
 {
+    /// <summary>
+    /// Used to pass ChunkUpdates and ChunkTileUpdates to the client
+    /// </summary>
     [Serializable]
     public class ChunkUpdatesMessage : DataMessage
     {
@@ -13,8 +16,14 @@ namespace BFB.Engine.Server.Communication
             ChunkTileUpdates = new List<ChunkTileUpdates>();
         }
         
+        /// <summary>
+        /// Holds Chunk Updates for updating an entire chunk
+        /// </summary>
         public List<ChunkUpdate> ChunkUpdates { get; }
 
+        /// <summary>
+        /// Holds Chunk Tile Updates that update individual tiles
+        /// </summary>
         public List<ChunkTileUpdates> ChunkTileUpdates { get; }
     }
 }
