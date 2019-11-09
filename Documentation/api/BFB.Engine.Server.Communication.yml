@@ -1,0 +1,53 @@
+### YamlMime:ManagedReference
+items:
+- uid: BFB.Engine.Server.Communication
+  commentId: N:BFB.Engine.Server.Communication
+  id: BFB.Engine.Server.Communication
+  children:
+  - BFB.Engine.Server.Communication.ChunkUpdatesMessage
+  - BFB.Engine.Server.Communication.DataMessage
+  - BFB.Engine.Server.Communication.EntityMessage
+  - BFB.Engine.Server.Communication.EntityUpdateMessage
+  - BFB.Engine.Server.Communication.InputMessage
+  langs:
+  - csharp
+  - vb
+  name: BFB.Engine.Server.Communication
+  nameWithType: BFB.Engine.Server.Communication
+  fullName: BFB.Engine.Server.Communication
+  type: Namespace
+  assemblies:
+  - BFB.Engine
+references:
+- uid: BFB.Engine.Server.Communication.ChunkUpdatesMessage
+  commentId: T:BFB.Engine.Server.Communication.ChunkUpdatesMessage
+  name: ChunkUpdatesMessage
+  nameWithType: ChunkUpdatesMessage
+  fullName: BFB.Engine.Server.Communication.ChunkUpdatesMessage
+- uid: BFB.Engine.Server.Communication.DataMessage
+  commentId: T:BFB.Engine.Server.Communication.DataMessage
+  parent: BFB.Engine.Server.Communication
+  name: DataMessage
+  nameWithType: DataMessage
+  fullName: BFB.Engine.Server.Communication.DataMessage
+- uid: BFB.Engine.Server.Communication.EntityMessage
+  commentId: T:BFB.Engine.Server.Communication.EntityMessage
+  parent: BFB.Engine.Server.Communication
+  name: EntityMessage
+  nameWithType: EntityMessage
+  fullName: BFB.Engine.Server.Communication.EntityMessage
+- uid: BFB.Engine.Server.Communication.EntityUpdateMessage
+  commentId: T:BFB.Engine.Server.Communication.EntityUpdateMessage
+  name: EntityUpdateMessage
+  nameWithType: EntityUpdateMessage
+  fullName: BFB.Engine.Server.Communication.EntityUpdateMessage
+- uid: BFB.Engine.Server.Communication.InputMessage
+  commentId: T:BFB.Engine.Server.Communication.InputMessage
+  name: InputMessage
+  nameWithType: InputMessage
+  fullName: BFB.Engine.Server.Communication.InputMessage
+- uid: BFB.Engine.Server.Communication
+  commentId: N:BFB.Engine.Server.Communication
+  name: BFB.Engine.Server.Communication
+  nameWithType: BFB.Engine.Server.Communication
+  fullName: BFB.Engine.Server.Communication

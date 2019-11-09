@@ -1,0 +1,527 @@
+### YamlMime:ManagedReference
+items:
+- uid: BFB.Engine.Entity.EntityOptions
+  commentId: T:BFB.Engine.Entity.EntityOptions
+  id: EntityOptions
+  parent: BFB.Engine.Entity
+  children:
+  - BFB.Engine.Entity.EntityOptions.AnimatedTextureKey
+  - BFB.Engine.Entity.EntityOptions.Dimensions
+  - BFB.Engine.Entity.EntityOptions.Origin
+  - BFB.Engine.Entity.EntityOptions.Position
+  - BFB.Engine.Entity.EntityOptions.Rotation
+  langs:
+  - csharp
+  - vb
+  name: EntityOptions
+  nameWithType: EntityOptions
+  fullName: BFB.Engine.Entity.EntityOptions
+  type: Class
+  source:
+    remote:
+      path: BFB/BFB.Engine/Entity/Entity.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: EntityOptions
+    path: ../BFB/BFB.Engine/Entity/Entity.cs
+    startLine: 114
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Entity
+  summary: "\nContains properties of an entity to be applied to an entity. Specifically a new entity while being created.\n"
+  example: []
+  syntax:
+    content: 'public class EntityOptions : object'
+    content.vb: >-
+      Public Class EntityOptions
+
+          Inherits Object
+  inheritance:
+  - System.Object
+  extensionMethods:
+  - BFB.Engine.Entity.EntityOptions.BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{BFB.Engine.Entity.EntityOptions,{TValue}}},{TValue})
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: BFB.Engine.Entity.EntityOptions.AnimatedTextureKey
+  commentId: P:BFB.Engine.Entity.EntityOptions.AnimatedTextureKey
+  id: AnimatedTextureKey
+  parent: BFB.Engine.Entity.EntityOptions
+  langs:
+  - csharp
+  - vb
+  name: AnimatedTextureKey
+  nameWithType: EntityOptions.AnimatedTextureKey
+  fullName: BFB.Engine.Entity.EntityOptions.AnimatedTextureKey
+  type: Property
+  source:
+    remote:
+      path: BFB/BFB.Engine/Entity/Entity.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: AnimatedTextureKey
+    path: ../BFB/BFB.Engine/Entity/Entity.cs
+    startLine: 119
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Entity
+  summary: "\nKey to which texture to apply\n"
+  example: []
+  syntax:
+    content: public string AnimatedTextureKey { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property AnimatedTextureKey As String
+  overload: BFB.Engine.Entity.EntityOptions.AnimatedTextureKey*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.Entity.EntityOptions.Position
+  commentId: P:BFB.Engine.Entity.EntityOptions.Position
+  id: Position
+  parent: BFB.Engine.Entity.EntityOptions
+  langs:
+  - csharp
+  - vb
+  name: Position
+  nameWithType: EntityOptions.Position
+  fullName: BFB.Engine.Entity.EntityOptions.Position
+  type: Property
+  source:
+    remote:
+      path: BFB/BFB.Engine/Entity/Entity.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: Position
+    path: ../BFB/BFB.Engine/Entity/Entity.cs
+    startLine: 123
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Entity
+  summary: "\nCurrent position of this entity on the map\n"
+  example: []
+  syntax:
+    content: public BfbVector Position { get; set; }
+    parameters: []
+    return:
+      type: BFB.Engine.Math.BfbVector
+    content.vb: Public Property Position As BfbVector
+  overload: BFB.Engine.Entity.EntityOptions.Position*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.Entity.EntityOptions.Dimensions
+  commentId: P:BFB.Engine.Entity.EntityOptions.Dimensions
+  id: Dimensions
+  parent: BFB.Engine.Entity.EntityOptions
+  langs:
+  - csharp
+  - vb
+  name: Dimensions
+  nameWithType: EntityOptions.Dimensions
+  fullName: BFB.Engine.Entity.EntityOptions.Dimensions
+  type: Property
+  source:
+    remote:
+      path: BFB/BFB.Engine/Entity/Entity.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: Dimensions
+    path: ../BFB/BFB.Engine/Entity/Entity.cs
+    startLine: 127
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Entity
+  summary: "\nVector of dimensions for this entity\n"
+  example: []
+  syntax:
+    content: public BfbVector Dimensions { get; set; }
+    parameters: []
+    return:
+      type: BFB.Engine.Math.BfbVector
+    content.vb: Public Property Dimensions As BfbVector
+  overload: BFB.Engine.Entity.EntityOptions.Dimensions*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.Entity.EntityOptions.Origin
+  commentId: P:BFB.Engine.Entity.EntityOptions.Origin
+  id: Origin
+  parent: BFB.Engine.Entity.EntityOptions
+  langs:
+  - csharp
+  - vb
+  name: Origin
+  nameWithType: EntityOptions.Origin
+  fullName: BFB.Engine.Entity.EntityOptions.Origin
+  type: Property
+  source:
+    remote:
+      path: BFB/BFB.Engine/Entity/Entity.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: Origin
+    path: ../BFB/BFB.Engine/Entity/Entity.cs
+    startLine: 131
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Entity
+  summary: "\nPoint that this entity calculates position and rotation from\n"
+  example: []
+  syntax:
+    content: public BfbVector Origin { get; set; }
+    parameters: []
+    return:
+      type: BFB.Engine.Math.BfbVector
+    content.vb: Public Property Origin As BfbVector
+  overload: BFB.Engine.Entity.EntityOptions.Origin*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.Entity.EntityOptions.Rotation
+  commentId: P:BFB.Engine.Entity.EntityOptions.Rotation
+  id: Rotation
+  parent: BFB.Engine.Entity.EntityOptions
+  langs:
+  - csharp
+  - vb
+  name: Rotation
+  nameWithType: EntityOptions.Rotation
+  fullName: BFB.Engine.Entity.EntityOptions.Rotation
+  type: Property
+  source:
+    remote:
+      path: BFB/BFB.Engine/Entity/Entity.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: Rotation
+    path: ../BFB/BFB.Engine/Entity/Entity.cs
+    startLine: 135
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Entity
+  summary: "\nThe rotation of this entity\n"
+  example: []
+  syntax:
+    content: public float Rotation { get; set; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: Public Property Rotation As Single
+  overload: BFB.Engine.Entity.EntityOptions.Rotation*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+references:
+- uid: BFB.Engine.Entity
+  commentId: N:BFB.Engine.Entity
+  name: BFB.Engine.Entity
+  nameWithType: BFB.Engine.Entity
+  fullName: BFB.Engine.Entity
+- uid: System.Object
+  commentId: '!:System.Object'
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: BFB.Engine.Entity.EntityOptions.BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{BFB.Engine.Entity.EntityOptions,{TValue}}},{TValue})
+  commentId: M:BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  parent: BFB.Engine.UI.Components.LambdaExtensions
+  definition: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  name: SetPropertyValue<EntityOptions, TValue>(Expression<Func<EntityOptions, TValue>>, TValue)
+  nameWithType: LambdaExtensions.SetPropertyValue<EntityOptions, TValue>(Expression<Func<EntityOptions, TValue>>, TValue)
+  fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<BFB.Engine.Entity.EntityOptions, TValue>(Expression<Func<BFB.Engine.Entity.EntityOptions, TValue>>, TValue)
+  nameWithType.vb: LambdaExtensions.SetPropertyValue(Of EntityOptions, TValue)(Expression(Of Func(Of EntityOptions, TValue)), TValue)
+  fullName.vb: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of BFB.Engine.Entity.EntityOptions, TValue)(Expression(Of Func(Of BFB.Engine.Entity.EntityOptions, TValue)), TValue)
+  name.vb: SetPropertyValue(Of EntityOptions, TValue)(Expression(Of Func(Of EntityOptions, TValue)), TValue)
+  spec.csharp:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue<EntityOptions, TValue>
+    nameWithType: LambdaExtensions.SetPropertyValue<EntityOptions, TValue>
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<BFB.Engine.Entity.EntityOptions, TValue>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: BFB.Engine.Entity.EntityOptions
+    name: EntityOptions
+    nameWithType: EntityOptions
+    fullName: BFB.Engine.Entity.EntityOptions
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue(Of EntityOptions, TValue)
+    nameWithType: LambdaExtensions.SetPropertyValue(Of EntityOptions, TValue)
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of BFB.Engine.Entity.EntityOptions, TValue)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: BFB.Engine.Entity.EntityOptions
+    name: EntityOptions
+    nameWithType: EntityOptions
+    fullName: BFB.Engine.Entity.EntityOptions
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  commentId: M:BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  isExternal: true
+  name: SetPropertyValue<T, TValue>(T, Expression<Func<T, TValue>>, TValue)
+  nameWithType: LambdaExtensions.SetPropertyValue<T, TValue>(T, Expression<Func<T, TValue>>, TValue)
+  fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<T, TValue>(T, Expression<Func<T, TValue>>, TValue)
+  nameWithType.vb: LambdaExtensions.SetPropertyValue(Of T, TValue)(T, Expression(Of Func(Of T, TValue)), TValue)
+  fullName.vb: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of T, TValue)(T, Expression(Of Func(Of T, TValue)), TValue)
+  name.vb: SetPropertyValue(Of T, TValue)(T, Expression(Of Func(Of T, TValue)), TValue)
+  spec.csharp:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue<T, TValue>
+    nameWithType: LambdaExtensions.SetPropertyValue<T, TValue>
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<T, TValue>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue(Of T, TValue)
+    nameWithType: LambdaExtensions.SetPropertyValue(Of T, TValue)
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of T, TValue)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Components.LambdaExtensions
+  commentId: T:BFB.Engine.UI.Components.LambdaExtensions
+  parent: BFB.Engine.UI.Components
+  name: LambdaExtensions
+  nameWithType: LambdaExtensions
+  fullName: BFB.Engine.UI.Components.LambdaExtensions
+- uid: BFB.Engine.UI.Components
+  commentId: N:BFB.Engine.UI.Components
+  name: BFB.Engine.UI.Components
+  nameWithType: BFB.Engine.UI.Components
+  fullName: BFB.Engine.UI.Components
+- uid: BFB.Engine.Entity.EntityOptions.AnimatedTextureKey*
+  commentId: Overload:BFB.Engine.Entity.EntityOptions.AnimatedTextureKey
+  name: AnimatedTextureKey
+  nameWithType: EntityOptions.AnimatedTextureKey
+  fullName: BFB.Engine.Entity.EntityOptions.AnimatedTextureKey
+- uid: System.String
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: BFB.Engine.Entity.EntityOptions.Position*
+  commentId: Overload:BFB.Engine.Entity.EntityOptions.Position
+  name: Position
+  nameWithType: EntityOptions.Position
+  fullName: BFB.Engine.Entity.EntityOptions.Position
+- uid: BFB.Engine.Math.BfbVector
+  commentId: T:BFB.Engine.Math.BfbVector
+  parent: BFB.Engine.Math
+  name: BfbVector
+  nameWithType: BfbVector
+  fullName: BFB.Engine.Math.BfbVector
+- uid: BFB.Engine.Math
+  commentId: N:BFB.Engine.Math
+  name: BFB.Engine.Math
+  nameWithType: BFB.Engine.Math
+  fullName: BFB.Engine.Math
+- uid: BFB.Engine.Entity.EntityOptions.Dimensions*
+  commentId: Overload:BFB.Engine.Entity.EntityOptions.Dimensions
+  name: Dimensions
+  nameWithType: EntityOptions.Dimensions
+  fullName: BFB.Engine.Entity.EntityOptions.Dimensions
+- uid: BFB.Engine.Entity.EntityOptions.Origin*
+  commentId: Overload:BFB.Engine.Entity.EntityOptions.Origin
+  name: Origin
+  nameWithType: EntityOptions.Origin
+  fullName: BFB.Engine.Entity.EntityOptions.Origin
+- uid: BFB.Engine.Entity.EntityOptions.Rotation*
+  commentId: Overload:BFB.Engine.Entity.EntityOptions.Rotation
+  name: Rotation
+  nameWithType: EntityOptions.Rotation
+  fullName: BFB.Engine.Entity.EntityOptions.Rotation
+- uid: System.Single
+  isExternal: true
+  name: Single
+  nameWithType: Single
+  fullName: System.Single

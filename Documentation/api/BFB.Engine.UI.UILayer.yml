@@ -1,0 +1,964 @@
+### YamlMime:ManagedReference
+items:
+- uid: BFB.Engine.UI.UILayer
+  commentId: T:BFB.Engine.UI.UILayer
+  id: UILayer
+  parent: BFB.Engine.UI
+  children:
+  - BFB.Engine.UI.UILayer.#ctor(System.String)
+  - BFB.Engine.UI.UILayer.AddEventComponent(BFB.Engine.UI.Components.UIComponent)
+  - BFB.Engine.UI.UILayer.AddTabIndexComponent(BFB.Engine.UI.Components.UIComponent)
+  - BFB.Engine.UI.UILayer.Body
+  - BFB.Engine.UI.UILayer.Debug
+  - BFB.Engine.UI.UILayer.Init
+  - BFB.Engine.UI.UILayer.InitializeRoot(BFB.Engine.UI.Components.UIRootComponent)
+  - BFB.Engine.UI.UILayer.Key
+  - BFB.Engine.UI.UILayer.ProcessEvents(IEnumerable{BFB.Engine.Event.UIEvent})
+  - BFB.Engine.UI.UILayer.RootUI
+  - BFB.Engine.UI.UILayer.SceneManager
+  - BFB.Engine.UI.UILayer.Stop
+  - BFB.Engine.UI.UILayer.UIManager
+  langs:
+  - csharp
+  - vb
+  name: UILayer
+  nameWithType: UILayer
+  fullName: BFB.Engine.UI.UILayer
+  type: Class
+  source:
+    remote:
+      path: BFB/BFB.Engine/UI/UILayer.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: UILayer
+    path: ../BFB/BFB.Engine/UI/UILayer.cs
+    startLine: 13
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.UI
+  summary: "\nUsed to create a layer for ui elements\n"
+  example: []
+  syntax:
+    content: 'public abstract class UILayer : object'
+    content.vb: >-
+      Public MustInherit Class UILayer
+
+          Inherits Object
+  inheritance:
+  - System.Object
+  extensionMethods:
+  - BFB.Engine.UI.UILayer.BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{BFB.Engine.UI.UILayer,{TValue}}},{TValue})
+  modifiers.csharp:
+  - public
+  - abstract
+  - class
+  modifiers.vb:
+  - Public
+  - MustInherit
+  - Class
+- uid: BFB.Engine.UI.UILayer.Key
+  commentId: P:BFB.Engine.UI.UILayer.Key
+  id: Key
+  parent: BFB.Engine.UI.UILayer
+  langs:
+  - csharp
+  - vb
+  name: Key
+  nameWithType: UILayer.Key
+  fullName: BFB.Engine.UI.UILayer.Key
+  type: Property
+  source:
+    remote:
+      path: BFB/BFB.Engine/UI/UILayer.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: Key
+    path: ../BFB/BFB.Engine/UI/UILayer.cs
+    startLine: 20
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.UI
+  summary: "\nThe identification key for the uilayer\n"
+  example: []
+  syntax:
+    content: public string Key { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public ReadOnly Property Key As String
+  overload: BFB.Engine.UI.UILayer.Key*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: BFB.Engine.UI.UILayer.UIManager
+  commentId: P:BFB.Engine.UI.UILayer.UIManager
+  id: UIManager
+  parent: BFB.Engine.UI.UILayer
+  langs:
+  - csharp
+  - vb
+  name: UIManager
+  nameWithType: UILayer.UIManager
+  fullName: BFB.Engine.UI.UILayer.UIManager
+  type: Property
+  source:
+    remote:
+      path: BFB/BFB.Engine/UI/UILayer.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: UIManager
+    path: ../BFB/BFB.Engine/UI/UILayer.cs
+    startLine: 25
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.UI
+  summary: "\nThe UIManager for the UILayer\n"
+  example: []
+  syntax:
+    content: public static UIManager UIManager { get; set; }
+    parameters: []
+    return:
+      type: BFB.Engine.UI.UIManager
+    content.vb: Public Shared Property UIManager As UIManager
+  overload: BFB.Engine.UI.UILayer.UIManager*
+  modifiers.csharp:
+  - public
+  - static
+  - get
+  - set
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: BFB.Engine.UI.UILayer.SceneManager
+  commentId: P:BFB.Engine.UI.UILayer.SceneManager
+  id: SceneManager
+  parent: BFB.Engine.UI.UILayer
+  langs:
+  - csharp
+  - vb
+  name: SceneManager
+  nameWithType: UILayer.SceneManager
+  fullName: BFB.Engine.UI.UILayer.SceneManager
+  type: Property
+  source:
+    remote:
+      path: BFB/BFB.Engine/UI/UILayer.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: SceneManager
+    path: ../BFB/BFB.Engine/UI/UILayer.cs
+    startLine: 30
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.UI
+  summary: "\nThe SceneManager class\n"
+  example: []
+  syntax:
+    content: public static SceneManager SceneManager { get; set; }
+    parameters: []
+    return:
+      type: BFB.Engine.Scene.SceneManager
+    content.vb: Public Shared Property SceneManager As SceneManager
+  overload: BFB.Engine.UI.UILayer.SceneManager*
+  modifiers.csharp:
+  - public
+  - static
+  - get
+  - set
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: BFB.Engine.UI.UILayer.Debug
+  commentId: P:BFB.Engine.UI.UILayer.Debug
+  id: Debug
+  parent: BFB.Engine.UI.UILayer
+  langs:
+  - csharp
+  - vb
+  name: Debug
+  nameWithType: UILayer.Debug
+  fullName: BFB.Engine.UI.UILayer.Debug
+  type: Property
+  source:
+    remote:
+      path: BFB/BFB.Engine/UI/UILayer.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: Debug
+    path: ../BFB/BFB.Engine/UI/UILayer.cs
+    startLine: 35
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.UI
+  summary: "\nUsed to inidicate if the scene should be drawn in debug mode\n"
+  example: []
+  syntax:
+    content: public bool Debug { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property Debug As Boolean
+  overload: BFB.Engine.UI.UILayer.Debug*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.UI.UILayer.RootUI
+  commentId: P:BFB.Engine.UI.UILayer.RootUI
+  id: RootUI
+  parent: BFB.Engine.UI.UILayer
+  langs:
+  - csharp
+  - vb
+  name: RootUI
+  nameWithType: UILayer.RootUI
+  fullName: BFB.Engine.UI.UILayer.RootUI
+  type: Property
+  source:
+    remote:
+      path: BFB/BFB.Engine/UI/UILayer.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: RootUI
+    path: ../BFB/BFB.Engine/UI/UILayer.cs
+    startLine: 40
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.UI
+  summary: "\nRepresents the foundation of the UI\n"
+  example: []
+  syntax:
+    content: public UIRootComponent RootUI { get; set; }
+    parameters: []
+    return:
+      type: BFB.Engine.UI.Components.UIRootComponent
+    content.vb: Public Property RootUI As UIRootComponent
+  overload: BFB.Engine.UI.UILayer.RootUI*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.UI.UILayer.#ctor(System.String)
+  commentId: M:BFB.Engine.UI.UILayer.#ctor(System.String)
+  id: '#ctor(System.String)'
+  parent: BFB.Engine.UI.UILayer
+  langs:
+  - csharp
+  - vb
+  name: UILayer(String)
+  nameWithType: UILayer.UILayer(String)
+  fullName: BFB.Engine.UI.UILayer.UILayer(System.String)
+  type: Constructor
+  source:
+    remote:
+      path: BFB/BFB.Engine/UI/UILayer.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: .ctor
+    path: ../BFB/BFB.Engine/UI/UILayer.cs
+    startLine: 65
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.UI
+  summary: "\nConstructs a UILayer for displaying UIElements\n"
+  example: []
+  syntax:
+    content: protected UILayer(string key)
+    parameters:
+    - id: key
+      type: System.String
+      description: ''
+    content.vb: Protected Sub New(key As String)
+  overload: BFB.Engine.UI.UILayer.#ctor*
+  modifiers.csharp:
+  - protected
+  modifiers.vb:
+  - Protected
+- uid: BFB.Engine.UI.UILayer.InitializeRoot(BFB.Engine.UI.Components.UIRootComponent)
+  commentId: M:BFB.Engine.UI.UILayer.InitializeRoot(BFB.Engine.UI.Components.UIRootComponent)
+  id: InitializeRoot(BFB.Engine.UI.Components.UIRootComponent)
+  parent: BFB.Engine.UI.UILayer
+  langs:
+  - csharp
+  - vb
+  name: InitializeRoot(UIRootComponent)
+  nameWithType: UILayer.InitializeRoot(UIRootComponent)
+  fullName: BFB.Engine.UI.UILayer.InitializeRoot(BFB.Engine.UI.Components.UIRootComponent)
+  type: Method
+  source:
+    remote:
+      path: BFB/BFB.Engine/UI/UILayer.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: InitializeRoot
+    path: ../BFB/BFB.Engine/UI/UILayer.cs
+    startLine: 84
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.UI
+  summary: "\nInitializes the layer for drawing\n"
+  example: []
+  syntax:
+    content: public void InitializeRoot(UIRootComponent rootNode)
+    parameters:
+    - id: rootNode
+      type: BFB.Engine.UI.Components.UIRootComponent
+      description: ''
+    content.vb: Public Sub InitializeRoot(rootNode As UIRootComponent)
+  overload: BFB.Engine.UI.UILayer.InitializeRoot*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.UI.UILayer.ProcessEvents(IEnumerable{BFB.Engine.Event.UIEvent})
+  commentId: M:BFB.Engine.UI.UILayer.ProcessEvents(IEnumerable{BFB.Engine.Event.UIEvent})
+  id: ProcessEvents(IEnumerable{BFB.Engine.Event.UIEvent})
+  parent: BFB.Engine.UI.UILayer
+  langs:
+  - csharp
+  - vb
+  name: ProcessEvents(IEnumerable<UIEvent>)
+  nameWithType: UILayer.ProcessEvents(IEnumerable<UIEvent>)
+  fullName: BFB.Engine.UI.UILayer.ProcessEvents(IEnumerable<BFB.Engine.Event.UIEvent>)
+  type: Method
+  source:
+    remote:
+      path: BFB/BFB.Engine/UI/UILayer.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: ProcessEvents
+    path: ../BFB/BFB.Engine/UI/UILayer.cs
+    startLine: 100
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.UI
+  summary: "\nProcesses Input Events into UIEvents\n"
+  example: []
+  syntax:
+    content: public bool ProcessEvents(IEnumerable<UIEvent> events)
+    parameters:
+    - id: events
+      type: IEnumerable{BFB.Engine.Event.UIEvent}
+      description: ''
+    return:
+      type: System.Boolean
+      description: ''
+    content.vb: Public Function ProcessEvents(events As IEnumerable(Of UIEvent)) As Boolean
+  overload: BFB.Engine.UI.UILayer.ProcessEvents*
+  nameWithType.vb: UILayer.ProcessEvents(IEnumerable(Of UIEvent))
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+  fullName.vb: BFB.Engine.UI.UILayer.ProcessEvents(IEnumerable(Of BFB.Engine.Event.UIEvent))
+  name.vb: ProcessEvents(IEnumerable(Of UIEvent))
+- uid: BFB.Engine.UI.UILayer.AddEventComponent(BFB.Engine.UI.Components.UIComponent)
+  commentId: M:BFB.Engine.UI.UILayer.AddEventComponent(BFB.Engine.UI.Components.UIComponent)
+  id: AddEventComponent(BFB.Engine.UI.Components.UIComponent)
+  parent: BFB.Engine.UI.UILayer
+  langs:
+  - csharp
+  - vb
+  name: AddEventComponent(UIComponent)
+  nameWithType: UILayer.AddEventComponent(UIComponent)
+  fullName: BFB.Engine.UI.UILayer.AddEventComponent(BFB.Engine.UI.Components.UIComponent)
+  type: Method
+  source:
+    remote:
+      path: BFB/BFB.Engine/UI/UILayer.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: AddEventComponent
+    path: ../BFB/BFB.Engine/UI/UILayer.cs
+    startLine: 202
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.UI
+  summary: "\nAdds a UIComponents that uses events into the Event Index\n"
+  example: []
+  syntax:
+    content: public void AddEventComponent(UIComponent component)
+    parameters:
+    - id: component
+      type: BFB.Engine.UI.Components.UIComponent
+      description: The UIComponent that will emit events
+    content.vb: Public Sub AddEventComponent(component As UIComponent)
+  overload: BFB.Engine.UI.UILayer.AddEventComponent*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.UI.UILayer.AddTabIndexComponent(BFB.Engine.UI.Components.UIComponent)
+  commentId: M:BFB.Engine.UI.UILayer.AddTabIndexComponent(BFB.Engine.UI.Components.UIComponent)
+  id: AddTabIndexComponent(BFB.Engine.UI.Components.UIComponent)
+  parent: BFB.Engine.UI.UILayer
+  langs:
+  - csharp
+  - vb
+  name: AddTabIndexComponent(UIComponent)
+  nameWithType: UILayer.AddTabIndexComponent(UIComponent)
+  fullName: BFB.Engine.UI.UILayer.AddTabIndexComponent(BFB.Engine.UI.Components.UIComponent)
+  type: Method
+  source:
+    remote:
+      path: BFB/BFB.Engine/UI/UILayer.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: AddTabIndexComponent
+    path: ../BFB/BFB.Engine/UI/UILayer.cs
+    startLine: 215
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.UI
+  summary: "\nAdds a UIComponent to the tabindex if it can be tabbed\n"
+  example: []
+  syntax:
+    content: public void AddTabIndexComponent(UIComponent component)
+    parameters:
+    - id: component
+      type: BFB.Engine.UI.Components.UIComponent
+      description: The UIComponent that can be tabbed
+    content.vb: Public Sub AddTabIndexComponent(component As UIComponent)
+  overload: BFB.Engine.UI.UILayer.AddTabIndexComponent*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.UI.UILayer.Init
+  commentId: M:BFB.Engine.UI.UILayer.Init
+  id: Init
+  parent: BFB.Engine.UI.UILayer
+  langs:
+  - csharp
+  - vb
+  name: Init()
+  nameWithType: UILayer.Init()
+  fullName: BFB.Engine.UI.UILayer.Init()
+  type: Method
+  source:
+    remote:
+      path: BFB/BFB.Engine/UI/UILayer.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: Init
+    path: ../BFB/BFB.Engine/UI/UILayer.cs
+    startLine: 227
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.UI
+  summary: "\nAn optional init method for a UILayer to use for setup. Called every time a UILayer is started\n"
+  example: []
+  syntax:
+    content: public virtual void Init()
+    content.vb: Public Overridable Sub Init
+  overload: BFB.Engine.UI.UILayer.Init*
+  modifiers.csharp:
+  - public
+  - virtual
+  modifiers.vb:
+  - Public
+  - Overridable
+- uid: BFB.Engine.UI.UILayer.Stop
+  commentId: M:BFB.Engine.UI.UILayer.Stop
+  id: Stop
+  parent: BFB.Engine.UI.UILayer
+  langs:
+  - csharp
+  - vb
+  name: Stop()
+  nameWithType: UILayer.Stop()
+  fullName: BFB.Engine.UI.UILayer.Stop()
+  type: Method
+  source:
+    remote:
+      path: BFB/BFB.Engine/UI/UILayer.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: Stop
+    path: ../BFB/BFB.Engine/UI/UILayer.cs
+    startLine: 236
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.UI
+  summary: "\nCalled when a UILayer needs to be stopped\n"
+  example: []
+  syntax:
+    content: public void Stop()
+    content.vb: Public Sub Stop
+  overload: BFB.Engine.UI.UILayer.Stop*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.UI.UILayer.Body
+  commentId: M:BFB.Engine.UI.UILayer.Body
+  id: Body
+  parent: BFB.Engine.UI.UILayer
+  langs:
+  - csharp
+  - vb
+  name: Body()
+  nameWithType: UILayer.Body()
+  fullName: BFB.Engine.UI.UILayer.Body()
+  type: Method
+  source:
+    remote:
+      path: BFB/BFB.Engine/UI/UILayer.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: Body
+    path: ../BFB/BFB.Engine/UI/UILayer.cs
+    startLine: 248
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.UI
+  summary: "\nThe area to define the UIComponent element layouts\n"
+  example: []
+  syntax:
+    content: public abstract void Body()
+    content.vb: Public MustOverride Sub Body
+  overload: BFB.Engine.UI.UILayer.Body*
+  modifiers.csharp:
+  - public
+  - abstract
+  modifiers.vb:
+  - Public
+  - MustOverride
+references:
+- uid: BFB.Engine.UI
+  commentId: N:BFB.Engine.UI
+  name: BFB.Engine.UI
+  nameWithType: BFB.Engine.UI
+  fullName: BFB.Engine.UI
+- uid: System.Object
+  commentId: '!:System.Object'
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: BFB.Engine.UI.UILayer.BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{BFB.Engine.UI.UILayer,{TValue}}},{TValue})
+  commentId: M:BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  parent: BFB.Engine.UI.Components.LambdaExtensions
+  definition: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  name: SetPropertyValue<UILayer, TValue>(Expression<Func<UILayer, TValue>>, TValue)
+  nameWithType: LambdaExtensions.SetPropertyValue<UILayer, TValue>(Expression<Func<UILayer, TValue>>, TValue)
+  fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<BFB.Engine.UI.UILayer, TValue>(Expression<Func<BFB.Engine.UI.UILayer, TValue>>, TValue)
+  nameWithType.vb: LambdaExtensions.SetPropertyValue(Of UILayer, TValue)(Expression(Of Func(Of UILayer, TValue)), TValue)
+  fullName.vb: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of BFB.Engine.UI.UILayer, TValue)(Expression(Of Func(Of BFB.Engine.UI.UILayer, TValue)), TValue)
+  name.vb: SetPropertyValue(Of UILayer, TValue)(Expression(Of Func(Of UILayer, TValue)), TValue)
+  spec.csharp:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue<UILayer, TValue>
+    nameWithType: LambdaExtensions.SetPropertyValue<UILayer, TValue>
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<BFB.Engine.UI.UILayer, TValue>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: BFB.Engine.UI.UILayer
+    name: UILayer
+    nameWithType: UILayer
+    fullName: BFB.Engine.UI.UILayer
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue(Of UILayer, TValue)
+    nameWithType: LambdaExtensions.SetPropertyValue(Of UILayer, TValue)
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of BFB.Engine.UI.UILayer, TValue)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: BFB.Engine.UI.UILayer
+    name: UILayer
+    nameWithType: UILayer
+    fullName: BFB.Engine.UI.UILayer
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  commentId: M:BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  isExternal: true
+  name: SetPropertyValue<T, TValue>(T, Expression<Func<T, TValue>>, TValue)
+  nameWithType: LambdaExtensions.SetPropertyValue<T, TValue>(T, Expression<Func<T, TValue>>, TValue)
+  fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<T, TValue>(T, Expression<Func<T, TValue>>, TValue)
+  nameWithType.vb: LambdaExtensions.SetPropertyValue(Of T, TValue)(T, Expression(Of Func(Of T, TValue)), TValue)
+  fullName.vb: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of T, TValue)(T, Expression(Of Func(Of T, TValue)), TValue)
+  name.vb: SetPropertyValue(Of T, TValue)(T, Expression(Of Func(Of T, TValue)), TValue)
+  spec.csharp:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue<T, TValue>
+    nameWithType: LambdaExtensions.SetPropertyValue<T, TValue>
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<T, TValue>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue(Of T, TValue)
+    nameWithType: LambdaExtensions.SetPropertyValue(Of T, TValue)
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of T, TValue)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Components.LambdaExtensions
+  commentId: T:BFB.Engine.UI.Components.LambdaExtensions
+  parent: BFB.Engine.UI.Components
+  name: LambdaExtensions
+  nameWithType: LambdaExtensions
+  fullName: BFB.Engine.UI.Components.LambdaExtensions
+- uid: BFB.Engine.UI.Components
+  commentId: N:BFB.Engine.UI.Components
+  name: BFB.Engine.UI.Components
+  nameWithType: BFB.Engine.UI.Components
+  fullName: BFB.Engine.UI.Components
+- uid: BFB.Engine.UI.UILayer.Key*
+  commentId: Overload:BFB.Engine.UI.UILayer.Key
+  name: Key
+  nameWithType: UILayer.Key
+  fullName: BFB.Engine.UI.UILayer.Key
+- uid: System.String
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: BFB.Engine.UI.UILayer.UIManager*
+  commentId: Overload:BFB.Engine.UI.UILayer.UIManager
+  name: UIManager
+  nameWithType: UILayer.UIManager
+  fullName: BFB.Engine.UI.UILayer.UIManager
+- uid: BFB.Engine.UI.UIManager
+  commentId: T:BFB.Engine.UI.UIManager
+  parent: BFB.Engine.UI
+  name: UIManager
+  nameWithType: UIManager
+  fullName: BFB.Engine.UI.UIManager
+- uid: BFB.Engine.UI.UILayer.SceneManager*
+  commentId: Overload:BFB.Engine.UI.UILayer.SceneManager
+  name: SceneManager
+  nameWithType: UILayer.SceneManager
+  fullName: BFB.Engine.UI.UILayer.SceneManager
+- uid: BFB.Engine.Scene.SceneManager
+  commentId: T:BFB.Engine.Scene.SceneManager
+  parent: BFB.Engine.Scene
+  name: SceneManager
+  nameWithType: SceneManager
+  fullName: BFB.Engine.Scene.SceneManager
+- uid: BFB.Engine.Scene
+  commentId: N:BFB.Engine.Scene
+  name: BFB.Engine.Scene
+  nameWithType: BFB.Engine.Scene
+  fullName: BFB.Engine.Scene
+- uid: BFB.Engine.UI.UILayer.Debug*
+  commentId: Overload:BFB.Engine.UI.UILayer.Debug
+  name: Debug
+  nameWithType: UILayer.Debug
+  fullName: BFB.Engine.UI.UILayer.Debug
+- uid: System.Boolean
+  isExternal: true
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: BFB.Engine.UI.UILayer.RootUI*
+  commentId: Overload:BFB.Engine.UI.UILayer.RootUI
+  name: RootUI
+  nameWithType: UILayer.RootUI
+  fullName: BFB.Engine.UI.UILayer.RootUI
+- uid: BFB.Engine.UI.Components.UIRootComponent
+  commentId: T:BFB.Engine.UI.Components.UIRootComponent
+  parent: BFB.Engine.UI.Components
+  name: UIRootComponent
+  nameWithType: UIRootComponent
+  fullName: BFB.Engine.UI.Components.UIRootComponent
+- uid: BFB.Engine.UI.UILayer.#ctor*
+  commentId: Overload:BFB.Engine.UI.UILayer.#ctor
+  name: UILayer
+  nameWithType: UILayer.UILayer
+  fullName: BFB.Engine.UI.UILayer.UILayer
+- uid: BFB.Engine.UI.UILayer.InitializeRoot*
+  commentId: Overload:BFB.Engine.UI.UILayer.InitializeRoot
+  name: InitializeRoot
+  nameWithType: UILayer.InitializeRoot
+  fullName: BFB.Engine.UI.UILayer.InitializeRoot
+- uid: BFB.Engine.UI.UILayer.ProcessEvents*
+  commentId: Overload:BFB.Engine.UI.UILayer.ProcessEvents
+  name: ProcessEvents
+  nameWithType: UILayer.ProcessEvents
+  fullName: BFB.Engine.UI.UILayer.ProcessEvents
+- uid: IEnumerable{BFB.Engine.Event.UIEvent}
+  commentId: '!:IEnumerable{BFB.Engine.Event.UIEvent}'
+  definition: IEnumerable`1
+  name: IEnumerable<UIEvent>
+  nameWithType: IEnumerable<UIEvent>
+  fullName: IEnumerable<BFB.Engine.Event.UIEvent>
+  nameWithType.vb: IEnumerable(Of UIEvent)
+  fullName.vb: IEnumerable(Of BFB.Engine.Event.UIEvent)
+  name.vb: IEnumerable(Of UIEvent)
+  spec.csharp:
+  - uid: IEnumerable`1
+    name: IEnumerable
+    nameWithType: IEnumerable
+    fullName: IEnumerable
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: BFB.Engine.Event.UIEvent
+    name: UIEvent
+    nameWithType: UIEvent
+    fullName: BFB.Engine.Event.UIEvent
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: IEnumerable`1
+    name: IEnumerable
+    nameWithType: IEnumerable
+    fullName: IEnumerable
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: BFB.Engine.Event.UIEvent
+    name: UIEvent
+    nameWithType: UIEvent
+    fullName: BFB.Engine.Event.UIEvent
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: IEnumerable`1
+  isExternal: true
+  name: IEnumerable<>
+  nameWithType: IEnumerable<>
+  fullName: IEnumerable<>
+  nameWithType.vb: IEnumerable(Of )
+  fullName.vb: IEnumerable(Of )
+  name.vb: IEnumerable(Of )
+  spec.csharp:
+  - uid: IEnumerable`1
+    name: IEnumerable
+    nameWithType: IEnumerable
+    fullName: IEnumerable
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: IEnumerable`1
+    name: IEnumerable
+    nameWithType: IEnumerable
+    fullName: IEnumerable
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.UILayer.AddEventComponent*
+  commentId: Overload:BFB.Engine.UI.UILayer.AddEventComponent
+  name: AddEventComponent
+  nameWithType: UILayer.AddEventComponent
+  fullName: BFB.Engine.UI.UILayer.AddEventComponent
+- uid: BFB.Engine.UI.Components.UIComponent
+  commentId: T:BFB.Engine.UI.Components.UIComponent
+  parent: BFB.Engine.UI.Components
+  name: UIComponent
+  nameWithType: UIComponent
+  fullName: BFB.Engine.UI.Components.UIComponent
+- uid: BFB.Engine.UI.UILayer.AddTabIndexComponent*
+  commentId: Overload:BFB.Engine.UI.UILayer.AddTabIndexComponent
+  name: AddTabIndexComponent
+  nameWithType: UILayer.AddTabIndexComponent
+  fullName: BFB.Engine.UI.UILayer.AddTabIndexComponent
+- uid: BFB.Engine.UI.UILayer.Init*
+  commentId: Overload:BFB.Engine.UI.UILayer.Init
+  name: Init
+  nameWithType: UILayer.Init
+  fullName: BFB.Engine.UI.UILayer.Init
+- uid: BFB.Engine.UI.UILayer.Stop*
+  commentId: Overload:BFB.Engine.UI.UILayer.Stop
+  name: Stop
+  nameWithType: UILayer.Stop
+  fullName: BFB.Engine.UI.UILayer.Stop
+- uid: BFB.Engine.UI.UILayer.Body*
+  commentId: Overload:BFB.Engine.UI.UILayer.Body
+  name: Body
+  nameWithType: UILayer.Body
+  fullName: BFB.Engine.UI.UILayer.Body

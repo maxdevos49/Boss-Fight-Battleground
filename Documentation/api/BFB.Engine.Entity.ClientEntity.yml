@@ -1,0 +1,546 @@
+### YamlMime:ManagedReference
+items:
+- uid: BFB.Engine.Entity.ClientEntity
+  commentId: T:BFB.Engine.Entity.ClientEntity
+  id: ClientEntity
+  parent: BFB.Engine.Entity
+  children:
+  - BFB.Engine.Entity.ClientEntity.#ctor(System.String,BFB.Engine.Entity.EntityOptions,BFB.Engine.Simulation.GraphicsComponents.IGraphicsComponent)
+  - BFB.Engine.Entity.ClientEntity.Draw(SpriteBatch)
+  - BFB.Engine.Entity.ClientEntity.Update
+  langs:
+  - csharp
+  - vb
+  name: ClientEntity
+  nameWithType: ClientEntity
+  fullName: BFB.Engine.Entity.ClientEntity
+  type: Class
+  source:
+    remote:
+      path: BFB/BFB.Engine/Entity/ClientEntity.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: ClientEntity
+    path: ../BFB/BFB.Engine/Entity/ClientEntity.cs
+    startLine: 8
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Entity
+  summary: "\nEntities loaded into the client that are displayed to the user\n"
+  example: []
+  syntax:
+    content: 'public class ClientEntity : Entity'
+    content.vb: >-
+      Public Class ClientEntity
+
+          Inherits Entity
+  inheritance:
+  - System.Object
+  - BFB.Engine.Entity.Entity
+  inheritedMembers:
+  - BFB.Engine.Entity.Entity.EntityId
+  - BFB.Engine.Entity.Entity.AnimatedTextureKey
+  - BFB.Engine.Entity.Entity.AnimationState
+  - BFB.Engine.Entity.Entity.Position
+  - BFB.Engine.Entity.Entity.Dimensions
+  - BFB.Engine.Entity.Entity.Origin
+  - BFB.Engine.Entity.Entity.Velocity
+  - BFB.Engine.Entity.Entity.Rotation
+  - BFB.Engine.Entity.Entity.Grounded
+  - BFB.Engine.Entity.Entity.GetState
+  extensionMethods:
+  - BFB.Engine.Entity.ClientEntity.BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{BFB.Engine.Entity.ClientEntity,{TValue}}},{TValue})
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: BFB.Engine.Entity.ClientEntity.#ctor(System.String,BFB.Engine.Entity.EntityOptions,BFB.Engine.Simulation.GraphicsComponents.IGraphicsComponent)
+  commentId: M:BFB.Engine.Entity.ClientEntity.#ctor(System.String,BFB.Engine.Entity.EntityOptions,BFB.Engine.Simulation.GraphicsComponents.IGraphicsComponent)
+  id: '#ctor(System.String,BFB.Engine.Entity.EntityOptions,BFB.Engine.Simulation.GraphicsComponents.IGraphicsComponent)'
+  parent: BFB.Engine.Entity.ClientEntity
+  langs:
+  - csharp
+  - vb
+  name: ClientEntity(String, EntityOptions, IGraphicsComponent)
+  nameWithType: ClientEntity.ClientEntity(String, EntityOptions, IGraphicsComponent)
+  fullName: BFB.Engine.Entity.ClientEntity.ClientEntity(System.String, BFB.Engine.Entity.EntityOptions, BFB.Engine.Simulation.GraphicsComponents.IGraphicsComponent)
+  type: Constructor
+  source:
+    remote:
+      path: BFB/BFB.Engine/Entity/ClientEntity.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: .ctor
+    path: ../BFB/BFB.Engine/Entity/ClientEntity.cs
+    startLine: 24
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Entity
+  summary: "\nCreates a new ClientEntity\n"
+  example: []
+  syntax:
+    content: public ClientEntity(string entityId, EntityOptions options, IGraphicsComponent graphics)
+    parameters:
+    - id: entityId
+      type: System.String
+      description: Unique ID of this entity
+    - id: options
+      type: BFB.Engine.Entity.EntityOptions
+      description: Options Object of this entity
+    - id: graphics
+      type: BFB.Engine.Simulation.GraphicsComponents.IGraphicsComponent
+      description: Graphics component for drawing
+    content.vb: Public Sub New(entityId As String, options As EntityOptions, graphics As IGraphicsComponent)
+  overload: BFB.Engine.Entity.ClientEntity.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.Entity.ClientEntity.Update
+  commentId: M:BFB.Engine.Entity.ClientEntity.Update
+  id: Update
+  parent: BFB.Engine.Entity.ClientEntity
+  langs:
+  - csharp
+  - vb
+  name: Update()
+  nameWithType: ClientEntity.Update()
+  fullName: BFB.Engine.Entity.ClientEntity.Update()
+  type: Method
+  source:
+    remote:
+      path: BFB/BFB.Engine/Entity/ClientEntity.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: Update
+    path: ../BFB/BFB.Engine/Entity/ClientEntity.cs
+    startLine: 37
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Entity
+  summary: "\nExtends Entity&apos;s Update() method\nUpdates this ClientEntity&apos;s information\n"
+  example: []
+  syntax:
+    content: public void Update()
+    content.vb: Public Sub Update
+  overload: BFB.Engine.Entity.ClientEntity.Update*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.Entity.ClientEntity.Draw(SpriteBatch)
+  commentId: M:BFB.Engine.Entity.ClientEntity.Draw(SpriteBatch)
+  id: Draw(SpriteBatch)
+  parent: BFB.Engine.Entity.ClientEntity
+  langs:
+  - csharp
+  - vb
+  name: Draw(SpriteBatch)
+  nameWithType: ClientEntity.Draw(SpriteBatch)
+  fullName: BFB.Engine.Entity.ClientEntity.Draw(SpriteBatch)
+  type: Method
+  source:
+    remote:
+      path: BFB/BFB.Engine/Entity/ClientEntity.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: Draw
+    path: ../BFB/BFB.Engine/Entity/ClientEntity.cs
+    startLine: 51
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Entity
+  summary: "\nExtends Entity&apos;s Update() method\nUpdates this ClientEntity&apos;s information\n"
+  example: []
+  syntax:
+    content: public void Draw(SpriteBatch graphics)
+    parameters:
+    - id: graphics
+      type: SpriteBatch
+      description: The SpriteBatch that this entity is a part of
+    content.vb: Public Sub Draw(graphics As SpriteBatch)
+  overload: BFB.Engine.Entity.ClientEntity.Draw*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+references:
+- uid: BFB.Engine.Entity
+  commentId: N:BFB.Engine.Entity
+  name: BFB.Engine.Entity
+  nameWithType: BFB.Engine.Entity
+  fullName: BFB.Engine.Entity
+- uid: System.Object
+  commentId: '!:System.Object'
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: BFB.Engine.Entity.Entity
+  commentId: T:BFB.Engine.Entity.Entity
+  parent: BFB.Engine.Entity
+  name: Entity
+  nameWithType: Entity
+  fullName: BFB.Engine.Entity.Entity
+- uid: BFB.Engine.Entity.Entity.EntityId
+  commentId: P:BFB.Engine.Entity.Entity.EntityId
+  parent: BFB.Engine.Entity.Entity
+  name: EntityId
+  nameWithType: Entity.EntityId
+  fullName: BFB.Engine.Entity.Entity.EntityId
+- uid: BFB.Engine.Entity.Entity.AnimatedTextureKey
+  commentId: P:BFB.Engine.Entity.Entity.AnimatedTextureKey
+  parent: BFB.Engine.Entity.Entity
+  name: AnimatedTextureKey
+  nameWithType: Entity.AnimatedTextureKey
+  fullName: BFB.Engine.Entity.Entity.AnimatedTextureKey
+- uid: BFB.Engine.Entity.Entity.AnimationState
+  commentId: P:BFB.Engine.Entity.Entity.AnimationState
+  parent: BFB.Engine.Entity.Entity
+  name: AnimationState
+  nameWithType: Entity.AnimationState
+  fullName: BFB.Engine.Entity.Entity.AnimationState
+- uid: BFB.Engine.Entity.Entity.Position
+  commentId: P:BFB.Engine.Entity.Entity.Position
+  parent: BFB.Engine.Entity.Entity
+  name: Position
+  nameWithType: Entity.Position
+  fullName: BFB.Engine.Entity.Entity.Position
+- uid: BFB.Engine.Entity.Entity.Dimensions
+  commentId: P:BFB.Engine.Entity.Entity.Dimensions
+  parent: BFB.Engine.Entity.Entity
+  name: Dimensions
+  nameWithType: Entity.Dimensions
+  fullName: BFB.Engine.Entity.Entity.Dimensions
+- uid: BFB.Engine.Entity.Entity.Origin
+  commentId: P:BFB.Engine.Entity.Entity.Origin
+  parent: BFB.Engine.Entity.Entity
+  name: Origin
+  nameWithType: Entity.Origin
+  fullName: BFB.Engine.Entity.Entity.Origin
+- uid: BFB.Engine.Entity.Entity.Velocity
+  commentId: P:BFB.Engine.Entity.Entity.Velocity
+  parent: BFB.Engine.Entity.Entity
+  name: Velocity
+  nameWithType: Entity.Velocity
+  fullName: BFB.Engine.Entity.Entity.Velocity
+- uid: BFB.Engine.Entity.Entity.Rotation
+  commentId: P:BFB.Engine.Entity.Entity.Rotation
+  parent: BFB.Engine.Entity.Entity
+  name: Rotation
+  nameWithType: Entity.Rotation
+  fullName: BFB.Engine.Entity.Entity.Rotation
+- uid: BFB.Engine.Entity.Entity.Grounded
+  commentId: P:BFB.Engine.Entity.Entity.Grounded
+  parent: BFB.Engine.Entity.Entity
+  name: Grounded
+  nameWithType: Entity.Grounded
+  fullName: BFB.Engine.Entity.Entity.Grounded
+- uid: BFB.Engine.Entity.Entity.GetState
+  commentId: M:BFB.Engine.Entity.Entity.GetState
+  parent: BFB.Engine.Entity.Entity
+  name: GetState()
+  nameWithType: Entity.GetState()
+  fullName: BFB.Engine.Entity.Entity.GetState()
+  spec.csharp:
+  - uid: BFB.Engine.Entity.Entity.GetState
+    name: GetState
+    nameWithType: Entity.GetState
+    fullName: BFB.Engine.Entity.Entity.GetState
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.Entity.Entity.GetState
+    name: GetState
+    nameWithType: Entity.GetState
+    fullName: BFB.Engine.Entity.Entity.GetState
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.Entity.ClientEntity.BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{BFB.Engine.Entity.ClientEntity,{TValue}}},{TValue})
+  commentId: M:BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  parent: BFB.Engine.UI.Components.LambdaExtensions
+  definition: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  name: SetPropertyValue<ClientEntity, TValue>(Expression<Func<ClientEntity, TValue>>, TValue)
+  nameWithType: LambdaExtensions.SetPropertyValue<ClientEntity, TValue>(Expression<Func<ClientEntity, TValue>>, TValue)
+  fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<BFB.Engine.Entity.ClientEntity, TValue>(Expression<Func<BFB.Engine.Entity.ClientEntity, TValue>>, TValue)
+  nameWithType.vb: LambdaExtensions.SetPropertyValue(Of ClientEntity, TValue)(Expression(Of Func(Of ClientEntity, TValue)), TValue)
+  fullName.vb: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of BFB.Engine.Entity.ClientEntity, TValue)(Expression(Of Func(Of BFB.Engine.Entity.ClientEntity, TValue)), TValue)
+  name.vb: SetPropertyValue(Of ClientEntity, TValue)(Expression(Of Func(Of ClientEntity, TValue)), TValue)
+  spec.csharp:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue<ClientEntity, TValue>
+    nameWithType: LambdaExtensions.SetPropertyValue<ClientEntity, TValue>
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<BFB.Engine.Entity.ClientEntity, TValue>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: BFB.Engine.Entity.ClientEntity
+    name: ClientEntity
+    nameWithType: ClientEntity
+    fullName: BFB.Engine.Entity.ClientEntity
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue(Of ClientEntity, TValue)
+    nameWithType: LambdaExtensions.SetPropertyValue(Of ClientEntity, TValue)
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of BFB.Engine.Entity.ClientEntity, TValue)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: BFB.Engine.Entity.ClientEntity
+    name: ClientEntity
+    nameWithType: ClientEntity
+    fullName: BFB.Engine.Entity.ClientEntity
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  commentId: M:BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  isExternal: true
+  name: SetPropertyValue<T, TValue>(T, Expression<Func<T, TValue>>, TValue)
+  nameWithType: LambdaExtensions.SetPropertyValue<T, TValue>(T, Expression<Func<T, TValue>>, TValue)
+  fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<T, TValue>(T, Expression<Func<T, TValue>>, TValue)
+  nameWithType.vb: LambdaExtensions.SetPropertyValue(Of T, TValue)(T, Expression(Of Func(Of T, TValue)), TValue)
+  fullName.vb: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of T, TValue)(T, Expression(Of Func(Of T, TValue)), TValue)
+  name.vb: SetPropertyValue(Of T, TValue)(T, Expression(Of Func(Of T, TValue)), TValue)
+  spec.csharp:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue<T, TValue>
+    nameWithType: LambdaExtensions.SetPropertyValue<T, TValue>
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<T, TValue>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue(Of T, TValue)
+    nameWithType: LambdaExtensions.SetPropertyValue(Of T, TValue)
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of T, TValue)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Components.LambdaExtensions
+  commentId: T:BFB.Engine.UI.Components.LambdaExtensions
+  parent: BFB.Engine.UI.Components
+  name: LambdaExtensions
+  nameWithType: LambdaExtensions
+  fullName: BFB.Engine.UI.Components.LambdaExtensions
+- uid: BFB.Engine.UI.Components
+  commentId: N:BFB.Engine.UI.Components
+  name: BFB.Engine.UI.Components
+  nameWithType: BFB.Engine.UI.Components
+  fullName: BFB.Engine.UI.Components
+- uid: BFB.Engine.Entity.ClientEntity.#ctor*
+  commentId: Overload:BFB.Engine.Entity.ClientEntity.#ctor
+  name: ClientEntity
+  nameWithType: ClientEntity.ClientEntity
+  fullName: BFB.Engine.Entity.ClientEntity.ClientEntity
+- uid: System.String
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: BFB.Engine.Entity.EntityOptions
+  commentId: T:BFB.Engine.Entity.EntityOptions
+  parent: BFB.Engine.Entity
+  name: EntityOptions
+  nameWithType: EntityOptions
+  fullName: BFB.Engine.Entity.EntityOptions
+- uid: BFB.Engine.Simulation.GraphicsComponents.IGraphicsComponent
+  commentId: T:BFB.Engine.Simulation.GraphicsComponents.IGraphicsComponent
+  parent: BFB.Engine.Simulation.GraphicsComponents
+  name: IGraphicsComponent
+  nameWithType: IGraphicsComponent
+  fullName: BFB.Engine.Simulation.GraphicsComponents.IGraphicsComponent
+- uid: BFB.Engine.Simulation.GraphicsComponents
+  commentId: N:BFB.Engine.Simulation.GraphicsComponents
+  name: BFB.Engine.Simulation.GraphicsComponents
+  nameWithType: BFB.Engine.Simulation.GraphicsComponents
+  fullName: BFB.Engine.Simulation.GraphicsComponents
+- uid: BFB.Engine.Entity.ClientEntity.Update*
+  commentId: Overload:BFB.Engine.Entity.ClientEntity.Update
+  name: Update
+  nameWithType: ClientEntity.Update
+  fullName: BFB.Engine.Entity.ClientEntity.Update
+- uid: BFB.Engine.Entity.ClientEntity.Draw*
+  commentId: Overload:BFB.Engine.Entity.ClientEntity.Draw
+  name: Draw
+  nameWithType: ClientEntity.Draw
+  fullName: BFB.Engine.Entity.ClientEntity.Draw
+- uid: SpriteBatch
+  isExternal: true
+  name: SpriteBatch
+  nameWithType: SpriteBatch
+  fullName: SpriteBatch

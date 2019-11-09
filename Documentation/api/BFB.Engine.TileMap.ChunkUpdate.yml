@@ -1,0 +1,542 @@
+### YamlMime:ManagedReference
+items:
+- uid: BFB.Engine.TileMap.ChunkUpdate
+  commentId: T:BFB.Engine.TileMap.ChunkUpdate
+  id: ChunkUpdate
+  parent: BFB.Engine.TileMap
+  children:
+  - BFB.Engine.TileMap.ChunkUpdate.Block
+  - BFB.Engine.TileMap.ChunkUpdate.ChunkKey
+  - BFB.Engine.TileMap.ChunkUpdate.ChunkX
+  - BFB.Engine.TileMap.ChunkUpdate.ChunkY
+  - BFB.Engine.TileMap.ChunkUpdate.Wall
+  langs:
+  - csharp
+  - vb
+  name: ChunkUpdate
+  nameWithType: ChunkUpdate
+  fullName: BFB.Engine.TileMap.ChunkUpdate
+  type: Class
+  source:
+    remote:
+      path: BFB/BFB.Engine/TileMap/ChunkUpdate.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: ChunkUpdate
+    path: ../BFB/BFB.Engine/TileMap/ChunkUpdate.cs
+    startLine: 7
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.TileMap
+  summary: "\nThe update of a chunk.\n"
+  example: []
+  syntax:
+    content: 'public class ChunkUpdate : object'
+    content.vb: >-
+      Public Class ChunkUpdate
+
+          Inherits Object
+  inheritance:
+  - System.Object
+  extensionMethods:
+  - BFB.Engine.TileMap.ChunkUpdate.BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{BFB.Engine.TileMap.ChunkUpdate,{TValue}}},{TValue})
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: BFB.Engine.TileMap.ChunkUpdate.ChunkKey
+  commentId: P:BFB.Engine.TileMap.ChunkUpdate.ChunkKey
+  id: ChunkKey
+  parent: BFB.Engine.TileMap.ChunkUpdate
+  langs:
+  - csharp
+  - vb
+  name: ChunkKey
+  nameWithType: ChunkUpdate.ChunkKey
+  fullName: BFB.Engine.TileMap.ChunkUpdate.ChunkKey
+  type: Property
+  source:
+    remote:
+      path: BFB/BFB.Engine/TileMap/ChunkUpdate.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: ChunkKey
+    path: ../BFB/BFB.Engine/TileMap/ChunkUpdate.cs
+    startLine: 13
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.TileMap
+  summary: "\nThe key of a chunk.\n"
+  example: []
+  syntax:
+    content: public string ChunkKey { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property ChunkKey As String
+  overload: BFB.Engine.TileMap.ChunkUpdate.ChunkKey*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.TileMap.ChunkUpdate.ChunkX
+  commentId: P:BFB.Engine.TileMap.ChunkUpdate.ChunkX
+  id: ChunkX
+  parent: BFB.Engine.TileMap.ChunkUpdate
+  langs:
+  - csharp
+  - vb
+  name: ChunkX
+  nameWithType: ChunkUpdate.ChunkX
+  fullName: BFB.Engine.TileMap.ChunkUpdate.ChunkX
+  type: Property
+  source:
+    remote:
+      path: BFB/BFB.Engine/TileMap/ChunkUpdate.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: ChunkX
+    path: ../BFB/BFB.Engine/TileMap/ChunkUpdate.cs
+    startLine: 17
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.TileMap
+  summary: "\nThe X location of a chunk.\n"
+  example: []
+  syntax:
+    content: public int ChunkX { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property ChunkX As Integer
+  overload: BFB.Engine.TileMap.ChunkUpdate.ChunkX*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.TileMap.ChunkUpdate.ChunkY
+  commentId: P:BFB.Engine.TileMap.ChunkUpdate.ChunkY
+  id: ChunkY
+  parent: BFB.Engine.TileMap.ChunkUpdate
+  langs:
+  - csharp
+  - vb
+  name: ChunkY
+  nameWithType: ChunkUpdate.ChunkY
+  fullName: BFB.Engine.TileMap.ChunkUpdate.ChunkY
+  type: Property
+  source:
+    remote:
+      path: BFB/BFB.Engine/TileMap/ChunkUpdate.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: ChunkY
+    path: ../BFB/BFB.Engine/TileMap/ChunkUpdate.cs
+    startLine: 21
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.TileMap
+  summary: "\nThe Y location of a chunk.\n"
+  example: []
+  syntax:
+    content: public int ChunkY { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property ChunkY As Integer
+  overload: BFB.Engine.TileMap.ChunkUpdate.ChunkY*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.TileMap.ChunkUpdate.Wall
+  commentId: P:BFB.Engine.TileMap.ChunkUpdate.Wall
+  id: Wall
+  parent: BFB.Engine.TileMap.ChunkUpdate
+  langs:
+  - csharp
+  - vb
+  name: Wall
+  nameWithType: ChunkUpdate.Wall
+  fullName: BFB.Engine.TileMap.ChunkUpdate.Wall
+  type: Property
+  source:
+    remote:
+      path: BFB/BFB.Engine/TileMap/ChunkUpdate.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: Wall
+    path: ../BFB/BFB.Engine/TileMap/ChunkUpdate.cs
+    startLine: 25
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.TileMap
+  summary: "\nThe Wall value of the block.\n"
+  example: []
+  syntax:
+    content: public ushort[, ] Wall { get; set; }
+    parameters: []
+    return:
+      type: System.UInt16[,]
+    content.vb: Public Property Wall As UShort(,)
+  overload: BFB.Engine.TileMap.ChunkUpdate.Wall*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.TileMap.ChunkUpdate.Block
+  commentId: P:BFB.Engine.TileMap.ChunkUpdate.Block
+  id: Block
+  parent: BFB.Engine.TileMap.ChunkUpdate
+  langs:
+  - csharp
+  - vb
+  name: Block
+  nameWithType: ChunkUpdate.Block
+  fullName: BFB.Engine.TileMap.ChunkUpdate.Block
+  type: Property
+  source:
+    remote:
+      path: BFB/BFB.Engine/TileMap/ChunkUpdate.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: Block
+    path: ../BFB/BFB.Engine/TileMap/ChunkUpdate.cs
+    startLine: 29
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.TileMap
+  summary: "\nThe Block value of the block.\n"
+  example: []
+  syntax:
+    content: public ushort[, ] Block { get; set; }
+    parameters: []
+    return:
+      type: System.UInt16[,]
+    content.vb: Public Property Block As UShort(,)
+  overload: BFB.Engine.TileMap.ChunkUpdate.Block*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+references:
+- uid: BFB.Engine.TileMap
+  commentId: N:BFB.Engine.TileMap
+  name: BFB.Engine.TileMap
+  nameWithType: BFB.Engine.TileMap
+  fullName: BFB.Engine.TileMap
+- uid: System.Object
+  commentId: '!:System.Object'
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: BFB.Engine.TileMap.ChunkUpdate.BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{BFB.Engine.TileMap.ChunkUpdate,{TValue}}},{TValue})
+  commentId: M:BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  parent: BFB.Engine.UI.Components.LambdaExtensions
+  definition: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  name: SetPropertyValue<ChunkUpdate, TValue>(Expression<Func<ChunkUpdate, TValue>>, TValue)
+  nameWithType: LambdaExtensions.SetPropertyValue<ChunkUpdate, TValue>(Expression<Func<ChunkUpdate, TValue>>, TValue)
+  fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<BFB.Engine.TileMap.ChunkUpdate, TValue>(Expression<Func<BFB.Engine.TileMap.ChunkUpdate, TValue>>, TValue)
+  nameWithType.vb: LambdaExtensions.SetPropertyValue(Of ChunkUpdate, TValue)(Expression(Of Func(Of ChunkUpdate, TValue)), TValue)
+  fullName.vb: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of BFB.Engine.TileMap.ChunkUpdate, TValue)(Expression(Of Func(Of BFB.Engine.TileMap.ChunkUpdate, TValue)), TValue)
+  name.vb: SetPropertyValue(Of ChunkUpdate, TValue)(Expression(Of Func(Of ChunkUpdate, TValue)), TValue)
+  spec.csharp:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue<ChunkUpdate, TValue>
+    nameWithType: LambdaExtensions.SetPropertyValue<ChunkUpdate, TValue>
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<BFB.Engine.TileMap.ChunkUpdate, TValue>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: BFB.Engine.TileMap.ChunkUpdate
+    name: ChunkUpdate
+    nameWithType: ChunkUpdate
+    fullName: BFB.Engine.TileMap.ChunkUpdate
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue(Of ChunkUpdate, TValue)
+    nameWithType: LambdaExtensions.SetPropertyValue(Of ChunkUpdate, TValue)
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of BFB.Engine.TileMap.ChunkUpdate, TValue)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: BFB.Engine.TileMap.ChunkUpdate
+    name: ChunkUpdate
+    nameWithType: ChunkUpdate
+    fullName: BFB.Engine.TileMap.ChunkUpdate
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  commentId: M:BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  isExternal: true
+  name: SetPropertyValue<T, TValue>(T, Expression<Func<T, TValue>>, TValue)
+  nameWithType: LambdaExtensions.SetPropertyValue<T, TValue>(T, Expression<Func<T, TValue>>, TValue)
+  fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<T, TValue>(T, Expression<Func<T, TValue>>, TValue)
+  nameWithType.vb: LambdaExtensions.SetPropertyValue(Of T, TValue)(T, Expression(Of Func(Of T, TValue)), TValue)
+  fullName.vb: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of T, TValue)(T, Expression(Of Func(Of T, TValue)), TValue)
+  name.vb: SetPropertyValue(Of T, TValue)(T, Expression(Of Func(Of T, TValue)), TValue)
+  spec.csharp:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue<T, TValue>
+    nameWithType: LambdaExtensions.SetPropertyValue<T, TValue>
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<T, TValue>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue(Of T, TValue)
+    nameWithType: LambdaExtensions.SetPropertyValue(Of T, TValue)
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of T, TValue)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Components.LambdaExtensions
+  commentId: T:BFB.Engine.UI.Components.LambdaExtensions
+  parent: BFB.Engine.UI.Components
+  name: LambdaExtensions
+  nameWithType: LambdaExtensions
+  fullName: BFB.Engine.UI.Components.LambdaExtensions
+- uid: BFB.Engine.UI.Components
+  commentId: N:BFB.Engine.UI.Components
+  name: BFB.Engine.UI.Components
+  nameWithType: BFB.Engine.UI.Components
+  fullName: BFB.Engine.UI.Components
+- uid: BFB.Engine.TileMap.ChunkUpdate.ChunkKey*
+  commentId: Overload:BFB.Engine.TileMap.ChunkUpdate.ChunkKey
+  name: ChunkKey
+  nameWithType: ChunkUpdate.ChunkKey
+  fullName: BFB.Engine.TileMap.ChunkUpdate.ChunkKey
+- uid: System.String
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: BFB.Engine.TileMap.ChunkUpdate.ChunkX*
+  commentId: Overload:BFB.Engine.TileMap.ChunkUpdate.ChunkX
+  name: ChunkX
+  nameWithType: ChunkUpdate.ChunkX
+  fullName: BFB.Engine.TileMap.ChunkUpdate.ChunkX
+- uid: System.Int32
+  isExternal: true
+  name: Int32
+  nameWithType: Int32
+  fullName: System.Int32
+- uid: BFB.Engine.TileMap.ChunkUpdate.ChunkY*
+  commentId: Overload:BFB.Engine.TileMap.ChunkUpdate.ChunkY
+  name: ChunkY
+  nameWithType: ChunkUpdate.ChunkY
+  fullName: BFB.Engine.TileMap.ChunkUpdate.ChunkY
+- uid: BFB.Engine.TileMap.ChunkUpdate.Wall*
+  commentId: Overload:BFB.Engine.TileMap.ChunkUpdate.Wall
+  name: Wall
+  nameWithType: ChunkUpdate.Wall
+  fullName: BFB.Engine.TileMap.ChunkUpdate.Wall
+- uid: System.UInt16[,]
+  isExternal: true
+  name: UInt16[,]
+  nameWithType: UInt16[,]
+  fullName: System.UInt16[,]
+  nameWithType.vb: UInt16(,)
+  fullName.vb: System.UInt16(,)
+  name.vb: UInt16(,)
+  spec.csharp:
+  - uid: System.UInt16
+    name: UInt16
+    nameWithType: UInt16
+    fullName: System.UInt16
+    isExternal: true
+  - name: '[,]'
+    nameWithType: '[,]'
+    fullName: '[,]'
+  spec.vb:
+  - uid: System.UInt16
+    name: UInt16
+    nameWithType: UInt16
+    fullName: System.UInt16
+    isExternal: true
+  - name: (,)
+    nameWithType: (,)
+    fullName: (,)
+- uid: BFB.Engine.TileMap.ChunkUpdate.Block*
+  commentId: Overload:BFB.Engine.TileMap.ChunkUpdate.Block
+  name: Block
+  nameWithType: ChunkUpdate.Block
+  fullName: BFB.Engine.TileMap.ChunkUpdate.Block

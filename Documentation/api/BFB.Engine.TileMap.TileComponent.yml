@@ -1,0 +1,40 @@
+### YamlMime:ManagedReference
+items:
+- uid: BFB.Engine.TileMap.TileComponent
+  commentId: N:BFB.Engine.TileMap.TileComponent
+  id: BFB.Engine.TileMap.TileComponent
+  children:
+  - BFB.Engine.TileMap.TileComponent.ITileComponent
+  - BFB.Engine.TileMap.TileComponent.SpreadTileComponent
+  - BFB.Engine.TileMap.TileComponent.TileComponentManager
+  langs:
+  - csharp
+  - vb
+  name: BFB.Engine.TileMap.TileComponent
+  nameWithType: BFB.Engine.TileMap.TileComponent
+  fullName: BFB.Engine.TileMap.TileComponent
+  type: Namespace
+  assemblies:
+  - BFB.Engine
+references:
+- uid: BFB.Engine.TileMap.TileComponent.ITileComponent
+  commentId: T:BFB.Engine.TileMap.TileComponent.ITileComponent
+  parent: BFB.Engine.TileMap.TileComponent
+  name: ITileComponent
+  nameWithType: ITileComponent
+  fullName: BFB.Engine.TileMap.TileComponent.ITileComponent
+- uid: BFB.Engine.TileMap.TileComponent.SpreadTileComponent
+  commentId: T:BFB.Engine.TileMap.TileComponent.SpreadTileComponent
+  name: SpreadTileComponent
+  nameWithType: SpreadTileComponent
+  fullName: BFB.Engine.TileMap.TileComponent.SpreadTileComponent
+- uid: BFB.Engine.TileMap.TileComponent.TileComponentManager
+  commentId: T:BFB.Engine.TileMap.TileComponent.TileComponentManager
+  name: TileComponentManager
+  nameWithType: TileComponentManager
+  fullName: BFB.Engine.TileMap.TileComponent.TileComponentManager
+- uid: BFB.Engine.TileMap.TileComponent
+  commentId: N:BFB.Engine.TileMap.TileComponent
+  name: BFB.Engine.TileMap.TileComponent
+  nameWithType: BFB.Engine.TileMap.TileComponent
+  fullName: BFB.Engine.TileMap.TileComponent

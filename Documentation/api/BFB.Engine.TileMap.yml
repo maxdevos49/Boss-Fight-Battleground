@@ -1,0 +1,76 @@
+### YamlMime:ManagedReference
+items:
+- uid: BFB.Engine.TileMap
+  commentId: N:BFB.Engine.TileMap
+  id: BFB.Engine.TileMap
+  children:
+  - BFB.Engine.TileMap.Camera2D
+  - BFB.Engine.TileMap.Chunk
+  - BFB.Engine.TileMap.ChunkTileUpdates
+  - BFB.Engine.TileMap.ChunkUpdate
+  - BFB.Engine.TileMap.TileUpdate
+  - BFB.Engine.TileMap.WorldLayer
+  - BFB.Engine.TileMap.WorldManager
+  - BFB.Engine.TileMap.WorldTile
+  langs:
+  - csharp
+  - vb
+  name: BFB.Engine.TileMap
+  nameWithType: BFB.Engine.TileMap
+  fullName: BFB.Engine.TileMap
+  type: Namespace
+  assemblies:
+  - BFB.Engine
+references:
+- uid: BFB.Engine.TileMap.Camera2D
+  commentId: T:BFB.Engine.TileMap.Camera2D
+  name: Camera2D
+  nameWithType: Camera2D
+  fullName: BFB.Engine.TileMap.Camera2D
+- uid: BFB.Engine.TileMap.Chunk
+  commentId: T:BFB.Engine.TileMap.Chunk
+  parent: BFB.Engine.TileMap
+  name: Chunk
+  nameWithType: Chunk
+  fullName: BFB.Engine.TileMap.Chunk
+- uid: BFB.Engine.TileMap.ChunkTileUpdates
+  commentId: T:BFB.Engine.TileMap.ChunkTileUpdates
+  parent: BFB.Engine.TileMap
+  name: ChunkTileUpdates
+  nameWithType: ChunkTileUpdates
+  fullName: BFB.Engine.TileMap.ChunkTileUpdates
+- uid: BFB.Engine.TileMap.TileUpdate
+  commentId: T:BFB.Engine.TileMap.TileUpdate
+  parent: BFB.Engine.TileMap
+  name: TileUpdate
+  nameWithType: TileUpdate
+  fullName: BFB.Engine.TileMap.TileUpdate
+- uid: BFB.Engine.TileMap.ChunkUpdate
+  commentId: T:BFB.Engine.TileMap.ChunkUpdate
+  parent: BFB.Engine.TileMap
+  name: ChunkUpdate
+  nameWithType: ChunkUpdate
+  fullName: BFB.Engine.TileMap.ChunkUpdate
+- uid: BFB.Engine.TileMap.WorldLayer
+  commentId: T:BFB.Engine.TileMap.WorldLayer
+  parent: BFB.Engine.TileMap
+  name: WorldLayer
+  nameWithType: WorldLayer
+  fullName: BFB.Engine.TileMap.WorldLayer
+- uid: BFB.Engine.TileMap.WorldManager
+  commentId: T:BFB.Engine.TileMap.WorldManager
+  parent: BFB.Engine.TileMap
+  name: WorldManager
+  nameWithType: WorldManager
+  fullName: BFB.Engine.TileMap.WorldManager
+- uid: BFB.Engine.TileMap.WorldTile
+  commentId: T:BFB.Engine.TileMap.WorldTile
+  parent: BFB.Engine.TileMap
+  name: WorldTile
+  nameWithType: WorldTile
+  fullName: BFB.Engine.TileMap.WorldTile
+- uid: BFB.Engine.TileMap
+  commentId: N:BFB.Engine.TileMap
+  name: BFB.Engine.TileMap
+  nameWithType: BFB.Engine.TileMap
+  fullName: BFB.Engine.TileMap

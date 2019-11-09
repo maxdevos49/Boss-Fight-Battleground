@@ -1,0 +1,34 @@
+### YamlMime:ManagedReference
+items:
+- uid: BFB.Engine.Simulation.PhysicsComponents
+  commentId: N:BFB.Engine.Simulation.PhysicsComponents
+  id: BFB.Engine.Simulation.PhysicsComponents
+  children:
+  - BFB.Engine.Simulation.PhysicsComponents.IPhysicsComponent
+  - BFB.Engine.Simulation.PhysicsComponents.PlayerPhysicsComponent
+  langs:
+  - csharp
+  - vb
+  name: BFB.Engine.Simulation.PhysicsComponents
+  nameWithType: BFB.Engine.Simulation.PhysicsComponents
+  fullName: BFB.Engine.Simulation.PhysicsComponents
+  type: Namespace
+  assemblies:
+  - BFB.Engine
+references:
+- uid: BFB.Engine.Simulation.PhysicsComponents.IPhysicsComponent
+  commentId: T:BFB.Engine.Simulation.PhysicsComponents.IPhysicsComponent
+  parent: BFB.Engine.Simulation.PhysicsComponents
+  name: IPhysicsComponent
+  nameWithType: IPhysicsComponent
+  fullName: BFB.Engine.Simulation.PhysicsComponents.IPhysicsComponent
+- uid: BFB.Engine.Simulation.PhysicsComponents.PlayerPhysicsComponent
+  commentId: T:BFB.Engine.Simulation.PhysicsComponents.PlayerPhysicsComponent
+  name: PlayerPhysicsComponent
+  nameWithType: PlayerPhysicsComponent
+  fullName: BFB.Engine.Simulation.PhysicsComponents.PlayerPhysicsComponent
+- uid: BFB.Engine.Simulation.PhysicsComponents
+  commentId: N:BFB.Engine.Simulation.PhysicsComponents
+  name: BFB.Engine.Simulation.PhysicsComponents
+  nameWithType: BFB.Engine.Simulation.PhysicsComponents
+  fullName: BFB.Engine.Simulation.PhysicsComponents

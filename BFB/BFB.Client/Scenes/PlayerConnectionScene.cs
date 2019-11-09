@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using BFB.Client.UI;
+using BFB.Engine.Content;
 using BFB.Engine.Entity;
 using BFB.Engine.Input.PlayerInput;
+using BFB.Engine.Math;
 using BFB.Engine.Scene;
 using BFB.Engine.Server;
 using BFB.Engine.Server.Communication;
@@ -10,6 +13,7 @@ using BFB.Engine.Simulation.GraphicsComponents;
 using BFB.Engine.TileMap;
 using BFB.Engine.TileMap.Generators;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace BFB.Client.Scenes
@@ -19,14 +23,15 @@ namespace BFB.Client.Scenes
 
         private readonly object _lock;
         
+        private readonly ClientSocketManager _server;
+        
         private PlayerInput _playerInput;
 
-        private readonly ClientSocketManager _server;
-        private readonly Dictionary<string, ClientEntity> _entities;
-        
-        private readonly Camera2D _camera;
+        private WorldRenderer _worldRenderer;
+
         private readonly WorldManager _world;
 
+        private readonly Dictionary<string, ClientEntity> _entities;
 
         public PlayerConnectionScene() : base(nameof(PlayerConnectionScene))
         {
@@ -34,7 +39,6 @@ namespace BFB.Client.Scenes
             _entities = new Dictionary<string, ClientEntity>();
             _server = new ClientSocketManager("127.0.0.1", 6969);
 
-            
             _world = new WorldManager(new WorldOptions
             {
                 Seed = 1234,
@@ -42,12 +46,8 @@ namespace BFB.Client.Scenes
                 WorldChunkWidth = 20,
                 WorldChunkHeight = 10,
                 WorldScale = 15,
-                GetWorldGenerator = options => new RemoteWorld(options)
+                WorldGenerator = options => new RemoteWorld(options)
             });
-            
-            _camera = new Camera2D(_world,GraphicsDeviceManager.GraphicsDevice);
-
-            
         }
 
         
@@ -65,9 +65,9 @@ namespace BFB.Client.Scenes
              * Scene events
              */
             #region Update Input State
+            
             _playerInput = new PlayerInput(this);
-            
-            
+
             #endregion
 
             /**
@@ -94,12 +94,22 @@ namespace BFB.Client.Scenes
             
             #endregion
 
+            #region Client Prepare
+
+            _server.OnPrepare = message =>
+            {
+                _world.ApplyWorldInitData((WorldDataMessage)message);
+            };
+            
+            #endregion
+            
             #region Client Ready
             
             _server.OnReady = () =>
             {
                 Console.WriteLine("Client Ready!");
                 //Do something when client is fully ready after authentication is confirmed
+                _worldRenderer = new WorldRenderer(_world, GraphicsDeviceManager.GraphicsDevice);
             };
             
             #endregion
@@ -148,10 +158,9 @@ namespace BFB.Client.Scenes
                             _entities[em.EntityId].Velocity = em.Velocity;
                             _entities[em.EntityId].Rotation = em.Rotation;
                             _entities[em.EntityId].AnimationState = em.AnimationState;
+                            
                             if (em.EntityId == _server.ClientId)
-                            {
-                                _camera.Focus = em.Position.ToVector2();
-                            }
+                                _worldRenderer.Camera.Focus = em.Position.ToVector2();
                         }
                         else
                         {
@@ -173,34 +182,9 @@ namespace BFB.Client.Scenes
 
             #region Handle Chunk Updates
 
-            //TODO Chunk data does not seem to actually be sent. Initialize entire chunk map?
-            
             _server.On("/players/chunkUpdates", message =>
             {
-                ChunkUpdatesMessage m = (ChunkUpdatesMessage) message;
-
-                //Process full chunk updates
-                foreach (ChunkUpdate chunkUpdate in m.ChunkUpdates)
-                {
-//                    Console.WriteLine("New Chunk Loaded: " + chunkUpdate.ChunkKey);
-                    _world.ChunkMap[chunkUpdate.ChunkX, chunkUpdate.ChunkY].ChunkKey = chunkUpdate.ChunkKey;
-                    _world.ChunkMap[chunkUpdate.ChunkX, chunkUpdate.ChunkY].Block = chunkUpdate.Block;
-                    _world.ChunkMap[chunkUpdate.ChunkX, chunkUpdate.ChunkY].Wall = chunkUpdate.Wall;
-
-                }
-                
-                //process tile map updates
-                foreach (ChunkTileUpdates chunkTileUpdates in m.ChunkTileUpdates)
-                {
-//                    Console.WriteLine("ChunkTileUpdates loaded: " + chunkTileUpdates.ChunkKey);
-
-                    Chunk chunk = _world.ChunkMap[chunkTileUpdates.ChunkX, chunkTileUpdates.ChunkY];
-
-                    foreach (TileUpdate chunkTileUpdate in chunkTileUpdates.TileChanges)
-                    {
-                        chunk.ApplyBlockUpdate(chunkTileUpdate, true);
-                    }
-                }
+                _world.ApplyChunkUpdateMessage((ChunkUpdatesMessage) message);
             });
             
             #endregion
@@ -211,15 +195,6 @@ namespace BFB.Client.Scenes
             if (!_server.Connect())
                 Console.WriteLine("Connection Failed.");
             
-            _world.GenerateWorld(null);
-        }
-        
-        #endregion
-
-        #region Load
-        
-        protected override void Load()
-        {
         }
         
         #endregion
@@ -228,10 +203,6 @@ namespace BFB.Client.Scenes
 
         protected override void Unload()
         {
-            lock (_lock)
-            {
-                _entities.Clear();
-            }
             _server.Disconnect("Scene Close");
             base.Unload();
         }
@@ -239,20 +210,28 @@ namespace BFB.Client.Scenes
         #endregion
         
         #region Update
-        
+
         public override void Update(GameTime gameTime)
         {
             lock (_lock)
             {
-                //Interpolation
-                foreach ((string _, ClientEntity entity) in _entities)
-                    entity.Update();
+                _worldRenderer?.Update(gameTime, _entities.Values.ToList());
             }
-            
-            if(_playerInput.InputChanged())
-                _server.Emit("/player/input", new InputMessage {PlayerInputState = _playerInput.GetPlayerState()});
-            
-            _camera.Update(gameTime);
+
+            if (_playerInput.InputChanged() && _server.EmitAllowed() && _worldRenderer != null)
+            {
+
+                PlayerState playerState = _playerInput.GetPlayerState();
+                
+                Console.WriteLine("Mouse Location");
+                Console.WriteLine(playerState.Mouse.X + " - " + playerState.Mouse.Y);
+                playerState.Mouse = _worldRenderer.ViewPointToMapPoint(playerState.Mouse);
+                Console.WriteLine(playerState.Mouse.X + " - " + playerState.Mouse.Y);
+
+                
+                _server.Emit("/player/input", new InputMessage {PlayerInputState = playerState});
+            }
+
         }
         
         #endregion
@@ -261,45 +240,10 @@ namespace BFB.Client.Scenes
         
         public override void Draw(GameTime gameTime, SpriteBatch graphics)
         {
-            
-            //TODO make a client world renderer that houses information including the camera, world options, and the tile map
-            graphics.End();
-            graphics.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, SamplerState.PointClamp, DepthStencilState.None, RasterizerState.CullCounterClockwise, null, _camera.Transform);
-            
-            const int scale = 15;
-            
-            for(int y = 0; y < _world.WorldOptions.WorldChunkHeight * _world.WorldOptions.ChunkSize; y++)
-            {
-                for (int x = 0; x < _world.WorldOptions.WorldChunkWidth * _world.WorldOptions.ChunkSize; x++)
-                {
-                    switch(_world.GetBlock(x, y))
-                    {
-                        case WorldTile.Grass:
-                            if(_camera.IsInView(new Vector2(x * scale, y * scale),ContentManager.GetTexture("grass")))
-                                graphics.Draw(ContentManager.GetTexture("grass"), new Vector2(x * scale, y * scale), Color.White);
-                            break;
-                        case WorldTile.Dirt:
-                            if(_camera.IsInView(new Vector2(x * scale, y * scale),ContentManager.GetTexture("dirt")))
-                                graphics.Draw(ContentManager.GetTexture("dirt"), new Vector2(x * scale, y * scale), Color.White);
-                            break;
-                        case WorldTile.Stone:
-                            if(_camera.IsInView(new Vector2(x * scale, y * scale),ContentManager.GetTexture("stone")))
-                                graphics.Draw(ContentManager.GetTexture("stone"), new Vector2(x * scale, y * scale), Color.White);
-                            break;
-                    }
-                }
-            }
-            
             lock (_lock)
             {
-                foreach ((string _, ClientEntity entity) in _entities)
-                    entity.Draw(graphics);
+                _worldRenderer?.Draw(graphics, _world, _entities.Values.ToList() , ContentManager);
             }
-            
-            graphics.End();
-            graphics.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, SamplerState.PointClamp, DepthStencilState.None, RasterizerState.CullCounterClockwise);
-            
-            
         }
         
         #endregion

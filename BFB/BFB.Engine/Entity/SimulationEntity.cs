@@ -10,12 +10,7 @@ namespace BFB.Engine.Entity
     {
         
         #region Properties
-        
-        /**
-         * Indicates the chunk that the entity is currently in
-         */
-        public string ChunkKey { get; set; }
-        
+
         public bool IsPlayer { get; set; }
         
         public BfbVector DesiredVector { get; }
@@ -74,19 +69,20 @@ namespace BFB.Engine.Entity
             _physics?.Update(this, simulation);
             
             //Place entity in correct chunk if in new position
-            string chunkKey = simulation.WorldManager.ChunkFromPixelLocation((int)Position.X, (int)Position.Y)?.ChunkKey; //If this is null then we are outside of map... Bad
+            string chunkKey = simulation.World.ChunkFromPixelLocation((int)Position.X, (int)Position.Y)?.ChunkKey; //If this is null then we are outside of map... Bad
             
             if (chunkKey != ChunkKey && chunkKey != null)
             {
-                simulation.WorldManager.MoveEntity(EntityId, simulation.WorldManager.ChunkIndex[ChunkKey], simulation.WorldManager.ChunkIndex[chunkKey]);
+                simulation.World.MoveEntity(EntityId, simulation.World.ChunkIndex[ChunkKey], simulation.World.ChunkIndex[chunkKey]);
                 ChunkKey = chunkKey;
             }
 
             if (!IsPlayer || ChunkKey == null) return;
             
+            //TODO Could be improved because it only needs calculated when entering a new a chunk
             //Clear visible chunks so we dont have to figure out which chunks are no longer being seen
             VisibleChunks.Clear();
-            Chunk rootChunk = simulation.WorldManager.ChunkIndex[ChunkKey];
+            Chunk rootChunk = simulation.World.ChunkIndex[ChunkKey];
             
             //find the chunks that the player is currently simulating
             for (int y = rootChunk.ChunkY - simulation.SimulationDistance; y < rootChunk.ChunkY + simulation.SimulationDistance; y++)
@@ -95,7 +91,7 @@ namespace BFB.Engine.Entity
                 {
                     //Get a chunk if it exist at the location
                     Chunk visibleChunk;
-                    if ((visibleChunk = simulation.WorldManager.ChunkFromChunkLocation(x, y)) == null) 
+                    if ((visibleChunk = simulation.World.ChunkFromChunkLocation(x, y)) == null) 
                         continue;
                     
                     //Add chunk to visible chunks

@@ -1,0 +1,1372 @@
+### YamlMime:ManagedReference
+items:
+- uid: BFB.Engine.Scene.Scene
+  commentId: T:BFB.Engine.Scene.Scene
+  id: Scene
+  parent: BFB.Engine.Scene
+  children:
+  - BFB.Engine.Scene.Scene.#ctor(System.String)
+  - BFB.Engine.Scene.Scene.AddGlobalListener(System.String,Action{BFB.Engine.Event.GlobalEvent})
+  - BFB.Engine.Scene.Scene.AddInputListener(System.String,Action{BFB.Engine.Event.InputEvent})
+  - BFB.Engine.Scene.Scene.ContentManager
+  - BFB.Engine.Scene.Scene.Draw(GameTime,SpriteBatch)
+  - BFB.Engine.Scene.Scene.GetStatus
+  - BFB.Engine.Scene.Scene.GlobalEventManager
+  - BFB.Engine.Scene.Scene.GraphicsDeviceManager
+  - BFB.Engine.Scene.Scene.Init
+  - BFB.Engine.Scene.Scene.InputEventManager
+  - BFB.Engine.Scene.Scene.Key
+  - BFB.Engine.Scene.Scene.Load
+  - BFB.Engine.Scene.Scene.Pause
+  - BFB.Engine.Scene.Scene.SceneManager
+  - BFB.Engine.Scene.Scene.Start
+  - BFB.Engine.Scene.Scene.Stop
+  - BFB.Engine.Scene.Scene.UIManager
+  - BFB.Engine.Scene.Scene.Unload
+  - BFB.Engine.Scene.Scene.Update(GameTime)
+  langs:
+  - csharp
+  - vb
+  name: Scene
+  nameWithType: Scene
+  fullName: BFB.Engine.Scene.Scene
+  type: Class
+  source:
+    remote:
+      path: BFB/BFB.Engine/Scene/Scene.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: Scene
+    path: ../BFB/BFB.Engine/Scene/Scene.cs
+    startLine: 16
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Scene
+  summary: "\nA scene, or screen of the game.\n"
+  example: []
+  syntax:
+    content: 'public abstract class Scene : object'
+    content.vb: >-
+      Public MustInherit Class Scene
+
+          Inherits Object
+  inheritance:
+  - System.Object
+  extensionMethods:
+  - BFB.Engine.Scene.Scene.BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{BFB.Engine.Scene.Scene,{TValue}}},{TValue})
+  modifiers.csharp:
+  - public
+  - abstract
+  - class
+  modifiers.vb:
+  - Public
+  - MustInherit
+  - Class
+- uid: BFB.Engine.Scene.Scene.SceneManager
+  commentId: P:BFB.Engine.Scene.Scene.SceneManager
+  id: SceneManager
+  parent: BFB.Engine.Scene.Scene
+  langs:
+  - csharp
+  - vb
+  name: SceneManager
+  nameWithType: Scene.SceneManager
+  fullName: BFB.Engine.Scene.Scene.SceneManager
+  type: Property
+  source:
+    remote:
+      path: BFB/BFB.Engine/Scene/Scene.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: SceneManager
+    path: ../BFB/BFB.Engine/Scene/Scene.cs
+    startLine: 21
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Scene
+  summary: "\nScene manager used to control scene state\n"
+  example: []
+  syntax:
+    content: public static SceneManager SceneManager { get; set; }
+    parameters: []
+    return:
+      type: BFB.Engine.Scene.SceneManager
+    content.vb: Public Shared Property SceneManager As SceneManager
+  overload: BFB.Engine.Scene.Scene.SceneManager*
+  modifiers.csharp:
+  - public
+  - static
+  - get
+  - set
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: BFB.Engine.Scene.Scene.UIManager
+  commentId: P:BFB.Engine.Scene.Scene.UIManager
+  id: UIManager
+  parent: BFB.Engine.Scene.Scene
+  langs:
+  - csharp
+  - vb
+  name: UIManager
+  nameWithType: Scene.UIManager
+  fullName: BFB.Engine.Scene.Scene.UIManager
+  type: Property
+  source:
+    remote:
+      path: BFB/BFB.Engine/Scene/Scene.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: UIManager
+    path: ../BFB/BFB.Engine/Scene/Scene.cs
+    startLine: 26
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Scene
+  summary: "\nUI Manager for controlling UI related things\n"
+  example: []
+  syntax:
+    content: public static UIManager UIManager { get; set; }
+    parameters: []
+    return:
+      type: BFB.Engine.UI.UIManager
+    content.vb: Public Shared Property UIManager As UIManager
+  overload: BFB.Engine.Scene.Scene.UIManager*
+  modifiers.csharp:
+  - public
+  - static
+  - get
+  - set
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: BFB.Engine.Scene.Scene.ContentManager
+  commentId: P:BFB.Engine.Scene.Scene.ContentManager
+  id: ContentManager
+  parent: BFB.Engine.Scene.Scene
+  langs:
+  - csharp
+  - vb
+  name: ContentManager
+  nameWithType: Scene.ContentManager
+  fullName: BFB.Engine.Scene.Scene.ContentManager
+  type: Property
+  source:
+    remote:
+      path: BFB/BFB.Engine/Scene/Scene.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: ContentManager
+    path: ../BFB/BFB.Engine/Scene/Scene.cs
+    startLine: 31
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Scene
+  summary: "\nUsed to distribute content across the application without loading things twice and so on\n"
+  example: []
+  syntax:
+    content: public static BFBContentManager ContentManager { get; set; }
+    parameters: []
+    return:
+      type: BFB.Engine.Content.BFBContentManager
+    content.vb: Public Shared Property ContentManager As BFBContentManager
+  overload: BFB.Engine.Scene.Scene.ContentManager*
+  modifiers.csharp:
+  - public
+  - static
+  - get
+  - set
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: BFB.Engine.Scene.Scene.GraphicsDeviceManager
+  commentId: P:BFB.Engine.Scene.Scene.GraphicsDeviceManager
+  id: GraphicsDeviceManager
+  parent: BFB.Engine.Scene.Scene
+  langs:
+  - csharp
+  - vb
+  name: GraphicsDeviceManager
+  nameWithType: Scene.GraphicsDeviceManager
+  fullName: BFB.Engine.Scene.Scene.GraphicsDeviceManager
+  type: Property
+  source:
+    remote:
+      path: BFB/BFB.Engine/Scene/Scene.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: GraphicsDeviceManager
+    path: ../BFB/BFB.Engine/Scene/Scene.cs
+    startLine: 36
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Scene
+  summary: "\nContains useful drawing stuff\n"
+  example: []
+  syntax:
+    content: public static GraphicsDeviceManager GraphicsDeviceManager { get; set; }
+    parameters: []
+    return:
+      type: GraphicsDeviceManager
+    content.vb: Public Shared Property GraphicsDeviceManager As GraphicsDeviceManager
+  overload: BFB.Engine.Scene.Scene.GraphicsDeviceManager*
+  modifiers.csharp:
+  - public
+  - static
+  - get
+  - set
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: BFB.Engine.Scene.Scene.GlobalEventManager
+  commentId: P:BFB.Engine.Scene.Scene.GlobalEventManager
+  id: GlobalEventManager
+  parent: BFB.Engine.Scene.Scene
+  langs:
+  - csharp
+  - vb
+  name: GlobalEventManager
+  nameWithType: Scene.GlobalEventManager
+  fullName: BFB.Engine.Scene.Scene.GlobalEventManager
+  type: Property
+  source:
+    remote:
+      path: BFB/BFB.Engine/Scene/Scene.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: GlobalEventManager
+    path: ../BFB/BFB.Engine/Scene/Scene.cs
+    startLine: 41
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Scene
+  summary: "\nUsed for global events\n"
+  example: []
+  syntax:
+    content: public static EventManager<GlobalEvent> GlobalEventManager { get; set; }
+    parameters: []
+    return:
+      type: BFB.Engine.Event.EventManager{BFB.Engine.Event.GlobalEvent}
+    content.vb: Public Shared Property GlobalEventManager As EventManager(Of GlobalEvent)
+  overload: BFB.Engine.Scene.Scene.GlobalEventManager*
+  modifiers.csharp:
+  - public
+  - static
+  - get
+  - set
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: BFB.Engine.Scene.Scene.InputEventManager
+  commentId: P:BFB.Engine.Scene.Scene.InputEventManager
+  id: InputEventManager
+  parent: BFB.Engine.Scene.Scene
+  langs:
+  - csharp
+  - vb
+  name: InputEventManager
+  nameWithType: Scene.InputEventManager
+  fullName: BFB.Engine.Scene.Scene.InputEventManager
+  type: Property
+  source:
+    remote:
+      path: BFB/BFB.Engine/Scene/Scene.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: InputEventManager
+    path: ../BFB/BFB.Engine/Scene/Scene.cs
+    startLine: 46
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Scene
+  summary: "\nUsed for input events only\n"
+  example: []
+  syntax:
+    content: public static EventManager<InputEvent> InputEventManager { get; set; }
+    parameters: []
+    return:
+      type: BFB.Engine.Event.EventManager{BFB.Engine.Event.InputEvent}
+    content.vb: Public Shared Property InputEventManager As EventManager(Of InputEvent)
+  overload: BFB.Engine.Scene.Scene.InputEventManager*
+  modifiers.csharp:
+  - public
+  - static
+  - get
+  - set
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: BFB.Engine.Scene.Scene.Key
+  commentId: F:BFB.Engine.Scene.Scene.Key
+  id: Key
+  parent: BFB.Engine.Scene.Scene
+  langs:
+  - csharp
+  - vb
+  name: Key
+  nameWithType: Scene.Key
+  fullName: BFB.Engine.Scene.Scene.Key
+  type: Field
+  source:
+    remote:
+      path: BFB/BFB.Engine/Scene/Scene.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: Key
+    path: ../BFB/BFB.Engine/Scene/Scene.cs
+    startLine: 53
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Scene
+  syntax:
+    content: public readonly string Key
+    return:
+      type: System.String
+    content.vb: Public ReadOnly Key As String
+  modifiers.csharp:
+  - public
+  - readonly
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: BFB.Engine.Scene.Scene.#ctor(System.String)
+  commentId: M:BFB.Engine.Scene.Scene.#ctor(System.String)
+  id: '#ctor(System.String)'
+  parent: BFB.Engine.Scene.Scene
+  langs:
+  - csharp
+  - vb
+  name: Scene(String)
+  nameWithType: Scene.Scene(String)
+  fullName: BFB.Engine.Scene.Scene.Scene(System.String)
+  type: Constructor
+  source:
+    remote:
+      path: BFB/BFB.Engine/Scene/Scene.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: .ctor
+    path: ../BFB/BFB.Engine/Scene/Scene.cs
+    startLine: 55
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Scene
+  syntax:
+    content: protected Scene(string key)
+    parameters:
+    - id: key
+      type: System.String
+    content.vb: Protected Sub New(key As String)
+  overload: BFB.Engine.Scene.Scene.#ctor*
+  modifiers.csharp:
+  - protected
+  modifiers.vb:
+  - Protected
+- uid: BFB.Engine.Scene.Scene.Stop
+  commentId: M:BFB.Engine.Scene.Scene.Stop
+  id: Stop
+  parent: BFB.Engine.Scene.Scene
+  langs:
+  - csharp
+  - vb
+  name: Stop()
+  nameWithType: Scene.Stop()
+  fullName: BFB.Engine.Scene.Scene.Stop()
+  type: Method
+  source:
+    remote:
+      path: BFB/BFB.Engine/Scene/Scene.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: Stop
+    path: ../BFB/BFB.Engine/Scene/Scene.cs
+    startLine: 66
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Scene
+  summary: "\nStops the scene by updating the scene status and calling unload on the scene\n"
+  example: []
+  syntax:
+    content: public void Stop()
+    content.vb: Public Sub Stop
+  overload: BFB.Engine.Scene.Scene.Stop*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.Scene.Scene.Pause
+  commentId: M:BFB.Engine.Scene.Scene.Pause
+  id: Pause
+  parent: BFB.Engine.Scene.Scene
+  langs:
+  - csharp
+  - vb
+  name: Pause()
+  nameWithType: Scene.Pause()
+  fullName: BFB.Engine.Scene.Scene.Pause()
+  type: Method
+  source:
+    remote:
+      path: BFB/BFB.Engine/Scene/Scene.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: Pause
+    path: ../BFB/BFB.Engine/Scene/Scene.cs
+    startLine: 76
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Scene
+  summary: "\nPauses the scene by updating the scene status\n"
+  example: []
+  syntax:
+    content: public void Pause()
+    content.vb: Public Sub Pause
+  overload: BFB.Engine.Scene.Scene.Pause*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.Scene.Scene.Start
+  commentId: M:BFB.Engine.Scene.Scene.Start
+  id: Start
+  parent: BFB.Engine.Scene.Scene
+  langs:
+  - csharp
+  - vb
+  name: Start()
+  nameWithType: Scene.Start()
+  fullName: BFB.Engine.Scene.Scene.Start()
+  type: Method
+  source:
+    remote:
+      path: BFB/BFB.Engine/Scene/Scene.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: Start
+    path: ../BFB/BFB.Engine/Scene/Scene.cs
+    startLine: 84
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Scene
+  summary: "\nStarts the scene by updating the scene status\n"
+  example: []
+  syntax:
+    content: public void Start()
+    content.vb: Public Sub Start
+  overload: BFB.Engine.Scene.Scene.Start*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.Scene.Scene.GetStatus
+  commentId: M:BFB.Engine.Scene.Scene.GetStatus
+  id: GetStatus
+  parent: BFB.Engine.Scene.Scene
+  langs:
+  - csharp
+  - vb
+  name: GetStatus()
+  nameWithType: Scene.GetStatus()
+  fullName: BFB.Engine.Scene.Scene.GetStatus()
+  type: Method
+  source:
+    remote:
+      path: BFB/BFB.Engine/Scene/Scene.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: GetStatus
+    path: ../BFB/BFB.Engine/Scene/Scene.cs
+    startLine: 99
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Scene
+  summary: "\nGets the current status of the scene\n"
+  example: []
+  syntax:
+    content: public SceneStatus GetStatus()
+    return:
+      type: BFB.Engine.Scene.SceneStatus
+      description: ''
+    content.vb: Public Function GetStatus As SceneStatus
+  overload: BFB.Engine.Scene.Scene.GetStatus*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.Scene.Scene.Init
+  commentId: M:BFB.Engine.Scene.Scene.Init
+  id: Init
+  parent: BFB.Engine.Scene.Scene
+  langs:
+  - csharp
+  - vb
+  name: Init()
+  nameWithType: Scene.Init()
+  fullName: BFB.Engine.Scene.Scene.Init()
+  type: Method
+  source:
+    remote:
+      path: BFB/BFB.Engine/Scene/Scene.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: Init
+    path: ../BFB/BFB.Engine/Scene/Scene.cs
+    startLine: 104
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Scene
+  syntax:
+    content: protected virtual void Init()
+    content.vb: Protected Overridable Sub Init
+  overload: BFB.Engine.Scene.Scene.Init*
+  modifiers.csharp:
+  - protected
+  - virtual
+  modifiers.vb:
+  - Protected
+  - Overridable
+- uid: BFB.Engine.Scene.Scene.Load
+  commentId: M:BFB.Engine.Scene.Scene.Load
+  id: Load
+  parent: BFB.Engine.Scene.Scene
+  langs:
+  - csharp
+  - vb
+  name: Load()
+  nameWithType: Scene.Load()
+  fullName: BFB.Engine.Scene.Scene.Load()
+  type: Method
+  source:
+    remote:
+      path: BFB/BFB.Engine/Scene/Scene.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: Load
+    path: ../BFB/BFB.Engine/Scene/Scene.cs
+    startLine: 106
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Scene
+  syntax:
+    content: protected virtual void Load()
+    content.vb: Protected Overridable Sub Load
+  overload: BFB.Engine.Scene.Scene.Load*
+  modifiers.csharp:
+  - protected
+  - virtual
+  modifiers.vb:
+  - Protected
+  - Overridable
+- uid: BFB.Engine.Scene.Scene.Unload
+  commentId: M:BFB.Engine.Scene.Scene.Unload
+  id: Unload
+  parent: BFB.Engine.Scene.Scene
+  langs:
+  - csharp
+  - vb
+  name: Unload()
+  nameWithType: Scene.Unload()
+  fullName: BFB.Engine.Scene.Scene.Unload()
+  type: Method
+  source:
+    remote:
+      path: BFB/BFB.Engine/Scene/Scene.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: Unload
+    path: ../BFB/BFB.Engine/Scene/Scene.cs
+    startLine: 108
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Scene
+  syntax:
+    content: protected virtual void Unload()
+    content.vb: Protected Overridable Sub Unload
+  overload: BFB.Engine.Scene.Scene.Unload*
+  modifiers.csharp:
+  - protected
+  - virtual
+  modifiers.vb:
+  - Protected
+  - Overridable
+- uid: BFB.Engine.Scene.Scene.Update(GameTime)
+  commentId: M:BFB.Engine.Scene.Scene.Update(GameTime)
+  id: Update(GameTime)
+  parent: BFB.Engine.Scene.Scene
+  langs:
+  - csharp
+  - vb
+  name: Update(GameTime)
+  nameWithType: Scene.Update(GameTime)
+  fullName: BFB.Engine.Scene.Scene.Update(GameTime)
+  type: Method
+  source:
+    remote:
+      path: BFB/BFB.Engine/Scene/Scene.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: Update
+    path: ../BFB/BFB.Engine/Scene/Scene.cs
+    startLine: 117
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Scene
+  syntax:
+    content: public virtual void Update(GameTime gameTime)
+    parameters:
+    - id: gameTime
+      type: GameTime
+    content.vb: Public Overridable Sub Update(gameTime As GameTime)
+  overload: BFB.Engine.Scene.Scene.Update*
+  modifiers.csharp:
+  - public
+  - virtual
+  modifiers.vb:
+  - Public
+  - Overridable
+- uid: BFB.Engine.Scene.Scene.Draw(GameTime,SpriteBatch)
+  commentId: M:BFB.Engine.Scene.Scene.Draw(GameTime,SpriteBatch)
+  id: Draw(GameTime,SpriteBatch)
+  parent: BFB.Engine.Scene.Scene
+  langs:
+  - csharp
+  - vb
+  name: Draw(GameTime, SpriteBatch)
+  nameWithType: Scene.Draw(GameTime, SpriteBatch)
+  fullName: BFB.Engine.Scene.Scene.Draw(GameTime, SpriteBatch)
+  type: Method
+  source:
+    remote:
+      path: BFB/BFB.Engine/Scene/Scene.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: Draw
+    path: ../BFB/BFB.Engine/Scene/Scene.cs
+    startLine: 119
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Scene
+  syntax:
+    content: public virtual void Draw(GameTime gameTime, SpriteBatch graphics)
+    parameters:
+    - id: gameTime
+      type: GameTime
+    - id: graphics
+      type: SpriteBatch
+    content.vb: Public Overridable Sub Draw(gameTime As GameTime, graphics As SpriteBatch)
+  overload: BFB.Engine.Scene.Scene.Draw*
+  modifiers.csharp:
+  - public
+  - virtual
+  modifiers.vb:
+  - Public
+  - Overridable
+- uid: BFB.Engine.Scene.Scene.AddInputListener(System.String,Action{BFB.Engine.Event.InputEvent})
+  commentId: M:BFB.Engine.Scene.Scene.AddInputListener(System.String,Action{BFB.Engine.Event.InputEvent})
+  id: AddInputListener(System.String,Action{BFB.Engine.Event.InputEvent})
+  parent: BFB.Engine.Scene.Scene
+  langs:
+  - csharp
+  - vb
+  name: AddInputListener(String, Action<InputEvent>)
+  nameWithType: Scene.AddInputListener(String, Action<InputEvent>)
+  fullName: BFB.Engine.Scene.Scene.AddInputListener(System.String, Action<BFB.Engine.Event.InputEvent>)
+  type: Method
+  source:
+    remote:
+      path: BFB/BFB.Engine/Scene/Scene.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: AddInputListener
+    path: ../BFB/BFB.Engine/Scene/Scene.cs
+    startLine: 121
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Scene
+  syntax:
+    content: public void AddInputListener(string eventKey, Action<InputEvent> eventHandler)
+    parameters:
+    - id: eventKey
+      type: System.String
+    - id: eventHandler
+      type: Action{BFB.Engine.Event.InputEvent}
+    content.vb: Public Sub AddInputListener(eventKey As String, eventHandler As Action(Of InputEvent))
+  overload: BFB.Engine.Scene.Scene.AddInputListener*
+  nameWithType.vb: Scene.AddInputListener(String, Action(Of InputEvent))
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+  fullName.vb: BFB.Engine.Scene.Scene.AddInputListener(System.String, Action(Of BFB.Engine.Event.InputEvent))
+  name.vb: AddInputListener(String, Action(Of InputEvent))
+- uid: BFB.Engine.Scene.Scene.AddGlobalListener(System.String,Action{BFB.Engine.Event.GlobalEvent})
+  commentId: M:BFB.Engine.Scene.Scene.AddGlobalListener(System.String,Action{BFB.Engine.Event.GlobalEvent})
+  id: AddGlobalListener(System.String,Action{BFB.Engine.Event.GlobalEvent})
+  parent: BFB.Engine.Scene.Scene
+  langs:
+  - csharp
+  - vb
+  name: AddGlobalListener(String, Action<GlobalEvent>)
+  nameWithType: Scene.AddGlobalListener(String, Action<GlobalEvent>)
+  fullName: BFB.Engine.Scene.Scene.AddGlobalListener(System.String, Action<BFB.Engine.Event.GlobalEvent>)
+  type: Method
+  source:
+    remote:
+      path: BFB/BFB.Engine/Scene/Scene.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: AddGlobalListener
+    path: ../BFB/BFB.Engine/Scene/Scene.cs
+    startLine: 126
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Scene
+  syntax:
+    content: public void AddGlobalListener(string eventKey, Action<GlobalEvent> eventHandler)
+    parameters:
+    - id: eventKey
+      type: System.String
+    - id: eventHandler
+      type: Action{BFB.Engine.Event.GlobalEvent}
+    content.vb: Public Sub AddGlobalListener(eventKey As String, eventHandler As Action(Of GlobalEvent))
+  overload: BFB.Engine.Scene.Scene.AddGlobalListener*
+  nameWithType.vb: Scene.AddGlobalListener(String, Action(Of GlobalEvent))
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+  fullName.vb: BFB.Engine.Scene.Scene.AddGlobalListener(System.String, Action(Of BFB.Engine.Event.GlobalEvent))
+  name.vb: AddGlobalListener(String, Action(Of GlobalEvent))
+references:
+- uid: BFB.Engine.Scene
+  commentId: N:BFB.Engine.Scene
+  name: BFB.Engine.Scene
+  nameWithType: BFB.Engine.Scene
+  fullName: BFB.Engine.Scene
+- uid: System.Object
+  commentId: '!:System.Object'
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: BFB.Engine.Scene.Scene.BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{BFB.Engine.Scene.Scene,{TValue}}},{TValue})
+  commentId: M:BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  parent: BFB.Engine.UI.Components.LambdaExtensions
+  definition: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  name: SetPropertyValue<Scene, TValue>(Expression<Func<Scene, TValue>>, TValue)
+  nameWithType: LambdaExtensions.SetPropertyValue<Scene, TValue>(Expression<Func<Scene, TValue>>, TValue)
+  fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<BFB.Engine.Scene.Scene, TValue>(Expression<Func<BFB.Engine.Scene.Scene, TValue>>, TValue)
+  nameWithType.vb: LambdaExtensions.SetPropertyValue(Of Scene, TValue)(Expression(Of Func(Of Scene, TValue)), TValue)
+  fullName.vb: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of BFB.Engine.Scene.Scene, TValue)(Expression(Of Func(Of BFB.Engine.Scene.Scene, TValue)), TValue)
+  name.vb: SetPropertyValue(Of Scene, TValue)(Expression(Of Func(Of Scene, TValue)), TValue)
+  spec.csharp:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue<Scene, TValue>
+    nameWithType: LambdaExtensions.SetPropertyValue<Scene, TValue>
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<BFB.Engine.Scene.Scene, TValue>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: BFB.Engine.Scene.Scene
+    name: Scene
+    nameWithType: Scene
+    fullName: BFB.Engine.Scene.Scene
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue(Of Scene, TValue)
+    nameWithType: LambdaExtensions.SetPropertyValue(Of Scene, TValue)
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of BFB.Engine.Scene.Scene, TValue)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: BFB.Engine.Scene.Scene
+    name: Scene
+    nameWithType: Scene
+    fullName: BFB.Engine.Scene.Scene
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  commentId: M:BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  isExternal: true
+  name: SetPropertyValue<T, TValue>(T, Expression<Func<T, TValue>>, TValue)
+  nameWithType: LambdaExtensions.SetPropertyValue<T, TValue>(T, Expression<Func<T, TValue>>, TValue)
+  fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<T, TValue>(T, Expression<Func<T, TValue>>, TValue)
+  nameWithType.vb: LambdaExtensions.SetPropertyValue(Of T, TValue)(T, Expression(Of Func(Of T, TValue)), TValue)
+  fullName.vb: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of T, TValue)(T, Expression(Of Func(Of T, TValue)), TValue)
+  name.vb: SetPropertyValue(Of T, TValue)(T, Expression(Of Func(Of T, TValue)), TValue)
+  spec.csharp:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue<T, TValue>
+    nameWithType: LambdaExtensions.SetPropertyValue<T, TValue>
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<T, TValue>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue(Of T, TValue)
+    nameWithType: LambdaExtensions.SetPropertyValue(Of T, TValue)
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of T, TValue)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Components.LambdaExtensions
+  commentId: T:BFB.Engine.UI.Components.LambdaExtensions
+  parent: BFB.Engine.UI.Components
+  name: LambdaExtensions
+  nameWithType: LambdaExtensions
+  fullName: BFB.Engine.UI.Components.LambdaExtensions
+- uid: BFB.Engine.UI.Components
+  commentId: N:BFB.Engine.UI.Components
+  name: BFB.Engine.UI.Components
+  nameWithType: BFB.Engine.UI.Components
+  fullName: BFB.Engine.UI.Components
+- uid: BFB.Engine.Scene.Scene.SceneManager*
+  commentId: Overload:BFB.Engine.Scene.Scene.SceneManager
+  name: SceneManager
+  nameWithType: Scene.SceneManager
+  fullName: BFB.Engine.Scene.Scene.SceneManager
+- uid: BFB.Engine.Scene.SceneManager
+  commentId: T:BFB.Engine.Scene.SceneManager
+  parent: BFB.Engine.Scene
+  name: SceneManager
+  nameWithType: SceneManager
+  fullName: BFB.Engine.Scene.SceneManager
+- uid: BFB.Engine.Scene.Scene.UIManager*
+  commentId: Overload:BFB.Engine.Scene.Scene.UIManager
+  name: UIManager
+  nameWithType: Scene.UIManager
+  fullName: BFB.Engine.Scene.Scene.UIManager
+- uid: BFB.Engine.UI.UIManager
+  commentId: T:BFB.Engine.UI.UIManager
+  parent: BFB.Engine.UI
+  name: UIManager
+  nameWithType: UIManager
+  fullName: BFB.Engine.UI.UIManager
+- uid: BFB.Engine.UI
+  commentId: N:BFB.Engine.UI
+  name: BFB.Engine.UI
+  nameWithType: BFB.Engine.UI
+  fullName: BFB.Engine.UI
+- uid: BFB.Engine.Scene.Scene.ContentManager*
+  commentId: Overload:BFB.Engine.Scene.Scene.ContentManager
+  name: ContentManager
+  nameWithType: Scene.ContentManager
+  fullName: BFB.Engine.Scene.Scene.ContentManager
+- uid: BFB.Engine.Content.BFBContentManager
+  commentId: T:BFB.Engine.Content.BFBContentManager
+  parent: BFB.Engine.Content
+  name: BFBContentManager
+  nameWithType: BFBContentManager
+  fullName: BFB.Engine.Content.BFBContentManager
+- uid: BFB.Engine.Content
+  commentId: N:BFB.Engine.Content
+  name: BFB.Engine.Content
+  nameWithType: BFB.Engine.Content
+  fullName: BFB.Engine.Content
+- uid: BFB.Engine.Scene.Scene.GraphicsDeviceManager*
+  commentId: Overload:BFB.Engine.Scene.Scene.GraphicsDeviceManager
+  name: GraphicsDeviceManager
+  nameWithType: Scene.GraphicsDeviceManager
+  fullName: BFB.Engine.Scene.Scene.GraphicsDeviceManager
+- uid: GraphicsDeviceManager
+  isExternal: true
+  name: GraphicsDeviceManager
+  nameWithType: GraphicsDeviceManager
+  fullName: GraphicsDeviceManager
+- uid: BFB.Engine.Scene.Scene.GlobalEventManager*
+  commentId: Overload:BFB.Engine.Scene.Scene.GlobalEventManager
+  name: GlobalEventManager
+  nameWithType: Scene.GlobalEventManager
+  fullName: BFB.Engine.Scene.Scene.GlobalEventManager
+- uid: BFB.Engine.Event.EventManager{BFB.Engine.Event.GlobalEvent}
+  commentId: T:BFB.Engine.Event.EventManager{BFB.Engine.Event.GlobalEvent}
+  parent: BFB.Engine.Event
+  definition: BFB.Engine.Event.EventManager`1
+  name: EventManager<GlobalEvent>
+  nameWithType: EventManager<GlobalEvent>
+  fullName: BFB.Engine.Event.EventManager<BFB.Engine.Event.GlobalEvent>
+  nameWithType.vb: EventManager(Of GlobalEvent)
+  fullName.vb: BFB.Engine.Event.EventManager(Of BFB.Engine.Event.GlobalEvent)
+  name.vb: EventManager(Of GlobalEvent)
+  spec.csharp:
+  - uid: BFB.Engine.Event.EventManager`1
+    name: EventManager
+    nameWithType: EventManager
+    fullName: BFB.Engine.Event.EventManager
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: BFB.Engine.Event.GlobalEvent
+    name: GlobalEvent
+    nameWithType: GlobalEvent
+    fullName: BFB.Engine.Event.GlobalEvent
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: BFB.Engine.Event.EventManager`1
+    name: EventManager
+    nameWithType: EventManager
+    fullName: BFB.Engine.Event.EventManager
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: BFB.Engine.Event.GlobalEvent
+    name: GlobalEvent
+    nameWithType: GlobalEvent
+    fullName: BFB.Engine.Event.GlobalEvent
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.Event.EventManager`1
+  commentId: T:BFB.Engine.Event.EventManager`1
+  name: EventManager<TEvent>
+  nameWithType: EventManager<TEvent>
+  fullName: BFB.Engine.Event.EventManager<TEvent>
+  nameWithType.vb: EventManager(Of TEvent)
+  fullName.vb: BFB.Engine.Event.EventManager(Of TEvent)
+  name.vb: EventManager(Of TEvent)
+  spec.csharp:
+  - uid: BFB.Engine.Event.EventManager`1
+    name: EventManager
+    nameWithType: EventManager
+    fullName: BFB.Engine.Event.EventManager
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: TEvent
+    nameWithType: TEvent
+    fullName: TEvent
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: BFB.Engine.Event.EventManager`1
+    name: EventManager
+    nameWithType: EventManager
+    fullName: BFB.Engine.Event.EventManager
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: TEvent
+    nameWithType: TEvent
+    fullName: TEvent
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.Event
+  commentId: N:BFB.Engine.Event
+  name: BFB.Engine.Event
+  nameWithType: BFB.Engine.Event
+  fullName: BFB.Engine.Event
+- uid: BFB.Engine.Scene.Scene.InputEventManager*
+  commentId: Overload:BFB.Engine.Scene.Scene.InputEventManager
+  name: InputEventManager
+  nameWithType: Scene.InputEventManager
+  fullName: BFB.Engine.Scene.Scene.InputEventManager
+- uid: BFB.Engine.Event.EventManager{BFB.Engine.Event.InputEvent}
+  commentId: T:BFB.Engine.Event.EventManager{BFB.Engine.Event.InputEvent}
+  parent: BFB.Engine.Event
+  definition: BFB.Engine.Event.EventManager`1
+  name: EventManager<InputEvent>
+  nameWithType: EventManager<InputEvent>
+  fullName: BFB.Engine.Event.EventManager<BFB.Engine.Event.InputEvent>
+  nameWithType.vb: EventManager(Of InputEvent)
+  fullName.vb: BFB.Engine.Event.EventManager(Of BFB.Engine.Event.InputEvent)
+  name.vb: EventManager(Of InputEvent)
+  spec.csharp:
+  - uid: BFB.Engine.Event.EventManager`1
+    name: EventManager
+    nameWithType: EventManager
+    fullName: BFB.Engine.Event.EventManager
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: BFB.Engine.Event.InputEvent
+    name: InputEvent
+    nameWithType: InputEvent
+    fullName: BFB.Engine.Event.InputEvent
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: BFB.Engine.Event.EventManager`1
+    name: EventManager
+    nameWithType: EventManager
+    fullName: BFB.Engine.Event.EventManager
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: BFB.Engine.Event.InputEvent
+    name: InputEvent
+    nameWithType: InputEvent
+    fullName: BFB.Engine.Event.InputEvent
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.String
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: BFB.Engine.Scene.Scene.#ctor*
+  commentId: Overload:BFB.Engine.Scene.Scene.#ctor
+  name: Scene
+  nameWithType: Scene.Scene
+  fullName: BFB.Engine.Scene.Scene.Scene
+- uid: BFB.Engine.Scene.Scene.Stop*
+  commentId: Overload:BFB.Engine.Scene.Scene.Stop
+  name: Stop
+  nameWithType: Scene.Stop
+  fullName: BFB.Engine.Scene.Scene.Stop
+- uid: BFB.Engine.Scene.Scene.Pause*
+  commentId: Overload:BFB.Engine.Scene.Scene.Pause
+  name: Pause
+  nameWithType: Scene.Pause
+  fullName: BFB.Engine.Scene.Scene.Pause
+- uid: BFB.Engine.Scene.Scene.Start*
+  commentId: Overload:BFB.Engine.Scene.Scene.Start
+  name: Start
+  nameWithType: Scene.Start
+  fullName: BFB.Engine.Scene.Scene.Start
+- uid: BFB.Engine.Scene.Scene.GetStatus*
+  commentId: Overload:BFB.Engine.Scene.Scene.GetStatus
+  name: GetStatus
+  nameWithType: Scene.GetStatus
+  fullName: BFB.Engine.Scene.Scene.GetStatus
+- uid: BFB.Engine.Scene.SceneStatus
+  commentId: T:BFB.Engine.Scene.SceneStatus
+  parent: BFB.Engine.Scene
+  name: SceneStatus
+  nameWithType: SceneStatus
+  fullName: BFB.Engine.Scene.SceneStatus
+- uid: BFB.Engine.Scene.Scene.Init*
+  commentId: Overload:BFB.Engine.Scene.Scene.Init
+  name: Init
+  nameWithType: Scene.Init
+  fullName: BFB.Engine.Scene.Scene.Init
+- uid: BFB.Engine.Scene.Scene.Load*
+  commentId: Overload:BFB.Engine.Scene.Scene.Load
+  name: Load
+  nameWithType: Scene.Load
+  fullName: BFB.Engine.Scene.Scene.Load
+- uid: BFB.Engine.Scene.Scene.Unload*
+  commentId: Overload:BFB.Engine.Scene.Scene.Unload
+  name: Unload
+  nameWithType: Scene.Unload
+  fullName: BFB.Engine.Scene.Scene.Unload
+- uid: BFB.Engine.Scene.Scene.Update*
+  commentId: Overload:BFB.Engine.Scene.Scene.Update
+  name: Update
+  nameWithType: Scene.Update
+  fullName: BFB.Engine.Scene.Scene.Update
+- uid: GameTime
+  isExternal: true
+  name: GameTime
+  nameWithType: GameTime
+  fullName: GameTime
+- uid: BFB.Engine.Scene.Scene.Draw*
+  commentId: Overload:BFB.Engine.Scene.Scene.Draw
+  name: Draw
+  nameWithType: Scene.Draw
+  fullName: BFB.Engine.Scene.Scene.Draw
+- uid: SpriteBatch
+  isExternal: true
+  name: SpriteBatch
+  nameWithType: SpriteBatch
+  fullName: SpriteBatch
+- uid: BFB.Engine.Scene.Scene.AddInputListener*
+  commentId: Overload:BFB.Engine.Scene.Scene.AddInputListener
+  name: AddInputListener
+  nameWithType: Scene.AddInputListener
+  fullName: BFB.Engine.Scene.Scene.AddInputListener
+- uid: Action{BFB.Engine.Event.InputEvent}
+  commentId: '!:Action{BFB.Engine.Event.InputEvent}'
+  definition: Action`1
+  name: Action<InputEvent>
+  nameWithType: Action<InputEvent>
+  fullName: Action<BFB.Engine.Event.InputEvent>
+  nameWithType.vb: Action(Of InputEvent)
+  fullName.vb: Action(Of BFB.Engine.Event.InputEvent)
+  name.vb: Action(Of InputEvent)
+  spec.csharp:
+  - uid: Action`1
+    name: Action
+    nameWithType: Action
+    fullName: Action
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: BFB.Engine.Event.InputEvent
+    name: InputEvent
+    nameWithType: InputEvent
+    fullName: BFB.Engine.Event.InputEvent
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: Action`1
+    name: Action
+    nameWithType: Action
+    fullName: Action
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: BFB.Engine.Event.InputEvent
+    name: InputEvent
+    nameWithType: InputEvent
+    fullName: BFB.Engine.Event.InputEvent
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Action`1
+  isExternal: true
+  name: Action<>
+  nameWithType: Action<>
+  fullName: Action<>
+  nameWithType.vb: Action(Of )
+  fullName.vb: Action(Of )
+  name.vb: Action(Of )
+  spec.csharp:
+  - uid: Action`1
+    name: Action
+    nameWithType: Action
+    fullName: Action
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: Action`1
+    name: Action
+    nameWithType: Action
+    fullName: Action
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.Scene.Scene.AddGlobalListener*
+  commentId: Overload:BFB.Engine.Scene.Scene.AddGlobalListener
+  name: AddGlobalListener
+  nameWithType: Scene.AddGlobalListener
+  fullName: BFB.Engine.Scene.Scene.AddGlobalListener
+- uid: Action{BFB.Engine.Event.GlobalEvent}
+  commentId: '!:Action{BFB.Engine.Event.GlobalEvent}'
+  definition: Action`1
+  name: Action<GlobalEvent>
+  nameWithType: Action<GlobalEvent>
+  fullName: Action<BFB.Engine.Event.GlobalEvent>
+  nameWithType.vb: Action(Of GlobalEvent)
+  fullName.vb: Action(Of BFB.Engine.Event.GlobalEvent)
+  name.vb: Action(Of GlobalEvent)
+  spec.csharp:
+  - uid: Action`1
+    name: Action
+    nameWithType: Action
+    fullName: Action
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: BFB.Engine.Event.GlobalEvent
+    name: GlobalEvent
+    nameWithType: GlobalEvent
+    fullName: BFB.Engine.Event.GlobalEvent
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: Action`1
+    name: Action
+    nameWithType: Action
+    fullName: Action
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: BFB.Engine.Event.GlobalEvent
+    name: GlobalEvent
+    nameWithType: GlobalEvent
+    fullName: BFB.Engine.Event.GlobalEvent
+  - name: )
+    nameWithType: )
+    fullName: )

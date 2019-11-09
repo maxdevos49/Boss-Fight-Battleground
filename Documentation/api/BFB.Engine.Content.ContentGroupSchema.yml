@@ -1,0 +1,378 @@
+### YamlMime:ManagedReference
+items:
+- uid: BFB.Engine.Content.ContentGroupSchema
+  commentId: T:BFB.Engine.Content.ContentGroupSchema
+  id: ContentGroupSchema
+  parent: BFB.Engine.Content
+  children:
+  - BFB.Engine.Content.ContentGroupSchema.Key
+  - BFB.Engine.Content.ContentGroupSchema.Location
+  langs:
+  - csharp
+  - vb
+  name: ContentGroupSchema
+  nameWithType: ContentGroupSchema
+  fullName: BFB.Engine.Content.ContentGroupSchema
+  type: Class
+  source:
+    remote:
+      path: BFB/BFB.Engine/Content/BFBContentManager.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: ContentGroupSchema
+    path: ../BFB/BFB.Engine/Content/BFBContentManager.cs
+    startLine: 374
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Content
+  summary: "\nSchema for what a specific content group will look like.\n"
+  example: []
+  syntax:
+    content: 'public class ContentGroupSchema : object'
+    content.vb: >-
+      Public Class ContentGroupSchema
+
+          Inherits Object
+  inheritance:
+  - System.Object
+  extensionMethods:
+  - BFB.Engine.Content.ContentGroupSchema.BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{BFB.Engine.Content.ContentGroupSchema,{TValue}}},{TValue})
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: BFB.Engine.Content.ContentGroupSchema.Key
+  commentId: P:BFB.Engine.Content.ContentGroupSchema.Key
+  id: Key
+  parent: BFB.Engine.Content.ContentGroupSchema
+  langs:
+  - csharp
+  - vb
+  name: Key
+  nameWithType: ContentGroupSchema.Key
+  fullName: BFB.Engine.Content.ContentGroupSchema.Key
+  type: Property
+  source:
+    remote:
+      path: BFB/BFB.Engine/Content/BFBContentManager.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: Key
+    path: ../BFB/BFB.Engine/Content/BFBContentManager.cs
+    startLine: 377
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Content
+  syntax:
+    content: public string Key { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Key As String
+  overload: BFB.Engine.Content.ContentGroupSchema.Key*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.Content.ContentGroupSchema.Location
+  commentId: P:BFB.Engine.Content.ContentGroupSchema.Location
+  id: Location
+  parent: BFB.Engine.Content.ContentGroupSchema
+  langs:
+  - csharp
+  - vb
+  name: Location
+  nameWithType: ContentGroupSchema.Location
+  fullName: BFB.Engine.Content.ContentGroupSchema.Location
+  type: Property
+  source:
+    remote:
+      path: BFB/BFB.Engine/Content/BFBContentManager.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: Location
+    path: ../BFB/BFB.Engine/Content/BFBContentManager.cs
+    startLine: 381
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Content
+  syntax:
+    content: public string Location { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Location As String
+  overload: BFB.Engine.Content.ContentGroupSchema.Location*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+references:
+- uid: BFB.Engine.Content
+  commentId: N:BFB.Engine.Content
+  name: BFB.Engine.Content
+  nameWithType: BFB.Engine.Content
+  fullName: BFB.Engine.Content
+- uid: System.Object
+  commentId: '!:System.Object'
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: BFB.Engine.Content.ContentGroupSchema.BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{BFB.Engine.Content.ContentGroupSchema,{TValue}}},{TValue})
+  commentId: M:BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  parent: BFB.Engine.UI.Components.LambdaExtensions
+  definition: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  name: SetPropertyValue<ContentGroupSchema, TValue>(Expression<Func<ContentGroupSchema, TValue>>, TValue)
+  nameWithType: LambdaExtensions.SetPropertyValue<ContentGroupSchema, TValue>(Expression<Func<ContentGroupSchema, TValue>>, TValue)
+  fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<BFB.Engine.Content.ContentGroupSchema, TValue>(Expression<Func<BFB.Engine.Content.ContentGroupSchema, TValue>>, TValue)
+  nameWithType.vb: LambdaExtensions.SetPropertyValue(Of ContentGroupSchema, TValue)(Expression(Of Func(Of ContentGroupSchema, TValue)), TValue)
+  fullName.vb: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of BFB.Engine.Content.ContentGroupSchema, TValue)(Expression(Of Func(Of BFB.Engine.Content.ContentGroupSchema, TValue)), TValue)
+  name.vb: SetPropertyValue(Of ContentGroupSchema, TValue)(Expression(Of Func(Of ContentGroupSchema, TValue)), TValue)
+  spec.csharp:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue<ContentGroupSchema, TValue>
+    nameWithType: LambdaExtensions.SetPropertyValue<ContentGroupSchema, TValue>
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<BFB.Engine.Content.ContentGroupSchema, TValue>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: BFB.Engine.Content.ContentGroupSchema
+    name: ContentGroupSchema
+    nameWithType: ContentGroupSchema
+    fullName: BFB.Engine.Content.ContentGroupSchema
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue(Of ContentGroupSchema, TValue)
+    nameWithType: LambdaExtensions.SetPropertyValue(Of ContentGroupSchema, TValue)
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of BFB.Engine.Content.ContentGroupSchema, TValue)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: BFB.Engine.Content.ContentGroupSchema
+    name: ContentGroupSchema
+    nameWithType: ContentGroupSchema
+    fullName: BFB.Engine.Content.ContentGroupSchema
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  commentId: M:BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  isExternal: true
+  name: SetPropertyValue<T, TValue>(T, Expression<Func<T, TValue>>, TValue)
+  nameWithType: LambdaExtensions.SetPropertyValue<T, TValue>(T, Expression<Func<T, TValue>>, TValue)
+  fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<T, TValue>(T, Expression<Func<T, TValue>>, TValue)
+  nameWithType.vb: LambdaExtensions.SetPropertyValue(Of T, TValue)(T, Expression(Of Func(Of T, TValue)), TValue)
+  fullName.vb: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of T, TValue)(T, Expression(Of Func(Of T, TValue)), TValue)
+  name.vb: SetPropertyValue(Of T, TValue)(T, Expression(Of Func(Of T, TValue)), TValue)
+  spec.csharp:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue<T, TValue>
+    nameWithType: LambdaExtensions.SetPropertyValue<T, TValue>
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<T, TValue>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue(Of T, TValue)
+    nameWithType: LambdaExtensions.SetPropertyValue(Of T, TValue)
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of T, TValue)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Components.LambdaExtensions
+  commentId: T:BFB.Engine.UI.Components.LambdaExtensions
+  parent: BFB.Engine.UI.Components
+  name: LambdaExtensions
+  nameWithType: LambdaExtensions
+  fullName: BFB.Engine.UI.Components.LambdaExtensions
+- uid: BFB.Engine.UI.Components
+  commentId: N:BFB.Engine.UI.Components
+  name: BFB.Engine.UI.Components
+  nameWithType: BFB.Engine.UI.Components
+  fullName: BFB.Engine.UI.Components
+- uid: BFB.Engine.Content.ContentGroupSchema.Key*
+  commentId: Overload:BFB.Engine.Content.ContentGroupSchema.Key
+  name: Key
+  nameWithType: ContentGroupSchema.Key
+  fullName: BFB.Engine.Content.ContentGroupSchema.Key
+- uid: System.String
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: BFB.Engine.Content.ContentGroupSchema.Location*
+  commentId: Overload:BFB.Engine.Content.ContentGroupSchema.Location
+  name: Location
+  nameWithType: ContentGroupSchema.Location
+  fullName: BFB.Engine.Content.ContentGroupSchema.Location

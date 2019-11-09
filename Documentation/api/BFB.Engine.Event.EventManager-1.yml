@@ -1,0 +1,793 @@
+### YamlMime:ManagedReference
+items:
+- uid: BFB.Engine.Event.EventManager`1
+  commentId: T:BFB.Engine.Event.EventManager`1
+  id: EventManager`1
+  parent: BFB.Engine.Event
+  children:
+  - BFB.Engine.Event.EventManager`1.#ctor
+  - BFB.Engine.Event.EventManager`1.AddEventListener(System.String,Action{`0})
+  - BFB.Engine.Event.EventManager`1.Emit(System.String,`0)
+  - BFB.Engine.Event.EventManager`1.OnEventProcess
+  - BFB.Engine.Event.EventManager`1.ProcessEvents
+  - BFB.Engine.Event.EventManager`1.RemoveEventListener(System.Int32)
+  langs:
+  - csharp
+  - vb
+  name: EventManager<TEvent>
+  nameWithType: EventManager<TEvent>
+  fullName: BFB.Engine.Event.EventManager<TEvent>
+  type: Class
+  source:
+    remote:
+      path: BFB/BFB.Engine/Event/EventManager.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: EventManager
+    path: ../BFB/BFB.Engine/Event/EventManager.cs
+    startLine: 15
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Event
+  summary: "\nManager for events.\nDevides what is to be done when an event is fired\n"
+  example: []
+  syntax:
+    content: 'public class EventManager<TEvent> : object where TEvent : Event, new()'
+    typeParameters:
+    - id: TEvent
+      description: ''
+    content.vb: >-
+      Public Class EventManager(Of TEvent As { Event, New})
+
+          Inherits Object
+  inheritance:
+  - System.Object
+  extensionMethods:
+  - BFB.Engine.Event.EventManager`1.BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{BFB.Engine.Event.EventManager{{TEvent}},{TValue}}},{TValue})
+  nameWithType.vb: EventManager(Of TEvent)
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+  fullName.vb: BFB.Engine.Event.EventManager(Of TEvent)
+  name.vb: EventManager(Of TEvent)
+- uid: BFB.Engine.Event.EventManager`1.OnEventProcess
+  commentId: P:BFB.Engine.Event.EventManager`1.OnEventProcess
+  id: OnEventProcess
+  parent: BFB.Engine.Event.EventManager`1
+  langs:
+  - csharp
+  - vb
+  name: OnEventProcess
+  nameWithType: EventManager<TEvent>.OnEventProcess
+  fullName: BFB.Engine.Event.EventManager<TEvent>.OnEventProcess
+  type: Property
+  source:
+    remote:
+      path: BFB/BFB.Engine/Event/EventManager.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: OnEventProcess
+    path: ../BFB/BFB.Engine/Event/EventManager.cs
+    startLine: 18
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Event
+  syntax:
+    content: public Func<TEvent, bool> OnEventProcess { get; set; }
+    parameters: []
+    return:
+      type: Func{{TEvent},System.Boolean}
+    content.vb: Public Property OnEventProcess As Func(Of TEvent, Boolean)
+  overload: BFB.Engine.Event.EventManager`1.OnEventProcess*
+  nameWithType.vb: EventManager(Of TEvent).OnEventProcess
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+  fullName.vb: BFB.Engine.Event.EventManager(Of TEvent).OnEventProcess
+- uid: BFB.Engine.Event.EventManager`1.#ctor
+  commentId: M:BFB.Engine.Event.EventManager`1.#ctor
+  id: '#ctor'
+  parent: BFB.Engine.Event.EventManager`1
+  langs:
+  - csharp
+  - vb
+  name: EventManager()
+  nameWithType: EventManager<TEvent>.EventManager()
+  fullName: BFB.Engine.Event.EventManager<TEvent>.EventManager()
+  type: Constructor
+  source:
+    remote:
+      path: BFB/BFB.Engine/Event/EventManager.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: .ctor
+    path: ../BFB/BFB.Engine/Event/EventManager.cs
+    startLine: 25
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Event
+  syntax:
+    content: public EventManager()
+    content.vb: Public Sub New
+  overload: BFB.Engine.Event.EventManager`1.#ctor*
+  nameWithType.vb: EventManager(Of TEvent).EventManager()
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+  fullName.vb: BFB.Engine.Event.EventManager(Of TEvent).EventManager()
+- uid: BFB.Engine.Event.EventManager`1.AddEventListener(System.String,Action{`0})
+  commentId: M:BFB.Engine.Event.EventManager`1.AddEventListener(System.String,Action{`0})
+  id: AddEventListener(System.String,Action{`0})
+  parent: BFB.Engine.Event.EventManager`1
+  langs:
+  - csharp
+  - vb
+  name: AddEventListener(String, Action<TEvent>)
+  nameWithType: EventManager<TEvent>.AddEventListener(String, Action<TEvent>)
+  fullName: BFB.Engine.Event.EventManager<TEvent>.AddEventListener(System.String, Action<TEvent>)
+  type: Method
+  source:
+    remote:
+      path: BFB/BFB.Engine/Event/EventManager.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: AddEventListener
+    path: ../BFB/BFB.Engine/Event/EventManager.cs
+    startLine: 41
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Event
+  summary: "\nAdds an event listener for a specified event\n"
+  example: []
+  syntax:
+    content: public int AddEventListener(string eventKey, Action<TEvent> eventCallback)
+    parameters:
+    - id: eventKey
+      type: System.String
+      description: Unique key of the event being used
+    - id: eventCallback
+      type: Action{{TEvent}}
+      description: Callback that will happen when this event is fired
+    return:
+      type: System.Int32
+      description: ''
+    content.vb: Public Function AddEventListener(eventKey As String, eventCallback As Action(Of TEvent)) As Integer
+  overload: BFB.Engine.Event.EventManager`1.AddEventListener*
+  nameWithType.vb: EventManager(Of TEvent).AddEventListener(String, Action(Of TEvent))
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+  fullName.vb: BFB.Engine.Event.EventManager(Of TEvent).AddEventListener(System.String, Action(Of TEvent))
+  name.vb: AddEventListener(String, Action(Of TEvent))
+- uid: BFB.Engine.Event.EventManager`1.RemoveEventListener(System.Int32)
+  commentId: M:BFB.Engine.Event.EventManager`1.RemoveEventListener(System.Int32)
+  id: RemoveEventListener(System.Int32)
+  parent: BFB.Engine.Event.EventManager`1
+  langs:
+  - csharp
+  - vb
+  name: RemoveEventListener(Int32)
+  nameWithType: EventManager<TEvent>.RemoveEventListener(Int32)
+  fullName: BFB.Engine.Event.EventManager<TEvent>.RemoveEventListener(System.Int32)
+  type: Method
+  source:
+    remote:
+      path: BFB/BFB.Engine/Event/EventManager.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: RemoveEventListener
+    path: ../BFB/BFB.Engine/Event/EventManager.cs
+    startLine: 70
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Event
+  summary: "\nRemoves a event listener for a specified event handler id\n"
+  example: []
+  syntax:
+    content: public void RemoveEventListener(int eventHandlerId)
+    parameters:
+    - id: eventHandlerId
+      type: System.Int32
+      description: Unique ID of the event handler to remove
+    content.vb: Public Sub RemoveEventListener(eventHandlerId As Integer)
+  overload: BFB.Engine.Event.EventManager`1.RemoveEventListener*
+  nameWithType.vb: EventManager(Of TEvent).RemoveEventListener(Int32)
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+  fullName.vb: BFB.Engine.Event.EventManager(Of TEvent).RemoveEventListener(System.Int32)
+- uid: BFB.Engine.Event.EventManager`1.Emit(System.String,`0)
+  commentId: M:BFB.Engine.Event.EventManager`1.Emit(System.String,`0)
+  id: Emit(System.String,`0)
+  parent: BFB.Engine.Event.EventManager`1
+  langs:
+  - csharp
+  - vb
+  name: Emit(String, TEvent)
+  nameWithType: EventManager<TEvent>.Emit(String, TEvent)
+  fullName: BFB.Engine.Event.EventManager<TEvent>.Emit(System.String, TEvent)
+  type: Method
+  source:
+    remote:
+      path: BFB/BFB.Engine/Event/EventManager.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: Emit
+    path: ../BFB/BFB.Engine/Event/EventManager.cs
+    startLine: 86
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Event
+  summary: "\nAdds the event with the given key and data to the EventQueue\n"
+  example: []
+  syntax:
+    content: public void Emit(string eventKey, TEvent eventData = null)
+    parameters:
+    - id: eventKey
+      type: System.String
+      description: key of the event to be added
+    - id: eventData
+      type: '{TEvent}'
+      description: data of the event to be added
+    content.vb: Public Sub Emit(eventKey As String, eventData As TEvent = Nothing)
+  overload: BFB.Engine.Event.EventManager`1.Emit*
+  nameWithType.vb: EventManager(Of TEvent).Emit(String, TEvent)
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+  fullName.vb: BFB.Engine.Event.EventManager(Of TEvent).Emit(System.String, TEvent)
+- uid: BFB.Engine.Event.EventManager`1.ProcessEvents
+  commentId: M:BFB.Engine.Event.EventManager`1.ProcessEvents
+  id: ProcessEvents
+  parent: BFB.Engine.Event.EventManager`1
+  langs:
+  - csharp
+  - vb
+  name: ProcessEvents()
+  nameWithType: EventManager<TEvent>.ProcessEvents()
+  fullName: BFB.Engine.Event.EventManager<TEvent>.ProcessEvents()
+  type: Method
+  source:
+    remote:
+      path: BFB/BFB.Engine/Event/EventManager.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: ProcessEvents
+    path: ../BFB/BFB.Engine/Event/EventManager.cs
+    startLine: 100
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Event
+  summary: "\nProcesses the events in the EventQueue\n"
+  example: []
+  syntax:
+    content: public void ProcessEvents()
+    content.vb: Public Sub ProcessEvents
+  overload: BFB.Engine.Event.EventManager`1.ProcessEvents*
+  nameWithType.vb: EventManager(Of TEvent).ProcessEvents()
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+  fullName.vb: BFB.Engine.Event.EventManager(Of TEvent).ProcessEvents()
+references:
+- uid: BFB.Engine.Event
+  commentId: N:BFB.Engine.Event
+  name: BFB.Engine.Event
+  nameWithType: BFB.Engine.Event
+  fullName: BFB.Engine.Event
+- uid: System.Object
+  commentId: '!:System.Object'
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: BFB.Engine.Event.EventManager`1.BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{BFB.Engine.Event.EventManager{{TEvent}},{TValue}}},{TValue})
+  commentId: M:BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  parent: BFB.Engine.UI.Components.LambdaExtensions
+  definition: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  name: SetPropertyValue<EventManager<TEvent>, TValue>(Expression<Func<EventManager<TEvent>, TValue>>, TValue)
+  nameWithType: LambdaExtensions.SetPropertyValue<EventManager<TEvent>, TValue>(Expression<Func<EventManager<TEvent>, TValue>>, TValue)
+  fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<BFB.Engine.Event.EventManager<TEvent>, TValue>(Expression<Func<BFB.Engine.Event.EventManager<TEvent>, TValue>>, TValue)
+  nameWithType.vb: LambdaExtensions.SetPropertyValue(Of EventManager(Of TEvent), TValue)(Expression(Of Func(Of EventManager(Of TEvent), TValue)), TValue)
+  fullName.vb: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of BFB.Engine.Event.EventManager(Of TEvent), TValue)(Expression(Of Func(Of BFB.Engine.Event.EventManager(Of TEvent), TValue)), TValue)
+  name.vb: SetPropertyValue(Of EventManager(Of TEvent), TValue)(Expression(Of Func(Of EventManager(Of TEvent), TValue)), TValue)
+  spec.csharp:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue<EventManager<TEvent>, TValue>
+    nameWithType: LambdaExtensions.SetPropertyValue<EventManager<TEvent>, TValue>
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<BFB.Engine.Event.EventManager<TEvent>, TValue>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: BFB.Engine.Event.EventManager`1
+    name: EventManager
+    nameWithType: EventManager
+    fullName: BFB.Engine.Event.EventManager
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: TEvent
+    nameWithType: TEvent
+    fullName: TEvent
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue(Of EventManager(Of TEvent), TValue)
+    nameWithType: LambdaExtensions.SetPropertyValue(Of EventManager(Of TEvent), TValue)
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of BFB.Engine.Event.EventManager(Of TEvent), TValue)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: BFB.Engine.Event.EventManager`1
+    name: EventManager
+    nameWithType: EventManager
+    fullName: BFB.Engine.Event.EventManager
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: TEvent
+    nameWithType: TEvent
+    fullName: TEvent
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  commentId: M:BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  isExternal: true
+  name: SetPropertyValue<T, TValue>(T, Expression<Func<T, TValue>>, TValue)
+  nameWithType: LambdaExtensions.SetPropertyValue<T, TValue>(T, Expression<Func<T, TValue>>, TValue)
+  fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<T, TValue>(T, Expression<Func<T, TValue>>, TValue)
+  nameWithType.vb: LambdaExtensions.SetPropertyValue(Of T, TValue)(T, Expression(Of Func(Of T, TValue)), TValue)
+  fullName.vb: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of T, TValue)(T, Expression(Of Func(Of T, TValue)), TValue)
+  name.vb: SetPropertyValue(Of T, TValue)(T, Expression(Of Func(Of T, TValue)), TValue)
+  spec.csharp:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue<T, TValue>
+    nameWithType: LambdaExtensions.SetPropertyValue<T, TValue>
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<T, TValue>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue(Of T, TValue)
+    nameWithType: LambdaExtensions.SetPropertyValue(Of T, TValue)
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of T, TValue)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Components.LambdaExtensions
+  commentId: T:BFB.Engine.UI.Components.LambdaExtensions
+  parent: BFB.Engine.UI.Components
+  name: LambdaExtensions
+  nameWithType: LambdaExtensions
+  fullName: BFB.Engine.UI.Components.LambdaExtensions
+- uid: BFB.Engine.UI.Components
+  commentId: N:BFB.Engine.UI.Components
+  name: BFB.Engine.UI.Components
+  nameWithType: BFB.Engine.UI.Components
+  fullName: BFB.Engine.UI.Components
+- uid: BFB.Engine.Event.EventManager`1.OnEventProcess*
+  commentId: Overload:BFB.Engine.Event.EventManager`1.OnEventProcess
+  name: OnEventProcess
+  nameWithType: EventManager<TEvent>.OnEventProcess
+  fullName: BFB.Engine.Event.EventManager<TEvent>.OnEventProcess
+  nameWithType.vb: EventManager(Of TEvent).OnEventProcess
+  fullName.vb: BFB.Engine.Event.EventManager(Of TEvent).OnEventProcess
+- uid: Func{{TEvent},System.Boolean}
+  commentId: '!:Func{`0,System.Boolean}'
+  definition: Func`2
+  name: Func<TEvent, Boolean>
+  nameWithType: Func<TEvent, Boolean>
+  fullName: Func<TEvent, System.Boolean>
+  nameWithType.vb: Func(Of TEvent, Boolean)
+  fullName.vb: Func(Of TEvent, System.Boolean)
+  name.vb: Func(Of TEvent, Boolean)
+  spec.csharp:
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: TEvent
+    nameWithType: TEvent
+    fullName: TEvent
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: TEvent
+    nameWithType: TEvent
+    fullName: TEvent
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Func`2
+  isExternal: true
+  name: Func<, >
+  nameWithType: Func<, >
+  fullName: Func<, >
+  nameWithType.vb: Func(Of , )
+  fullName.vb: Func(Of , )
+  name.vb: Func(Of , )
+  spec.csharp:
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.Event.EventManager`1.#ctor*
+  commentId: Overload:BFB.Engine.Event.EventManager`1.#ctor
+  name: EventManager
+  nameWithType: EventManager<TEvent>.EventManager
+  fullName: BFB.Engine.Event.EventManager<TEvent>.EventManager
+  nameWithType.vb: EventManager(Of TEvent).EventManager
+  fullName.vb: BFB.Engine.Event.EventManager(Of TEvent).EventManager
+- uid: BFB.Engine.Event.EventManager`1.AddEventListener*
+  commentId: Overload:BFB.Engine.Event.EventManager`1.AddEventListener
+  name: AddEventListener
+  nameWithType: EventManager<TEvent>.AddEventListener
+  fullName: BFB.Engine.Event.EventManager<TEvent>.AddEventListener
+  nameWithType.vb: EventManager(Of TEvent).AddEventListener
+  fullName.vb: BFB.Engine.Event.EventManager(Of TEvent).AddEventListener
+- uid: System.String
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: Action{{TEvent}}
+  commentId: '!:Action{`0}'
+  definition: Action`1
+  name: Action<TEvent>
+  nameWithType: Action<TEvent>
+  fullName: Action<TEvent>
+  nameWithType.vb: Action(Of TEvent)
+  fullName.vb: Action(Of TEvent)
+  name.vb: Action(Of TEvent)
+  spec.csharp:
+  - uid: Action`1
+    name: Action
+    nameWithType: Action
+    fullName: Action
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: TEvent
+    nameWithType: TEvent
+    fullName: TEvent
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: Action`1
+    name: Action
+    nameWithType: Action
+    fullName: Action
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: TEvent
+    nameWithType: TEvent
+    fullName: TEvent
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Int32
+  isExternal: true
+  name: Int32
+  nameWithType: Int32
+  fullName: System.Int32
+- uid: Action`1
+  isExternal: true
+  name: Action<>
+  nameWithType: Action<>
+  fullName: Action<>
+  nameWithType.vb: Action(Of )
+  fullName.vb: Action(Of )
+  name.vb: Action(Of )
+  spec.csharp:
+  - uid: Action`1
+    name: Action
+    nameWithType: Action
+    fullName: Action
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: Action`1
+    name: Action
+    nameWithType: Action
+    fullName: Action
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.Event.EventManager`1.RemoveEventListener*
+  commentId: Overload:BFB.Engine.Event.EventManager`1.RemoveEventListener
+  name: RemoveEventListener
+  nameWithType: EventManager<TEvent>.RemoveEventListener
+  fullName: BFB.Engine.Event.EventManager<TEvent>.RemoveEventListener
+  nameWithType.vb: EventManager(Of TEvent).RemoveEventListener
+  fullName.vb: BFB.Engine.Event.EventManager(Of TEvent).RemoveEventListener
+- uid: BFB.Engine.Event.EventManager`1.Emit*
+  commentId: Overload:BFB.Engine.Event.EventManager`1.Emit
+  name: Emit
+  nameWithType: EventManager<TEvent>.Emit
+  fullName: BFB.Engine.Event.EventManager<TEvent>.Emit
+  nameWithType.vb: EventManager(Of TEvent).Emit
+  fullName.vb: BFB.Engine.Event.EventManager(Of TEvent).Emit
+- uid: '{TEvent}'
+  commentId: '!:TEvent'
+  definition: TEvent
+  name: TEvent
+  nameWithType: TEvent
+  fullName: TEvent
+- uid: TEvent
+  commentId: '!:TEvent'
+  name: TEvent
+  nameWithType: TEvent
+  fullName: TEvent
+- uid: BFB.Engine.Event.EventManager`1.ProcessEvents*
+  commentId: Overload:BFB.Engine.Event.EventManager`1.ProcessEvents
+  name: ProcessEvents
+  nameWithType: EventManager<TEvent>.ProcessEvents
+  fullName: BFB.Engine.Event.EventManager<TEvent>.ProcessEvents
+  nameWithType.vb: EventManager(Of TEvent).ProcessEvents
+  fullName.vb: BFB.Engine.Event.EventManager(Of TEvent).ProcessEvents

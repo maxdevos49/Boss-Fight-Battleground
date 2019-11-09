@@ -1,0 +1,240 @@
+### YamlMime:ManagedReference
+items:
+- uid: BFB.Engine.UI.Components.LambdaExtensions
+  commentId: T:BFB.Engine.UI.Components.LambdaExtensions
+  id: LambdaExtensions
+  parent: BFB.Engine.UI.Components
+  children:
+  - BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  langs:
+  - csharp
+  - vb
+  name: LambdaExtensions
+  nameWithType: LambdaExtensions
+  fullName: BFB.Engine.UI.Components.LambdaExtensions
+  type: Class
+  source:
+    remote:
+      path: BFB/BFB.Engine/UI/Components/UITextBoxComponent.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: LambdaExtensions
+    path: ../BFB/BFB.Engine/UI/Components/UITextBoxComponent.cs
+    startLine: 273
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.UI.Components
+  syntax:
+    content: 'public static class LambdaExtensions : object'
+    content.vb: >-
+      Public Module LambdaExtensions
+
+          Inherits Object
+  inheritance:
+  - System.Object
+  modifiers.csharp:
+  - public
+  - static
+  - class
+  modifiers.vb:
+  - Public
+  - Module
+- uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  commentId: M:BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  id: SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  isExtensionMethod: true
+  parent: BFB.Engine.UI.Components.LambdaExtensions
+  langs:
+  - csharp
+  - vb
+  name: SetPropertyValue<T, TValue>(T, Expression<Func<T, TValue>>, TValue)
+  nameWithType: LambdaExtensions.SetPropertyValue<T, TValue>(T, Expression<Func<T, TValue>>, TValue)
+  fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<T, TValue>(T, Expression<Func<T, TValue>>, TValue)
+  type: Method
+  source:
+    remote:
+      path: BFB/BFB.Engine/UI/Components/UITextBoxComponent.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: SetPropertyValue
+    path: ../BFB/BFB.Engine/UI/Components/UITextBoxComponent.cs
+    startLine: 275
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.UI.Components
+  syntax:
+    content: public static void SetPropertyValue<T, TValue>(this T target, Expression<Func<T, TValue>> memberLambda, TValue value)
+    parameters:
+    - id: target
+      type: '{T}'
+    - id: memberLambda
+      type: Expression{Func{{T},{TValue}}}
+    - id: value
+      type: '{TValue}'
+    typeParameters:
+    - id: T
+    - id: TValue
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Sub SetPropertyValue(Of T, TValue)(target As T, memberLambda As Expression(Of Func(Of T, TValue)), value As TValue)
+  overload: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue*
+  nameWithType.vb: LambdaExtensions.SetPropertyValue(Of T, TValue)(T, Expression(Of Func(Of T, TValue)), TValue)
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of T, TValue)(T, Expression(Of Func(Of T, TValue)), TValue)
+  name.vb: SetPropertyValue(Of T, TValue)(T, Expression(Of Func(Of T, TValue)), TValue)
+references:
+- uid: BFB.Engine.UI.Components
+  commentId: N:BFB.Engine.UI.Components
+  name: BFB.Engine.UI.Components
+  nameWithType: BFB.Engine.UI.Components
+  fullName: BFB.Engine.UI.Components
+- uid: System.Object
+  commentId: '!:System.Object'
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue*
+  commentId: Overload:BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue
+  name: SetPropertyValue
+  nameWithType: LambdaExtensions.SetPropertyValue
+  fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue
+- uid: '{T}'
+  commentId: '!:T'
+  definition: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: Expression{Func{{T},{TValue}}}
+  commentId: '!:Expression{Func{``0,``1}}'
+  definition: Expression`1
+  name: Expression<Func<T, TValue>>
+  nameWithType: Expression<Func<T, TValue>>
+  fullName: Expression<Func<T, TValue>>
+  nameWithType.vb: Expression(Of Func(Of T, TValue))
+  fullName.vb: Expression(Of Func(Of T, TValue))
+  name.vb: Expression(Of Func(Of T, TValue))
+  spec.csharp:
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: '{TValue}'
+  commentId: '!:TValue'
+  definition: TValue
+  name: TValue
+  nameWithType: TValue
+  fullName: TValue
+- uid: T
+  commentId: '!:T'
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: Expression`1
+  isExternal: true
+  name: Expression<>
+  nameWithType: Expression<>
+  fullName: Expression<>
+  nameWithType.vb: Expression(Of )
+  fullName.vb: Expression(Of )
+  name.vb: Expression(Of )
+  spec.csharp:
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: TValue
+  commentId: '!:TValue'
+  name: TValue
+  nameWithType: TValue
+  fullName: TValue

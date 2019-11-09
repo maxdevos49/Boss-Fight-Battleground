@@ -1,0 +1,387 @@
+### YamlMime:ManagedReference
+items:
+- uid: BFB.Engine.Debug.FrameCounter
+  commentId: T:BFB.Engine.Debug.FrameCounter
+  id: FrameCounter
+  parent: BFB.Engine.Debug
+  children:
+  - BFB.Engine.Debug.FrameCounter.AverageFramesPerSecond
+  - BFB.Engine.Debug.FrameCounter.Update(System.Single)
+  langs:
+  - csharp
+  - vb
+  name: FrameCounter
+  nameWithType: FrameCounter
+  fullName: BFB.Engine.Debug.FrameCounter
+  type: Class
+  source:
+    remote:
+      path: BFB/BFB.Engine/Debug/FrameCounter.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: FrameCounter
+    path: ../BFB/BFB.Engine/Debug/FrameCounter.cs
+    startLine: 11
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Debug
+  summary: "\nFrameCounter has the ability to count the frames the BFB.Client is running at\n"
+  example: []
+  syntax:
+    content: 'public class FrameCounter : object'
+    content.vb: >-
+      Public Class FrameCounter
+
+          Inherits Object
+  inheritance:
+  - System.Object
+  extensionMethods:
+  - BFB.Engine.Debug.FrameCounter.BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{BFB.Engine.Debug.FrameCounter,{TValue}}},{TValue})
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: BFB.Engine.Debug.FrameCounter.AverageFramesPerSecond
+  commentId: P:BFB.Engine.Debug.FrameCounter.AverageFramesPerSecond
+  id: AverageFramesPerSecond
+  parent: BFB.Engine.Debug.FrameCounter
+  langs:
+  - csharp
+  - vb
+  name: AverageFramesPerSecond
+  nameWithType: FrameCounter.AverageFramesPerSecond
+  fullName: BFB.Engine.Debug.FrameCounter.AverageFramesPerSecond
+  type: Property
+  source:
+    remote:
+      path: BFB/BFB.Engine/Debug/FrameCounter.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: AverageFramesPerSecond
+    path: ../BFB/BFB.Engine/Debug/FrameCounter.cs
+    startLine: 15
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Debug
+  syntax:
+    content: public float AverageFramesPerSecond { get; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: Public ReadOnly Property AverageFramesPerSecond As Single
+  overload: BFB.Engine.Debug.FrameCounter.AverageFramesPerSecond*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: BFB.Engine.Debug.FrameCounter.Update(System.Single)
+  commentId: M:BFB.Engine.Debug.FrameCounter.Update(System.Single)
+  id: Update(System.Single)
+  parent: BFB.Engine.Debug.FrameCounter
+  langs:
+  - csharp
+  - vb
+  name: Update(Single)
+  nameWithType: FrameCounter.Update(Single)
+  fullName: BFB.Engine.Debug.FrameCounter.Update(System.Single)
+  type: Method
+  source:
+    remote:
+      path: BFB/BFB.Engine/Debug/FrameCounter.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: Update
+    path: ../BFB/BFB.Engine/Debug/FrameCounter.cs
+    startLine: 27
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Debug
+  summary: "\nUpdates the framerate everyt \n"
+  example: []
+  syntax:
+    content: public bool Update(float deltaTime)
+    parameters:
+    - id: deltaTime
+      type: System.Single
+      description: The change of time used to calculate FPS
+    return:
+      type: System.Boolean
+      description: ''
+    content.vb: Public Function Update(deltaTime As Single) As Boolean
+  overload: BFB.Engine.Debug.FrameCounter.Update*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+references:
+- uid: BFB.Engine.Debug
+  commentId: N:BFB.Engine.Debug
+  name: BFB.Engine.Debug
+  nameWithType: BFB.Engine.Debug
+  fullName: BFB.Engine.Debug
+- uid: System.Object
+  commentId: '!:System.Object'
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: BFB.Engine.Debug.FrameCounter.BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{BFB.Engine.Debug.FrameCounter,{TValue}}},{TValue})
+  commentId: M:BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  parent: BFB.Engine.UI.Components.LambdaExtensions
+  definition: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  name: SetPropertyValue<FrameCounter, TValue>(Expression<Func<FrameCounter, TValue>>, TValue)
+  nameWithType: LambdaExtensions.SetPropertyValue<FrameCounter, TValue>(Expression<Func<FrameCounter, TValue>>, TValue)
+  fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<BFB.Engine.Debug.FrameCounter, TValue>(Expression<Func<BFB.Engine.Debug.FrameCounter, TValue>>, TValue)
+  nameWithType.vb: LambdaExtensions.SetPropertyValue(Of FrameCounter, TValue)(Expression(Of Func(Of FrameCounter, TValue)), TValue)
+  fullName.vb: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of BFB.Engine.Debug.FrameCounter, TValue)(Expression(Of Func(Of BFB.Engine.Debug.FrameCounter, TValue)), TValue)
+  name.vb: SetPropertyValue(Of FrameCounter, TValue)(Expression(Of Func(Of FrameCounter, TValue)), TValue)
+  spec.csharp:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue<FrameCounter, TValue>
+    nameWithType: LambdaExtensions.SetPropertyValue<FrameCounter, TValue>
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<BFB.Engine.Debug.FrameCounter, TValue>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: BFB.Engine.Debug.FrameCounter
+    name: FrameCounter
+    nameWithType: FrameCounter
+    fullName: BFB.Engine.Debug.FrameCounter
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue(Of FrameCounter, TValue)
+    nameWithType: LambdaExtensions.SetPropertyValue(Of FrameCounter, TValue)
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of BFB.Engine.Debug.FrameCounter, TValue)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: BFB.Engine.Debug.FrameCounter
+    name: FrameCounter
+    nameWithType: FrameCounter
+    fullName: BFB.Engine.Debug.FrameCounter
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  commentId: M:BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  isExternal: true
+  name: SetPropertyValue<T, TValue>(T, Expression<Func<T, TValue>>, TValue)
+  nameWithType: LambdaExtensions.SetPropertyValue<T, TValue>(T, Expression<Func<T, TValue>>, TValue)
+  fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<T, TValue>(T, Expression<Func<T, TValue>>, TValue)
+  nameWithType.vb: LambdaExtensions.SetPropertyValue(Of T, TValue)(T, Expression(Of Func(Of T, TValue)), TValue)
+  fullName.vb: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of T, TValue)(T, Expression(Of Func(Of T, TValue)), TValue)
+  name.vb: SetPropertyValue(Of T, TValue)(T, Expression(Of Func(Of T, TValue)), TValue)
+  spec.csharp:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue<T, TValue>
+    nameWithType: LambdaExtensions.SetPropertyValue<T, TValue>
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<T, TValue>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue(Of T, TValue)
+    nameWithType: LambdaExtensions.SetPropertyValue(Of T, TValue)
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of T, TValue)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Components.LambdaExtensions
+  commentId: T:BFB.Engine.UI.Components.LambdaExtensions
+  parent: BFB.Engine.UI.Components
+  name: LambdaExtensions
+  nameWithType: LambdaExtensions
+  fullName: BFB.Engine.UI.Components.LambdaExtensions
+- uid: BFB.Engine.UI.Components
+  commentId: N:BFB.Engine.UI.Components
+  name: BFB.Engine.UI.Components
+  nameWithType: BFB.Engine.UI.Components
+  fullName: BFB.Engine.UI.Components
+- uid: BFB.Engine.Debug.FrameCounter.AverageFramesPerSecond*
+  commentId: Overload:BFB.Engine.Debug.FrameCounter.AverageFramesPerSecond
+  name: AverageFramesPerSecond
+  nameWithType: FrameCounter.AverageFramesPerSecond
+  fullName: BFB.Engine.Debug.FrameCounter.AverageFramesPerSecond
+- uid: System.Single
+  isExternal: true
+  name: Single
+  nameWithType: Single
+  fullName: System.Single
+- uid: BFB.Engine.Debug.FrameCounter.Update*
+  commentId: Overload:BFB.Engine.Debug.FrameCounter.Update
+  name: Update
+  nameWithType: FrameCounter.Update
+  fullName: BFB.Engine.Debug.FrameCounter.Update
+- uid: System.Boolean
+  isExternal: true
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean

@@ -1,0 +1,517 @@
+### YamlMime:ManagedReference
+items:
+- uid: BFB.Engine.Scene.SceneStatus
+  commentId: T:BFB.Engine.Scene.SceneStatus
+  id: SceneStatus
+  parent: BFB.Engine.Scene
+  children:
+  - BFB.Engine.Scene.SceneStatus.Active
+  - BFB.Engine.Scene.SceneStatus.Hidden
+  - BFB.Engine.Scene.SceneStatus.Inactive
+  - BFB.Engine.Scene.SceneStatus.Inoperable
+  - BFB.Engine.Scene.SceneStatus.Loading
+  - BFB.Engine.Scene.SceneStatus.Paused
+  - BFB.Engine.Scene.SceneStatus.Unloading
+  langs:
+  - csharp
+  - vb
+  name: SceneStatus
+  nameWithType: SceneStatus
+  fullName: BFB.Engine.Scene.SceneStatus
+  type: Enum
+  source:
+    remote:
+      path: BFB/BFB.Engine/Scene/SceneStatus.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: SceneStatus
+    path: ../BFB/BFB.Engine/Scene/SceneStatus.cs
+    startLine: 5
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Scene
+  summary: "\nThe state that a scene is in.\n"
+  example: []
+  syntax:
+    content: 'public enum SceneStatus : int'
+    content.vb: Public Enum SceneStatus As Integer
+  extensionMethods:
+  - BFB.Engine.Scene.SceneStatus.BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{BFB.Engine.Scene.SceneStatus,{TValue}}},{TValue})
+  modifiers.csharp:
+  - public
+  - enum
+  modifiers.vb:
+  - Public
+  - Enum
+- uid: BFB.Engine.Scene.SceneStatus.Active
+  commentId: F:BFB.Engine.Scene.SceneStatus.Active
+  id: Active
+  parent: BFB.Engine.Scene.SceneStatus
+  langs:
+  - csharp
+  - vb
+  name: Active
+  nameWithType: SceneStatus.Active
+  fullName: BFB.Engine.Scene.SceneStatus.Active
+  type: Field
+  source:
+    remote:
+      path: BFB/BFB.Engine/Scene/SceneStatus.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: Active
+    path: ../BFB/BFB.Engine/Scene/SceneStatus.cs
+    startLine: 7
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Scene
+  syntax:
+    content: Active = 0
+    return:
+      type: BFB.Engine.Scene.SceneStatus
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: BFB.Engine.Scene.SceneStatus.Inactive
+  commentId: F:BFB.Engine.Scene.SceneStatus.Inactive
+  id: Inactive
+  parent: BFB.Engine.Scene.SceneStatus
+  langs:
+  - csharp
+  - vb
+  name: Inactive
+  nameWithType: SceneStatus.Inactive
+  fullName: BFB.Engine.Scene.SceneStatus.Inactive
+  type: Field
+  source:
+    remote:
+      path: BFB/BFB.Engine/Scene/SceneStatus.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: Inactive
+    path: ../BFB/BFB.Engine/Scene/SceneStatus.cs
+    startLine: 8
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Scene
+  syntax:
+    content: Inactive = 1
+    return:
+      type: BFB.Engine.Scene.SceneStatus
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: BFB.Engine.Scene.SceneStatus.Paused
+  commentId: F:BFB.Engine.Scene.SceneStatus.Paused
+  id: Paused
+  parent: BFB.Engine.Scene.SceneStatus
+  langs:
+  - csharp
+  - vb
+  name: Paused
+  nameWithType: SceneStatus.Paused
+  fullName: BFB.Engine.Scene.SceneStatus.Paused
+  type: Field
+  source:
+    remote:
+      path: BFB/BFB.Engine/Scene/SceneStatus.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: Paused
+    path: ../BFB/BFB.Engine/Scene/SceneStatus.cs
+    startLine: 9
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Scene
+  syntax:
+    content: Paused = 2
+    return:
+      type: BFB.Engine.Scene.SceneStatus
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: BFB.Engine.Scene.SceneStatus.Loading
+  commentId: F:BFB.Engine.Scene.SceneStatus.Loading
+  id: Loading
+  parent: BFB.Engine.Scene.SceneStatus
+  langs:
+  - csharp
+  - vb
+  name: Loading
+  nameWithType: SceneStatus.Loading
+  fullName: BFB.Engine.Scene.SceneStatus.Loading
+  type: Field
+  source:
+    remote:
+      path: BFB/BFB.Engine/Scene/SceneStatus.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: Loading
+    path: ../BFB/BFB.Engine/Scene/SceneStatus.cs
+    startLine: 10
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Scene
+  syntax:
+    content: Loading = 3
+    return:
+      type: BFB.Engine.Scene.SceneStatus
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: BFB.Engine.Scene.SceneStatus.Unloading
+  commentId: F:BFB.Engine.Scene.SceneStatus.Unloading
+  id: Unloading
+  parent: BFB.Engine.Scene.SceneStatus
+  langs:
+  - csharp
+  - vb
+  name: Unloading
+  nameWithType: SceneStatus.Unloading
+  fullName: BFB.Engine.Scene.SceneStatus.Unloading
+  type: Field
+  source:
+    remote:
+      path: BFB/BFB.Engine/Scene/SceneStatus.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: Unloading
+    path: ../BFB/BFB.Engine/Scene/SceneStatus.cs
+    startLine: 11
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Scene
+  syntax:
+    content: Unloading = 4
+    return:
+      type: BFB.Engine.Scene.SceneStatus
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: BFB.Engine.Scene.SceneStatus.Hidden
+  commentId: F:BFB.Engine.Scene.SceneStatus.Hidden
+  id: Hidden
+  parent: BFB.Engine.Scene.SceneStatus
+  langs:
+  - csharp
+  - vb
+  name: Hidden
+  nameWithType: SceneStatus.Hidden
+  fullName: BFB.Engine.Scene.SceneStatus.Hidden
+  type: Field
+  source:
+    remote:
+      path: BFB/BFB.Engine/Scene/SceneStatus.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: Hidden
+    path: ../BFB/BFB.Engine/Scene/SceneStatus.cs
+    startLine: 12
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Scene
+  syntax:
+    content: Hidden = 5
+    return:
+      type: BFB.Engine.Scene.SceneStatus
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: BFB.Engine.Scene.SceneStatus.Inoperable
+  commentId: F:BFB.Engine.Scene.SceneStatus.Inoperable
+  id: Inoperable
+  parent: BFB.Engine.Scene.SceneStatus
+  langs:
+  - csharp
+  - vb
+  name: Inoperable
+  nameWithType: SceneStatus.Inoperable
+  fullName: BFB.Engine.Scene.SceneStatus.Inoperable
+  type: Field
+  source:
+    remote:
+      path: BFB/BFB.Engine/Scene/SceneStatus.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: Inoperable
+    path: ../BFB/BFB.Engine/Scene/SceneStatus.cs
+    startLine: 13
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Scene
+  syntax:
+    content: Inoperable = 6
+    return:
+      type: BFB.Engine.Scene.SceneStatus
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+references:
+- uid: BFB.Engine.Scene
+  commentId: N:BFB.Engine.Scene
+  name: BFB.Engine.Scene
+  nameWithType: BFB.Engine.Scene
+  fullName: BFB.Engine.Scene
+- uid: BFB.Engine.Scene.SceneStatus.BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{BFB.Engine.Scene.SceneStatus,{TValue}}},{TValue})
+  commentId: M:BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  parent: BFB.Engine.UI.Components.LambdaExtensions
+  definition: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  name: SetPropertyValue<SceneStatus, TValue>(Expression<Func<SceneStatus, TValue>>, TValue)
+  nameWithType: LambdaExtensions.SetPropertyValue<SceneStatus, TValue>(Expression<Func<SceneStatus, TValue>>, TValue)
+  fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<BFB.Engine.Scene.SceneStatus, TValue>(Expression<Func<BFB.Engine.Scene.SceneStatus, TValue>>, TValue)
+  nameWithType.vb: LambdaExtensions.SetPropertyValue(Of SceneStatus, TValue)(Expression(Of Func(Of SceneStatus, TValue)), TValue)
+  fullName.vb: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of BFB.Engine.Scene.SceneStatus, TValue)(Expression(Of Func(Of BFB.Engine.Scene.SceneStatus, TValue)), TValue)
+  name.vb: SetPropertyValue(Of SceneStatus, TValue)(Expression(Of Func(Of SceneStatus, TValue)), TValue)
+  spec.csharp:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue<SceneStatus, TValue>
+    nameWithType: LambdaExtensions.SetPropertyValue<SceneStatus, TValue>
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<BFB.Engine.Scene.SceneStatus, TValue>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: BFB.Engine.Scene.SceneStatus
+    name: SceneStatus
+    nameWithType: SceneStatus
+    fullName: BFB.Engine.Scene.SceneStatus
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue(Of SceneStatus, TValue)
+    nameWithType: LambdaExtensions.SetPropertyValue(Of SceneStatus, TValue)
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of BFB.Engine.Scene.SceneStatus, TValue)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: BFB.Engine.Scene.SceneStatus
+    name: SceneStatus
+    nameWithType: SceneStatus
+    fullName: BFB.Engine.Scene.SceneStatus
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  commentId: M:BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  isExternal: true
+  name: SetPropertyValue<T, TValue>(T, Expression<Func<T, TValue>>, TValue)
+  nameWithType: LambdaExtensions.SetPropertyValue<T, TValue>(T, Expression<Func<T, TValue>>, TValue)
+  fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<T, TValue>(T, Expression<Func<T, TValue>>, TValue)
+  nameWithType.vb: LambdaExtensions.SetPropertyValue(Of T, TValue)(T, Expression(Of Func(Of T, TValue)), TValue)
+  fullName.vb: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of T, TValue)(T, Expression(Of Func(Of T, TValue)), TValue)
+  name.vb: SetPropertyValue(Of T, TValue)(T, Expression(Of Func(Of T, TValue)), TValue)
+  spec.csharp:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue<T, TValue>
+    nameWithType: LambdaExtensions.SetPropertyValue<T, TValue>
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<T, TValue>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue(Of T, TValue)
+    nameWithType: LambdaExtensions.SetPropertyValue(Of T, TValue)
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of T, TValue)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Components.LambdaExtensions
+  commentId: T:BFB.Engine.UI.Components.LambdaExtensions
+  parent: BFB.Engine.UI.Components
+  name: LambdaExtensions
+  nameWithType: LambdaExtensions
+  fullName: BFB.Engine.UI.Components.LambdaExtensions
+- uid: BFB.Engine.UI.Components
+  commentId: N:BFB.Engine.UI.Components
+  name: BFB.Engine.UI.Components
+  nameWithType: BFB.Engine.UI.Components
+  fullName: BFB.Engine.UI.Components
+- uid: BFB.Engine.Scene.SceneStatus
+  commentId: T:BFB.Engine.Scene.SceneStatus
+  parent: BFB.Engine.Scene
+  name: SceneStatus
+  nameWithType: SceneStatus
+  fullName: BFB.Engine.Scene.SceneStatus

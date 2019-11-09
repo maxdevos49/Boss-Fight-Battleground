@@ -1,0 +1,889 @@
+### YamlMime:ManagedReference
+items:
+- uid: BFB.Engine.UI.Constraints.UIConstraintExtensions
+  commentId: T:BFB.Engine.UI.Constraints.UIConstraintExtensions
+  id: UIConstraintExtensions
+  parent: BFB.Engine.UI.Constraints
+  children:
+  - BFB.Engine.UI.Constraints.UIConstraintExtensions.AspectRatio(BFB.Engine.UI.Components.UIComponent,System.Single)
+  - BFB.Engine.UI.Constraints.UIConstraintExtensions.Background(BFB.Engine.UI.Components.UIComponent,System.Nullable{Color})
+  - BFB.Engine.UI.Constraints.UIConstraintExtensions.Bottom(BFB.Engine.UI.Components.UIComponent,System.Int32)
+  - BFB.Engine.UI.Constraints.UIConstraintExtensions.Center(BFB.Engine.UI.Components.UIComponent)
+  - BFB.Engine.UI.Constraints.UIConstraintExtensions.Color(BFB.Engine.UI.Components.UIComponent,System.Nullable{Color})
+  - BFB.Engine.UI.Constraints.UIConstraintExtensions.FontSize(BFB.Engine.UI.Components.UIComponent,System.Single)
+  - BFB.Engine.UI.Constraints.UIConstraintExtensions.Grow(BFB.Engine.UI.Components.UIComponent,System.Int32)
+  - BFB.Engine.UI.Constraints.UIConstraintExtensions.Height(BFB.Engine.UI.Components.UIComponent,System.Int32)
+  - BFB.Engine.UI.Constraints.UIConstraintExtensions.Height(BFB.Engine.UI.Components.UIComponent,System.Single)
+  - BFB.Engine.UI.Constraints.UIConstraintExtensions.Image(BFB.Engine.UI.Components.UIComponent,System.String)
+  - BFB.Engine.UI.Constraints.UIConstraintExtensions.Left(BFB.Engine.UI.Components.UIComponent,System.Int32)
+  - BFB.Engine.UI.Constraints.UIConstraintExtensions.Right(BFB.Engine.UI.Components.UIComponent,System.Int32)
+  - BFB.Engine.UI.Constraints.UIConstraintExtensions.Top(BFB.Engine.UI.Components.UIComponent,System.Int32)
+  - BFB.Engine.UI.Constraints.UIConstraintExtensions.Width(BFB.Engine.UI.Components.UIComponent,System.Int32)
+  - BFB.Engine.UI.Constraints.UIConstraintExtensions.Width(BFB.Engine.UI.Components.UIComponent,System.Single)
+  langs:
+  - csharp
+  - vb
+  name: UIConstraintExtensions
+  nameWithType: UIConstraintExtensions
+  fullName: BFB.Engine.UI.Constraints.UIConstraintExtensions
+  type: Class
+  source:
+    remote:
+      path: BFB/BFB.Engine/UI/Constraints/UIConstraintExtensions.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: UIConstraintExtensions
+    path: ../BFB/BFB.Engine/UI/Constraints/UIConstraintExtensions.cs
+    startLine: 5
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.UI.Constraints
+  syntax:
+    content: 'public static class UIConstraintExtensions : object'
+    content.vb: >-
+      Public Module UIConstraintExtensions
+
+          Inherits Object
+  inheritance:
+  - System.Object
+  modifiers.csharp:
+  - public
+  - static
+  - class
+  modifiers.vb:
+  - Public
+  - Module
+- uid: BFB.Engine.UI.Constraints.UIConstraintExtensions.Width(BFB.Engine.UI.Components.UIComponent,System.Int32)
+  commentId: M:BFB.Engine.UI.Constraints.UIConstraintExtensions.Width(BFB.Engine.UI.Components.UIComponent,System.Int32)
+  id: Width(BFB.Engine.UI.Components.UIComponent,System.Int32)
+  isExtensionMethod: true
+  parent: BFB.Engine.UI.Constraints.UIConstraintExtensions
+  langs:
+  - csharp
+  - vb
+  name: Width(UIComponent, Int32)
+  nameWithType: UIConstraintExtensions.Width(UIComponent, Int32)
+  fullName: BFB.Engine.UI.Constraints.UIConstraintExtensions.Width(BFB.Engine.UI.Components.UIComponent, System.Int32)
+  type: Method
+  source:
+    remote:
+      path: BFB/BFB.Engine/UI/Constraints/UIConstraintExtensions.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: Width
+    path: ../BFB/BFB.Engine/UI/Constraints/UIConstraintExtensions.cs
+    startLine: 10
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.UI.Constraints
+  syntax:
+    content: public static UIComponent Width(this UIComponent component, int pixels)
+    parameters:
+    - id: component
+      type: BFB.Engine.UI.Components.UIComponent
+    - id: pixels
+      type: System.Int32
+    return:
+      type: BFB.Engine.UI.Components.UIComponent
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function Width(component As UIComponent, pixels As Integer) As UIComponent
+  overload: BFB.Engine.UI.Constraints.UIConstraintExtensions.Width*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: BFB.Engine.UI.Constraints.UIConstraintExtensions.Width(BFB.Engine.UI.Components.UIComponent,System.Single)
+  commentId: M:BFB.Engine.UI.Constraints.UIConstraintExtensions.Width(BFB.Engine.UI.Components.UIComponent,System.Single)
+  id: Width(BFB.Engine.UI.Components.UIComponent,System.Single)
+  isExtensionMethod: true
+  parent: BFB.Engine.UI.Constraints.UIConstraintExtensions
+  langs:
+  - csharp
+  - vb
+  name: Width(UIComponent, Single)
+  nameWithType: UIConstraintExtensions.Width(UIComponent, Single)
+  fullName: BFB.Engine.UI.Constraints.UIConstraintExtensions.Width(BFB.Engine.UI.Components.UIComponent, System.Single)
+  type: Method
+  source:
+    remote:
+      path: BFB/BFB.Engine/UI/Constraints/UIConstraintExtensions.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: Width
+    path: ../BFB/BFB.Engine/UI/Constraints/UIConstraintExtensions.cs
+    startLine: 15
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.UI.Constraints
+  syntax:
+    content: public static UIComponent Width(this UIComponent component, float percent)
+    parameters:
+    - id: component
+      type: BFB.Engine.UI.Components.UIComponent
+    - id: percent
+      type: System.Single
+    return:
+      type: BFB.Engine.UI.Components.UIComponent
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function Width(component As UIComponent, percent As Single) As UIComponent
+  overload: BFB.Engine.UI.Constraints.UIConstraintExtensions.Width*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: BFB.Engine.UI.Constraints.UIConstraintExtensions.Height(BFB.Engine.UI.Components.UIComponent,System.Int32)
+  commentId: M:BFB.Engine.UI.Constraints.UIConstraintExtensions.Height(BFB.Engine.UI.Components.UIComponent,System.Int32)
+  id: Height(BFB.Engine.UI.Components.UIComponent,System.Int32)
+  isExtensionMethod: true
+  parent: BFB.Engine.UI.Constraints.UIConstraintExtensions
+  langs:
+  - csharp
+  - vb
+  name: Height(UIComponent, Int32)
+  nameWithType: UIConstraintExtensions.Height(UIComponent, Int32)
+  fullName: BFB.Engine.UI.Constraints.UIConstraintExtensions.Height(BFB.Engine.UI.Components.UIComponent, System.Int32)
+  type: Method
+  source:
+    remote:
+      path: BFB/BFB.Engine/UI/Constraints/UIConstraintExtensions.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: Height
+    path: ../BFB/BFB.Engine/UI/Constraints/UIConstraintExtensions.cs
+    startLine: 24
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.UI.Constraints
+  syntax:
+    content: public static UIComponent Height(this UIComponent component, int pixels)
+    parameters:
+    - id: component
+      type: BFB.Engine.UI.Components.UIComponent
+    - id: pixels
+      type: System.Int32
+    return:
+      type: BFB.Engine.UI.Components.UIComponent
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function Height(component As UIComponent, pixels As Integer) As UIComponent
+  overload: BFB.Engine.UI.Constraints.UIConstraintExtensions.Height*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: BFB.Engine.UI.Constraints.UIConstraintExtensions.Height(BFB.Engine.UI.Components.UIComponent,System.Single)
+  commentId: M:BFB.Engine.UI.Constraints.UIConstraintExtensions.Height(BFB.Engine.UI.Components.UIComponent,System.Single)
+  id: Height(BFB.Engine.UI.Components.UIComponent,System.Single)
+  isExtensionMethod: true
+  parent: BFB.Engine.UI.Constraints.UIConstraintExtensions
+  langs:
+  - csharp
+  - vb
+  name: Height(UIComponent, Single)
+  nameWithType: UIConstraintExtensions.Height(UIComponent, Single)
+  fullName: BFB.Engine.UI.Constraints.UIConstraintExtensions.Height(BFB.Engine.UI.Components.UIComponent, System.Single)
+  type: Method
+  source:
+    remote:
+      path: BFB/BFB.Engine/UI/Constraints/UIConstraintExtensions.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: Height
+    path: ../BFB/BFB.Engine/UI/Constraints/UIConstraintExtensions.cs
+    startLine: 29
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.UI.Constraints
+  syntax:
+    content: public static UIComponent Height(this UIComponent component, float percent)
+    parameters:
+    - id: component
+      type: BFB.Engine.UI.Components.UIComponent
+    - id: percent
+      type: System.Single
+    return:
+      type: BFB.Engine.UI.Components.UIComponent
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function Height(component As UIComponent, percent As Single) As UIComponent
+  overload: BFB.Engine.UI.Constraints.UIConstraintExtensions.Height*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: BFB.Engine.UI.Constraints.UIConstraintExtensions.Top(BFB.Engine.UI.Components.UIComponent,System.Int32)
+  commentId: M:BFB.Engine.UI.Constraints.UIConstraintExtensions.Top(BFB.Engine.UI.Components.UIComponent,System.Int32)
+  id: Top(BFB.Engine.UI.Components.UIComponent,System.Int32)
+  isExtensionMethod: true
+  parent: BFB.Engine.UI.Constraints.UIConstraintExtensions
+  langs:
+  - csharp
+  - vb
+  name: Top(UIComponent, Int32)
+  nameWithType: UIConstraintExtensions.Top(UIComponent, Int32)
+  fullName: BFB.Engine.UI.Constraints.UIConstraintExtensions.Top(BFB.Engine.UI.Components.UIComponent, System.Int32)
+  type: Method
+  source:
+    remote:
+      path: BFB/BFB.Engine/UI/Constraints/UIConstraintExtensions.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: Top
+    path: ../BFB/BFB.Engine/UI/Constraints/UIConstraintExtensions.cs
+    startLine: 38
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.UI.Constraints
+  syntax:
+    content: public static UIComponent Top(this UIComponent component, int pixels)
+    parameters:
+    - id: component
+      type: BFB.Engine.UI.Components.UIComponent
+    - id: pixels
+      type: System.Int32
+    return:
+      type: BFB.Engine.UI.Components.UIComponent
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function Top(component As UIComponent, pixels As Integer) As UIComponent
+  overload: BFB.Engine.UI.Constraints.UIConstraintExtensions.Top*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: BFB.Engine.UI.Constraints.UIConstraintExtensions.Right(BFB.Engine.UI.Components.UIComponent,System.Int32)
+  commentId: M:BFB.Engine.UI.Constraints.UIConstraintExtensions.Right(BFB.Engine.UI.Components.UIComponent,System.Int32)
+  id: Right(BFB.Engine.UI.Components.UIComponent,System.Int32)
+  isExtensionMethod: true
+  parent: BFB.Engine.UI.Constraints.UIConstraintExtensions
+  langs:
+  - csharp
+  - vb
+  name: Right(UIComponent, Int32)
+  nameWithType: UIConstraintExtensions.Right(UIComponent, Int32)
+  fullName: BFB.Engine.UI.Constraints.UIConstraintExtensions.Right(BFB.Engine.UI.Components.UIComponent, System.Int32)
+  type: Method
+  source:
+    remote:
+      path: BFB/BFB.Engine/UI/Constraints/UIConstraintExtensions.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: Right
+    path: ../BFB/BFB.Engine/UI/Constraints/UIConstraintExtensions.cs
+    startLine: 47
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.UI.Constraints
+  syntax:
+    content: public static UIComponent Right(this UIComponent component, int pixels)
+    parameters:
+    - id: component
+      type: BFB.Engine.UI.Components.UIComponent
+    - id: pixels
+      type: System.Int32
+    return:
+      type: BFB.Engine.UI.Components.UIComponent
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function Right(component As UIComponent, pixels As Integer) As UIComponent
+  overload: BFB.Engine.UI.Constraints.UIConstraintExtensions.Right*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: BFB.Engine.UI.Constraints.UIConstraintExtensions.Bottom(BFB.Engine.UI.Components.UIComponent,System.Int32)
+  commentId: M:BFB.Engine.UI.Constraints.UIConstraintExtensions.Bottom(BFB.Engine.UI.Components.UIComponent,System.Int32)
+  id: Bottom(BFB.Engine.UI.Components.UIComponent,System.Int32)
+  isExtensionMethod: true
+  parent: BFB.Engine.UI.Constraints.UIConstraintExtensions
+  langs:
+  - csharp
+  - vb
+  name: Bottom(UIComponent, Int32)
+  nameWithType: UIConstraintExtensions.Bottom(UIComponent, Int32)
+  fullName: BFB.Engine.UI.Constraints.UIConstraintExtensions.Bottom(BFB.Engine.UI.Components.UIComponent, System.Int32)
+  type: Method
+  source:
+    remote:
+      path: BFB/BFB.Engine/UI/Constraints/UIConstraintExtensions.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: Bottom
+    path: ../BFB/BFB.Engine/UI/Constraints/UIConstraintExtensions.cs
+    startLine: 56
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.UI.Constraints
+  syntax:
+    content: public static UIComponent Bottom(this UIComponent component, int pixels)
+    parameters:
+    - id: component
+      type: BFB.Engine.UI.Components.UIComponent
+    - id: pixels
+      type: System.Int32
+    return:
+      type: BFB.Engine.UI.Components.UIComponent
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function Bottom(component As UIComponent, pixels As Integer) As UIComponent
+  overload: BFB.Engine.UI.Constraints.UIConstraintExtensions.Bottom*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: BFB.Engine.UI.Constraints.UIConstraintExtensions.Left(BFB.Engine.UI.Components.UIComponent,System.Int32)
+  commentId: M:BFB.Engine.UI.Constraints.UIConstraintExtensions.Left(BFB.Engine.UI.Components.UIComponent,System.Int32)
+  id: Left(BFB.Engine.UI.Components.UIComponent,System.Int32)
+  isExtensionMethod: true
+  parent: BFB.Engine.UI.Constraints.UIConstraintExtensions
+  langs:
+  - csharp
+  - vb
+  name: Left(UIComponent, Int32)
+  nameWithType: UIConstraintExtensions.Left(UIComponent, Int32)
+  fullName: BFB.Engine.UI.Constraints.UIConstraintExtensions.Left(BFB.Engine.UI.Components.UIComponent, System.Int32)
+  type: Method
+  source:
+    remote:
+      path: BFB/BFB.Engine/UI/Constraints/UIConstraintExtensions.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: Left
+    path: ../BFB/BFB.Engine/UI/Constraints/UIConstraintExtensions.cs
+    startLine: 65
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.UI.Constraints
+  syntax:
+    content: public static UIComponent Left(this UIComponent component, int pixels)
+    parameters:
+    - id: component
+      type: BFB.Engine.UI.Components.UIComponent
+    - id: pixels
+      type: System.Int32
+    return:
+      type: BFB.Engine.UI.Components.UIComponent
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function Left(component As UIComponent, pixels As Integer) As UIComponent
+  overload: BFB.Engine.UI.Constraints.UIConstraintExtensions.Left*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: BFB.Engine.UI.Constraints.UIConstraintExtensions.Image(BFB.Engine.UI.Components.UIComponent,System.String)
+  commentId: M:BFB.Engine.UI.Constraints.UIConstraintExtensions.Image(BFB.Engine.UI.Components.UIComponent,System.String)
+  id: Image(BFB.Engine.UI.Components.UIComponent,System.String)
+  isExtensionMethod: true
+  parent: BFB.Engine.UI.Constraints.UIConstraintExtensions
+  langs:
+  - csharp
+  - vb
+  name: Image(UIComponent, String)
+  nameWithType: UIConstraintExtensions.Image(UIComponent, String)
+  fullName: BFB.Engine.UI.Constraints.UIConstraintExtensions.Image(BFB.Engine.UI.Components.UIComponent, System.String)
+  type: Method
+  source:
+    remote:
+      path: BFB/BFB.Engine/UI/Constraints/UIConstraintExtensions.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: Image
+    path: ../BFB/BFB.Engine/UI/Constraints/UIConstraintExtensions.cs
+    startLine: 74
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.UI.Constraints
+  syntax:
+    content: public static UIComponent Image(this UIComponent component, string textureKey)
+    parameters:
+    - id: component
+      type: BFB.Engine.UI.Components.UIComponent
+    - id: textureKey
+      type: System.String
+    return:
+      type: BFB.Engine.UI.Components.UIComponent
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function Image(component As UIComponent, textureKey As String) As UIComponent
+  overload: BFB.Engine.UI.Constraints.UIConstraintExtensions.Image*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: BFB.Engine.UI.Constraints.UIConstraintExtensions.Center(BFB.Engine.UI.Components.UIComponent)
+  commentId: M:BFB.Engine.UI.Constraints.UIConstraintExtensions.Center(BFB.Engine.UI.Components.UIComponent)
+  id: Center(BFB.Engine.UI.Components.UIComponent)
+  isExtensionMethod: true
+  parent: BFB.Engine.UI.Constraints.UIConstraintExtensions
+  langs:
+  - csharp
+  - vb
+  name: Center(UIComponent)
+  nameWithType: UIConstraintExtensions.Center(UIComponent)
+  fullName: BFB.Engine.UI.Constraints.UIConstraintExtensions.Center(BFB.Engine.UI.Components.UIComponent)
+  type: Method
+  source:
+    remote:
+      path: BFB/BFB.Engine/UI/Constraints/UIConstraintExtensions.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: Center
+    path: ../BFB/BFB.Engine/UI/Constraints/UIConstraintExtensions.cs
+    startLine: 85
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.UI.Constraints
+  syntax:
+    content: public static UIComponent Center(this UIComponent component)
+    parameters:
+    - id: component
+      type: BFB.Engine.UI.Components.UIComponent
+    return:
+      type: BFB.Engine.UI.Components.UIComponent
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function Center(component As UIComponent) As UIComponent
+  overload: BFB.Engine.UI.Constraints.UIConstraintExtensions.Center*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: BFB.Engine.UI.Constraints.UIConstraintExtensions.Grow(BFB.Engine.UI.Components.UIComponent,System.Int32)
+  commentId: M:BFB.Engine.UI.Constraints.UIConstraintExtensions.Grow(BFB.Engine.UI.Components.UIComponent,System.Int32)
+  id: Grow(BFB.Engine.UI.Components.UIComponent,System.Int32)
+  isExtensionMethod: true
+  parent: BFB.Engine.UI.Constraints.UIConstraintExtensions
+  langs:
+  - csharp
+  - vb
+  name: Grow(UIComponent, Int32)
+  nameWithType: UIConstraintExtensions.Grow(UIComponent, Int32)
+  fullName: BFB.Engine.UI.Constraints.UIConstraintExtensions.Grow(BFB.Engine.UI.Components.UIComponent, System.Int32)
+  type: Method
+  source:
+    remote:
+      path: BFB/BFB.Engine/UI/Constraints/UIConstraintExtensions.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: Grow
+    path: ../BFB/BFB.Engine/UI/Constraints/UIConstraintExtensions.cs
+    startLine: 94
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.UI.Constraints
+  syntax:
+    content: public static UIComponent Grow(this UIComponent component, int proportion)
+    parameters:
+    - id: component
+      type: BFB.Engine.UI.Components.UIComponent
+    - id: proportion
+      type: System.Int32
+    return:
+      type: BFB.Engine.UI.Components.UIComponent
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function Grow(component As UIComponent, proportion As Integer) As UIComponent
+  overload: BFB.Engine.UI.Constraints.UIConstraintExtensions.Grow*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: BFB.Engine.UI.Constraints.UIConstraintExtensions.AspectRatio(BFB.Engine.UI.Components.UIComponent,System.Single)
+  commentId: M:BFB.Engine.UI.Constraints.UIConstraintExtensions.AspectRatio(BFB.Engine.UI.Components.UIComponent,System.Single)
+  id: AspectRatio(BFB.Engine.UI.Components.UIComponent,System.Single)
+  isExtensionMethod: true
+  parent: BFB.Engine.UI.Constraints.UIConstraintExtensions
+  langs:
+  - csharp
+  - vb
+  name: AspectRatio(UIComponent, Single)
+  nameWithType: UIConstraintExtensions.AspectRatio(UIComponent, Single)
+  fullName: BFB.Engine.UI.Constraints.UIConstraintExtensions.AspectRatio(BFB.Engine.UI.Components.UIComponent, System.Single)
+  type: Method
+  source:
+    remote:
+      path: BFB/BFB.Engine/UI/Constraints/UIConstraintExtensions.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: AspectRatio
+    path: ../BFB/BFB.Engine/UI/Constraints/UIConstraintExtensions.cs
+    startLine: 107
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.UI.Constraints
+  example: []
+  syntax:
+    content: public static UIComponent AspectRatio(this UIComponent component, float ratio)
+    parameters:
+    - id: component
+      type: BFB.Engine.UI.Components.UIComponent
+    - id: ratio
+      type: System.Single
+    return:
+      type: BFB.Engine.UI.Components.UIComponent
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function AspectRatio(component As UIComponent, ratio As Single) As UIComponent
+  overload: BFB.Engine.UI.Constraints.UIConstraintExtensions.AspectRatio*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: BFB.Engine.UI.Constraints.UIConstraintExtensions.FontSize(BFB.Engine.UI.Components.UIComponent,System.Single)
+  commentId: M:BFB.Engine.UI.Constraints.UIConstraintExtensions.FontSize(BFB.Engine.UI.Components.UIComponent,System.Single)
+  id: FontSize(BFB.Engine.UI.Components.UIComponent,System.Single)
+  isExtensionMethod: true
+  parent: BFB.Engine.UI.Constraints.UIConstraintExtensions
+  langs:
+  - csharp
+  - vb
+  name: FontSize(UIComponent, Single)
+  nameWithType: UIConstraintExtensions.FontSize(UIComponent, Single)
+  fullName: BFB.Engine.UI.Constraints.UIConstraintExtensions.FontSize(BFB.Engine.UI.Components.UIComponent, System.Single)
+  type: Method
+  source:
+    remote:
+      path: BFB/BFB.Engine/UI/Constraints/UIConstraintExtensions.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: FontSize
+    path: ../BFB/BFB.Engine/UI/Constraints/UIConstraintExtensions.cs
+    startLine: 116
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.UI.Constraints
+  syntax:
+    content: public static UIComponent FontSize(this UIComponent component, float fontScale)
+    parameters:
+    - id: component
+      type: BFB.Engine.UI.Components.UIComponent
+    - id: fontScale
+      type: System.Single
+    return:
+      type: BFB.Engine.UI.Components.UIComponent
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function FontSize(component As UIComponent, fontScale As Single) As UIComponent
+  overload: BFB.Engine.UI.Constraints.UIConstraintExtensions.FontSize*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: BFB.Engine.UI.Constraints.UIConstraintExtensions.Background(BFB.Engine.UI.Components.UIComponent,System.Nullable{Color})
+  commentId: M:BFB.Engine.UI.Constraints.UIConstraintExtensions.Background(BFB.Engine.UI.Components.UIComponent,System.Nullable{Color})
+  id: Background(BFB.Engine.UI.Components.UIComponent,System.Nullable{Color})
+  isExtensionMethod: true
+  parent: BFB.Engine.UI.Constraints.UIConstraintExtensions
+  langs:
+  - csharp
+  - vb
+  name: Background(UIComponent, Nullable<Color>)
+  nameWithType: UIConstraintExtensions.Background(UIComponent, Nullable<Color>)
+  fullName: BFB.Engine.UI.Constraints.UIConstraintExtensions.Background(BFB.Engine.UI.Components.UIComponent, System.Nullable<Color>)
+  type: Method
+  source:
+    remote:
+      path: BFB/BFB.Engine/UI/Constraints/UIConstraintExtensions.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: Background
+    path: ../BFB/BFB.Engine/UI/Constraints/UIConstraintExtensions.cs
+    startLine: 125
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.UI.Constraints
+  syntax:
+    content: public static UIComponent Background(this UIComponent component, Color? color)
+    parameters:
+    - id: component
+      type: BFB.Engine.UI.Components.UIComponent
+    - id: color
+      type: System.Nullable{Color}
+    return:
+      type: BFB.Engine.UI.Components.UIComponent
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function Background(component As UIComponent, color As Color?) As UIComponent
+  overload: BFB.Engine.UI.Constraints.UIConstraintExtensions.Background*
+  nameWithType.vb: UIConstraintExtensions.Background(UIComponent, Nullable(Of Color))
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: BFB.Engine.UI.Constraints.UIConstraintExtensions.Background(BFB.Engine.UI.Components.UIComponent, System.Nullable(Of Color))
+  name.vb: Background(UIComponent, Nullable(Of Color))
+- uid: BFB.Engine.UI.Constraints.UIConstraintExtensions.Color(BFB.Engine.UI.Components.UIComponent,System.Nullable{Color})
+  commentId: M:BFB.Engine.UI.Constraints.UIConstraintExtensions.Color(BFB.Engine.UI.Components.UIComponent,System.Nullable{Color})
+  id: Color(BFB.Engine.UI.Components.UIComponent,System.Nullable{Color})
+  isExtensionMethod: true
+  parent: BFB.Engine.UI.Constraints.UIConstraintExtensions
+  langs:
+  - csharp
+  - vb
+  name: Color(UIComponent, Nullable<Color>)
+  nameWithType: UIConstraintExtensions.Color(UIComponent, Nullable<Color>)
+  fullName: BFB.Engine.UI.Constraints.UIConstraintExtensions.Color(BFB.Engine.UI.Components.UIComponent, System.Nullable<Color>)
+  type: Method
+  source:
+    remote:
+      path: BFB/BFB.Engine/UI/Constraints/UIConstraintExtensions.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: Color
+    path: ../BFB/BFB.Engine/UI/Constraints/UIConstraintExtensions.cs
+    startLine: 134
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.UI.Constraints
+  syntax:
+    content: public static UIComponent Color(this UIComponent component, Color? color)
+    parameters:
+    - id: component
+      type: BFB.Engine.UI.Components.UIComponent
+    - id: color
+      type: System.Nullable{Color}
+    return:
+      type: BFB.Engine.UI.Components.UIComponent
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function Color(component As UIComponent, color As Color?) As UIComponent
+  overload: BFB.Engine.UI.Constraints.UIConstraintExtensions.Color*
+  nameWithType.vb: UIConstraintExtensions.Color(UIComponent, Nullable(Of Color))
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: BFB.Engine.UI.Constraints.UIConstraintExtensions.Color(BFB.Engine.UI.Components.UIComponent, System.Nullable(Of Color))
+  name.vb: Color(UIComponent, Nullable(Of Color))
+references:
+- uid: BFB.Engine.UI.Constraints
+  commentId: N:BFB.Engine.UI.Constraints
+  name: BFB.Engine.UI.Constraints
+  nameWithType: BFB.Engine.UI.Constraints
+  fullName: BFB.Engine.UI.Constraints
+- uid: System.Object
+  commentId: '!:System.Object'
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: BFB.Engine.UI.Constraints.UIConstraintExtensions.Width*
+  commentId: Overload:BFB.Engine.UI.Constraints.UIConstraintExtensions.Width
+  name: Width
+  nameWithType: UIConstraintExtensions.Width
+  fullName: BFB.Engine.UI.Constraints.UIConstraintExtensions.Width
+- uid: BFB.Engine.UI.Components.UIComponent
+  commentId: T:BFB.Engine.UI.Components.UIComponent
+  parent: BFB.Engine.UI.Components
+  name: UIComponent
+  nameWithType: UIComponent
+  fullName: BFB.Engine.UI.Components.UIComponent
+- uid: System.Int32
+  isExternal: true
+  name: Int32
+  nameWithType: Int32
+  fullName: System.Int32
+- uid: BFB.Engine.UI.Components
+  commentId: N:BFB.Engine.UI.Components
+  name: BFB.Engine.UI.Components
+  nameWithType: BFB.Engine.UI.Components
+  fullName: BFB.Engine.UI.Components
+- uid: System.Single
+  isExternal: true
+  name: Single
+  nameWithType: Single
+  fullName: System.Single
+- uid: BFB.Engine.UI.Constraints.UIConstraintExtensions.Height*
+  commentId: Overload:BFB.Engine.UI.Constraints.UIConstraintExtensions.Height
+  name: Height
+  nameWithType: UIConstraintExtensions.Height
+  fullName: BFB.Engine.UI.Constraints.UIConstraintExtensions.Height
+- uid: BFB.Engine.UI.Constraints.UIConstraintExtensions.Top*
+  commentId: Overload:BFB.Engine.UI.Constraints.UIConstraintExtensions.Top
+  name: Top
+  nameWithType: UIConstraintExtensions.Top
+  fullName: BFB.Engine.UI.Constraints.UIConstraintExtensions.Top
+- uid: BFB.Engine.UI.Constraints.UIConstraintExtensions.Right*
+  commentId: Overload:BFB.Engine.UI.Constraints.UIConstraintExtensions.Right
+  name: Right
+  nameWithType: UIConstraintExtensions.Right
+  fullName: BFB.Engine.UI.Constraints.UIConstraintExtensions.Right
+- uid: BFB.Engine.UI.Constraints.UIConstraintExtensions.Bottom*
+  commentId: Overload:BFB.Engine.UI.Constraints.UIConstraintExtensions.Bottom
+  name: Bottom
+  nameWithType: UIConstraintExtensions.Bottom
+  fullName: BFB.Engine.UI.Constraints.UIConstraintExtensions.Bottom
+- uid: BFB.Engine.UI.Constraints.UIConstraintExtensions.Left*
+  commentId: Overload:BFB.Engine.UI.Constraints.UIConstraintExtensions.Left
+  name: Left
+  nameWithType: UIConstraintExtensions.Left
+  fullName: BFB.Engine.UI.Constraints.UIConstraintExtensions.Left
+- uid: BFB.Engine.UI.Constraints.UIConstraintExtensions.Image*
+  commentId: Overload:BFB.Engine.UI.Constraints.UIConstraintExtensions.Image
+  name: Image
+  nameWithType: UIConstraintExtensions.Image
+  fullName: BFB.Engine.UI.Constraints.UIConstraintExtensions.Image
+- uid: System.String
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: BFB.Engine.UI.Constraints.UIConstraintExtensions.Center*
+  commentId: Overload:BFB.Engine.UI.Constraints.UIConstraintExtensions.Center
+  name: Center
+  nameWithType: UIConstraintExtensions.Center
+  fullName: BFB.Engine.UI.Constraints.UIConstraintExtensions.Center
+- uid: BFB.Engine.UI.Constraints.UIConstraintExtensions.Grow*
+  commentId: Overload:BFB.Engine.UI.Constraints.UIConstraintExtensions.Grow
+  name: Grow
+  nameWithType: UIConstraintExtensions.Grow
+  fullName: BFB.Engine.UI.Constraints.UIConstraintExtensions.Grow
+- uid: BFB.Engine.UI.Constraints.UIConstraintExtensions.AspectRatio*
+  commentId: Overload:BFB.Engine.UI.Constraints.UIConstraintExtensions.AspectRatio
+  name: AspectRatio
+  nameWithType: UIConstraintExtensions.AspectRatio
+  fullName: BFB.Engine.UI.Constraints.UIConstraintExtensions.AspectRatio
+- uid: BFB.Engine.UI.Constraints.UIConstraintExtensions.FontSize*
+  commentId: Overload:BFB.Engine.UI.Constraints.UIConstraintExtensions.FontSize
+  name: FontSize
+  nameWithType: UIConstraintExtensions.FontSize
+  fullName: BFB.Engine.UI.Constraints.UIConstraintExtensions.FontSize
+- uid: BFB.Engine.UI.Constraints.UIConstraintExtensions.Background*
+  commentId: Overload:BFB.Engine.UI.Constraints.UIConstraintExtensions.Background
+  name: Background
+  nameWithType: UIConstraintExtensions.Background
+  fullName: BFB.Engine.UI.Constraints.UIConstraintExtensions.Background
+- uid: System.Nullable{Color}
+  commentId: '!:System.Nullable{Color}'
+  definition: System.Nullable`1
+  name: Nullable<Color>
+  nameWithType: Nullable<Color>
+  fullName: System.Nullable<Color>
+  nameWithType.vb: Nullable(Of Color)
+  fullName.vb: System.Nullable(Of Color)
+  name.vb: Nullable(Of Color)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    nameWithType: Nullable
+    fullName: System.Nullable
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Color
+    name: Color
+    nameWithType: Color
+    fullName: Color
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    nameWithType: Nullable
+    fullName: System.Nullable
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Color
+    name: Color
+    nameWithType: Color
+    fullName: Color
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Nullable`1
+  isExternal: true
+  name: Nullable<>
+  nameWithType: Nullable<>
+  fullName: System.Nullable<>
+  nameWithType.vb: Nullable(Of )
+  fullName.vb: System.Nullable(Of )
+  name.vb: Nullable(Of )
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    nameWithType: Nullable
+    fullName: System.Nullable
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    nameWithType: Nullable
+    fullName: System.Nullable
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Constraints.UIConstraintExtensions.Color*
+  commentId: Overload:BFB.Engine.UI.Constraints.UIConstraintExtensions.Color
+  name: Color
+  nameWithType: UIConstraintExtensions.Color
+  fullName: BFB.Engine.UI.Constraints.UIConstraintExtensions.Color

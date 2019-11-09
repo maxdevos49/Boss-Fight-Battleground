@@ -1,4 +1,5 @@
 using System;
+using System.Security.Claims;
 using BFB.Engine.Entity;
 using BFB.Engine.Input.PlayerInput;
 using BFB.Engine.Math;
@@ -44,11 +45,14 @@ namespace BFB.Engine.Simulation.InputComponents
                 if (_playerState.RightClick || _playerState.LeftClick)
                 {
 
+                    int mouseX = (int)(_playerState.Mouse.X + 0);
+                    int mouseY = (int)(_playerState.Mouse.Y + 0);
+
                     Tuple<int, int, int, int> chunkInformation =
-                        simulation.WorldManager.TranslatePixelPosition((int)_playerState.Mouse.X, (int)_playerState.Mouse.Y);
+                        simulation.World.TranslatePixelPosition(mouseX, mouseY);
 
                     Chunk targetChunk =
-                        simulation.WorldManager.ChunkFromChunkLocation(chunkInformation.Item1, chunkInformation.Item2);
+                        simulation.World.ChunkFromChunkLocation(chunkInformation.Item1, chunkInformation.Item2);
 
                     int xSelection = chunkInformation.Item3;
                     int ySelection = chunkInformation.Item4;

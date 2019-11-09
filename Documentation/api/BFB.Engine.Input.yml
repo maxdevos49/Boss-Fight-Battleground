@@ -1,0 +1,53 @@
+### YamlMime:ManagedReference
+items:
+- uid: BFB.Engine.Input
+  commentId: N:BFB.Engine.Input
+  id: BFB.Engine.Input
+  children:
+  - BFB.Engine.Input.InputManager
+  - BFB.Engine.Input.KeyboardInput
+  - BFB.Engine.Input.KeyboardStatus
+  - BFB.Engine.Input.MouseInput
+  - BFB.Engine.Input.MouseStatus
+  langs:
+  - csharp
+  - vb
+  name: BFB.Engine.Input
+  nameWithType: BFB.Engine.Input
+  fullName: BFB.Engine.Input
+  type: Namespace
+  assemblies:
+  - BFB.Engine
+references:
+- uid: BFB.Engine.Input.InputManager
+  commentId: T:BFB.Engine.Input.InputManager
+  name: InputManager
+  nameWithType: InputManager
+  fullName: BFB.Engine.Input.InputManager
+- uid: BFB.Engine.Input.KeyboardInput
+  commentId: T:BFB.Engine.Input.KeyboardInput
+  name: KeyboardInput
+  nameWithType: KeyboardInput
+  fullName: BFB.Engine.Input.KeyboardInput
+- uid: BFB.Engine.Input.KeyboardStatus
+  commentId: T:BFB.Engine.Input.KeyboardStatus
+  parent: BFB.Engine.Input
+  name: KeyboardStatus
+  nameWithType: KeyboardStatus
+  fullName: BFB.Engine.Input.KeyboardStatus
+- uid: BFB.Engine.Input.MouseInput
+  commentId: T:BFB.Engine.Input.MouseInput
+  name: MouseInput
+  nameWithType: MouseInput
+  fullName: BFB.Engine.Input.MouseInput
+- uid: BFB.Engine.Input.MouseStatus
+  commentId: T:BFB.Engine.Input.MouseStatus
+  parent: BFB.Engine.Input
+  name: MouseStatus
+  nameWithType: MouseStatus
+  fullName: BFB.Engine.Input.MouseStatus
+- uid: BFB.Engine.Input
+  commentId: N:BFB.Engine.Input
+  name: BFB.Engine.Input
+  nameWithType: BFB.Engine.Input
+  fullName: BFB.Engine.Input

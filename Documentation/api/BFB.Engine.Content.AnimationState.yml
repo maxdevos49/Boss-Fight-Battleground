@@ -1,0 +1,517 @@
+### YamlMime:ManagedReference
+items:
+- uid: BFB.Engine.Content.AnimationState
+  commentId: T:BFB.Engine.Content.AnimationState
+  id: AnimationState
+  parent: BFB.Engine.Content
+  children:
+  - BFB.Engine.Content.AnimationState.Fall
+  - BFB.Engine.Content.AnimationState.IdleLeft
+  - BFB.Engine.Content.AnimationState.IdleRight
+  - BFB.Engine.Content.AnimationState.Jump
+  - BFB.Engine.Content.AnimationState.MoveLeft
+  - BFB.Engine.Content.AnimationState.MoveRight
+  - BFB.Engine.Content.AnimationState.None
+  langs:
+  - csharp
+  - vb
+  name: AnimationState
+  nameWithType: AnimationState
+  fullName: BFB.Engine.Content.AnimationState
+  type: Enum
+  source:
+    remote:
+      path: BFB/BFB.Engine/Content/AnimationState.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: AnimationState
+    path: ../BFB/BFB.Engine/Content/AnimationState.cs
+    startLine: 7
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Content
+  summary: "\nThe animation state, decided by the server, so it is serializable. The client then learns what the animation state is and figures out how to get that from the spritesheet.\n"
+  example: []
+  syntax:
+    content: 'public enum AnimationState : int'
+    content.vb: Public Enum AnimationState As Integer
+  extensionMethods:
+  - BFB.Engine.Content.AnimationState.BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{BFB.Engine.Content.AnimationState,{TValue}}},{TValue})
+  modifiers.csharp:
+  - public
+  - enum
+  modifiers.vb:
+  - Public
+  - Enum
+- uid: BFB.Engine.Content.AnimationState.None
+  commentId: F:BFB.Engine.Content.AnimationState.None
+  id: None
+  parent: BFB.Engine.Content.AnimationState
+  langs:
+  - csharp
+  - vb
+  name: None
+  nameWithType: AnimationState.None
+  fullName: BFB.Engine.Content.AnimationState.None
+  type: Field
+  source:
+    remote:
+      path: BFB/BFB.Engine/Content/AnimationState.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: None
+    path: ../BFB/BFB.Engine/Content/AnimationState.cs
+    startLine: 10
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Content
+  syntax:
+    content: None = 0
+    return:
+      type: BFB.Engine.Content.AnimationState
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: BFB.Engine.Content.AnimationState.IdleLeft
+  commentId: F:BFB.Engine.Content.AnimationState.IdleLeft
+  id: IdleLeft
+  parent: BFB.Engine.Content.AnimationState
+  langs:
+  - csharp
+  - vb
+  name: IdleLeft
+  nameWithType: AnimationState.IdleLeft
+  fullName: BFB.Engine.Content.AnimationState.IdleLeft
+  type: Field
+  source:
+    remote:
+      path: BFB/BFB.Engine/Content/AnimationState.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: IdleLeft
+    path: ../BFB/BFB.Engine/Content/AnimationState.cs
+    startLine: 11
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Content
+  syntax:
+    content: IdleLeft = 1
+    return:
+      type: BFB.Engine.Content.AnimationState
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: BFB.Engine.Content.AnimationState.IdleRight
+  commentId: F:BFB.Engine.Content.AnimationState.IdleRight
+  id: IdleRight
+  parent: BFB.Engine.Content.AnimationState
+  langs:
+  - csharp
+  - vb
+  name: IdleRight
+  nameWithType: AnimationState.IdleRight
+  fullName: BFB.Engine.Content.AnimationState.IdleRight
+  type: Field
+  source:
+    remote:
+      path: BFB/BFB.Engine/Content/AnimationState.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: IdleRight
+    path: ../BFB/BFB.Engine/Content/AnimationState.cs
+    startLine: 12
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Content
+  syntax:
+    content: IdleRight = 2
+    return:
+      type: BFB.Engine.Content.AnimationState
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: BFB.Engine.Content.AnimationState.MoveLeft
+  commentId: F:BFB.Engine.Content.AnimationState.MoveLeft
+  id: MoveLeft
+  parent: BFB.Engine.Content.AnimationState
+  langs:
+  - csharp
+  - vb
+  name: MoveLeft
+  nameWithType: AnimationState.MoveLeft
+  fullName: BFB.Engine.Content.AnimationState.MoveLeft
+  type: Field
+  source:
+    remote:
+      path: BFB/BFB.Engine/Content/AnimationState.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: MoveLeft
+    path: ../BFB/BFB.Engine/Content/AnimationState.cs
+    startLine: 13
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Content
+  syntax:
+    content: MoveLeft = 3
+    return:
+      type: BFB.Engine.Content.AnimationState
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: BFB.Engine.Content.AnimationState.MoveRight
+  commentId: F:BFB.Engine.Content.AnimationState.MoveRight
+  id: MoveRight
+  parent: BFB.Engine.Content.AnimationState
+  langs:
+  - csharp
+  - vb
+  name: MoveRight
+  nameWithType: AnimationState.MoveRight
+  fullName: BFB.Engine.Content.AnimationState.MoveRight
+  type: Field
+  source:
+    remote:
+      path: BFB/BFB.Engine/Content/AnimationState.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: MoveRight
+    path: ../BFB/BFB.Engine/Content/AnimationState.cs
+    startLine: 14
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Content
+  syntax:
+    content: MoveRight = 4
+    return:
+      type: BFB.Engine.Content.AnimationState
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: BFB.Engine.Content.AnimationState.Jump
+  commentId: F:BFB.Engine.Content.AnimationState.Jump
+  id: Jump
+  parent: BFB.Engine.Content.AnimationState
+  langs:
+  - csharp
+  - vb
+  name: Jump
+  nameWithType: AnimationState.Jump
+  fullName: BFB.Engine.Content.AnimationState.Jump
+  type: Field
+  source:
+    remote:
+      path: BFB/BFB.Engine/Content/AnimationState.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: Jump
+    path: ../BFB/BFB.Engine/Content/AnimationState.cs
+    startLine: 15
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Content
+  syntax:
+    content: Jump = 5
+    return:
+      type: BFB.Engine.Content.AnimationState
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: BFB.Engine.Content.AnimationState.Fall
+  commentId: F:BFB.Engine.Content.AnimationState.Fall
+  id: Fall
+  parent: BFB.Engine.Content.AnimationState
+  langs:
+  - csharp
+  - vb
+  name: Fall
+  nameWithType: AnimationState.Fall
+  fullName: BFB.Engine.Content.AnimationState.Fall
+  type: Field
+  source:
+    remote:
+      path: BFB/BFB.Engine/Content/AnimationState.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: Fall
+    path: ../BFB/BFB.Engine/Content/AnimationState.cs
+    startLine: 16
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Content
+  syntax:
+    content: Fall = 6
+    return:
+      type: BFB.Engine.Content.AnimationState
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+references:
+- uid: BFB.Engine.Content
+  commentId: N:BFB.Engine.Content
+  name: BFB.Engine.Content
+  nameWithType: BFB.Engine.Content
+  fullName: BFB.Engine.Content
+- uid: BFB.Engine.Content.AnimationState.BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{BFB.Engine.Content.AnimationState,{TValue}}},{TValue})
+  commentId: M:BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  parent: BFB.Engine.UI.Components.LambdaExtensions
+  definition: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  name: SetPropertyValue<AnimationState, TValue>(Expression<Func<AnimationState, TValue>>, TValue)
+  nameWithType: LambdaExtensions.SetPropertyValue<AnimationState, TValue>(Expression<Func<AnimationState, TValue>>, TValue)
+  fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<BFB.Engine.Content.AnimationState, TValue>(Expression<Func<BFB.Engine.Content.AnimationState, TValue>>, TValue)
+  nameWithType.vb: LambdaExtensions.SetPropertyValue(Of AnimationState, TValue)(Expression(Of Func(Of AnimationState, TValue)), TValue)
+  fullName.vb: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of BFB.Engine.Content.AnimationState, TValue)(Expression(Of Func(Of BFB.Engine.Content.AnimationState, TValue)), TValue)
+  name.vb: SetPropertyValue(Of AnimationState, TValue)(Expression(Of Func(Of AnimationState, TValue)), TValue)
+  spec.csharp:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue<AnimationState, TValue>
+    nameWithType: LambdaExtensions.SetPropertyValue<AnimationState, TValue>
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<BFB.Engine.Content.AnimationState, TValue>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: BFB.Engine.Content.AnimationState
+    name: AnimationState
+    nameWithType: AnimationState
+    fullName: BFB.Engine.Content.AnimationState
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue(Of AnimationState, TValue)
+    nameWithType: LambdaExtensions.SetPropertyValue(Of AnimationState, TValue)
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of BFB.Engine.Content.AnimationState, TValue)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: BFB.Engine.Content.AnimationState
+    name: AnimationState
+    nameWithType: AnimationState
+    fullName: BFB.Engine.Content.AnimationState
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  commentId: M:BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  isExternal: true
+  name: SetPropertyValue<T, TValue>(T, Expression<Func<T, TValue>>, TValue)
+  nameWithType: LambdaExtensions.SetPropertyValue<T, TValue>(T, Expression<Func<T, TValue>>, TValue)
+  fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<T, TValue>(T, Expression<Func<T, TValue>>, TValue)
+  nameWithType.vb: LambdaExtensions.SetPropertyValue(Of T, TValue)(T, Expression(Of Func(Of T, TValue)), TValue)
+  fullName.vb: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of T, TValue)(T, Expression(Of Func(Of T, TValue)), TValue)
+  name.vb: SetPropertyValue(Of T, TValue)(T, Expression(Of Func(Of T, TValue)), TValue)
+  spec.csharp:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue<T, TValue>
+    nameWithType: LambdaExtensions.SetPropertyValue<T, TValue>
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<T, TValue>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue(Of T, TValue)
+    nameWithType: LambdaExtensions.SetPropertyValue(Of T, TValue)
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of T, TValue)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Components.LambdaExtensions
+  commentId: T:BFB.Engine.UI.Components.LambdaExtensions
+  parent: BFB.Engine.UI.Components
+  name: LambdaExtensions
+  nameWithType: LambdaExtensions
+  fullName: BFB.Engine.UI.Components.LambdaExtensions
+- uid: BFB.Engine.UI.Components
+  commentId: N:BFB.Engine.UI.Components
+  name: BFB.Engine.UI.Components
+  nameWithType: BFB.Engine.UI.Components
+  fullName: BFB.Engine.UI.Components
+- uid: BFB.Engine.Content.AnimationState
+  commentId: T:BFB.Engine.Content.AnimationState
+  parent: BFB.Engine.Content
+  name: AnimationState
+  nameWithType: AnimationState
+  fullName: BFB.Engine.Content.AnimationState

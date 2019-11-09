@@ -1,0 +1,62 @@
+### YamlMime:ManagedReference
+items:
+- uid: BFB.Engine.Entity
+  commentId: N:BFB.Engine.Entity
+  id: BFB.Engine.Entity
+  children:
+  - BFB.Engine.Entity.ClientEntity
+  - BFB.Engine.Entity.ComponentOptions
+  - BFB.Engine.Entity.Entity
+  - BFB.Engine.Entity.EntityOptions
+  - BFB.Engine.Entity.MonsterPhysicsComponent
+  - BFB.Engine.Entity.SimulationEntity
+  langs:
+  - csharp
+  - vb
+  name: BFB.Engine.Entity
+  nameWithType: BFB.Engine.Entity
+  fullName: BFB.Engine.Entity
+  type: Namespace
+  assemblies:
+  - BFB.Engine
+references:
+- uid: BFB.Engine.Entity.ClientEntity
+  commentId: T:BFB.Engine.Entity.ClientEntity
+  parent: BFB.Engine.Entity
+  name: ClientEntity
+  nameWithType: ClientEntity
+  fullName: BFB.Engine.Entity.ClientEntity
+- uid: BFB.Engine.Entity.Entity
+  commentId: T:BFB.Engine.Entity.Entity
+  parent: BFB.Engine.Entity
+  name: Entity
+  nameWithType: Entity
+  fullName: BFB.Engine.Entity.Entity
+- uid: BFB.Engine.Entity.EntityOptions
+  commentId: T:BFB.Engine.Entity.EntityOptions
+  parent: BFB.Engine.Entity
+  name: EntityOptions
+  nameWithType: EntityOptions
+  fullName: BFB.Engine.Entity.EntityOptions
+- uid: BFB.Engine.Entity.MonsterPhysicsComponent
+  commentId: T:BFB.Engine.Entity.MonsterPhysicsComponent
+  name: MonsterPhysicsComponent
+  nameWithType: MonsterPhysicsComponent
+  fullName: BFB.Engine.Entity.MonsterPhysicsComponent
+- uid: BFB.Engine.Entity.SimulationEntity
+  commentId: T:BFB.Engine.Entity.SimulationEntity
+  parent: BFB.Engine.Entity
+  name: SimulationEntity
+  nameWithType: SimulationEntity
+  fullName: BFB.Engine.Entity.SimulationEntity
+- uid: BFB.Engine.Entity.ComponentOptions
+  commentId: T:BFB.Engine.Entity.ComponentOptions
+  parent: BFB.Engine.Entity
+  name: ComponentOptions
+  nameWithType: ComponentOptions
+  fullName: BFB.Engine.Entity.ComponentOptions
+- uid: BFB.Engine.Entity
+  commentId: N:BFB.Engine.Entity
+  name: BFB.Engine.Entity
+  nameWithType: BFB.Engine.Entity
+  fullName: BFB.Engine.Entity

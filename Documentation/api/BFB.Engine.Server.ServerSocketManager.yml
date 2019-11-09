@@ -1,0 +1,1246 @@
+### YamlMime:ManagedReference
+items:
+- uid: BFB.Engine.Server.ServerSocketManager
+  commentId: T:BFB.Engine.Server.ServerSocketManager
+  id: ServerSocketManager
+  parent: BFB.Engine.Server
+  children:
+  - BFB.Engine.Server.ServerSocketManager.#ctor(IPAddress,System.Int32)
+  - BFB.Engine.Server.ServerSocketManager.Dispose
+  - BFB.Engine.Server.ServerSocketManager.Emit(System.String,BFB.Engine.Server.Communication.DataMessage)
+  - BFB.Engine.Server.ServerSocketManager.GetClient(System.String)
+  - BFB.Engine.Server.ServerSocketManager.On(System.String,Action{BFB.Engine.Server.Communication.DataMessage})
+  - BFB.Engine.Server.ServerSocketManager.OnClientAuthentication
+  - BFB.Engine.Server.ServerSocketManager.OnClientConnect
+  - BFB.Engine.Server.ServerSocketManager.OnClientDisconnect
+  - BFB.Engine.Server.ServerSocketManager.OnClientReady
+  - BFB.Engine.Server.ServerSocketManager.OnServerStart
+  - BFB.Engine.Server.ServerSocketManager.OnServerStop
+  - BFB.Engine.Server.ServerSocketManager.PrintMessage(System.String,System.Boolean)
+  - BFB.Engine.Server.ServerSocketManager.SetTerminalHeader(Action)
+  - BFB.Engine.Server.ServerSocketManager.Start
+  - BFB.Engine.Server.ServerSocketManager.Stop
+  langs:
+  - csharp
+  - vb
+  name: ServerSocketManager
+  nameWithType: ServerSocketManager
+  fullName: BFB.Engine.Server.ServerSocketManager
+  type: Class
+  source:
+    remote:
+      path: BFB/BFB.Engine/Server/ServerSocketManager.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: ServerSocketManager
+    path: ../BFB/BFB.Engine/Server/ServerSocketManager.cs
+    startLine: 14
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Server
+  summary: "\nManages TCP server\n"
+  example: []
+  syntax:
+    content: 'public class ServerSocketManager : object'
+    content.vb: >-
+      Public Class ServerSocketManager
+
+          Inherits Object
+  inheritance:
+  - System.Object
+  extensionMethods:
+  - BFB.Engine.Server.ServerSocketManager.BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{BFB.Engine.Server.ServerSocketManager,{TValue}}},{TValue})
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: BFB.Engine.Server.ServerSocketManager.OnClientAuthentication
+  commentId: P:BFB.Engine.Server.ServerSocketManager.OnClientAuthentication
+  id: OnClientAuthentication
+  parent: BFB.Engine.Server.ServerSocketManager
+  langs:
+  - csharp
+  - vb
+  name: OnClientAuthentication
+  nameWithType: ServerSocketManager.OnClientAuthentication
+  fullName: BFB.Engine.Server.ServerSocketManager.OnClientAuthentication
+  type: Property
+  source:
+    remote:
+      path: BFB/BFB.Engine/Server/ServerSocketManager.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: OnClientAuthentication
+    path: ../BFB/BFB.Engine/Server/ServerSocketManager.cs
+    startLine: 33
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Server
+  summary: "\nCallback that is called when a client tries to authenticate\n"
+  example: []
+  syntax:
+    content: public Func<DataMessage, bool> OnClientAuthentication { get; set; }
+    parameters: []
+    return:
+      type: Func{BFB.Engine.Server.Communication.DataMessage,System.Boolean}
+    content.vb: Public Property OnClientAuthentication As Func(Of DataMessage, Boolean)
+  overload: BFB.Engine.Server.ServerSocketManager.OnClientAuthentication*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.Server.ServerSocketManager.OnClientConnect
+  commentId: P:BFB.Engine.Server.ServerSocketManager.OnClientConnect
+  id: OnClientConnect
+  parent: BFB.Engine.Server.ServerSocketManager
+  langs:
+  - csharp
+  - vb
+  name: OnClientConnect
+  nameWithType: ServerSocketManager.OnClientConnect
+  fullName: BFB.Engine.Server.ServerSocketManager.OnClientConnect
+  type: Property
+  source:
+    remote:
+      path: BFB/BFB.Engine/Server/ServerSocketManager.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: OnClientConnect
+    path: ../BFB/BFB.Engine/Server/ServerSocketManager.cs
+    startLine: 38
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Server
+  summary: "\nCallback that is called when a client tries to connect\n"
+  example: []
+  syntax:
+    content: public Action<ClientSocket> OnClientConnect { get; set; }
+    parameters: []
+    return:
+      type: Action{BFB.Engine.Server.ClientSocket}
+    content.vb: Public Property OnClientConnect As Action(Of ClientSocket)
+  overload: BFB.Engine.Server.ServerSocketManager.OnClientConnect*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.Server.ServerSocketManager.OnClientReady
+  commentId: P:BFB.Engine.Server.ServerSocketManager.OnClientReady
+  id: OnClientReady
+  parent: BFB.Engine.Server.ServerSocketManager
+  langs:
+  - csharp
+  - vb
+  name: OnClientReady
+  nameWithType: ServerSocketManager.OnClientReady
+  fullName: BFB.Engine.Server.ServerSocketManager.OnClientReady
+  type: Property
+  source:
+    remote:
+      path: BFB/BFB.Engine/Server/ServerSocketManager.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: OnClientReady
+    path: ../BFB/BFB.Engine/Server/ServerSocketManager.cs
+    startLine: 43
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Server
+  summary: "\nCallback that is called when a client is ready\n"
+  example: []
+  syntax:
+    content: public Action<ClientSocket> OnClientReady { get; set; }
+    parameters: []
+    return:
+      type: Action{BFB.Engine.Server.ClientSocket}
+    content.vb: Public Property OnClientReady As Action(Of ClientSocket)
+  overload: BFB.Engine.Server.ServerSocketManager.OnClientReady*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.Server.ServerSocketManager.OnClientDisconnect
+  commentId: P:BFB.Engine.Server.ServerSocketManager.OnClientDisconnect
+  id: OnClientDisconnect
+  parent: BFB.Engine.Server.ServerSocketManager
+  langs:
+  - csharp
+  - vb
+  name: OnClientDisconnect
+  nameWithType: ServerSocketManager.OnClientDisconnect
+  fullName: BFB.Engine.Server.ServerSocketManager.OnClientDisconnect
+  type: Property
+  source:
+    remote:
+      path: BFB/BFB.Engine/Server/ServerSocketManager.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: OnClientDisconnect
+    path: ../BFB/BFB.Engine/Server/ServerSocketManager.cs
+    startLine: 48
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Server
+  summary: "\nCalled when a client disconnects\n"
+  example: []
+  syntax:
+    content: public Action<string> OnClientDisconnect { get; set; }
+    parameters: []
+    return:
+      type: Action{System.String}
+    content.vb: Public Property OnClientDisconnect As Action(Of String)
+  overload: BFB.Engine.Server.ServerSocketManager.OnClientDisconnect*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.Server.ServerSocketManager.OnServerStart
+  commentId: P:BFB.Engine.Server.ServerSocketManager.OnServerStart
+  id: OnServerStart
+  parent: BFB.Engine.Server.ServerSocketManager
+  langs:
+  - csharp
+  - vb
+  name: OnServerStart
+  nameWithType: ServerSocketManager.OnServerStart
+  fullName: BFB.Engine.Server.ServerSocketManager.OnServerStart
+  type: Property
+  source:
+    remote:
+      path: BFB/BFB.Engine/Server/ServerSocketManager.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: OnServerStart
+    path: ../BFB/BFB.Engine/Server/ServerSocketManager.cs
+    startLine: 53
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Server
+  summary: "\nCalled when the server is started\n"
+  example: []
+  syntax:
+    content: public Action OnServerStart { get; set; }
+    parameters: []
+    return:
+      type: Action
+    content.vb: Public Property OnServerStart As Action
+  overload: BFB.Engine.Server.ServerSocketManager.OnServerStart*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.Server.ServerSocketManager.OnServerStop
+  commentId: P:BFB.Engine.Server.ServerSocketManager.OnServerStop
+  id: OnServerStop
+  parent: BFB.Engine.Server.ServerSocketManager
+  langs:
+  - csharp
+  - vb
+  name: OnServerStop
+  nameWithType: ServerSocketManager.OnServerStop
+  fullName: BFB.Engine.Server.ServerSocketManager.OnServerStop
+  type: Property
+  source:
+    remote:
+      path: BFB/BFB.Engine/Server/ServerSocketManager.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: OnServerStop
+    path: ../BFB/BFB.Engine/Server/ServerSocketManager.cs
+    startLine: 58
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Server
+  summary: "\nCalled when the server is stopped\n"
+  example: []
+  syntax:
+    content: public Action OnServerStop { get; set; }
+    parameters: []
+    return:
+      type: Action
+    content.vb: Public Property OnServerStop As Action
+  overload: BFB.Engine.Server.ServerSocketManager.OnServerStop*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.Server.ServerSocketManager.#ctor(IPAddress,System.Int32)
+  commentId: M:BFB.Engine.Server.ServerSocketManager.#ctor(IPAddress,System.Int32)
+  id: '#ctor(IPAddress,System.Int32)'
+  parent: BFB.Engine.Server.ServerSocketManager
+  langs:
+  - csharp
+  - vb
+  name: ServerSocketManager(IPAddress, Int32)
+  nameWithType: ServerSocketManager.ServerSocketManager(IPAddress, Int32)
+  fullName: BFB.Engine.Server.ServerSocketManager.ServerSocketManager(IPAddress, System.Int32)
+  type: Constructor
+  source:
+    remote:
+      path: BFB/BFB.Engine/Server/ServerSocketManager.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: .ctor
+    path: ../BFB/BFB.Engine/Server/ServerSocketManager.cs
+    startLine: 71
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Server
+  summary: "\nConstructs a Socket Manager that accepts, routes and handles a tcp connection\n"
+  example: []
+  syntax:
+    content: public ServerSocketManager(IPAddress ip, int port)
+    parameters:
+    - id: ip
+      type: IPAddress
+      description: The ip to bind to
+    - id: port
+      type: System.Int32
+      description: The port to bind to
+    content.vb: Public Sub New(ip As IPAddress, port As Integer)
+  overload: BFB.Engine.Server.ServerSocketManager.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.Server.ServerSocketManager.Start
+  commentId: M:BFB.Engine.Server.ServerSocketManager.Start
+  id: Start
+  parent: BFB.Engine.Server.ServerSocketManager
+  langs:
+  - csharp
+  - vb
+  name: Start()
+  nameWithType: ServerSocketManager.Start()
+  fullName: BFB.Engine.Server.ServerSocketManager.Start()
+  type: Method
+  source:
+    remote:
+      path: BFB/BFB.Engine/Server/ServerSocketManager.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: Start
+    path: ../BFB/BFB.Engine/Server/ServerSocketManager.cs
+    startLine: 93
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Server
+  summary: "\nStarts the server\n"
+  example: []
+  syntax:
+    content: public void Start()
+    content.vb: Public Sub Start
+  overload: BFB.Engine.Server.ServerSocketManager.Start*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.Server.ServerSocketManager.Stop
+  commentId: M:BFB.Engine.Server.ServerSocketManager.Stop
+  id: Stop
+  parent: BFB.Engine.Server.ServerSocketManager
+  langs:
+  - csharp
+  - vb
+  name: Stop()
+  nameWithType: ServerSocketManager.Stop()
+  fullName: BFB.Engine.Server.ServerSocketManager.Stop()
+  type: Method
+  source:
+    remote:
+      path: BFB/BFB.Engine/Server/ServerSocketManager.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: Stop
+    path: ../BFB/BFB.Engine/Server/ServerSocketManager.cs
+    startLine: 128
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Server
+  summary: "\nStops the server\n"
+  example: []
+  syntax:
+    content: public void Stop()
+    content.vb: Public Sub Stop
+  overload: BFB.Engine.Server.ServerSocketManager.Stop*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.Server.ServerSocketManager.Emit(System.String,BFB.Engine.Server.Communication.DataMessage)
+  commentId: M:BFB.Engine.Server.ServerSocketManager.Emit(System.String,BFB.Engine.Server.Communication.DataMessage)
+  id: Emit(System.String,BFB.Engine.Server.Communication.DataMessage)
+  parent: BFB.Engine.Server.ServerSocketManager
+  langs:
+  - csharp
+  - vb
+  name: Emit(String, DataMessage)
+  nameWithType: ServerSocketManager.Emit(String, DataMessage)
+  fullName: BFB.Engine.Server.ServerSocketManager.Emit(System.String, BFB.Engine.Server.Communication.DataMessage)
+  type: Method
+  source:
+    remote:
+      path: BFB/BFB.Engine/Server/ServerSocketManager.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: Emit
+    path: ../BFB/BFB.Engine/Server/ServerSocketManager.cs
+    startLine: 154
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Server
+  summary: "\nSends a DataMessage to all ocnnected clients\n"
+  example: []
+  syntax:
+    content: public void Emit(string routeKey, DataMessage dataMessage = null)
+    parameters:
+    - id: routeKey
+      type: System.String
+      description: The route to send too
+    - id: dataMessage
+      type: BFB.Engine.Server.Communication.DataMessage
+      description: The message to send
+    content.vb: Public Sub Emit(routeKey As String, dataMessage As DataMessage = Nothing)
+  overload: BFB.Engine.Server.ServerSocketManager.Emit*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.Server.ServerSocketManager.On(System.String,Action{BFB.Engine.Server.Communication.DataMessage})
+  commentId: M:BFB.Engine.Server.ServerSocketManager.On(System.String,Action{BFB.Engine.Server.Communication.DataMessage})
+  id: On(System.String,Action{BFB.Engine.Server.Communication.DataMessage})
+  parent: BFB.Engine.Server.ServerSocketManager
+  langs:
+  - csharp
+  - vb
+  name: On(String, Action<DataMessage>)
+  nameWithType: ServerSocketManager.On(String, Action<DataMessage>)
+  fullName: BFB.Engine.Server.ServerSocketManager.On(System.String, Action<BFB.Engine.Server.Communication.DataMessage>)
+  type: Method
+  source:
+    remote:
+      path: BFB/BFB.Engine/Server/ServerSocketManager.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: On
+    path: ../BFB/BFB.Engine/Server/ServerSocketManager.cs
+    startLine: 177
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Server
+  summary: "\nUsed to define routes from any connected client. \n"
+  example: []
+  syntax:
+    content: public void On(string routeKey, Action<DataMessage> messageHandler)
+    parameters:
+    - id: routeKey
+      type: System.String
+      description: The route to listen for
+    - id: messageHandler
+      type: Action{BFB.Engine.Server.Communication.DataMessage}
+      description: The callback to use for processing any received messaged
+    content.vb: Public Sub On(routeKey As String, messageHandler As Action(Of DataMessage))
+  overload: BFB.Engine.Server.ServerSocketManager.On*
+  nameWithType.vb: ServerSocketManager.On(String, Action(Of DataMessage))
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+  fullName.vb: BFB.Engine.Server.ServerSocketManager.On(System.String, Action(Of BFB.Engine.Server.Communication.DataMessage))
+  name.vb: On(String, Action(Of DataMessage))
+- uid: BFB.Engine.Server.ServerSocketManager.GetClient(System.String)
+  commentId: M:BFB.Engine.Server.ServerSocketManager.GetClient(System.String)
+  id: GetClient(System.String)
+  parent: BFB.Engine.Server.ServerSocketManager
+  langs:
+  - csharp
+  - vb
+  name: GetClient(String)
+  nameWithType: ServerSocketManager.GetClient(String)
+  fullName: BFB.Engine.Server.ServerSocketManager.GetClient(System.String)
+  type: Method
+  source:
+    remote:
+      path: BFB/BFB.Engine/Server/ServerSocketManager.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: GetClient
+    path: ../BFB/BFB.Engine/Server/ServerSocketManager.cs
+    startLine: 258
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Server
+  summary: "\nGets a connected client with a given key\n"
+  example: []
+  syntax:
+    content: public ClientSocket GetClient(string clientKey)
+    parameters:
+    - id: clientKey
+      type: System.String
+      description: The clients key
+    return:
+      type: BFB.Engine.Server.ClientSocket
+      description: A clientSocket object
+    content.vb: Public Function GetClient(clientKey As String) As ClientSocket
+  overload: BFB.Engine.Server.ServerSocketManager.GetClient*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.Server.ServerSocketManager.SetTerminalHeader(Action)
+  commentId: M:BFB.Engine.Server.ServerSocketManager.SetTerminalHeader(Action)
+  id: SetTerminalHeader(Action)
+  parent: BFB.Engine.Server.ServerSocketManager
+  langs:
+  - csharp
+  - vb
+  name: SetTerminalHeader(Action)
+  nameWithType: ServerSocketManager.SetTerminalHeader(Action)
+  fullName: BFB.Engine.Server.ServerSocketManager.SetTerminalHeader(Action)
+  type: Method
+  source:
+    remote:
+      path: BFB/BFB.Engine/Server/ServerSocketManager.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: SetTerminalHeader
+    path: ../BFB/BFB.Engine/Server/ServerSocketManager.cs
+    startLine: 328
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Server
+  summary: "\nUsed define what the terminal header should look like when printing to the console\n"
+  example: []
+  syntax:
+    content: public void SetTerminalHeader(Action action)
+    parameters:
+    - id: action
+      type: Action
+      description: ''
+    content.vb: Public Sub SetTerminalHeader(action As Action)
+  overload: BFB.Engine.Server.ServerSocketManager.SetTerminalHeader*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.Server.ServerSocketManager.PrintMessage(System.String,System.Boolean)
+  commentId: M:BFB.Engine.Server.ServerSocketManager.PrintMessage(System.String,System.Boolean)
+  id: PrintMessage(System.String,System.Boolean)
+  parent: BFB.Engine.Server.ServerSocketManager
+  langs:
+  - csharp
+  - vb
+  name: PrintMessage(String, Boolean)
+  nameWithType: ServerSocketManager.PrintMessage(String, Boolean)
+  fullName: BFB.Engine.Server.ServerSocketManager.PrintMessage(System.String, System.Boolean)
+  type: Method
+  source:
+    remote:
+      path: BFB/BFB.Engine/Server/ServerSocketManager.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: PrintMessage
+    path: ../BFB/BFB.Engine/Server/ServerSocketManager.cs
+    startLine: 344
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Server
+  summary: "\nPrints a message with terminal header to the console\n"
+  example: []
+  syntax:
+    content: public void PrintMessage(string message = null, bool printHeader = true)
+    parameters:
+    - id: message
+      type: System.String
+      description: Message to print
+    - id: printHeader
+      type: System.Boolean
+      description: Indicate whether the header should be printed
+    content.vb: Public Sub PrintMessage(message As String = Nothing, printHeader As Boolean = True)
+  overload: BFB.Engine.Server.ServerSocketManager.PrintMessage*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.Server.ServerSocketManager.Dispose
+  commentId: M:BFB.Engine.Server.ServerSocketManager.Dispose
+  id: Dispose
+  parent: BFB.Engine.Server.ServerSocketManager
+  langs:
+  - csharp
+  - vb
+  name: Dispose()
+  nameWithType: ServerSocketManager.Dispose()
+  fullName: BFB.Engine.Server.ServerSocketManager.Dispose()
+  type: Method
+  source:
+    remote:
+      path: BFB/BFB.Engine/Server/ServerSocketManager.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: Dispose
+    path: ../BFB/BFB.Engine/Server/ServerSocketManager.cs
+    startLine: 364
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Server
+  summary: "\nDisposes the server\n"
+  example: []
+  syntax:
+    content: public void Dispose()
+    content.vb: Public Sub Dispose
+  overload: BFB.Engine.Server.ServerSocketManager.Dispose*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+references:
+- uid: BFB.Engine.Server
+  commentId: N:BFB.Engine.Server
+  name: BFB.Engine.Server
+  nameWithType: BFB.Engine.Server
+  fullName: BFB.Engine.Server
+- uid: System.Object
+  commentId: '!:System.Object'
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: BFB.Engine.Server.ServerSocketManager.BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{BFB.Engine.Server.ServerSocketManager,{TValue}}},{TValue})
+  commentId: M:BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  parent: BFB.Engine.UI.Components.LambdaExtensions
+  definition: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  name: SetPropertyValue<ServerSocketManager, TValue>(Expression<Func<ServerSocketManager, TValue>>, TValue)
+  nameWithType: LambdaExtensions.SetPropertyValue<ServerSocketManager, TValue>(Expression<Func<ServerSocketManager, TValue>>, TValue)
+  fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<BFB.Engine.Server.ServerSocketManager, TValue>(Expression<Func<BFB.Engine.Server.ServerSocketManager, TValue>>, TValue)
+  nameWithType.vb: LambdaExtensions.SetPropertyValue(Of ServerSocketManager, TValue)(Expression(Of Func(Of ServerSocketManager, TValue)), TValue)
+  fullName.vb: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of BFB.Engine.Server.ServerSocketManager, TValue)(Expression(Of Func(Of BFB.Engine.Server.ServerSocketManager, TValue)), TValue)
+  name.vb: SetPropertyValue(Of ServerSocketManager, TValue)(Expression(Of Func(Of ServerSocketManager, TValue)), TValue)
+  spec.csharp:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue<ServerSocketManager, TValue>
+    nameWithType: LambdaExtensions.SetPropertyValue<ServerSocketManager, TValue>
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<BFB.Engine.Server.ServerSocketManager, TValue>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: BFB.Engine.Server.ServerSocketManager
+    name: ServerSocketManager
+    nameWithType: ServerSocketManager
+    fullName: BFB.Engine.Server.ServerSocketManager
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue(Of ServerSocketManager, TValue)
+    nameWithType: LambdaExtensions.SetPropertyValue(Of ServerSocketManager, TValue)
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of BFB.Engine.Server.ServerSocketManager, TValue)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: BFB.Engine.Server.ServerSocketManager
+    name: ServerSocketManager
+    nameWithType: ServerSocketManager
+    fullName: BFB.Engine.Server.ServerSocketManager
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  commentId: M:BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  isExternal: true
+  name: SetPropertyValue<T, TValue>(T, Expression<Func<T, TValue>>, TValue)
+  nameWithType: LambdaExtensions.SetPropertyValue<T, TValue>(T, Expression<Func<T, TValue>>, TValue)
+  fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<T, TValue>(T, Expression<Func<T, TValue>>, TValue)
+  nameWithType.vb: LambdaExtensions.SetPropertyValue(Of T, TValue)(T, Expression(Of Func(Of T, TValue)), TValue)
+  fullName.vb: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of T, TValue)(T, Expression(Of Func(Of T, TValue)), TValue)
+  name.vb: SetPropertyValue(Of T, TValue)(T, Expression(Of Func(Of T, TValue)), TValue)
+  spec.csharp:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue<T, TValue>
+    nameWithType: LambdaExtensions.SetPropertyValue<T, TValue>
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<T, TValue>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue(Of T, TValue)
+    nameWithType: LambdaExtensions.SetPropertyValue(Of T, TValue)
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of T, TValue)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Components.LambdaExtensions
+  commentId: T:BFB.Engine.UI.Components.LambdaExtensions
+  parent: BFB.Engine.UI.Components
+  name: LambdaExtensions
+  nameWithType: LambdaExtensions
+  fullName: BFB.Engine.UI.Components.LambdaExtensions
+- uid: BFB.Engine.UI.Components
+  commentId: N:BFB.Engine.UI.Components
+  name: BFB.Engine.UI.Components
+  nameWithType: BFB.Engine.UI.Components
+  fullName: BFB.Engine.UI.Components
+- uid: BFB.Engine.Server.ServerSocketManager.OnClientAuthentication*
+  commentId: Overload:BFB.Engine.Server.ServerSocketManager.OnClientAuthentication
+  name: OnClientAuthentication
+  nameWithType: ServerSocketManager.OnClientAuthentication
+  fullName: BFB.Engine.Server.ServerSocketManager.OnClientAuthentication
+- uid: Func{BFB.Engine.Server.Communication.DataMessage,System.Boolean}
+  commentId: '!:Func{BFB.Engine.Server.Communication.DataMessage,System.Boolean}'
+  definition: Func`2
+  name: Func<DataMessage, Boolean>
+  nameWithType: Func<DataMessage, Boolean>
+  fullName: Func<BFB.Engine.Server.Communication.DataMessage, System.Boolean>
+  nameWithType.vb: Func(Of DataMessage, Boolean)
+  fullName.vb: Func(Of BFB.Engine.Server.Communication.DataMessage, System.Boolean)
+  name.vb: Func(Of DataMessage, Boolean)
+  spec.csharp:
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: BFB.Engine.Server.Communication.DataMessage
+    name: DataMessage
+    nameWithType: DataMessage
+    fullName: BFB.Engine.Server.Communication.DataMessage
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: BFB.Engine.Server.Communication.DataMessage
+    name: DataMessage
+    nameWithType: DataMessage
+    fullName: BFB.Engine.Server.Communication.DataMessage
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Func`2
+  isExternal: true
+  name: Func<, >
+  nameWithType: Func<, >
+  fullName: Func<, >
+  nameWithType.vb: Func(Of , )
+  fullName.vb: Func(Of , )
+  name.vb: Func(Of , )
+  spec.csharp:
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.Server.ServerSocketManager.OnClientConnect*
+  commentId: Overload:BFB.Engine.Server.ServerSocketManager.OnClientConnect
+  name: OnClientConnect
+  nameWithType: ServerSocketManager.OnClientConnect
+  fullName: BFB.Engine.Server.ServerSocketManager.OnClientConnect
+- uid: Action{BFB.Engine.Server.ClientSocket}
+  commentId: '!:Action{BFB.Engine.Server.ClientSocket}'
+  definition: Action`1
+  name: Action<ClientSocket>
+  nameWithType: Action<ClientSocket>
+  fullName: Action<BFB.Engine.Server.ClientSocket>
+  nameWithType.vb: Action(Of ClientSocket)
+  fullName.vb: Action(Of BFB.Engine.Server.ClientSocket)
+  name.vb: Action(Of ClientSocket)
+  spec.csharp:
+  - uid: Action`1
+    name: Action
+    nameWithType: Action
+    fullName: Action
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: BFB.Engine.Server.ClientSocket
+    name: ClientSocket
+    nameWithType: ClientSocket
+    fullName: BFB.Engine.Server.ClientSocket
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: Action`1
+    name: Action
+    nameWithType: Action
+    fullName: Action
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: BFB.Engine.Server.ClientSocket
+    name: ClientSocket
+    nameWithType: ClientSocket
+    fullName: BFB.Engine.Server.ClientSocket
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Action`1
+  isExternal: true
+  name: Action<>
+  nameWithType: Action<>
+  fullName: Action<>
+  nameWithType.vb: Action(Of )
+  fullName.vb: Action(Of )
+  name.vb: Action(Of )
+  spec.csharp:
+  - uid: Action`1
+    name: Action
+    nameWithType: Action
+    fullName: Action
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: Action`1
+    name: Action
+    nameWithType: Action
+    fullName: Action
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.Server.ServerSocketManager.OnClientReady*
+  commentId: Overload:BFB.Engine.Server.ServerSocketManager.OnClientReady
+  name: OnClientReady
+  nameWithType: ServerSocketManager.OnClientReady
+  fullName: BFB.Engine.Server.ServerSocketManager.OnClientReady
+- uid: BFB.Engine.Server.ServerSocketManager.OnClientDisconnect*
+  commentId: Overload:BFB.Engine.Server.ServerSocketManager.OnClientDisconnect
+  name: OnClientDisconnect
+  nameWithType: ServerSocketManager.OnClientDisconnect
+  fullName: BFB.Engine.Server.ServerSocketManager.OnClientDisconnect
+- uid: Action{System.String}
+  commentId: '!:Action{System.String}'
+  definition: Action`1
+  name: Action<String>
+  nameWithType: Action<String>
+  fullName: Action<System.String>
+  nameWithType.vb: Action(Of String)
+  fullName.vb: Action(Of System.String)
+  name.vb: Action(Of String)
+  spec.csharp:
+  - uid: Action`1
+    name: Action
+    nameWithType: Action
+    fullName: Action
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: Action`1
+    name: Action
+    nameWithType: Action
+    fullName: Action
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.Server.ServerSocketManager.OnServerStart*
+  commentId: Overload:BFB.Engine.Server.ServerSocketManager.OnServerStart
+  name: OnServerStart
+  nameWithType: ServerSocketManager.OnServerStart
+  fullName: BFB.Engine.Server.ServerSocketManager.OnServerStart
+- uid: Action
+  isExternal: true
+  name: Action
+  nameWithType: Action
+  fullName: Action
+- uid: BFB.Engine.Server.ServerSocketManager.OnServerStop*
+  commentId: Overload:BFB.Engine.Server.ServerSocketManager.OnServerStop
+  name: OnServerStop
+  nameWithType: ServerSocketManager.OnServerStop
+  fullName: BFB.Engine.Server.ServerSocketManager.OnServerStop
+- uid: BFB.Engine.Server.ServerSocketManager.#ctor*
+  commentId: Overload:BFB.Engine.Server.ServerSocketManager.#ctor
+  name: ServerSocketManager
+  nameWithType: ServerSocketManager.ServerSocketManager
+  fullName: BFB.Engine.Server.ServerSocketManager.ServerSocketManager
+- uid: IPAddress
+  commentId: '!:IPAddress'
+  isExternal: true
+  name: IPAddress
+  nameWithType: IPAddress
+  fullName: IPAddress
+- uid: System.Int32
+  isExternal: true
+  name: Int32
+  nameWithType: Int32
+  fullName: System.Int32
+- uid: BFB.Engine.Server.ServerSocketManager.Start*
+  commentId: Overload:BFB.Engine.Server.ServerSocketManager.Start
+  name: Start
+  nameWithType: ServerSocketManager.Start
+  fullName: BFB.Engine.Server.ServerSocketManager.Start
+- uid: BFB.Engine.Server.ServerSocketManager.Stop*
+  commentId: Overload:BFB.Engine.Server.ServerSocketManager.Stop
+  name: Stop
+  nameWithType: ServerSocketManager.Stop
+  fullName: BFB.Engine.Server.ServerSocketManager.Stop
+- uid: BFB.Engine.Server.ServerSocketManager.Emit*
+  commentId: Overload:BFB.Engine.Server.ServerSocketManager.Emit
+  name: Emit
+  nameWithType: ServerSocketManager.Emit
+  fullName: BFB.Engine.Server.ServerSocketManager.Emit
+- uid: System.String
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: BFB.Engine.Server.Communication.DataMessage
+  commentId: T:BFB.Engine.Server.Communication.DataMessage
+  parent: BFB.Engine.Server.Communication
+  name: DataMessage
+  nameWithType: DataMessage
+  fullName: BFB.Engine.Server.Communication.DataMessage
+- uid: BFB.Engine.Server.Communication
+  commentId: N:BFB.Engine.Server.Communication
+  name: BFB.Engine.Server.Communication
+  nameWithType: BFB.Engine.Server.Communication
+  fullName: BFB.Engine.Server.Communication
+- uid: BFB.Engine.Server.ServerSocketManager.On*
+  commentId: Overload:BFB.Engine.Server.ServerSocketManager.On
+  name: On
+  nameWithType: ServerSocketManager.On
+  fullName: BFB.Engine.Server.ServerSocketManager.On
+- uid: Action{BFB.Engine.Server.Communication.DataMessage}
+  commentId: '!:Action{BFB.Engine.Server.Communication.DataMessage}'
+  definition: Action`1
+  name: Action<DataMessage>
+  nameWithType: Action<DataMessage>
+  fullName: Action<BFB.Engine.Server.Communication.DataMessage>
+  nameWithType.vb: Action(Of DataMessage)
+  fullName.vb: Action(Of BFB.Engine.Server.Communication.DataMessage)
+  name.vb: Action(Of DataMessage)
+  spec.csharp:
+  - uid: Action`1
+    name: Action
+    nameWithType: Action
+    fullName: Action
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: BFB.Engine.Server.Communication.DataMessage
+    name: DataMessage
+    nameWithType: DataMessage
+    fullName: BFB.Engine.Server.Communication.DataMessage
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: Action`1
+    name: Action
+    nameWithType: Action
+    fullName: Action
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: BFB.Engine.Server.Communication.DataMessage
+    name: DataMessage
+    nameWithType: DataMessage
+    fullName: BFB.Engine.Server.Communication.DataMessage
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.Server.ServerSocketManager.GetClient*
+  commentId: Overload:BFB.Engine.Server.ServerSocketManager.GetClient
+  name: GetClient
+  nameWithType: ServerSocketManager.GetClient
+  fullName: BFB.Engine.Server.ServerSocketManager.GetClient
+- uid: BFB.Engine.Server.ClientSocket
+  commentId: T:BFB.Engine.Server.ClientSocket
+  parent: BFB.Engine.Server
+  name: ClientSocket
+  nameWithType: ClientSocket
+  fullName: BFB.Engine.Server.ClientSocket
+- uid: BFB.Engine.Server.ServerSocketManager.SetTerminalHeader*
+  commentId: Overload:BFB.Engine.Server.ServerSocketManager.SetTerminalHeader
+  name: SetTerminalHeader
+  nameWithType: ServerSocketManager.SetTerminalHeader
+  fullName: BFB.Engine.Server.ServerSocketManager.SetTerminalHeader
+- uid: BFB.Engine.Server.ServerSocketManager.PrintMessage*
+  commentId: Overload:BFB.Engine.Server.ServerSocketManager.PrintMessage
+  name: PrintMessage
+  nameWithType: ServerSocketManager.PrintMessage
+  fullName: BFB.Engine.Server.ServerSocketManager.PrintMessage
+- uid: System.Boolean
+  isExternal: true
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: BFB.Engine.Server.ServerSocketManager.Dispose*
+  commentId: Overload:BFB.Engine.Server.ServerSocketManager.Dispose
+  name: Dispose
+  nameWithType: ServerSocketManager.Dispose
+  fullName: BFB.Engine.Server.ServerSocketManager.Dispose

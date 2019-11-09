@@ -1,0 +1,473 @@
+### YamlMime:ManagedReference
+items:
+- uid: BFB.Engine.Content.AnimationSet
+  commentId: T:BFB.Engine.Content.AnimationSet
+  id: AnimationSet
+  parent: BFB.Engine.Content
+  children:
+  - BFB.Engine.Content.AnimationSet.Fps
+  - BFB.Engine.Content.AnimationSet.FrameEnd
+  - BFB.Engine.Content.AnimationSet.FrameStart
+  - BFB.Engine.Content.AnimationSet.Mirror
+  langs:
+  - csharp
+  - vb
+  name: AnimationSet
+  nameWithType: AnimationSet
+  fullName: BFB.Engine.Content.AnimationSet
+  type: Class
+  source:
+    remote:
+      path: BFB/BFB.Engine/Content/AnimationSet.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: AnimationSet
+    path: ../BFB/BFB.Engine/Content/AnimationSet.cs
+    startLine: 5
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Content
+  summary: "\nA series of information about an animation.\n"
+  example: []
+  syntax:
+    content: 'public class AnimationSet : object'
+    content.vb: >-
+      Public Class AnimationSet
+
+          Inherits Object
+  inheritance:
+  - System.Object
+  extensionMethods:
+  - BFB.Engine.Content.AnimationSet.BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{BFB.Engine.Content.AnimationSet,{TValue}}},{TValue})
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: BFB.Engine.Content.AnimationSet.Fps
+  commentId: P:BFB.Engine.Content.AnimationSet.Fps
+  id: Fps
+  parent: BFB.Engine.Content.AnimationSet
+  langs:
+  - csharp
+  - vb
+  name: Fps
+  nameWithType: AnimationSet.Fps
+  fullName: BFB.Engine.Content.AnimationSet.Fps
+  type: Property
+  source:
+    remote:
+      path: BFB/BFB.Engine/Content/AnimationSet.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: Fps
+    path: ../BFB/BFB.Engine/Content/AnimationSet.cs
+    startLine: 10
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Content
+  summary: "\nThe frames per second that an animation will animate at.\n"
+  example: []
+  syntax:
+    content: public int Fps { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property Fps As Integer
+  overload: BFB.Engine.Content.AnimationSet.Fps*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.Content.AnimationSet.FrameStart
+  commentId: P:BFB.Engine.Content.AnimationSet.FrameStart
+  id: FrameStart
+  parent: BFB.Engine.Content.AnimationSet
+  langs:
+  - csharp
+  - vb
+  name: FrameStart
+  nameWithType: AnimationSet.FrameStart
+  fullName: BFB.Engine.Content.AnimationSet.FrameStart
+  type: Property
+  source:
+    remote:
+      path: BFB/BFB.Engine/Content/AnimationSet.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: FrameStart
+    path: ../BFB/BFB.Engine/Content/AnimationSet.cs
+    startLine: 14
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Content
+  summary: "\nWhich frame of the spritesheet the animation starts at since there are different animations in one spritesheet.\n"
+  example: []
+  syntax:
+    content: public int FrameStart { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property FrameStart As Integer
+  overload: BFB.Engine.Content.AnimationSet.FrameStart*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.Content.AnimationSet.FrameEnd
+  commentId: P:BFB.Engine.Content.AnimationSet.FrameEnd
+  id: FrameEnd
+  parent: BFB.Engine.Content.AnimationSet
+  langs:
+  - csharp
+  - vb
+  name: FrameEnd
+  nameWithType: AnimationSet.FrameEnd
+  fullName: BFB.Engine.Content.AnimationSet.FrameEnd
+  type: Property
+  source:
+    remote:
+      path: BFB/BFB.Engine/Content/AnimationSet.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: FrameEnd
+    path: ../BFB/BFB.Engine/Content/AnimationSet.cs
+    startLine: 18
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Content
+  summary: "\nWhich frame of the spritesheet the animation ends at, since there are different animations in one spritesheet.\n"
+  example: []
+  syntax:
+    content: public int FrameEnd { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property FrameEnd As Integer
+  overload: BFB.Engine.Content.AnimationSet.FrameEnd*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.Content.AnimationSet.Mirror
+  commentId: P:BFB.Engine.Content.AnimationSet.Mirror
+  id: Mirror
+  parent: BFB.Engine.Content.AnimationSet
+  langs:
+  - csharp
+  - vb
+  name: Mirror
+  nameWithType: AnimationSet.Mirror
+  fullName: BFB.Engine.Content.AnimationSet.Mirror
+  type: Property
+  source:
+    remote:
+      path: BFB/BFB.Engine/Content/AnimationSet.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: Mirror
+    path: ../BFB/BFB.Engine/Content/AnimationSet.cs
+    startLine: 22
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Content
+  summary: "\nIf the sprite is flipped, for example running right vs running left using the same animation, but one is flipped.\n"
+  example: []
+  syntax:
+    content: public bool Mirror { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property Mirror As Boolean
+  overload: BFB.Engine.Content.AnimationSet.Mirror*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+references:
+- uid: BFB.Engine.Content
+  commentId: N:BFB.Engine.Content
+  name: BFB.Engine.Content
+  nameWithType: BFB.Engine.Content
+  fullName: BFB.Engine.Content
+- uid: System.Object
+  commentId: '!:System.Object'
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: BFB.Engine.Content.AnimationSet.BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{BFB.Engine.Content.AnimationSet,{TValue}}},{TValue})
+  commentId: M:BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  parent: BFB.Engine.UI.Components.LambdaExtensions
+  definition: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  name: SetPropertyValue<AnimationSet, TValue>(Expression<Func<AnimationSet, TValue>>, TValue)
+  nameWithType: LambdaExtensions.SetPropertyValue<AnimationSet, TValue>(Expression<Func<AnimationSet, TValue>>, TValue)
+  fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<BFB.Engine.Content.AnimationSet, TValue>(Expression<Func<BFB.Engine.Content.AnimationSet, TValue>>, TValue)
+  nameWithType.vb: LambdaExtensions.SetPropertyValue(Of AnimationSet, TValue)(Expression(Of Func(Of AnimationSet, TValue)), TValue)
+  fullName.vb: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of BFB.Engine.Content.AnimationSet, TValue)(Expression(Of Func(Of BFB.Engine.Content.AnimationSet, TValue)), TValue)
+  name.vb: SetPropertyValue(Of AnimationSet, TValue)(Expression(Of Func(Of AnimationSet, TValue)), TValue)
+  spec.csharp:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue<AnimationSet, TValue>
+    nameWithType: LambdaExtensions.SetPropertyValue<AnimationSet, TValue>
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<BFB.Engine.Content.AnimationSet, TValue>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: BFB.Engine.Content.AnimationSet
+    name: AnimationSet
+    nameWithType: AnimationSet
+    fullName: BFB.Engine.Content.AnimationSet
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue(Of AnimationSet, TValue)
+    nameWithType: LambdaExtensions.SetPropertyValue(Of AnimationSet, TValue)
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of BFB.Engine.Content.AnimationSet, TValue)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: BFB.Engine.Content.AnimationSet
+    name: AnimationSet
+    nameWithType: AnimationSet
+    fullName: BFB.Engine.Content.AnimationSet
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  commentId: M:BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  isExternal: true
+  name: SetPropertyValue<T, TValue>(T, Expression<Func<T, TValue>>, TValue)
+  nameWithType: LambdaExtensions.SetPropertyValue<T, TValue>(T, Expression<Func<T, TValue>>, TValue)
+  fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<T, TValue>(T, Expression<Func<T, TValue>>, TValue)
+  nameWithType.vb: LambdaExtensions.SetPropertyValue(Of T, TValue)(T, Expression(Of Func(Of T, TValue)), TValue)
+  fullName.vb: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of T, TValue)(T, Expression(Of Func(Of T, TValue)), TValue)
+  name.vb: SetPropertyValue(Of T, TValue)(T, Expression(Of Func(Of T, TValue)), TValue)
+  spec.csharp:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue<T, TValue>
+    nameWithType: LambdaExtensions.SetPropertyValue<T, TValue>
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<T, TValue>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue(Of T, TValue)
+    nameWithType: LambdaExtensions.SetPropertyValue(Of T, TValue)
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of T, TValue)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Components.LambdaExtensions
+  commentId: T:BFB.Engine.UI.Components.LambdaExtensions
+  parent: BFB.Engine.UI.Components
+  name: LambdaExtensions
+  nameWithType: LambdaExtensions
+  fullName: BFB.Engine.UI.Components.LambdaExtensions
+- uid: BFB.Engine.UI.Components
+  commentId: N:BFB.Engine.UI.Components
+  name: BFB.Engine.UI.Components
+  nameWithType: BFB.Engine.UI.Components
+  fullName: BFB.Engine.UI.Components
+- uid: BFB.Engine.Content.AnimationSet.Fps*
+  commentId: Overload:BFB.Engine.Content.AnimationSet.Fps
+  name: Fps
+  nameWithType: AnimationSet.Fps
+  fullName: BFB.Engine.Content.AnimationSet.Fps
+- uid: System.Int32
+  isExternal: true
+  name: Int32
+  nameWithType: Int32
+  fullName: System.Int32
+- uid: BFB.Engine.Content.AnimationSet.FrameStart*
+  commentId: Overload:BFB.Engine.Content.AnimationSet.FrameStart
+  name: FrameStart
+  nameWithType: AnimationSet.FrameStart
+  fullName: BFB.Engine.Content.AnimationSet.FrameStart
+- uid: BFB.Engine.Content.AnimationSet.FrameEnd*
+  commentId: Overload:BFB.Engine.Content.AnimationSet.FrameEnd
+  name: FrameEnd
+  nameWithType: AnimationSet.FrameEnd
+  fullName: BFB.Engine.Content.AnimationSet.FrameEnd
+- uid: BFB.Engine.Content.AnimationSet.Mirror*
+  commentId: Overload:BFB.Engine.Content.AnimationSet.Mirror
+  name: Mirror
+  nameWithType: AnimationSet.Mirror
+  fullName: BFB.Engine.Content.AnimationSet.Mirror
+- uid: System.Boolean
+  isExternal: true
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean

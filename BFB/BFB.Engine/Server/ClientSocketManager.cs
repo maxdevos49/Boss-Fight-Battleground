@@ -28,6 +28,8 @@ namespace BFB.Engine.Server
         public Func<DataMessage,DataMessage> OnAuthentication { get; set; }
         public Action<string> OnConnect { get; set; }
         public Action<string> OnDisconnect { get; set; }
+        
+        public Action<DataMessage> OnPrepare { get; set; }
         public Action OnReady { get; set; }
         
         #endregion
@@ -230,10 +232,11 @@ namespace BFB.Engine.Server
                                 OnConnect?.Invoke(message.ClientId);
                                 break;
                             case "authentication":
-                            {
                                 Emit("authentication", OnAuthentication?.Invoke(message));
                                 break;
-                            }
+                            case "prepare":
+                                OnPrepare?.Invoke(message);
+                                break;
                             case "ready":
                                 _acceptData = true;
                                 OnReady?.Invoke();
@@ -274,6 +277,15 @@ namespace BFB.Engine.Server
                 Console.WriteLine("Write Exception: {0}", ex);
             }
             
+        }
+        
+        #endregion
+        
+        #region EmitAllowed
+
+        public bool EmitAllowed()
+        {
+            return _allowEmit;
         }
         
         #endregion

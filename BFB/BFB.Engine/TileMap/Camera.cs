@@ -5,71 +5,66 @@ using Microsoft.Xna.Framework.Graphics;
 namespace BFB.Engine.TileMap
 {
 
-    public class Camera2D
+    public class Camera
     {
-        private Vector2 _position;
-        
-        private readonly WorldManager _worldManager;
-        private readonly GraphicsDevice _graphicsDevice;
-        
-        private const int CameraWidth = 800;
-        private const int CameraHeight = 450;
-            
-        
-        
         public Vector2 Position
         {
-            get { return _position; }
-            set { _position = value; }
+            get => _position;
+            private set => _position = value;
         }
         
         public Vector2 Focus { get; set; }
-
         public float Rotation { get; set; }
         public Vector2 Origin { get; set; }
         public float Zoom { get; set; }
         public Vector2 ScreenCenter { get; protected set; }
         public Matrix Transform { get; set; }
         public float MoveSpeed { get; set; }
+        
+        
+        private Vector2 _position;
+        private readonly GraphicsDevice _graphicsDevice;
+        private readonly int _worldWidth;
+        private readonly int _worldHeight;
+        public readonly int ViewWidth;
+        public readonly int ViewHeight;
 
-        public Camera2D(WorldManager worldManager, GraphicsDevice graphicsDevice)
+        public Camera(GraphicsDevice graphicsDevice,int worldWidth, int worldHeight, int viewWidth = 800, int viewHeight = 450)
         {
-            _worldManager = worldManager;
             _graphicsDevice = graphicsDevice;
+            _worldWidth = worldWidth;
+            _worldHeight = worldHeight;
+            ViewWidth = viewWidth;
+            ViewHeight = viewHeight;
             
             Position = Vector2.Zero;
             Origin = Vector2.Zero;
             ScreenCenter = Vector2.Zero;
-            
             Zoom = 0.3f;
             MoveSpeed = 5.25f;
             Rotation = 0;
         }
 
-        private float CheckScreenScale()
+        public Vector3 GetScale()
         {
-            //Player is positioned wrong after this
-            float scaleX = (float)_graphicsDevice.Viewport.Width / CameraWidth;
-            float scaleY = (float)_graphicsDevice.Viewport.Height / CameraHeight;
-            return scaleX;
+            float screenScale = (float)_graphicsDevice.Viewport.Width / ViewWidth;
+            return new Vector3(Zoom + screenScale, Zoom + screenScale, 0);
         }
         
-        
-
         public void Update(GameTime gameTime)
         {
             ScreenCenter = new Vector2((float)_graphicsDevice.Viewport.Width / 2, (float)_graphicsDevice.Viewport.Height / 2);
-            float screenScale = CheckScreenScale();
+            
             
             // Create the Transform
             Transform = Matrix.Identity *
                         Matrix.CreateTranslation(-Position.X, -Position.Y, 0) *
                         Matrix.CreateRotationZ(Rotation) *
                         Matrix.CreateTranslation(Origin.X, Origin.Y, 0) *
-                        Matrix.CreateScale(new Vector3(Zoom + screenScale, Zoom + screenScale, 0));
+                        Matrix.CreateScale(GetScale());
 
             
-            Origin = ScreenCenter / (Zoom + screenScale);
+            Origin = ScreenCenter / GetScale().X;
 
             // Move the Camera to the position that it needs to go
             float delta = (float) gameTime.ElapsedGameTime.TotalSeconds ;
@@ -80,11 +75,12 @@ namespace BFB.Engine.TileMap
             //Keep camera within bounds of the world
             if (_position.X < Origin.X)
                 _position.X = Origin.X;
-            else if(_position.X > _worldManager.WorldOptions.WorldChunkWidth * _worldManager.WorldOptions.ChunkSize * _worldManager.WorldOptions.WorldScale - Origin.X)
-                _position.X = _worldManager.WorldOptions.WorldChunkWidth * _worldManager.WorldOptions.ChunkSize * _worldManager.WorldOptions.WorldScale - Origin.X;
+            else if(_position.X > _worldWidth - Origin.X)
+                _position.X = _worldWidth - Origin.X;
            
         }
         
+        //TODO remove maybe because we will not need it with better renderer maybe
         public bool IsInView(Vector2 position, Texture2D texture)
         {
             // If the object is not within the horizontal bounds of the screen

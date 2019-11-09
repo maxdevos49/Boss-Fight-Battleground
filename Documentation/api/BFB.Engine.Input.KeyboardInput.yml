@@ -1,0 +1,513 @@
+### YamlMime:ManagedReference
+items:
+- uid: BFB.Engine.Input.KeyboardInput
+  commentId: T:BFB.Engine.Input.KeyboardInput
+  id: KeyboardInput
+  parent: BFB.Engine.Input
+  children:
+  - BFB.Engine.Input.KeyboardInput.#ctor(BFB.Engine.Event.EventManager{BFB.Engine.Event.InputEvent})
+  - BFB.Engine.Input.KeyboardInput.KeyToString(BFB.Engine.Input.KeyboardStatus,System.String)
+  - BFB.Engine.Input.KeyboardInput.UpdateKeyboard
+  langs:
+  - csharp
+  - vb
+  name: KeyboardInput
+  nameWithType: KeyboardInput
+  fullName: BFB.Engine.Input.KeyboardInput
+  type: Class
+  source:
+    remote:
+      path: BFB/BFB.Engine/Input/KeyboardInput.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: KeyboardInput
+    path: ../BFB/BFB.Engine/Input/KeyboardInput.cs
+    startLine: 15
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Input
+  summary: "\nTakes keyboard input and emits it to the server through events.\n"
+  example: []
+  syntax:
+    content: 'public class KeyboardInput : object'
+    content.vb: >-
+      Public Class KeyboardInput
+
+          Inherits Object
+  inheritance:
+  - System.Object
+  extensionMethods:
+  - BFB.Engine.Input.KeyboardInput.BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{BFB.Engine.Input.KeyboardInput,{TValue}}},{TValue})
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: BFB.Engine.Input.KeyboardInput.#ctor(BFB.Engine.Event.EventManager{BFB.Engine.Event.InputEvent})
+  commentId: M:BFB.Engine.Input.KeyboardInput.#ctor(BFB.Engine.Event.EventManager{BFB.Engine.Event.InputEvent})
+  id: '#ctor(BFB.Engine.Event.EventManager{BFB.Engine.Event.InputEvent})'
+  parent: BFB.Engine.Input.KeyboardInput
+  langs:
+  - csharp
+  - vb
+  name: KeyboardInput(EventManager<InputEvent>)
+  nameWithType: KeyboardInput.KeyboardInput(EventManager<InputEvent>)
+  fullName: BFB.Engine.Input.KeyboardInput.KeyboardInput(BFB.Engine.Event.EventManager<BFB.Engine.Event.InputEvent>)
+  type: Constructor
+  source:
+    remote:
+      path: BFB/BFB.Engine/Input/KeyboardInput.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: .ctor
+    path: ../BFB/BFB.Engine/Input/KeyboardInput.cs
+    startLine: 22
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Input
+  syntax:
+    content: public KeyboardInput(EventManager<InputEvent> eventManager)
+    parameters:
+    - id: eventManager
+      type: BFB.Engine.Event.EventManager{BFB.Engine.Event.InputEvent}
+    content.vb: Public Sub New(eventManager As EventManager(Of InputEvent))
+  overload: BFB.Engine.Input.KeyboardInput.#ctor*
+  nameWithType.vb: KeyboardInput.KeyboardInput(EventManager(Of InputEvent))
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+  fullName.vb: BFB.Engine.Input.KeyboardInput.KeyboardInput(BFB.Engine.Event.EventManager(Of BFB.Engine.Event.InputEvent))
+  name.vb: KeyboardInput(EventManager(Of InputEvent))
+- uid: BFB.Engine.Input.KeyboardInput.UpdateKeyboard
+  commentId: M:BFB.Engine.Input.KeyboardInput.UpdateKeyboard
+  id: UpdateKeyboard
+  parent: BFB.Engine.Input.KeyboardInput
+  langs:
+  - csharp
+  - vb
+  name: UpdateKeyboard()
+  nameWithType: KeyboardInput.UpdateKeyboard()
+  fullName: BFB.Engine.Input.KeyboardInput.UpdateKeyboard()
+  type: Method
+  source:
+    remote:
+      path: BFB/BFB.Engine/Input/KeyboardInput.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: UpdateKeyboard
+    path: ../BFB/BFB.Engine/Input/KeyboardInput.cs
+    startLine: 31
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Input
+  summary: "\nUpdates the keyboard state and emits any new events based on keys pressed.\n"
+  example: []
+  syntax:
+    content: public void UpdateKeyboard()
+    content.vb: Public Sub UpdateKeyboard
+  overload: BFB.Engine.Input.KeyboardInput.UpdateKeyboard*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.Input.KeyboardInput.KeyToString(BFB.Engine.Input.KeyboardStatus,System.String)
+  commentId: M:BFB.Engine.Input.KeyboardInput.KeyToString(BFB.Engine.Input.KeyboardStatus,System.String)
+  id: KeyToString(BFB.Engine.Input.KeyboardStatus,System.String)
+  parent: BFB.Engine.Input.KeyboardInput
+  langs:
+  - csharp
+  - vb
+  name: KeyToString(KeyboardStatus, String)
+  nameWithType: KeyboardInput.KeyToString(KeyboardStatus, String)
+  fullName: BFB.Engine.Input.KeyboardInput.KeyToString(BFB.Engine.Input.KeyboardStatus, System.String)
+  type: Method
+  source:
+    remote:
+      path: BFB/BFB.Engine/Input/KeyboardInput.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: KeyToString
+    path: ../BFB/BFB.Engine/Input/KeyboardInput.cs
+    startLine: 72
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Input
+  summary: "\nTakes a certain keyboard key and returns it as a string.\n"
+  example: []
+  syntax:
+    content: public static string KeyToString(KeyboardStatus keyStatus, string outputString)
+    parameters:
+    - id: keyStatus
+      type: BFB.Engine.Input.KeyboardStatus
+      description: ''
+    - id: outputString
+      type: System.String
+      description: ''
+    return:
+      type: System.String
+      description: ''
+    content.vb: Public Shared Function KeyToString(keyStatus As KeyboardStatus, outputString As String) As String
+  overload: BFB.Engine.Input.KeyboardInput.KeyToString*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+references:
+- uid: BFB.Engine.Input
+  commentId: N:BFB.Engine.Input
+  name: BFB.Engine.Input
+  nameWithType: BFB.Engine.Input
+  fullName: BFB.Engine.Input
+- uid: System.Object
+  commentId: '!:System.Object'
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: BFB.Engine.Input.KeyboardInput.BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{BFB.Engine.Input.KeyboardInput,{TValue}}},{TValue})
+  commentId: M:BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  parent: BFB.Engine.UI.Components.LambdaExtensions
+  definition: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  name: SetPropertyValue<KeyboardInput, TValue>(Expression<Func<KeyboardInput, TValue>>, TValue)
+  nameWithType: LambdaExtensions.SetPropertyValue<KeyboardInput, TValue>(Expression<Func<KeyboardInput, TValue>>, TValue)
+  fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<BFB.Engine.Input.KeyboardInput, TValue>(Expression<Func<BFB.Engine.Input.KeyboardInput, TValue>>, TValue)
+  nameWithType.vb: LambdaExtensions.SetPropertyValue(Of KeyboardInput, TValue)(Expression(Of Func(Of KeyboardInput, TValue)), TValue)
+  fullName.vb: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of BFB.Engine.Input.KeyboardInput, TValue)(Expression(Of Func(Of BFB.Engine.Input.KeyboardInput, TValue)), TValue)
+  name.vb: SetPropertyValue(Of KeyboardInput, TValue)(Expression(Of Func(Of KeyboardInput, TValue)), TValue)
+  spec.csharp:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue<KeyboardInput, TValue>
+    nameWithType: LambdaExtensions.SetPropertyValue<KeyboardInput, TValue>
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<BFB.Engine.Input.KeyboardInput, TValue>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: BFB.Engine.Input.KeyboardInput
+    name: KeyboardInput
+    nameWithType: KeyboardInput
+    fullName: BFB.Engine.Input.KeyboardInput
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue(Of KeyboardInput, TValue)
+    nameWithType: LambdaExtensions.SetPropertyValue(Of KeyboardInput, TValue)
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of BFB.Engine.Input.KeyboardInput, TValue)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: BFB.Engine.Input.KeyboardInput
+    name: KeyboardInput
+    nameWithType: KeyboardInput
+    fullName: BFB.Engine.Input.KeyboardInput
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  commentId: M:BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  isExternal: true
+  name: SetPropertyValue<T, TValue>(T, Expression<Func<T, TValue>>, TValue)
+  nameWithType: LambdaExtensions.SetPropertyValue<T, TValue>(T, Expression<Func<T, TValue>>, TValue)
+  fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<T, TValue>(T, Expression<Func<T, TValue>>, TValue)
+  nameWithType.vb: LambdaExtensions.SetPropertyValue(Of T, TValue)(T, Expression(Of Func(Of T, TValue)), TValue)
+  fullName.vb: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of T, TValue)(T, Expression(Of Func(Of T, TValue)), TValue)
+  name.vb: SetPropertyValue(Of T, TValue)(T, Expression(Of Func(Of T, TValue)), TValue)
+  spec.csharp:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue<T, TValue>
+    nameWithType: LambdaExtensions.SetPropertyValue<T, TValue>
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<T, TValue>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue(Of T, TValue)
+    nameWithType: LambdaExtensions.SetPropertyValue(Of T, TValue)
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of T, TValue)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Components.LambdaExtensions
+  commentId: T:BFB.Engine.UI.Components.LambdaExtensions
+  parent: BFB.Engine.UI.Components
+  name: LambdaExtensions
+  nameWithType: LambdaExtensions
+  fullName: BFB.Engine.UI.Components.LambdaExtensions
+- uid: BFB.Engine.UI.Components
+  commentId: N:BFB.Engine.UI.Components
+  name: BFB.Engine.UI.Components
+  nameWithType: BFB.Engine.UI.Components
+  fullName: BFB.Engine.UI.Components
+- uid: BFB.Engine.Input.KeyboardInput.#ctor*
+  commentId: Overload:BFB.Engine.Input.KeyboardInput.#ctor
+  name: KeyboardInput
+  nameWithType: KeyboardInput.KeyboardInput
+  fullName: BFB.Engine.Input.KeyboardInput.KeyboardInput
+- uid: BFB.Engine.Event.EventManager{BFB.Engine.Event.InputEvent}
+  commentId: T:BFB.Engine.Event.EventManager{BFB.Engine.Event.InputEvent}
+  parent: BFB.Engine.Event
+  definition: BFB.Engine.Event.EventManager`1
+  name: EventManager<InputEvent>
+  nameWithType: EventManager<InputEvent>
+  fullName: BFB.Engine.Event.EventManager<BFB.Engine.Event.InputEvent>
+  nameWithType.vb: EventManager(Of InputEvent)
+  fullName.vb: BFB.Engine.Event.EventManager(Of BFB.Engine.Event.InputEvent)
+  name.vb: EventManager(Of InputEvent)
+  spec.csharp:
+  - uid: BFB.Engine.Event.EventManager`1
+    name: EventManager
+    nameWithType: EventManager
+    fullName: BFB.Engine.Event.EventManager
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: BFB.Engine.Event.InputEvent
+    name: InputEvent
+    nameWithType: InputEvent
+    fullName: BFB.Engine.Event.InputEvent
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: BFB.Engine.Event.EventManager`1
+    name: EventManager
+    nameWithType: EventManager
+    fullName: BFB.Engine.Event.EventManager
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: BFB.Engine.Event.InputEvent
+    name: InputEvent
+    nameWithType: InputEvent
+    fullName: BFB.Engine.Event.InputEvent
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.Event.EventManager`1
+  commentId: T:BFB.Engine.Event.EventManager`1
+  name: EventManager<TEvent>
+  nameWithType: EventManager<TEvent>
+  fullName: BFB.Engine.Event.EventManager<TEvent>
+  nameWithType.vb: EventManager(Of TEvent)
+  fullName.vb: BFB.Engine.Event.EventManager(Of TEvent)
+  name.vb: EventManager(Of TEvent)
+  spec.csharp:
+  - uid: BFB.Engine.Event.EventManager`1
+    name: EventManager
+    nameWithType: EventManager
+    fullName: BFB.Engine.Event.EventManager
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: TEvent
+    nameWithType: TEvent
+    fullName: TEvent
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: BFB.Engine.Event.EventManager`1
+    name: EventManager
+    nameWithType: EventManager
+    fullName: BFB.Engine.Event.EventManager
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: TEvent
+    nameWithType: TEvent
+    fullName: TEvent
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.Event
+  commentId: N:BFB.Engine.Event
+  name: BFB.Engine.Event
+  nameWithType: BFB.Engine.Event
+  fullName: BFB.Engine.Event
+- uid: BFB.Engine.Input.KeyboardInput.UpdateKeyboard*
+  commentId: Overload:BFB.Engine.Input.KeyboardInput.UpdateKeyboard
+  name: UpdateKeyboard
+  nameWithType: KeyboardInput.UpdateKeyboard
+  fullName: BFB.Engine.Input.KeyboardInput.UpdateKeyboard
+- uid: BFB.Engine.Input.KeyboardInput.KeyToString*
+  commentId: Overload:BFB.Engine.Input.KeyboardInput.KeyToString
+  name: KeyToString
+  nameWithType: KeyboardInput.KeyToString
+  fullName: BFB.Engine.Input.KeyboardInput.KeyToString
+- uid: BFB.Engine.Input.KeyboardStatus
+  commentId: T:BFB.Engine.Input.KeyboardStatus
+  parent: BFB.Engine.Input
+  name: KeyboardStatus
+  nameWithType: KeyboardStatus
+  fullName: BFB.Engine.Input.KeyboardStatus
+- uid: System.String
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String

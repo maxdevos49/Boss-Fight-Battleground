@@ -1,0 +1,34 @@
+### YamlMime:ManagedReference
+items:
+- uid: BFB.Engine.Input.PlayerInput
+  commentId: N:BFB.Engine.Input.PlayerInput
+  id: BFB.Engine.Input.PlayerInput
+  children:
+  - BFB.Engine.Input.PlayerInput.PlayerInput
+  - BFB.Engine.Input.PlayerInput.PlayerState
+  langs:
+  - csharp
+  - vb
+  name: BFB.Engine.Input.PlayerInput
+  nameWithType: BFB.Engine.Input.PlayerInput
+  fullName: BFB.Engine.Input.PlayerInput
+  type: Namespace
+  assemblies:
+  - BFB.Engine
+references:
+- uid: BFB.Engine.Input.PlayerInput.PlayerInput
+  commentId: T:BFB.Engine.Input.PlayerInput.PlayerInput
+  name: PlayerInput
+  nameWithType: PlayerInput
+  fullName: BFB.Engine.Input.PlayerInput.PlayerInput
+- uid: BFB.Engine.Input.PlayerInput.PlayerState
+  commentId: T:BFB.Engine.Input.PlayerInput.PlayerState
+  parent: BFB.Engine.Input.PlayerInput
+  name: PlayerState
+  nameWithType: PlayerState
+  fullName: BFB.Engine.Input.PlayerInput.PlayerState
+- uid: BFB.Engine.Input.PlayerInput
+  commentId: N:BFB.Engine.Input.PlayerInput
+  name: BFB.Engine.Input.PlayerInput
+  nameWithType: BFB.Engine.Input.PlayerInput
+  fullName: BFB.Engine.Input.PlayerInput

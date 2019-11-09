@@ -1,0 +1,385 @@
+### YamlMime:ManagedReference
+items:
+- uid: BFB.Engine.Content.AnimationLifecycle
+  commentId: T:BFB.Engine.Content.AnimationLifecycle
+  id: AnimationLifecycle
+  parent: BFB.Engine.Content
+  children:
+  - BFB.Engine.Content.AnimationLifecycle.Looping
+  - BFB.Engine.Content.AnimationLifecycle.Paused
+  - BFB.Engine.Content.AnimationLifecycle.Playing
+  langs:
+  - csharp
+  - vb
+  name: AnimationLifecycle
+  nameWithType: AnimationLifecycle
+  fullName: BFB.Engine.Content.AnimationLifecycle
+  type: Enum
+  source:
+    remote:
+      path: BFB/BFB.Engine/Content/AnimationLifecycle.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: AnimationLifecycle
+    path: ../BFB/BFB.Engine/Content/AnimationLifecycle.cs
+    startLine: 5
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Content
+  summary: "\nDifferent states that an animation can be in. Paused means that the animation is stopped, playing means that the animation is playing, and looping means the animation will repeat once it cycles through.\n"
+  example: []
+  syntax:
+    content: 'public enum AnimationLifecycle : int'
+    content.vb: Public Enum AnimationLifecycle As Integer
+  extensionMethods:
+  - BFB.Engine.Content.AnimationLifecycle.BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{BFB.Engine.Content.AnimationLifecycle,{TValue}}},{TValue})
+  modifiers.csharp:
+  - public
+  - enum
+  modifiers.vb:
+  - Public
+  - Enum
+- uid: BFB.Engine.Content.AnimationLifecycle.Paused
+  commentId: F:BFB.Engine.Content.AnimationLifecycle.Paused
+  id: Paused
+  parent: BFB.Engine.Content.AnimationLifecycle
+  langs:
+  - csharp
+  - vb
+  name: Paused
+  nameWithType: AnimationLifecycle.Paused
+  fullName: BFB.Engine.Content.AnimationLifecycle.Paused
+  type: Field
+  source:
+    remote:
+      path: BFB/BFB.Engine/Content/AnimationLifecycle.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: Paused
+    path: ../BFB/BFB.Engine/Content/AnimationLifecycle.cs
+    startLine: 7
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Content
+  syntax:
+    content: Paused = 0
+    return:
+      type: BFB.Engine.Content.AnimationLifecycle
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: BFB.Engine.Content.AnimationLifecycle.Playing
+  commentId: F:BFB.Engine.Content.AnimationLifecycle.Playing
+  id: Playing
+  parent: BFB.Engine.Content.AnimationLifecycle
+  langs:
+  - csharp
+  - vb
+  name: Playing
+  nameWithType: AnimationLifecycle.Playing
+  fullName: BFB.Engine.Content.AnimationLifecycle.Playing
+  type: Field
+  source:
+    remote:
+      path: BFB/BFB.Engine/Content/AnimationLifecycle.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: Playing
+    path: ../BFB/BFB.Engine/Content/AnimationLifecycle.cs
+    startLine: 8
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Content
+  syntax:
+    content: Playing = 1
+    return:
+      type: BFB.Engine.Content.AnimationLifecycle
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: BFB.Engine.Content.AnimationLifecycle.Looping
+  commentId: F:BFB.Engine.Content.AnimationLifecycle.Looping
+  id: Looping
+  parent: BFB.Engine.Content.AnimationLifecycle
+  langs:
+  - csharp
+  - vb
+  name: Looping
+  nameWithType: AnimationLifecycle.Looping
+  fullName: BFB.Engine.Content.AnimationLifecycle.Looping
+  type: Field
+  source:
+    remote:
+      path: BFB/BFB.Engine/Content/AnimationLifecycle.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: Looping
+    path: ../BFB/BFB.Engine/Content/AnimationLifecycle.cs
+    startLine: 9
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Content
+  syntax:
+    content: Looping = 2
+    return:
+      type: BFB.Engine.Content.AnimationLifecycle
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+references:
+- uid: BFB.Engine.Content
+  commentId: N:BFB.Engine.Content
+  name: BFB.Engine.Content
+  nameWithType: BFB.Engine.Content
+  fullName: BFB.Engine.Content
+- uid: BFB.Engine.Content.AnimationLifecycle.BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{BFB.Engine.Content.AnimationLifecycle,{TValue}}},{TValue})
+  commentId: M:BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  parent: BFB.Engine.UI.Components.LambdaExtensions
+  definition: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  name: SetPropertyValue<AnimationLifecycle, TValue>(Expression<Func<AnimationLifecycle, TValue>>, TValue)
+  nameWithType: LambdaExtensions.SetPropertyValue<AnimationLifecycle, TValue>(Expression<Func<AnimationLifecycle, TValue>>, TValue)
+  fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<BFB.Engine.Content.AnimationLifecycle, TValue>(Expression<Func<BFB.Engine.Content.AnimationLifecycle, TValue>>, TValue)
+  nameWithType.vb: LambdaExtensions.SetPropertyValue(Of AnimationLifecycle, TValue)(Expression(Of Func(Of AnimationLifecycle, TValue)), TValue)
+  fullName.vb: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of BFB.Engine.Content.AnimationLifecycle, TValue)(Expression(Of Func(Of BFB.Engine.Content.AnimationLifecycle, TValue)), TValue)
+  name.vb: SetPropertyValue(Of AnimationLifecycle, TValue)(Expression(Of Func(Of AnimationLifecycle, TValue)), TValue)
+  spec.csharp:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue<AnimationLifecycle, TValue>
+    nameWithType: LambdaExtensions.SetPropertyValue<AnimationLifecycle, TValue>
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<BFB.Engine.Content.AnimationLifecycle, TValue>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: BFB.Engine.Content.AnimationLifecycle
+    name: AnimationLifecycle
+    nameWithType: AnimationLifecycle
+    fullName: BFB.Engine.Content.AnimationLifecycle
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue(Of AnimationLifecycle, TValue)
+    nameWithType: LambdaExtensions.SetPropertyValue(Of AnimationLifecycle, TValue)
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of BFB.Engine.Content.AnimationLifecycle, TValue)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: BFB.Engine.Content.AnimationLifecycle
+    name: AnimationLifecycle
+    nameWithType: AnimationLifecycle
+    fullName: BFB.Engine.Content.AnimationLifecycle
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  commentId: M:BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  isExternal: true
+  name: SetPropertyValue<T, TValue>(T, Expression<Func<T, TValue>>, TValue)
+  nameWithType: LambdaExtensions.SetPropertyValue<T, TValue>(T, Expression<Func<T, TValue>>, TValue)
+  fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<T, TValue>(T, Expression<Func<T, TValue>>, TValue)
+  nameWithType.vb: LambdaExtensions.SetPropertyValue(Of T, TValue)(T, Expression(Of Func(Of T, TValue)), TValue)
+  fullName.vb: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of T, TValue)(T, Expression(Of Func(Of T, TValue)), TValue)
+  name.vb: SetPropertyValue(Of T, TValue)(T, Expression(Of Func(Of T, TValue)), TValue)
+  spec.csharp:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue<T, TValue>
+    nameWithType: LambdaExtensions.SetPropertyValue<T, TValue>
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<T, TValue>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue(Of T, TValue)
+    nameWithType: LambdaExtensions.SetPropertyValue(Of T, TValue)
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of T, TValue)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Components.LambdaExtensions
+  commentId: T:BFB.Engine.UI.Components.LambdaExtensions
+  parent: BFB.Engine.UI.Components
+  name: LambdaExtensions
+  nameWithType: LambdaExtensions
+  fullName: BFB.Engine.UI.Components.LambdaExtensions
+- uid: BFB.Engine.UI.Components
+  commentId: N:BFB.Engine.UI.Components
+  name: BFB.Engine.UI.Components
+  nameWithType: BFB.Engine.UI.Components
+  fullName: BFB.Engine.UI.Components
+- uid: BFB.Engine.Content.AnimationLifecycle
+  commentId: T:BFB.Engine.Content.AnimationLifecycle
+  parent: BFB.Engine.Content
+  name: AnimationLifecycle
+  nameWithType: AnimationLifecycle
+  fullName: BFB.Engine.Content.AnimationLifecycle

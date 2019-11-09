@@ -27,6 +27,11 @@ namespace BFB.Engine.Server
         public Func<DataMessage,bool> OnClientAuthentication { get; set; }
         public Action<ClientSocket> OnClientConnect { get; set; }
         public Action<ClientSocket> OnClientReady { get; set; }
+        
+        /// <summary>
+        /// Called before the OnClientReady callback. Use this to send any setup information to the client.
+        /// </summary>
+        public Action<ClientSocket> OnClientPrepare { get; set; }
         public Action<string> OnClientDisconnect { get; set; }
         public Action OnServerStart { get; set; }
         public Action OnServerStop { get; set; }
@@ -180,6 +185,7 @@ namespace BFB.Engine.Server
                                 }
                                 else
                                 {
+                                    OnClientPrepare?.Invoke(socket);
                                     OnClientReady?.Invoke(socket);
                                     socket.Emit("ready");
                                 }

@@ -46,7 +46,7 @@ namespace BFB.Server
                 WorldChunkWidth = 20,
                 WorldChunkHeight = 10,
                 WorldScale = 15,
-                GetWorldGenerator = options => new FlatWorld(options)
+                WorldGenerator = options => new FlatWorld(options)
             }, 20);
         }
         
@@ -89,6 +89,15 @@ namespace BFB.Server
             
             #endregion
 
+            #region OnClientPrepare
+
+            _server.OnClientPrepare = (socket) =>
+            {
+                socket.Emit("prepare", _simulation.World.GetInitWorldData());
+            };
+            
+            #endregion
+            
             #region Handle Client Ready
 
             _server.OnClientReady = (socket) =>
@@ -195,8 +204,6 @@ namespace BFB.Server
             _simulation.OnSimulationOverLoad = ticksBehind => _server.PrintMessage($"SERVER IS OVERLOADED. ({ticksBehind}).");
             
             #endregion
-            
-
 
             #endregion
 

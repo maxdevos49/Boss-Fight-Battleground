@@ -9,6 +9,8 @@ namespace BFB.Engine.Server.Communication
     public class EntityMessage : DataMessage
     {
         public string EntityId { get; set; }
+        
+        public string ChunkKey { get; set; }
 
         public string AnimationTextureKey { get; set; }
 

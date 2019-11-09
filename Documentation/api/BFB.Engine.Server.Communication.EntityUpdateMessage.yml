@@ -1,0 +1,480 @@
+### YamlMime:ManagedReference
+items:
+- uid: BFB.Engine.Server.Communication.EntityUpdateMessage
+  commentId: T:BFB.Engine.Server.Communication.EntityUpdateMessage
+  id: EntityUpdateMessage
+  parent: BFB.Engine.Server.Communication
+  children:
+  - BFB.Engine.Server.Communication.EntityUpdateMessage.#ctor
+  - BFB.Engine.Server.Communication.EntityUpdateMessage.Updates
+  langs:
+  - csharp
+  - vb
+  name: EntityUpdateMessage
+  nameWithType: EntityUpdateMessage
+  fullName: BFB.Engine.Server.Communication.EntityUpdateMessage
+  type: Class
+  source:
+    remote:
+      path: BFB/BFB.Engine/Server/Communication/EntityUpdateMessage.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: EntityUpdateMessage
+    path: ../BFB/BFB.Engine/Server/Communication/EntityUpdateMessage.cs
+    startLine: 8
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Server.Communication
+  summary: "\nUsed to pass a group if entity update messages to the client\n"
+  example: []
+  syntax:
+    content: 'public class EntityUpdateMessage : DataMessage'
+    content.vb: >-
+      Public Class EntityUpdateMessage
+
+          Inherits DataMessage
+  inheritance:
+  - System.Object
+  - BFB.Engine.Server.Communication.DataMessage
+  inheritedMembers:
+  - BFB.Engine.Server.Communication.DataMessage.Route
+  - BFB.Engine.Server.Communication.DataMessage.Message
+  - BFB.Engine.Server.Communication.DataMessage.ClientId
+  extensionMethods:
+  - BFB.Engine.Server.Communication.EntityUpdateMessage.BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{BFB.Engine.Server.Communication.EntityUpdateMessage,{TValue}}},{TValue})
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: BFB.Engine.Server.Communication.EntityUpdateMessage.#ctor
+  commentId: M:BFB.Engine.Server.Communication.EntityUpdateMessage.#ctor
+  id: '#ctor'
+  parent: BFB.Engine.Server.Communication.EntityUpdateMessage
+  langs:
+  - csharp
+  - vb
+  name: EntityUpdateMessage()
+  nameWithType: EntityUpdateMessage.EntityUpdateMessage()
+  fullName: BFB.Engine.Server.Communication.EntityUpdateMessage.EntityUpdateMessage()
+  type: Constructor
+  source:
+    remote:
+      path: BFB/BFB.Engine/Server/Communication/EntityUpdateMessage.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: .ctor
+    path: ../BFB/BFB.Engine/Server/Communication/EntityUpdateMessage.cs
+    startLine: 14
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Server.Communication
+  summary: "\nConstructs a EntityUpdateMessage\n"
+  example: []
+  syntax:
+    content: public EntityUpdateMessage()
+    content.vb: Public Sub New
+  overload: BFB.Engine.Server.Communication.EntityUpdateMessage.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.Server.Communication.EntityUpdateMessage.Updates
+  commentId: P:BFB.Engine.Server.Communication.EntityUpdateMessage.Updates
+  id: Updates
+  parent: BFB.Engine.Server.Communication.EntityUpdateMessage
+  langs:
+  - csharp
+  - vb
+  name: Updates
+  nameWithType: EntityUpdateMessage.Updates
+  fullName: BFB.Engine.Server.Communication.EntityUpdateMessage.Updates
+  type: Property
+  source:
+    remote:
+      path: BFB/BFB.Engine/Server/Communication/EntityUpdateMessage.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: Updates
+    path: ../BFB/BFB.Engine/Server/Communication/EntityUpdateMessage.cs
+    startLine: 22
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Server.Communication
+  summary: "\nList of entity updates to give to the client\n"
+  example: []
+  syntax:
+    content: public List<EntityMessage> Updates { get; set; }
+    parameters: []
+    return:
+      type: List{BFB.Engine.Server.Communication.EntityMessage}
+    content.vb: Public Property Updates As List(Of EntityMessage)
+  overload: BFB.Engine.Server.Communication.EntityUpdateMessage.Updates*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+references:
+- uid: BFB.Engine.Server.Communication
+  commentId: N:BFB.Engine.Server.Communication
+  name: BFB.Engine.Server.Communication
+  nameWithType: BFB.Engine.Server.Communication
+  fullName: BFB.Engine.Server.Communication
+- uid: System.Object
+  commentId: '!:System.Object'
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: BFB.Engine.Server.Communication.DataMessage
+  commentId: T:BFB.Engine.Server.Communication.DataMessage
+  parent: BFB.Engine.Server.Communication
+  name: DataMessage
+  nameWithType: DataMessage
+  fullName: BFB.Engine.Server.Communication.DataMessage
+- uid: BFB.Engine.Server.Communication.DataMessage.Route
+  commentId: P:BFB.Engine.Server.Communication.DataMessage.Route
+  parent: BFB.Engine.Server.Communication.DataMessage
+  name: Route
+  nameWithType: DataMessage.Route
+  fullName: BFB.Engine.Server.Communication.DataMessage.Route
+- uid: BFB.Engine.Server.Communication.DataMessage.Message
+  commentId: P:BFB.Engine.Server.Communication.DataMessage.Message
+  parent: BFB.Engine.Server.Communication.DataMessage
+  name: Message
+  nameWithType: DataMessage.Message
+  fullName: BFB.Engine.Server.Communication.DataMessage.Message
+- uid: BFB.Engine.Server.Communication.DataMessage.ClientId
+  commentId: P:BFB.Engine.Server.Communication.DataMessage.ClientId
+  parent: BFB.Engine.Server.Communication.DataMessage
+  name: ClientId
+  nameWithType: DataMessage.ClientId
+  fullName: BFB.Engine.Server.Communication.DataMessage.ClientId
+- uid: BFB.Engine.Server.Communication.EntityUpdateMessage.BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{BFB.Engine.Server.Communication.EntityUpdateMessage,{TValue}}},{TValue})
+  commentId: M:BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  parent: BFB.Engine.UI.Components.LambdaExtensions
+  definition: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  name: SetPropertyValue<EntityUpdateMessage, TValue>(Expression<Func<EntityUpdateMessage, TValue>>, TValue)
+  nameWithType: LambdaExtensions.SetPropertyValue<EntityUpdateMessage, TValue>(Expression<Func<EntityUpdateMessage, TValue>>, TValue)
+  fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<BFB.Engine.Server.Communication.EntityUpdateMessage, TValue>(Expression<Func<BFB.Engine.Server.Communication.EntityUpdateMessage, TValue>>, TValue)
+  nameWithType.vb: LambdaExtensions.SetPropertyValue(Of EntityUpdateMessage, TValue)(Expression(Of Func(Of EntityUpdateMessage, TValue)), TValue)
+  fullName.vb: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of BFB.Engine.Server.Communication.EntityUpdateMessage, TValue)(Expression(Of Func(Of BFB.Engine.Server.Communication.EntityUpdateMessage, TValue)), TValue)
+  name.vb: SetPropertyValue(Of EntityUpdateMessage, TValue)(Expression(Of Func(Of EntityUpdateMessage, TValue)), TValue)
+  spec.csharp:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue<EntityUpdateMessage, TValue>
+    nameWithType: LambdaExtensions.SetPropertyValue<EntityUpdateMessage, TValue>
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<BFB.Engine.Server.Communication.EntityUpdateMessage, TValue>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: BFB.Engine.Server.Communication.EntityUpdateMessage
+    name: EntityUpdateMessage
+    nameWithType: EntityUpdateMessage
+    fullName: BFB.Engine.Server.Communication.EntityUpdateMessage
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue(Of EntityUpdateMessage, TValue)
+    nameWithType: LambdaExtensions.SetPropertyValue(Of EntityUpdateMessage, TValue)
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of BFB.Engine.Server.Communication.EntityUpdateMessage, TValue)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: BFB.Engine.Server.Communication.EntityUpdateMessage
+    name: EntityUpdateMessage
+    nameWithType: EntityUpdateMessage
+    fullName: BFB.Engine.Server.Communication.EntityUpdateMessage
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  commentId: M:BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  isExternal: true
+  name: SetPropertyValue<T, TValue>(T, Expression<Func<T, TValue>>, TValue)
+  nameWithType: LambdaExtensions.SetPropertyValue<T, TValue>(T, Expression<Func<T, TValue>>, TValue)
+  fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<T, TValue>(T, Expression<Func<T, TValue>>, TValue)
+  nameWithType.vb: LambdaExtensions.SetPropertyValue(Of T, TValue)(T, Expression(Of Func(Of T, TValue)), TValue)
+  fullName.vb: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of T, TValue)(T, Expression(Of Func(Of T, TValue)), TValue)
+  name.vb: SetPropertyValue(Of T, TValue)(T, Expression(Of Func(Of T, TValue)), TValue)
+  spec.csharp:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue<T, TValue>
+    nameWithType: LambdaExtensions.SetPropertyValue<T, TValue>
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<T, TValue>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue(Of T, TValue)
+    nameWithType: LambdaExtensions.SetPropertyValue(Of T, TValue)
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of T, TValue)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Components.LambdaExtensions
+  commentId: T:BFB.Engine.UI.Components.LambdaExtensions
+  parent: BFB.Engine.UI.Components
+  name: LambdaExtensions
+  nameWithType: LambdaExtensions
+  fullName: BFB.Engine.UI.Components.LambdaExtensions
+- uid: BFB.Engine.UI.Components
+  commentId: N:BFB.Engine.UI.Components
+  name: BFB.Engine.UI.Components
+  nameWithType: BFB.Engine.UI.Components
+  fullName: BFB.Engine.UI.Components
+- uid: BFB.Engine.Server.Communication.EntityUpdateMessage.#ctor*
+  commentId: Overload:BFB.Engine.Server.Communication.EntityUpdateMessage.#ctor
+  name: EntityUpdateMessage
+  nameWithType: EntityUpdateMessage.EntityUpdateMessage
+  fullName: BFB.Engine.Server.Communication.EntityUpdateMessage.EntityUpdateMessage
+- uid: BFB.Engine.Server.Communication.EntityUpdateMessage.Updates*
+  commentId: Overload:BFB.Engine.Server.Communication.EntityUpdateMessage.Updates
+  name: Updates
+  nameWithType: EntityUpdateMessage.Updates
+  fullName: BFB.Engine.Server.Communication.EntityUpdateMessage.Updates
+- uid: List{BFB.Engine.Server.Communication.EntityMessage}
+  commentId: '!:List{BFB.Engine.Server.Communication.EntityMessage}'
+  definition: List`1
+  name: List<EntityMessage>
+  nameWithType: List<EntityMessage>
+  fullName: List<BFB.Engine.Server.Communication.EntityMessage>
+  nameWithType.vb: List(Of EntityMessage)
+  fullName.vb: List(Of BFB.Engine.Server.Communication.EntityMessage)
+  name.vb: List(Of EntityMessage)
+  spec.csharp:
+  - uid: List`1
+    name: List
+    nameWithType: List
+    fullName: List
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: BFB.Engine.Server.Communication.EntityMessage
+    name: EntityMessage
+    nameWithType: EntityMessage
+    fullName: BFB.Engine.Server.Communication.EntityMessage
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: List`1
+    name: List
+    nameWithType: List
+    fullName: List
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: BFB.Engine.Server.Communication.EntityMessage
+    name: EntityMessage
+    nameWithType: EntityMessage
+    fullName: BFB.Engine.Server.Communication.EntityMessage
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: List`1
+  isExternal: true
+  name: List<>
+  nameWithType: List<>
+  fullName: List<>
+  nameWithType.vb: List(Of )
+  fullName.vb: List(Of )
+  name.vb: List(Of )
+  spec.csharp:
+  - uid: List`1
+    name: List
+    nameWithType: List
+    fullName: List
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: List`1
+    name: List
+    nameWithType: List
+    fullName: List
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: )
+    nameWithType: )
+    fullName: )

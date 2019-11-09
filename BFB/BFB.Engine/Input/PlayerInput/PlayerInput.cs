@@ -9,7 +9,7 @@ namespace BFB.Engine.Input.PlayerInput
          * This class will handle the input that the player gives
          * transforming mouse & keyboard input to game controls.
          */
-        private PlayerState _playerState;
+        private readonly PlayerState _playerState;
         private bool _inputChange;
 
         public PlayerInput(Scene.Scene scene)
@@ -37,6 +37,9 @@ namespace BFB.Engine.Input.PlayerInput
                         _inputChange = true;
                         break;
                 }
+                
+                _playerState.Mouse.X = e.Mouse.X;
+                _playerState.Mouse.Y = e.Mouse.Y;
             });
             
             scene.AddInputListener("keyup", (e) =>
@@ -59,15 +62,15 @@ namespace BFB.Engine.Input.PlayerInput
                         _inputChange = true;
                         break;
                 }
+                
+                _playerState.Mouse.X = e.Mouse.X;
+                _playerState.Mouse.Y = e.Mouse.Y;
             });
             
             scene.AddInputListener("mousemove", (e) =>
             {
                 _playerState.Mouse.X = e.Mouse.X;
                 _playerState.Mouse.Y = e.Mouse.Y;
-                
-//                _playerState.LeftClick = e.Mouse.LeftButton == ButtonState.Pressed;
-//                _playerState.RightClick = e.Mouse.RightButton == ButtonState.Pressed;
                 
                 _inputChange = true;
             });
@@ -77,6 +80,9 @@ namespace BFB.Engine.Input.PlayerInput
                 _playerState.LeftClick = e.Mouse.LeftButton == ButtonState.Pressed;
                 _playerState.RightClick = e.Mouse.RightButton == ButtonState.Pressed;
                 
+                _playerState.Mouse.X = e.Mouse.X;
+                _playerState.Mouse.Y = e.Mouse.Y;
+                
                 _inputChange = true;
             });
             
@@ -85,12 +91,16 @@ namespace BFB.Engine.Input.PlayerInput
                 _playerState.LeftClick = e.Mouse.LeftButton == ButtonState.Pressed;
                 _playerState.RightClick = e.Mouse.RightButton == ButtonState.Pressed;
                 
+                _playerState.Mouse.X = e.Mouse.X;
+                _playerState.Mouse.Y = e.Mouse.Y;
+                
                 _inputChange = true;
             });
         }
 
         public PlayerState GetPlayerState()
         {
+            _inputChange = false;
             return _playerState;
         }
 

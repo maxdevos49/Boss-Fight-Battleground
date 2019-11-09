@@ -1,0 +1,167 @@
+### YamlMime:ManagedReference
+items:
+- uid: BFB.Engine.UI.Components
+  commentId: N:BFB.Engine.UI.Components
+  id: BFB.Engine.UI.Components
+  children:
+  - BFB.Engine.UI.Components.LambdaExtensions
+  - BFB.Engine.UI.Components.StackDirection
+  - BFB.Engine.UI.Components.UIButtonComponent
+  - BFB.Engine.UI.Components.UIComponent
+  - BFB.Engine.UI.Components.UIComponentAttributes
+  - BFB.Engine.UI.Components.UIComponentExtensions
+  - BFB.Engine.UI.Components.UIHstackComponent
+  - BFB.Engine.UI.Components.UIRootComponent
+  - BFB.Engine.UI.Components.UISpacerComponent
+  - BFB.Engine.UI.Components.UITextBoxComponent`1
+  - BFB.Engine.UI.Components.UITextComponent`1
+  - BFB.Engine.UI.Components.UIVstackComponent
+  - BFB.Engine.UI.Components.UIZstackComponent
+  langs:
+  - csharp
+  - vb
+  name: BFB.Engine.UI.Components
+  nameWithType: BFB.Engine.UI.Components
+  fullName: BFB.Engine.UI.Components
+  type: Namespace
+  assemblies:
+  - BFB.Engine
+references:
+- uid: BFB.Engine.UI.Components.UIButtonComponent
+  commentId: T:BFB.Engine.UI.Components.UIButtonComponent
+  name: UIButtonComponent
+  nameWithType: UIButtonComponent
+  fullName: BFB.Engine.UI.Components.UIButtonComponent
+- uid: BFB.Engine.UI.Components.UIComponent
+  commentId: T:BFB.Engine.UI.Components.UIComponent
+  parent: BFB.Engine.UI.Components
+  name: UIComponent
+  nameWithType: UIComponent
+  fullName: BFB.Engine.UI.Components.UIComponent
+- uid: BFB.Engine.UI.Components.UIComponentAttributes
+  commentId: T:BFB.Engine.UI.Components.UIComponentAttributes
+  parent: BFB.Engine.UI.Components
+  name: UIComponentAttributes
+  nameWithType: UIComponentAttributes
+  fullName: BFB.Engine.UI.Components.UIComponentAttributes
+- uid: BFB.Engine.UI.Components.StackDirection
+  commentId: T:BFB.Engine.UI.Components.StackDirection
+  parent: BFB.Engine.UI.Components
+  name: StackDirection
+  nameWithType: StackDirection
+  fullName: BFB.Engine.UI.Components.StackDirection
+- uid: BFB.Engine.UI.Components.UIComponentExtensions
+  commentId: T:BFB.Engine.UI.Components.UIComponentExtensions
+  parent: BFB.Engine.UI.Components
+  name: UIComponentExtensions
+  nameWithType: UIComponentExtensions
+  fullName: BFB.Engine.UI.Components.UIComponentExtensions
+- uid: BFB.Engine.UI.Components.UIHstackComponent
+  commentId: T:BFB.Engine.UI.Components.UIHstackComponent
+  name: UIHstackComponent
+  nameWithType: UIHstackComponent
+  fullName: BFB.Engine.UI.Components.UIHstackComponent
+- uid: BFB.Engine.UI.Components.UIRootComponent
+  commentId: T:BFB.Engine.UI.Components.UIRootComponent
+  parent: BFB.Engine.UI.Components
+  name: UIRootComponent
+  nameWithType: UIRootComponent
+  fullName: BFB.Engine.UI.Components.UIRootComponent
+- uid: BFB.Engine.UI.Components.UISpacerComponent
+  commentId: T:BFB.Engine.UI.Components.UISpacerComponent
+  name: UISpacerComponent
+  nameWithType: UISpacerComponent
+  fullName: BFB.Engine.UI.Components.UISpacerComponent
+- uid: BFB.Engine.UI.Components.UITextBoxComponent`1
+  commentId: T:BFB.Engine.UI.Components.UITextBoxComponent`1
+  name: UITextBoxComponent<TModel>
+  nameWithType: UITextBoxComponent<TModel>
+  fullName: BFB.Engine.UI.Components.UITextBoxComponent<TModel>
+  nameWithType.vb: UITextBoxComponent(Of TModel)
+  fullName.vb: BFB.Engine.UI.Components.UITextBoxComponent(Of TModel)
+  name.vb: UITextBoxComponent(Of TModel)
+  spec.csharp:
+  - uid: BFB.Engine.UI.Components.UITextBoxComponent`1
+    name: UITextBoxComponent
+    nameWithType: UITextBoxComponent
+    fullName: BFB.Engine.UI.Components.UITextBoxComponent
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: TModel
+    nameWithType: TModel
+    fullName: TModel
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: BFB.Engine.UI.Components.UITextBoxComponent`1
+    name: UITextBoxComponent
+    nameWithType: UITextBoxComponent
+    fullName: BFB.Engine.UI.Components.UITextBoxComponent
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: TModel
+    nameWithType: TModel
+    fullName: TModel
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Components.LambdaExtensions
+  commentId: T:BFB.Engine.UI.Components.LambdaExtensions
+  parent: BFB.Engine.UI.Components
+  name: LambdaExtensions
+  nameWithType: LambdaExtensions
+  fullName: BFB.Engine.UI.Components.LambdaExtensions
+- uid: BFB.Engine.UI.Components.UITextComponent`1
+  commentId: T:BFB.Engine.UI.Components.UITextComponent`1
+  name: UITextComponent<TModel>
+  nameWithType: UITextComponent<TModel>
+  fullName: BFB.Engine.UI.Components.UITextComponent<TModel>
+  nameWithType.vb: UITextComponent(Of TModel)
+  fullName.vb: BFB.Engine.UI.Components.UITextComponent(Of TModel)
+  name.vb: UITextComponent(Of TModel)
+  spec.csharp:
+  - uid: BFB.Engine.UI.Components.UITextComponent`1
+    name: UITextComponent
+    nameWithType: UITextComponent
+    fullName: BFB.Engine.UI.Components.UITextComponent
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: TModel
+    nameWithType: TModel
+    fullName: TModel
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: BFB.Engine.UI.Components.UITextComponent`1
+    name: UITextComponent
+    nameWithType: UITextComponent
+    fullName: BFB.Engine.UI.Components.UITextComponent
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: TModel
+    nameWithType: TModel
+    fullName: TModel
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Components.UIVstackComponent
+  commentId: T:BFB.Engine.UI.Components.UIVstackComponent
+  name: UIVstackComponent
+  nameWithType: UIVstackComponent
+  fullName: BFB.Engine.UI.Components.UIVstackComponent
+- uid: BFB.Engine.UI.Components.UIZstackComponent
+  commentId: T:BFB.Engine.UI.Components.UIZstackComponent
+  name: UIZstackComponent
+  nameWithType: UIZstackComponent
+  fullName: BFB.Engine.UI.Components.UIZstackComponent
+- uid: BFB.Engine.UI.Components
+  commentId: N:BFB.Engine.UI.Components
+  name: BFB.Engine.UI.Components
+  nameWithType: BFB.Engine.UI.Components
+  fullName: BFB.Engine.UI.Components

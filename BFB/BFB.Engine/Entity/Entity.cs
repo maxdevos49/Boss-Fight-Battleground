@@ -9,6 +9,8 @@ namespace BFB.Engine.Entity
     {
         #region Properties
         
+        public string ChunkKey { get; set; }
+        
         public string EntityId { get; set; }
 
         public string AnimatedTextureKey { get; set; }
@@ -54,6 +56,7 @@ namespace BFB.Engine.Entity
             return new EntityMessage
             {
                 EntityId = EntityId,
+                ChunkKey = ChunkKey,
                 AnimationTextureKey = AnimatedTextureKey,
                 AnimationState = AnimationState,
                 Position = Position,
