@@ -260,7 +260,14 @@ namespace BFB.Engine.Server
                     DataMessage message;
                     using (MemoryStream memoryStream = new MemoryStream(messageData))
                     {
-                        message = (DataMessage) new BinaryFormatter().Deserialize(memoryStream);
+                        if (memoryStream.CanRead)
+                        {
+                            message = (DataMessage) new BinaryFormatter().Deserialize(memoryStream);
+                        }
+                        else
+                        {
+                            return;
+                        }
                     }
 
                     #endregion
