@@ -127,7 +127,10 @@ namespace BFB.Client
                 new HelpUI(), 
                 new HudUI(),
                 new GameMenuUI(),
-                new ChatUI()
+                new ChatUI(),
+                new StoreUI(),
+                new CreditCardUI(), 
+                new CompletedTransactionUI(), 
             });
             
             #endregion

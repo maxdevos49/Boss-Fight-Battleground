@@ -101,7 +101,20 @@ namespace BFB.Client.UI
                                 .Center()
                                 .Image("button");
                         });
-                        
+
+                        v1.Hstack(h2 =>
+                        {
+                            h2.Button("Store",
+                                    clickAction: (e, a) =>
+                                    {
+                                        UIManager.Start(nameof(StoreUI));
+                                    })
+                                .Width(0.8f)
+                                .Height(0.8f)
+                                .Center()
+                                .Image("button");
+                        });
+
                         v1.Spacer();
                     })
                     .Grow(3)
