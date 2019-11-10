@@ -14,8 +14,7 @@ namespace BFB.Engine.Simulation.PhysicsComponents
         private readonly BfbVector _gravity;
         private readonly float _friction;
         private AnimationState _previousAnimationState;
-        
-        
+
         /// <summary>
         /// Constructs a player physics component.
         /// </summary>
@@ -25,7 +24,6 @@ namespace BFB.Engine.Simulation.PhysicsComponents
             _maxSpeed = new BfbVector(10,20);
             _gravity = new BfbVector(0, 0.98f);
             _friction = 0.2f;
-
         }
 
         public void Update(SimulationEntity simulationEntity, Simulation simulation)

@@ -45,7 +45,8 @@ namespace BFB.Engine.Entity
         
         private readonly IInputComponent _input;
         private readonly IPhysicsComponent _physics;
-        
+        private readonly IPhysicsComponent _combat;
+
         #endregion
 
         #region Constructor
@@ -61,6 +62,7 @@ namespace BFB.Engine.Entity
             //Components
             _input = components.Input;
             _physics = components.Physics;
+            _combat = components.Combat;
             
             DesiredVector = new BfbVector();
             VisibleChunks = new List<string>();
@@ -81,6 +83,7 @@ namespace BFB.Engine.Entity
             //Component Processing
             _input?.Update(this, simulation);
             _physics?.Update(this, simulation);
+            _combat?.Update(this, simulation);
             
             //Place entity in correct chunk if in new position
             string chunkKey = simulation.WorldManager.ChunkFromPixelLocation((int)Position.X, (int)Position.Y)?.ChunkKey; //If this is null then we are outside of map... Bad
@@ -136,6 +139,8 @@ namespace BFB.Engine.Entity
         /// Physics component to be applied
         /// </summary>
         public IPhysicsComponent Physics { get; set; }
+
+        public IPhysicsComponent Combat { get; set; }
     }
     
     #endregion
