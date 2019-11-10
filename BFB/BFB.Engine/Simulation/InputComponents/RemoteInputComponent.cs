@@ -95,7 +95,6 @@ namespace BFB.Engine.Simulation.InputComponents
                 if (_playerState.Jump && simulationEntity.Grounded)
                 {
                     simulationEntity.DesiredVector.Add(new BfbVector(0,-1));
-                    simulationEntity.Grounded = false;
                 }
             }
         }

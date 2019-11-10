@@ -218,19 +218,11 @@ namespace BFB.Client.Scenes
                 _worldRenderer?.Update(gameTime, _entities.Values.ToList());
             }
 
-            if (_playerInput.InputChanged() && _server.EmitAllowed() && _worldRenderer != null)
-            {
-
-                PlayerState playerState = _playerInput.GetPlayerState();
-                
-                Console.WriteLine("Mouse Location");
-                Console.WriteLine(playerState.Mouse.X + " - " + playerState.Mouse.Y);
-                playerState.Mouse = _worldRenderer.ViewPointToMapPoint(playerState.Mouse);
-                Console.WriteLine(playerState.Mouse.X + " - " + playerState.Mouse.Y);
-
-                
-                _server.Emit("/player/input", new InputMessage {PlayerInputState = playerState});
-            }
+            if (!_playerInput.InputChanged() || !_server.EmitAllowed() || _worldRenderer == null) return;
+            
+            PlayerState playerState = _playerInput.GetPlayerState();
+            playerState.Mouse = _worldRenderer.ViewPointToMapPoint(playerState.Mouse);
+            _server.Emit("/player/input", new InputMessage {PlayerInputState = playerState});
 
         }
         

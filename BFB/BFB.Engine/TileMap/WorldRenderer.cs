@@ -40,8 +40,6 @@ namespace BFB.Engine.TileMap
 
             translatedPoint.X += Camera.Position.X - Camera.Origin.X;
             translatedPoint.Y += Camera.Position.Y - Camera.Origin.Y;
-            
-            //translatedPoint.Y -= (float)_worldScale / 2;//Not always works
 
             return translatedPoint;
         }

@@ -8,114 +8,134 @@ namespace BFB.Engine.Entity
 {
     public class SimulationEntity : Entity
     {
-        
-        #region Properties
 
-        public bool IsPlayer { get; set; }
-        
-        public BfbVector DesiredVector { get; }
+        #region Properties
 
         private int _lastTick;
         
-        /**
-         * Indicates the chunks that the client can see. Only used if IsPlayer equals true
-         */
-        public List<string> VisibleChunks { get; }
+        public bool IsPlayer { get; set; }
         
-        /**
-         * Used to determine if the chunk needs to be sent to the client
-         */
+        public bool IsInBounds { get; set; }
+
+        public BfbVector DesiredVector { get; }
+
+        public BfbVector OldPosition { get; private set; }
+
+        public List<string> VisibleChunks { get; }
+
         public Dictionary<string, int> ChunkVersions { get; }
         
+        public int Width => (int) Dimensions.X;
+        public int Height => (int) Dimensions.Y;
+        public int Bottom => (int)(Position.Y + Height);
+        public int OldBottom => (int)(OldPosition.Y + Height);
+        public int Left => (int)(Position.X);
+        public int OldLeft => (int)(OldPosition.X);
+        public int Right => (int)(Position.X + Width);
+        public int OldRight => (int)(OldPosition.X + Width);
+        public int Top => (int)(Position.Y);
+        public int OldTop => (int)(OldPosition.Y);
+
         #endregion
-        
+
         #region Components
-        
+
         private readonly IInputComponent _input;
         private readonly IPhysicsComponent _physics;
-        
+
         #endregion
 
         #region Constructor
-        
-        public SimulationEntity(string entityId, EntityOptions options, ComponentOptions components) : base(entityId, options)
+
+        public SimulationEntity(string entityId, EntityOptions options, ComponentOptions components) : base(entityId,
+            options)
         {
             //Components
             _input = components.Input;
             _physics = components.Physics;
-            
+
             DesiredVector = new BfbVector();
+            OldPosition = new BfbVector();
             VisibleChunks = new List<string>();
             ChunkVersions = new Dictionary<string, int>();
 
             _lastTick = -1;
         }
-        
+
         #endregion
 
         #region Update
-        
+
         public void Tick(Simulation.Simulation simulation)
         {
             //Only tick entity once per frame
             if (simulation.Tick == _lastTick)
                 return;
-            
+
             //Record last tick
             _lastTick = simulation.Tick;
-            
+
+            //Record current position
+            OldPosition = new BfbVector(Position.X, Position.Y);
+
             //Component Processing
             _input?.Update(this, simulation);
             _physics?.Update(this, simulation);
-            
+
             //Place entity in correct chunk if in new position
-            string chunkKey = simulation.World.ChunkFromPixelLocation((int)Position.X, (int)Position.Y)?.ChunkKey; //If this is null then we are outside of map... Bad
-            
+            string chunkKey =
+                simulation.World.ChunkFromPixelLocation((int) Position.X, (int) Position.Y)
+                    ?.ChunkKey; //If this is null then we are outside of map... Bad
+
             if (chunkKey != ChunkKey && chunkKey != null)
             {
-                simulation.World.MoveEntity(EntityId, simulation.World.ChunkIndex[ChunkKey], simulation.World.ChunkIndex[chunkKey]);
+                simulation.World.MoveEntity(EntityId, simulation.World.ChunkIndex[ChunkKey],
+                    simulation.World.ChunkIndex[chunkKey]);
                 ChunkKey = chunkKey;
             }
 
             if (!IsPlayer || ChunkKey == null) return;
-            
-            //TODO Could be improved because it only needs calculated when entering a new a chunk
+
             //Clear visible chunks so we dont have to figure out which chunks are no longer being seen
             VisibleChunks.Clear();
             Chunk rootChunk = simulation.World.ChunkIndex[ChunkKey];
-            
+
             //find the chunks that the player is currently simulating
-            for (int y = rootChunk.ChunkY - simulation.SimulationDistance; y < rootChunk.ChunkY + simulation.SimulationDistance; y++)
+            for (int y = rootChunk.ChunkY - simulation.SimulationDistance;
+                y < rootChunk.ChunkY + simulation.SimulationDistance;
+                y++)
             {
-                for (int x = rootChunk.ChunkX - simulation.SimulationDistance; x < rootChunk.ChunkX + simulation.SimulationDistance; x++)
+                for (int x = rootChunk.ChunkX - simulation.SimulationDistance;
+                    x < rootChunk.ChunkX + simulation.SimulationDistance;
+                    x++)
                 {
                     //Get a chunk if it exist at the location
                     Chunk visibleChunk;
-                    if ((visibleChunk = simulation.World.ChunkFromChunkLocation(x, y)) == null) 
+                    if ((visibleChunk = simulation.World.ChunkFromChunkLocation(x, y)) == null)
                         continue;
-                    
+
                     //Add chunk to visible chunks
                     VisibleChunks.Add(visibleChunk.ChunkKey);
-                    
+
                     //update chunk history if new with a negative number so a full chunk update will be forced
                     if (!ChunkVersions.ContainsKey(visibleChunk.ChunkKey))
                         ChunkVersions[visibleChunk.ChunkKey] = -1;
                 }
             }
         }
-        
+
         #endregion
-        
+
     }
-    
+
+    //TODO Move Out
     #region ComponentOptions
-    
-    public class ComponentOptions
-    {
-        public IInputComponent Input { get; set; }
-        public IPhysicsComponent Physics { get; set; }
-    }
-    
-    #endregion
-    
+
+        public class ComponentOptions
+        {
+            public IInputComponent Input { get; set; }
+            public IPhysicsComponent Physics { get; set; }
+        }
+
+        #endregion
 }

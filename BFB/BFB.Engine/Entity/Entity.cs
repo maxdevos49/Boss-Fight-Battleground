@@ -26,8 +26,8 @@ namespace BFB.Engine.Entity
         public BfbVector Velocity { get; set; }
         
         public float Rotation { get; set; }
-        
-        public bool Grounded { get; set; }
+
+        public bool Grounded => (int) Velocity.Y == 0;
 
         
         #endregion
@@ -44,7 +44,6 @@ namespace BFB.Engine.Entity
             Origin = options.Origin;
             Rotation = options.Rotation;
             Velocity = new BfbVector();
-            Grounded = false;
         }
         
         #endregion
