@@ -116,7 +116,7 @@ namespace BFB.Server
                     {
                         Physics = new PlayerPhysicsComponent(),
                         Input = new RemoteInputComponent(socket)
-                    }), true);
+                    }),true);
                 
                 _server.PrintMessage($"Client {socket.ClientId} Ready and added to Simulation");
 
