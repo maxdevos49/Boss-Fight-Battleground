@@ -107,7 +107,7 @@ namespace BFB.Server
                     socket.ClientId,
                     new EntityOptions
                     {
-                        AnimatedTextureKey = "Player",
+                        AnimatedTextureKey = "Spider",
                         Position = new BfbVector(200, 200),
                         Dimensions = new BfbVector(2 * _simulation.World.WorldOptions.WorldScale, 3 * _simulation.World.WorldOptions.WorldScale),
                         Rotation = 0,
