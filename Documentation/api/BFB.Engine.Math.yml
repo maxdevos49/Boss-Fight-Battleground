@@ -1,0 +1,28 @@
+### YamlMime:ManagedReference
+items:
+- uid: BFB.Engine.Math
+  commentId: N:BFB.Engine.Math
+  id: BFB.Engine.Math
+  children:
+  - BFB.Engine.Math.BfbVector
+  langs:
+  - csharp
+  - vb
+  name: BFB.Engine.Math
+  nameWithType: BFB.Engine.Math
+  fullName: BFB.Engine.Math
+  type: Namespace
+  assemblies:
+  - BFB.Engine
+references:
+- uid: BFB.Engine.Math.BfbVector
+  commentId: T:BFB.Engine.Math.BfbVector
+  parent: BFB.Engine.Math
+  name: BfbVector
+  nameWithType: BfbVector
+  fullName: BFB.Engine.Math.BfbVector
+- uid: BFB.Engine.Math
+  commentId: N:BFB.Engine.Math
+  name: BFB.Engine.Math
+  nameWithType: BFB.Engine.Math
+  fullName: BFB.Engine.Math

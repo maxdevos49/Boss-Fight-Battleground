@@ -1,0 +1,554 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class SceneManager
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class SceneManager
+   ">
+    <meta name="generator" content="docfx 2.47.0.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="BFB.Engine.Scene.SceneManager">
+  
+  
+  <h1 id="BFB_Engine_Scene_SceneManager" data-uid="BFB.Engine.Scene.SceneManager" class="text-break">Class SceneManager
+  </h1>
+  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">SceneManager</span></div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="BFB.Engine.Scene.html">BFB.Engine.Scene</a></h6>
+  <h6><strong>Assembly</strong>: BFB.Engine.dll</h6>
+  <h5 id="BFB_Engine_Scene_SceneManager_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class SceneManager : object</code></pre>
+  </div>
+  <h3 id="constructors">Constructors
+  </h3>
+  
+  
+  <a id="BFB_Engine_Scene_SceneManager__ctor_" data-uid="BFB.Engine.Scene.SceneManager.#ctor*"></a>
+  <h4 id="BFB_Engine_Scene_SceneManager__ctor_ContentManager_GraphicsDeviceManager_BFB_Engine_Event_EventManager_BFB_Engine_Event_GlobalEvent__BFB_Engine_UI_UIManager_" data-uid="BFB.Engine.Scene.SceneManager.#ctor(ContentManager,GraphicsDeviceManager,BFB.Engine.Event.EventManager{BFB.Engine.Event.GlobalEvent},BFB.Engine.UI.UIManager)">SceneManager(ContentManager, GraphicsDeviceManager, EventManager&lt;GlobalEvent&gt;, UIManager)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public SceneManager(ContentManager contentManager, GraphicsDeviceManager graphicsManager, EventManager&lt;GlobalEvent&gt; eventManager, UIManager uiManager)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ContentManager</span></td>
+        <td><span class="parametername">contentManager</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">GraphicsDeviceManager</span></td>
+        <td><span class="parametername">graphicsManager</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="BFB.Engine.Event.EventManager-1.html">EventManager</a>&lt;<a class="xref" href="BFB.Engine.Event.GlobalEvent.html">GlobalEvent</a>&gt;</td>
+        <td><span class="parametername">eventManager</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="BFB.Engine.UI.UIManager.html">UIManager</a></td>
+        <td><span class="parametername">uiManager</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  
+  
+  <a id="BFB_Engine_Scene_SceneManager_ActiveSceneExist_" data-uid="BFB.Engine.Scene.SceneManager.ActiveSceneExist*"></a>
+  <h4 id="BFB_Engine_Scene_SceneManager_ActiveSceneExist_System_String_" data-uid="BFB.Engine.Scene.SceneManager.ActiveSceneExist(System.String)">ActiveSceneExist(String)</h4>
+  <div class="markdown level1 summary"><p>Checks if the scene is running or not</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool ActiveSceneExist(string key)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">key</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="BFB_Engine_Scene_SceneManager_AddScene_" data-uid="BFB.Engine.Scene.SceneManager.AddScene*"></a>
+  <h4 id="BFB_Engine_Scene_SceneManager_AddScene_BFB_Engine_Scene_Scene_" data-uid="BFB.Engine.Scene.SceneManager.AddScene(BFB.Engine.Scene.Scene)">AddScene(Scene)</h4>
+  <div class="markdown level1 summary"><p>Adds a single scene to the scene manager</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void AddScene(Scene scene)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="BFB.Engine.Scene.Scene.html">Scene</a></td>
+        <td><span class="parametername">scene</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="BFB_Engine_Scene_SceneManager_AddScene_" data-uid="BFB.Engine.Scene.SceneManager.AddScene*"></a>
+  <h4 id="BFB_Engine_Scene_SceneManager_AddScene_IEnumerable_BFB_Engine_Scene_Scene__" data-uid="BFB.Engine.Scene.SceneManager.AddScene(IEnumerable{BFB.Engine.Scene.Scene})">AddScene(IEnumerable&lt;Scene&gt;)</h4>
+  <div class="markdown level1 summary"><p>Adds an array of scenes to the scene manager</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void AddScene(IEnumerable&lt;Scene&gt; scenes)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IEnumerable</span>&lt;<a class="xref" href="BFB.Engine.Scene.Scene.html">Scene</a>&gt;</td>
+        <td><span class="parametername">scenes</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="BFB_Engine_Scene_SceneManager_DrawScenes_" data-uid="BFB.Engine.Scene.SceneManager.DrawScenes*"></a>
+  <h4 id="BFB_Engine_Scene_SceneManager_DrawScenes_GameTime_SpriteBatch_" data-uid="BFB.Engine.Scene.SceneManager.DrawScenes(GameTime,SpriteBatch)">DrawScenes(GameTime, SpriteBatch)</h4>
+  <div class="markdown level1 summary"><p>Draws all active scenes</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void DrawScenes(GameTime gameTime, SpriteBatch graphics)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">GameTime</span></td>
+        <td><span class="parametername">gameTime</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">SpriteBatch</span></td>
+        <td><span class="parametername">graphics</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="BFB_Engine_Scene_SceneManager_LaunchScene_" data-uid="BFB.Engine.Scene.SceneManager.LaunchScene*"></a>
+  <h4 id="BFB_Engine_Scene_SceneManager_LaunchScene_System_String_" data-uid="BFB.Engine.Scene.SceneManager.LaunchScene(System.String)">LaunchScene(String)</h4>
+  <div class="markdown level1 summary"><p>Starts a single scene in parallel to any already running scenes.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void LaunchScene(string key)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">key</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="BFB_Engine_Scene_SceneManager_MoveSceneDown_" data-uid="BFB.Engine.Scene.SceneManager.MoveSceneDown*"></a>
+  <h4 id="BFB_Engine_Scene_SceneManager_MoveSceneDown_System_String_" data-uid="BFB.Engine.Scene.SceneManager.MoveSceneDown(System.String)">MoveSceneDown(String)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void MoveSceneDown(string key)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">key</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="BFB_Engine_Scene_SceneManager_MoveSceneUp_" data-uid="BFB.Engine.Scene.SceneManager.MoveSceneUp*"></a>
+  <h4 id="BFB_Engine_Scene_SceneManager_MoveSceneUp_System_String_" data-uid="BFB.Engine.Scene.SceneManager.MoveSceneUp(System.String)">MoveSceneUp(String)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void MoveSceneUp(string key)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">key</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="BFB_Engine_Scene_SceneManager_PauseScene_" data-uid="BFB.Engine.Scene.SceneManager.PauseScene*"></a>
+  <h4 id="BFB_Engine_Scene_SceneManager_PauseScene_System_String_" data-uid="BFB.Engine.Scene.SceneManager.PauseScene(System.String)">PauseScene(String)</h4>
+  <div class="markdown level1 summary"><p>Pauses the scene that is specified</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void PauseScene(string key)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">key</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="BFB_Engine_Scene_SceneManager_SceneExist_" data-uid="BFB.Engine.Scene.SceneManager.SceneExist*"></a>
+  <h4 id="BFB_Engine_Scene_SceneManager_SceneExist_System_String_" data-uid="BFB.Engine.Scene.SceneManager.SceneExist(System.String)">SceneExist(String)</h4>
+  <div class="markdown level1 summary"><p>Checks if the scene exist regardless if it is running</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool SceneExist(string key)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">key</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="BFB_Engine_Scene_SceneManager_StartScene_" data-uid="BFB.Engine.Scene.SceneManager.StartScene*"></a>
+  <h4 id="BFB_Engine_Scene_SceneManager_StartScene_System_String_" data-uid="BFB.Engine.Scene.SceneManager.StartScene(System.String)">StartScene(String)</h4>
+  <div class="markdown level1 summary"><p>Stops all active scenes and then starts the specified scene</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void StartScene(string key)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">key</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="BFB_Engine_Scene_SceneManager_StopScene_" data-uid="BFB.Engine.Scene.SceneManager.StopScene*"></a>
+  <h4 id="BFB_Engine_Scene_SceneManager_StopScene_System_String_" data-uid="BFB.Engine.Scene.SceneManager.StopScene(System.String)">StopScene(String)</h4>
+  <div class="markdown level1 summary"><p>Shuts down the scene that is specified by the key</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void StopScene(string key)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">key</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="BFB_Engine_Scene_SceneManager_StopScenes_" data-uid="BFB.Engine.Scene.SceneManager.StopScenes*"></a>
+  <h4 id="BFB_Engine_Scene_SceneManager_StopScenes" data-uid="BFB.Engine.Scene.SceneManager.StopScenes">StopScenes()</h4>
+  <div class="markdown level1 summary"><p>Stops all scenes</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void StopScenes()</code></pre>
+  </div>
+  
+  
+  <a id="BFB_Engine_Scene_SceneManager_UpdateScenes_" data-uid="BFB.Engine.Scene.SceneManager.UpdateScenes*"></a>
+  <h4 id="BFB_Engine_Scene_SceneManager_UpdateScenes_GameTime_" data-uid="BFB.Engine.Scene.SceneManager.UpdateScenes(GameTime)">UpdateScenes(GameTime)</h4>
+  <div class="markdown level1 summary"><p>Updates all active scenes</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void UpdateScenes(GameTime gameTime)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">GameTime</span></td>
+        <td><span class="parametername">gameTime</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="extensionmethods">Extension Methods</h3>
+  <div>
+      <a class="xref" href="BFB.Engine.UI.Components.LambdaExtensions.html#BFB_Engine_UI_Components_LambdaExtensions_SetPropertyValue__2___0_Expression_Func___0___1_____1_">LambdaExtensions.SetPropertyValue&lt;T, TValue&gt;(T, Expression&lt;Func&lt;T, TValue&gt;&gt;, TValue)</a>
+  </div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

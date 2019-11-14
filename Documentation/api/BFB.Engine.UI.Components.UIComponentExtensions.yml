@@ -1,0 +1,989 @@
+### YamlMime:ManagedReference
+items:
+- uid: BFB.Engine.UI.Components.UIComponentExtensions
+  commentId: T:BFB.Engine.UI.Components.UIComponentExtensions
+  id: UIComponentExtensions
+  parent: BFB.Engine.UI.Components
+  children:
+  - BFB.Engine.UI.Components.UIComponentExtensions.Button(BFB.Engine.UI.Components.UIComponent,System.String,Action{BFB.Engine.Event.UIEvent,BFB.Engine.UI.Components.UIComponentAttributes},Action{BFB.Engine.Event.UIEvent,BFB.Engine.UI.Components.UIComponentAttributes})
+  - BFB.Engine.UI.Components.UIComponentExtensions.Hstack(BFB.Engine.UI.Components.UIComponent,Action{BFB.Engine.UI.Components.UIComponent})
+  - BFB.Engine.UI.Components.UIComponentExtensions.Spacer(BFB.Engine.UI.Components.UIComponent,System.Nullable{System.Int32})
+  - BFB.Engine.UI.Components.UIComponentExtensions.Text(BFB.Engine.UI.Components.UIComponent,System.String)
+  - BFB.Engine.UI.Components.UIComponentExtensions.TextBoxFor``1(BFB.Engine.UI.Components.UIComponent,``0,Expression{Func{``0,System.String}},Action{BFB.Engine.Event.UIEvent,BFB.Engine.UI.Components.UIComponentAttributes},Action{BFB.Engine.Event.UIEvent,BFB.Engine.UI.Components.UIComponentAttributes},Action{BFB.Engine.Event.UIEvent,BFB.Engine.UI.Components.UIComponentAttributes})
+  - BFB.Engine.UI.Components.UIComponentExtensions.TextFor``1(BFB.Engine.UI.Components.UIComponent,``0,Func{``0,System.String})
+  - BFB.Engine.UI.Components.UIComponentExtensions.Vstack(BFB.Engine.UI.Components.UIComponent,Action{BFB.Engine.UI.Components.UIComponent})
+  - BFB.Engine.UI.Components.UIComponentExtensions.Zstack(BFB.Engine.UI.Components.UIComponent,Action{BFB.Engine.UI.Components.UIComponent})
+  langs:
+  - csharp
+  - vb
+  name: UIComponentExtensions
+  nameWithType: UIComponentExtensions
+  fullName: BFB.Engine.UI.Components.UIComponentExtensions
+  type: Class
+  source:
+    remote:
+      path: BFB/BFB.Engine/UI/Components/UIComponentExtensions.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: UIComponentExtensions
+    path: ../BFB/BFB.Engine/UI/Components/UIComponentExtensions.cs
+    startLine: 7
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.UI.Components
+  syntax:
+    content: 'public static class UIComponentExtensions : object'
+    content.vb: >-
+      Public Module UIComponentExtensions
+
+          Inherits Object
+  inheritance:
+  - System.Object
+  modifiers.csharp:
+  - public
+  - static
+  - class
+  modifiers.vb:
+  - Public
+  - Module
+- uid: BFB.Engine.UI.Components.UIComponentExtensions.Vstack(BFB.Engine.UI.Components.UIComponent,Action{BFB.Engine.UI.Components.UIComponent})
+  commentId: M:BFB.Engine.UI.Components.UIComponentExtensions.Vstack(BFB.Engine.UI.Components.UIComponent,Action{BFB.Engine.UI.Components.UIComponent})
+  id: Vstack(BFB.Engine.UI.Components.UIComponent,Action{BFB.Engine.UI.Components.UIComponent})
+  isExtensionMethod: true
+  parent: BFB.Engine.UI.Components.UIComponentExtensions
+  langs:
+  - csharp
+  - vb
+  name: Vstack(UIComponent, Action<UIComponent>)
+  nameWithType: UIComponentExtensions.Vstack(UIComponent, Action<UIComponent>)
+  fullName: BFB.Engine.UI.Components.UIComponentExtensions.Vstack(BFB.Engine.UI.Components.UIComponent, Action<BFB.Engine.UI.Components.UIComponent>)
+  type: Method
+  source:
+    remote:
+      path: BFB/BFB.Engine/UI/Components/UIComponentExtensions.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: Vstack
+    path: ../BFB/BFB.Engine/UI/Components/UIComponentExtensions.cs
+    startLine: 11
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.UI.Components
+  syntax:
+    content: public static UIComponent Vstack(this UIComponent parentNode, Action<UIComponent> handler)
+    parameters:
+    - id: parentNode
+      type: BFB.Engine.UI.Components.UIComponent
+    - id: handler
+      type: Action{BFB.Engine.UI.Components.UIComponent}
+    return:
+      type: BFB.Engine.UI.Components.UIComponent
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function Vstack(parentNode As UIComponent, handler As Action(Of UIComponent)) As UIComponent
+  overload: BFB.Engine.UI.Components.UIComponentExtensions.Vstack*
+  nameWithType.vb: UIComponentExtensions.Vstack(UIComponent, Action(Of UIComponent))
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: BFB.Engine.UI.Components.UIComponentExtensions.Vstack(BFB.Engine.UI.Components.UIComponent, Action(Of BFB.Engine.UI.Components.UIComponent))
+  name.vb: Vstack(UIComponent, Action(Of UIComponent))
+- uid: BFB.Engine.UI.Components.UIComponentExtensions.Hstack(BFB.Engine.UI.Components.UIComponent,Action{BFB.Engine.UI.Components.UIComponent})
+  commentId: M:BFB.Engine.UI.Components.UIComponentExtensions.Hstack(BFB.Engine.UI.Components.UIComponent,Action{BFB.Engine.UI.Components.UIComponent})
+  id: Hstack(BFB.Engine.UI.Components.UIComponent,Action{BFB.Engine.UI.Components.UIComponent})
+  isExtensionMethod: true
+  parent: BFB.Engine.UI.Components.UIComponentExtensions
+  langs:
+  - csharp
+  - vb
+  name: Hstack(UIComponent, Action<UIComponent>)
+  nameWithType: UIComponentExtensions.Hstack(UIComponent, Action<UIComponent>)
+  fullName: BFB.Engine.UI.Components.UIComponentExtensions.Hstack(BFB.Engine.UI.Components.UIComponent, Action<BFB.Engine.UI.Components.UIComponent>)
+  type: Method
+  source:
+    remote:
+      path: BFB/BFB.Engine/UI/Components/UIComponentExtensions.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: Hstack
+    path: ../BFB/BFB.Engine/UI/Components/UIComponentExtensions.cs
+    startLine: 20
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.UI.Components
+  syntax:
+    content: public static UIComponent Hstack(this UIComponent parentNode, Action<UIComponent> handler)
+    parameters:
+    - id: parentNode
+      type: BFB.Engine.UI.Components.UIComponent
+    - id: handler
+      type: Action{BFB.Engine.UI.Components.UIComponent}
+    return:
+      type: BFB.Engine.UI.Components.UIComponent
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function Hstack(parentNode As UIComponent, handler As Action(Of UIComponent)) As UIComponent
+  overload: BFB.Engine.UI.Components.UIComponentExtensions.Hstack*
+  nameWithType.vb: UIComponentExtensions.Hstack(UIComponent, Action(Of UIComponent))
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: BFB.Engine.UI.Components.UIComponentExtensions.Hstack(BFB.Engine.UI.Components.UIComponent, Action(Of BFB.Engine.UI.Components.UIComponent))
+  name.vb: Hstack(UIComponent, Action(Of UIComponent))
+- uid: BFB.Engine.UI.Components.UIComponentExtensions.Zstack(BFB.Engine.UI.Components.UIComponent,Action{BFB.Engine.UI.Components.UIComponent})
+  commentId: M:BFB.Engine.UI.Components.UIComponentExtensions.Zstack(BFB.Engine.UI.Components.UIComponent,Action{BFB.Engine.UI.Components.UIComponent})
+  id: Zstack(BFB.Engine.UI.Components.UIComponent,Action{BFB.Engine.UI.Components.UIComponent})
+  isExtensionMethod: true
+  parent: BFB.Engine.UI.Components.UIComponentExtensions
+  langs:
+  - csharp
+  - vb
+  name: Zstack(UIComponent, Action<UIComponent>)
+  nameWithType: UIComponentExtensions.Zstack(UIComponent, Action<UIComponent>)
+  fullName: BFB.Engine.UI.Components.UIComponentExtensions.Zstack(BFB.Engine.UI.Components.UIComponent, Action<BFB.Engine.UI.Components.UIComponent>)
+  type: Method
+  source:
+    remote:
+      path: BFB/BFB.Engine/UI/Components/UIComponentExtensions.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: Zstack
+    path: ../BFB/BFB.Engine/UI/Components/UIComponentExtensions.cs
+    startLine: 29
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.UI.Components
+  syntax:
+    content: public static UIComponent Zstack(this UIComponent parentNode, Action<UIComponent> handler)
+    parameters:
+    - id: parentNode
+      type: BFB.Engine.UI.Components.UIComponent
+    - id: handler
+      type: Action{BFB.Engine.UI.Components.UIComponent}
+    return:
+      type: BFB.Engine.UI.Components.UIComponent
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function Zstack(parentNode As UIComponent, handler As Action(Of UIComponent)) As UIComponent
+  overload: BFB.Engine.UI.Components.UIComponentExtensions.Zstack*
+  nameWithType.vb: UIComponentExtensions.Zstack(UIComponent, Action(Of UIComponent))
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: BFB.Engine.UI.Components.UIComponentExtensions.Zstack(BFB.Engine.UI.Components.UIComponent, Action(Of BFB.Engine.UI.Components.UIComponent))
+  name.vb: Zstack(UIComponent, Action(Of UIComponent))
+- uid: BFB.Engine.UI.Components.UIComponentExtensions.Spacer(BFB.Engine.UI.Components.UIComponent,System.Nullable{System.Int32})
+  commentId: M:BFB.Engine.UI.Components.UIComponentExtensions.Spacer(BFB.Engine.UI.Components.UIComponent,System.Nullable{System.Int32})
+  id: Spacer(BFB.Engine.UI.Components.UIComponent,System.Nullable{System.Int32})
+  isExtensionMethod: true
+  parent: BFB.Engine.UI.Components.UIComponentExtensions
+  langs:
+  - csharp
+  - vb
+  name: Spacer(UIComponent, Nullable<Int32>)
+  nameWithType: UIComponentExtensions.Spacer(UIComponent, Nullable<Int32>)
+  fullName: BFB.Engine.UI.Components.UIComponentExtensions.Spacer(BFB.Engine.UI.Components.UIComponent, System.Nullable<System.Int32>)
+  type: Method
+  source:
+    remote:
+      path: BFB/BFB.Engine/UI/Components/UIComponentExtensions.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: Spacer
+    path: ../BFB/BFB.Engine/UI/Components/UIComponentExtensions.cs
+    startLine: 38
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.UI.Components
+  syntax:
+    content: public static UIComponent Spacer(this UIComponent component, int? grow = null)
+    parameters:
+    - id: component
+      type: BFB.Engine.UI.Components.UIComponent
+    - id: grow
+      type: System.Nullable{System.Int32}
+    return:
+      type: BFB.Engine.UI.Components.UIComponent
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function Spacer(component As UIComponent, grow As Integer? = Nothing) As UIComponent
+  overload: BFB.Engine.UI.Components.UIComponentExtensions.Spacer*
+  nameWithType.vb: UIComponentExtensions.Spacer(UIComponent, Nullable(Of Int32))
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: BFB.Engine.UI.Components.UIComponentExtensions.Spacer(BFB.Engine.UI.Components.UIComponent, System.Nullable(Of System.Int32))
+  name.vb: Spacer(UIComponent, Nullable(Of Int32))
+- uid: BFB.Engine.UI.Components.UIComponentExtensions.TextFor``1(BFB.Engine.UI.Components.UIComponent,``0,Func{``0,System.String})
+  commentId: M:BFB.Engine.UI.Components.UIComponentExtensions.TextFor``1(BFB.Engine.UI.Components.UIComponent,``0,Func{``0,System.String})
+  id: TextFor``1(BFB.Engine.UI.Components.UIComponent,``0,Func{``0,System.String})
+  isExtensionMethod: true
+  parent: BFB.Engine.UI.Components.UIComponentExtensions
+  langs:
+  - csharp
+  - vb
+  name: TextFor<TModel>(UIComponent, TModel, Func<TModel, String>)
+  nameWithType: UIComponentExtensions.TextFor<TModel>(UIComponent, TModel, Func<TModel, String>)
+  fullName: BFB.Engine.UI.Components.UIComponentExtensions.TextFor<TModel>(BFB.Engine.UI.Components.UIComponent, TModel, Func<TModel, System.String>)
+  type: Method
+  source:
+    remote:
+      path: BFB/BFB.Engine/UI/Components/UIComponentExtensions.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: TextFor
+    path: ../BFB/BFB.Engine/UI/Components/UIComponentExtensions.cs
+    startLine: 47
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.UI.Components
+  syntax:
+    content: public static UIComponent TextFor<TModel>(this UIComponent component, TModel model, Func<TModel, string> stringSelector)
+    parameters:
+    - id: component
+      type: BFB.Engine.UI.Components.UIComponent
+    - id: model
+      type: '{TModel}'
+    - id: stringSelector
+      type: Func{{TModel},System.String}
+    typeParameters:
+    - id: TModel
+    return:
+      type: BFB.Engine.UI.Components.UIComponent
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function TextFor(Of TModel)(component As UIComponent, model As TModel, stringSelector As Func(Of TModel, String)) As UIComponent
+  overload: BFB.Engine.UI.Components.UIComponentExtensions.TextFor*
+  nameWithType.vb: UIComponentExtensions.TextFor(Of TModel)(UIComponent, TModel, Func(Of TModel, String))
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: BFB.Engine.UI.Components.UIComponentExtensions.TextFor(Of TModel)(BFB.Engine.UI.Components.UIComponent, TModel, Func(Of TModel, System.String))
+  name.vb: TextFor(Of TModel)(UIComponent, TModel, Func(Of TModel, String))
+- uid: BFB.Engine.UI.Components.UIComponentExtensions.Text(BFB.Engine.UI.Components.UIComponent,System.String)
+  commentId: M:BFB.Engine.UI.Components.UIComponentExtensions.Text(BFB.Engine.UI.Components.UIComponent,System.String)
+  id: Text(BFB.Engine.UI.Components.UIComponent,System.String)
+  isExtensionMethod: true
+  parent: BFB.Engine.UI.Components.UIComponentExtensions
+  langs:
+  - csharp
+  - vb
+  name: Text(UIComponent, String)
+  nameWithType: UIComponentExtensions.Text(UIComponent, String)
+  fullName: BFB.Engine.UI.Components.UIComponentExtensions.Text(BFB.Engine.UI.Components.UIComponent, System.String)
+  type: Method
+  source:
+    remote:
+      path: BFB/BFB.Engine/UI/Components/UIComponentExtensions.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: Text
+    path: ../BFB/BFB.Engine/UI/Components/UIComponentExtensions.cs
+    startLine: 52
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.UI.Components
+  syntax:
+    content: public static UIComponent Text(this UIComponent component, string text)
+    parameters:
+    - id: component
+      type: BFB.Engine.UI.Components.UIComponent
+    - id: text
+      type: System.String
+    return:
+      type: BFB.Engine.UI.Components.UIComponent
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function Text(component As UIComponent, text As String) As UIComponent
+  overload: BFB.Engine.UI.Components.UIComponentExtensions.Text*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: BFB.Engine.UI.Components.UIComponentExtensions.TextBoxFor``1(BFB.Engine.UI.Components.UIComponent,``0,Expression{Func{``0,System.String}},Action{BFB.Engine.Event.UIEvent,BFB.Engine.UI.Components.UIComponentAttributes},Action{BFB.Engine.Event.UIEvent,BFB.Engine.UI.Components.UIComponentAttributes},Action{BFB.Engine.Event.UIEvent,BFB.Engine.UI.Components.UIComponentAttributes})
+  commentId: M:BFB.Engine.UI.Components.UIComponentExtensions.TextBoxFor``1(BFB.Engine.UI.Components.UIComponent,``0,Expression{Func{``0,System.String}},Action{BFB.Engine.Event.UIEvent,BFB.Engine.UI.Components.UIComponentAttributes},Action{BFB.Engine.Event.UIEvent,BFB.Engine.UI.Components.UIComponentAttributes},Action{BFB.Engine.Event.UIEvent,BFB.Engine.UI.Components.UIComponentAttributes})
+  id: TextBoxFor``1(BFB.Engine.UI.Components.UIComponent,``0,Expression{Func{``0,System.String}},Action{BFB.Engine.Event.UIEvent,BFB.Engine.UI.Components.UIComponentAttributes},Action{BFB.Engine.Event.UIEvent,BFB.Engine.UI.Components.UIComponentAttributes},Action{BFB.Engine.Event.UIEvent,BFB.Engine.UI.Components.UIComponentAttributes})
+  isExtensionMethod: true
+  parent: BFB.Engine.UI.Components.UIComponentExtensions
+  langs:
+  - csharp
+  - vb
+  name: TextBoxFor<TModel>(UIComponent, TModel, Expression<Func<TModel, String>>, Action<UIEvent, UIComponentAttributes>, Action<UIEvent, UIComponentAttributes>, Action<UIEvent, UIComponentAttributes>)
+  nameWithType: UIComponentExtensions.TextBoxFor<TModel>(UIComponent, TModel, Expression<Func<TModel, String>>, Action<UIEvent, UIComponentAttributes>, Action<UIEvent, UIComponentAttributes>, Action<UIEvent, UIComponentAttributes>)
+  fullName: BFB.Engine.UI.Components.UIComponentExtensions.TextBoxFor<TModel>(BFB.Engine.UI.Components.UIComponent, TModel, Expression<Func<TModel, System.String>>, Action<BFB.Engine.Event.UIEvent, BFB.Engine.UI.Components.UIComponentAttributes>, Action<BFB.Engine.Event.UIEvent, BFB.Engine.UI.Components.UIComponentAttributes>, Action<BFB.Engine.Event.UIEvent, BFB.Engine.UI.Components.UIComponentAttributes>)
+  type: Method
+  source:
+    remote:
+      path: BFB/BFB.Engine/UI/Components/UIComponentExtensions.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: TextBoxFor
+    path: ../BFB/BFB.Engine/UI/Components/UIComponentExtensions.cs
+    startLine: 65
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.UI.Components
+  syntax:
+    content: public static UIComponent TextBoxFor<TModel>(this UIComponent component, TModel model, Expression<Func<TModel, string>> selector, Action<UIEvent, UIComponentAttributes> clickAction = null, Action<UIEvent, UIComponentAttributes> keyPressAction = null, Action<UIEvent, UIComponentAttributes> hoverAction = null)
+    parameters:
+    - id: component
+      type: BFB.Engine.UI.Components.UIComponent
+    - id: model
+      type: '{TModel}'
+    - id: selector
+      type: Expression{Func{{TModel},System.String}}
+    - id: clickAction
+      type: Action{BFB.Engine.Event.UIEvent,BFB.Engine.UI.Components.UIComponentAttributes}
+    - id: keyPressAction
+      type: Action{BFB.Engine.Event.UIEvent,BFB.Engine.UI.Components.UIComponentAttributes}
+    - id: hoverAction
+      type: Action{BFB.Engine.Event.UIEvent,BFB.Engine.UI.Components.UIComponentAttributes}
+    typeParameters:
+    - id: TModel
+    return:
+      type: BFB.Engine.UI.Components.UIComponent
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function TextBoxFor(Of TModel)(component As UIComponent, model As TModel, selector As Expression(Of Func(Of TModel, String)), clickAction As Action(Of UIEvent, UIComponentAttributes) = Nothing, keyPressAction As Action(Of UIEvent, UIComponentAttributes) = Nothing, hoverAction As Action(Of UIEvent, UIComponentAttributes) = Nothing) As UIComponent
+  overload: BFB.Engine.UI.Components.UIComponentExtensions.TextBoxFor*
+  nameWithType.vb: UIComponentExtensions.TextBoxFor(Of TModel)(UIComponent, TModel, Expression(Of Func(Of TModel, String)), Action(Of UIEvent, UIComponentAttributes), Action(Of UIEvent, UIComponentAttributes), Action(Of UIEvent, UIComponentAttributes))
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: BFB.Engine.UI.Components.UIComponentExtensions.TextBoxFor(Of TModel)(BFB.Engine.UI.Components.UIComponent, TModel, Expression(Of Func(Of TModel, System.String)), Action(Of BFB.Engine.Event.UIEvent, BFB.Engine.UI.Components.UIComponentAttributes), Action(Of BFB.Engine.Event.UIEvent, BFB.Engine.UI.Components.UIComponentAttributes), Action(Of BFB.Engine.Event.UIEvent, BFB.Engine.UI.Components.UIComponentAttributes))
+  name.vb: TextBoxFor(Of TModel)(UIComponent, TModel, Expression(Of Func(Of TModel, String)), Action(Of UIEvent, UIComponentAttributes), Action(Of UIEvent, UIComponentAttributes), Action(Of UIEvent, UIComponentAttributes))
+- uid: BFB.Engine.UI.Components.UIComponentExtensions.Button(BFB.Engine.UI.Components.UIComponent,System.String,Action{BFB.Engine.Event.UIEvent,BFB.Engine.UI.Components.UIComponentAttributes},Action{BFB.Engine.Event.UIEvent,BFB.Engine.UI.Components.UIComponentAttributes})
+  commentId: M:BFB.Engine.UI.Components.UIComponentExtensions.Button(BFB.Engine.UI.Components.UIComponent,System.String,Action{BFB.Engine.Event.UIEvent,BFB.Engine.UI.Components.UIComponentAttributes},Action{BFB.Engine.Event.UIEvent,BFB.Engine.UI.Components.UIComponentAttributes})
+  id: Button(BFB.Engine.UI.Components.UIComponent,System.String,Action{BFB.Engine.Event.UIEvent,BFB.Engine.UI.Components.UIComponentAttributes},Action{BFB.Engine.Event.UIEvent,BFB.Engine.UI.Components.UIComponentAttributes})
+  isExtensionMethod: true
+  parent: BFB.Engine.UI.Components.UIComponentExtensions
+  langs:
+  - csharp
+  - vb
+  name: Button(UIComponent, String, Action<UIEvent, UIComponentAttributes>, Action<UIEvent, UIComponentAttributes>)
+  nameWithType: UIComponentExtensions.Button(UIComponent, String, Action<UIEvent, UIComponentAttributes>, Action<UIEvent, UIComponentAttributes>)
+  fullName: BFB.Engine.UI.Components.UIComponentExtensions.Button(BFB.Engine.UI.Components.UIComponent, System.String, Action<BFB.Engine.Event.UIEvent, BFB.Engine.UI.Components.UIComponentAttributes>, Action<BFB.Engine.Event.UIEvent, BFB.Engine.UI.Components.UIComponentAttributes>)
+  type: Method
+  source:
+    remote:
+      path: BFB/BFB.Engine/UI/Components/UIComponentExtensions.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: Button
+    path: ../BFB/BFB.Engine/UI/Components/UIComponentExtensions.cs
+    startLine: 90
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.UI.Components
+  syntax:
+    content: public static UIComponent Button(this UIComponent component, string text, Action<UIEvent, UIComponentAttributes> clickAction = null, Action<UIEvent, UIComponentAttributes> hoverAction = null)
+    parameters:
+    - id: component
+      type: BFB.Engine.UI.Components.UIComponent
+    - id: text
+      type: System.String
+    - id: clickAction
+      type: Action{BFB.Engine.Event.UIEvent,BFB.Engine.UI.Components.UIComponentAttributes}
+    - id: hoverAction
+      type: Action{BFB.Engine.Event.UIEvent,BFB.Engine.UI.Components.UIComponentAttributes}
+    return:
+      type: BFB.Engine.UI.Components.UIComponent
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function Button(component As UIComponent, text As String, clickAction As Action(Of UIEvent, UIComponentAttributes) = Nothing, hoverAction As Action(Of UIEvent, UIComponentAttributes) = Nothing) As UIComponent
+  overload: BFB.Engine.UI.Components.UIComponentExtensions.Button*
+  nameWithType.vb: UIComponentExtensions.Button(UIComponent, String, Action(Of UIEvent, UIComponentAttributes), Action(Of UIEvent, UIComponentAttributes))
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: BFB.Engine.UI.Components.UIComponentExtensions.Button(BFB.Engine.UI.Components.UIComponent, System.String, Action(Of BFB.Engine.Event.UIEvent, BFB.Engine.UI.Components.UIComponentAttributes), Action(Of BFB.Engine.Event.UIEvent, BFB.Engine.UI.Components.UIComponentAttributes))
+  name.vb: Button(UIComponent, String, Action(Of UIEvent, UIComponentAttributes), Action(Of UIEvent, UIComponentAttributes))
+references:
+- uid: BFB.Engine.UI.Components
+  commentId: N:BFB.Engine.UI.Components
+  name: BFB.Engine.UI.Components
+  nameWithType: BFB.Engine.UI.Components
+  fullName: BFB.Engine.UI.Components
+- uid: System.Object
+  commentId: '!:System.Object'
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: BFB.Engine.UI.Components.UIComponentExtensions.Vstack*
+  commentId: Overload:BFB.Engine.UI.Components.UIComponentExtensions.Vstack
+  name: Vstack
+  nameWithType: UIComponentExtensions.Vstack
+  fullName: BFB.Engine.UI.Components.UIComponentExtensions.Vstack
+- uid: BFB.Engine.UI.Components.UIComponent
+  commentId: T:BFB.Engine.UI.Components.UIComponent
+  parent: BFB.Engine.UI.Components
+  name: UIComponent
+  nameWithType: UIComponent
+  fullName: BFB.Engine.UI.Components.UIComponent
+- uid: Action{BFB.Engine.UI.Components.UIComponent}
+  commentId: '!:Action{BFB.Engine.UI.Components.UIComponent}'
+  definition: Action`1
+  name: Action<UIComponent>
+  nameWithType: Action<UIComponent>
+  fullName: Action<BFB.Engine.UI.Components.UIComponent>
+  nameWithType.vb: Action(Of UIComponent)
+  fullName.vb: Action(Of BFB.Engine.UI.Components.UIComponent)
+  name.vb: Action(Of UIComponent)
+  spec.csharp:
+  - uid: Action`1
+    name: Action
+    nameWithType: Action
+    fullName: Action
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: BFB.Engine.UI.Components.UIComponent
+    name: UIComponent
+    nameWithType: UIComponent
+    fullName: BFB.Engine.UI.Components.UIComponent
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: Action`1
+    name: Action
+    nameWithType: Action
+    fullName: Action
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: BFB.Engine.UI.Components.UIComponent
+    name: UIComponent
+    nameWithType: UIComponent
+    fullName: BFB.Engine.UI.Components.UIComponent
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Action`1
+  isExternal: true
+  name: Action<>
+  nameWithType: Action<>
+  fullName: Action<>
+  nameWithType.vb: Action(Of )
+  fullName.vb: Action(Of )
+  name.vb: Action(Of )
+  spec.csharp:
+  - uid: Action`1
+    name: Action
+    nameWithType: Action
+    fullName: Action
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: Action`1
+    name: Action
+    nameWithType: Action
+    fullName: Action
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Components.UIComponentExtensions.Hstack*
+  commentId: Overload:BFB.Engine.UI.Components.UIComponentExtensions.Hstack
+  name: Hstack
+  nameWithType: UIComponentExtensions.Hstack
+  fullName: BFB.Engine.UI.Components.UIComponentExtensions.Hstack
+- uid: BFB.Engine.UI.Components.UIComponentExtensions.Zstack*
+  commentId: Overload:BFB.Engine.UI.Components.UIComponentExtensions.Zstack
+  name: Zstack
+  nameWithType: UIComponentExtensions.Zstack
+  fullName: BFB.Engine.UI.Components.UIComponentExtensions.Zstack
+- uid: BFB.Engine.UI.Components.UIComponentExtensions.Spacer*
+  commentId: Overload:BFB.Engine.UI.Components.UIComponentExtensions.Spacer
+  name: Spacer
+  nameWithType: UIComponentExtensions.Spacer
+  fullName: BFB.Engine.UI.Components.UIComponentExtensions.Spacer
+- uid: System.Nullable{System.Int32}
+  commentId: '!:System.Nullable{System.Int32}'
+  definition: System.Nullable`1
+  name: Nullable<Int32>
+  nameWithType: Nullable<Int32>
+  fullName: System.Nullable<System.Int32>
+  nameWithType.vb: Nullable(Of Int32)
+  fullName.vb: System.Nullable(Of System.Int32)
+  name.vb: Nullable(Of Int32)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    nameWithType: Nullable
+    fullName: System.Nullable
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    nameWithType: Nullable
+    fullName: System.Nullable
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Nullable`1
+  isExternal: true
+  name: Nullable<>
+  nameWithType: Nullable<>
+  fullName: System.Nullable<>
+  nameWithType.vb: Nullable(Of )
+  fullName.vb: System.Nullable(Of )
+  name.vb: Nullable(Of )
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    nameWithType: Nullable
+    fullName: System.Nullable
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    nameWithType: Nullable
+    fullName: System.Nullable
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Components.UIComponentExtensions.TextFor*
+  commentId: Overload:BFB.Engine.UI.Components.UIComponentExtensions.TextFor
+  name: TextFor
+  nameWithType: UIComponentExtensions.TextFor
+  fullName: BFB.Engine.UI.Components.UIComponentExtensions.TextFor
+- uid: '{TModel}'
+  commentId: '!:TModel'
+  definition: TModel
+  name: TModel
+  nameWithType: TModel
+  fullName: TModel
+- uid: Func{{TModel},System.String}
+  commentId: '!:Func{``0,System.String}'
+  definition: Func`2
+  name: Func<TModel, String>
+  nameWithType: Func<TModel, String>
+  fullName: Func<TModel, System.String>
+  nameWithType.vb: Func(Of TModel, String)
+  fullName.vb: Func(Of TModel, System.String)
+  name.vb: Func(Of TModel, String)
+  spec.csharp:
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: TModel
+    nameWithType: TModel
+    fullName: TModel
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: TModel
+    nameWithType: TModel
+    fullName: TModel
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: TModel
+  name: TModel
+  nameWithType: TModel
+  fullName: TModel
+- uid: Func`2
+  isExternal: true
+  name: Func<, >
+  nameWithType: Func<, >
+  fullName: Func<, >
+  nameWithType.vb: Func(Of , )
+  fullName.vb: Func(Of , )
+  name.vb: Func(Of , )
+  spec.csharp:
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Components.UIComponentExtensions.Text*
+  commentId: Overload:BFB.Engine.UI.Components.UIComponentExtensions.Text
+  name: Text
+  nameWithType: UIComponentExtensions.Text
+  fullName: BFB.Engine.UI.Components.UIComponentExtensions.Text
+- uid: System.String
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: BFB.Engine.UI.Components.UIComponentExtensions.TextBoxFor*
+  commentId: Overload:BFB.Engine.UI.Components.UIComponentExtensions.TextBoxFor
+  name: TextBoxFor
+  nameWithType: UIComponentExtensions.TextBoxFor
+  fullName: BFB.Engine.UI.Components.UIComponentExtensions.TextBoxFor
+- uid: Expression{Func{{TModel},System.String}}
+  commentId: '!:Expression{Func{``0,System.String}}'
+  definition: Expression`1
+  name: Expression<Func<TModel, String>>
+  nameWithType: Expression<Func<TModel, String>>
+  fullName: Expression<Func<TModel, System.String>>
+  nameWithType.vb: Expression(Of Func(Of TModel, String))
+  fullName.vb: Expression(Of Func(Of TModel, System.String))
+  name.vb: Expression(Of Func(Of TModel, String))
+  spec.csharp:
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: TModel
+    nameWithType: TModel
+    fullName: TModel
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: TModel
+    nameWithType: TModel
+    fullName: TModel
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Action{BFB.Engine.Event.UIEvent,BFB.Engine.UI.Components.UIComponentAttributes}
+  commentId: '!:Action{BFB.Engine.Event.UIEvent,BFB.Engine.UI.Components.UIComponentAttributes}'
+  definition: Action`2
+  name: Action<UIEvent, UIComponentAttributes>
+  nameWithType: Action<UIEvent, UIComponentAttributes>
+  fullName: Action<BFB.Engine.Event.UIEvent, BFB.Engine.UI.Components.UIComponentAttributes>
+  nameWithType.vb: Action(Of UIEvent, UIComponentAttributes)
+  fullName.vb: Action(Of BFB.Engine.Event.UIEvent, BFB.Engine.UI.Components.UIComponentAttributes)
+  name.vb: Action(Of UIEvent, UIComponentAttributes)
+  spec.csharp:
+  - uid: Action`2
+    name: Action
+    nameWithType: Action
+    fullName: Action
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: BFB.Engine.Event.UIEvent
+    name: UIEvent
+    nameWithType: UIEvent
+    fullName: BFB.Engine.Event.UIEvent
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: BFB.Engine.UI.Components.UIComponentAttributes
+    name: UIComponentAttributes
+    nameWithType: UIComponentAttributes
+    fullName: BFB.Engine.UI.Components.UIComponentAttributes
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: Action`2
+    name: Action
+    nameWithType: Action
+    fullName: Action
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: BFB.Engine.Event.UIEvent
+    name: UIEvent
+    nameWithType: UIEvent
+    fullName: BFB.Engine.Event.UIEvent
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: BFB.Engine.UI.Components.UIComponentAttributes
+    name: UIComponentAttributes
+    nameWithType: UIComponentAttributes
+    fullName: BFB.Engine.UI.Components.UIComponentAttributes
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Expression`1
+  isExternal: true
+  name: Expression<>
+  nameWithType: Expression<>
+  fullName: Expression<>
+  nameWithType.vb: Expression(Of )
+  fullName.vb: Expression(Of )
+  name.vb: Expression(Of )
+  spec.csharp:
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Action`2
+  isExternal: true
+  name: Action<, >
+  nameWithType: Action<, >
+  fullName: Action<, >
+  nameWithType.vb: Action(Of , )
+  fullName.vb: Action(Of , )
+  name.vb: Action(Of , )
+  spec.csharp:
+  - uid: Action`2
+    name: Action
+    nameWithType: Action
+    fullName: Action
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: Action`2
+    name: Action
+    nameWithType: Action
+    fullName: Action
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Components.UIComponentExtensions.Button*
+  commentId: Overload:BFB.Engine.UI.Components.UIComponentExtensions.Button
+  name: Button
+  nameWithType: UIComponentExtensions.Button
+  fullName: BFB.Engine.UI.Components.UIComponentExtensions.Button

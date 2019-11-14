@@ -1,0 +1,471 @@
+### YamlMime:ManagedReference
+items:
+- uid: BFB.Engine.UI.Constraints.UIWidthConstraint
+  commentId: T:BFB.Engine.UI.Constraints.UIWidthConstraint
+  id: UIWidthConstraint
+  parent: BFB.Engine.UI.Constraints
+  children:
+  - BFB.Engine.UI.Constraints.UIWidthConstraint.#ctor(System.Int32)
+  - BFB.Engine.UI.Constraints.UIWidthConstraint.#ctor(System.Single)
+  - BFB.Engine.UI.Constraints.UIWidthConstraint.Apply(BFB.Engine.UI.Components.UIComponent)
+  langs:
+  - csharp
+  - vb
+  name: UIWidthConstraint
+  nameWithType: UIWidthConstraint
+  fullName: BFB.Engine.UI.Constraints.UIWidthConstraint
+  type: Class
+  source:
+    remote:
+      path: BFB/BFB.Engine/UI/Constraints/UIWidthConstraint.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: UIWidthConstraint
+    path: ../BFB/BFB.Engine/UI/Constraints/UIWidthConstraint.cs
+    startLine: 4
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.UI.Constraints
+  syntax:
+    content: 'public class UIWidthConstraint : UIConstraint'
+    content.vb: >-
+      Public Class UIWidthConstraint
+
+          Inherits UIConstraint
+  inheritance:
+  - System.Object
+  - BFB.Engine.UI.Constraints.UIConstraint
+  inheritedMembers:
+  - BFB.Engine.UI.Constraints.UIConstraint.Name
+  extensionMethods:
+  - BFB.Engine.UI.Constraints.UIWidthConstraint.BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{BFB.Engine.UI.Constraints.UIWidthConstraint,{TValue}}},{TValue})
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: BFB.Engine.UI.Constraints.UIWidthConstraint.#ctor(System.Int32)
+  commentId: M:BFB.Engine.UI.Constraints.UIWidthConstraint.#ctor(System.Int32)
+  id: '#ctor(System.Int32)'
+  parent: BFB.Engine.UI.Constraints.UIWidthConstraint
+  langs:
+  - csharp
+  - vb
+  name: UIWidthConstraint(Int32)
+  nameWithType: UIWidthConstraint.UIWidthConstraint(Int32)
+  fullName: BFB.Engine.UI.Constraints.UIWidthConstraint.UIWidthConstraint(System.Int32)
+  type: Constructor
+  source:
+    remote:
+      path: BFB/BFB.Engine/UI/Constraints/UIWidthConstraint.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: .ctor
+    path: ../BFB/BFB.Engine/UI/Constraints/UIWidthConstraint.cs
+    startLine: 9
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.UI.Constraints
+  syntax:
+    content: public UIWidthConstraint(int pixels)
+    parameters:
+    - id: pixels
+      type: System.Int32
+    content.vb: Public Sub New(pixels As Integer)
+  overload: BFB.Engine.UI.Constraints.UIWidthConstraint.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.UI.Constraints.UIWidthConstraint.#ctor(System.Single)
+  commentId: M:BFB.Engine.UI.Constraints.UIWidthConstraint.#ctor(System.Single)
+  id: '#ctor(System.Single)'
+  parent: BFB.Engine.UI.Constraints.UIWidthConstraint
+  langs:
+  - csharp
+  - vb
+  name: UIWidthConstraint(Single)
+  nameWithType: UIWidthConstraint.UIWidthConstraint(Single)
+  fullName: BFB.Engine.UI.Constraints.UIWidthConstraint.UIWidthConstraint(System.Single)
+  type: Constructor
+  source:
+    remote:
+      path: BFB/BFB.Engine/UI/Constraints/UIWidthConstraint.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: .ctor
+    path: ../BFB/BFB.Engine/UI/Constraints/UIWidthConstraint.cs
+    startLine: 15
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.UI.Constraints
+  syntax:
+    content: public UIWidthConstraint(float percent)
+    parameters:
+    - id: percent
+      type: System.Single
+    content.vb: Public Sub New(percent As Single)
+  overload: BFB.Engine.UI.Constraints.UIWidthConstraint.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.UI.Constraints.UIWidthConstraint.Apply(BFB.Engine.UI.Components.UIComponent)
+  commentId: M:BFB.Engine.UI.Constraints.UIWidthConstraint.Apply(BFB.Engine.UI.Components.UIComponent)
+  id: Apply(BFB.Engine.UI.Components.UIComponent)
+  parent: BFB.Engine.UI.Constraints.UIWidthConstraint
+  langs:
+  - csharp
+  - vb
+  name: Apply(UIComponent)
+  nameWithType: UIWidthConstraint.Apply(UIComponent)
+  fullName: BFB.Engine.UI.Constraints.UIWidthConstraint.Apply(BFB.Engine.UI.Components.UIComponent)
+  type: Method
+  source:
+    remote:
+      path: BFB/BFB.Engine/UI/Constraints/UIWidthConstraint.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: Apply
+    path: ../BFB/BFB.Engine/UI/Constraints/UIWidthConstraint.cs
+    startLine: 21
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.UI.Constraints
+  syntax:
+    content: public override void Apply(UIComponent component)
+    parameters:
+    - id: component
+      type: BFB.Engine.UI.Components.UIComponent
+    content.vb: Public Overrides Sub Apply(component As UIComponent)
+  overridden: BFB.Engine.UI.Constraints.UIConstraint.Apply(BFB.Engine.UI.Components.UIComponent)
+  overload: BFB.Engine.UI.Constraints.UIWidthConstraint.Apply*
+  modifiers.csharp:
+  - public
+  - override
+  modifiers.vb:
+  - Public
+  - Overrides
+references:
+- uid: BFB.Engine.UI.Constraints
+  commentId: N:BFB.Engine.UI.Constraints
+  name: BFB.Engine.UI.Constraints
+  nameWithType: BFB.Engine.UI.Constraints
+  fullName: BFB.Engine.UI.Constraints
+- uid: System.Object
+  commentId: '!:System.Object'
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: BFB.Engine.UI.Constraints.UIConstraint
+  commentId: T:BFB.Engine.UI.Constraints.UIConstraint
+  parent: BFB.Engine.UI.Constraints
+  name: UIConstraint
+  nameWithType: UIConstraint
+  fullName: BFB.Engine.UI.Constraints.UIConstraint
+- uid: BFB.Engine.UI.Constraints.UIConstraint.Name
+  commentId: P:BFB.Engine.UI.Constraints.UIConstraint.Name
+  parent: BFB.Engine.UI.Constraints.UIConstraint
+  name: Name
+  nameWithType: UIConstraint.Name
+  fullName: BFB.Engine.UI.Constraints.UIConstraint.Name
+- uid: BFB.Engine.UI.Constraints.UIWidthConstraint.BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{BFB.Engine.UI.Constraints.UIWidthConstraint,{TValue}}},{TValue})
+  commentId: M:BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  parent: BFB.Engine.UI.Components.LambdaExtensions
+  definition: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  name: SetPropertyValue<UIWidthConstraint, TValue>(Expression<Func<UIWidthConstraint, TValue>>, TValue)
+  nameWithType: LambdaExtensions.SetPropertyValue<UIWidthConstraint, TValue>(Expression<Func<UIWidthConstraint, TValue>>, TValue)
+  fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<BFB.Engine.UI.Constraints.UIWidthConstraint, TValue>(Expression<Func<BFB.Engine.UI.Constraints.UIWidthConstraint, TValue>>, TValue)
+  nameWithType.vb: LambdaExtensions.SetPropertyValue(Of UIWidthConstraint, TValue)(Expression(Of Func(Of UIWidthConstraint, TValue)), TValue)
+  fullName.vb: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of BFB.Engine.UI.Constraints.UIWidthConstraint, TValue)(Expression(Of Func(Of BFB.Engine.UI.Constraints.UIWidthConstraint, TValue)), TValue)
+  name.vb: SetPropertyValue(Of UIWidthConstraint, TValue)(Expression(Of Func(Of UIWidthConstraint, TValue)), TValue)
+  spec.csharp:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue<UIWidthConstraint, TValue>
+    nameWithType: LambdaExtensions.SetPropertyValue<UIWidthConstraint, TValue>
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<BFB.Engine.UI.Constraints.UIWidthConstraint, TValue>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: BFB.Engine.UI.Constraints.UIWidthConstraint
+    name: UIWidthConstraint
+    nameWithType: UIWidthConstraint
+    fullName: BFB.Engine.UI.Constraints.UIWidthConstraint
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue(Of UIWidthConstraint, TValue)
+    nameWithType: LambdaExtensions.SetPropertyValue(Of UIWidthConstraint, TValue)
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of BFB.Engine.UI.Constraints.UIWidthConstraint, TValue)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: BFB.Engine.UI.Constraints.UIWidthConstraint
+    name: UIWidthConstraint
+    nameWithType: UIWidthConstraint
+    fullName: BFB.Engine.UI.Constraints.UIWidthConstraint
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  commentId: M:BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  isExternal: true
+  name: SetPropertyValue<T, TValue>(T, Expression<Func<T, TValue>>, TValue)
+  nameWithType: LambdaExtensions.SetPropertyValue<T, TValue>(T, Expression<Func<T, TValue>>, TValue)
+  fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<T, TValue>(T, Expression<Func<T, TValue>>, TValue)
+  nameWithType.vb: LambdaExtensions.SetPropertyValue(Of T, TValue)(T, Expression(Of Func(Of T, TValue)), TValue)
+  fullName.vb: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of T, TValue)(T, Expression(Of Func(Of T, TValue)), TValue)
+  name.vb: SetPropertyValue(Of T, TValue)(T, Expression(Of Func(Of T, TValue)), TValue)
+  spec.csharp:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue<T, TValue>
+    nameWithType: LambdaExtensions.SetPropertyValue<T, TValue>
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<T, TValue>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue(Of T, TValue)
+    nameWithType: LambdaExtensions.SetPropertyValue(Of T, TValue)
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of T, TValue)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Components.LambdaExtensions
+  commentId: T:BFB.Engine.UI.Components.LambdaExtensions
+  parent: BFB.Engine.UI.Components
+  name: LambdaExtensions
+  nameWithType: LambdaExtensions
+  fullName: BFB.Engine.UI.Components.LambdaExtensions
+- uid: BFB.Engine.UI.Components
+  commentId: N:BFB.Engine.UI.Components
+  name: BFB.Engine.UI.Components
+  nameWithType: BFB.Engine.UI.Components
+  fullName: BFB.Engine.UI.Components
+- uid: BFB.Engine.UI.Constraints.UIWidthConstraint.#ctor*
+  commentId: Overload:BFB.Engine.UI.Constraints.UIWidthConstraint.#ctor
+  name: UIWidthConstraint
+  nameWithType: UIWidthConstraint.UIWidthConstraint
+  fullName: BFB.Engine.UI.Constraints.UIWidthConstraint.UIWidthConstraint
+- uid: System.Int32
+  isExternal: true
+  name: Int32
+  nameWithType: Int32
+  fullName: System.Int32
+- uid: System.Single
+  isExternal: true
+  name: Single
+  nameWithType: Single
+  fullName: System.Single
+- uid: BFB.Engine.UI.Constraints.UIConstraint.Apply(BFB.Engine.UI.Components.UIComponent)
+  commentId: M:BFB.Engine.UI.Constraints.UIConstraint.Apply(BFB.Engine.UI.Components.UIComponent)
+  parent: BFB.Engine.UI.Constraints.UIConstraint
+  name: Apply(UIComponent)
+  nameWithType: UIConstraint.Apply(UIComponent)
+  fullName: BFB.Engine.UI.Constraints.UIConstraint.Apply(BFB.Engine.UI.Components.UIComponent)
+  spec.csharp:
+  - uid: BFB.Engine.UI.Constraints.UIConstraint.Apply(BFB.Engine.UI.Components.UIComponent)
+    name: Apply
+    nameWithType: UIConstraint.Apply
+    fullName: BFB.Engine.UI.Constraints.UIConstraint.Apply
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: BFB.Engine.UI.Components.UIComponent
+    name: UIComponent
+    nameWithType: UIComponent
+    fullName: BFB.Engine.UI.Components.UIComponent
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Constraints.UIConstraint.Apply(BFB.Engine.UI.Components.UIComponent)
+    name: Apply
+    nameWithType: UIConstraint.Apply
+    fullName: BFB.Engine.UI.Constraints.UIConstraint.Apply
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: BFB.Engine.UI.Components.UIComponent
+    name: UIComponent
+    nameWithType: UIComponent
+    fullName: BFB.Engine.UI.Components.UIComponent
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Constraints.UIWidthConstraint.Apply*
+  commentId: Overload:BFB.Engine.UI.Constraints.UIWidthConstraint.Apply
+  name: Apply
+  nameWithType: UIWidthConstraint.Apply
+  fullName: BFB.Engine.UI.Constraints.UIWidthConstraint.Apply
+- uid: BFB.Engine.UI.Components.UIComponent
+  commentId: T:BFB.Engine.UI.Components.UIComponent
+  parent: BFB.Engine.UI.Components
+  name: UIComponent
+  nameWithType: UIComponent
+  fullName: BFB.Engine.UI.Components.UIComponent

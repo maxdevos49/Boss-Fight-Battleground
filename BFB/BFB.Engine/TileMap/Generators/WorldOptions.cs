@@ -39,6 +39,6 @@ namespace BFB.Engine.TileMap.Generators
         /// The function for the world options into the world generator.
         /// </summary>
         [JsonIgnore]
-        public Func<WorldOptions, WorldGenerator> GetWorldGenerator { get; set; }
+        public Func<WorldOptions, WorldGenerator> WorldGenerator { get; set; }
     }
 }

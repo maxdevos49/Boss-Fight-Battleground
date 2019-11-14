@@ -1,4 +1,5 @@
-﻿using BFB.Engine.Content;
+﻿using System;
+using BFB.Engine.Content;
 using BFB.Engine.Entity;
 using BFB.Engine.Math;
 
@@ -26,61 +27,46 @@ namespace BFB.Engine.Simulation.PhysicsComponents
             _friction = 0.2f;
         }
 
-        public void Update(SimulationEntity simulationEntity, Simulation simulation)
+        public void Update(SimulationEntity entity, Simulation simulation)
         {
             
             //Gives us the speed to move left and right
-            simulationEntity.DesiredVector.X *= _acceleration.X;
-            simulationEntity.DesiredVector.Y *= _acceleration.Y;
+            entity.DesiredVector.X *= _acceleration.X;
+            entity.DesiredVector.Y *= _acceleration.Y;
             
-            //TODO
-            
-            if (!simulationEntity.Grounded)
-                simulationEntity.DesiredVector.Add(_gravity);
-            
+            entity.DesiredVector.Add(_gravity);
             
             //Creates the new velocity
-            simulationEntity.Velocity.Add(simulationEntity.DesiredVector);
-
+            entity.Velocity.Add(entity.DesiredVector);
+            
+            entity.Velocity.X *= _friction;
 
             //Caps your speed
-            if(System.Math.Abs(simulationEntity.Velocity.X) > _maxSpeed.X)
-                simulationEntity.Velocity.X = simulationEntity.Velocity.X > 0 ? _maxSpeed.X : -_maxSpeed.X;
+            if(System.Math.Abs(entity.Velocity.X) > _maxSpeed.X)
+                entity.Velocity.X = entity.Velocity.X > 0 ? _maxSpeed.X : -_maxSpeed.X;
             
-            if(System.Math.Abs(simulationEntity.Velocity.Y) > _maxSpeed.Y)
-                simulationEntity.Velocity.Y = simulationEntity.Velocity.Y > 0 ? _maxSpeed.Y : -_maxSpeed.Y;
+            if(System.Math.Abs(entity.Velocity.Y) > _maxSpeed.Y)
+                entity.Velocity.Y = entity.Velocity.Y > 0 ? _maxSpeed.Y : -_maxSpeed.Y;
             
-            // ReSharper disable once CompareOfFloatsByEqualityOperator
-            if (simulationEntity.Grounded && simulationEntity.DesiredVector.X == 0)
-            {
-                //This will affects changing directions back and forth -- so its like smash bros switching directions
-                simulationEntity.Velocity.Mult(_friction);
-            }
-
-            // ReSharper disable once CompareOfFloatsByEqualityOperator
-            if (System.Math.Abs(simulationEntity.Velocity.X) < 1 && simulationEntity.Velocity.X != 0)
-            {
-                simulationEntity.Velocity.X = 0;
-                simulationEntity.AnimationState = _previousAnimationState == AnimationState.MoveLeft ? AnimationState.IdleLeft : AnimationState.IdleRight;
-            }
-
             //Updates the position
-            simulationEntity.Position.Add(simulationEntity.Velocity);
+            entity.Position.Add(entity.Velocity);
 
-            if(simulationEntity.Position.Y > 200)
+            Collision.DetectCollision(entity,simulation);
+            
+            // ReSharper disable once CompareOfFloatsByEqualityOperator
+            if (System.Math.Abs(entity.Velocity.X) < 2 && entity.Velocity.X != 0)
             {
-                simulationEntity.Position.Y = 200;
-                simulationEntity.Velocity.Y = 0;
-                simulationEntity.Grounded = true;
+                entity.Velocity.X = 0;
+                entity.AnimationState = _previousAnimationState == AnimationState.MoveLeft ? AnimationState.IdleLeft : AnimationState.IdleRight;
             }
 
             //Animation states
-            if (simulationEntity.Velocity.X > 1)
-                simulationEntity.AnimationState = AnimationState.MoveRight;
-            else if (simulationEntity.Velocity.X < -1)
-                simulationEntity.AnimationState = AnimationState.MoveLeft;
+            if (entity.Velocity.X > 1)
+                entity.AnimationState = AnimationState.MoveRight;
+            else if (entity.Velocity.X < -1)
+                entity.AnimationState = AnimationState.MoveLeft;
 
-            _previousAnimationState = simulationEntity.AnimationState;
+            _previousAnimationState = entity.AnimationState;
 
         }
     }

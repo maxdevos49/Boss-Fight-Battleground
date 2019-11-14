@@ -12,9 +12,8 @@ namespace BFB.Engine.Entity
     {
         #region Properties
         
-        /// <summary>
-        /// Unique ID
-        /// </summary>
+        public string ChunkKey { get; set; }
+        
         public string EntityId { get; set; }
 
         /// <summary>
@@ -51,12 +50,16 @@ namespace BFB.Engine.Entity
         /// The rotation of this entity
         /// </summary>
         public float Rotation { get; set; }
-        
-        /// <summary>
-        /// Whether this entity is on the ground or not
-        /// </summary>
-        public bool Grounded { get; set; }
 
+        // ReSharper disable once CompareOfFloatsByEqualityOperator
+        public bool Grounded => Velocity.Y == 0f;
+        
+        public int Width => (int) Dimensions.X;
+        public int Height => (int) Dimensions.Y;
+        public int Bottom => (int)(Position.Y + Height);
+        public int Left => (int)(Position.X);
+        public int Right => (int)(Position.X + Width);
+        public int Top => (int)(Position.Y);
         
         #endregion
 
@@ -77,7 +80,6 @@ namespace BFB.Engine.Entity
             Origin = options.Origin;
             Rotation = options.Rotation;
             Velocity = new BfbVector();
-            Grounded = false;
         }
         
         #endregion
@@ -93,6 +95,7 @@ namespace BFB.Engine.Entity
             return new EntityMessage
             {
                 EntityId = EntityId,
+                ChunkKey = ChunkKey,
                 AnimationTextureKey = AnimatedTextureKey,
                 AnimationState = AnimationState,
                 Position = Position,

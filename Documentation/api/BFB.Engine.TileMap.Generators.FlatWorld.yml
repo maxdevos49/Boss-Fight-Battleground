@@ -1,0 +1,476 @@
+### YamlMime:ManagedReference
+items:
+- uid: BFB.Engine.TileMap.Generators.FlatWorld
+  commentId: T:BFB.Engine.TileMap.Generators.FlatWorld
+  id: FlatWorld
+  parent: BFB.Engine.TileMap.Generators
+  children:
+  - BFB.Engine.TileMap.Generators.FlatWorld.#ctor(BFB.Engine.TileMap.Generators.WorldOptions)
+  - BFB.Engine.TileMap.Generators.FlatWorld.GenerateChunk(System.Int32,System.Int32)
+  langs:
+  - csharp
+  - vb
+  name: FlatWorld
+  nameWithType: FlatWorld
+  fullName: BFB.Engine.TileMap.Generators.FlatWorld
+  type: Class
+  source:
+    remote:
+      path: BFB/BFB.Engine/TileMap/Generators/FlatWorld.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: FlatWorld
+    path: ../BFB/BFB.Engine/TileMap/Generators/FlatWorld.cs
+    startLine: 7
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.TileMap.Generators
+  summary: "\nUsed to generate a flat world.\n"
+  example: []
+  syntax:
+    content: 'public class FlatWorld : WorldGenerator'
+    content.vb: >-
+      Public Class FlatWorld
+
+          Inherits WorldGenerator
+  inheritance:
+  - System.Object
+  - BFB.Engine.TileMap.Generators.WorldGenerator
+  inheritedMembers:
+  - BFB.Engine.TileMap.Generators.WorldGenerator.WorldOptions
+  extensionMethods:
+  - BFB.Engine.TileMap.Generators.FlatWorld.BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{BFB.Engine.TileMap.Generators.FlatWorld,{TValue}}},{TValue})
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: BFB.Engine.TileMap.Generators.FlatWorld.#ctor(BFB.Engine.TileMap.Generators.WorldOptions)
+  commentId: M:BFB.Engine.TileMap.Generators.FlatWorld.#ctor(BFB.Engine.TileMap.Generators.WorldOptions)
+  id: '#ctor(BFB.Engine.TileMap.Generators.WorldOptions)'
+  parent: BFB.Engine.TileMap.Generators.FlatWorld
+  langs:
+  - csharp
+  - vb
+  name: FlatWorld(WorldOptions)
+  nameWithType: FlatWorld.FlatWorld(WorldOptions)
+  fullName: BFB.Engine.TileMap.Generators.FlatWorld.FlatWorld(BFB.Engine.TileMap.Generators.WorldOptions)
+  type: Constructor
+  source:
+    remote:
+      path: BFB/BFB.Engine/TileMap/Generators/FlatWorld.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: .ctor
+    path: ../BFB/BFB.Engine/TileMap/Generators/FlatWorld.cs
+    startLine: 15
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.TileMap.Generators
+  summary: "\nGenerates a flat world.\n"
+  example: []
+  syntax:
+    content: public FlatWorld(WorldOptions options)
+    parameters:
+    - id: options
+      type: BFB.Engine.TileMap.Generators.WorldOptions
+      description: Options used to generate the world.
+    content.vb: Public Sub New(options As WorldOptions)
+  overload: BFB.Engine.TileMap.Generators.FlatWorld.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.TileMap.Generators.FlatWorld.GenerateChunk(System.Int32,System.Int32)
+  commentId: M:BFB.Engine.TileMap.Generators.FlatWorld.GenerateChunk(System.Int32,System.Int32)
+  id: GenerateChunk(System.Int32,System.Int32)
+  parent: BFB.Engine.TileMap.Generators.FlatWorld
+  langs:
+  - csharp
+  - vb
+  name: GenerateChunk(Int32, Int32)
+  nameWithType: FlatWorld.GenerateChunk(Int32, Int32)
+  fullName: BFB.Engine.TileMap.Generators.FlatWorld.GenerateChunk(System.Int32, System.Int32)
+  type: Method
+  source:
+    remote:
+      path: BFB/BFB.Engine/TileMap/Generators/FlatWorld.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: GenerateChunk
+    path: ../BFB/BFB.Engine/TileMap/Generators/FlatWorld.cs
+    startLine: 26
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.TileMap.Generators
+  summary: "\nGenerates the chunk at the given x,y block position.\n"
+  example: []
+  syntax:
+    content: public override Chunk GenerateChunk(int x, int y)
+    parameters:
+    - id: x
+      type: System.Int32
+      description: The chunk X location with the given block X location.
+    - id: y
+      type: System.Int32
+      description: The chunk Y location with the given block Y location.
+    return:
+      type: BFB.Engine.TileMap.Chunk
+      description: Returns the generated chuck.
+    content.vb: Public Overrides Function GenerateChunk(x As Integer, y As Integer) As Chunk
+  overridden: BFB.Engine.TileMap.Generators.WorldGenerator.GenerateChunk(System.Int32,System.Int32)
+  overload: BFB.Engine.TileMap.Generators.FlatWorld.GenerateChunk*
+  modifiers.csharp:
+  - public
+  - override
+  modifiers.vb:
+  - Public
+  - Overrides
+references:
+- uid: BFB.Engine.TileMap.Generators
+  commentId: N:BFB.Engine.TileMap.Generators
+  name: BFB.Engine.TileMap.Generators
+  nameWithType: BFB.Engine.TileMap.Generators
+  fullName: BFB.Engine.TileMap.Generators
+- uid: System.Object
+  commentId: '!:System.Object'
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: BFB.Engine.TileMap.Generators.WorldGenerator
+  commentId: T:BFB.Engine.TileMap.Generators.WorldGenerator
+  parent: BFB.Engine.TileMap.Generators
+  name: WorldGenerator
+  nameWithType: WorldGenerator
+  fullName: BFB.Engine.TileMap.Generators.WorldGenerator
+- uid: BFB.Engine.TileMap.Generators.WorldGenerator.WorldOptions
+  commentId: P:BFB.Engine.TileMap.Generators.WorldGenerator.WorldOptions
+  parent: BFB.Engine.TileMap.Generators.WorldGenerator
+  name: WorldOptions
+  nameWithType: WorldGenerator.WorldOptions
+  fullName: BFB.Engine.TileMap.Generators.WorldGenerator.WorldOptions
+- uid: BFB.Engine.TileMap.Generators.FlatWorld.BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{BFB.Engine.TileMap.Generators.FlatWorld,{TValue}}},{TValue})
+  commentId: M:BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  parent: BFB.Engine.UI.Components.LambdaExtensions
+  definition: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  name: SetPropertyValue<FlatWorld, TValue>(Expression<Func<FlatWorld, TValue>>, TValue)
+  nameWithType: LambdaExtensions.SetPropertyValue<FlatWorld, TValue>(Expression<Func<FlatWorld, TValue>>, TValue)
+  fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<BFB.Engine.TileMap.Generators.FlatWorld, TValue>(Expression<Func<BFB.Engine.TileMap.Generators.FlatWorld, TValue>>, TValue)
+  nameWithType.vb: LambdaExtensions.SetPropertyValue(Of FlatWorld, TValue)(Expression(Of Func(Of FlatWorld, TValue)), TValue)
+  fullName.vb: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of BFB.Engine.TileMap.Generators.FlatWorld, TValue)(Expression(Of Func(Of BFB.Engine.TileMap.Generators.FlatWorld, TValue)), TValue)
+  name.vb: SetPropertyValue(Of FlatWorld, TValue)(Expression(Of Func(Of FlatWorld, TValue)), TValue)
+  spec.csharp:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue<FlatWorld, TValue>
+    nameWithType: LambdaExtensions.SetPropertyValue<FlatWorld, TValue>
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<BFB.Engine.TileMap.Generators.FlatWorld, TValue>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: BFB.Engine.TileMap.Generators.FlatWorld
+    name: FlatWorld
+    nameWithType: FlatWorld
+    fullName: BFB.Engine.TileMap.Generators.FlatWorld
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue(Of FlatWorld, TValue)
+    nameWithType: LambdaExtensions.SetPropertyValue(Of FlatWorld, TValue)
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of BFB.Engine.TileMap.Generators.FlatWorld, TValue)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: BFB.Engine.TileMap.Generators.FlatWorld
+    name: FlatWorld
+    nameWithType: FlatWorld
+    fullName: BFB.Engine.TileMap.Generators.FlatWorld
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  commentId: M:BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  isExternal: true
+  name: SetPropertyValue<T, TValue>(T, Expression<Func<T, TValue>>, TValue)
+  nameWithType: LambdaExtensions.SetPropertyValue<T, TValue>(T, Expression<Func<T, TValue>>, TValue)
+  fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<T, TValue>(T, Expression<Func<T, TValue>>, TValue)
+  nameWithType.vb: LambdaExtensions.SetPropertyValue(Of T, TValue)(T, Expression(Of Func(Of T, TValue)), TValue)
+  fullName.vb: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of T, TValue)(T, Expression(Of Func(Of T, TValue)), TValue)
+  name.vb: SetPropertyValue(Of T, TValue)(T, Expression(Of Func(Of T, TValue)), TValue)
+  spec.csharp:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue<T, TValue>
+    nameWithType: LambdaExtensions.SetPropertyValue<T, TValue>
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<T, TValue>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue(Of T, TValue)
+    nameWithType: LambdaExtensions.SetPropertyValue(Of T, TValue)
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of T, TValue)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Components.LambdaExtensions
+  commentId: T:BFB.Engine.UI.Components.LambdaExtensions
+  parent: BFB.Engine.UI.Components
+  name: LambdaExtensions
+  nameWithType: LambdaExtensions
+  fullName: BFB.Engine.UI.Components.LambdaExtensions
+- uid: BFB.Engine.UI.Components
+  commentId: N:BFB.Engine.UI.Components
+  name: BFB.Engine.UI.Components
+  nameWithType: BFB.Engine.UI.Components
+  fullName: BFB.Engine.UI.Components
+- uid: BFB.Engine.TileMap.Generators.FlatWorld.#ctor*
+  commentId: Overload:BFB.Engine.TileMap.Generators.FlatWorld.#ctor
+  name: FlatWorld
+  nameWithType: FlatWorld.FlatWorld
+  fullName: BFB.Engine.TileMap.Generators.FlatWorld.FlatWorld
+- uid: BFB.Engine.TileMap.Generators.WorldOptions
+  commentId: T:BFB.Engine.TileMap.Generators.WorldOptions
+  parent: BFB.Engine.TileMap.Generators
+  name: WorldOptions
+  nameWithType: WorldOptions
+  fullName: BFB.Engine.TileMap.Generators.WorldOptions
+- uid: BFB.Engine.TileMap.Generators.WorldGenerator.GenerateChunk(System.Int32,System.Int32)
+  commentId: M:BFB.Engine.TileMap.Generators.WorldGenerator.GenerateChunk(System.Int32,System.Int32)
+  parent: BFB.Engine.TileMap.Generators.WorldGenerator
+  isExternal: true
+  name: GenerateChunk(Int32, Int32)
+  nameWithType: WorldGenerator.GenerateChunk(Int32, Int32)
+  fullName: BFB.Engine.TileMap.Generators.WorldGenerator.GenerateChunk(System.Int32, System.Int32)
+  spec.csharp:
+  - uid: BFB.Engine.TileMap.Generators.WorldGenerator.GenerateChunk(System.Int32,System.Int32)
+    name: GenerateChunk
+    nameWithType: WorldGenerator.GenerateChunk
+    fullName: BFB.Engine.TileMap.Generators.WorldGenerator.GenerateChunk
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.TileMap.Generators.WorldGenerator.GenerateChunk(System.Int32,System.Int32)
+    name: GenerateChunk
+    nameWithType: WorldGenerator.GenerateChunk
+    fullName: BFB.Engine.TileMap.Generators.WorldGenerator.GenerateChunk
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.TileMap.Generators.FlatWorld.GenerateChunk*
+  commentId: Overload:BFB.Engine.TileMap.Generators.FlatWorld.GenerateChunk
+  name: GenerateChunk
+  nameWithType: FlatWorld.GenerateChunk
+  fullName: BFB.Engine.TileMap.Generators.FlatWorld.GenerateChunk
+- uid: System.Int32
+  isExternal: true
+  name: Int32
+  nameWithType: Int32
+  fullName: System.Int32
+- uid: BFB.Engine.TileMap.Chunk
+  commentId: T:BFB.Engine.TileMap.Chunk
+  parent: BFB.Engine.TileMap
+  name: Chunk
+  nameWithType: Chunk
+  fullName: BFB.Engine.TileMap.Chunk
+- uid: BFB.Engine.TileMap
+  commentId: N:BFB.Engine.TileMap
+  name: BFB.Engine.TileMap
+  nameWithType: BFB.Engine.TileMap
+  fullName: BFB.Engine.TileMap

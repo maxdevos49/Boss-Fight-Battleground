@@ -17,6 +17,14 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="Content\Fonts\Arial.xnb" />
+    <None Remove="Content\Fonts\Helvetica.xnb" />
+    <None Remove="Content\Fonts\Hylia.xnb" />
+    <None Remove="Content\Fonts\OpenSans-Light.xnb" />
+    <None Remove="Content\Fonts\OpenSans.xnb" />
+    <None Remove="Content\Fonts\Oswald.xnb" />
+    <None Remove="Content\Fonts\OswaldStencil.xnb" />
+    <None Remove="Content\Fonts\Roboto.xnb" />
     <None Remove="Content\Sprites\SpaceshipSpritesheet.xnb" />
     <None Update="content.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

@@ -1,0 +1,435 @@
+### YamlMime:ManagedReference
+items:
+- uid: BFB.Engine.Input.PlayerInput.PlayerInput
+  commentId: T:BFB.Engine.Input.PlayerInput.PlayerInput
+  id: PlayerInput
+  parent: BFB.Engine.Input.PlayerInput
+  children:
+  - BFB.Engine.Input.PlayerInput.PlayerInput.#ctor(BFB.Engine.Scene.Scene)
+  - BFB.Engine.Input.PlayerInput.PlayerInput.GetPlayerState
+  - BFB.Engine.Input.PlayerInput.PlayerInput.InputChanged
+  langs:
+  - csharp
+  - vb
+  name: PlayerInput
+  nameWithType: PlayerInput
+  fullName: BFB.Engine.Input.PlayerInput.PlayerInput
+  type: Class
+  source:
+    remote:
+      path: BFB/BFB.Engine/Input/PlayerInput/PlayerInput.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: PlayerInput
+    path: ../BFB/BFB.Engine/Input/PlayerInput/PlayerInput.cs
+    startLine: 9
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Input.PlayerInput
+  syntax:
+    content: 'public class PlayerInput : object'
+    content.vb: >-
+      Public Class PlayerInput
+
+          Inherits Object
+  inheritance:
+  - System.Object
+  extensionMethods:
+  - BFB.Engine.Input.PlayerInput.PlayerInput.BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{BFB.Engine.Input.PlayerInput.PlayerInput,{TValue}}},{TValue})
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: BFB.Engine.Input.PlayerInput.PlayerInput.#ctor(BFB.Engine.Scene.Scene)
+  commentId: M:BFB.Engine.Input.PlayerInput.PlayerInput.#ctor(BFB.Engine.Scene.Scene)
+  id: '#ctor(BFB.Engine.Scene.Scene)'
+  parent: BFB.Engine.Input.PlayerInput.PlayerInput
+  langs:
+  - csharp
+  - vb
+  name: PlayerInput(Scene)
+  nameWithType: PlayerInput.PlayerInput(Scene)
+  fullName: BFB.Engine.Input.PlayerInput.PlayerInput.PlayerInput(BFB.Engine.Scene.Scene)
+  type: Constructor
+  source:
+    remote:
+      path: BFB/BFB.Engine/Input/PlayerInput/PlayerInput.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: .ctor
+    path: ../BFB/BFB.Engine/Input/PlayerInput/PlayerInput.cs
+    startLine: 19
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Input.PlayerInput
+  summary: "\nHandles the input for each scene here.\n"
+  example: []
+  syntax:
+    content: public PlayerInput(Scene scene)
+    parameters:
+    - id: scene
+      type: BFB.Engine.Scene.Scene
+      description: ''
+    content.vb: Public Sub New(scene As Scene)
+  overload: BFB.Engine.Input.PlayerInput.PlayerInput.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.Input.PlayerInput.PlayerInput.GetPlayerState
+  commentId: M:BFB.Engine.Input.PlayerInput.PlayerInput.GetPlayerState
+  id: GetPlayerState
+  parent: BFB.Engine.Input.PlayerInput.PlayerInput
+  langs:
+  - csharp
+  - vb
+  name: GetPlayerState()
+  nameWithType: PlayerInput.GetPlayerState()
+  fullName: BFB.Engine.Input.PlayerInput.PlayerInput.GetPlayerState()
+  type: Method
+  source:
+    remote:
+      path: BFB/BFB.Engine/Input/PlayerInput/PlayerInput.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: GetPlayerState
+    path: ../BFB/BFB.Engine/Input/PlayerInput/PlayerInput.cs
+    startLine: 94
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Input.PlayerInput
+  summary: "\nGets the player state, shockingly enough.\n"
+  example: []
+  syntax:
+    content: public PlayerState GetPlayerState()
+    return:
+      type: BFB.Engine.Input.PlayerInput.PlayerState
+      description: ''
+    content.vb: Public Function GetPlayerState As PlayerState
+  overload: BFB.Engine.Input.PlayerInput.PlayerInput.GetPlayerState*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.Input.PlayerInput.PlayerInput.InputChanged
+  commentId: M:BFB.Engine.Input.PlayerInput.PlayerInput.InputChanged
+  id: InputChanged
+  parent: BFB.Engine.Input.PlayerInput.PlayerInput
+  langs:
+  - csharp
+  - vb
+  name: InputChanged()
+  nameWithType: PlayerInput.InputChanged()
+  fullName: BFB.Engine.Input.PlayerInput.PlayerInput.InputChanged()
+  type: Method
+  source:
+    remote:
+      path: BFB/BFB.Engine/Input/PlayerInput/PlayerInput.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: InputChanged
+    path: ../BFB/BFB.Engine/Input/PlayerInput/PlayerInput.cs
+    startLine: 103
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Input.PlayerInput
+  summary: "\nReturns if the input has changed from the last game update.\n"
+  example: []
+  syntax:
+    content: public bool InputChanged()
+    return:
+      type: System.Boolean
+      description: ''
+    content.vb: Public Function InputChanged As Boolean
+  overload: BFB.Engine.Input.PlayerInput.PlayerInput.InputChanged*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+references:
+- uid: BFB.Engine.Input.PlayerInput
+  commentId: N:BFB.Engine.Input.PlayerInput
+  name: BFB.Engine.Input.PlayerInput
+  nameWithType: BFB.Engine.Input.PlayerInput
+  fullName: BFB.Engine.Input.PlayerInput
+- uid: System.Object
+  commentId: '!:System.Object'
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: BFB.Engine.Input.PlayerInput.PlayerInput.BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{BFB.Engine.Input.PlayerInput.PlayerInput,{TValue}}},{TValue})
+  commentId: M:BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  parent: BFB.Engine.UI.Components.LambdaExtensions
+  definition: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  name: SetPropertyValue<PlayerInput, TValue>(Expression<Func<PlayerInput, TValue>>, TValue)
+  nameWithType: LambdaExtensions.SetPropertyValue<PlayerInput, TValue>(Expression<Func<PlayerInput, TValue>>, TValue)
+  fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<BFB.Engine.Input.PlayerInput.PlayerInput, TValue>(Expression<Func<BFB.Engine.Input.PlayerInput.PlayerInput, TValue>>, TValue)
+  nameWithType.vb: LambdaExtensions.SetPropertyValue(Of PlayerInput, TValue)(Expression(Of Func(Of PlayerInput, TValue)), TValue)
+  fullName.vb: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of BFB.Engine.Input.PlayerInput.PlayerInput, TValue)(Expression(Of Func(Of BFB.Engine.Input.PlayerInput.PlayerInput, TValue)), TValue)
+  name.vb: SetPropertyValue(Of PlayerInput, TValue)(Expression(Of Func(Of PlayerInput, TValue)), TValue)
+  spec.csharp:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue<PlayerInput, TValue>
+    nameWithType: LambdaExtensions.SetPropertyValue<PlayerInput, TValue>
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<BFB.Engine.Input.PlayerInput.PlayerInput, TValue>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: BFB.Engine.Input.PlayerInput.PlayerInput
+    name: PlayerInput
+    nameWithType: PlayerInput
+    fullName: BFB.Engine.Input.PlayerInput.PlayerInput
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue(Of PlayerInput, TValue)
+    nameWithType: LambdaExtensions.SetPropertyValue(Of PlayerInput, TValue)
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of BFB.Engine.Input.PlayerInput.PlayerInput, TValue)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: BFB.Engine.Input.PlayerInput.PlayerInput
+    name: PlayerInput
+    nameWithType: PlayerInput
+    fullName: BFB.Engine.Input.PlayerInput.PlayerInput
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  commentId: M:BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  isExternal: true
+  name: SetPropertyValue<T, TValue>(T, Expression<Func<T, TValue>>, TValue)
+  nameWithType: LambdaExtensions.SetPropertyValue<T, TValue>(T, Expression<Func<T, TValue>>, TValue)
+  fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<T, TValue>(T, Expression<Func<T, TValue>>, TValue)
+  nameWithType.vb: LambdaExtensions.SetPropertyValue(Of T, TValue)(T, Expression(Of Func(Of T, TValue)), TValue)
+  fullName.vb: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of T, TValue)(T, Expression(Of Func(Of T, TValue)), TValue)
+  name.vb: SetPropertyValue(Of T, TValue)(T, Expression(Of Func(Of T, TValue)), TValue)
+  spec.csharp:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue<T, TValue>
+    nameWithType: LambdaExtensions.SetPropertyValue<T, TValue>
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<T, TValue>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue(Of T, TValue)
+    nameWithType: LambdaExtensions.SetPropertyValue(Of T, TValue)
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of T, TValue)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Components.LambdaExtensions
+  commentId: T:BFB.Engine.UI.Components.LambdaExtensions
+  parent: BFB.Engine.UI.Components
+  name: LambdaExtensions
+  nameWithType: LambdaExtensions
+  fullName: BFB.Engine.UI.Components.LambdaExtensions
+- uid: BFB.Engine.UI.Components
+  commentId: N:BFB.Engine.UI.Components
+  name: BFB.Engine.UI.Components
+  nameWithType: BFB.Engine.UI.Components
+  fullName: BFB.Engine.UI.Components
+- uid: BFB.Engine.Input.PlayerInput.PlayerInput.#ctor*
+  commentId: Overload:BFB.Engine.Input.PlayerInput.PlayerInput.#ctor
+  name: PlayerInput
+  nameWithType: PlayerInput.PlayerInput
+  fullName: BFB.Engine.Input.PlayerInput.PlayerInput.PlayerInput
+- uid: BFB.Engine.Scene.Scene
+  commentId: T:BFB.Engine.Scene.Scene
+  parent: BFB.Engine.Scene
+  name: Scene
+  nameWithType: Scene
+  fullName: BFB.Engine.Scene.Scene
+- uid: BFB.Engine.Scene
+  commentId: N:BFB.Engine.Scene
+  name: BFB.Engine.Scene
+  nameWithType: BFB.Engine.Scene
+  fullName: BFB.Engine.Scene
+- uid: BFB.Engine.Input.PlayerInput.PlayerInput.GetPlayerState*
+  commentId: Overload:BFB.Engine.Input.PlayerInput.PlayerInput.GetPlayerState
+  name: GetPlayerState
+  nameWithType: PlayerInput.GetPlayerState
+  fullName: BFB.Engine.Input.PlayerInput.PlayerInput.GetPlayerState
+- uid: BFB.Engine.Input.PlayerInput.PlayerState
+  commentId: T:BFB.Engine.Input.PlayerInput.PlayerState
+  parent: BFB.Engine.Input.PlayerInput
+  name: PlayerState
+  nameWithType: PlayerState
+  fullName: BFB.Engine.Input.PlayerInput.PlayerState
+- uid: BFB.Engine.Input.PlayerInput.PlayerInput.InputChanged*
+  commentId: Overload:BFB.Engine.Input.PlayerInput.PlayerInput.InputChanged
+  name: InputChanged
+  nameWithType: PlayerInput.InputChanged
+  fullName: BFB.Engine.Input.PlayerInput.PlayerInput.InputChanged
+- uid: System.Boolean
+  isExternal: true
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean

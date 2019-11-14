@@ -1,0 +1,34 @@
+### YamlMime:ManagedReference
+items:
+- uid: BFB.Engine.Simulation.GraphicsComponents
+  commentId: N:BFB.Engine.Simulation.GraphicsComponents
+  id: BFB.Engine.Simulation.GraphicsComponents
+  children:
+  - BFB.Engine.Simulation.GraphicsComponents.AnimationComponent
+  - BFB.Engine.Simulation.GraphicsComponents.IGraphicsComponent
+  langs:
+  - csharp
+  - vb
+  name: BFB.Engine.Simulation.GraphicsComponents
+  nameWithType: BFB.Engine.Simulation.GraphicsComponents
+  fullName: BFB.Engine.Simulation.GraphicsComponents
+  type: Namespace
+  assemblies:
+  - BFB.Engine
+references:
+- uid: BFB.Engine.Simulation.GraphicsComponents.AnimationComponent
+  commentId: T:BFB.Engine.Simulation.GraphicsComponents.AnimationComponent
+  name: AnimationComponent
+  nameWithType: AnimationComponent
+  fullName: BFB.Engine.Simulation.GraphicsComponents.AnimationComponent
+- uid: BFB.Engine.Simulation.GraphicsComponents.IGraphicsComponent
+  commentId: T:BFB.Engine.Simulation.GraphicsComponents.IGraphicsComponent
+  parent: BFB.Engine.Simulation.GraphicsComponents
+  name: IGraphicsComponent
+  nameWithType: IGraphicsComponent
+  fullName: BFB.Engine.Simulation.GraphicsComponents.IGraphicsComponent
+- uid: BFB.Engine.Simulation.GraphicsComponents
+  commentId: N:BFB.Engine.Simulation.GraphicsComponents
+  name: BFB.Engine.Simulation.GraphicsComponents
+  nameWithType: BFB.Engine.Simulation.GraphicsComponents
+  fullName: BFB.Engine.Simulation.GraphicsComponents

@@ -127,7 +127,10 @@ namespace BFB.Client
                 new HelpUI(), 
                 new HudUI(),
                 new GameMenuUI(),
-                new ChatUI()
+                new ChatUI(),
+                new StoreUI(),
+                new CreditCardUI(), 
+                new CompletedTransactionUI(), 
             });
             
             #endregion
@@ -154,7 +157,7 @@ namespace BFB.Client
                     case Keys.M:
                         
                         //Return to main menu
-                        _sceneManager.StartScene(nameof(MainMenuScene));
+//                        _sceneManager.StartScene(nameof(MainMenuScene));
                             
                         break;
                 }
@@ -172,7 +175,7 @@ namespace BFB.Client
         protected override void LoadContent()
         {
             
-            //Loads the content.json file. TODO Later on the file should probably be in a special location like the home directory of the user similar to how 327 we stored the dungeons
+            //Parses content data from file named "content.json"
             _contentManager.ParseContent();
             
             //Global texture load

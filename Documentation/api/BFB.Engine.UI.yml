@@ -1,0 +1,35 @@
+### YamlMime:ManagedReference
+items:
+- uid: BFB.Engine.UI
+  commentId: N:BFB.Engine.UI
+  id: BFB.Engine.UI
+  children:
+  - BFB.Engine.UI.UILayer
+  - BFB.Engine.UI.UIManager
+  langs:
+  - csharp
+  - vb
+  name: BFB.Engine.UI
+  nameWithType: BFB.Engine.UI
+  fullName: BFB.Engine.UI
+  type: Namespace
+  assemblies:
+  - BFB.Engine
+references:
+- uid: BFB.Engine.UI.UILayer
+  commentId: T:BFB.Engine.UI.UILayer
+  parent: BFB.Engine.UI
+  name: UILayer
+  nameWithType: UILayer
+  fullName: BFB.Engine.UI.UILayer
+- uid: BFB.Engine.UI.UIManager
+  commentId: T:BFB.Engine.UI.UIManager
+  parent: BFB.Engine.UI
+  name: UIManager
+  nameWithType: UIManager
+  fullName: BFB.Engine.UI.UIManager
+- uid: BFB.Engine.UI
+  commentId: N:BFB.Engine.UI
+  name: BFB.Engine.UI
+  nameWithType: BFB.Engine.UI
+  fullName: BFB.Engine.UI

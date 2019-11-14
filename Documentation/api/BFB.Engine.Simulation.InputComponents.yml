@@ -1,0 +1,34 @@
+### YamlMime:ManagedReference
+items:
+- uid: BFB.Engine.Simulation.InputComponents
+  commentId: N:BFB.Engine.Simulation.InputComponents
+  id: BFB.Engine.Simulation.InputComponents
+  children:
+  - BFB.Engine.Simulation.InputComponents.IInputComponent
+  - BFB.Engine.Simulation.InputComponents.RemoteInputComponent
+  langs:
+  - csharp
+  - vb
+  name: BFB.Engine.Simulation.InputComponents
+  nameWithType: BFB.Engine.Simulation.InputComponents
+  fullName: BFB.Engine.Simulation.InputComponents
+  type: Namespace
+  assemblies:
+  - BFB.Engine
+references:
+- uid: BFB.Engine.Simulation.InputComponents.IInputComponent
+  commentId: T:BFB.Engine.Simulation.InputComponents.IInputComponent
+  parent: BFB.Engine.Simulation.InputComponents
+  name: IInputComponent
+  nameWithType: IInputComponent
+  fullName: BFB.Engine.Simulation.InputComponents.IInputComponent
+- uid: BFB.Engine.Simulation.InputComponents.RemoteInputComponent
+  commentId: T:BFB.Engine.Simulation.InputComponents.RemoteInputComponent
+  name: RemoteInputComponent
+  nameWithType: RemoteInputComponent
+  fullName: BFB.Engine.Simulation.InputComponents.RemoteInputComponent
+- uid: BFB.Engine.Simulation.InputComponents
+  commentId: N:BFB.Engine.Simulation.InputComponents
+  name: BFB.Engine.Simulation.InputComponents
+  nameWithType: BFB.Engine.Simulation.InputComponents
+  fullName: BFB.Engine.Simulation.InputComponents

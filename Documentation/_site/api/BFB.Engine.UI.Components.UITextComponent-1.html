@@ -1,0 +1,417 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class UITextComponent&lt;TModel&gt;
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class UITextComponent&lt;TModel&gt;
+   ">
+    <meta name="generator" content="docfx 2.47.0.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="BFB.Engine.UI.Components.UITextComponent`1">
+  
+  
+  <h1 id="BFB_Engine_UI_Components_UITextComponent_1" data-uid="BFB.Engine.UI.Components.UITextComponent`1" class="text-break">Class UITextComponent&lt;TModel&gt;
+  </h1>
+  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><a class="xref" href="BFB.Engine.UI.Components.UIComponent.html">UIComponent</a></div>
+    <div class="level2"><span class="xref">UITextComponent&lt;TModel&gt;</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="BFB.Engine.UI.Components.UIComponent.html#BFB_Engine_UI_Components_UIComponent_Name">UIComponent.Name</a>
+    </div>
+    <div>
+      <a class="xref" href="BFB.Engine.UI.Components.UIComponent.html#BFB_Engine_UI_Components_UIComponent_Focusable">UIComponent.Focusable</a>
+    </div>
+    <div>
+      <a class="xref" href="BFB.Engine.UI.Components.UIComponent.html#BFB_Engine_UI_Components_UIComponent_Focused">UIComponent.Focused</a>
+    </div>
+    <div>
+      <a class="xref" href="BFB.Engine.UI.Components.UIComponent.html#BFB_Engine_UI_Components_UIComponent_Constraints">UIComponent.Constraints</a>
+    </div>
+    <div>
+      <a class="xref" href="BFB.Engine.UI.Components.UIComponent.html#BFB_Engine_UI_Components_UIComponent_EventHandlers">UIComponent.EventHandlers</a>
+    </div>
+    <div>
+      <a class="xref" href="BFB.Engine.UI.Components.UIComponent.html#BFB_Engine_UI_Components_UIComponent_Parent">UIComponent.Parent</a>
+    </div>
+    <div>
+      <a class="xref" href="BFB.Engine.UI.Components.UIComponent.html#BFB_Engine_UI_Components_UIComponent_Children">UIComponent.Children</a>
+    </div>
+    <div>
+      <a class="xref" href="BFB.Engine.UI.Components.UIComponent.html#BFB_Engine_UI_Components_UIComponent_DefaultAttributes">UIComponent.DefaultAttributes</a>
+    </div>
+    <div>
+      <a class="xref" href="BFB.Engine.UI.Components.UIComponent.html#BFB_Engine_UI_Components_UIComponent_RenderAttributes">UIComponent.RenderAttributes</a>
+    </div>
+    <div>
+      <a class="xref" href="BFB.Engine.UI.Components.UIComponent.html#BFB_Engine_UI_Components_UIComponent_AddChild_BFB_Engine_UI_Components_UIComponent_">UIComponent.AddChild(UIComponent)</a>
+    </div>
+    <div>
+      <a class="xref" href="BFB.Engine.UI.Components.UIComponent.html#BFB_Engine_UI_Components_UIComponent_AddConstraint_BFB_Engine_UI_Constraints_UIConstraint_">UIComponent.AddConstraint(UIConstraint)</a>
+    </div>
+    <div>
+      <a class="xref" href="BFB.Engine.UI.Components.UIComponent.html#BFB_Engine_UI_Components_UIComponent_ProcessEvent_BFB_Engine_Event_UIEvent_">UIComponent.ProcessEvent(UIEvent)</a>
+    </div>
+    <div>
+      <a class="xref" href="BFB.Engine.UI.Components.UIComponent.html#BFB_Engine_UI_Components_UIComponent_AddEvent_System_String_Action_BFB_Engine_Event_UIEvent__">UIComponent.AddEvent(String, Action&lt;UIEvent&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="BFB.Engine.UI.Components.UIComponent.html#BFB_Engine_UI_Components_UIComponent_Build_BFB_Engine_UI_UILayer_">UIComponent.Build(UILayer)</a>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="BFB.Engine.UI.Components.html">BFB.Engine.UI.Components</a></h6>
+  <h6><strong>Assembly</strong>: BFB.Engine.dll</h6>
+  <h5 id="BFB_Engine_UI_Components_UITextComponent_1_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class UITextComponent&lt;TModel&gt; : UIComponent</code></pre>
+  </div>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TModel</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="constructors">Constructors
+  </h3>
+  
+  
+  <a id="BFB_Engine_UI_Components_UITextComponent_1__ctor_" data-uid="BFB.Engine.UI.Components.UITextComponent`1.#ctor*"></a>
+  <h4 id="BFB_Engine_UI_Components_UITextComponent_1__ctor__0_Func__0_System_String__" data-uid="BFB.Engine.UI.Components.UITextComponent`1.#ctor(`0,Func{`0,System.String})">UITextComponent(TModel, Func&lt;TModel, String&gt;)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public UITextComponent(TModel model, Func&lt;TModel, string&gt; propertySelector)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TModel</span></td>
+        <td><span class="parametername">model</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">Func</span>&lt;TModel, <span class="xref">System.String</span>&gt;</td>
+        <td><span class="parametername">propertySelector</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="BFB_Engine_UI_Components_UITextComponent_1__ctor_" data-uid="BFB.Engine.UI.Components.UITextComponent`1.#ctor*"></a>
+  <h4 id="BFB_Engine_UI_Components_UITextComponent_1__ctor_System_String_" data-uid="BFB.Engine.UI.Components.UITextComponent`1.#ctor(System.String)">UITextComponent(String)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public UITextComponent(string text)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">text</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  
+  
+  <a id="BFB_Engine_UI_Components_UITextComponent_1_Render_" data-uid="BFB.Engine.UI.Components.UITextComponent`1.Render*"></a>
+  <h4 id="BFB_Engine_UI_Components_UITextComponent_1_Render_SpriteBatch_Texture2D_SpriteFont_" data-uid="BFB.Engine.UI.Components.UITextComponent`1.Render(SpriteBatch,Texture2D,SpriteFont)">Render(SpriteBatch, Texture2D, SpriteFont)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void Render(SpriteBatch graphics, Texture2D texture, SpriteFont font)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">SpriteBatch</span></td>
+        <td><span class="parametername">graphics</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">Texture2D</span></td>
+        <td><span class="parametername">texture</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">SpriteFont</span></td>
+        <td><span class="parametername">font</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="BFB.Engine.UI.Components.UIComponent.html#BFB_Engine_UI_Components_UIComponent_Render_SpriteBatch_Texture2D_SpriteFont_">UIComponent.Render(SpriteBatch, Texture2D, SpriteFont)</a></div>
+  
+  
+  <a id="BFB_Engine_UI_Components_UITextComponent_1_WrapText_" data-uid="BFB.Engine.UI.Components.UITextComponent`1.WrapText*"></a>
+  <h4 id="BFB_Engine_UI_Components_UITextComponent_1_WrapText_SpriteFont_System_String_System_Int32_System_Int32_" data-uid="BFB.Engine.UI.Components.UITextComponent`1.WrapText(SpriteFont,System.String,System.Int32,System.Int32)">WrapText(SpriteFont, String, Int32, Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static string WrapText(SpriteFont font, string text, int maxLineWidth, int maxLineHeight)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">SpriteFont</span></td>
+        <td><span class="parametername">font</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">text</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">maxLineWidth</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">maxLineHeight</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="extensionmethods">Extension Methods</h3>
+  <div>
+      <a class="xref" href="BFB.Engine.UI.Components.UIComponentExtensions.html#BFB_Engine_UI_Components_UIComponentExtensions_Vstack_BFB_Engine_UI_Components_UIComponent_Action_BFB_Engine_UI_Components_UIComponent__">UIComponentExtensions.Vstack(UIComponent, Action&lt;UIComponent&gt;)</a>
+  </div>
+  <div>
+      <a class="xref" href="BFB.Engine.UI.Components.UIComponentExtensions.html#BFB_Engine_UI_Components_UIComponentExtensions_Hstack_BFB_Engine_UI_Components_UIComponent_Action_BFB_Engine_UI_Components_UIComponent__">UIComponentExtensions.Hstack(UIComponent, Action&lt;UIComponent&gt;)</a>
+  </div>
+  <div>
+      <a class="xref" href="BFB.Engine.UI.Components.UIComponentExtensions.html#BFB_Engine_UI_Components_UIComponentExtensions_Zstack_BFB_Engine_UI_Components_UIComponent_Action_BFB_Engine_UI_Components_UIComponent__">UIComponentExtensions.Zstack(UIComponent, Action&lt;UIComponent&gt;)</a>
+  </div>
+  <div>
+      <a class="xref" href="BFB.Engine.UI.Components.UIComponentExtensions.html#BFB_Engine_UI_Components_UIComponentExtensions_Spacer_BFB_Engine_UI_Components_UIComponent_System_Nullable_System_Int32__">UIComponentExtensions.Spacer(UIComponent, Nullable&lt;Int32&gt;)</a>
+  </div>
+  <div>
+      <a class="xref" href="BFB.Engine.UI.Components.UIComponentExtensions.html#BFB_Engine_UI_Components_UIComponentExtensions_TextFor__1_BFB_Engine_UI_Components_UIComponent___0_Func___0_System_String__">UIComponentExtensions.TextFor&lt;TModel&gt;(UIComponent, TModel, Func&lt;TModel, String&gt;)</a>
+  </div>
+  <div>
+      <a class="xref" href="BFB.Engine.UI.Components.UIComponentExtensions.html#BFB_Engine_UI_Components_UIComponentExtensions_Text_BFB_Engine_UI_Components_UIComponent_System_String_">UIComponentExtensions.Text(UIComponent, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="BFB.Engine.UI.Components.UIComponentExtensions.html#BFB_Engine_UI_Components_UIComponentExtensions_TextBoxFor__1_BFB_Engine_UI_Components_UIComponent___0_Expression_Func___0_System_String___Action_BFB_Engine_Event_UIEvent_BFB_Engine_UI_Components_UIComponentAttributes__Action_BFB_Engine_Event_UIEvent_BFB_Engine_UI_Components_UIComponentAttributes__Action_BFB_Engine_Event_UIEvent_BFB_Engine_UI_Components_UIComponentAttributes__">UIComponentExtensions.TextBoxFor&lt;TModel&gt;(UIComponent, TModel, Expression&lt;Func&lt;TModel, String&gt;&gt;, Action&lt;UIEvent, UIComponentAttributes&gt;, Action&lt;UIEvent, UIComponentAttributes&gt;, Action&lt;UIEvent, UIComponentAttributes&gt;)</a>
+  </div>
+  <div>
+      <a class="xref" href="BFB.Engine.UI.Components.UIComponentExtensions.html#BFB_Engine_UI_Components_UIComponentExtensions_Button_BFB_Engine_UI_Components_UIComponent_System_String_Action_BFB_Engine_Event_UIEvent_BFB_Engine_UI_Components_UIComponentAttributes__Action_BFB_Engine_Event_UIEvent_BFB_Engine_UI_Components_UIComponentAttributes__">UIComponentExtensions.Button(UIComponent, String, Action&lt;UIEvent, UIComponentAttributes&gt;, Action&lt;UIEvent, UIComponentAttributes&gt;)</a>
+  </div>
+  <div>
+      <a class="xref" href="BFB.Engine.UI.Components.LambdaExtensions.html#BFB_Engine_UI_Components_LambdaExtensions_SetPropertyValue__2___0_Expression_Func___0___1_____1_">LambdaExtensions.SetPropertyValue&lt;T, TValue&gt;(T, Expression&lt;Func&lt;T, TValue&gt;&gt;, TValue)</a>
+  </div>
+  <div>
+      <a class="xref" href="BFB.Engine.UI.Constraints.UIConstraintExtensions.html#BFB_Engine_UI_Constraints_UIConstraintExtensions_Width_BFB_Engine_UI_Components_UIComponent_System_Int32_">UIConstraintExtensions.Width(UIComponent, Int32)</a>
+  </div>
+  <div>
+      <a class="xref" href="BFB.Engine.UI.Constraints.UIConstraintExtensions.html#BFB_Engine_UI_Constraints_UIConstraintExtensions_Width_BFB_Engine_UI_Components_UIComponent_System_Single_">UIConstraintExtensions.Width(UIComponent, Single)</a>
+  </div>
+  <div>
+      <a class="xref" href="BFB.Engine.UI.Constraints.UIConstraintExtensions.html#BFB_Engine_UI_Constraints_UIConstraintExtensions_Height_BFB_Engine_UI_Components_UIComponent_System_Int32_">UIConstraintExtensions.Height(UIComponent, Int32)</a>
+  </div>
+  <div>
+      <a class="xref" href="BFB.Engine.UI.Constraints.UIConstraintExtensions.html#BFB_Engine_UI_Constraints_UIConstraintExtensions_Height_BFB_Engine_UI_Components_UIComponent_System_Single_">UIConstraintExtensions.Height(UIComponent, Single)</a>
+  </div>
+  <div>
+      <a class="xref" href="BFB.Engine.UI.Constraints.UIConstraintExtensions.html#BFB_Engine_UI_Constraints_UIConstraintExtensions_Top_BFB_Engine_UI_Components_UIComponent_System_Int32_">UIConstraintExtensions.Top(UIComponent, Int32)</a>
+  </div>
+  <div>
+      <a class="xref" href="BFB.Engine.UI.Constraints.UIConstraintExtensions.html#BFB_Engine_UI_Constraints_UIConstraintExtensions_Right_BFB_Engine_UI_Components_UIComponent_System_Int32_">UIConstraintExtensions.Right(UIComponent, Int32)</a>
+  </div>
+  <div>
+      <a class="xref" href="BFB.Engine.UI.Constraints.UIConstraintExtensions.html#BFB_Engine_UI_Constraints_UIConstraintExtensions_Bottom_BFB_Engine_UI_Components_UIComponent_System_Int32_">UIConstraintExtensions.Bottom(UIComponent, Int32)</a>
+  </div>
+  <div>
+      <a class="xref" href="BFB.Engine.UI.Constraints.UIConstraintExtensions.html#BFB_Engine_UI_Constraints_UIConstraintExtensions_Left_BFB_Engine_UI_Components_UIComponent_System_Int32_">UIConstraintExtensions.Left(UIComponent, Int32)</a>
+  </div>
+  <div>
+      <a class="xref" href="BFB.Engine.UI.Constraints.UIConstraintExtensions.html#BFB_Engine_UI_Constraints_UIConstraintExtensions_Image_BFB_Engine_UI_Components_UIComponent_System_String_">UIConstraintExtensions.Image(UIComponent, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="BFB.Engine.UI.Constraints.UIConstraintExtensions.html#BFB_Engine_UI_Constraints_UIConstraintExtensions_Center_BFB_Engine_UI_Components_UIComponent_">UIConstraintExtensions.Center(UIComponent)</a>
+  </div>
+  <div>
+      <a class="xref" href="BFB.Engine.UI.Constraints.UIConstraintExtensions.html#BFB_Engine_UI_Constraints_UIConstraintExtensions_Grow_BFB_Engine_UI_Components_UIComponent_System_Int32_">UIConstraintExtensions.Grow(UIComponent, Int32)</a>
+  </div>
+  <div>
+      <a class="xref" href="BFB.Engine.UI.Constraints.UIConstraintExtensions.html#BFB_Engine_UI_Constraints_UIConstraintExtensions_AspectRatio_BFB_Engine_UI_Components_UIComponent_System_Single_">UIConstraintExtensions.AspectRatio(UIComponent, Single)</a>
+  </div>
+  <div>
+      <a class="xref" href="BFB.Engine.UI.Constraints.UIConstraintExtensions.html#BFB_Engine_UI_Constraints_UIConstraintExtensions_FontSize_BFB_Engine_UI_Components_UIComponent_System_Single_">UIConstraintExtensions.FontSize(UIComponent, Single)</a>
+  </div>
+  <div>
+      <a class="xref" href="BFB.Engine.UI.Constraints.UIConstraintExtensions.html#BFB_Engine_UI_Constraints_UIConstraintExtensions_Background_BFB_Engine_UI_Components_UIComponent_System_Nullable_Color__">UIConstraintExtensions.Background(UIComponent, Nullable&lt;Color&gt;)</a>
+  </div>
+  <div>
+      <a class="xref" href="BFB.Engine.UI.Constraints.UIConstraintExtensions.html#BFB_Engine_UI_Constraints_UIConstraintExtensions_Color_BFB_Engine_UI_Components_UIComponent_System_Nullable_Color__">UIConstraintExtensions.Color(UIComponent, Nullable&lt;Color&gt;)</a>
+  </div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

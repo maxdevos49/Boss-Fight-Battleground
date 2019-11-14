@@ -41,7 +41,7 @@ namespace BFB.Engine.TileMap.Generators
                     }
                     else if (yActual < 17)
                     {
-                        Console.WriteLine(_random.Next(10));
+//                        Console.WriteLine(_random.Next(10));
                         if(_random.Next(10) == 0)
                             chunk.Block[xBlock,yBlock] = (int)WorldTile.Grass;
                         else

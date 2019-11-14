@@ -1,0 +1,448 @@
+### YamlMime:ManagedReference
+items:
+- uid: BFB.Engine.Input.InputManager
+  commentId: T:BFB.Engine.Input.InputManager
+  id: InputManager
+  parent: BFB.Engine.Input
+  children:
+  - BFB.Engine.Input.InputManager.#ctor(BFB.Engine.Event.EventManager{BFB.Engine.Event.InputEvent})
+  - BFB.Engine.Input.InputManager.CheckInputs
+  langs:
+  - csharp
+  - vb
+  name: InputManager
+  nameWithType: InputManager
+  fullName: BFB.Engine.Input.InputManager
+  type: Class
+  source:
+    remote:
+      path: BFB/BFB.Engine/Input/InputManager.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: InputManager
+    path: ../BFB/BFB.Engine/Input/InputManager.cs
+    startLine: 4
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Input
+  syntax:
+    content: 'public class InputManager : object'
+    content.vb: >-
+      Public Class InputManager
+
+          Inherits Object
+  inheritance:
+  - System.Object
+  extensionMethods:
+  - BFB.Engine.Input.InputManager.BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{BFB.Engine.Input.InputManager,{TValue}}},{TValue})
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: BFB.Engine.Input.InputManager.#ctor(BFB.Engine.Event.EventManager{BFB.Engine.Event.InputEvent})
+  commentId: M:BFB.Engine.Input.InputManager.#ctor(BFB.Engine.Event.EventManager{BFB.Engine.Event.InputEvent})
+  id: '#ctor(BFB.Engine.Event.EventManager{BFB.Engine.Event.InputEvent})'
+  parent: BFB.Engine.Input.InputManager
+  langs:
+  - csharp
+  - vb
+  name: InputManager(EventManager<InputEvent>)
+  nameWithType: InputManager.InputManager(EventManager<InputEvent>)
+  fullName: BFB.Engine.Input.InputManager.InputManager(BFB.Engine.Event.EventManager<BFB.Engine.Event.InputEvent>)
+  type: Constructor
+  source:
+    remote:
+      path: BFB/BFB.Engine/Input/InputManager.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: .ctor
+    path: ../BFB/BFB.Engine/Input/InputManager.cs
+    startLine: 10
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Input
+  syntax:
+    content: public InputManager(EventManager<InputEvent> eventManager)
+    parameters:
+    - id: eventManager
+      type: BFB.Engine.Event.EventManager{BFB.Engine.Event.InputEvent}
+    content.vb: Public Sub New(eventManager As EventManager(Of InputEvent))
+  overload: BFB.Engine.Input.InputManager.#ctor*
+  nameWithType.vb: InputManager.InputManager(EventManager(Of InputEvent))
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+  fullName.vb: BFB.Engine.Input.InputManager.InputManager(BFB.Engine.Event.EventManager(Of BFB.Engine.Event.InputEvent))
+  name.vb: InputManager(EventManager(Of InputEvent))
+- uid: BFB.Engine.Input.InputManager.CheckInputs
+  commentId: M:BFB.Engine.Input.InputManager.CheckInputs
+  id: CheckInputs
+  parent: BFB.Engine.Input.InputManager
+  langs:
+  - csharp
+  - vb
+  name: CheckInputs()
+  nameWithType: InputManager.CheckInputs()
+  fullName: BFB.Engine.Input.InputManager.CheckInputs()
+  type: Method
+  source:
+    remote:
+      path: BFB/BFB.Engine/Input/InputManager.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: CheckInputs
+    path: ../BFB/BFB.Engine/Input/InputManager.cs
+    startLine: 17
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Input
+  syntax:
+    content: public void CheckInputs()
+    content.vb: Public Sub CheckInputs
+  overload: BFB.Engine.Input.InputManager.CheckInputs*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+references:
+- uid: BFB.Engine.Input
+  commentId: N:BFB.Engine.Input
+  name: BFB.Engine.Input
+  nameWithType: BFB.Engine.Input
+  fullName: BFB.Engine.Input
+- uid: System.Object
+  commentId: '!:System.Object'
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: BFB.Engine.Input.InputManager.BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{BFB.Engine.Input.InputManager,{TValue}}},{TValue})
+  commentId: M:BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  parent: BFB.Engine.UI.Components.LambdaExtensions
+  definition: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  name: SetPropertyValue<InputManager, TValue>(Expression<Func<InputManager, TValue>>, TValue)
+  nameWithType: LambdaExtensions.SetPropertyValue<InputManager, TValue>(Expression<Func<InputManager, TValue>>, TValue)
+  fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<BFB.Engine.Input.InputManager, TValue>(Expression<Func<BFB.Engine.Input.InputManager, TValue>>, TValue)
+  nameWithType.vb: LambdaExtensions.SetPropertyValue(Of InputManager, TValue)(Expression(Of Func(Of InputManager, TValue)), TValue)
+  fullName.vb: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of BFB.Engine.Input.InputManager, TValue)(Expression(Of Func(Of BFB.Engine.Input.InputManager, TValue)), TValue)
+  name.vb: SetPropertyValue(Of InputManager, TValue)(Expression(Of Func(Of InputManager, TValue)), TValue)
+  spec.csharp:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue<InputManager, TValue>
+    nameWithType: LambdaExtensions.SetPropertyValue<InputManager, TValue>
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<BFB.Engine.Input.InputManager, TValue>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: BFB.Engine.Input.InputManager
+    name: InputManager
+    nameWithType: InputManager
+    fullName: BFB.Engine.Input.InputManager
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue(Of InputManager, TValue)
+    nameWithType: LambdaExtensions.SetPropertyValue(Of InputManager, TValue)
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of BFB.Engine.Input.InputManager, TValue)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: BFB.Engine.Input.InputManager
+    name: InputManager
+    nameWithType: InputManager
+    fullName: BFB.Engine.Input.InputManager
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  commentId: M:BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  isExternal: true
+  name: SetPropertyValue<T, TValue>(T, Expression<Func<T, TValue>>, TValue)
+  nameWithType: LambdaExtensions.SetPropertyValue<T, TValue>(T, Expression<Func<T, TValue>>, TValue)
+  fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<T, TValue>(T, Expression<Func<T, TValue>>, TValue)
+  nameWithType.vb: LambdaExtensions.SetPropertyValue(Of T, TValue)(T, Expression(Of Func(Of T, TValue)), TValue)
+  fullName.vb: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of T, TValue)(T, Expression(Of Func(Of T, TValue)), TValue)
+  name.vb: SetPropertyValue(Of T, TValue)(T, Expression(Of Func(Of T, TValue)), TValue)
+  spec.csharp:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue<T, TValue>
+    nameWithType: LambdaExtensions.SetPropertyValue<T, TValue>
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<T, TValue>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue(Of T, TValue)
+    nameWithType: LambdaExtensions.SetPropertyValue(Of T, TValue)
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of T, TValue)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Components.LambdaExtensions
+  commentId: T:BFB.Engine.UI.Components.LambdaExtensions
+  parent: BFB.Engine.UI.Components
+  name: LambdaExtensions
+  nameWithType: LambdaExtensions
+  fullName: BFB.Engine.UI.Components.LambdaExtensions
+- uid: BFB.Engine.UI.Components
+  commentId: N:BFB.Engine.UI.Components
+  name: BFB.Engine.UI.Components
+  nameWithType: BFB.Engine.UI.Components
+  fullName: BFB.Engine.UI.Components
+- uid: BFB.Engine.Input.InputManager.#ctor*
+  commentId: Overload:BFB.Engine.Input.InputManager.#ctor
+  name: InputManager
+  nameWithType: InputManager.InputManager
+  fullName: BFB.Engine.Input.InputManager.InputManager
+- uid: BFB.Engine.Event.EventManager{BFB.Engine.Event.InputEvent}
+  commentId: T:BFB.Engine.Event.EventManager{BFB.Engine.Event.InputEvent}
+  parent: BFB.Engine.Event
+  definition: BFB.Engine.Event.EventManager`1
+  name: EventManager<InputEvent>
+  nameWithType: EventManager<InputEvent>
+  fullName: BFB.Engine.Event.EventManager<BFB.Engine.Event.InputEvent>
+  nameWithType.vb: EventManager(Of InputEvent)
+  fullName.vb: BFB.Engine.Event.EventManager(Of BFB.Engine.Event.InputEvent)
+  name.vb: EventManager(Of InputEvent)
+  spec.csharp:
+  - uid: BFB.Engine.Event.EventManager`1
+    name: EventManager
+    nameWithType: EventManager
+    fullName: BFB.Engine.Event.EventManager
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: BFB.Engine.Event.InputEvent
+    name: InputEvent
+    nameWithType: InputEvent
+    fullName: BFB.Engine.Event.InputEvent
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: BFB.Engine.Event.EventManager`1
+    name: EventManager
+    nameWithType: EventManager
+    fullName: BFB.Engine.Event.EventManager
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: BFB.Engine.Event.InputEvent
+    name: InputEvent
+    nameWithType: InputEvent
+    fullName: BFB.Engine.Event.InputEvent
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.Event.EventManager`1
+  commentId: T:BFB.Engine.Event.EventManager`1
+  name: EventManager<TEvent>
+  nameWithType: EventManager<TEvent>
+  fullName: BFB.Engine.Event.EventManager<TEvent>
+  nameWithType.vb: EventManager(Of TEvent)
+  fullName.vb: BFB.Engine.Event.EventManager(Of TEvent)
+  name.vb: EventManager(Of TEvent)
+  spec.csharp:
+  - uid: BFB.Engine.Event.EventManager`1
+    name: EventManager
+    nameWithType: EventManager
+    fullName: BFB.Engine.Event.EventManager
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: TEvent
+    nameWithType: TEvent
+    fullName: TEvent
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: BFB.Engine.Event.EventManager`1
+    name: EventManager
+    nameWithType: EventManager
+    fullName: BFB.Engine.Event.EventManager
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: TEvent
+    nameWithType: TEvent
+    fullName: TEvent
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.Event
+  commentId: N:BFB.Engine.Event
+  name: BFB.Engine.Event
+  nameWithType: BFB.Engine.Event
+  fullName: BFB.Engine.Event
+- uid: BFB.Engine.Input.InputManager.CheckInputs*
+  commentId: Overload:BFB.Engine.Input.InputManager.CheckInputs
+  name: CheckInputs
+  nameWithType: InputManager.CheckInputs
+  fullName: BFB.Engine.Input.InputManager.CheckInputs

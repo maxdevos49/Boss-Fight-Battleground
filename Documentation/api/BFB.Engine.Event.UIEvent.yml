@@ -1,0 +1,607 @@
+### YamlMime:ManagedReference
+items:
+- uid: BFB.Engine.Event.UIEvent
+  commentId: T:BFB.Engine.Event.UIEvent
+  id: UIEvent
+  parent: BFB.Engine.Event
+  children:
+  - BFB.Engine.Event.UIEvent.#ctor(BFB.Engine.Event.InputEvent)
+  - BFB.Engine.Event.UIEvent.Component
+  - BFB.Engine.Event.UIEvent.ConvertInputEventToUIEvent(BFB.Engine.Event.InputEvent)
+  langs:
+  - csharp
+  - vb
+  name: UIEvent
+  nameWithType: UIEvent
+  fullName: BFB.Engine.Event.UIEvent
+  type: Class
+  source:
+    remote:
+      path: BFB/BFB.Engine/Event/UIEvent.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: UIEvent
+    path: ../BFB/BFB.Engine/Event/UIEvent.cs
+    startLine: 6
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Event
+  syntax:
+    content: 'public class UIEvent : InputEvent'
+    content.vb: >-
+      Public Class UIEvent
+
+          Inherits InputEvent
+  inheritance:
+  - System.Object
+  - BFB.Engine.Event.Event
+  - BFB.Engine.Event.InputEvent
+  inheritedMembers:
+  - BFB.Engine.Event.InputEvent.Mouse
+  - BFB.Engine.Event.InputEvent.Keyboard
+  - BFB.Engine.Event.Event.EventId
+  - BFB.Engine.Event.Event.EventKey
+  - BFB.Engine.Event.Event.Propagate
+  - BFB.Engine.Event.Event.StopPropagation
+  extensionMethods:
+  - BFB.Engine.Event.UIEvent.BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{BFB.Engine.Event.UIEvent,{TValue}}},{TValue})
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: BFB.Engine.Event.UIEvent.Component
+  commentId: P:BFB.Engine.Event.UIEvent.Component
+  id: Component
+  parent: BFB.Engine.Event.UIEvent
+  langs:
+  - csharp
+  - vb
+  name: Component
+  nameWithType: UIEvent.Component
+  fullName: BFB.Engine.Event.UIEvent.Component
+  type: Property
+  source:
+    remote:
+      path: BFB/BFB.Engine/Event/UIEvent.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: Component
+    path: ../BFB/BFB.Engine/Event/UIEvent.cs
+    startLine: 11
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Event
+  summary: "\nThe UI componenet that this event will affect\n"
+  example: []
+  syntax:
+    content: public UIComponent Component { get; set; }
+    parameters: []
+    return:
+      type: BFB.Engine.UI.Components.UIComponent
+    content.vb: Public Property Component As UIComponent
+  overload: BFB.Engine.Event.UIEvent.Component*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.Event.UIEvent.#ctor(BFB.Engine.Event.InputEvent)
+  commentId: M:BFB.Engine.Event.UIEvent.#ctor(BFB.Engine.Event.InputEvent)
+  id: '#ctor(BFB.Engine.Event.InputEvent)'
+  parent: BFB.Engine.Event.UIEvent
+  langs:
+  - csharp
+  - vb
+  name: UIEvent(InputEvent)
+  nameWithType: UIEvent.UIEvent(InputEvent)
+  fullName: BFB.Engine.Event.UIEvent.UIEvent(BFB.Engine.Event.InputEvent)
+  type: Constructor
+  source:
+    remote:
+      path: BFB/BFB.Engine/Event/UIEvent.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: .ctor
+    path: ../BFB/BFB.Engine/Event/UIEvent.cs
+    startLine: 17
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Event
+  summary: "\nCreates a new UIEvent\n"
+  example: []
+  syntax:
+    content: public UIEvent(InputEvent inputEvent)
+    parameters:
+    - id: inputEvent
+      type: BFB.Engine.Event.InputEvent
+      description: The user input that will control this event
+    content.vb: Public Sub New(inputEvent As InputEvent)
+  overload: BFB.Engine.Event.UIEvent.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.Event.UIEvent.ConvertInputEventToUIEvent(BFB.Engine.Event.InputEvent)
+  commentId: M:BFB.Engine.Event.UIEvent.ConvertInputEventToUIEvent(BFB.Engine.Event.InputEvent)
+  id: ConvertInputEventToUIEvent(BFB.Engine.Event.InputEvent)
+  parent: BFB.Engine.Event.UIEvent
+  langs:
+  - csharp
+  - vb
+  name: ConvertInputEventToUIEvent(InputEvent)
+  nameWithType: UIEvent.ConvertInputEventToUIEvent(InputEvent)
+  fullName: BFB.Engine.Event.UIEvent.ConvertInputEventToUIEvent(BFB.Engine.Event.InputEvent)
+  type: Method
+  source:
+    remote:
+      path: BFB/BFB.Engine/Event/UIEvent.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: ConvertInputEventToUIEvent
+    path: ../BFB/BFB.Engine/Event/UIEvent.cs
+    startLine: 29
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Event
+  summary: "\nTakes the InputEvent and changes it into a UIEvent and adds it to the List of UIEvents\n"
+  example: []
+  syntax:
+    content: public static List<UIEvent> ConvertInputEventToUIEvent(InputEvent inputEvent)
+    parameters:
+    - id: inputEvent
+      type: BFB.Engine.Event.InputEvent
+      description: Event to be converted
+    return:
+      type: List{BFB.Engine.Event.UIEvent}
+      description: An updated version of the list of UIEvents
+    content.vb: Public Shared Function ConvertInputEventToUIEvent(inputEvent As InputEvent) As List(Of UIEvent)
+  overload: BFB.Engine.Event.UIEvent.ConvertInputEventToUIEvent*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+references:
+- uid: BFB.Engine.Event
+  commentId: N:BFB.Engine.Event
+  name: BFB.Engine.Event
+  nameWithType: BFB.Engine.Event
+  fullName: BFB.Engine.Event
+- uid: System.Object
+  commentId: '!:System.Object'
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: BFB.Engine.Event.Event
+  commentId: T:BFB.Engine.Event.Event
+  parent: BFB.Engine.Event
+  name: Event
+  nameWithType: Event
+  fullName: BFB.Engine.Event.Event
+- uid: BFB.Engine.Event.InputEvent
+  commentId: T:BFB.Engine.Event.InputEvent
+  parent: BFB.Engine.Event
+  name: InputEvent
+  nameWithType: InputEvent
+  fullName: BFB.Engine.Event.InputEvent
+- uid: BFB.Engine.Event.InputEvent.Mouse
+  commentId: P:BFB.Engine.Event.InputEvent.Mouse
+  parent: BFB.Engine.Event.InputEvent
+  name: Mouse
+  nameWithType: InputEvent.Mouse
+  fullName: BFB.Engine.Event.InputEvent.Mouse
+- uid: BFB.Engine.Event.InputEvent.Keyboard
+  commentId: P:BFB.Engine.Event.InputEvent.Keyboard
+  parent: BFB.Engine.Event.InputEvent
+  name: Keyboard
+  nameWithType: InputEvent.Keyboard
+  fullName: BFB.Engine.Event.InputEvent.Keyboard
+- uid: BFB.Engine.Event.Event.EventId
+  commentId: P:BFB.Engine.Event.Event.EventId
+  parent: BFB.Engine.Event.Event
+  name: EventId
+  nameWithType: Event.EventId
+  fullName: BFB.Engine.Event.Event.EventId
+- uid: BFB.Engine.Event.Event.EventKey
+  commentId: P:BFB.Engine.Event.Event.EventKey
+  parent: BFB.Engine.Event.Event
+  name: EventKey
+  nameWithType: Event.EventKey
+  fullName: BFB.Engine.Event.Event.EventKey
+- uid: BFB.Engine.Event.Event.Propagate
+  commentId: M:BFB.Engine.Event.Event.Propagate
+  parent: BFB.Engine.Event.Event
+  name: Propagate()
+  nameWithType: Event.Propagate()
+  fullName: BFB.Engine.Event.Event.Propagate()
+  spec.csharp:
+  - uid: BFB.Engine.Event.Event.Propagate
+    name: Propagate
+    nameWithType: Event.Propagate
+    fullName: BFB.Engine.Event.Event.Propagate
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.Event.Event.Propagate
+    name: Propagate
+    nameWithType: Event.Propagate
+    fullName: BFB.Engine.Event.Event.Propagate
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.Event.Event.StopPropagation
+  commentId: M:BFB.Engine.Event.Event.StopPropagation
+  parent: BFB.Engine.Event.Event
+  name: StopPropagation()
+  nameWithType: Event.StopPropagation()
+  fullName: BFB.Engine.Event.Event.StopPropagation()
+  spec.csharp:
+  - uid: BFB.Engine.Event.Event.StopPropagation
+    name: StopPropagation
+    nameWithType: Event.StopPropagation
+    fullName: BFB.Engine.Event.Event.StopPropagation
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.Event.Event.StopPropagation
+    name: StopPropagation
+    nameWithType: Event.StopPropagation
+    fullName: BFB.Engine.Event.Event.StopPropagation
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.Event.UIEvent.BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{BFB.Engine.Event.UIEvent,{TValue}}},{TValue})
+  commentId: M:BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  parent: BFB.Engine.UI.Components.LambdaExtensions
+  definition: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  name: SetPropertyValue<UIEvent, TValue>(Expression<Func<UIEvent, TValue>>, TValue)
+  nameWithType: LambdaExtensions.SetPropertyValue<UIEvent, TValue>(Expression<Func<UIEvent, TValue>>, TValue)
+  fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<BFB.Engine.Event.UIEvent, TValue>(Expression<Func<BFB.Engine.Event.UIEvent, TValue>>, TValue)
+  nameWithType.vb: LambdaExtensions.SetPropertyValue(Of UIEvent, TValue)(Expression(Of Func(Of UIEvent, TValue)), TValue)
+  fullName.vb: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of BFB.Engine.Event.UIEvent, TValue)(Expression(Of Func(Of BFB.Engine.Event.UIEvent, TValue)), TValue)
+  name.vb: SetPropertyValue(Of UIEvent, TValue)(Expression(Of Func(Of UIEvent, TValue)), TValue)
+  spec.csharp:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue<UIEvent, TValue>
+    nameWithType: LambdaExtensions.SetPropertyValue<UIEvent, TValue>
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<BFB.Engine.Event.UIEvent, TValue>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: BFB.Engine.Event.UIEvent
+    name: UIEvent
+    nameWithType: UIEvent
+    fullName: BFB.Engine.Event.UIEvent
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue(Of UIEvent, TValue)
+    nameWithType: LambdaExtensions.SetPropertyValue(Of UIEvent, TValue)
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of BFB.Engine.Event.UIEvent, TValue)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: BFB.Engine.Event.UIEvent
+    name: UIEvent
+    nameWithType: UIEvent
+    fullName: BFB.Engine.Event.UIEvent
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  commentId: M:BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  isExternal: true
+  name: SetPropertyValue<T, TValue>(T, Expression<Func<T, TValue>>, TValue)
+  nameWithType: LambdaExtensions.SetPropertyValue<T, TValue>(T, Expression<Func<T, TValue>>, TValue)
+  fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<T, TValue>(T, Expression<Func<T, TValue>>, TValue)
+  nameWithType.vb: LambdaExtensions.SetPropertyValue(Of T, TValue)(T, Expression(Of Func(Of T, TValue)), TValue)
+  fullName.vb: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of T, TValue)(T, Expression(Of Func(Of T, TValue)), TValue)
+  name.vb: SetPropertyValue(Of T, TValue)(T, Expression(Of Func(Of T, TValue)), TValue)
+  spec.csharp:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue<T, TValue>
+    nameWithType: LambdaExtensions.SetPropertyValue<T, TValue>
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<T, TValue>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue(Of T, TValue)
+    nameWithType: LambdaExtensions.SetPropertyValue(Of T, TValue)
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of T, TValue)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Components.LambdaExtensions
+  commentId: T:BFB.Engine.UI.Components.LambdaExtensions
+  parent: BFB.Engine.UI.Components
+  name: LambdaExtensions
+  nameWithType: LambdaExtensions
+  fullName: BFB.Engine.UI.Components.LambdaExtensions
+- uid: BFB.Engine.UI.Components
+  commentId: N:BFB.Engine.UI.Components
+  name: BFB.Engine.UI.Components
+  nameWithType: BFB.Engine.UI.Components
+  fullName: BFB.Engine.UI.Components
+- uid: BFB.Engine.Event.UIEvent.Component*
+  commentId: Overload:BFB.Engine.Event.UIEvent.Component
+  name: Component
+  nameWithType: UIEvent.Component
+  fullName: BFB.Engine.Event.UIEvent.Component
+- uid: BFB.Engine.UI.Components.UIComponent
+  commentId: T:BFB.Engine.UI.Components.UIComponent
+  parent: BFB.Engine.UI.Components
+  name: UIComponent
+  nameWithType: UIComponent
+  fullName: BFB.Engine.UI.Components.UIComponent
+- uid: BFB.Engine.Event.UIEvent.#ctor*
+  commentId: Overload:BFB.Engine.Event.UIEvent.#ctor
+  name: UIEvent
+  nameWithType: UIEvent.UIEvent
+  fullName: BFB.Engine.Event.UIEvent.UIEvent
+- uid: BFB.Engine.Event.UIEvent.ConvertInputEventToUIEvent*
+  commentId: Overload:BFB.Engine.Event.UIEvent.ConvertInputEventToUIEvent
+  name: ConvertInputEventToUIEvent
+  nameWithType: UIEvent.ConvertInputEventToUIEvent
+  fullName: BFB.Engine.Event.UIEvent.ConvertInputEventToUIEvent
+- uid: List{BFB.Engine.Event.UIEvent}
+  commentId: '!:List{BFB.Engine.Event.UIEvent}'
+  definition: List`1
+  name: List<UIEvent>
+  nameWithType: List<UIEvent>
+  fullName: List<BFB.Engine.Event.UIEvent>
+  nameWithType.vb: List(Of UIEvent)
+  fullName.vb: List(Of BFB.Engine.Event.UIEvent)
+  name.vb: List(Of UIEvent)
+  spec.csharp:
+  - uid: List`1
+    name: List
+    nameWithType: List
+    fullName: List
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: BFB.Engine.Event.UIEvent
+    name: UIEvent
+    nameWithType: UIEvent
+    fullName: BFB.Engine.Event.UIEvent
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: List`1
+    name: List
+    nameWithType: List
+    fullName: List
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: BFB.Engine.Event.UIEvent
+    name: UIEvent
+    nameWithType: UIEvent
+    fullName: BFB.Engine.Event.UIEvent
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: List`1
+  isExternal: true
+  name: List<>
+  nameWithType: List<>
+  fullName: List<>
+  nameWithType.vb: List(Of )
+  fullName.vb: List(Of )
+  name.vb: List(Of )
+  spec.csharp:
+  - uid: List`1
+    name: List
+    nameWithType: List
+    fullName: List
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: List`1
+    name: List
+    nameWithType: List
+    fullName: List
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: )
+    nameWithType: )
+    fullName: )

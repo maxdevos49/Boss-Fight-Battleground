@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using System.Drawing;
 using BFB.Engine.Math;
 using BFB.Engine.Simulation.InputComponents;
 using BFB.Engine.Simulation.PhysicsComponents;
@@ -11,13 +13,10 @@ namespace BFB.Engine.Entity
     /// </summary>
     public class SimulationEntity : Entity
     {
-        
+
         #region Properties
-        
-        /// <summary>
-        /// Indicates the chunk that the entity is currently in
-        /// </summary>
-        public string ChunkKey { get; set; }
+
+        private int _lastTick;
         
         /// <summary>
         /// Whether this is a player entity or not
@@ -28,24 +27,30 @@ namespace BFB.Engine.Entity
         /// Vector describing a position an entity is attempting to move to 
         /// </summary>
         public BfbVector DesiredVector { get; }
-        
-        /// <summary>
-        /// Indicates the chunks that the client can see. Only used if IsPlayer equals true
-        /// </summary>
+
+        public BfbVector OldPosition { get; private set; }
+
         public List<string> VisibleChunks { get; }
-        
-        /// <summary>
-        /// Used to determine if the chunk needs to be sent to the client
-        /// </summary>
+
         public Dictionary<string, int> ChunkVersions { get; }
+
+        public Rectangle Bounds => new Rectangle((int)Position.X, (int)Position.Y, (int)Dimensions.X, (int)Dimensions.Y);
         
+        public int OldBottom => (int)(OldPosition.Y + Height);
+        public int OldLeft => (int)(OldPosition.X);
+        public int OldRight => (int)(OldPosition.X + Width);
+        public int OldTop => (int)(OldPosition.Y);
+
         #endregion
-        
+
         #region Components
-        
+
         private readonly IInputComponent _input;
         private readonly IPhysicsComponent _physics;
+<<<<<<< HEAD
         private readonly IPhysicsComponent _combat;
+=======
+>>>>>>> 984504c9cdf14f98a1f2893d50ce4840e0137755
 
         #endregion
 
@@ -62,13 +67,20 @@ namespace BFB.Engine.Entity
             //Components
             _input = components.Input;
             _physics = components.Physics;
+<<<<<<< HEAD
             _combat = components.Combat;
             
+=======
+
+>>>>>>> 984504c9cdf14f98a1f2893d50ce4840e0137755
             DesiredVector = new BfbVector();
+            OldPosition = new BfbVector();
             VisibleChunks = new List<string>();
             ChunkVersions = new Dictionary<string, int>();
+
+            _lastTick = -1;
         }
-        
+
         #endregion
 
         #region Update
@@ -79,48 +91,69 @@ namespace BFB.Engine.Entity
         /// <param name="simulation"></param>
         public void Tick(Simulation.Simulation simulation)
         {
-            
+            //Only tick entity once per frame
+            if (simulation.Tick == _lastTick)
+                return;
+
+            //Record last tick
+            _lastTick = simulation.Tick;
+
+            //Record current position
+            OldPosition = new BfbVector(Position.X, Position.Y);
+
             //Component Processing
             _input?.Update(this, simulation);
             _physics?.Update(this, simulation);
+<<<<<<< HEAD
             _combat?.Update(this, simulation);
             
+=======
+
+>>>>>>> 984504c9cdf14f98a1f2893d50ce4840e0137755
             //Place entity in correct chunk if in new position
-            string chunkKey = simulation.WorldManager.ChunkFromPixelLocation((int)Position.X, (int)Position.Y)?.ChunkKey; //If this is null then we are outside of map... Bad
-            
+            string chunkKey =
+                simulation.World.ChunkFromPixelLocation((int) Position.X, (int) Position.Y)
+                    ?.ChunkKey; //If this is null then we are outside of map... Bad
+
             if (chunkKey != ChunkKey && chunkKey != null)
             {
-                simulation.WorldManager.MoveEntity(EntityId, simulation.WorldManager.ChunkIndex[ChunkKey], simulation.WorldManager.ChunkIndex[chunkKey]);
+                simulation.World.MoveEntity(EntityId, simulation.World.ChunkIndex[ChunkKey],
+                    simulation.World.ChunkIndex[chunkKey]);
                 ChunkKey = chunkKey;
             }
 
             if (!IsPlayer || ChunkKey == null) return;
-            
+
             //Clear visible chunks so we dont have to figure out which chunks are no longer being seen
             VisibleChunks.Clear();
-            Chunk rootChunk = simulation.WorldManager.ChunkIndex[ChunkKey];
-            
+            Chunk rootChunk = simulation.World.ChunkIndex[ChunkKey];
+
             //find the chunks that the player is currently simulating
-            for (int y = rootChunk.ChunkY - simulation.SimulationDistance; y < rootChunk.ChunkY + simulation.SimulationDistance; y++)
+            for (int y = rootChunk.ChunkY - simulation.SimulationDistance;
+                y < rootChunk.ChunkY + simulation.SimulationDistance;
+                y++)
             {
-                for (int x = rootChunk.ChunkX - simulation.SimulationDistance; x < rootChunk.ChunkX + simulation.SimulationDistance; x++)
+                for (int x = rootChunk.ChunkX - simulation.SimulationDistance;
+                    x < rootChunk.ChunkX + simulation.SimulationDistance;
+                    x++)
                 {
                     //Get a chunk if it exist at the location
                     Chunk visibleChunk;
-                    if ((visibleChunk = simulation.WorldManager.ChunkFromChunkLocation(x, y)) == null) 
+                    if ((visibleChunk = simulation.World.ChunkFromChunkLocation(x, y)) == null)
                         continue;
-                    
+
                     //Add chunk to visible chunks
                     VisibleChunks.Add(visibleChunk.ChunkKey);
-                    
+
                     //update chunk history if new with a negative number so a full chunk update will be forced
                     if (!ChunkVersions.ContainsKey(visibleChunk.ChunkKey))
                         ChunkVersions[visibleChunk.ChunkKey] = -1;
                 }
             }
         }
-        
+
         #endregion
+<<<<<<< HEAD
         
     }
     
@@ -141,8 +174,8 @@ namespace BFB.Engine.Entity
         public IPhysicsComponent Physics { get; set; }
 
         public IPhysicsComponent Combat { get; set; }
+=======
+>>>>>>> 984504c9cdf14f98a1f2893d50ce4840e0137755
     }
-    
-    #endregion
-    
+
 }

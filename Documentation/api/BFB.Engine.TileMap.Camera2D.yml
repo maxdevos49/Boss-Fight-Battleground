@@ -1,0 +1,814 @@
+### YamlMime:ManagedReference
+items:
+- uid: BFB.Engine.TileMap.Camera2D
+  commentId: T:BFB.Engine.TileMap.Camera2D
+  id: Camera2D
+  parent: BFB.Engine.TileMap
+  children:
+  - BFB.Engine.TileMap.Camera2D.#ctor(BFB.Engine.TileMap.WorldManager,GraphicsDevice)
+  - BFB.Engine.TileMap.Camera2D.Focus
+  - BFB.Engine.TileMap.Camera2D.IsInView(Vector2,Texture2D)
+  - BFB.Engine.TileMap.Camera2D.MoveSpeed
+  - BFB.Engine.TileMap.Camera2D.Origin
+  - BFB.Engine.TileMap.Camera2D.Position
+  - BFB.Engine.TileMap.Camera2D.Rotation
+  - BFB.Engine.TileMap.Camera2D.ScreenCenter
+  - BFB.Engine.TileMap.Camera2D.Transform
+  - BFB.Engine.TileMap.Camera2D.Update(GameTime)
+  - BFB.Engine.TileMap.Camera2D.Zoom
+  langs:
+  - csharp
+  - vb
+  name: Camera2D
+  nameWithType: Camera2D
+  fullName: BFB.Engine.TileMap.Camera2D
+  type: Class
+  source:
+    remote:
+      path: BFB/BFB.Engine/TileMap/Camera.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: Camera2D
+    path: ../BFB/BFB.Engine/TileMap/Camera.cs
+    startLine: 9
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.TileMap
+  summary: "\nUsed to give a camera on an object.\n"
+  example: []
+  syntax:
+    content: 'public class Camera2D : object'
+    content.vb: >-
+      Public Class Camera2D
+
+          Inherits Object
+  inheritance:
+  - System.Object
+  extensionMethods:
+  - BFB.Engine.TileMap.Camera2D.BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{BFB.Engine.TileMap.Camera2D,{TValue}}},{TValue})
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: BFB.Engine.TileMap.Camera2D.Position
+  commentId: P:BFB.Engine.TileMap.Camera2D.Position
+  id: Position
+  parent: BFB.Engine.TileMap.Camera2D
+  langs:
+  - csharp
+  - vb
+  name: Position
+  nameWithType: Camera2D.Position
+  fullName: BFB.Engine.TileMap.Camera2D.Position
+  type: Property
+  source:
+    remote:
+      path: BFB/BFB.Engine/TileMap/Camera.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: Position
+    path: ../BFB/BFB.Engine/TileMap/Camera.cs
+    startLine: 23
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.TileMap
+  summary: "\nThe vector of the current position.\n"
+  example: []
+  syntax:
+    content: public Vector2 Position { get; set; }
+    parameters: []
+    return:
+      type: Vector2
+    content.vb: Public Property Position As Vector2
+  overload: BFB.Engine.TileMap.Camera2D.Position*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.TileMap.Camera2D.Focus
+  commentId: P:BFB.Engine.TileMap.Camera2D.Focus
+  id: Focus
+  parent: BFB.Engine.TileMap.Camera2D
+  langs:
+  - csharp
+  - vb
+  name: Focus
+  nameWithType: Camera2D.Focus
+  fullName: BFB.Engine.TileMap.Camera2D.Focus
+  type: Property
+  source:
+    remote:
+      path: BFB/BFB.Engine/TileMap/Camera.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: Focus
+    path: ../BFB/BFB.Engine/TileMap/Camera.cs
+    startLine: 32
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.TileMap
+  summary: "\nThe focus point.\n"
+  example: []
+  syntax:
+    content: public Vector2 Focus { get; set; }
+    parameters: []
+    return:
+      type: Vector2
+    content.vb: Public Property Focus As Vector2
+  overload: BFB.Engine.TileMap.Camera2D.Focus*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.TileMap.Camera2D.Rotation
+  commentId: P:BFB.Engine.TileMap.Camera2D.Rotation
+  id: Rotation
+  parent: BFB.Engine.TileMap.Camera2D
+  langs:
+  - csharp
+  - vb
+  name: Rotation
+  nameWithType: Camera2D.Rotation
+  fullName: BFB.Engine.TileMap.Camera2D.Rotation
+  type: Property
+  source:
+    remote:
+      path: BFB/BFB.Engine/TileMap/Camera.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: Rotation
+    path: ../BFB/BFB.Engine/TileMap/Camera.cs
+    startLine: 37
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.TileMap
+  summary: "\nThe rotation value.\n"
+  example: []
+  syntax:
+    content: public float Rotation { get; set; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: Public Property Rotation As Single
+  overload: BFB.Engine.TileMap.Camera2D.Rotation*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.TileMap.Camera2D.Origin
+  commentId: P:BFB.Engine.TileMap.Camera2D.Origin
+  id: Origin
+  parent: BFB.Engine.TileMap.Camera2D
+  langs:
+  - csharp
+  - vb
+  name: Origin
+  nameWithType: Camera2D.Origin
+  fullName: BFB.Engine.TileMap.Camera2D.Origin
+  type: Property
+  source:
+    remote:
+      path: BFB/BFB.Engine/TileMap/Camera.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: Origin
+    path: ../BFB/BFB.Engine/TileMap/Camera.cs
+    startLine: 41
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.TileMap
+  summary: "\nThe origin location.\n"
+  example: []
+  syntax:
+    content: public Vector2 Origin { get; set; }
+    parameters: []
+    return:
+      type: Vector2
+    content.vb: Public Property Origin As Vector2
+  overload: BFB.Engine.TileMap.Camera2D.Origin*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.TileMap.Camera2D.Zoom
+  commentId: P:BFB.Engine.TileMap.Camera2D.Zoom
+  id: Zoom
+  parent: BFB.Engine.TileMap.Camera2D
+  langs:
+  - csharp
+  - vb
+  name: Zoom
+  nameWithType: Camera2D.Zoom
+  fullName: BFB.Engine.TileMap.Camera2D.Zoom
+  type: Property
+  source:
+    remote:
+      path: BFB/BFB.Engine/TileMap/Camera.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: Zoom
+    path: ../BFB/BFB.Engine/TileMap/Camera.cs
+    startLine: 45
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.TileMap
+  summary: "\nThe zoom value.\n"
+  example: []
+  syntax:
+    content: public float Zoom { get; set; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: Public Property Zoom As Single
+  overload: BFB.Engine.TileMap.Camera2D.Zoom*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.TileMap.Camera2D.ScreenCenter
+  commentId: P:BFB.Engine.TileMap.Camera2D.ScreenCenter
+  id: ScreenCenter
+  parent: BFB.Engine.TileMap.Camera2D
+  langs:
+  - csharp
+  - vb
+  name: ScreenCenter
+  nameWithType: Camera2D.ScreenCenter
+  fullName: BFB.Engine.TileMap.Camera2D.ScreenCenter
+  type: Property
+  source:
+    remote:
+      path: BFB/BFB.Engine/TileMap/Camera.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: ScreenCenter
+    path: ../BFB/BFB.Engine/TileMap/Camera.cs
+    startLine: 49
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.TileMap
+  summary: "\nThe center of the screen location.\n"
+  example: []
+  syntax:
+    content: public Vector2 ScreenCenter { get; protected set; }
+    parameters: []
+    return:
+      type: Vector2
+    content.vb: Public Property ScreenCenter As Vector2
+  overload: BFB.Engine.TileMap.Camera2D.ScreenCenter*
+  modifiers.csharp:
+  - public
+  - get
+  - protected set
+  modifiers.vb:
+  - Public
+  - Get
+  - Protected Set
+- uid: BFB.Engine.TileMap.Camera2D.Transform
+  commentId: P:BFB.Engine.TileMap.Camera2D.Transform
+  id: Transform
+  parent: BFB.Engine.TileMap.Camera2D
+  langs:
+  - csharp
+  - vb
+  name: Transform
+  nameWithType: Camera2D.Transform
+  fullName: BFB.Engine.TileMap.Camera2D.Transform
+  type: Property
+  source:
+    remote:
+      path: BFB/BFB.Engine/TileMap/Camera.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: Transform
+    path: ../BFB/BFB.Engine/TileMap/Camera.cs
+    startLine: 53
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.TileMap
+  summary: "\nThe matrix to transform the camera.\n"
+  example: []
+  syntax:
+    content: public Matrix Transform { get; set; }
+    parameters: []
+    return:
+      type: Matrix
+    content.vb: Public Property Transform As Matrix
+  overload: BFB.Engine.TileMap.Camera2D.Transform*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.TileMap.Camera2D.MoveSpeed
+  commentId: P:BFB.Engine.TileMap.Camera2D.MoveSpeed
+  id: MoveSpeed
+  parent: BFB.Engine.TileMap.Camera2D
+  langs:
+  - csharp
+  - vb
+  name: MoveSpeed
+  nameWithType: Camera2D.MoveSpeed
+  fullName: BFB.Engine.TileMap.Camera2D.MoveSpeed
+  type: Property
+  source:
+    remote:
+      path: BFB/BFB.Engine/TileMap/Camera.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: MoveSpeed
+    path: ../BFB/BFB.Engine/TileMap/Camera.cs
+    startLine: 57
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.TileMap
+  summary: "\nThe speed value of the movement.\n"
+  example: []
+  syntax:
+    content: public float MoveSpeed { get; set; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: Public Property MoveSpeed As Single
+  overload: BFB.Engine.TileMap.Camera2D.MoveSpeed*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.TileMap.Camera2D.#ctor(BFB.Engine.TileMap.WorldManager,GraphicsDevice)
+  commentId: M:BFB.Engine.TileMap.Camera2D.#ctor(BFB.Engine.TileMap.WorldManager,GraphicsDevice)
+  id: '#ctor(BFB.Engine.TileMap.WorldManager,GraphicsDevice)'
+  parent: BFB.Engine.TileMap.Camera2D
+  langs:
+  - csharp
+  - vb
+  name: Camera2D(WorldManager, GraphicsDevice)
+  nameWithType: Camera2D.Camera2D(WorldManager, GraphicsDevice)
+  fullName: BFB.Engine.TileMap.Camera2D.Camera2D(BFB.Engine.TileMap.WorldManager, GraphicsDevice)
+  type: Constructor
+  source:
+    remote:
+      path: BFB/BFB.Engine/TileMap/Camera.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: .ctor
+    path: ../BFB/BFB.Engine/TileMap/Camera.cs
+    startLine: 64
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.TileMap
+  summary: "\nThe camera configuration of the camera.\n"
+  example: []
+  syntax:
+    content: public Camera2D(WorldManager worldManager, GraphicsDevice graphicsDevice)
+    parameters:
+    - id: worldManager
+      type: BFB.Engine.TileMap.WorldManager
+      description: The manager of the world.
+    - id: graphicsDevice
+      type: GraphicsDevice
+      description: The graphics of the device.
+    content.vb: Public Sub New(worldManager As WorldManager, graphicsDevice As GraphicsDevice)
+  overload: BFB.Engine.TileMap.Camera2D.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.TileMap.Camera2D.Update(GameTime)
+  commentId: M:BFB.Engine.TileMap.Camera2D.Update(GameTime)
+  id: Update(GameTime)
+  parent: BFB.Engine.TileMap.Camera2D
+  langs:
+  - csharp
+  - vb
+  name: Update(GameTime)
+  nameWithType: Camera2D.Update(GameTime)
+  fullName: BFB.Engine.TileMap.Camera2D.Update(GameTime)
+  type: Method
+  source:
+    remote:
+      path: BFB/BFB.Engine/TileMap/Camera.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: Update
+    path: ../BFB/BFB.Engine/TileMap/Camera.cs
+    startLine: 95
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.TileMap
+  summary: "\nUpdates the camera.\n"
+  example: []
+  syntax:
+    content: public void Update(GameTime gameTime)
+    parameters:
+    - id: gameTime
+      type: GameTime
+      description: The time of the game.
+    content.vb: Public Sub Update(gameTime As GameTime)
+  overload: BFB.Engine.TileMap.Camera2D.Update*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.TileMap.Camera2D.IsInView(Vector2,Texture2D)
+  commentId: M:BFB.Engine.TileMap.Camera2D.IsInView(Vector2,Texture2D)
+  id: IsInView(Vector2,Texture2D)
+  parent: BFB.Engine.TileMap.Camera2D
+  langs:
+  - csharp
+  - vb
+  name: IsInView(Vector2, Texture2D)
+  nameWithType: Camera2D.IsInView(Vector2, Texture2D)
+  fullName: BFB.Engine.TileMap.Camera2D.IsInView(Vector2, Texture2D)
+  type: Method
+  source:
+    remote:
+      path: BFB/BFB.Engine/TileMap/Camera.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: IsInView
+    path: ../BFB/BFB.Engine/TileMap/Camera.cs
+    startLine: 134
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.TileMap
+  summary: "\nChecks if the object is in view.\n"
+  example: []
+  syntax:
+    content: public bool IsInView(Vector2 position, Texture2D texture)
+    parameters:
+    - id: position
+      type: Vector2
+      description: The position of the object.
+    - id: texture
+      type: Texture2D
+      description: The texture of the object.
+    return:
+      type: System.Boolean
+      description: Returns true if the object is in view.
+    content.vb: Public Function IsInView(position As Vector2, texture As Texture2D) As Boolean
+  overload: BFB.Engine.TileMap.Camera2D.IsInView*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+references:
+- uid: BFB.Engine.TileMap
+  commentId: N:BFB.Engine.TileMap
+  name: BFB.Engine.TileMap
+  nameWithType: BFB.Engine.TileMap
+  fullName: BFB.Engine.TileMap
+- uid: System.Object
+  commentId: '!:System.Object'
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: BFB.Engine.TileMap.Camera2D.BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{BFB.Engine.TileMap.Camera2D,{TValue}}},{TValue})
+  commentId: M:BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  parent: BFB.Engine.UI.Components.LambdaExtensions
+  definition: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  name: SetPropertyValue<Camera2D, TValue>(Expression<Func<Camera2D, TValue>>, TValue)
+  nameWithType: LambdaExtensions.SetPropertyValue<Camera2D, TValue>(Expression<Func<Camera2D, TValue>>, TValue)
+  fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<BFB.Engine.TileMap.Camera2D, TValue>(Expression<Func<BFB.Engine.TileMap.Camera2D, TValue>>, TValue)
+  nameWithType.vb: LambdaExtensions.SetPropertyValue(Of Camera2D, TValue)(Expression(Of Func(Of Camera2D, TValue)), TValue)
+  fullName.vb: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of BFB.Engine.TileMap.Camera2D, TValue)(Expression(Of Func(Of BFB.Engine.TileMap.Camera2D, TValue)), TValue)
+  name.vb: SetPropertyValue(Of Camera2D, TValue)(Expression(Of Func(Of Camera2D, TValue)), TValue)
+  spec.csharp:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue<Camera2D, TValue>
+    nameWithType: LambdaExtensions.SetPropertyValue<Camera2D, TValue>
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<BFB.Engine.TileMap.Camera2D, TValue>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: BFB.Engine.TileMap.Camera2D
+    name: Camera2D
+    nameWithType: Camera2D
+    fullName: BFB.Engine.TileMap.Camera2D
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue(Of Camera2D, TValue)
+    nameWithType: LambdaExtensions.SetPropertyValue(Of Camera2D, TValue)
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of BFB.Engine.TileMap.Camera2D, TValue)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: BFB.Engine.TileMap.Camera2D
+    name: Camera2D
+    nameWithType: Camera2D
+    fullName: BFB.Engine.TileMap.Camera2D
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  commentId: M:BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  isExternal: true
+  name: SetPropertyValue<T, TValue>(T, Expression<Func<T, TValue>>, TValue)
+  nameWithType: LambdaExtensions.SetPropertyValue<T, TValue>(T, Expression<Func<T, TValue>>, TValue)
+  fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<T, TValue>(T, Expression<Func<T, TValue>>, TValue)
+  nameWithType.vb: LambdaExtensions.SetPropertyValue(Of T, TValue)(T, Expression(Of Func(Of T, TValue)), TValue)
+  fullName.vb: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of T, TValue)(T, Expression(Of Func(Of T, TValue)), TValue)
+  name.vb: SetPropertyValue(Of T, TValue)(T, Expression(Of Func(Of T, TValue)), TValue)
+  spec.csharp:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue<T, TValue>
+    nameWithType: LambdaExtensions.SetPropertyValue<T, TValue>
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<T, TValue>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue(Of T, TValue)
+    nameWithType: LambdaExtensions.SetPropertyValue(Of T, TValue)
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of T, TValue)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Components.LambdaExtensions
+  commentId: T:BFB.Engine.UI.Components.LambdaExtensions
+  parent: BFB.Engine.UI.Components
+  name: LambdaExtensions
+  nameWithType: LambdaExtensions
+  fullName: BFB.Engine.UI.Components.LambdaExtensions
+- uid: BFB.Engine.UI.Components
+  commentId: N:BFB.Engine.UI.Components
+  name: BFB.Engine.UI.Components
+  nameWithType: BFB.Engine.UI.Components
+  fullName: BFB.Engine.UI.Components
+- uid: BFB.Engine.TileMap.Camera2D.Position*
+  commentId: Overload:BFB.Engine.TileMap.Camera2D.Position
+  name: Position
+  nameWithType: Camera2D.Position
+  fullName: BFB.Engine.TileMap.Camera2D.Position
+- uid: Vector2
+  isExternal: true
+  name: Vector2
+  nameWithType: Vector2
+  fullName: Vector2
+- uid: BFB.Engine.TileMap.Camera2D.Focus*
+  commentId: Overload:BFB.Engine.TileMap.Camera2D.Focus
+  name: Focus
+  nameWithType: Camera2D.Focus
+  fullName: BFB.Engine.TileMap.Camera2D.Focus
+- uid: BFB.Engine.TileMap.Camera2D.Rotation*
+  commentId: Overload:BFB.Engine.TileMap.Camera2D.Rotation
+  name: Rotation
+  nameWithType: Camera2D.Rotation
+  fullName: BFB.Engine.TileMap.Camera2D.Rotation
+- uid: System.Single
+  isExternal: true
+  name: Single
+  nameWithType: Single
+  fullName: System.Single
+- uid: BFB.Engine.TileMap.Camera2D.Origin*
+  commentId: Overload:BFB.Engine.TileMap.Camera2D.Origin
+  name: Origin
+  nameWithType: Camera2D.Origin
+  fullName: BFB.Engine.TileMap.Camera2D.Origin
+- uid: BFB.Engine.TileMap.Camera2D.Zoom*
+  commentId: Overload:BFB.Engine.TileMap.Camera2D.Zoom
+  name: Zoom
+  nameWithType: Camera2D.Zoom
+  fullName: BFB.Engine.TileMap.Camera2D.Zoom
+- uid: BFB.Engine.TileMap.Camera2D.ScreenCenter*
+  commentId: Overload:BFB.Engine.TileMap.Camera2D.ScreenCenter
+  name: ScreenCenter
+  nameWithType: Camera2D.ScreenCenter
+  fullName: BFB.Engine.TileMap.Camera2D.ScreenCenter
+- uid: BFB.Engine.TileMap.Camera2D.Transform*
+  commentId: Overload:BFB.Engine.TileMap.Camera2D.Transform
+  name: Transform
+  nameWithType: Camera2D.Transform
+  fullName: BFB.Engine.TileMap.Camera2D.Transform
+- uid: Matrix
+  commentId: '!:Matrix'
+  isExternal: true
+  name: Matrix
+  nameWithType: Matrix
+  fullName: Matrix
+- uid: BFB.Engine.TileMap.Camera2D.MoveSpeed*
+  commentId: Overload:BFB.Engine.TileMap.Camera2D.MoveSpeed
+  name: MoveSpeed
+  nameWithType: Camera2D.MoveSpeed
+  fullName: BFB.Engine.TileMap.Camera2D.MoveSpeed
+- uid: BFB.Engine.TileMap.Camera2D.#ctor*
+  commentId: Overload:BFB.Engine.TileMap.Camera2D.#ctor
+  name: Camera2D
+  nameWithType: Camera2D.Camera2D
+  fullName: BFB.Engine.TileMap.Camera2D.Camera2D
+- uid: BFB.Engine.TileMap.WorldManager
+  commentId: T:BFB.Engine.TileMap.WorldManager
+  parent: BFB.Engine.TileMap
+  name: WorldManager
+  nameWithType: WorldManager
+  fullName: BFB.Engine.TileMap.WorldManager
+- uid: GraphicsDevice
+  isExternal: true
+  name: GraphicsDevice
+  nameWithType: GraphicsDevice
+  fullName: GraphicsDevice
+- uid: BFB.Engine.TileMap.Camera2D.Update*
+  commentId: Overload:BFB.Engine.TileMap.Camera2D.Update
+  name: Update
+  nameWithType: Camera2D.Update
+  fullName: BFB.Engine.TileMap.Camera2D.Update
+- uid: GameTime
+  isExternal: true
+  name: GameTime
+  nameWithType: GameTime
+  fullName: GameTime
+- uid: BFB.Engine.TileMap.Camera2D.IsInView*
+  commentId: Overload:BFB.Engine.TileMap.Camera2D.IsInView
+  name: IsInView
+  nameWithType: Camera2D.IsInView
+  fullName: BFB.Engine.TileMap.Camera2D.IsInView
+- uid: Texture2D
+  isExternal: true
+  name: Texture2D
+  nameWithType: Texture2D
+  fullName: Texture2D
+- uid: System.Boolean
+  isExternal: true
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean

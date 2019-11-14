@@ -1,0 +1,432 @@
+### YamlMime:ManagedReference
+items:
+- uid: BFB.Engine.UI.Constraints.UIAspectRatioConstraint
+  commentId: T:BFB.Engine.UI.Constraints.UIAspectRatioConstraint
+  id: UIAspectRatioConstraint
+  parent: BFB.Engine.UI.Constraints
+  children:
+  - BFB.Engine.UI.Constraints.UIAspectRatioConstraint.#ctor(System.Single)
+  - BFB.Engine.UI.Constraints.UIAspectRatioConstraint.Apply(BFB.Engine.UI.Components.UIComponent)
+  langs:
+  - csharp
+  - vb
+  name: UIAspectRatioConstraint
+  nameWithType: UIAspectRatioConstraint
+  fullName: BFB.Engine.UI.Constraints.UIAspectRatioConstraint
+  type: Class
+  source:
+    remote:
+      path: BFB/BFB.Engine/UI/Constraints/UIAspectRatioConstraint.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: UIAspectRatioConstraint
+    path: ../BFB/BFB.Engine/UI/Constraints/UIAspectRatioConstraint.cs
+    startLine: 4
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.UI.Constraints
+  syntax:
+    content: 'public class UIAspectRatioConstraint : UIConstraint'
+    content.vb: >-
+      Public Class UIAspectRatioConstraint
+
+          Inherits UIConstraint
+  inheritance:
+  - System.Object
+  - BFB.Engine.UI.Constraints.UIConstraint
+  inheritedMembers:
+  - BFB.Engine.UI.Constraints.UIConstraint.Name
+  extensionMethods:
+  - BFB.Engine.UI.Constraints.UIAspectRatioConstraint.BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{BFB.Engine.UI.Constraints.UIAspectRatioConstraint,{TValue}}},{TValue})
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: BFB.Engine.UI.Constraints.UIAspectRatioConstraint.#ctor(System.Single)
+  commentId: M:BFB.Engine.UI.Constraints.UIAspectRatioConstraint.#ctor(System.Single)
+  id: '#ctor(System.Single)'
+  parent: BFB.Engine.UI.Constraints.UIAspectRatioConstraint
+  langs:
+  - csharp
+  - vb
+  name: UIAspectRatioConstraint(Single)
+  nameWithType: UIAspectRatioConstraint.UIAspectRatioConstraint(Single)
+  fullName: BFB.Engine.UI.Constraints.UIAspectRatioConstraint.UIAspectRatioConstraint(System.Single)
+  type: Constructor
+  source:
+    remote:
+      path: BFB/BFB.Engine/UI/Constraints/UIAspectRatioConstraint.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: .ctor
+    path: ../BFB/BFB.Engine/UI/Constraints/UIAspectRatioConstraint.cs
+    startLine: 7
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.UI.Constraints
+  syntax:
+    content: public UIAspectRatioConstraint(float ratio)
+    parameters:
+    - id: ratio
+      type: System.Single
+    content.vb: Public Sub New(ratio As Single)
+  overload: BFB.Engine.UI.Constraints.UIAspectRatioConstraint.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.UI.Constraints.UIAspectRatioConstraint.Apply(BFB.Engine.UI.Components.UIComponent)
+  commentId: M:BFB.Engine.UI.Constraints.UIAspectRatioConstraint.Apply(BFB.Engine.UI.Components.UIComponent)
+  id: Apply(BFB.Engine.UI.Components.UIComponent)
+  parent: BFB.Engine.UI.Constraints.UIAspectRatioConstraint
+  langs:
+  - csharp
+  - vb
+  name: Apply(UIComponent)
+  nameWithType: UIAspectRatioConstraint.Apply(UIComponent)
+  fullName: BFB.Engine.UI.Constraints.UIAspectRatioConstraint.Apply(BFB.Engine.UI.Components.UIComponent)
+  type: Method
+  source:
+    remote:
+      path: BFB/BFB.Engine/UI/Constraints/UIAspectRatioConstraint.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: Apply
+    path: ../BFB/BFB.Engine/UI/Constraints/UIAspectRatioConstraint.cs
+    startLine: 12
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.UI.Constraints
+  syntax:
+    content: public override void Apply(UIComponent component)
+    parameters:
+    - id: component
+      type: BFB.Engine.UI.Components.UIComponent
+    content.vb: Public Overrides Sub Apply(component As UIComponent)
+  overridden: BFB.Engine.UI.Constraints.UIConstraint.Apply(BFB.Engine.UI.Components.UIComponent)
+  overload: BFB.Engine.UI.Constraints.UIAspectRatioConstraint.Apply*
+  modifiers.csharp:
+  - public
+  - override
+  modifiers.vb:
+  - Public
+  - Overrides
+references:
+- uid: BFB.Engine.UI.Constraints
+  commentId: N:BFB.Engine.UI.Constraints
+  name: BFB.Engine.UI.Constraints
+  nameWithType: BFB.Engine.UI.Constraints
+  fullName: BFB.Engine.UI.Constraints
+- uid: System.Object
+  commentId: '!:System.Object'
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: BFB.Engine.UI.Constraints.UIConstraint
+  commentId: T:BFB.Engine.UI.Constraints.UIConstraint
+  parent: BFB.Engine.UI.Constraints
+  name: UIConstraint
+  nameWithType: UIConstraint
+  fullName: BFB.Engine.UI.Constraints.UIConstraint
+- uid: BFB.Engine.UI.Constraints.UIConstraint.Name
+  commentId: P:BFB.Engine.UI.Constraints.UIConstraint.Name
+  parent: BFB.Engine.UI.Constraints.UIConstraint
+  name: Name
+  nameWithType: UIConstraint.Name
+  fullName: BFB.Engine.UI.Constraints.UIConstraint.Name
+- uid: BFB.Engine.UI.Constraints.UIAspectRatioConstraint.BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{BFB.Engine.UI.Constraints.UIAspectRatioConstraint,{TValue}}},{TValue})
+  commentId: M:BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  parent: BFB.Engine.UI.Components.LambdaExtensions
+  definition: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  name: SetPropertyValue<UIAspectRatioConstraint, TValue>(Expression<Func<UIAspectRatioConstraint, TValue>>, TValue)
+  nameWithType: LambdaExtensions.SetPropertyValue<UIAspectRatioConstraint, TValue>(Expression<Func<UIAspectRatioConstraint, TValue>>, TValue)
+  fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<BFB.Engine.UI.Constraints.UIAspectRatioConstraint, TValue>(Expression<Func<BFB.Engine.UI.Constraints.UIAspectRatioConstraint, TValue>>, TValue)
+  nameWithType.vb: LambdaExtensions.SetPropertyValue(Of UIAspectRatioConstraint, TValue)(Expression(Of Func(Of UIAspectRatioConstraint, TValue)), TValue)
+  fullName.vb: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of BFB.Engine.UI.Constraints.UIAspectRatioConstraint, TValue)(Expression(Of Func(Of BFB.Engine.UI.Constraints.UIAspectRatioConstraint, TValue)), TValue)
+  name.vb: SetPropertyValue(Of UIAspectRatioConstraint, TValue)(Expression(Of Func(Of UIAspectRatioConstraint, TValue)), TValue)
+  spec.csharp:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue<UIAspectRatioConstraint, TValue>
+    nameWithType: LambdaExtensions.SetPropertyValue<UIAspectRatioConstraint, TValue>
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<BFB.Engine.UI.Constraints.UIAspectRatioConstraint, TValue>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: BFB.Engine.UI.Constraints.UIAspectRatioConstraint
+    name: UIAspectRatioConstraint
+    nameWithType: UIAspectRatioConstraint
+    fullName: BFB.Engine.UI.Constraints.UIAspectRatioConstraint
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue(Of UIAspectRatioConstraint, TValue)
+    nameWithType: LambdaExtensions.SetPropertyValue(Of UIAspectRatioConstraint, TValue)
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of BFB.Engine.UI.Constraints.UIAspectRatioConstraint, TValue)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: BFB.Engine.UI.Constraints.UIAspectRatioConstraint
+    name: UIAspectRatioConstraint
+    nameWithType: UIAspectRatioConstraint
+    fullName: BFB.Engine.UI.Constraints.UIAspectRatioConstraint
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  commentId: M:BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  isExternal: true
+  name: SetPropertyValue<T, TValue>(T, Expression<Func<T, TValue>>, TValue)
+  nameWithType: LambdaExtensions.SetPropertyValue<T, TValue>(T, Expression<Func<T, TValue>>, TValue)
+  fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<T, TValue>(T, Expression<Func<T, TValue>>, TValue)
+  nameWithType.vb: LambdaExtensions.SetPropertyValue(Of T, TValue)(T, Expression(Of Func(Of T, TValue)), TValue)
+  fullName.vb: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of T, TValue)(T, Expression(Of Func(Of T, TValue)), TValue)
+  name.vb: SetPropertyValue(Of T, TValue)(T, Expression(Of Func(Of T, TValue)), TValue)
+  spec.csharp:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue<T, TValue>
+    nameWithType: LambdaExtensions.SetPropertyValue<T, TValue>
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<T, TValue>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue(Of T, TValue)
+    nameWithType: LambdaExtensions.SetPropertyValue(Of T, TValue)
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of T, TValue)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Components.LambdaExtensions
+  commentId: T:BFB.Engine.UI.Components.LambdaExtensions
+  parent: BFB.Engine.UI.Components
+  name: LambdaExtensions
+  nameWithType: LambdaExtensions
+  fullName: BFB.Engine.UI.Components.LambdaExtensions
+- uid: BFB.Engine.UI.Components
+  commentId: N:BFB.Engine.UI.Components
+  name: BFB.Engine.UI.Components
+  nameWithType: BFB.Engine.UI.Components
+  fullName: BFB.Engine.UI.Components
+- uid: BFB.Engine.UI.Constraints.UIAspectRatioConstraint.#ctor*
+  commentId: Overload:BFB.Engine.UI.Constraints.UIAspectRatioConstraint.#ctor
+  name: UIAspectRatioConstraint
+  nameWithType: UIAspectRatioConstraint.UIAspectRatioConstraint
+  fullName: BFB.Engine.UI.Constraints.UIAspectRatioConstraint.UIAspectRatioConstraint
+- uid: System.Single
+  isExternal: true
+  name: Single
+  nameWithType: Single
+  fullName: System.Single
+- uid: BFB.Engine.UI.Constraints.UIConstraint.Apply(BFB.Engine.UI.Components.UIComponent)
+  commentId: M:BFB.Engine.UI.Constraints.UIConstraint.Apply(BFB.Engine.UI.Components.UIComponent)
+  parent: BFB.Engine.UI.Constraints.UIConstraint
+  name: Apply(UIComponent)
+  nameWithType: UIConstraint.Apply(UIComponent)
+  fullName: BFB.Engine.UI.Constraints.UIConstraint.Apply(BFB.Engine.UI.Components.UIComponent)
+  spec.csharp:
+  - uid: BFB.Engine.UI.Constraints.UIConstraint.Apply(BFB.Engine.UI.Components.UIComponent)
+    name: Apply
+    nameWithType: UIConstraint.Apply
+    fullName: BFB.Engine.UI.Constraints.UIConstraint.Apply
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: BFB.Engine.UI.Components.UIComponent
+    name: UIComponent
+    nameWithType: UIComponent
+    fullName: BFB.Engine.UI.Components.UIComponent
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Constraints.UIConstraint.Apply(BFB.Engine.UI.Components.UIComponent)
+    name: Apply
+    nameWithType: UIConstraint.Apply
+    fullName: BFB.Engine.UI.Constraints.UIConstraint.Apply
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: BFB.Engine.UI.Components.UIComponent
+    name: UIComponent
+    nameWithType: UIComponent
+    fullName: BFB.Engine.UI.Components.UIComponent
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Constraints.UIAspectRatioConstraint.Apply*
+  commentId: Overload:BFB.Engine.UI.Constraints.UIAspectRatioConstraint.Apply
+  name: Apply
+  nameWithType: UIAspectRatioConstraint.Apply
+  fullName: BFB.Engine.UI.Constraints.UIAspectRatioConstraint.Apply
+- uid: BFB.Engine.UI.Components.UIComponent
+  commentId: T:BFB.Engine.UI.Components.UIComponent
+  parent: BFB.Engine.UI.Components
+  name: UIComponent
+  nameWithType: UIComponent
+  fullName: BFB.Engine.UI.Components.UIComponent

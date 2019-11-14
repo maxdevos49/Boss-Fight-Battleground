@@ -42,6 +42,9 @@ namespace BFB.Engine.Input.PlayerInput
                         _inputChange = true;
                         break;
                 }
+                
+                _playerState.Mouse.X = e.Mouse.X;
+                _playerState.Mouse.Y = e.Mouse.Y;
             });
             
             scene.AddInputListener("keyup", (e) =>
@@ -64,12 +67,16 @@ namespace BFB.Engine.Input.PlayerInput
                         _inputChange = true;
                         break;
                 }
+                
+                _playerState.Mouse.X = e.Mouse.X;
+                _playerState.Mouse.Y = e.Mouse.Y;
             });
             
             scene.AddInputListener("mousemove", (e) =>
             {
                 _playerState.Mouse.X = e.Mouse.X;
                 _playerState.Mouse.Y = e.Mouse.Y;
+                
                 _inputChange = true;
             });
             
@@ -77,13 +84,21 @@ namespace BFB.Engine.Input.PlayerInput
             {
                 _playerState.LeftClick = e.Mouse.LeftButton == ButtonState.Pressed;
                 _playerState.RightClick = e.Mouse.RightButton == ButtonState.Pressed;
+                
+                _playerState.Mouse.X = e.Mouse.X;
+                _playerState.Mouse.Y = e.Mouse.Y;
+                
                 _inputChange = true;
             });
             
             scene.AddInputListener("mouseup", (e) =>
             {
-                _playerState.LeftClick = e.Mouse.LeftButton == ButtonState.Released;
-                _playerState.RightClick = e.Mouse.RightButton == ButtonState.Released;
+                _playerState.LeftClick = e.Mouse.LeftButton == ButtonState.Pressed;
+                _playerState.RightClick = e.Mouse.RightButton == ButtonState.Pressed;
+                
+                _playerState.Mouse.X = e.Mouse.X;
+                _playerState.Mouse.Y = e.Mouse.Y;
+                
                 _inputChange = true;
             });
         }
@@ -94,6 +109,7 @@ namespace BFB.Engine.Input.PlayerInput
         /// <returns></returns>
         public PlayerState GetPlayerState()
         {
+            _inputChange = false;
             return _playerState;
         }
 
