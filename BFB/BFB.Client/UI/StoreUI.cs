@@ -39,7 +39,7 @@ namespace BFB.Client.UI
                             {
                                 h2.Hstack(h4 => { h4.Text("1 Red Gem - $0.99"); })
                                     .Height(1.0f)
-                                    .Width(1.0f);
+                                    .Width(1.5f);
 
                                 h2.Button("Purchase",
                                         clickAction: (e, a) => { UIManager.Start(nameof(CreditCardUI)); })
@@ -52,9 +52,9 @@ namespace BFB.Client.UI
 
                             v1.Hstack(h2 =>
                             {
-                                h2.Hstack(h4 => { h4.Text("5 Red Gems - $3.99 - 1 Free Gem!"); })
+                                h2.Hstack(h4 => { h4.Text("5 Red Gems - $3.99"); })
                                     .Height(1.0f)
-                                    .Width(1.0f);
+                                    .Width(1.5f);
                                 h2.Button("Purchase",
                                         clickAction: (e, a) => { UIManager.Start(nameof(CreditCardUI)); })
                                     .Height(1.0f)
@@ -66,9 +66,9 @@ namespace BFB.Client.UI
 
                             v1.Hstack(h2 =>
                             {
-                                h2.Hstack(h4 => { h4.Text("20 Red Gems - $16.99 - 3 Free Gems!"); })
+                                h2.Hstack(h4 => { h4.Text("20 Red Gems - $16.99"); })
                                     .Height(1.0f)
-                                    .Width(1.0f);
+                                    .Width(1.5f);
                                 h2.Button("Purchase",
                                         clickAction: (e, a) => { UIManager.Start(nameof(CreditCardUI)); })
                                     .Height(1.0f)

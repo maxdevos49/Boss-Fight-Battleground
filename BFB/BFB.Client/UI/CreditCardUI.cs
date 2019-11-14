@@ -118,7 +118,7 @@ namespace BFB.Client.UI
                             h3.Button("Purchase",
                                     clickAction: (e, a) => { UIManager.Start(nameof(CompletedTransactionUI)); })
                                 .Height(0.8f)
-                                .Width(0.2f)
+                                .Width(0.3f)
                                 .Right(0)
                                 .Image("button");
                         });
