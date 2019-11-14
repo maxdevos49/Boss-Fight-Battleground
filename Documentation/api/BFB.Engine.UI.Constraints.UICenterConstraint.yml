@@ -1,0 +1,424 @@
+### YamlMime:ManagedReference
+items:
+- uid: BFB.Engine.UI.Constraints.UICenterConstraint
+  commentId: T:BFB.Engine.UI.Constraints.UICenterConstraint
+  id: UICenterConstraint
+  parent: BFB.Engine.UI.Constraints
+  children:
+  - BFB.Engine.UI.Constraints.UICenterConstraint.#ctor
+  - BFB.Engine.UI.Constraints.UICenterConstraint.Apply(BFB.Engine.UI.Components.UIComponent)
+  langs:
+  - csharp
+  - vb
+  name: UICenterConstraint
+  nameWithType: UICenterConstraint
+  fullName: BFB.Engine.UI.Constraints.UICenterConstraint
+  type: Class
+  source:
+    remote:
+      path: BFB/BFB.Engine/UI/Constraints/UICenterConstraint.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: UICenterConstraint
+    path: ../BFB/BFB.Engine/UI/Constraints/UICenterConstraint.cs
+    startLine: 4
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.UI.Constraints
+  syntax:
+    content: 'public class UICenterConstraint : UIConstraint'
+    content.vb: >-
+      Public Class UICenterConstraint
+
+          Inherits UIConstraint
+  inheritance:
+  - System.Object
+  - BFB.Engine.UI.Constraints.UIConstraint
+  inheritedMembers:
+  - BFB.Engine.UI.Constraints.UIConstraint.Name
+  extensionMethods:
+  - BFB.Engine.UI.Constraints.UICenterConstraint.BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{BFB.Engine.UI.Constraints.UICenterConstraint,{TValue}}},{TValue})
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: BFB.Engine.UI.Constraints.UICenterConstraint.#ctor
+  commentId: M:BFB.Engine.UI.Constraints.UICenterConstraint.#ctor
+  id: '#ctor'
+  parent: BFB.Engine.UI.Constraints.UICenterConstraint
+  langs:
+  - csharp
+  - vb
+  name: UICenterConstraint()
+  nameWithType: UICenterConstraint.UICenterConstraint()
+  fullName: BFB.Engine.UI.Constraints.UICenterConstraint.UICenterConstraint()
+  type: Constructor
+  source:
+    remote:
+      path: BFB/BFB.Engine/UI/Constraints/UICenterConstraint.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: .ctor
+    path: ../BFB/BFB.Engine/UI/Constraints/UICenterConstraint.cs
+    startLine: 7
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.UI.Constraints
+  syntax:
+    content: public UICenterConstraint()
+    content.vb: Public Sub New
+  overload: BFB.Engine.UI.Constraints.UICenterConstraint.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.UI.Constraints.UICenterConstraint.Apply(BFB.Engine.UI.Components.UIComponent)
+  commentId: M:BFB.Engine.UI.Constraints.UICenterConstraint.Apply(BFB.Engine.UI.Components.UIComponent)
+  id: Apply(BFB.Engine.UI.Components.UIComponent)
+  parent: BFB.Engine.UI.Constraints.UICenterConstraint
+  langs:
+  - csharp
+  - vb
+  name: Apply(UIComponent)
+  nameWithType: UICenterConstraint.Apply(UIComponent)
+  fullName: BFB.Engine.UI.Constraints.UICenterConstraint.Apply(BFB.Engine.UI.Components.UIComponent)
+  type: Method
+  source:
+    remote:
+      path: BFB/BFB.Engine/UI/Constraints/UICenterConstraint.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: Apply
+    path: ../BFB/BFB.Engine/UI/Constraints/UICenterConstraint.cs
+    startLine: 9
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.UI.Constraints
+  syntax:
+    content: public override void Apply(UIComponent component)
+    parameters:
+    - id: component
+      type: BFB.Engine.UI.Components.UIComponent
+    content.vb: Public Overrides Sub Apply(component As UIComponent)
+  overridden: BFB.Engine.UI.Constraints.UIConstraint.Apply(BFB.Engine.UI.Components.UIComponent)
+  overload: BFB.Engine.UI.Constraints.UICenterConstraint.Apply*
+  modifiers.csharp:
+  - public
+  - override
+  modifiers.vb:
+  - Public
+  - Overrides
+references:
+- uid: BFB.Engine.UI.Constraints
+  commentId: N:BFB.Engine.UI.Constraints
+  name: BFB.Engine.UI.Constraints
+  nameWithType: BFB.Engine.UI.Constraints
+  fullName: BFB.Engine.UI.Constraints
+- uid: System.Object
+  commentId: '!:System.Object'
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: BFB.Engine.UI.Constraints.UIConstraint
+  commentId: T:BFB.Engine.UI.Constraints.UIConstraint
+  parent: BFB.Engine.UI.Constraints
+  name: UIConstraint
+  nameWithType: UIConstraint
+  fullName: BFB.Engine.UI.Constraints.UIConstraint
+- uid: BFB.Engine.UI.Constraints.UIConstraint.Name
+  commentId: P:BFB.Engine.UI.Constraints.UIConstraint.Name
+  parent: BFB.Engine.UI.Constraints.UIConstraint
+  name: Name
+  nameWithType: UIConstraint.Name
+  fullName: BFB.Engine.UI.Constraints.UIConstraint.Name
+- uid: BFB.Engine.UI.Constraints.UICenterConstraint.BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{BFB.Engine.UI.Constraints.UICenterConstraint,{TValue}}},{TValue})
+  commentId: M:BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  parent: BFB.Engine.UI.Components.LambdaExtensions
+  definition: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  name: SetPropertyValue<UICenterConstraint, TValue>(Expression<Func<UICenterConstraint, TValue>>, TValue)
+  nameWithType: LambdaExtensions.SetPropertyValue<UICenterConstraint, TValue>(Expression<Func<UICenterConstraint, TValue>>, TValue)
+  fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<BFB.Engine.UI.Constraints.UICenterConstraint, TValue>(Expression<Func<BFB.Engine.UI.Constraints.UICenterConstraint, TValue>>, TValue)
+  nameWithType.vb: LambdaExtensions.SetPropertyValue(Of UICenterConstraint, TValue)(Expression(Of Func(Of UICenterConstraint, TValue)), TValue)
+  fullName.vb: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of BFB.Engine.UI.Constraints.UICenterConstraint, TValue)(Expression(Of Func(Of BFB.Engine.UI.Constraints.UICenterConstraint, TValue)), TValue)
+  name.vb: SetPropertyValue(Of UICenterConstraint, TValue)(Expression(Of Func(Of UICenterConstraint, TValue)), TValue)
+  spec.csharp:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue<UICenterConstraint, TValue>
+    nameWithType: LambdaExtensions.SetPropertyValue<UICenterConstraint, TValue>
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<BFB.Engine.UI.Constraints.UICenterConstraint, TValue>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: BFB.Engine.UI.Constraints.UICenterConstraint
+    name: UICenterConstraint
+    nameWithType: UICenterConstraint
+    fullName: BFB.Engine.UI.Constraints.UICenterConstraint
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue(Of UICenterConstraint, TValue)
+    nameWithType: LambdaExtensions.SetPropertyValue(Of UICenterConstraint, TValue)
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of BFB.Engine.UI.Constraints.UICenterConstraint, TValue)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: BFB.Engine.UI.Constraints.UICenterConstraint
+    name: UICenterConstraint
+    nameWithType: UICenterConstraint
+    fullName: BFB.Engine.UI.Constraints.UICenterConstraint
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  commentId: M:BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  isExternal: true
+  name: SetPropertyValue<T, TValue>(T, Expression<Func<T, TValue>>, TValue)
+  nameWithType: LambdaExtensions.SetPropertyValue<T, TValue>(T, Expression<Func<T, TValue>>, TValue)
+  fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<T, TValue>(T, Expression<Func<T, TValue>>, TValue)
+  nameWithType.vb: LambdaExtensions.SetPropertyValue(Of T, TValue)(T, Expression(Of Func(Of T, TValue)), TValue)
+  fullName.vb: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of T, TValue)(T, Expression(Of Func(Of T, TValue)), TValue)
+  name.vb: SetPropertyValue(Of T, TValue)(T, Expression(Of Func(Of T, TValue)), TValue)
+  spec.csharp:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue<T, TValue>
+    nameWithType: LambdaExtensions.SetPropertyValue<T, TValue>
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<T, TValue>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue(Of T, TValue)
+    nameWithType: LambdaExtensions.SetPropertyValue(Of T, TValue)
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of T, TValue)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Components.LambdaExtensions
+  commentId: T:BFB.Engine.UI.Components.LambdaExtensions
+  parent: BFB.Engine.UI.Components
+  name: LambdaExtensions
+  nameWithType: LambdaExtensions
+  fullName: BFB.Engine.UI.Components.LambdaExtensions
+- uid: BFB.Engine.UI.Components
+  commentId: N:BFB.Engine.UI.Components
+  name: BFB.Engine.UI.Components
+  nameWithType: BFB.Engine.UI.Components
+  fullName: BFB.Engine.UI.Components
+- uid: BFB.Engine.UI.Constraints.UICenterConstraint.#ctor*
+  commentId: Overload:BFB.Engine.UI.Constraints.UICenterConstraint.#ctor
+  name: UICenterConstraint
+  nameWithType: UICenterConstraint.UICenterConstraint
+  fullName: BFB.Engine.UI.Constraints.UICenterConstraint.UICenterConstraint
+- uid: BFB.Engine.UI.Constraints.UIConstraint.Apply(BFB.Engine.UI.Components.UIComponent)
+  commentId: M:BFB.Engine.UI.Constraints.UIConstraint.Apply(BFB.Engine.UI.Components.UIComponent)
+  parent: BFB.Engine.UI.Constraints.UIConstraint
+  name: Apply(UIComponent)
+  nameWithType: UIConstraint.Apply(UIComponent)
+  fullName: BFB.Engine.UI.Constraints.UIConstraint.Apply(BFB.Engine.UI.Components.UIComponent)
+  spec.csharp:
+  - uid: BFB.Engine.UI.Constraints.UIConstraint.Apply(BFB.Engine.UI.Components.UIComponent)
+    name: Apply
+    nameWithType: UIConstraint.Apply
+    fullName: BFB.Engine.UI.Constraints.UIConstraint.Apply
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: BFB.Engine.UI.Components.UIComponent
+    name: UIComponent
+    nameWithType: UIComponent
+    fullName: BFB.Engine.UI.Components.UIComponent
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Constraints.UIConstraint.Apply(BFB.Engine.UI.Components.UIComponent)
+    name: Apply
+    nameWithType: UIConstraint.Apply
+    fullName: BFB.Engine.UI.Constraints.UIConstraint.Apply
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: BFB.Engine.UI.Components.UIComponent
+    name: UIComponent
+    nameWithType: UIComponent
+    fullName: BFB.Engine.UI.Components.UIComponent
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Constraints.UICenterConstraint.Apply*
+  commentId: Overload:BFB.Engine.UI.Constraints.UICenterConstraint.Apply
+  name: Apply
+  nameWithType: UICenterConstraint.Apply
+  fullName: BFB.Engine.UI.Constraints.UICenterConstraint.Apply
+- uid: BFB.Engine.UI.Components.UIComponent
+  commentId: T:BFB.Engine.UI.Components.UIComponent
+  parent: BFB.Engine.UI.Components
+  name: UIComponent
+  nameWithType: UIComponent
+  fullName: BFB.Engine.UI.Components.UIComponent

@@ -1,0 +1,85 @@
+### YamlMime:ManagedReference
+items:
+- uid: BFB.Engine.Event
+  commentId: N:BFB.Engine.Event
+  id: BFB.Engine.Event
+  children:
+  - BFB.Engine.Event.Event
+  - BFB.Engine.Event.EventManager`1
+  - BFB.Engine.Event.GlobalEvent
+  - BFB.Engine.Event.InputEvent
+  - BFB.Engine.Event.UIEvent
+  langs:
+  - csharp
+  - vb
+  name: BFB.Engine.Event
+  nameWithType: BFB.Engine.Event
+  fullName: BFB.Engine.Event
+  type: Namespace
+  assemblies:
+  - BFB.Engine
+references:
+- uid: BFB.Engine.Event.Event
+  commentId: T:BFB.Engine.Event.Event
+  parent: BFB.Engine.Event
+  name: Event
+  nameWithType: Event
+  fullName: BFB.Engine.Event.Event
+- uid: BFB.Engine.Event.EventManager`1
+  commentId: T:BFB.Engine.Event.EventManager`1
+  name: EventManager<TEvent>
+  nameWithType: EventManager<TEvent>
+  fullName: BFB.Engine.Event.EventManager<TEvent>
+  nameWithType.vb: EventManager(Of TEvent)
+  fullName.vb: BFB.Engine.Event.EventManager(Of TEvent)
+  name.vb: EventManager(Of TEvent)
+  spec.csharp:
+  - uid: BFB.Engine.Event.EventManager`1
+    name: EventManager
+    nameWithType: EventManager
+    fullName: BFB.Engine.Event.EventManager
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: TEvent
+    nameWithType: TEvent
+    fullName: TEvent
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: BFB.Engine.Event.EventManager`1
+    name: EventManager
+    nameWithType: EventManager
+    fullName: BFB.Engine.Event.EventManager
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: TEvent
+    nameWithType: TEvent
+    fullName: TEvent
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.Event.GlobalEvent
+  commentId: T:BFB.Engine.Event.GlobalEvent
+  name: GlobalEvent
+  nameWithType: GlobalEvent
+  fullName: BFB.Engine.Event.GlobalEvent
+- uid: BFB.Engine.Event.InputEvent
+  commentId: T:BFB.Engine.Event.InputEvent
+  parent: BFB.Engine.Event
+  name: InputEvent
+  nameWithType: InputEvent
+  fullName: BFB.Engine.Event.InputEvent
+- uid: BFB.Engine.Event.UIEvent
+  commentId: T:BFB.Engine.Event.UIEvent
+  parent: BFB.Engine.Event
+  name: UIEvent
+  nameWithType: UIEvent
+  fullName: BFB.Engine.Event.UIEvent
+- uid: BFB.Engine.Event
+  commentId: N:BFB.Engine.Event
+  name: BFB.Engine.Event
+  nameWithType: BFB.Engine.Event
+  fullName: BFB.Engine.Event

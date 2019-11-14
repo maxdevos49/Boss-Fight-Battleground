@@ -45,9 +45,9 @@ namespace BFB.Server
                 ChunkSize = 16,
                 WorldChunkWidth = 20,
                 WorldChunkHeight = 10,
-                WorldScale = 15,
-                GetWorldGenerator = options => new FlatWorld(options)
-            }, 60);
+                WorldScale = 30,
+                WorldGenerator = options => new FlatWorld(options)
+            }, 20);
         }
         
         #endregion
@@ -89,6 +89,15 @@ namespace BFB.Server
             
             #endregion
 
+            #region OnClientPrepare
+
+            _server.OnClientPrepare = (socket) =>
+            {
+                socket.Emit("prepare", _simulation.World.GetInitWorldData());
+            };
+            
+            #endregion
+            
             #region Handle Client Ready
 
             _server.OnClientReady = (socket) =>
@@ -100,9 +109,9 @@ namespace BFB.Server
                     {
                         AnimatedTextureKey = "Player",
                         Position = new BfbVector(200, 200),
-                        Dimensions = new BfbVector(100, 100),
+                        Dimensions = new BfbVector(2 * _simulation.World.WorldOptions.WorldScale, 3 * _simulation.World.WorldOptions.WorldScale),
                         Rotation = 0,
-                        Origin = new BfbVector(50, 50),
+                        Origin = new BfbVector(0, 0),
                     }, new ComponentOptions
                     {
                         Physics = new PlayerPhysicsComponent(),
@@ -195,8 +204,6 @@ namespace BFB.Server
             _simulation.OnSimulationOverLoad = ticksBehind => _server.PrintMessage($"SERVER IS OVERLOADED. ({ticksBehind}).");
             
             #endregion
-            
-
 
             #endregion
 

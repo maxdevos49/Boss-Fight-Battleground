@@ -23,6 +23,7 @@ namespace BFB.Engine.Simulation
         private bool _simulating;
         private readonly int _tickSpeed;
         private readonly Random _random;
+        public int Tick { get; private set; } 
         private readonly Dictionary<string,SimulationEntity> _entitiesIndex;
         private readonly Dictionary<string,SimulationEntity> _playerEntitiesIndex;
         
@@ -30,6 +31,7 @@ namespace BFB.Engine.Simulation
         /// Indicates the distance at which a player causes the simulation to simulate
         /// </summary>
         public readonly int SimulationDistance;
+        public readonly WorldManager World;
         
         /// <summary>
         /// Holds the World Manager for maintaining world state
@@ -88,8 +90,9 @@ namespace BFB.Engine.Simulation
             _simulating = false;
             _tickSpeed = 1000/tickSpeed;//60 ticks a second are default
             _random = new Random();
+            Tick = 0;
 
-            WorldManager = new WorldManager(worldOptions);
+            World = new WorldManager(worldOptions);
 
             SimulationDistance = 3;
 
@@ -111,7 +114,7 @@ namespace BFB.Engine.Simulation
         {
             lock (_lock)
             {
-                WorldManager.GenerateWorld(OnWorldGenerationProgress);
+                World.GenerateWorld(OnWorldGenerationProgress);
             }
         } 
         
@@ -136,7 +139,7 @@ namespace BFB.Engine.Simulation
                     OnEntityAdd?.Invoke(simulationEntity.EntityId, isPlayer);
                     
                     //add entity to starting chunk
-                    WorldManager.ChunkFromPixelLocation((int) simulationEntity.Position.X, (int) simulationEntity.Position.Y)
+                    World.ChunkFromPixelLocation((int) simulationEntity.Position.X, (int) simulationEntity.Position.Y)
                         .Entities.Add(simulationEntity.EntityId, simulationEntity);
 
                     if (isPlayer)
@@ -147,7 +150,7 @@ namespace BFB.Engine.Simulation
                         simulationEntity.IsPlayer = true;
                     }
 
-                    simulationEntity.ChunkKey = WorldManager.ChunkFromPixelLocation(
+                    simulationEntity.ChunkKey = World.ChunkFromPixelLocation(
                                                                     (int) simulationEntity.Position.X,
                                                                     (int) simulationEntity.Position.Y).ChunkKey;
                 }
@@ -177,7 +180,7 @@ namespace BFB.Engine.Simulation
                     SimulationEntity entity = _entitiesIndex[key];
 
                     //Remove from chunk
-                    WorldManager.ChunkIndex[entity.ChunkKey].Entities.Remove(key);
+                    World.ChunkIndex[entity.ChunkKey].Entities.Remove(key);
 
                     //remove from entity index
                     _entitiesIndex.Remove(key);
@@ -191,9 +194,7 @@ namespace BFB.Engine.Simulation
                 }
 
                 if (_playerEntitiesIndex.Count == 0 && _simulating)
-                {
                     Stop();
-                }
 
             }
 
@@ -258,7 +259,7 @@ namespace BFB.Engine.Simulation
 
             //Loop through visible chunks and grab entities that should be displayed
             foreach (string visibleChunkKey in playerEntity.VisibleChunks)
-                foreach ((string _, SimulationEntity entity) in WorldManager.ChunkIndex[visibleChunkKey].Entities)
+                foreach ((string _, SimulationEntity entity) in World.ChunkIndex[visibleChunkKey].Entities)
                     updates.Updates.Add(entity.GetState());
 
             OnEntityUpdates?.Invoke(playerEntity.EntityId, updates);
@@ -276,15 +277,15 @@ namespace BFB.Engine.Simulation
             foreach (string visibleChunkKey in playerEntity.VisibleChunks)
             {
                 //If the versions are the same we do not need to send the chunk
-                if(playerEntity.ChunkVersions[visibleChunkKey] == WorldManager.ChunkIndex[visibleChunkKey].ChunkVersion) 
+                if(playerEntity.ChunkVersions[visibleChunkKey] == World.ChunkIndex[visibleChunkKey].ChunkVersion) 
                     continue;
                 
-                if (WorldManager.ChunkIndex[visibleChunkKey].NeedChunkUpdate(playerEntity.ChunkVersions[visibleChunkKey]))//Gets an entire chunk for updating
-                    updates.ChunkUpdates.Add(WorldManager.ChunkIndex[visibleChunkKey].GetChunkUpdate());
+                if (World.ChunkIndex[visibleChunkKey].NeedChunkUpdate(playerEntity.ChunkVersions[visibleChunkKey]))//Gets an entire chunk for updating
+                    updates.ChunkUpdates.Add(World.ChunkIndex[visibleChunkKey].GetChunkUpdate());
                 else
-                    updates.ChunkTileUpdates.Add(WorldManager.ChunkIndex[visibleChunkKey].GetChunkTileUpdates(playerEntity.ChunkVersions[visibleChunkKey]));//Gets individual tile updates in a chunk
+                    updates.ChunkTileUpdates.Add(World.ChunkIndex[visibleChunkKey].GetChunkTileUpdates(playerEntity.ChunkVersions[visibleChunkKey]));//Gets individual tile updates in a chunk
 
-                playerEntity.ChunkVersions[visibleChunkKey] = WorldManager.ChunkIndex[visibleChunkKey].ChunkVersion;
+                playerEntity.ChunkVersions[visibleChunkKey] = World.ChunkIndex[visibleChunkKey].ChunkVersion;
             }
             
             if(updates.ChunkUpdates.Any() || updates.ChunkTileUpdates.Any())
@@ -302,27 +303,29 @@ namespace BFB.Engine.Simulation
             //Server Game loop
             while (_simulating)
             {
+                Tick++;
+
                 lock (_lock)
                 {
                     //Tick all active chunks
-                    foreach ((string _, Chunk chunk) in WorldManager.ChunkIndex)
+                    foreach ((string _, Chunk chunk) in World.ChunkIndex)
                     {
                         //Tick all entities in active chunks
                         foreach ((string _, SimulationEntity entity) in chunk.Entities.ToList())
                             entity.Tick(this);//entity components are processed here
                         
                         //randomly choose three tiles in the chunk to tick
-                        for (int i = 0; i < 5; i++)
+                        for (int i = 0; i < 19; i++)
                         {
-                            int xBlock = _random.Next(WorldManager.WorldOptions.ChunkSize);
-                            int yBlock = _random.Next(WorldManager.WorldOptions.ChunkSize);
+                            int xBlock = _random.Next(World.WorldOptions.ChunkSize);
+                            int yBlock = _random.Next(World.WorldOptions.ChunkSize);
                             
-                            TileComponentManager.TickTile(WorldManager, chunk, xBlock, yBlock);
+                            TileComponentManager.TickTile(World, chunk, xBlock, yBlock);
                         }
                     }
                 }
                 
-                //This is 
+                //This is the communication aspect
                 SendUpdates();
                 
                 //Maintain the tick rate here

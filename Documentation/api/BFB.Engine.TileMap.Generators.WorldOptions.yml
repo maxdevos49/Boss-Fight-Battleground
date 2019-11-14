@@ -1,0 +1,659 @@
+### YamlMime:ManagedReference
+items:
+- uid: BFB.Engine.TileMap.Generators.WorldOptions
+  commentId: T:BFB.Engine.TileMap.Generators.WorldOptions
+  id: WorldOptions
+  parent: BFB.Engine.TileMap.Generators
+  children:
+  - BFB.Engine.TileMap.Generators.WorldOptions.ChunkSize
+  - BFB.Engine.TileMap.Generators.WorldOptions.GetWorldGenerator
+  - BFB.Engine.TileMap.Generators.WorldOptions.Seed
+  - BFB.Engine.TileMap.Generators.WorldOptions.WorldChunkHeight
+  - BFB.Engine.TileMap.Generators.WorldOptions.WorldChunkWidth
+  - BFB.Engine.TileMap.Generators.WorldOptions.WorldScale
+  langs:
+  - csharp
+  - vb
+  name: WorldOptions
+  nameWithType: WorldOptions
+  fullName: BFB.Engine.TileMap.Generators.WorldOptions
+  type: Class
+  source:
+    remote:
+      path: BFB/BFB.Engine/TileMap/Generators/WorldOptions.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: WorldOptions
+    path: ../BFB/BFB.Engine/TileMap/Generators/WorldOptions.cs
+    startLine: 8
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.TileMap.Generators
+  summary: "\nUsed to know the options of the world.\n"
+  example: []
+  syntax:
+    content: 'public class WorldOptions : object'
+    content.vb: >-
+      Public Class WorldOptions
+
+          Inherits Object
+  inheritance:
+  - System.Object
+  extensionMethods:
+  - BFB.Engine.TileMap.Generators.WorldOptions.BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{BFB.Engine.TileMap.Generators.WorldOptions,{TValue}}},{TValue})
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: BFB.Engine.TileMap.Generators.WorldOptions.Seed
+  commentId: P:BFB.Engine.TileMap.Generators.WorldOptions.Seed
+  id: Seed
+  parent: BFB.Engine.TileMap.Generators.WorldOptions
+  langs:
+  - csharp
+  - vb
+  name: Seed
+  nameWithType: WorldOptions.Seed
+  fullName: BFB.Engine.TileMap.Generators.WorldOptions.Seed
+  type: Property
+  source:
+    remote:
+      path: BFB/BFB.Engine/TileMap/Generators/WorldOptions.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: Seed
+    path: ../BFB/BFB.Engine/TileMap/Generators/WorldOptions.cs
+    startLine: 14
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.TileMap.Generators
+  summary: "\nThe seed in order to seed the world generator.\n"
+  example: []
+  syntax:
+    content: public int Seed { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property Seed As Integer
+  overload: BFB.Engine.TileMap.Generators.WorldOptions.Seed*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.TileMap.Generators.WorldOptions.ChunkSize
+  commentId: P:BFB.Engine.TileMap.Generators.WorldOptions.ChunkSize
+  id: ChunkSize
+  parent: BFB.Engine.TileMap.Generators.WorldOptions
+  langs:
+  - csharp
+  - vb
+  name: ChunkSize
+  nameWithType: WorldOptions.ChunkSize
+  fullName: BFB.Engine.TileMap.Generators.WorldOptions.ChunkSize
+  type: Property
+  source:
+    remote:
+      path: BFB/BFB.Engine/TileMap/Generators/WorldOptions.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: ChunkSize
+    path: ../BFB/BFB.Engine/TileMap/Generators/WorldOptions.cs
+    startLine: 19
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.TileMap.Generators
+  summary: "\nThe dimension of 1 square chunk. (How many tiles tall/wide it is)\n"
+  example: []
+  syntax:
+    content: public int ChunkSize { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property ChunkSize As Integer
+  overload: BFB.Engine.TileMap.Generators.WorldOptions.ChunkSize*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.TileMap.Generators.WorldOptions.WorldChunkWidth
+  commentId: P:BFB.Engine.TileMap.Generators.WorldOptions.WorldChunkWidth
+  id: WorldChunkWidth
+  parent: BFB.Engine.TileMap.Generators.WorldOptions
+  langs:
+  - csharp
+  - vb
+  name: WorldChunkWidth
+  nameWithType: WorldOptions.WorldChunkWidth
+  fullName: BFB.Engine.TileMap.Generators.WorldOptions.WorldChunkWidth
+  type: Property
+  source:
+    remote:
+      path: BFB/BFB.Engine/TileMap/Generators/WorldOptions.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: WorldChunkWidth
+    path: ../BFB/BFB.Engine/TileMap/Generators/WorldOptions.cs
+    startLine: 25
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.TileMap.Generators
+  summary: "\nThe width in chunks of the map.\n"
+  example: []
+  syntax:
+    content: public int WorldChunkWidth { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property WorldChunkWidth As Integer
+  overload: BFB.Engine.TileMap.Generators.WorldOptions.WorldChunkWidth*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.TileMap.Generators.WorldOptions.WorldChunkHeight
+  commentId: P:BFB.Engine.TileMap.Generators.WorldOptions.WorldChunkHeight
+  id: WorldChunkHeight
+  parent: BFB.Engine.TileMap.Generators.WorldOptions
+  langs:
+  - csharp
+  - vb
+  name: WorldChunkHeight
+  nameWithType: WorldOptions.WorldChunkHeight
+  fullName: BFB.Engine.TileMap.Generators.WorldOptions.WorldChunkHeight
+  type: Property
+  source:
+    remote:
+      path: BFB/BFB.Engine/TileMap/Generators/WorldOptions.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: WorldChunkHeight
+    path: ../BFB/BFB.Engine/TileMap/Generators/WorldOptions.cs
+    startLine: 30
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.TileMap.Generators
+  summary: "\nThe height in chunks of the map.\n"
+  example: []
+  syntax:
+    content: public int WorldChunkHeight { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property WorldChunkHeight As Integer
+  overload: BFB.Engine.TileMap.Generators.WorldOptions.WorldChunkHeight*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.TileMap.Generators.WorldOptions.WorldScale
+  commentId: P:BFB.Engine.TileMap.Generators.WorldOptions.WorldScale
+  id: WorldScale
+  parent: BFB.Engine.TileMap.Generators.WorldOptions
+  langs:
+  - csharp
+  - vb
+  name: WorldScale
+  nameWithType: WorldOptions.WorldScale
+  fullName: BFB.Engine.TileMap.Generators.WorldOptions.WorldScale
+  type: Property
+  source:
+    remote:
+      path: BFB/BFB.Engine/TileMap/Generators/WorldOptions.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: WorldScale
+    path: ../BFB/BFB.Engine/TileMap/Generators/WorldOptions.cs
+    startLine: 35
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.TileMap.Generators
+  summary: "\nThe scale in pixels of how large any given tile is.\n"
+  example: []
+  syntax:
+    content: public int WorldScale { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property WorldScale As Integer
+  overload: BFB.Engine.TileMap.Generators.WorldOptions.WorldScale*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.TileMap.Generators.WorldOptions.GetWorldGenerator
+  commentId: P:BFB.Engine.TileMap.Generators.WorldOptions.GetWorldGenerator
+  id: GetWorldGenerator
+  parent: BFB.Engine.TileMap.Generators.WorldOptions
+  langs:
+  - csharp
+  - vb
+  name: GetWorldGenerator
+  nameWithType: WorldOptions.GetWorldGenerator
+  fullName: BFB.Engine.TileMap.Generators.WorldOptions.GetWorldGenerator
+  type: Property
+  source:
+    remote:
+      path: BFB/BFB.Engine/TileMap/Generators/WorldOptions.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: GetWorldGenerator
+    path: ../BFB/BFB.Engine/TileMap/Generators/WorldOptions.cs
+    startLine: 40
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.TileMap.Generators
+  summary: "\nThe function for the world options into the world generator.\n"
+  example: []
+  syntax:
+    content: public Func<WorldOptions, WorldGenerator> GetWorldGenerator { get; set; }
+    parameters: []
+    return:
+      type: Func{BFB.Engine.TileMap.Generators.WorldOptions,BFB.Engine.TileMap.Generators.WorldGenerator}
+    content.vb: Public Property GetWorldGenerator As Func(Of WorldOptions, WorldGenerator)
+  overload: BFB.Engine.TileMap.Generators.WorldOptions.GetWorldGenerator*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+references:
+- uid: BFB.Engine.TileMap.Generators
+  commentId: N:BFB.Engine.TileMap.Generators
+  name: BFB.Engine.TileMap.Generators
+  nameWithType: BFB.Engine.TileMap.Generators
+  fullName: BFB.Engine.TileMap.Generators
+- uid: System.Object
+  commentId: '!:System.Object'
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: BFB.Engine.TileMap.Generators.WorldOptions.BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{BFB.Engine.TileMap.Generators.WorldOptions,{TValue}}},{TValue})
+  commentId: M:BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  parent: BFB.Engine.UI.Components.LambdaExtensions
+  definition: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  name: SetPropertyValue<WorldOptions, TValue>(Expression<Func<WorldOptions, TValue>>, TValue)
+  nameWithType: LambdaExtensions.SetPropertyValue<WorldOptions, TValue>(Expression<Func<WorldOptions, TValue>>, TValue)
+  fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<BFB.Engine.TileMap.Generators.WorldOptions, TValue>(Expression<Func<BFB.Engine.TileMap.Generators.WorldOptions, TValue>>, TValue)
+  nameWithType.vb: LambdaExtensions.SetPropertyValue(Of WorldOptions, TValue)(Expression(Of Func(Of WorldOptions, TValue)), TValue)
+  fullName.vb: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of BFB.Engine.TileMap.Generators.WorldOptions, TValue)(Expression(Of Func(Of BFB.Engine.TileMap.Generators.WorldOptions, TValue)), TValue)
+  name.vb: SetPropertyValue(Of WorldOptions, TValue)(Expression(Of Func(Of WorldOptions, TValue)), TValue)
+  spec.csharp:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue<WorldOptions, TValue>
+    nameWithType: LambdaExtensions.SetPropertyValue<WorldOptions, TValue>
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<BFB.Engine.TileMap.Generators.WorldOptions, TValue>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: BFB.Engine.TileMap.Generators.WorldOptions
+    name: WorldOptions
+    nameWithType: WorldOptions
+    fullName: BFB.Engine.TileMap.Generators.WorldOptions
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue(Of WorldOptions, TValue)
+    nameWithType: LambdaExtensions.SetPropertyValue(Of WorldOptions, TValue)
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of BFB.Engine.TileMap.Generators.WorldOptions, TValue)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: BFB.Engine.TileMap.Generators.WorldOptions
+    name: WorldOptions
+    nameWithType: WorldOptions
+    fullName: BFB.Engine.TileMap.Generators.WorldOptions
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  commentId: M:BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  isExternal: true
+  name: SetPropertyValue<T, TValue>(T, Expression<Func<T, TValue>>, TValue)
+  nameWithType: LambdaExtensions.SetPropertyValue<T, TValue>(T, Expression<Func<T, TValue>>, TValue)
+  fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<T, TValue>(T, Expression<Func<T, TValue>>, TValue)
+  nameWithType.vb: LambdaExtensions.SetPropertyValue(Of T, TValue)(T, Expression(Of Func(Of T, TValue)), TValue)
+  fullName.vb: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of T, TValue)(T, Expression(Of Func(Of T, TValue)), TValue)
+  name.vb: SetPropertyValue(Of T, TValue)(T, Expression(Of Func(Of T, TValue)), TValue)
+  spec.csharp:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue<T, TValue>
+    nameWithType: LambdaExtensions.SetPropertyValue<T, TValue>
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<T, TValue>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue(Of T, TValue)
+    nameWithType: LambdaExtensions.SetPropertyValue(Of T, TValue)
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of T, TValue)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Components.LambdaExtensions
+  commentId: T:BFB.Engine.UI.Components.LambdaExtensions
+  parent: BFB.Engine.UI.Components
+  name: LambdaExtensions
+  nameWithType: LambdaExtensions
+  fullName: BFB.Engine.UI.Components.LambdaExtensions
+- uid: BFB.Engine.UI.Components
+  commentId: N:BFB.Engine.UI.Components
+  name: BFB.Engine.UI.Components
+  nameWithType: BFB.Engine.UI.Components
+  fullName: BFB.Engine.UI.Components
+- uid: BFB.Engine.TileMap.Generators.WorldOptions.Seed*
+  commentId: Overload:BFB.Engine.TileMap.Generators.WorldOptions.Seed
+  name: Seed
+  nameWithType: WorldOptions.Seed
+  fullName: BFB.Engine.TileMap.Generators.WorldOptions.Seed
+- uid: System.Int32
+  isExternal: true
+  name: Int32
+  nameWithType: Int32
+  fullName: System.Int32
+- uid: BFB.Engine.TileMap.Generators.WorldOptions.ChunkSize*
+  commentId: Overload:BFB.Engine.TileMap.Generators.WorldOptions.ChunkSize
+  name: ChunkSize
+  nameWithType: WorldOptions.ChunkSize
+  fullName: BFB.Engine.TileMap.Generators.WorldOptions.ChunkSize
+- uid: BFB.Engine.TileMap.Generators.WorldOptions.WorldChunkWidth*
+  commentId: Overload:BFB.Engine.TileMap.Generators.WorldOptions.WorldChunkWidth
+  name: WorldChunkWidth
+  nameWithType: WorldOptions.WorldChunkWidth
+  fullName: BFB.Engine.TileMap.Generators.WorldOptions.WorldChunkWidth
+- uid: BFB.Engine.TileMap.Generators.WorldOptions.WorldChunkHeight*
+  commentId: Overload:BFB.Engine.TileMap.Generators.WorldOptions.WorldChunkHeight
+  name: WorldChunkHeight
+  nameWithType: WorldOptions.WorldChunkHeight
+  fullName: BFB.Engine.TileMap.Generators.WorldOptions.WorldChunkHeight
+- uid: BFB.Engine.TileMap.Generators.WorldOptions.WorldScale*
+  commentId: Overload:BFB.Engine.TileMap.Generators.WorldOptions.WorldScale
+  name: WorldScale
+  nameWithType: WorldOptions.WorldScale
+  fullName: BFB.Engine.TileMap.Generators.WorldOptions.WorldScale
+- uid: BFB.Engine.TileMap.Generators.WorldOptions.GetWorldGenerator*
+  commentId: Overload:BFB.Engine.TileMap.Generators.WorldOptions.GetWorldGenerator
+  name: GetWorldGenerator
+  nameWithType: WorldOptions.GetWorldGenerator
+  fullName: BFB.Engine.TileMap.Generators.WorldOptions.GetWorldGenerator
+- uid: Func{BFB.Engine.TileMap.Generators.WorldOptions,BFB.Engine.TileMap.Generators.WorldGenerator}
+  commentId: '!:Func{BFB.Engine.TileMap.Generators.WorldOptions,BFB.Engine.TileMap.Generators.WorldGenerator}'
+  definition: Func`2
+  name: Func<WorldOptions, WorldGenerator>
+  nameWithType: Func<WorldOptions, WorldGenerator>
+  fullName: Func<BFB.Engine.TileMap.Generators.WorldOptions, BFB.Engine.TileMap.Generators.WorldGenerator>
+  nameWithType.vb: Func(Of WorldOptions, WorldGenerator)
+  fullName.vb: Func(Of BFB.Engine.TileMap.Generators.WorldOptions, BFB.Engine.TileMap.Generators.WorldGenerator)
+  name.vb: Func(Of WorldOptions, WorldGenerator)
+  spec.csharp:
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: BFB.Engine.TileMap.Generators.WorldOptions
+    name: WorldOptions
+    nameWithType: WorldOptions
+    fullName: BFB.Engine.TileMap.Generators.WorldOptions
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: BFB.Engine.TileMap.Generators.WorldGenerator
+    name: WorldGenerator
+    nameWithType: WorldGenerator
+    fullName: BFB.Engine.TileMap.Generators.WorldGenerator
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: BFB.Engine.TileMap.Generators.WorldOptions
+    name: WorldOptions
+    nameWithType: WorldOptions
+    fullName: BFB.Engine.TileMap.Generators.WorldOptions
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: BFB.Engine.TileMap.Generators.WorldGenerator
+    name: WorldGenerator
+    nameWithType: WorldGenerator
+    fullName: BFB.Engine.TileMap.Generators.WorldGenerator
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Func`2
+  isExternal: true
+  name: Func<, >
+  nameWithType: Func<, >
+  fullName: Func<, >
+  nameWithType.vb: Func(Of , )
+  fullName.vb: Func(Of , )
+  name.vb: Func(Of , )
+  spec.csharp:
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: )
+    nameWithType: )
+    fullName: )

@@ -1,0 +1,517 @@
+### YamlMime:ManagedReference
+items:
+- uid: BFB.Engine.UI.Constraints.UIPositionConstraint
+  commentId: T:BFB.Engine.UI.Constraints.UIPositionConstraint
+  id: UIPositionConstraint
+  parent: BFB.Engine.UI.Constraints
+  children:
+  - BFB.Engine.UI.Constraints.UIPositionConstraint.#ctor(System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Int32})
+  - BFB.Engine.UI.Constraints.UIPositionConstraint.Apply(BFB.Engine.UI.Components.UIComponent)
+  langs:
+  - csharp
+  - vb
+  name: UIPositionConstraint
+  nameWithType: UIPositionConstraint
+  fullName: BFB.Engine.UI.Constraints.UIPositionConstraint
+  type: Class
+  source:
+    remote:
+      path: BFB/BFB.Engine/UI/Constraints/UIPositionConstraint.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: UIPositionConstraint
+    path: ../BFB/BFB.Engine/UI/Constraints/UIPositionConstraint.cs
+    startLine: 4
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.UI.Constraints
+  syntax:
+    content: 'public class UIPositionConstraint : UIConstraint'
+    content.vb: >-
+      Public Class UIPositionConstraint
+
+          Inherits UIConstraint
+  inheritance:
+  - System.Object
+  - BFB.Engine.UI.Constraints.UIConstraint
+  inheritedMembers:
+  - BFB.Engine.UI.Constraints.UIConstraint.Name
+  extensionMethods:
+  - BFB.Engine.UI.Constraints.UIPositionConstraint.BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{BFB.Engine.UI.Constraints.UIPositionConstraint,{TValue}}},{TValue})
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: BFB.Engine.UI.Constraints.UIPositionConstraint.#ctor(System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Int32})
+  commentId: M:BFB.Engine.UI.Constraints.UIPositionConstraint.#ctor(System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Int32})
+  id: '#ctor(System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Int32})'
+  parent: BFB.Engine.UI.Constraints.UIPositionConstraint
+  langs:
+  - csharp
+  - vb
+  name: UIPositionConstraint(Nullable<Int32>, Nullable<Int32>, Nullable<Int32>, Nullable<Int32>)
+  nameWithType: UIPositionConstraint.UIPositionConstraint(Nullable<Int32>, Nullable<Int32>, Nullable<Int32>, Nullable<Int32>)
+  fullName: BFB.Engine.UI.Constraints.UIPositionConstraint.UIPositionConstraint(System.Nullable<System.Int32>, System.Nullable<System.Int32>, System.Nullable<System.Int32>, System.Nullable<System.Int32>)
+  type: Constructor
+  source:
+    remote:
+      path: BFB/BFB.Engine/UI/Constraints/UIPositionConstraint.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: .ctor
+    path: ../BFB/BFB.Engine/UI/Constraints/UIPositionConstraint.cs
+    startLine: 11
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.UI.Constraints
+  syntax:
+    content: public UIPositionConstraint(int? top = null, int? right = null, int? bottom = null, int? left = null)
+    parameters:
+    - id: top
+      type: System.Nullable{System.Int32}
+    - id: right
+      type: System.Nullable{System.Int32}
+    - id: bottom
+      type: System.Nullable{System.Int32}
+    - id: left
+      type: System.Nullable{System.Int32}
+    content.vb: Public Sub New(top As Integer? = Nothing, right As Integer? = Nothing, bottom As Integer? = Nothing, left As Integer? = Nothing)
+  overload: BFB.Engine.UI.Constraints.UIPositionConstraint.#ctor*
+  nameWithType.vb: UIPositionConstraint.UIPositionConstraint(Nullable(Of Int32), Nullable(Of Int32), Nullable(Of Int32), Nullable(Of Int32))
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+  fullName.vb: BFB.Engine.UI.Constraints.UIPositionConstraint.UIPositionConstraint(System.Nullable(Of System.Int32), System.Nullable(Of System.Int32), System.Nullable(Of System.Int32), System.Nullable(Of System.Int32))
+  name.vb: UIPositionConstraint(Nullable(Of Int32), Nullable(Of Int32), Nullable(Of Int32), Nullable(Of Int32))
+- uid: BFB.Engine.UI.Constraints.UIPositionConstraint.Apply(BFB.Engine.UI.Components.UIComponent)
+  commentId: M:BFB.Engine.UI.Constraints.UIPositionConstraint.Apply(BFB.Engine.UI.Components.UIComponent)
+  id: Apply(BFB.Engine.UI.Components.UIComponent)
+  parent: BFB.Engine.UI.Constraints.UIPositionConstraint
+  langs:
+  - csharp
+  - vb
+  name: Apply(UIComponent)
+  nameWithType: UIPositionConstraint.Apply(UIComponent)
+  fullName: BFB.Engine.UI.Constraints.UIPositionConstraint.Apply(BFB.Engine.UI.Components.UIComponent)
+  type: Method
+  source:
+    remote:
+      path: BFB/BFB.Engine/UI/Constraints/UIPositionConstraint.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: Apply
+    path: ../BFB/BFB.Engine/UI/Constraints/UIPositionConstraint.cs
+    startLine: 19
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.UI.Constraints
+  syntax:
+    content: public override void Apply(UIComponent component)
+    parameters:
+    - id: component
+      type: BFB.Engine.UI.Components.UIComponent
+    content.vb: Public Overrides Sub Apply(component As UIComponent)
+  overridden: BFB.Engine.UI.Constraints.UIConstraint.Apply(BFB.Engine.UI.Components.UIComponent)
+  overload: BFB.Engine.UI.Constraints.UIPositionConstraint.Apply*
+  modifiers.csharp:
+  - public
+  - override
+  modifiers.vb:
+  - Public
+  - Overrides
+references:
+- uid: BFB.Engine.UI.Constraints
+  commentId: N:BFB.Engine.UI.Constraints
+  name: BFB.Engine.UI.Constraints
+  nameWithType: BFB.Engine.UI.Constraints
+  fullName: BFB.Engine.UI.Constraints
+- uid: System.Object
+  commentId: '!:System.Object'
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: BFB.Engine.UI.Constraints.UIConstraint
+  commentId: T:BFB.Engine.UI.Constraints.UIConstraint
+  parent: BFB.Engine.UI.Constraints
+  name: UIConstraint
+  nameWithType: UIConstraint
+  fullName: BFB.Engine.UI.Constraints.UIConstraint
+- uid: BFB.Engine.UI.Constraints.UIConstraint.Name
+  commentId: P:BFB.Engine.UI.Constraints.UIConstraint.Name
+  parent: BFB.Engine.UI.Constraints.UIConstraint
+  name: Name
+  nameWithType: UIConstraint.Name
+  fullName: BFB.Engine.UI.Constraints.UIConstraint.Name
+- uid: BFB.Engine.UI.Constraints.UIPositionConstraint.BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{BFB.Engine.UI.Constraints.UIPositionConstraint,{TValue}}},{TValue})
+  commentId: M:BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  parent: BFB.Engine.UI.Components.LambdaExtensions
+  definition: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  name: SetPropertyValue<UIPositionConstraint, TValue>(Expression<Func<UIPositionConstraint, TValue>>, TValue)
+  nameWithType: LambdaExtensions.SetPropertyValue<UIPositionConstraint, TValue>(Expression<Func<UIPositionConstraint, TValue>>, TValue)
+  fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<BFB.Engine.UI.Constraints.UIPositionConstraint, TValue>(Expression<Func<BFB.Engine.UI.Constraints.UIPositionConstraint, TValue>>, TValue)
+  nameWithType.vb: LambdaExtensions.SetPropertyValue(Of UIPositionConstraint, TValue)(Expression(Of Func(Of UIPositionConstraint, TValue)), TValue)
+  fullName.vb: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of BFB.Engine.UI.Constraints.UIPositionConstraint, TValue)(Expression(Of Func(Of BFB.Engine.UI.Constraints.UIPositionConstraint, TValue)), TValue)
+  name.vb: SetPropertyValue(Of UIPositionConstraint, TValue)(Expression(Of Func(Of UIPositionConstraint, TValue)), TValue)
+  spec.csharp:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue<UIPositionConstraint, TValue>
+    nameWithType: LambdaExtensions.SetPropertyValue<UIPositionConstraint, TValue>
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<BFB.Engine.UI.Constraints.UIPositionConstraint, TValue>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: BFB.Engine.UI.Constraints.UIPositionConstraint
+    name: UIPositionConstraint
+    nameWithType: UIPositionConstraint
+    fullName: BFB.Engine.UI.Constraints.UIPositionConstraint
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue(Of UIPositionConstraint, TValue)
+    nameWithType: LambdaExtensions.SetPropertyValue(Of UIPositionConstraint, TValue)
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of BFB.Engine.UI.Constraints.UIPositionConstraint, TValue)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: BFB.Engine.UI.Constraints.UIPositionConstraint
+    name: UIPositionConstraint
+    nameWithType: UIPositionConstraint
+    fullName: BFB.Engine.UI.Constraints.UIPositionConstraint
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  commentId: M:BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  isExternal: true
+  name: SetPropertyValue<T, TValue>(T, Expression<Func<T, TValue>>, TValue)
+  nameWithType: LambdaExtensions.SetPropertyValue<T, TValue>(T, Expression<Func<T, TValue>>, TValue)
+  fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<T, TValue>(T, Expression<Func<T, TValue>>, TValue)
+  nameWithType.vb: LambdaExtensions.SetPropertyValue(Of T, TValue)(T, Expression(Of Func(Of T, TValue)), TValue)
+  fullName.vb: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of T, TValue)(T, Expression(Of Func(Of T, TValue)), TValue)
+  name.vb: SetPropertyValue(Of T, TValue)(T, Expression(Of Func(Of T, TValue)), TValue)
+  spec.csharp:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue<T, TValue>
+    nameWithType: LambdaExtensions.SetPropertyValue<T, TValue>
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<T, TValue>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue(Of T, TValue)
+    nameWithType: LambdaExtensions.SetPropertyValue(Of T, TValue)
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of T, TValue)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Components.LambdaExtensions
+  commentId: T:BFB.Engine.UI.Components.LambdaExtensions
+  parent: BFB.Engine.UI.Components
+  name: LambdaExtensions
+  nameWithType: LambdaExtensions
+  fullName: BFB.Engine.UI.Components.LambdaExtensions
+- uid: BFB.Engine.UI.Components
+  commentId: N:BFB.Engine.UI.Components
+  name: BFB.Engine.UI.Components
+  nameWithType: BFB.Engine.UI.Components
+  fullName: BFB.Engine.UI.Components
+- uid: BFB.Engine.UI.Constraints.UIPositionConstraint.#ctor*
+  commentId: Overload:BFB.Engine.UI.Constraints.UIPositionConstraint.#ctor
+  name: UIPositionConstraint
+  nameWithType: UIPositionConstraint.UIPositionConstraint
+  fullName: BFB.Engine.UI.Constraints.UIPositionConstraint.UIPositionConstraint
+- uid: System.Nullable{System.Int32}
+  commentId: '!:System.Nullable{System.Int32}'
+  definition: System.Nullable`1
+  name: Nullable<Int32>
+  nameWithType: Nullable<Int32>
+  fullName: System.Nullable<System.Int32>
+  nameWithType.vb: Nullable(Of Int32)
+  fullName.vb: System.Nullable(Of System.Int32)
+  name.vb: Nullable(Of Int32)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    nameWithType: Nullable
+    fullName: System.Nullable
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    nameWithType: Nullable
+    fullName: System.Nullable
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Nullable`1
+  isExternal: true
+  name: Nullable<>
+  nameWithType: Nullable<>
+  fullName: System.Nullable<>
+  nameWithType.vb: Nullable(Of )
+  fullName.vb: System.Nullable(Of )
+  name.vb: Nullable(Of )
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    nameWithType: Nullable
+    fullName: System.Nullable
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    nameWithType: Nullable
+    fullName: System.Nullable
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Constraints.UIConstraint.Apply(BFB.Engine.UI.Components.UIComponent)
+  commentId: M:BFB.Engine.UI.Constraints.UIConstraint.Apply(BFB.Engine.UI.Components.UIComponent)
+  parent: BFB.Engine.UI.Constraints.UIConstraint
+  name: Apply(UIComponent)
+  nameWithType: UIConstraint.Apply(UIComponent)
+  fullName: BFB.Engine.UI.Constraints.UIConstraint.Apply(BFB.Engine.UI.Components.UIComponent)
+  spec.csharp:
+  - uid: BFB.Engine.UI.Constraints.UIConstraint.Apply(BFB.Engine.UI.Components.UIComponent)
+    name: Apply
+    nameWithType: UIConstraint.Apply
+    fullName: BFB.Engine.UI.Constraints.UIConstraint.Apply
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: BFB.Engine.UI.Components.UIComponent
+    name: UIComponent
+    nameWithType: UIComponent
+    fullName: BFB.Engine.UI.Components.UIComponent
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Constraints.UIConstraint.Apply(BFB.Engine.UI.Components.UIComponent)
+    name: Apply
+    nameWithType: UIConstraint.Apply
+    fullName: BFB.Engine.UI.Constraints.UIConstraint.Apply
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: BFB.Engine.UI.Components.UIComponent
+    name: UIComponent
+    nameWithType: UIComponent
+    fullName: BFB.Engine.UI.Components.UIComponent
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Constraints.UIPositionConstraint.Apply*
+  commentId: Overload:BFB.Engine.UI.Constraints.UIPositionConstraint.Apply
+  name: Apply
+  nameWithType: UIPositionConstraint.Apply
+  fullName: BFB.Engine.UI.Constraints.UIPositionConstraint.Apply
+- uid: BFB.Engine.UI.Components.UIComponent
+  commentId: T:BFB.Engine.UI.Components.UIComponent
+  parent: BFB.Engine.UI.Components
+  name: UIComponent
+  nameWithType: UIComponent
+  fullName: BFB.Engine.UI.Components.UIComponent

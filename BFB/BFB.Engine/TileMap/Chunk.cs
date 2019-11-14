@@ -98,13 +98,25 @@ namespace BFB.Engine.TileMap
         public void ApplyBlockUpdate(TileUpdate tileUpdate, bool doNotRecord = false)
         {
 
+            //If the block is already the same lets not record it
+            if (tileUpdate.Mode)
+            {
+                if (Block[tileUpdate.X, tileUpdate.Y] == tileUpdate.TileValue)//TODO hmmm stuff happens here
+                    return;
+            }
+            else
+            {
+                if (Wall[tileUpdate.X, tileUpdate.Y] == tileUpdate.TileValue)
+                    return;
+            }
+
             if (tileUpdate.Mode)
                 Block[tileUpdate.X, tileUpdate.Y] = tileUpdate.TileValue;
             else
                 Wall[tileUpdate.X, tileUpdate.Y] = tileUpdate.TileValue;
-
-            if (doNotRecord) return; //For on client
             
+            if (doNotRecord) return; //For on client
+
             _tileHistory.Add(ChunkVersion, tileUpdate);
             
             ChunkVersion++;
@@ -146,11 +158,11 @@ namespace BFB.Engine.TileMap
                 TileChanges = new List<TileUpdate>()
             };
 
-            foreach ((int _, TileUpdate update) in _tileHistory.Where(x => x.Key < playerChunkVersion))
+            foreach ((int _, TileUpdate update) in _tileHistory.Where(x => x.Key <= playerChunkVersion))//TODO possibly true when should not be
             {
                 chunkTileUpdates.TileChanges.Add(update);
             }
-
+            
             return chunkTileUpdates;
         }
         

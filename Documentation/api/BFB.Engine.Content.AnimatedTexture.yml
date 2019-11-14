@@ -1,0 +1,846 @@
+### YamlMime:ManagedReference
+items:
+- uid: BFB.Engine.Content.AnimatedTexture
+  commentId: T:BFB.Engine.Content.AnimatedTexture
+  id: AnimatedTexture
+  parent: BFB.Engine.Content
+  children:
+  - BFB.Engine.Content.AnimatedTexture.AnimationSets
+  - BFB.Engine.Content.AnimatedTexture.Columns
+  - BFB.Engine.Content.AnimatedTexture.FrameHeight
+  - BFB.Engine.Content.AnimatedTexture.Frames
+  - BFB.Engine.Content.AnimatedTexture.FrameWidth
+  - BFB.Engine.Content.AnimatedTexture.Key
+  - BFB.Engine.Content.AnimatedTexture.Location
+  - BFB.Engine.Content.AnimatedTexture.Rows
+  - BFB.Engine.Content.AnimatedTexture.Scale
+  - BFB.Engine.Content.AnimatedTexture.Texture
+  langs:
+  - csharp
+  - vb
+  name: AnimatedTexture
+  nameWithType: AnimatedTexture
+  fullName: BFB.Engine.Content.AnimatedTexture
+  type: Class
+  source:
+    remote:
+      path: BFB/BFB.Engine/Content/AnimatedTexture.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: AnimatedTexture
+    path: ../BFB/BFB.Engine/Content/AnimatedTexture.cs
+    startLine: 8
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Content
+  summary: "\nA texture on the client side that is not static, and animates.\n"
+  example: []
+  syntax:
+    content: 'public class AnimatedTexture : object'
+    content.vb: >-
+      Public Class AnimatedTexture
+
+          Inherits Object
+  inheritance:
+  - System.Object
+  extensionMethods:
+  - BFB.Engine.Content.AnimatedTexture.BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{BFB.Engine.Content.AnimatedTexture,{TValue}}},{TValue})
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: BFB.Engine.Content.AnimatedTexture.Key
+  commentId: P:BFB.Engine.Content.AnimatedTexture.Key
+  id: Key
+  parent: BFB.Engine.Content.AnimatedTexture
+  langs:
+  - csharp
+  - vb
+  name: Key
+  nameWithType: AnimatedTexture.Key
+  fullName: BFB.Engine.Content.AnimatedTexture.Key
+  type: Property
+  source:
+    remote:
+      path: BFB/BFB.Engine/Content/AnimatedTexture.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: Key
+    path: ../BFB/BFB.Engine/Content/AnimatedTexture.cs
+    startLine: 13
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Content
+  summary: "\nUsed to identify the animated texture. This should be unique from all other textures\n"
+  example: []
+  syntax:
+    content: public string Key { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Key As String
+  overload: BFB.Engine.Content.AnimatedTexture.Key*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.Content.AnimatedTexture.Location
+  commentId: P:BFB.Engine.Content.AnimatedTexture.Location
+  id: Location
+  parent: BFB.Engine.Content.AnimatedTexture
+  langs:
+  - csharp
+  - vb
+  name: Location
+  nameWithType: AnimatedTexture.Location
+  fullName: BFB.Engine.Content.AnimatedTexture.Location
+  type: Property
+  source:
+    remote:
+      path: BFB/BFB.Engine/Content/AnimatedTexture.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: Location
+    path: ../BFB/BFB.Engine/Content/AnimatedTexture.cs
+    startLine: 18
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Content
+  summary: "\nThe location based off the content managagers root directory for the .xnb of the texture.\n"
+  example: []
+  syntax:
+    content: public string Location { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Location As String
+  overload: BFB.Engine.Content.AnimatedTexture.Location*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.Content.AnimatedTexture.Texture
+  commentId: P:BFB.Engine.Content.AnimatedTexture.Texture
+  id: Texture
+  parent: BFB.Engine.Content.AnimatedTexture
+  langs:
+  - csharp
+  - vb
+  name: Texture
+  nameWithType: AnimatedTexture.Texture
+  fullName: BFB.Engine.Content.AnimatedTexture.Texture
+  type: Property
+  source:
+    remote:
+      path: BFB/BFB.Engine/Content/AnimatedTexture.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: Texture
+    path: ../BFB/BFB.Engine/Content/AnimatedTexture.cs
+    startLine: 23
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Content
+  summary: "\nThe texture after it is loaded with the LoadContent method.\n"
+  example: []
+  syntax:
+    content: public Texture2D Texture { get; set; }
+    parameters: []
+    return:
+      type: Texture2D
+    content.vb: Public Property Texture As Texture2D
+  overload: BFB.Engine.Content.AnimatedTexture.Texture*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.Content.AnimatedTexture.Frames
+  commentId: P:BFB.Engine.Content.AnimatedTexture.Frames
+  id: Frames
+  parent: BFB.Engine.Content.AnimatedTexture
+  langs:
+  - csharp
+  - vb
+  name: Frames
+  nameWithType: AnimatedTexture.Frames
+  fullName: BFB.Engine.Content.AnimatedTexture.Frames
+  type: Property
+  source:
+    remote:
+      path: BFB/BFB.Engine/Content/AnimatedTexture.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: Frames
+    path: ../BFB/BFB.Engine/Content/AnimatedTexture.cs
+    startLine: 28
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Content
+  summary: "\nThe number of frames, or images, in the animation.\n"
+  example: []
+  syntax:
+    content: public int Frames { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property Frames As Integer
+  overload: BFB.Engine.Content.AnimatedTexture.Frames*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.Content.AnimatedTexture.FrameHeight
+  commentId: P:BFB.Engine.Content.AnimatedTexture.FrameHeight
+  id: FrameHeight
+  parent: BFB.Engine.Content.AnimatedTexture
+  langs:
+  - csharp
+  - vb
+  name: FrameHeight
+  nameWithType: AnimatedTexture.FrameHeight
+  fullName: BFB.Engine.Content.AnimatedTexture.FrameHeight
+  type: Property
+  source:
+    remote:
+      path: BFB/BFB.Engine/Content/AnimatedTexture.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: FrameHeight
+    path: ../BFB/BFB.Engine/Content/AnimatedTexture.cs
+    startLine: 33
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Content
+  summary: "\nThe height, in pixel, of each frame.\n"
+  example: []
+  syntax:
+    content: public int FrameHeight { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property FrameHeight As Integer
+  overload: BFB.Engine.Content.AnimatedTexture.FrameHeight*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.Content.AnimatedTexture.FrameWidth
+  commentId: P:BFB.Engine.Content.AnimatedTexture.FrameWidth
+  id: FrameWidth
+  parent: BFB.Engine.Content.AnimatedTexture
+  langs:
+  - csharp
+  - vb
+  name: FrameWidth
+  nameWithType: AnimatedTexture.FrameWidth
+  fullName: BFB.Engine.Content.AnimatedTexture.FrameWidth
+  type: Property
+  source:
+    remote:
+      path: BFB/BFB.Engine/Content/AnimatedTexture.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: FrameWidth
+    path: ../BFB/BFB.Engine/Content/AnimatedTexture.cs
+    startLine: 38
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Content
+  summary: "\nThe width, in pixels, of each frame.\n"
+  example: []
+  syntax:
+    content: public int FrameWidth { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property FrameWidth As Integer
+  overload: BFB.Engine.Content.AnimatedTexture.FrameWidth*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.Content.AnimatedTexture.Columns
+  commentId: P:BFB.Engine.Content.AnimatedTexture.Columns
+  id: Columns
+  parent: BFB.Engine.Content.AnimatedTexture
+  langs:
+  - csharp
+  - vb
+  name: Columns
+  nameWithType: AnimatedTexture.Columns
+  fullName: BFB.Engine.Content.AnimatedTexture.Columns
+  type: Property
+  source:
+    remote:
+      path: BFB/BFB.Engine/Content/AnimatedTexture.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: Columns
+    path: ../BFB/BFB.Engine/Content/AnimatedTexture.cs
+    startLine: 43
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Content
+  summary: "\nThe number of columns in the spritesheet.\n"
+  example: []
+  syntax:
+    content: public int Columns { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property Columns As Integer
+  overload: BFB.Engine.Content.AnimatedTexture.Columns*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.Content.AnimatedTexture.Rows
+  commentId: P:BFB.Engine.Content.AnimatedTexture.Rows
+  id: Rows
+  parent: BFB.Engine.Content.AnimatedTexture
+  langs:
+  - csharp
+  - vb
+  name: Rows
+  nameWithType: AnimatedTexture.Rows
+  fullName: BFB.Engine.Content.AnimatedTexture.Rows
+  type: Property
+  source:
+    remote:
+      path: BFB/BFB.Engine/Content/AnimatedTexture.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: Rows
+    path: ../BFB/BFB.Engine/Content/AnimatedTexture.cs
+    startLine: 48
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Content
+  summary: "\nThe number of rows in the spritesheet\n"
+  example: []
+  syntax:
+    content: public int Rows { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property Rows As Integer
+  overload: BFB.Engine.Content.AnimatedTexture.Rows*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.Content.AnimatedTexture.Scale
+  commentId: P:BFB.Engine.Content.AnimatedTexture.Scale
+  id: Scale
+  parent: BFB.Engine.Content.AnimatedTexture
+  langs:
+  - csharp
+  - vb
+  name: Scale
+  nameWithType: AnimatedTexture.Scale
+  fullName: BFB.Engine.Content.AnimatedTexture.Scale
+  type: Property
+  source:
+    remote:
+      path: BFB/BFB.Engine/Content/AnimatedTexture.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: Scale
+    path: ../BFB/BFB.Engine/Content/AnimatedTexture.cs
+    startLine: 53
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Content
+  summary: "\nHow big the texture is relative to its original size.\n"
+  example: []
+  syntax:
+    content: public float Scale { get; set; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: Public Property Scale As Single
+  overload: BFB.Engine.Content.AnimatedTexture.Scale*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.Content.AnimatedTexture.AnimationSets
+  commentId: P:BFB.Engine.Content.AnimatedTexture.AnimationSets
+  id: AnimationSets
+  parent: BFB.Engine.Content.AnimatedTexture
+  langs:
+  - csharp
+  - vb
+  name: AnimationSets
+  nameWithType: AnimatedTexture.AnimationSets
+  fullName: BFB.Engine.Content.AnimatedTexture.AnimationSets
+  type: Property
+  source:
+    remote:
+      path: BFB/BFB.Engine/Content/AnimatedTexture.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: AnimationSets
+    path: ../BFB/BFB.Engine/Content/AnimatedTexture.cs
+    startLine: 58
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Content
+  summary: "\nThe different animations that one texture can play.\n"
+  example: []
+  syntax:
+    content: public Dictionary<AnimationState, AnimationSet> AnimationSets { get; set; }
+    parameters: []
+    return:
+      type: Dictionary{BFB.Engine.Content.AnimationState,BFB.Engine.Content.AnimationSet}
+    content.vb: Public Property AnimationSets As Dictionary(Of AnimationState, AnimationSet)
+  overload: BFB.Engine.Content.AnimatedTexture.AnimationSets*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+references:
+- uid: BFB.Engine.Content
+  commentId: N:BFB.Engine.Content
+  name: BFB.Engine.Content
+  nameWithType: BFB.Engine.Content
+  fullName: BFB.Engine.Content
+- uid: System.Object
+  commentId: '!:System.Object'
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: BFB.Engine.Content.AnimatedTexture.BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{BFB.Engine.Content.AnimatedTexture,{TValue}}},{TValue})
+  commentId: M:BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  parent: BFB.Engine.UI.Components.LambdaExtensions
+  definition: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  name: SetPropertyValue<AnimatedTexture, TValue>(Expression<Func<AnimatedTexture, TValue>>, TValue)
+  nameWithType: LambdaExtensions.SetPropertyValue<AnimatedTexture, TValue>(Expression<Func<AnimatedTexture, TValue>>, TValue)
+  fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<BFB.Engine.Content.AnimatedTexture, TValue>(Expression<Func<BFB.Engine.Content.AnimatedTexture, TValue>>, TValue)
+  nameWithType.vb: LambdaExtensions.SetPropertyValue(Of AnimatedTexture, TValue)(Expression(Of Func(Of AnimatedTexture, TValue)), TValue)
+  fullName.vb: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of BFB.Engine.Content.AnimatedTexture, TValue)(Expression(Of Func(Of BFB.Engine.Content.AnimatedTexture, TValue)), TValue)
+  name.vb: SetPropertyValue(Of AnimatedTexture, TValue)(Expression(Of Func(Of AnimatedTexture, TValue)), TValue)
+  spec.csharp:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue<AnimatedTexture, TValue>
+    nameWithType: LambdaExtensions.SetPropertyValue<AnimatedTexture, TValue>
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<BFB.Engine.Content.AnimatedTexture, TValue>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: BFB.Engine.Content.AnimatedTexture
+    name: AnimatedTexture
+    nameWithType: AnimatedTexture
+    fullName: BFB.Engine.Content.AnimatedTexture
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue(Of AnimatedTexture, TValue)
+    nameWithType: LambdaExtensions.SetPropertyValue(Of AnimatedTexture, TValue)
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of BFB.Engine.Content.AnimatedTexture, TValue)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: BFB.Engine.Content.AnimatedTexture
+    name: AnimatedTexture
+    nameWithType: AnimatedTexture
+    fullName: BFB.Engine.Content.AnimatedTexture
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  commentId: M:BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  isExternal: true
+  name: SetPropertyValue<T, TValue>(T, Expression<Func<T, TValue>>, TValue)
+  nameWithType: LambdaExtensions.SetPropertyValue<T, TValue>(T, Expression<Func<T, TValue>>, TValue)
+  fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<T, TValue>(T, Expression<Func<T, TValue>>, TValue)
+  nameWithType.vb: LambdaExtensions.SetPropertyValue(Of T, TValue)(T, Expression(Of Func(Of T, TValue)), TValue)
+  fullName.vb: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of T, TValue)(T, Expression(Of Func(Of T, TValue)), TValue)
+  name.vb: SetPropertyValue(Of T, TValue)(T, Expression(Of Func(Of T, TValue)), TValue)
+  spec.csharp:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue<T, TValue>
+    nameWithType: LambdaExtensions.SetPropertyValue<T, TValue>
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<T, TValue>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue(Of T, TValue)
+    nameWithType: LambdaExtensions.SetPropertyValue(Of T, TValue)
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of T, TValue)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Components.LambdaExtensions
+  commentId: T:BFB.Engine.UI.Components.LambdaExtensions
+  parent: BFB.Engine.UI.Components
+  name: LambdaExtensions
+  nameWithType: LambdaExtensions
+  fullName: BFB.Engine.UI.Components.LambdaExtensions
+- uid: BFB.Engine.UI.Components
+  commentId: N:BFB.Engine.UI.Components
+  name: BFB.Engine.UI.Components
+  nameWithType: BFB.Engine.UI.Components
+  fullName: BFB.Engine.UI.Components
+- uid: BFB.Engine.Content.AnimatedTexture.Key*
+  commentId: Overload:BFB.Engine.Content.AnimatedTexture.Key
+  name: Key
+  nameWithType: AnimatedTexture.Key
+  fullName: BFB.Engine.Content.AnimatedTexture.Key
+- uid: System.String
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: BFB.Engine.Content.AnimatedTexture.Location*
+  commentId: Overload:BFB.Engine.Content.AnimatedTexture.Location
+  name: Location
+  nameWithType: AnimatedTexture.Location
+  fullName: BFB.Engine.Content.AnimatedTexture.Location
+- uid: BFB.Engine.Content.AnimatedTexture.Texture*
+  commentId: Overload:BFB.Engine.Content.AnimatedTexture.Texture
+  name: Texture
+  nameWithType: AnimatedTexture.Texture
+  fullName: BFB.Engine.Content.AnimatedTexture.Texture
+- uid: Texture2D
+  isExternal: true
+  name: Texture2D
+  nameWithType: Texture2D
+  fullName: Texture2D
+- uid: BFB.Engine.Content.AnimatedTexture.Frames*
+  commentId: Overload:BFB.Engine.Content.AnimatedTexture.Frames
+  name: Frames
+  nameWithType: AnimatedTexture.Frames
+  fullName: BFB.Engine.Content.AnimatedTexture.Frames
+- uid: System.Int32
+  isExternal: true
+  name: Int32
+  nameWithType: Int32
+  fullName: System.Int32
+- uid: BFB.Engine.Content.AnimatedTexture.FrameHeight*
+  commentId: Overload:BFB.Engine.Content.AnimatedTexture.FrameHeight
+  name: FrameHeight
+  nameWithType: AnimatedTexture.FrameHeight
+  fullName: BFB.Engine.Content.AnimatedTexture.FrameHeight
+- uid: BFB.Engine.Content.AnimatedTexture.FrameWidth*
+  commentId: Overload:BFB.Engine.Content.AnimatedTexture.FrameWidth
+  name: FrameWidth
+  nameWithType: AnimatedTexture.FrameWidth
+  fullName: BFB.Engine.Content.AnimatedTexture.FrameWidth
+- uid: BFB.Engine.Content.AnimatedTexture.Columns*
+  commentId: Overload:BFB.Engine.Content.AnimatedTexture.Columns
+  name: Columns
+  nameWithType: AnimatedTexture.Columns
+  fullName: BFB.Engine.Content.AnimatedTexture.Columns
+- uid: BFB.Engine.Content.AnimatedTexture.Rows*
+  commentId: Overload:BFB.Engine.Content.AnimatedTexture.Rows
+  name: Rows
+  nameWithType: AnimatedTexture.Rows
+  fullName: BFB.Engine.Content.AnimatedTexture.Rows
+- uid: BFB.Engine.Content.AnimatedTexture.Scale*
+  commentId: Overload:BFB.Engine.Content.AnimatedTexture.Scale
+  name: Scale
+  nameWithType: AnimatedTexture.Scale
+  fullName: BFB.Engine.Content.AnimatedTexture.Scale
+- uid: System.Single
+  isExternal: true
+  name: Single
+  nameWithType: Single
+  fullName: System.Single
+- uid: BFB.Engine.Content.AnimatedTexture.AnimationSets*
+  commentId: Overload:BFB.Engine.Content.AnimatedTexture.AnimationSets
+  name: AnimationSets
+  nameWithType: AnimatedTexture.AnimationSets
+  fullName: BFB.Engine.Content.AnimatedTexture.AnimationSets
+- uid: Dictionary{BFB.Engine.Content.AnimationState,BFB.Engine.Content.AnimationSet}
+  commentId: '!:Dictionary{BFB.Engine.Content.AnimationState,BFB.Engine.Content.AnimationSet}'
+  definition: Dictionary`2
+  name: Dictionary<AnimationState, AnimationSet>
+  nameWithType: Dictionary<AnimationState, AnimationSet>
+  fullName: Dictionary<BFB.Engine.Content.AnimationState, BFB.Engine.Content.AnimationSet>
+  nameWithType.vb: Dictionary(Of AnimationState, AnimationSet)
+  fullName.vb: Dictionary(Of BFB.Engine.Content.AnimationState, BFB.Engine.Content.AnimationSet)
+  name.vb: Dictionary(Of AnimationState, AnimationSet)
+  spec.csharp:
+  - uid: Dictionary`2
+    name: Dictionary
+    nameWithType: Dictionary
+    fullName: Dictionary
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: BFB.Engine.Content.AnimationState
+    name: AnimationState
+    nameWithType: AnimationState
+    fullName: BFB.Engine.Content.AnimationState
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: BFB.Engine.Content.AnimationSet
+    name: AnimationSet
+    nameWithType: AnimationSet
+    fullName: BFB.Engine.Content.AnimationSet
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: Dictionary`2
+    name: Dictionary
+    nameWithType: Dictionary
+    fullName: Dictionary
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: BFB.Engine.Content.AnimationState
+    name: AnimationState
+    nameWithType: AnimationState
+    fullName: BFB.Engine.Content.AnimationState
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: BFB.Engine.Content.AnimationSet
+    name: AnimationSet
+    nameWithType: AnimationSet
+    fullName: BFB.Engine.Content.AnimationSet
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Dictionary`2
+  isExternal: true
+  name: Dictionary<, >
+  nameWithType: Dictionary<, >
+  fullName: Dictionary<, >
+  nameWithType.vb: Dictionary(Of , )
+  fullName.vb: Dictionary(Of , )
+  name.vb: Dictionary(Of , )
+  spec.csharp:
+  - uid: Dictionary`2
+    name: Dictionary
+    nameWithType: Dictionary
+    fullName: Dictionary
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: Dictionary`2
+    name: Dictionary
+    nameWithType: Dictionary
+    fullName: Dictionary
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: )
+    nameWithType: )
+    fullName: )

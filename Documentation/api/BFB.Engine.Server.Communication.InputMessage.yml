@@ -1,0 +1,374 @@
+### YamlMime:ManagedReference
+items:
+- uid: BFB.Engine.Server.Communication.InputMessage
+  commentId: T:BFB.Engine.Server.Communication.InputMessage
+  id: InputMessage
+  parent: BFB.Engine.Server.Communication
+  children:
+  - BFB.Engine.Server.Communication.InputMessage.PlayerInputState
+  langs:
+  - csharp
+  - vb
+  name: InputMessage
+  nameWithType: InputMessage
+  fullName: BFB.Engine.Server.Communication.InputMessage
+  type: Class
+  source:
+    remote:
+      path: BFB/BFB.Engine/Server/Communication/InputMessage.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: InputMessage
+    path: ../BFB/BFB.Engine/Server/Communication/InputMessage.cs
+    startLine: 10
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Server.Communication
+  summary: "\nUsed to pass input from the client to the server\n"
+  example: []
+  syntax:
+    content: 'public class InputMessage : DataMessage'
+    content.vb: >-
+      Public Class InputMessage
+
+          Inherits DataMessage
+  inheritance:
+  - System.Object
+  - BFB.Engine.Server.Communication.DataMessage
+  inheritedMembers:
+  - BFB.Engine.Server.Communication.DataMessage.Route
+  - BFB.Engine.Server.Communication.DataMessage.Message
+  - BFB.Engine.Server.Communication.DataMessage.ClientId
+  extensionMethods:
+  - BFB.Engine.Server.Communication.InputMessage.BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{BFB.Engine.Server.Communication.InputMessage,{TValue}}},{TValue})
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: BFB.Engine.Server.Communication.InputMessage.PlayerInputState
+  commentId: P:BFB.Engine.Server.Communication.InputMessage.PlayerInputState
+  id: PlayerInputState
+  parent: BFB.Engine.Server.Communication.InputMessage
+  langs:
+  - csharp
+  - vb
+  name: PlayerInputState
+  nameWithType: InputMessage.PlayerInputState
+  fullName: BFB.Engine.Server.Communication.InputMessage.PlayerInputState
+  type: Property
+  source:
+    remote:
+      path: BFB/BFB.Engine/Server/Communication/InputMessage.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: PlayerInputState
+    path: ../BFB/BFB.Engine/Server/Communication/InputMessage.cs
+    startLine: 16
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Server.Communication
+  summary: "\nThe players current input\n"
+  example: []
+  syntax:
+    content: public PlayerState PlayerInputState { get; set; }
+    parameters: []
+    return:
+      type: BFB.Engine.Input.PlayerInput.PlayerState
+    content.vb: Public Property PlayerInputState As PlayerState
+  overload: BFB.Engine.Server.Communication.InputMessage.PlayerInputState*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+references:
+- uid: BFB.Engine.Server.Communication
+  commentId: N:BFB.Engine.Server.Communication
+  name: BFB.Engine.Server.Communication
+  nameWithType: BFB.Engine.Server.Communication
+  fullName: BFB.Engine.Server.Communication
+- uid: System.Object
+  commentId: '!:System.Object'
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: BFB.Engine.Server.Communication.DataMessage
+  commentId: T:BFB.Engine.Server.Communication.DataMessage
+  parent: BFB.Engine.Server.Communication
+  name: DataMessage
+  nameWithType: DataMessage
+  fullName: BFB.Engine.Server.Communication.DataMessage
+- uid: BFB.Engine.Server.Communication.DataMessage.Route
+  commentId: P:BFB.Engine.Server.Communication.DataMessage.Route
+  parent: BFB.Engine.Server.Communication.DataMessage
+  name: Route
+  nameWithType: DataMessage.Route
+  fullName: BFB.Engine.Server.Communication.DataMessage.Route
+- uid: BFB.Engine.Server.Communication.DataMessage.Message
+  commentId: P:BFB.Engine.Server.Communication.DataMessage.Message
+  parent: BFB.Engine.Server.Communication.DataMessage
+  name: Message
+  nameWithType: DataMessage.Message
+  fullName: BFB.Engine.Server.Communication.DataMessage.Message
+- uid: BFB.Engine.Server.Communication.DataMessage.ClientId
+  commentId: P:BFB.Engine.Server.Communication.DataMessage.ClientId
+  parent: BFB.Engine.Server.Communication.DataMessage
+  name: ClientId
+  nameWithType: DataMessage.ClientId
+  fullName: BFB.Engine.Server.Communication.DataMessage.ClientId
+- uid: BFB.Engine.Server.Communication.InputMessage.BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{BFB.Engine.Server.Communication.InputMessage,{TValue}}},{TValue})
+  commentId: M:BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  parent: BFB.Engine.UI.Components.LambdaExtensions
+  definition: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  name: SetPropertyValue<InputMessage, TValue>(Expression<Func<InputMessage, TValue>>, TValue)
+  nameWithType: LambdaExtensions.SetPropertyValue<InputMessage, TValue>(Expression<Func<InputMessage, TValue>>, TValue)
+  fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<BFB.Engine.Server.Communication.InputMessage, TValue>(Expression<Func<BFB.Engine.Server.Communication.InputMessage, TValue>>, TValue)
+  nameWithType.vb: LambdaExtensions.SetPropertyValue(Of InputMessage, TValue)(Expression(Of Func(Of InputMessage, TValue)), TValue)
+  fullName.vb: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of BFB.Engine.Server.Communication.InputMessage, TValue)(Expression(Of Func(Of BFB.Engine.Server.Communication.InputMessage, TValue)), TValue)
+  name.vb: SetPropertyValue(Of InputMessage, TValue)(Expression(Of Func(Of InputMessage, TValue)), TValue)
+  spec.csharp:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue<InputMessage, TValue>
+    nameWithType: LambdaExtensions.SetPropertyValue<InputMessage, TValue>
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<BFB.Engine.Server.Communication.InputMessage, TValue>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: BFB.Engine.Server.Communication.InputMessage
+    name: InputMessage
+    nameWithType: InputMessage
+    fullName: BFB.Engine.Server.Communication.InputMessage
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue(Of InputMessage, TValue)
+    nameWithType: LambdaExtensions.SetPropertyValue(Of InputMessage, TValue)
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of BFB.Engine.Server.Communication.InputMessage, TValue)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: BFB.Engine.Server.Communication.InputMessage
+    name: InputMessage
+    nameWithType: InputMessage
+    fullName: BFB.Engine.Server.Communication.InputMessage
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  commentId: M:BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  isExternal: true
+  name: SetPropertyValue<T, TValue>(T, Expression<Func<T, TValue>>, TValue)
+  nameWithType: LambdaExtensions.SetPropertyValue<T, TValue>(T, Expression<Func<T, TValue>>, TValue)
+  fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<T, TValue>(T, Expression<Func<T, TValue>>, TValue)
+  nameWithType.vb: LambdaExtensions.SetPropertyValue(Of T, TValue)(T, Expression(Of Func(Of T, TValue)), TValue)
+  fullName.vb: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of T, TValue)(T, Expression(Of Func(Of T, TValue)), TValue)
+  name.vb: SetPropertyValue(Of T, TValue)(T, Expression(Of Func(Of T, TValue)), TValue)
+  spec.csharp:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue<T, TValue>
+    nameWithType: LambdaExtensions.SetPropertyValue<T, TValue>
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<T, TValue>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue(Of T, TValue)
+    nameWithType: LambdaExtensions.SetPropertyValue(Of T, TValue)
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of T, TValue)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Components.LambdaExtensions
+  commentId: T:BFB.Engine.UI.Components.LambdaExtensions
+  parent: BFB.Engine.UI.Components
+  name: LambdaExtensions
+  nameWithType: LambdaExtensions
+  fullName: BFB.Engine.UI.Components.LambdaExtensions
+- uid: BFB.Engine.UI.Components
+  commentId: N:BFB.Engine.UI.Components
+  name: BFB.Engine.UI.Components
+  nameWithType: BFB.Engine.UI.Components
+  fullName: BFB.Engine.UI.Components
+- uid: BFB.Engine.Server.Communication.InputMessage.PlayerInputState*
+  commentId: Overload:BFB.Engine.Server.Communication.InputMessage.PlayerInputState
+  name: PlayerInputState
+  nameWithType: InputMessage.PlayerInputState
+  fullName: BFB.Engine.Server.Communication.InputMessage.PlayerInputState
+- uid: BFB.Engine.Input.PlayerInput.PlayerState
+  commentId: T:BFB.Engine.Input.PlayerInput.PlayerState
+  parent: BFB.Engine.Input.PlayerInput
+  name: PlayerState
+  nameWithType: PlayerState
+  fullName: BFB.Engine.Input.PlayerInput.PlayerState
+- uid: BFB.Engine.Input.PlayerInput
+  commentId: N:BFB.Engine.Input.PlayerInput
+  name: BFB.Engine.Input.PlayerInput
+  nameWithType: BFB.Engine.Input.PlayerInput
+  fullName: BFB.Engine.Input.PlayerInput

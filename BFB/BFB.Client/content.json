@@ -37,7 +37,7 @@
             "FrameHeight": 45,
             "Columns": 4,
             "Rows": 3,
-            "Scale": 1.5,
+            "Scale": 1,
             "AnimationSets": {
                 "IdleLeft": {
                     "Fps": 5,

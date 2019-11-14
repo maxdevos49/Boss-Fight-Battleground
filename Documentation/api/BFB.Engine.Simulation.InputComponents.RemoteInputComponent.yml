@@ -1,0 +1,469 @@
+### YamlMime:ManagedReference
+items:
+- uid: BFB.Engine.Simulation.InputComponents.RemoteInputComponent
+  commentId: T:BFB.Engine.Simulation.InputComponents.RemoteInputComponent
+  id: RemoteInputComponent
+  parent: BFB.Engine.Simulation.InputComponents
+  children:
+  - BFB.Engine.Simulation.InputComponents.RemoteInputComponent.#ctor(BFB.Engine.Server.ClientSocket)
+  - BFB.Engine.Simulation.InputComponents.RemoteInputComponent.Update(BFB.Engine.Entity.SimulationEntity,BFB.Engine.Simulation.Simulation)
+  langs:
+  - csharp
+  - vb
+  name: RemoteInputComponent
+  nameWithType: RemoteInputComponent
+  fullName: BFB.Engine.Simulation.InputComponents.RemoteInputComponent
+  type: Class
+  source:
+    remote:
+      path: BFB/BFB.Engine/Simulation/InputComponents/RemoteInputComponent.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: RemoteInputComponent
+    path: ../BFB/BFB.Engine/Simulation/InputComponents/RemoteInputComponent.cs
+    startLine: 11
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Simulation.InputComponents
+  summary: "\nA Input component that is used for remotely controlling a entity from a socket connection\n"
+  example: []
+  syntax:
+    content: 'public class RemoteInputComponent : object, IInputComponent'
+    content.vb: >-
+      Public Class RemoteInputComponent
+
+          Inherits Object
+
+          Implements IInputComponent
+  inheritance:
+  - System.Object
+  implements:
+  - BFB.Engine.Simulation.InputComponents.IInputComponent
+  extensionMethods:
+  - BFB.Engine.Simulation.InputComponents.RemoteInputComponent.BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{BFB.Engine.Simulation.InputComponents.RemoteInputComponent,{TValue}}},{TValue})
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: BFB.Engine.Simulation.InputComponents.RemoteInputComponent.#ctor(BFB.Engine.Server.ClientSocket)
+  commentId: M:BFB.Engine.Simulation.InputComponents.RemoteInputComponent.#ctor(BFB.Engine.Server.ClientSocket)
+  id: '#ctor(BFB.Engine.Server.ClientSocket)'
+  parent: BFB.Engine.Simulation.InputComponents.RemoteInputComponent
+  langs:
+  - csharp
+  - vb
+  name: RemoteInputComponent(ClientSocket)
+  nameWithType: RemoteInputComponent.RemoteInputComponent(ClientSocket)
+  fullName: BFB.Engine.Simulation.InputComponents.RemoteInputComponent.RemoteInputComponent(BFB.Engine.Server.ClientSocket)
+  type: Constructor
+  source:
+    remote:
+      path: BFB/BFB.Engine/Simulation/InputComponents/RemoteInputComponent.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: .ctor
+    path: ../BFB/BFB.Engine/Simulation/InputComponents/RemoteInputComponent.cs
+    startLine: 26
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Simulation.InputComponents
+  summary: "\nConstructs a RemoteInputComponent using a ClientSocket\n"
+  example: []
+  syntax:
+    content: public RemoteInputComponent(ClientSocket socket)
+    parameters:
+    - id: socket
+      type: BFB.Engine.Server.ClientSocket
+      description: The controlling players ClientSocket
+    content.vb: Public Sub New(socket As ClientSocket)
+  overload: BFB.Engine.Simulation.InputComponents.RemoteInputComponent.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.Simulation.InputComponents.RemoteInputComponent.Update(BFB.Engine.Entity.SimulationEntity,BFB.Engine.Simulation.Simulation)
+  commentId: M:BFB.Engine.Simulation.InputComponents.RemoteInputComponent.Update(BFB.Engine.Entity.SimulationEntity,BFB.Engine.Simulation.Simulation)
+  id: Update(BFB.Engine.Entity.SimulationEntity,BFB.Engine.Simulation.Simulation)
+  parent: BFB.Engine.Simulation.InputComponents.RemoteInputComponent
+  langs:
+  - csharp
+  - vb
+  name: Update(SimulationEntity, Simulation)
+  nameWithType: RemoteInputComponent.Update(SimulationEntity, Simulation)
+  fullName: BFB.Engine.Simulation.InputComponents.RemoteInputComponent.Update(BFB.Engine.Entity.SimulationEntity, BFB.Engine.Simulation.Simulation)
+  type: Method
+  source:
+    remote:
+      path: BFB/BFB.Engine/Simulation/InputComponents/RemoteInputComponent.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: Update
+    path: ../BFB/BFB.Engine/Simulation/InputComponents/RemoteInputComponent.cs
+    startLine: 42
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Simulation.InputComponents
+  syntax:
+    content: public void Update(SimulationEntity simulationEntity, Simulation simulation)
+    parameters:
+    - id: simulationEntity
+      type: BFB.Engine.Entity.SimulationEntity
+    - id: simulation
+      type: BFB.Engine.Simulation.Simulation
+    content.vb: Public Sub Update(simulationEntity As SimulationEntity, simulation As Simulation)
+  overload: BFB.Engine.Simulation.InputComponents.RemoteInputComponent.Update*
+  implements:
+  - BFB.Engine.Simulation.InputComponents.IInputComponent.Update(BFB.Engine.Entity.SimulationEntity,BFB.Engine.Simulation.Simulation)
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+references:
+- uid: BFB.Engine.Simulation.InputComponents
+  commentId: N:BFB.Engine.Simulation.InputComponents
+  name: BFB.Engine.Simulation.InputComponents
+  nameWithType: BFB.Engine.Simulation.InputComponents
+  fullName: BFB.Engine.Simulation.InputComponents
+- uid: System.Object
+  commentId: '!:System.Object'
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: BFB.Engine.Simulation.InputComponents.IInputComponent
+  commentId: T:BFB.Engine.Simulation.InputComponents.IInputComponent
+  parent: BFB.Engine.Simulation.InputComponents
+  name: IInputComponent
+  nameWithType: IInputComponent
+  fullName: BFB.Engine.Simulation.InputComponents.IInputComponent
+- uid: BFB.Engine.Simulation.InputComponents.RemoteInputComponent.BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{BFB.Engine.Simulation.InputComponents.RemoteInputComponent,{TValue}}},{TValue})
+  commentId: M:BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  parent: BFB.Engine.UI.Components.LambdaExtensions
+  definition: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  name: SetPropertyValue<RemoteInputComponent, TValue>(Expression<Func<RemoteInputComponent, TValue>>, TValue)
+  nameWithType: LambdaExtensions.SetPropertyValue<RemoteInputComponent, TValue>(Expression<Func<RemoteInputComponent, TValue>>, TValue)
+  fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<BFB.Engine.Simulation.InputComponents.RemoteInputComponent, TValue>(Expression<Func<BFB.Engine.Simulation.InputComponents.RemoteInputComponent, TValue>>, TValue)
+  nameWithType.vb: LambdaExtensions.SetPropertyValue(Of RemoteInputComponent, TValue)(Expression(Of Func(Of RemoteInputComponent, TValue)), TValue)
+  fullName.vb: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of BFB.Engine.Simulation.InputComponents.RemoteInputComponent, TValue)(Expression(Of Func(Of BFB.Engine.Simulation.InputComponents.RemoteInputComponent, TValue)), TValue)
+  name.vb: SetPropertyValue(Of RemoteInputComponent, TValue)(Expression(Of Func(Of RemoteInputComponent, TValue)), TValue)
+  spec.csharp:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue<RemoteInputComponent, TValue>
+    nameWithType: LambdaExtensions.SetPropertyValue<RemoteInputComponent, TValue>
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<BFB.Engine.Simulation.InputComponents.RemoteInputComponent, TValue>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: BFB.Engine.Simulation.InputComponents.RemoteInputComponent
+    name: RemoteInputComponent
+    nameWithType: RemoteInputComponent
+    fullName: BFB.Engine.Simulation.InputComponents.RemoteInputComponent
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue(Of RemoteInputComponent, TValue)
+    nameWithType: LambdaExtensions.SetPropertyValue(Of RemoteInputComponent, TValue)
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of BFB.Engine.Simulation.InputComponents.RemoteInputComponent, TValue)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: BFB.Engine.Simulation.InputComponents.RemoteInputComponent
+    name: RemoteInputComponent
+    nameWithType: RemoteInputComponent
+    fullName: BFB.Engine.Simulation.InputComponents.RemoteInputComponent
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  commentId: M:BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  isExternal: true
+  name: SetPropertyValue<T, TValue>(T, Expression<Func<T, TValue>>, TValue)
+  nameWithType: LambdaExtensions.SetPropertyValue<T, TValue>(T, Expression<Func<T, TValue>>, TValue)
+  fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<T, TValue>(T, Expression<Func<T, TValue>>, TValue)
+  nameWithType.vb: LambdaExtensions.SetPropertyValue(Of T, TValue)(T, Expression(Of Func(Of T, TValue)), TValue)
+  fullName.vb: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of T, TValue)(T, Expression(Of Func(Of T, TValue)), TValue)
+  name.vb: SetPropertyValue(Of T, TValue)(T, Expression(Of Func(Of T, TValue)), TValue)
+  spec.csharp:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue<T, TValue>
+    nameWithType: LambdaExtensions.SetPropertyValue<T, TValue>
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<T, TValue>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue(Of T, TValue)
+    nameWithType: LambdaExtensions.SetPropertyValue(Of T, TValue)
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of T, TValue)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Components.LambdaExtensions
+  commentId: T:BFB.Engine.UI.Components.LambdaExtensions
+  parent: BFB.Engine.UI.Components
+  name: LambdaExtensions
+  nameWithType: LambdaExtensions
+  fullName: BFB.Engine.UI.Components.LambdaExtensions
+- uid: BFB.Engine.UI.Components
+  commentId: N:BFB.Engine.UI.Components
+  name: BFB.Engine.UI.Components
+  nameWithType: BFB.Engine.UI.Components
+  fullName: BFB.Engine.UI.Components
+- uid: BFB.Engine.Simulation.InputComponents.RemoteInputComponent.#ctor*
+  commentId: Overload:BFB.Engine.Simulation.InputComponents.RemoteInputComponent.#ctor
+  name: RemoteInputComponent
+  nameWithType: RemoteInputComponent.RemoteInputComponent
+  fullName: BFB.Engine.Simulation.InputComponents.RemoteInputComponent.RemoteInputComponent
+- uid: BFB.Engine.Server.ClientSocket
+  commentId: T:BFB.Engine.Server.ClientSocket
+  parent: BFB.Engine.Server
+  name: ClientSocket
+  nameWithType: ClientSocket
+  fullName: BFB.Engine.Server.ClientSocket
+- uid: BFB.Engine.Server
+  commentId: N:BFB.Engine.Server
+  name: BFB.Engine.Server
+  nameWithType: BFB.Engine.Server
+  fullName: BFB.Engine.Server
+- uid: BFB.Engine.Simulation.InputComponents.RemoteInputComponent.Update*
+  commentId: Overload:BFB.Engine.Simulation.InputComponents.RemoteInputComponent.Update
+  name: Update
+  nameWithType: RemoteInputComponent.Update
+  fullName: BFB.Engine.Simulation.InputComponents.RemoteInputComponent.Update
+- uid: BFB.Engine.Simulation.InputComponents.IInputComponent.Update(BFB.Engine.Entity.SimulationEntity,BFB.Engine.Simulation.Simulation)
+  commentId: M:BFB.Engine.Simulation.InputComponents.IInputComponent.Update(BFB.Engine.Entity.SimulationEntity,BFB.Engine.Simulation.Simulation)
+  parent: BFB.Engine.Simulation.InputComponents.IInputComponent
+  name: Update(SimulationEntity, Simulation)
+  nameWithType: IInputComponent.Update(SimulationEntity, Simulation)
+  fullName: BFB.Engine.Simulation.InputComponents.IInputComponent.Update(BFB.Engine.Entity.SimulationEntity, BFB.Engine.Simulation.Simulation)
+  spec.csharp:
+  - uid: BFB.Engine.Simulation.InputComponents.IInputComponent.Update(BFB.Engine.Entity.SimulationEntity,BFB.Engine.Simulation.Simulation)
+    name: Update
+    nameWithType: IInputComponent.Update
+    fullName: BFB.Engine.Simulation.InputComponents.IInputComponent.Update
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: BFB.Engine.Entity.SimulationEntity
+    name: SimulationEntity
+    nameWithType: SimulationEntity
+    fullName: BFB.Engine.Entity.SimulationEntity
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: BFB.Engine.Simulation.Simulation
+    name: Simulation
+    nameWithType: Simulation
+    fullName: BFB.Engine.Simulation.Simulation
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.Simulation.InputComponents.IInputComponent.Update(BFB.Engine.Entity.SimulationEntity,BFB.Engine.Simulation.Simulation)
+    name: Update
+    nameWithType: IInputComponent.Update
+    fullName: BFB.Engine.Simulation.InputComponents.IInputComponent.Update
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: BFB.Engine.Entity.SimulationEntity
+    name: SimulationEntity
+    nameWithType: SimulationEntity
+    fullName: BFB.Engine.Entity.SimulationEntity
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: BFB.Engine.Simulation.Simulation
+    name: Simulation
+    nameWithType: Simulation
+    fullName: BFB.Engine.Simulation.Simulation
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.Entity.SimulationEntity
+  commentId: T:BFB.Engine.Entity.SimulationEntity
+  parent: BFB.Engine.Entity
+  name: SimulationEntity
+  nameWithType: SimulationEntity
+  fullName: BFB.Engine.Entity.SimulationEntity
+- uid: BFB.Engine.Simulation.Simulation
+  commentId: T:BFB.Engine.Simulation.Simulation
+  parent: BFB.Engine.Simulation
+  name: Simulation
+  nameWithType: Simulation
+  fullName: BFB.Engine.Simulation.Simulation
+- uid: BFB.Engine.Entity
+  commentId: N:BFB.Engine.Entity
+  name: BFB.Engine.Entity
+  nameWithType: BFB.Engine.Entity
+  fullName: BFB.Engine.Entity
+- uid: BFB.Engine.Simulation
+  commentId: N:BFB.Engine.Simulation
+  name: BFB.Engine.Simulation
+  nameWithType: BFB.Engine.Simulation
+  fullName: BFB.Engine.Simulation

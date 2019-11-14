@@ -1,0 +1,930 @@
+### YamlMime:ManagedReference
+items:
+- uid: BFB.Engine.Content.BFBContentManager
+  commentId: T:BFB.Engine.Content.BFBContentManager
+  id: BFBContentManager
+  parent: BFB.Engine.Content
+  children:
+  - BFB.Engine.Content.BFBContentManager.#ctor(ContentManager)
+  - BFB.Engine.Content.BFBContentManager.AddAnimatedTexture(System.String,BFB.Engine.Content.AnimatedTexture)
+  - BFB.Engine.Content.BFBContentManager.AddAudio(System.String,Song)
+  - BFB.Engine.Content.BFBContentManager.AddFont(System.String,SpriteFont)
+  - BFB.Engine.Content.BFBContentManager.AddTexture(System.String,Texture2D)
+  - BFB.Engine.Content.BFBContentManager.GetAnimatedTexture(System.String)
+  - BFB.Engine.Content.BFBContentManager.GetAudio(System.String)
+  - BFB.Engine.Content.BFBContentManager.GetFont(System.String)
+  - BFB.Engine.Content.BFBContentManager.GetTexture(System.String)
+  - BFB.Engine.Content.BFBContentManager.ParseContent
+  - BFB.Engine.Content.BFBContentManager.UnloadAnimatedTexture(System.String)
+  - BFB.Engine.Content.BFBContentManager.UnloadAudio(System.String)
+  - BFB.Engine.Content.BFBContentManager.UnloadFont(System.String)
+  - BFB.Engine.Content.BFBContentManager.UnloadTexture(System.String)
+  langs:
+  - csharp
+  - vb
+  name: BFBContentManager
+  nameWithType: BFBContentManager
+  fullName: BFB.Engine.Content.BFBContentManager
+  type: Class
+  source:
+    remote:
+      path: BFB/BFB.Engine/Content/BFBContentManager.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: BFBContentManager
+    path: ../BFB/BFB.Engine/Content/BFBContentManager.cs
+    startLine: 15
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Content
+  summary: "\nA modified version of the Monogame ContentManager. Rather than extending it, one of the properties is a Monogame ContentManager.\n"
+  example: []
+  syntax:
+    content: 'public class BFBContentManager : object'
+    content.vb: >-
+      Public Class BFBContentManager
+
+          Inherits Object
+  inheritance:
+  - System.Object
+  extensionMethods:
+  - BFB.Engine.Content.BFBContentManager.BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{BFB.Engine.Content.BFBContentManager,{TValue}}},{TValue})
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: BFB.Engine.Content.BFBContentManager.#ctor(ContentManager)
+  commentId: M:BFB.Engine.Content.BFBContentManager.#ctor(ContentManager)
+  id: '#ctor(ContentManager)'
+  parent: BFB.Engine.Content.BFBContentManager
+  langs:
+  - csharp
+  - vb
+  name: BFBContentManager(ContentManager)
+  nameWithType: BFBContentManager.BFBContentManager(ContentManager)
+  fullName: BFB.Engine.Content.BFBContentManager.BFBContentManager(ContentManager)
+  type: Constructor
+  source:
+    remote:
+      path: BFB/BFB.Engine/Content/BFBContentManager.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: .ctor
+    path: ../BFB/BFB.Engine/Content/BFBContentManager.cs
+    startLine: 52
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Content
+  summary: "\nA constructor that does constructor things: initliazes parameters.\n"
+  example: []
+  syntax:
+    content: public BFBContentManager(ContentManager contentManager)
+    parameters:
+    - id: contentManager
+      type: ContentManager
+      description: ''
+    content.vb: Public Sub New(contentManager As ContentManager)
+  overload: BFB.Engine.Content.BFBContentManager.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.Content.BFBContentManager.AddTexture(System.String,Texture2D)
+  commentId: M:BFB.Engine.Content.BFBContentManager.AddTexture(System.String,Texture2D)
+  id: AddTexture(System.String,Texture2D)
+  parent: BFB.Engine.Content.BFBContentManager
+  langs:
+  - csharp
+  - vb
+  name: AddTexture(String, Texture2D)
+  nameWithType: BFBContentManager.AddTexture(String, Texture2D)
+  fullName: BFB.Engine.Content.BFBContentManager.AddTexture(System.String, Texture2D)
+  type: Method
+  source:
+    remote:
+      path: BFB/BFB.Engine/Content/BFBContentManager.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: AddTexture
+    path: ../BFB/BFB.Engine/Content/BFBContentManager.cs
+    startLine: 73
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Content
+  summary: "\nAdds a static texture to the dictionary, provided it does not already exist.\n"
+  example: []
+  syntax:
+    content: public void AddTexture(string textureKey, Texture2D texture)
+    parameters:
+    - id: textureKey
+      type: System.String
+      description: ''
+    - id: texture
+      type: Texture2D
+      description: ''
+    content.vb: Public Sub AddTexture(textureKey As String, texture As Texture2D)
+  overload: BFB.Engine.Content.BFBContentManager.AddTexture*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.Content.BFBContentManager.GetTexture(System.String)
+  commentId: M:BFB.Engine.Content.BFBContentManager.GetTexture(System.String)
+  id: GetTexture(System.String)
+  parent: BFB.Engine.Content.BFBContentManager
+  langs:
+  - csharp
+  - vb
+  name: GetTexture(String)
+  nameWithType: BFBContentManager.GetTexture(String)
+  fullName: BFB.Engine.Content.BFBContentManager.GetTexture(System.String)
+  type: Method
+  source:
+    remote:
+      path: BFB/BFB.Engine/Content/BFBContentManager.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: GetTexture
+    path: ../BFB/BFB.Engine/Content/BFBContentManager.cs
+    startLine: 89
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Content
+  summary: "\nReturns a loaded texture.\n\nThrows a KeyNotFoundException when the key is not found.\n"
+  example: []
+  syntax:
+    content: public Texture2D GetTexture(string textureKey)
+    parameters:
+    - id: textureKey
+      type: System.String
+      description: ''
+    return:
+      type: Texture2D
+      description: ''
+    content.vb: Public Function GetTexture(textureKey As String) As Texture2D
+  overload: BFB.Engine.Content.BFBContentManager.GetTexture*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.Content.BFBContentManager.UnloadTexture(System.String)
+  commentId: M:BFB.Engine.Content.BFBContentManager.UnloadTexture(System.String)
+  id: UnloadTexture(System.String)
+  parent: BFB.Engine.Content.BFBContentManager
+  langs:
+  - csharp
+  - vb
+  name: UnloadTexture(String)
+  nameWithType: BFBContentManager.UnloadTexture(String)
+  fullName: BFB.Engine.Content.BFBContentManager.UnloadTexture(System.String)
+  type: Method
+  source:
+    remote:
+      path: BFB/BFB.Engine/Content/BFBContentManager.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: UnloadTexture
+    path: ../BFB/BFB.Engine/Content/BFBContentManager.cs
+    startLine: 101
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Content
+  summary: "\nUnloads the texture if it will never be used again.\n"
+  example: []
+  syntax:
+    content: public void UnloadTexture(string textureKey)
+    parameters:
+    - id: textureKey
+      type: System.String
+      description: ''
+    content.vb: Public Sub UnloadTexture(textureKey As String)
+  overload: BFB.Engine.Content.BFBContentManager.UnloadTexture*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.Content.BFBContentManager.AddAudio(System.String,Song)
+  commentId: M:BFB.Engine.Content.BFBContentManager.AddAudio(System.String,Song)
+  id: AddAudio(System.String,Song)
+  parent: BFB.Engine.Content.BFBContentManager
+  langs:
+  - csharp
+  - vb
+  name: AddAudio(String, Song)
+  nameWithType: BFBContentManager.AddAudio(String, Song)
+  fullName: BFB.Engine.Content.BFBContentManager.AddAudio(System.String, Song)
+  type: Method
+  source:
+    remote:
+      path: BFB/BFB.Engine/Content/BFBContentManager.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: AddAudio
+    path: ../BFB/BFB.Engine/Content/BFBContentManager.cs
+    startLine: 119
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Content
+  summary: "\nAdds the loaded audio to the dictionary, provided it does not already exist.\n"
+  example: []
+  syntax:
+    content: public void AddAudio(string audioKey, Song audio)
+    parameters:
+    - id: audioKey
+      type: System.String
+      description: ''
+    - id: audio
+      type: Song
+      description: ''
+    content.vb: Public Sub AddAudio(audioKey As String, audio As Song)
+  overload: BFB.Engine.Content.BFBContentManager.AddAudio*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.Content.BFBContentManager.GetAudio(System.String)
+  commentId: M:BFB.Engine.Content.BFBContentManager.GetAudio(System.String)
+  id: GetAudio(System.String)
+  parent: BFB.Engine.Content.BFBContentManager
+  langs:
+  - csharp
+  - vb
+  name: GetAudio(String)
+  nameWithType: BFBContentManager.GetAudio(String)
+  fullName: BFB.Engine.Content.BFBContentManager.GetAudio(System.String)
+  type: Method
+  source:
+    remote:
+      path: BFB/BFB.Engine/Content/BFBContentManager.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: GetAudio
+    path: ../BFB/BFB.Engine/Content/BFBContentManager.cs
+    startLine: 133
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Content
+  summary: "\nReturns the loaded audio from the dictionary.\n"
+  example: []
+  syntax:
+    content: public Song GetAudio(string audioKey)
+    parameters:
+    - id: audioKey
+      type: System.String
+      description: ''
+    return:
+      type: Song
+      description: ''
+    content.vb: Public Function GetAudio(audioKey As String) As Song
+  overload: BFB.Engine.Content.BFBContentManager.GetAudio*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.Content.BFBContentManager.UnloadAudio(System.String)
+  commentId: M:BFB.Engine.Content.BFBContentManager.UnloadAudio(System.String)
+  id: UnloadAudio(System.String)
+  parent: BFB.Engine.Content.BFBContentManager
+  langs:
+  - csharp
+  - vb
+  name: UnloadAudio(String)
+  nameWithType: BFBContentManager.UnloadAudio(String)
+  fullName: BFB.Engine.Content.BFBContentManager.UnloadAudio(System.String)
+  type: Method
+  source:
+    remote:
+      path: BFB/BFB.Engine/Content/BFBContentManager.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: UnloadAudio
+    path: ../BFB/BFB.Engine/Content/BFBContentManager.cs
+    startLine: 145
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Content
+  summary: "\nUnloads the loaded audio if we&apos;ll never use it again. Also disposes it.\n"
+  example: []
+  syntax:
+    content: public void UnloadAudio(string audioKey)
+    parameters:
+    - id: audioKey
+      type: System.String
+      description: ''
+    content.vb: Public Sub UnloadAudio(audioKey As String)
+  overload: BFB.Engine.Content.BFBContentManager.UnloadAudio*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.Content.BFBContentManager.AddFont(System.String,SpriteFont)
+  commentId: M:BFB.Engine.Content.BFBContentManager.AddFont(System.String,SpriteFont)
+  id: AddFont(System.String,SpriteFont)
+  parent: BFB.Engine.Content.BFBContentManager
+  langs:
+  - csharp
+  - vb
+  name: AddFont(String, SpriteFont)
+  nameWithType: BFBContentManager.AddFont(String, SpriteFont)
+  fullName: BFB.Engine.Content.BFBContentManager.AddFont(System.String, SpriteFont)
+  type: Method
+  source:
+    remote:
+      path: BFB/BFB.Engine/Content/BFBContentManager.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: AddFont
+    path: ../BFB/BFB.Engine/Content/BFBContentManager.cs
+    startLine: 163
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Content
+  summary: "\nAdds the loaded font to the dictionary, provided it does not already exist.\n"
+  example: []
+  syntax:
+    content: public void AddFont(string fontKey, SpriteFont font)
+    parameters:
+    - id: fontKey
+      type: System.String
+      description: ''
+    - id: font
+      type: SpriteFont
+      description: ''
+    content.vb: Public Sub AddFont(fontKey As String, font As SpriteFont)
+  overload: BFB.Engine.Content.BFBContentManager.AddFont*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.Content.BFBContentManager.GetFont(System.String)
+  commentId: M:BFB.Engine.Content.BFBContentManager.GetFont(System.String)
+  id: GetFont(System.String)
+  parent: BFB.Engine.Content.BFBContentManager
+  langs:
+  - csharp
+  - vb
+  name: GetFont(String)
+  nameWithType: BFBContentManager.GetFont(String)
+  fullName: BFB.Engine.Content.BFBContentManager.GetFont(System.String)
+  type: Method
+  source:
+    remote:
+      path: BFB/BFB.Engine/Content/BFBContentManager.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: GetFont
+    path: ../BFB/BFB.Engine/Content/BFBContentManager.cs
+    startLine: 177
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Content
+  summary: "\nReturns the loaded font that you wanna use.\n"
+  example: []
+  syntax:
+    content: public SpriteFont GetFont(string fontKey)
+    parameters:
+    - id: fontKey
+      type: System.String
+      description: ''
+    return:
+      type: SpriteFont
+      description: ''
+    content.vb: Public Function GetFont(fontKey As String) As SpriteFont
+  overload: BFB.Engine.Content.BFBContentManager.GetFont*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.Content.BFBContentManager.UnloadFont(System.String)
+  commentId: M:BFB.Engine.Content.BFBContentManager.UnloadFont(System.String)
+  id: UnloadFont(System.String)
+  parent: BFB.Engine.Content.BFBContentManager
+  langs:
+  - csharp
+  - vb
+  name: UnloadFont(String)
+  nameWithType: BFBContentManager.UnloadFont(String)
+  fullName: BFB.Engine.Content.BFBContentManager.UnloadFont(System.String)
+  type: Method
+  source:
+    remote:
+      path: BFB/BFB.Engine/Content/BFBContentManager.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: UnloadFont
+    path: ../BFB/BFB.Engine/Content/BFBContentManager.cs
+    startLine: 189
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Content
+  summary: "\nUnloads the font.\n"
+  example: []
+  syntax:
+    content: public void UnloadFont(string fontKey)
+    parameters:
+    - id: fontKey
+      type: System.String
+      description: ''
+    content.vb: Public Sub UnloadFont(fontKey As String)
+  overload: BFB.Engine.Content.BFBContentManager.UnloadFont*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.Content.BFBContentManager.AddAnimatedTexture(System.String,BFB.Engine.Content.AnimatedTexture)
+  commentId: M:BFB.Engine.Content.BFBContentManager.AddAnimatedTexture(System.String,BFB.Engine.Content.AnimatedTexture)
+  id: AddAnimatedTexture(System.String,BFB.Engine.Content.AnimatedTexture)
+  parent: BFB.Engine.Content.BFBContentManager
+  langs:
+  - csharp
+  - vb
+  name: AddAnimatedTexture(String, AnimatedTexture)
+  nameWithType: BFBContentManager.AddAnimatedTexture(String, AnimatedTexture)
+  fullName: BFB.Engine.Content.BFBContentManager.AddAnimatedTexture(System.String, BFB.Engine.Content.AnimatedTexture)
+  type: Method
+  source:
+    remote:
+      path: BFB/BFB.Engine/Content/BFBContentManager.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: AddAnimatedTexture
+    path: ../BFB/BFB.Engine/Content/BFBContentManager.cs
+    startLine: 206
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Content
+  summary: "\nAdds an animated texture to the dictionary, provided it does not already exist.\n"
+  example: []
+  syntax:
+    content: public void AddAnimatedTexture(string textureKey, AnimatedTexture texture)
+    parameters:
+    - id: textureKey
+      type: System.String
+      description: ''
+    - id: texture
+      type: BFB.Engine.Content.AnimatedTexture
+      description: ''
+    content.vb: Public Sub AddAnimatedTexture(textureKey As String, texture As AnimatedTexture)
+  overload: BFB.Engine.Content.BFBContentManager.AddAnimatedTexture*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.Content.BFBContentManager.GetAnimatedTexture(System.String)
+  commentId: M:BFB.Engine.Content.BFBContentManager.GetAnimatedTexture(System.String)
+  id: GetAnimatedTexture(System.String)
+  parent: BFB.Engine.Content.BFBContentManager
+  langs:
+  - csharp
+  - vb
+  name: GetAnimatedTexture(String)
+  nameWithType: BFBContentManager.GetAnimatedTexture(String)
+  fullName: BFB.Engine.Content.BFBContentManager.GetAnimatedTexture(System.String)
+  type: Method
+  source:
+    remote:
+      path: BFB/BFB.Engine/Content/BFBContentManager.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: GetAnimatedTexture
+    path: ../BFB/BFB.Engine/Content/BFBContentManager.cs
+    startLine: 220
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Content
+  summary: "\nGives the animated texture that has already been loaded.\n"
+  example: []
+  syntax:
+    content: public AnimatedTexture GetAnimatedTexture(string textureKey)
+    parameters:
+    - id: textureKey
+      type: System.String
+      description: ''
+    return:
+      type: BFB.Engine.Content.AnimatedTexture
+      description: Returns the correct animated texture
+    content.vb: Public Function GetAnimatedTexture(textureKey As String) As AnimatedTexture
+  overload: BFB.Engine.Content.BFBContentManager.GetAnimatedTexture*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.Content.BFBContentManager.UnloadAnimatedTexture(System.String)
+  commentId: M:BFB.Engine.Content.BFBContentManager.UnloadAnimatedTexture(System.String)
+  id: UnloadAnimatedTexture(System.String)
+  parent: BFB.Engine.Content.BFBContentManager
+  langs:
+  - csharp
+  - vb
+  name: UnloadAnimatedTexture(String)
+  nameWithType: BFBContentManager.UnloadAnimatedTexture(String)
+  fullName: BFB.Engine.Content.BFBContentManager.UnloadAnimatedTexture(System.String)
+  type: Method
+  source:
+    remote:
+      path: BFB/BFB.Engine/Content/BFBContentManager.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: UnloadAnimatedTexture
+    path: ../BFB/BFB.Engine/Content/BFBContentManager.cs
+    startLine: 232
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Content
+  summary: "\nUnloads the animated texture.\n"
+  example: []
+  syntax:
+    content: public void UnloadAnimatedTexture(string textureKey)
+    parameters:
+    - id: textureKey
+      type: System.String
+      description: ''
+    content.vb: Public Sub UnloadAnimatedTexture(textureKey As String)
+  overload: BFB.Engine.Content.BFBContentManager.UnloadAnimatedTexture*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.Content.BFBContentManager.ParseContent
+  commentId: M:BFB.Engine.Content.BFBContentManager.ParseContent
+  id: ParseContent
+  parent: BFB.Engine.Content.BFBContentManager
+  langs:
+  - csharp
+  - vb
+  name: ParseContent()
+  nameWithType: BFBContentManager.ParseContent()
+  fullName: BFB.Engine.Content.BFBContentManager.ParseContent()
+  type: Method
+  source:
+    remote:
+      path: BFB/BFB.Engine/Content/BFBContentManager.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: ParseContent
+    path: ../BFB/BFB.Engine/Content/BFBContentManager.cs
+    startLine: 248
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Content
+  summary: "\nParses content.json to figure out what content needs to be loaded.\n"
+  example: []
+  syntax:
+    content: public void ParseContent()
+    content.vb: Public Sub ParseContent
+  overload: BFB.Engine.Content.BFBContentManager.ParseContent*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+references:
+- uid: BFB.Engine.Content
+  commentId: N:BFB.Engine.Content
+  name: BFB.Engine.Content
+  nameWithType: BFB.Engine.Content
+  fullName: BFB.Engine.Content
+- uid: System.Object
+  commentId: '!:System.Object'
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: BFB.Engine.Content.BFBContentManager.BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{BFB.Engine.Content.BFBContentManager,{TValue}}},{TValue})
+  commentId: M:BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  parent: BFB.Engine.UI.Components.LambdaExtensions
+  definition: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  name: SetPropertyValue<BFBContentManager, TValue>(Expression<Func<BFBContentManager, TValue>>, TValue)
+  nameWithType: LambdaExtensions.SetPropertyValue<BFBContentManager, TValue>(Expression<Func<BFBContentManager, TValue>>, TValue)
+  fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<BFB.Engine.Content.BFBContentManager, TValue>(Expression<Func<BFB.Engine.Content.BFBContentManager, TValue>>, TValue)
+  nameWithType.vb: LambdaExtensions.SetPropertyValue(Of BFBContentManager, TValue)(Expression(Of Func(Of BFBContentManager, TValue)), TValue)
+  fullName.vb: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of BFB.Engine.Content.BFBContentManager, TValue)(Expression(Of Func(Of BFB.Engine.Content.BFBContentManager, TValue)), TValue)
+  name.vb: SetPropertyValue(Of BFBContentManager, TValue)(Expression(Of Func(Of BFBContentManager, TValue)), TValue)
+  spec.csharp:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue<BFBContentManager, TValue>
+    nameWithType: LambdaExtensions.SetPropertyValue<BFBContentManager, TValue>
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<BFB.Engine.Content.BFBContentManager, TValue>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: BFB.Engine.Content.BFBContentManager
+    name: BFBContentManager
+    nameWithType: BFBContentManager
+    fullName: BFB.Engine.Content.BFBContentManager
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue(Of BFBContentManager, TValue)
+    nameWithType: LambdaExtensions.SetPropertyValue(Of BFBContentManager, TValue)
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of BFB.Engine.Content.BFBContentManager, TValue)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: BFB.Engine.Content.BFBContentManager
+    name: BFBContentManager
+    nameWithType: BFBContentManager
+    fullName: BFB.Engine.Content.BFBContentManager
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  commentId: M:BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  isExternal: true
+  name: SetPropertyValue<T, TValue>(T, Expression<Func<T, TValue>>, TValue)
+  nameWithType: LambdaExtensions.SetPropertyValue<T, TValue>(T, Expression<Func<T, TValue>>, TValue)
+  fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<T, TValue>(T, Expression<Func<T, TValue>>, TValue)
+  nameWithType.vb: LambdaExtensions.SetPropertyValue(Of T, TValue)(T, Expression(Of Func(Of T, TValue)), TValue)
+  fullName.vb: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of T, TValue)(T, Expression(Of Func(Of T, TValue)), TValue)
+  name.vb: SetPropertyValue(Of T, TValue)(T, Expression(Of Func(Of T, TValue)), TValue)
+  spec.csharp:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue<T, TValue>
+    nameWithType: LambdaExtensions.SetPropertyValue<T, TValue>
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<T, TValue>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue(Of T, TValue)
+    nameWithType: LambdaExtensions.SetPropertyValue(Of T, TValue)
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of T, TValue)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Components.LambdaExtensions
+  commentId: T:BFB.Engine.UI.Components.LambdaExtensions
+  parent: BFB.Engine.UI.Components
+  name: LambdaExtensions
+  nameWithType: LambdaExtensions
+  fullName: BFB.Engine.UI.Components.LambdaExtensions
+- uid: BFB.Engine.UI.Components
+  commentId: N:BFB.Engine.UI.Components
+  name: BFB.Engine.UI.Components
+  nameWithType: BFB.Engine.UI.Components
+  fullName: BFB.Engine.UI.Components
+- uid: BFB.Engine.Content.BFBContentManager.#ctor*
+  commentId: Overload:BFB.Engine.Content.BFBContentManager.#ctor
+  name: BFBContentManager
+  nameWithType: BFBContentManager.BFBContentManager
+  fullName: BFB.Engine.Content.BFBContentManager.BFBContentManager
+- uid: ContentManager
+  isExternal: true
+  name: ContentManager
+  nameWithType: ContentManager
+  fullName: ContentManager
+- uid: BFB.Engine.Content.BFBContentManager.AddTexture*
+  commentId: Overload:BFB.Engine.Content.BFBContentManager.AddTexture
+  name: AddTexture
+  nameWithType: BFBContentManager.AddTexture
+  fullName: BFB.Engine.Content.BFBContentManager.AddTexture
+- uid: System.String
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: Texture2D
+  isExternal: true
+  name: Texture2D
+  nameWithType: Texture2D
+  fullName: Texture2D
+- uid: BFB.Engine.Content.BFBContentManager.GetTexture*
+  commentId: Overload:BFB.Engine.Content.BFBContentManager.GetTexture
+  name: GetTexture
+  nameWithType: BFBContentManager.GetTexture
+  fullName: BFB.Engine.Content.BFBContentManager.GetTexture
+- uid: BFB.Engine.Content.BFBContentManager.UnloadTexture*
+  commentId: Overload:BFB.Engine.Content.BFBContentManager.UnloadTexture
+  name: UnloadTexture
+  nameWithType: BFBContentManager.UnloadTexture
+  fullName: BFB.Engine.Content.BFBContentManager.UnloadTexture
+- uid: BFB.Engine.Content.BFBContentManager.AddAudio*
+  commentId: Overload:BFB.Engine.Content.BFBContentManager.AddAudio
+  name: AddAudio
+  nameWithType: BFBContentManager.AddAudio
+  fullName: BFB.Engine.Content.BFBContentManager.AddAudio
+- uid: Song
+  isExternal: true
+  name: Song
+  nameWithType: Song
+  fullName: Song
+- uid: BFB.Engine.Content.BFBContentManager.GetAudio*
+  commentId: Overload:BFB.Engine.Content.BFBContentManager.GetAudio
+  name: GetAudio
+  nameWithType: BFBContentManager.GetAudio
+  fullName: BFB.Engine.Content.BFBContentManager.GetAudio
+- uid: BFB.Engine.Content.BFBContentManager.UnloadAudio*
+  commentId: Overload:BFB.Engine.Content.BFBContentManager.UnloadAudio
+  name: UnloadAudio
+  nameWithType: BFBContentManager.UnloadAudio
+  fullName: BFB.Engine.Content.BFBContentManager.UnloadAudio
+- uid: BFB.Engine.Content.BFBContentManager.AddFont*
+  commentId: Overload:BFB.Engine.Content.BFBContentManager.AddFont
+  name: AddFont
+  nameWithType: BFBContentManager.AddFont
+  fullName: BFB.Engine.Content.BFBContentManager.AddFont
+- uid: SpriteFont
+  isExternal: true
+  name: SpriteFont
+  nameWithType: SpriteFont
+  fullName: SpriteFont
+- uid: BFB.Engine.Content.BFBContentManager.GetFont*
+  commentId: Overload:BFB.Engine.Content.BFBContentManager.GetFont
+  name: GetFont
+  nameWithType: BFBContentManager.GetFont
+  fullName: BFB.Engine.Content.BFBContentManager.GetFont
+- uid: BFB.Engine.Content.BFBContentManager.UnloadFont*
+  commentId: Overload:BFB.Engine.Content.BFBContentManager.UnloadFont
+  name: UnloadFont
+  nameWithType: BFBContentManager.UnloadFont
+  fullName: BFB.Engine.Content.BFBContentManager.UnloadFont
+- uid: BFB.Engine.Content.BFBContentManager.AddAnimatedTexture*
+  commentId: Overload:BFB.Engine.Content.BFBContentManager.AddAnimatedTexture
+  name: AddAnimatedTexture
+  nameWithType: BFBContentManager.AddAnimatedTexture
+  fullName: BFB.Engine.Content.BFBContentManager.AddAnimatedTexture
+- uid: BFB.Engine.Content.AnimatedTexture
+  commentId: T:BFB.Engine.Content.AnimatedTexture
+  parent: BFB.Engine.Content
+  name: AnimatedTexture
+  nameWithType: AnimatedTexture
+  fullName: BFB.Engine.Content.AnimatedTexture
+- uid: BFB.Engine.Content.BFBContentManager.GetAnimatedTexture*
+  commentId: Overload:BFB.Engine.Content.BFBContentManager.GetAnimatedTexture
+  name: GetAnimatedTexture
+  nameWithType: BFBContentManager.GetAnimatedTexture
+  fullName: BFB.Engine.Content.BFBContentManager.GetAnimatedTexture
+- uid: BFB.Engine.Content.BFBContentManager.UnloadAnimatedTexture*
+  commentId: Overload:BFB.Engine.Content.BFBContentManager.UnloadAnimatedTexture
+  name: UnloadAnimatedTexture
+  nameWithType: BFBContentManager.UnloadAnimatedTexture
+  fullName: BFB.Engine.Content.BFBContentManager.UnloadAnimatedTexture
+- uid: BFB.Engine.Content.BFBContentManager.ParseContent*
+  commentId: Overload:BFB.Engine.Content.BFBContentManager.ParseContent
+  name: ParseContent
+  nameWithType: BFBContentManager.ParseContent
+  fullName: BFB.Engine.Content.BFBContentManager.ParseContent

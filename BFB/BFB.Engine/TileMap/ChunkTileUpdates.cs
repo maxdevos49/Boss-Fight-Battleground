@@ -34,10 +34,10 @@ namespace BFB.Engine.TileMap
     [Serializable]
     public class TileUpdate
     {
-        /// <summary>
-        /// The X location of the tile.
-        /// </summary>
+
+        
         public byte X { get; set; }
+
         /// <summary>
         /// The Y location of the tile.
         /// </summary>
@@ -48,6 +48,7 @@ namespace BFB.Engine.TileMap
         /// True if it is a block, False if it is a wall.
         /// </summary>
         public bool Mode { get; set; }
+        
         /// <summary>
         /// The value of a tile.
         /// </summary>

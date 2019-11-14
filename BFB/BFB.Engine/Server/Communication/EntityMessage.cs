@@ -16,6 +16,8 @@ namespace BFB.Engine.Server.Communication
         /// The entities Id
         /// </summary>
         public string EntityId { get; set; }
+        
+        public string ChunkKey { get; set; }
 
         /// <summary>
         /// The animation key that the entity should use

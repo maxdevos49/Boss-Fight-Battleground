@@ -51,6 +51,8 @@ namespace BFB.Engine.Server
         /// </summary>
         public Action<string> OnDisconnect { get; set; }
         
+        public Action<DataMessage> OnPrepare { get; set; }
+        
         /// <summary>
         /// Callback called when the client is ready told by the server
         /// </summary>
@@ -286,10 +288,11 @@ namespace BFB.Engine.Server
                                 OnConnect?.Invoke(message.ClientId);
                                 break;
                             case "authentication":
-                            {
                                 Emit("authentication", OnAuthentication?.Invoke(message));
                                 break;
-                            }
+                            case "prepare":
+                                OnPrepare?.Invoke(message);
+                                break;
                             case "ready":
                                 _acceptData = true;
                                 OnReady?.Invoke();
@@ -330,6 +333,15 @@ namespace BFB.Engine.Server
                 Console.WriteLine("Write Exception: {0}", ex);
             }
             
+        }
+        
+        #endregion
+        
+        #region EmitAllowed
+
+        public bool EmitAllowed()
+        {
+            return _allowEmit;
         }
         
         #endregion

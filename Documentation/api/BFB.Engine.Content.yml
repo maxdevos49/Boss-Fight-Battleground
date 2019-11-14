@@ -1,0 +1,67 @@
+### YamlMime:ManagedReference
+items:
+- uid: BFB.Engine.Content
+  commentId: N:BFB.Engine.Content
+  id: BFB.Engine.Content
+  children:
+  - BFB.Engine.Content.AnimatedTexture
+  - BFB.Engine.Content.AnimationLifecycle
+  - BFB.Engine.Content.AnimationSet
+  - BFB.Engine.Content.AnimationState
+  - BFB.Engine.Content.BFBContentManager
+  - BFB.Engine.Content.ContentFileSchema
+  - BFB.Engine.Content.ContentGroupSchema
+  langs:
+  - csharp
+  - vb
+  name: BFB.Engine.Content
+  nameWithType: BFB.Engine.Content
+  fullName: BFB.Engine.Content
+  type: Namespace
+  assemblies:
+  - BFB.Engine
+references:
+- uid: BFB.Engine.Content.AnimatedTexture
+  commentId: T:BFB.Engine.Content.AnimatedTexture
+  parent: BFB.Engine.Content
+  name: AnimatedTexture
+  nameWithType: AnimatedTexture
+  fullName: BFB.Engine.Content.AnimatedTexture
+- uid: BFB.Engine.Content.AnimationLifecycle
+  commentId: T:BFB.Engine.Content.AnimationLifecycle
+  parent: BFB.Engine.Content
+  name: AnimationLifecycle
+  nameWithType: AnimationLifecycle
+  fullName: BFB.Engine.Content.AnimationLifecycle
+- uid: BFB.Engine.Content.AnimationSet
+  commentId: T:BFB.Engine.Content.AnimationSet
+  name: AnimationSet
+  nameWithType: AnimationSet
+  fullName: BFB.Engine.Content.AnimationSet
+- uid: BFB.Engine.Content.AnimationState
+  commentId: T:BFB.Engine.Content.AnimationState
+  parent: BFB.Engine.Content
+  name: AnimationState
+  nameWithType: AnimationState
+  fullName: BFB.Engine.Content.AnimationState
+- uid: BFB.Engine.Content.BFBContentManager
+  commentId: T:BFB.Engine.Content.BFBContentManager
+  parent: BFB.Engine.Content
+  name: BFBContentManager
+  nameWithType: BFBContentManager
+  fullName: BFB.Engine.Content.BFBContentManager
+- uid: BFB.Engine.Content.ContentFileSchema
+  commentId: T:BFB.Engine.Content.ContentFileSchema
+  name: ContentFileSchema
+  nameWithType: ContentFileSchema
+  fullName: BFB.Engine.Content.ContentFileSchema
+- uid: BFB.Engine.Content.ContentGroupSchema
+  commentId: T:BFB.Engine.Content.ContentGroupSchema
+  name: ContentGroupSchema
+  nameWithType: ContentGroupSchema
+  fullName: BFB.Engine.Content.ContentGroupSchema
+- uid: BFB.Engine.Content
+  commentId: N:BFB.Engine.Content
+  name: BFB.Engine.Content
+  nameWithType: BFB.Engine.Content
+  fullName: BFB.Engine.Content

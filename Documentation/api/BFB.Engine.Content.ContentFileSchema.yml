@@ -1,0 +1,575 @@
+### YamlMime:ManagedReference
+items:
+- uid: BFB.Engine.Content.ContentFileSchema
+  commentId: T:BFB.Engine.Content.ContentFileSchema
+  id: ContentFileSchema
+  parent: BFB.Engine.Content
+  children:
+  - BFB.Engine.Content.ContentFileSchema.AnimatedTextures
+  - BFB.Engine.Content.ContentFileSchema.Audio
+  - BFB.Engine.Content.ContentFileSchema.Fonts
+  - BFB.Engine.Content.ContentFileSchema.Textures
+  langs:
+  - csharp
+  - vb
+  name: ContentFileSchema
+  nameWithType: ContentFileSchema
+  fullName: BFB.Engine.Content.ContentFileSchema
+  type: Class
+  source:
+    remote:
+      path: BFB/BFB.Engine/Content/BFBContentManager.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: ContentFileSchema
+    path: ../BFB/BFB.Engine/Content/BFBContentManager.cs
+    startLine: 354
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Content
+  summary: "\nSchema for what the content will look like.\n"
+  example: []
+  syntax:
+    content: 'public class ContentFileSchema : object'
+    content.vb: >-
+      Public Class ContentFileSchema
+
+          Inherits Object
+  inheritance:
+  - System.Object
+  extensionMethods:
+  - BFB.Engine.Content.ContentFileSchema.BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{BFB.Engine.Content.ContentFileSchema,{TValue}}},{TValue})
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: BFB.Engine.Content.ContentFileSchema.Fonts
+  commentId: P:BFB.Engine.Content.ContentFileSchema.Fonts
+  id: Fonts
+  parent: BFB.Engine.Content.ContentFileSchema
+  langs:
+  - csharp
+  - vb
+  name: Fonts
+  nameWithType: ContentFileSchema.Fonts
+  fullName: BFB.Engine.Content.ContentFileSchema.Fonts
+  type: Property
+  source:
+    remote:
+      path: BFB/BFB.Engine/Content/BFBContentManager.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: Fonts
+    path: ../BFB/BFB.Engine/Content/BFBContentManager.cs
+    startLine: 357
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Content
+  syntax:
+    content: public List<ContentGroupSchema> Fonts { get; set; }
+    parameters: []
+    return:
+      type: List{BFB.Engine.Content.ContentGroupSchema}
+    content.vb: Public Property Fonts As List(Of ContentGroupSchema)
+  overload: BFB.Engine.Content.ContentFileSchema.Fonts*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.Content.ContentFileSchema.Textures
+  commentId: P:BFB.Engine.Content.ContentFileSchema.Textures
+  id: Textures
+  parent: BFB.Engine.Content.ContentFileSchema
+  langs:
+  - csharp
+  - vb
+  name: Textures
+  nameWithType: ContentFileSchema.Textures
+  fullName: BFB.Engine.Content.ContentFileSchema.Textures
+  type: Property
+  source:
+    remote:
+      path: BFB/BFB.Engine/Content/BFBContentManager.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: Textures
+    path: ../BFB/BFB.Engine/Content/BFBContentManager.cs
+    startLine: 360
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Content
+  syntax:
+    content: public List<ContentGroupSchema> Textures { get; set; }
+    parameters: []
+    return:
+      type: List{BFB.Engine.Content.ContentGroupSchema}
+    content.vb: Public Property Textures As List(Of ContentGroupSchema)
+  overload: BFB.Engine.Content.ContentFileSchema.Textures*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.Content.ContentFileSchema.Audio
+  commentId: P:BFB.Engine.Content.ContentFileSchema.Audio
+  id: Audio
+  parent: BFB.Engine.Content.ContentFileSchema
+  langs:
+  - csharp
+  - vb
+  name: Audio
+  nameWithType: ContentFileSchema.Audio
+  fullName: BFB.Engine.Content.ContentFileSchema.Audio
+  type: Property
+  source:
+    remote:
+      path: BFB/BFB.Engine/Content/BFBContentManager.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: Audio
+    path: ../BFB/BFB.Engine/Content/BFBContentManager.cs
+    startLine: 363
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Content
+  syntax:
+    content: public List<ContentGroupSchema> Audio { get; set; }
+    parameters: []
+    return:
+      type: List{BFB.Engine.Content.ContentGroupSchema}
+    content.vb: Public Property Audio As List(Of ContentGroupSchema)
+  overload: BFB.Engine.Content.ContentFileSchema.Audio*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.Content.ContentFileSchema.AnimatedTextures
+  commentId: P:BFB.Engine.Content.ContentFileSchema.AnimatedTextures
+  id: AnimatedTextures
+  parent: BFB.Engine.Content.ContentFileSchema
+  langs:
+  - csharp
+  - vb
+  name: AnimatedTextures
+  nameWithType: ContentFileSchema.AnimatedTextures
+  fullName: BFB.Engine.Content.ContentFileSchema.AnimatedTextures
+  type: Property
+  source:
+    remote:
+      path: BFB/BFB.Engine/Content/BFBContentManager.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: AnimatedTextures
+    path: ../BFB/BFB.Engine/Content/BFBContentManager.cs
+    startLine: 366
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Content
+  syntax:
+    content: public List<AnimatedTexture> AnimatedTextures { get; set; }
+    parameters: []
+    return:
+      type: List{BFB.Engine.Content.AnimatedTexture}
+    content.vb: Public Property AnimatedTextures As List(Of AnimatedTexture)
+  overload: BFB.Engine.Content.ContentFileSchema.AnimatedTextures*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+references:
+- uid: BFB.Engine.Content
+  commentId: N:BFB.Engine.Content
+  name: BFB.Engine.Content
+  nameWithType: BFB.Engine.Content
+  fullName: BFB.Engine.Content
+- uid: System.Object
+  commentId: '!:System.Object'
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: BFB.Engine.Content.ContentFileSchema.BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{BFB.Engine.Content.ContentFileSchema,{TValue}}},{TValue})
+  commentId: M:BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  parent: BFB.Engine.UI.Components.LambdaExtensions
+  definition: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  name: SetPropertyValue<ContentFileSchema, TValue>(Expression<Func<ContentFileSchema, TValue>>, TValue)
+  nameWithType: LambdaExtensions.SetPropertyValue<ContentFileSchema, TValue>(Expression<Func<ContentFileSchema, TValue>>, TValue)
+  fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<BFB.Engine.Content.ContentFileSchema, TValue>(Expression<Func<BFB.Engine.Content.ContentFileSchema, TValue>>, TValue)
+  nameWithType.vb: LambdaExtensions.SetPropertyValue(Of ContentFileSchema, TValue)(Expression(Of Func(Of ContentFileSchema, TValue)), TValue)
+  fullName.vb: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of BFB.Engine.Content.ContentFileSchema, TValue)(Expression(Of Func(Of BFB.Engine.Content.ContentFileSchema, TValue)), TValue)
+  name.vb: SetPropertyValue(Of ContentFileSchema, TValue)(Expression(Of Func(Of ContentFileSchema, TValue)), TValue)
+  spec.csharp:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue<ContentFileSchema, TValue>
+    nameWithType: LambdaExtensions.SetPropertyValue<ContentFileSchema, TValue>
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<BFB.Engine.Content.ContentFileSchema, TValue>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: BFB.Engine.Content.ContentFileSchema
+    name: ContentFileSchema
+    nameWithType: ContentFileSchema
+    fullName: BFB.Engine.Content.ContentFileSchema
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue(Of ContentFileSchema, TValue)
+    nameWithType: LambdaExtensions.SetPropertyValue(Of ContentFileSchema, TValue)
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of BFB.Engine.Content.ContentFileSchema, TValue)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: BFB.Engine.Content.ContentFileSchema
+    name: ContentFileSchema
+    nameWithType: ContentFileSchema
+    fullName: BFB.Engine.Content.ContentFileSchema
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  commentId: M:BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  isExternal: true
+  name: SetPropertyValue<T, TValue>(T, Expression<Func<T, TValue>>, TValue)
+  nameWithType: LambdaExtensions.SetPropertyValue<T, TValue>(T, Expression<Func<T, TValue>>, TValue)
+  fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<T, TValue>(T, Expression<Func<T, TValue>>, TValue)
+  nameWithType.vb: LambdaExtensions.SetPropertyValue(Of T, TValue)(T, Expression(Of Func(Of T, TValue)), TValue)
+  fullName.vb: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of T, TValue)(T, Expression(Of Func(Of T, TValue)), TValue)
+  name.vb: SetPropertyValue(Of T, TValue)(T, Expression(Of Func(Of T, TValue)), TValue)
+  spec.csharp:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue<T, TValue>
+    nameWithType: LambdaExtensions.SetPropertyValue<T, TValue>
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<T, TValue>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue(Of T, TValue)
+    nameWithType: LambdaExtensions.SetPropertyValue(Of T, TValue)
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of T, TValue)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Components.LambdaExtensions
+  commentId: T:BFB.Engine.UI.Components.LambdaExtensions
+  parent: BFB.Engine.UI.Components
+  name: LambdaExtensions
+  nameWithType: LambdaExtensions
+  fullName: BFB.Engine.UI.Components.LambdaExtensions
+- uid: BFB.Engine.UI.Components
+  commentId: N:BFB.Engine.UI.Components
+  name: BFB.Engine.UI.Components
+  nameWithType: BFB.Engine.UI.Components
+  fullName: BFB.Engine.UI.Components
+- uid: BFB.Engine.Content.ContentFileSchema.Fonts*
+  commentId: Overload:BFB.Engine.Content.ContentFileSchema.Fonts
+  name: Fonts
+  nameWithType: ContentFileSchema.Fonts
+  fullName: BFB.Engine.Content.ContentFileSchema.Fonts
+- uid: List{BFB.Engine.Content.ContentGroupSchema}
+  commentId: '!:List{BFB.Engine.Content.ContentGroupSchema}'
+  definition: List`1
+  name: List<ContentGroupSchema>
+  nameWithType: List<ContentGroupSchema>
+  fullName: List<BFB.Engine.Content.ContentGroupSchema>
+  nameWithType.vb: List(Of ContentGroupSchema)
+  fullName.vb: List(Of BFB.Engine.Content.ContentGroupSchema)
+  name.vb: List(Of ContentGroupSchema)
+  spec.csharp:
+  - uid: List`1
+    name: List
+    nameWithType: List
+    fullName: List
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: BFB.Engine.Content.ContentGroupSchema
+    name: ContentGroupSchema
+    nameWithType: ContentGroupSchema
+    fullName: BFB.Engine.Content.ContentGroupSchema
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: List`1
+    name: List
+    nameWithType: List
+    fullName: List
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: BFB.Engine.Content.ContentGroupSchema
+    name: ContentGroupSchema
+    nameWithType: ContentGroupSchema
+    fullName: BFB.Engine.Content.ContentGroupSchema
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: List`1
+  isExternal: true
+  name: List<>
+  nameWithType: List<>
+  fullName: List<>
+  nameWithType.vb: List(Of )
+  fullName.vb: List(Of )
+  name.vb: List(Of )
+  spec.csharp:
+  - uid: List`1
+    name: List
+    nameWithType: List
+    fullName: List
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: List`1
+    name: List
+    nameWithType: List
+    fullName: List
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.Content.ContentFileSchema.Textures*
+  commentId: Overload:BFB.Engine.Content.ContentFileSchema.Textures
+  name: Textures
+  nameWithType: ContentFileSchema.Textures
+  fullName: BFB.Engine.Content.ContentFileSchema.Textures
+- uid: BFB.Engine.Content.ContentFileSchema.Audio*
+  commentId: Overload:BFB.Engine.Content.ContentFileSchema.Audio
+  name: Audio
+  nameWithType: ContentFileSchema.Audio
+  fullName: BFB.Engine.Content.ContentFileSchema.Audio
+- uid: BFB.Engine.Content.ContentFileSchema.AnimatedTextures*
+  commentId: Overload:BFB.Engine.Content.ContentFileSchema.AnimatedTextures
+  name: AnimatedTextures
+  nameWithType: ContentFileSchema.AnimatedTextures
+  fullName: BFB.Engine.Content.ContentFileSchema.AnimatedTextures
+- uid: List{BFB.Engine.Content.AnimatedTexture}
+  commentId: '!:List{BFB.Engine.Content.AnimatedTexture}'
+  definition: List`1
+  name: List<AnimatedTexture>
+  nameWithType: List<AnimatedTexture>
+  fullName: List<BFB.Engine.Content.AnimatedTexture>
+  nameWithType.vb: List(Of AnimatedTexture)
+  fullName.vb: List(Of BFB.Engine.Content.AnimatedTexture)
+  name.vb: List(Of AnimatedTexture)
+  spec.csharp:
+  - uid: List`1
+    name: List
+    nameWithType: List
+    fullName: List
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: BFB.Engine.Content.AnimatedTexture
+    name: AnimatedTexture
+    nameWithType: AnimatedTexture
+    fullName: BFB.Engine.Content.AnimatedTexture
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: List`1
+    name: List
+    nameWithType: List
+    fullName: List
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: BFB.Engine.Content.AnimatedTexture
+    name: AnimatedTexture
+    nameWithType: AnimatedTexture
+    fullName: BFB.Engine.Content.AnimatedTexture
+  - name: )
+    nameWithType: )
+    fullName: )

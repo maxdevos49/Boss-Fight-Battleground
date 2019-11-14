@@ -1,8 +1,11 @@
+using System;
+using System.Security.Claims;
 using BFB.Engine.Entity;
 using BFB.Engine.Input.PlayerInput;
 using BFB.Engine.Math;
 using BFB.Engine.Server;
 using BFB.Engine.Server.Communication;
+using BFB.Engine.TileMap;
 
 namespace BFB.Engine.Simulation.InputComponents
 {
@@ -44,7 +47,47 @@ namespace BFB.Engine.Simulation.InputComponents
         {
             lock (_lock)
             {
-                
+                //Check block placement
+                if (_playerState.RightClick || _playerState.LeftClick)
+                {
+
+                    int mouseX = (int)(_playerState.Mouse.X + 0);
+                    int mouseY = (int)(_playerState.Mouse.Y + 0);
+
+                    Tuple<int, int, int, int> chunkInformation =
+                        simulation.World.TranslatePixelPosition(mouseX, mouseY);
+
+                    if (chunkInformation != null)
+                    {
+
+                        Chunk targetChunk =
+                            simulation.World.ChunkFromChunkLocation(chunkInformation.Item1, chunkInformation.Item2);
+
+                        int xSelection = chunkInformation.Item3;
+                        int ySelection = chunkInformation.Item4;
+
+                        if (targetChunk != null)
+                        {
+                            if (_playerState.RightClick)
+                                targetChunk.ApplyBlockUpdate(new TileUpdate
+                                {
+                                    X = (byte) xSelection,
+                                    Y = (byte) ySelection,
+                                    Mode = true,
+                                    TileValue = (ushort) WorldTile.Dirt
+                                });
+                            else
+                                targetChunk.ApplyBlockUpdate(new TileUpdate
+                                {
+                                    X = (byte) xSelection,
+                                    Y = (byte) ySelection,
+                                    Mode = true,
+                                    TileValue = (ushort) WorldTile.Air
+                                });
+                        }
+                    }
+                }
+
                 //Resets the player movement
                 simulationEntity.DesiredVector.X = 0;
                 simulationEntity.DesiredVector.Y = 0;
@@ -62,7 +105,6 @@ namespace BFB.Engine.Simulation.InputComponents
                 if (_playerState.Jump && simulationEntity.Grounded)
                 {
                     simulationEntity.DesiredVector.Add(new BfbVector(0,-1));
-                    simulationEntity.Grounded = false;
                 }
             }
         }

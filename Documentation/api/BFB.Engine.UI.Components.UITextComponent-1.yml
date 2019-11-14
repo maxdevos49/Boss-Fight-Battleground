@@ -1,0 +1,4141 @@
+### YamlMime:ManagedReference
+items:
+- uid: BFB.Engine.UI.Components.UITextComponent`1
+  commentId: T:BFB.Engine.UI.Components.UITextComponent`1
+  id: UITextComponent`1
+  parent: BFB.Engine.UI.Components
+  children:
+  - BFB.Engine.UI.Components.UITextComponent`1.#ctor(`0,Func{`0,System.String})
+  - BFB.Engine.UI.Components.UITextComponent`1.#ctor(System.String)
+  - BFB.Engine.UI.Components.UITextComponent`1.Render(SpriteBatch,Texture2D,SpriteFont)
+  - BFB.Engine.UI.Components.UITextComponent`1.WrapText(SpriteFont,System.String,System.Int32,System.Int32)
+  langs:
+  - csharp
+  - vb
+  name: UITextComponent<TModel>
+  nameWithType: UITextComponent<TModel>
+  fullName: BFB.Engine.UI.Components.UITextComponent<TModel>
+  type: Class
+  source:
+    remote:
+      path: BFB/BFB.Engine/UI/Components/UITextComponent.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: UITextComponent
+    path: ../BFB/BFB.Engine/UI/Components/UITextComponent.cs
+    startLine: 8
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.UI.Components
+  syntax:
+    content: 'public class UITextComponent<TModel> : UIComponent'
+    typeParameters:
+    - id: TModel
+    content.vb: >-
+      Public Class UITextComponent(Of TModel)
+
+          Inherits UIComponent
+  inheritance:
+  - System.Object
+  - BFB.Engine.UI.Components.UIComponent
+  inheritedMembers:
+  - BFB.Engine.UI.Components.UIComponent.Name
+  - BFB.Engine.UI.Components.UIComponent.Focusable
+  - BFB.Engine.UI.Components.UIComponent.Focused
+  - BFB.Engine.UI.Components.UIComponent.Constraints
+  - BFB.Engine.UI.Components.UIComponent.EventHandlers
+  - BFB.Engine.UI.Components.UIComponent.Parent
+  - BFB.Engine.UI.Components.UIComponent.Children
+  - BFB.Engine.UI.Components.UIComponent.DefaultAttributes
+  - BFB.Engine.UI.Components.UIComponent.RenderAttributes
+  - BFB.Engine.UI.Components.UIComponent.AddChild(BFB.Engine.UI.Components.UIComponent)
+  - BFB.Engine.UI.Components.UIComponent.AddConstraint(BFB.Engine.UI.Constraints.UIConstraint)
+  - BFB.Engine.UI.Components.UIComponent.ProcessEvent(BFB.Engine.Event.UIEvent)
+  - BFB.Engine.UI.Components.UIComponent.AddEvent(System.String,Action{BFB.Engine.Event.UIEvent})
+  - BFB.Engine.UI.Components.UIComponent.Build(BFB.Engine.UI.UILayer)
+  extensionMethods:
+  - BFB.Engine.UI.Components.UIComponent.BFB.Engine.UI.Components.UIComponentExtensions.Vstack(Action{BFB.Engine.UI.Components.UIComponent})
+  - BFB.Engine.UI.Components.UIComponent.BFB.Engine.UI.Components.UIComponentExtensions.Hstack(Action{BFB.Engine.UI.Components.UIComponent})
+  - BFB.Engine.UI.Components.UIComponent.BFB.Engine.UI.Components.UIComponentExtensions.Zstack(Action{BFB.Engine.UI.Components.UIComponent})
+  - BFB.Engine.UI.Components.UIComponent.BFB.Engine.UI.Components.UIComponentExtensions.Spacer(System.Nullable{System.Int32})
+  - BFB.Engine.UI.Components.UIComponent.BFB.Engine.UI.Components.UIComponentExtensions.TextFor``1({TModel},Func{{TModel},System.String})
+  - BFB.Engine.UI.Components.UIComponent.BFB.Engine.UI.Components.UIComponentExtensions.Text(System.String)
+  - BFB.Engine.UI.Components.UIComponent.BFB.Engine.UI.Components.UIComponentExtensions.TextBoxFor``1({TModel},Expression{Func{{TModel},System.String}},Action{BFB.Engine.Event.UIEvent,BFB.Engine.UI.Components.UIComponentAttributes},Action{BFB.Engine.Event.UIEvent,BFB.Engine.UI.Components.UIComponentAttributes},Action{BFB.Engine.Event.UIEvent,BFB.Engine.UI.Components.UIComponentAttributes})
+  - BFB.Engine.UI.Components.UIComponent.BFB.Engine.UI.Components.UIComponentExtensions.Button(System.String,Action{BFB.Engine.Event.UIEvent,BFB.Engine.UI.Components.UIComponentAttributes},Action{BFB.Engine.Event.UIEvent,BFB.Engine.UI.Components.UIComponentAttributes})
+  - BFB.Engine.UI.Components.UITextComponent`1.BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{BFB.Engine.UI.Components.UITextComponent{{TModel}},{TValue}}},{TValue})
+  - BFB.Engine.UI.Components.UIComponent.BFB.Engine.UI.Constraints.UIConstraintExtensions.Width(System.Int32)
+  - BFB.Engine.UI.Components.UIComponent.BFB.Engine.UI.Constraints.UIConstraintExtensions.Width(System.Single)
+  - BFB.Engine.UI.Components.UIComponent.BFB.Engine.UI.Constraints.UIConstraintExtensions.Height(System.Int32)
+  - BFB.Engine.UI.Components.UIComponent.BFB.Engine.UI.Constraints.UIConstraintExtensions.Height(System.Single)
+  - BFB.Engine.UI.Components.UIComponent.BFB.Engine.UI.Constraints.UIConstraintExtensions.Top(System.Int32)
+  - BFB.Engine.UI.Components.UIComponent.BFB.Engine.UI.Constraints.UIConstraintExtensions.Right(System.Int32)
+  - BFB.Engine.UI.Components.UIComponent.BFB.Engine.UI.Constraints.UIConstraintExtensions.Bottom(System.Int32)
+  - BFB.Engine.UI.Components.UIComponent.BFB.Engine.UI.Constraints.UIConstraintExtensions.Left(System.Int32)
+  - BFB.Engine.UI.Components.UIComponent.BFB.Engine.UI.Constraints.UIConstraintExtensions.Image(System.String)
+  - BFB.Engine.UI.Components.UIComponent.BFB.Engine.UI.Constraints.UIConstraintExtensions.Center
+  - BFB.Engine.UI.Components.UIComponent.BFB.Engine.UI.Constraints.UIConstraintExtensions.Grow(System.Int32)
+  - BFB.Engine.UI.Components.UIComponent.BFB.Engine.UI.Constraints.UIConstraintExtensions.AspectRatio(System.Single)
+  - BFB.Engine.UI.Components.UIComponent.BFB.Engine.UI.Constraints.UIConstraintExtensions.FontSize(System.Single)
+  - BFB.Engine.UI.Components.UIComponent.BFB.Engine.UI.Constraints.UIConstraintExtensions.Background(System.Nullable{Color})
+  - BFB.Engine.UI.Components.UIComponent.BFB.Engine.UI.Constraints.UIConstraintExtensions.Color(System.Nullable{Color})
+  nameWithType.vb: UITextComponent(Of TModel)
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+  fullName.vb: BFB.Engine.UI.Components.UITextComponent(Of TModel)
+  name.vb: UITextComponent(Of TModel)
+- uid: BFB.Engine.UI.Components.UITextComponent`1.#ctor(`0,Func{`0,System.String})
+  commentId: M:BFB.Engine.UI.Components.UITextComponent`1.#ctor(`0,Func{`0,System.String})
+  id: '#ctor(`0,Func{`0,System.String})'
+  parent: BFB.Engine.UI.Components.UITextComponent`1
+  langs:
+  - csharp
+  - vb
+  name: UITextComponent(TModel, Func<TModel, String>)
+  nameWithType: UITextComponent<TModel>.UITextComponent(TModel, Func<TModel, String>)
+  fullName: BFB.Engine.UI.Components.UITextComponent<TModel>.UITextComponent(TModel, Func<TModel, System.String>)
+  type: Constructor
+  source:
+    remote:
+      path: BFB/BFB.Engine/UI/Components/UITextComponent.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: .ctor
+    path: ../BFB/BFB.Engine/UI/Components/UITextComponent.cs
+    startLine: 14
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.UI.Components
+  syntax:
+    content: public UITextComponent(TModel model, Func<TModel, string> propertySelector)
+    parameters:
+    - id: model
+      type: '{TModel}'
+    - id: propertySelector
+      type: Func{{TModel},System.String}
+    content.vb: Public Sub New(model As TModel, propertySelector As Func(Of TModel, String))
+  overload: BFB.Engine.UI.Components.UITextComponent`1.#ctor*
+  nameWithType.vb: UITextComponent(Of TModel).UITextComponent(TModel, Func(Of TModel, String))
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+  fullName.vb: BFB.Engine.UI.Components.UITextComponent(Of TModel).UITextComponent(TModel, Func(Of TModel, System.String))
+  name.vb: UITextComponent(TModel, Func(Of TModel, String))
+- uid: BFB.Engine.UI.Components.UITextComponent`1.#ctor(System.String)
+  commentId: M:BFB.Engine.UI.Components.UITextComponent`1.#ctor(System.String)
+  id: '#ctor(System.String)'
+  parent: BFB.Engine.UI.Components.UITextComponent`1
+  langs:
+  - csharp
+  - vb
+  name: UITextComponent(String)
+  nameWithType: UITextComponent<TModel>.UITextComponent(String)
+  fullName: BFB.Engine.UI.Components.UITextComponent<TModel>.UITextComponent(System.String)
+  type: Constructor
+  source:
+    remote:
+      path: BFB/BFB.Engine/UI/Components/UITextComponent.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: .ctor
+    path: ../BFB/BFB.Engine/UI/Components/UITextComponent.cs
+    startLine: 21
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.UI.Components
+  syntax:
+    content: public UITextComponent(string text)
+    parameters:
+    - id: text
+      type: System.String
+    content.vb: Public Sub New(text As String)
+  overload: BFB.Engine.UI.Components.UITextComponent`1.#ctor*
+  nameWithType.vb: UITextComponent(Of TModel).UITextComponent(String)
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+  fullName.vb: BFB.Engine.UI.Components.UITextComponent(Of TModel).UITextComponent(System.String)
+- uid: BFB.Engine.UI.Components.UITextComponent`1.Render(SpriteBatch,Texture2D,SpriteFont)
+  commentId: M:BFB.Engine.UI.Components.UITextComponent`1.Render(SpriteBatch,Texture2D,SpriteFont)
+  id: Render(SpriteBatch,Texture2D,SpriteFont)
+  parent: BFB.Engine.UI.Components.UITextComponent`1
+  langs:
+  - csharp
+  - vb
+  name: Render(SpriteBatch, Texture2D, SpriteFont)
+  nameWithType: UITextComponent<TModel>.Render(SpriteBatch, Texture2D, SpriteFont)
+  fullName: BFB.Engine.UI.Components.UITextComponent<TModel>.Render(SpriteBatch, Texture2D, SpriteFont)
+  type: Method
+  source:
+    remote:
+      path: BFB/BFB.Engine/UI/Components/UITextComponent.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: Render
+    path: ../BFB/BFB.Engine/UI/Components/UITextComponent.cs
+    startLine: 27
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.UI.Components
+  syntax:
+    content: public override void Render(SpriteBatch graphics, Texture2D texture, SpriteFont font)
+    parameters:
+    - id: graphics
+      type: SpriteBatch
+    - id: texture
+      type: Texture2D
+    - id: font
+      type: SpriteFont
+    content.vb: Public Overrides Sub Render(graphics As SpriteBatch, texture As Texture2D, font As SpriteFont)
+  overridden: BFB.Engine.UI.Components.UIComponent.Render(SpriteBatch,Texture2D,SpriteFont)
+  overload: BFB.Engine.UI.Components.UITextComponent`1.Render*
+  nameWithType.vb: UITextComponent(Of TModel).Render(SpriteBatch, Texture2D, SpriteFont)
+  modifiers.csharp:
+  - public
+  - override
+  modifiers.vb:
+  - Public
+  - Overrides
+  fullName.vb: BFB.Engine.UI.Components.UITextComponent(Of TModel).Render(SpriteBatch, Texture2D, SpriteFont)
+- uid: BFB.Engine.UI.Components.UITextComponent`1.WrapText(SpriteFont,System.String,System.Int32,System.Int32)
+  commentId: M:BFB.Engine.UI.Components.UITextComponent`1.WrapText(SpriteFont,System.String,System.Int32,System.Int32)
+  id: WrapText(SpriteFont,System.String,System.Int32,System.Int32)
+  parent: BFB.Engine.UI.Components.UITextComponent`1
+  langs:
+  - csharp
+  - vb
+  name: WrapText(SpriteFont, String, Int32, Int32)
+  nameWithType: UITextComponent<TModel>.WrapText(SpriteFont, String, Int32, Int32)
+  fullName: BFB.Engine.UI.Components.UITextComponent<TModel>.WrapText(SpriteFont, System.String, System.Int32, System.Int32)
+  type: Method
+  source:
+    remote:
+      path: BFB/BFB.Engine/UI/Components/UITextComponent.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: WrapText
+    path: ../BFB/BFB.Engine/UI/Components/UITextComponent.cs
+    startLine: 59
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.UI.Components
+  syntax:
+    content: public static string WrapText(SpriteFont font, string text, int maxLineWidth, int maxLineHeight)
+    parameters:
+    - id: font
+      type: SpriteFont
+    - id: text
+      type: System.String
+    - id: maxLineWidth
+      type: System.Int32
+    - id: maxLineHeight
+      type: System.Int32
+    return:
+      type: System.String
+    content.vb: Public Shared Function WrapText(font As SpriteFont, text As String, maxLineWidth As Integer, maxLineHeight As Integer) As String
+  overload: BFB.Engine.UI.Components.UITextComponent`1.WrapText*
+  nameWithType.vb: UITextComponent(Of TModel).WrapText(SpriteFont, String, Int32, Int32)
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: BFB.Engine.UI.Components.UITextComponent(Of TModel).WrapText(SpriteFont, System.String, System.Int32, System.Int32)
+references:
+- uid: BFB.Engine.UI.Components
+  commentId: N:BFB.Engine.UI.Components
+  name: BFB.Engine.UI.Components
+  nameWithType: BFB.Engine.UI.Components
+  fullName: BFB.Engine.UI.Components
+- uid: System.Object
+  commentId: '!:System.Object'
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: BFB.Engine.UI.Components.UIComponent
+  commentId: T:BFB.Engine.UI.Components.UIComponent
+  parent: BFB.Engine.UI.Components
+  name: UIComponent
+  nameWithType: UIComponent
+  fullName: BFB.Engine.UI.Components.UIComponent
+- uid: BFB.Engine.UI.Components.UIComponent.Name
+  commentId: P:BFB.Engine.UI.Components.UIComponent.Name
+  parent: BFB.Engine.UI.Components.UIComponent
+  name: Name
+  nameWithType: UIComponent.Name
+  fullName: BFB.Engine.UI.Components.UIComponent.Name
+- uid: BFB.Engine.UI.Components.UIComponent.Focusable
+  commentId: P:BFB.Engine.UI.Components.UIComponent.Focusable
+  parent: BFB.Engine.UI.Components.UIComponent
+  name: Focusable
+  nameWithType: UIComponent.Focusable
+  fullName: BFB.Engine.UI.Components.UIComponent.Focusable
+- uid: BFB.Engine.UI.Components.UIComponent.Focused
+  commentId: P:BFB.Engine.UI.Components.UIComponent.Focused
+  parent: BFB.Engine.UI.Components.UIComponent
+  name: Focused
+  nameWithType: UIComponent.Focused
+  fullName: BFB.Engine.UI.Components.UIComponent.Focused
+- uid: BFB.Engine.UI.Components.UIComponent.Constraints
+  commentId: P:BFB.Engine.UI.Components.UIComponent.Constraints
+  parent: BFB.Engine.UI.Components.UIComponent
+  name: Constraints
+  nameWithType: UIComponent.Constraints
+  fullName: BFB.Engine.UI.Components.UIComponent.Constraints
+- uid: BFB.Engine.UI.Components.UIComponent.EventHandlers
+  commentId: P:BFB.Engine.UI.Components.UIComponent.EventHandlers
+  parent: BFB.Engine.UI.Components.UIComponent
+  name: EventHandlers
+  nameWithType: UIComponent.EventHandlers
+  fullName: BFB.Engine.UI.Components.UIComponent.EventHandlers
+- uid: BFB.Engine.UI.Components.UIComponent.Parent
+  commentId: P:BFB.Engine.UI.Components.UIComponent.Parent
+  parent: BFB.Engine.UI.Components.UIComponent
+  name: Parent
+  nameWithType: UIComponent.Parent
+  fullName: BFB.Engine.UI.Components.UIComponent.Parent
+- uid: BFB.Engine.UI.Components.UIComponent.Children
+  commentId: P:BFB.Engine.UI.Components.UIComponent.Children
+  parent: BFB.Engine.UI.Components.UIComponent
+  name: Children
+  nameWithType: UIComponent.Children
+  fullName: BFB.Engine.UI.Components.UIComponent.Children
+- uid: BFB.Engine.UI.Components.UIComponent.DefaultAttributes
+  commentId: P:BFB.Engine.UI.Components.UIComponent.DefaultAttributes
+  parent: BFB.Engine.UI.Components.UIComponent
+  name: DefaultAttributes
+  nameWithType: UIComponent.DefaultAttributes
+  fullName: BFB.Engine.UI.Components.UIComponent.DefaultAttributes
+- uid: BFB.Engine.UI.Components.UIComponent.RenderAttributes
+  commentId: P:BFB.Engine.UI.Components.UIComponent.RenderAttributes
+  parent: BFB.Engine.UI.Components.UIComponent
+  name: RenderAttributes
+  nameWithType: UIComponent.RenderAttributes
+  fullName: BFB.Engine.UI.Components.UIComponent.RenderAttributes
+- uid: BFB.Engine.UI.Components.UIComponent.AddChild(BFB.Engine.UI.Components.UIComponent)
+  commentId: M:BFB.Engine.UI.Components.UIComponent.AddChild(BFB.Engine.UI.Components.UIComponent)
+  parent: BFB.Engine.UI.Components.UIComponent
+  name: AddChild(UIComponent)
+  nameWithType: UIComponent.AddChild(UIComponent)
+  fullName: BFB.Engine.UI.Components.UIComponent.AddChild(BFB.Engine.UI.Components.UIComponent)
+  spec.csharp:
+  - uid: BFB.Engine.UI.Components.UIComponent.AddChild(BFB.Engine.UI.Components.UIComponent)
+    name: AddChild
+    nameWithType: UIComponent.AddChild
+    fullName: BFB.Engine.UI.Components.UIComponent.AddChild
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: BFB.Engine.UI.Components.UIComponent
+    name: UIComponent
+    nameWithType: UIComponent
+    fullName: BFB.Engine.UI.Components.UIComponent
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Components.UIComponent.AddChild(BFB.Engine.UI.Components.UIComponent)
+    name: AddChild
+    nameWithType: UIComponent.AddChild
+    fullName: BFB.Engine.UI.Components.UIComponent.AddChild
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: BFB.Engine.UI.Components.UIComponent
+    name: UIComponent
+    nameWithType: UIComponent
+    fullName: BFB.Engine.UI.Components.UIComponent
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Components.UIComponent.AddConstraint(BFB.Engine.UI.Constraints.UIConstraint)
+  commentId: M:BFB.Engine.UI.Components.UIComponent.AddConstraint(BFB.Engine.UI.Constraints.UIConstraint)
+  parent: BFB.Engine.UI.Components.UIComponent
+  name: AddConstraint(UIConstraint)
+  nameWithType: UIComponent.AddConstraint(UIConstraint)
+  fullName: BFB.Engine.UI.Components.UIComponent.AddConstraint(BFB.Engine.UI.Constraints.UIConstraint)
+  spec.csharp:
+  - uid: BFB.Engine.UI.Components.UIComponent.AddConstraint(BFB.Engine.UI.Constraints.UIConstraint)
+    name: AddConstraint
+    nameWithType: UIComponent.AddConstraint
+    fullName: BFB.Engine.UI.Components.UIComponent.AddConstraint
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: BFB.Engine.UI.Constraints.UIConstraint
+    name: UIConstraint
+    nameWithType: UIConstraint
+    fullName: BFB.Engine.UI.Constraints.UIConstraint
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Components.UIComponent.AddConstraint(BFB.Engine.UI.Constraints.UIConstraint)
+    name: AddConstraint
+    nameWithType: UIComponent.AddConstraint
+    fullName: BFB.Engine.UI.Components.UIComponent.AddConstraint
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: BFB.Engine.UI.Constraints.UIConstraint
+    name: UIConstraint
+    nameWithType: UIConstraint
+    fullName: BFB.Engine.UI.Constraints.UIConstraint
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Components.UIComponent.ProcessEvent(BFB.Engine.Event.UIEvent)
+  commentId: M:BFB.Engine.UI.Components.UIComponent.ProcessEvent(BFB.Engine.Event.UIEvent)
+  parent: BFB.Engine.UI.Components.UIComponent
+  name: ProcessEvent(UIEvent)
+  nameWithType: UIComponent.ProcessEvent(UIEvent)
+  fullName: BFB.Engine.UI.Components.UIComponent.ProcessEvent(BFB.Engine.Event.UIEvent)
+  spec.csharp:
+  - uid: BFB.Engine.UI.Components.UIComponent.ProcessEvent(BFB.Engine.Event.UIEvent)
+    name: ProcessEvent
+    nameWithType: UIComponent.ProcessEvent
+    fullName: BFB.Engine.UI.Components.UIComponent.ProcessEvent
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: BFB.Engine.Event.UIEvent
+    name: UIEvent
+    nameWithType: UIEvent
+    fullName: BFB.Engine.Event.UIEvent
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Components.UIComponent.ProcessEvent(BFB.Engine.Event.UIEvent)
+    name: ProcessEvent
+    nameWithType: UIComponent.ProcessEvent
+    fullName: BFB.Engine.UI.Components.UIComponent.ProcessEvent
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: BFB.Engine.Event.UIEvent
+    name: UIEvent
+    nameWithType: UIEvent
+    fullName: BFB.Engine.Event.UIEvent
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Components.UIComponent.AddEvent(System.String,Action{BFB.Engine.Event.UIEvent})
+  commentId: M:BFB.Engine.UI.Components.UIComponent.AddEvent(System.String,Action{BFB.Engine.Event.UIEvent})
+  parent: BFB.Engine.UI.Components.UIComponent
+  isExternal: true
+  name: AddEvent(String, Action<UIEvent>)
+  nameWithType: UIComponent.AddEvent(String, Action<UIEvent>)
+  fullName: BFB.Engine.UI.Components.UIComponent.AddEvent(System.String, Action<BFB.Engine.Event.UIEvent>)
+  nameWithType.vb: UIComponent.AddEvent(String, Action(Of UIEvent))
+  fullName.vb: BFB.Engine.UI.Components.UIComponent.AddEvent(System.String, Action(Of BFB.Engine.Event.UIEvent))
+  name.vb: AddEvent(String, Action(Of UIEvent))
+  spec.csharp:
+  - uid: BFB.Engine.UI.Components.UIComponent.AddEvent(System.String,Action{BFB.Engine.Event.UIEvent})
+    name: AddEvent
+    nameWithType: UIComponent.AddEvent
+    fullName: BFB.Engine.UI.Components.UIComponent.AddEvent
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Action`1
+    name: Action
+    nameWithType: Action
+    fullName: Action
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: BFB.Engine.Event.UIEvent
+    name: UIEvent
+    nameWithType: UIEvent
+    fullName: BFB.Engine.Event.UIEvent
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Components.UIComponent.AddEvent(System.String,Action{BFB.Engine.Event.UIEvent})
+    name: AddEvent
+    nameWithType: UIComponent.AddEvent
+    fullName: BFB.Engine.UI.Components.UIComponent.AddEvent
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Action`1
+    name: Action
+    nameWithType: Action
+    fullName: Action
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: BFB.Engine.Event.UIEvent
+    name: UIEvent
+    nameWithType: UIEvent
+    fullName: BFB.Engine.Event.UIEvent
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Components.UIComponent.Build(BFB.Engine.UI.UILayer)
+  commentId: M:BFB.Engine.UI.Components.UIComponent.Build(BFB.Engine.UI.UILayer)
+  parent: BFB.Engine.UI.Components.UIComponent
+  name: Build(UILayer)
+  nameWithType: UIComponent.Build(UILayer)
+  fullName: BFB.Engine.UI.Components.UIComponent.Build(BFB.Engine.UI.UILayer)
+  spec.csharp:
+  - uid: BFB.Engine.UI.Components.UIComponent.Build(BFB.Engine.UI.UILayer)
+    name: Build
+    nameWithType: UIComponent.Build
+    fullName: BFB.Engine.UI.Components.UIComponent.Build
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: BFB.Engine.UI.UILayer
+    name: UILayer
+    nameWithType: UILayer
+    fullName: BFB.Engine.UI.UILayer
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Components.UIComponent.Build(BFB.Engine.UI.UILayer)
+    name: Build
+    nameWithType: UIComponent.Build
+    fullName: BFB.Engine.UI.Components.UIComponent.Build
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: BFB.Engine.UI.UILayer
+    name: UILayer
+    nameWithType: UILayer
+    fullName: BFB.Engine.UI.UILayer
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Components.UIComponent.BFB.Engine.UI.Components.UIComponentExtensions.Vstack(Action{BFB.Engine.UI.Components.UIComponent})
+  commentId: M:BFB.Engine.UI.Components.UIComponentExtensions.Vstack(BFB.Engine.UI.Components.UIComponent,Action{BFB.Engine.UI.Components.UIComponent})
+  parent: BFB.Engine.UI.Components.UIComponentExtensions
+  definition: BFB.Engine.UI.Components.UIComponentExtensions.Vstack(BFB.Engine.UI.Components.UIComponent,Action{BFB.Engine.UI.Components.UIComponent})
+  name: Vstack(Action<UIComponent>)
+  nameWithType: UIComponentExtensions.Vstack(Action<UIComponent>)
+  fullName: BFB.Engine.UI.Components.UIComponentExtensions.Vstack(Action<BFB.Engine.UI.Components.UIComponent>)
+  nameWithType.vb: UIComponentExtensions.Vstack(Action(Of UIComponent))
+  fullName.vb: BFB.Engine.UI.Components.UIComponentExtensions.Vstack(Action(Of BFB.Engine.UI.Components.UIComponent))
+  name.vb: Vstack(Action(Of UIComponent))
+  spec.csharp:
+  - uid: BFB.Engine.UI.Components.UIComponentExtensions.Vstack(Action{BFB.Engine.UI.Components.UIComponent})
+    name: Vstack
+    nameWithType: UIComponentExtensions.Vstack
+    fullName: BFB.Engine.UI.Components.UIComponentExtensions.Vstack
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Action`1
+    name: Action
+    nameWithType: Action
+    fullName: Action
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: BFB.Engine.UI.Components.UIComponent
+    name: UIComponent
+    nameWithType: UIComponent
+    fullName: BFB.Engine.UI.Components.UIComponent
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Components.UIComponentExtensions.Vstack(Action{BFB.Engine.UI.Components.UIComponent})
+    name: Vstack
+    nameWithType: UIComponentExtensions.Vstack
+    fullName: BFB.Engine.UI.Components.UIComponentExtensions.Vstack
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Action`1
+    name: Action
+    nameWithType: Action
+    fullName: Action
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: BFB.Engine.UI.Components.UIComponent
+    name: UIComponent
+    nameWithType: UIComponent
+    fullName: BFB.Engine.UI.Components.UIComponent
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Components.UIComponent.BFB.Engine.UI.Components.UIComponentExtensions.Hstack(Action{BFB.Engine.UI.Components.UIComponent})
+  commentId: M:BFB.Engine.UI.Components.UIComponentExtensions.Hstack(BFB.Engine.UI.Components.UIComponent,Action{BFB.Engine.UI.Components.UIComponent})
+  parent: BFB.Engine.UI.Components.UIComponentExtensions
+  definition: BFB.Engine.UI.Components.UIComponentExtensions.Hstack(BFB.Engine.UI.Components.UIComponent,Action{BFB.Engine.UI.Components.UIComponent})
+  name: Hstack(Action<UIComponent>)
+  nameWithType: UIComponentExtensions.Hstack(Action<UIComponent>)
+  fullName: BFB.Engine.UI.Components.UIComponentExtensions.Hstack(Action<BFB.Engine.UI.Components.UIComponent>)
+  nameWithType.vb: UIComponentExtensions.Hstack(Action(Of UIComponent))
+  fullName.vb: BFB.Engine.UI.Components.UIComponentExtensions.Hstack(Action(Of BFB.Engine.UI.Components.UIComponent))
+  name.vb: Hstack(Action(Of UIComponent))
+  spec.csharp:
+  - uid: BFB.Engine.UI.Components.UIComponentExtensions.Hstack(Action{BFB.Engine.UI.Components.UIComponent})
+    name: Hstack
+    nameWithType: UIComponentExtensions.Hstack
+    fullName: BFB.Engine.UI.Components.UIComponentExtensions.Hstack
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Action`1
+    name: Action
+    nameWithType: Action
+    fullName: Action
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: BFB.Engine.UI.Components.UIComponent
+    name: UIComponent
+    nameWithType: UIComponent
+    fullName: BFB.Engine.UI.Components.UIComponent
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Components.UIComponentExtensions.Hstack(Action{BFB.Engine.UI.Components.UIComponent})
+    name: Hstack
+    nameWithType: UIComponentExtensions.Hstack
+    fullName: BFB.Engine.UI.Components.UIComponentExtensions.Hstack
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Action`1
+    name: Action
+    nameWithType: Action
+    fullName: Action
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: BFB.Engine.UI.Components.UIComponent
+    name: UIComponent
+    nameWithType: UIComponent
+    fullName: BFB.Engine.UI.Components.UIComponent
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Components.UIComponent.BFB.Engine.UI.Components.UIComponentExtensions.Zstack(Action{BFB.Engine.UI.Components.UIComponent})
+  commentId: M:BFB.Engine.UI.Components.UIComponentExtensions.Zstack(BFB.Engine.UI.Components.UIComponent,Action{BFB.Engine.UI.Components.UIComponent})
+  parent: BFB.Engine.UI.Components.UIComponentExtensions
+  definition: BFB.Engine.UI.Components.UIComponentExtensions.Zstack(BFB.Engine.UI.Components.UIComponent,Action{BFB.Engine.UI.Components.UIComponent})
+  name: Zstack(Action<UIComponent>)
+  nameWithType: UIComponentExtensions.Zstack(Action<UIComponent>)
+  fullName: BFB.Engine.UI.Components.UIComponentExtensions.Zstack(Action<BFB.Engine.UI.Components.UIComponent>)
+  nameWithType.vb: UIComponentExtensions.Zstack(Action(Of UIComponent))
+  fullName.vb: BFB.Engine.UI.Components.UIComponentExtensions.Zstack(Action(Of BFB.Engine.UI.Components.UIComponent))
+  name.vb: Zstack(Action(Of UIComponent))
+  spec.csharp:
+  - uid: BFB.Engine.UI.Components.UIComponentExtensions.Zstack(Action{BFB.Engine.UI.Components.UIComponent})
+    name: Zstack
+    nameWithType: UIComponentExtensions.Zstack
+    fullName: BFB.Engine.UI.Components.UIComponentExtensions.Zstack
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Action`1
+    name: Action
+    nameWithType: Action
+    fullName: Action
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: BFB.Engine.UI.Components.UIComponent
+    name: UIComponent
+    nameWithType: UIComponent
+    fullName: BFB.Engine.UI.Components.UIComponent
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Components.UIComponentExtensions.Zstack(Action{BFB.Engine.UI.Components.UIComponent})
+    name: Zstack
+    nameWithType: UIComponentExtensions.Zstack
+    fullName: BFB.Engine.UI.Components.UIComponentExtensions.Zstack
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Action`1
+    name: Action
+    nameWithType: Action
+    fullName: Action
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: BFB.Engine.UI.Components.UIComponent
+    name: UIComponent
+    nameWithType: UIComponent
+    fullName: BFB.Engine.UI.Components.UIComponent
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Components.UIComponent.BFB.Engine.UI.Components.UIComponentExtensions.Spacer(System.Nullable{System.Int32})
+  commentId: M:BFB.Engine.UI.Components.UIComponentExtensions.Spacer(BFB.Engine.UI.Components.UIComponent,System.Nullable{System.Int32})
+  parent: BFB.Engine.UI.Components.UIComponentExtensions
+  definition: BFB.Engine.UI.Components.UIComponentExtensions.Spacer(BFB.Engine.UI.Components.UIComponent,System.Nullable{System.Int32})
+  name: Spacer(Nullable<Int32>)
+  nameWithType: UIComponentExtensions.Spacer(Nullable<Int32>)
+  fullName: BFB.Engine.UI.Components.UIComponentExtensions.Spacer(System.Nullable<System.Int32>)
+  nameWithType.vb: UIComponentExtensions.Spacer(Nullable(Of Int32))
+  fullName.vb: BFB.Engine.UI.Components.UIComponentExtensions.Spacer(System.Nullable(Of System.Int32))
+  name.vb: Spacer(Nullable(Of Int32))
+  spec.csharp:
+  - uid: BFB.Engine.UI.Components.UIComponentExtensions.Spacer(System.Nullable{System.Int32})
+    name: Spacer
+    nameWithType: UIComponentExtensions.Spacer
+    fullName: BFB.Engine.UI.Components.UIComponentExtensions.Spacer
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Nullable`1
+    name: Nullable
+    nameWithType: Nullable
+    fullName: System.Nullable
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Components.UIComponentExtensions.Spacer(System.Nullable{System.Int32})
+    name: Spacer
+    nameWithType: UIComponentExtensions.Spacer
+    fullName: BFB.Engine.UI.Components.UIComponentExtensions.Spacer
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Nullable`1
+    name: Nullable
+    nameWithType: Nullable
+    fullName: System.Nullable
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Components.UIComponent.BFB.Engine.UI.Components.UIComponentExtensions.TextFor``1({TModel},Func{{TModel},System.String})
+  commentId: M:BFB.Engine.UI.Components.UIComponentExtensions.TextFor``1(BFB.Engine.UI.Components.UIComponent,``0,Func{``0,System.String})
+  parent: BFB.Engine.UI.Components.UIComponentExtensions
+  definition: BFB.Engine.UI.Components.UIComponentExtensions.TextFor``1(BFB.Engine.UI.Components.UIComponent,``0,Func{``0,System.String})
+  name: TextFor<TModel>(TModel, Func<TModel, String>)
+  nameWithType: UIComponentExtensions.TextFor<TModel>(TModel, Func<TModel, String>)
+  fullName: BFB.Engine.UI.Components.UIComponentExtensions.TextFor<TModel>(TModel, Func<TModel, System.String>)
+  nameWithType.vb: UIComponentExtensions.TextFor(Of TModel)(TModel, Func(Of TModel, String))
+  fullName.vb: BFB.Engine.UI.Components.UIComponentExtensions.TextFor(Of TModel)(TModel, Func(Of TModel, System.String))
+  name.vb: TextFor(Of TModel)(TModel, Func(Of TModel, String))
+  spec.csharp:
+  - uid: BFB.Engine.UI.Components.UIComponentExtensions.TextFor``1(``0,Func{``0,System.String})
+    name: TextFor<TModel>
+    nameWithType: UIComponentExtensions.TextFor<TModel>
+    fullName: BFB.Engine.UI.Components.UIComponentExtensions.TextFor<TModel>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: TModel
+    nameWithType: TModel
+    fullName: TModel
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: TModel
+    nameWithType: TModel
+    fullName: TModel
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Components.UIComponentExtensions.TextFor``1(``0,Func{``0,System.String})
+    name: TextFor(Of TModel)
+    nameWithType: UIComponentExtensions.TextFor(Of TModel)
+    fullName: BFB.Engine.UI.Components.UIComponentExtensions.TextFor(Of TModel)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: TModel
+    nameWithType: TModel
+    fullName: TModel
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: TModel
+    nameWithType: TModel
+    fullName: TModel
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Components.UIComponent.BFB.Engine.UI.Components.UIComponentExtensions.Text(System.String)
+  commentId: M:BFB.Engine.UI.Components.UIComponentExtensions.Text(BFB.Engine.UI.Components.UIComponent,System.String)
+  parent: BFB.Engine.UI.Components.UIComponentExtensions
+  definition: BFB.Engine.UI.Components.UIComponentExtensions.Text(BFB.Engine.UI.Components.UIComponent,System.String)
+  name: Text(String)
+  nameWithType: UIComponentExtensions.Text(String)
+  fullName: BFB.Engine.UI.Components.UIComponentExtensions.Text(System.String)
+  spec.csharp:
+  - uid: BFB.Engine.UI.Components.UIComponentExtensions.Text(System.String)
+    name: Text
+    nameWithType: UIComponentExtensions.Text
+    fullName: BFB.Engine.UI.Components.UIComponentExtensions.Text
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Components.UIComponentExtensions.Text(System.String)
+    name: Text
+    nameWithType: UIComponentExtensions.Text
+    fullName: BFB.Engine.UI.Components.UIComponentExtensions.Text
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Components.UIComponent.BFB.Engine.UI.Components.UIComponentExtensions.TextBoxFor``1({TModel},Expression{Func{{TModel},System.String}},Action{BFB.Engine.Event.UIEvent,BFB.Engine.UI.Components.UIComponentAttributes},Action{BFB.Engine.Event.UIEvent,BFB.Engine.UI.Components.UIComponentAttributes},Action{BFB.Engine.Event.UIEvent,BFB.Engine.UI.Components.UIComponentAttributes})
+  commentId: M:BFB.Engine.UI.Components.UIComponentExtensions.TextBoxFor``1(BFB.Engine.UI.Components.UIComponent,``0,Expression{Func{``0,System.String}},Action{BFB.Engine.Event.UIEvent,BFB.Engine.UI.Components.UIComponentAttributes},Action{BFB.Engine.Event.UIEvent,BFB.Engine.UI.Components.UIComponentAttributes},Action{BFB.Engine.Event.UIEvent,BFB.Engine.UI.Components.UIComponentAttributes})
+  parent: BFB.Engine.UI.Components.UIComponentExtensions
+  definition: BFB.Engine.UI.Components.UIComponentExtensions.TextBoxFor``1(BFB.Engine.UI.Components.UIComponent,``0,Expression{Func{``0,System.String}},Action{BFB.Engine.Event.UIEvent,BFB.Engine.UI.Components.UIComponentAttributes},Action{BFB.Engine.Event.UIEvent,BFB.Engine.UI.Components.UIComponentAttributes},Action{BFB.Engine.Event.UIEvent,BFB.Engine.UI.Components.UIComponentAttributes})
+  name: TextBoxFor<TModel>(TModel, Expression<Func<TModel, String>>, Action<UIEvent, UIComponentAttributes>, Action<UIEvent, UIComponentAttributes>, Action<UIEvent, UIComponentAttributes>)
+  nameWithType: UIComponentExtensions.TextBoxFor<TModel>(TModel, Expression<Func<TModel, String>>, Action<UIEvent, UIComponentAttributes>, Action<UIEvent, UIComponentAttributes>, Action<UIEvent, UIComponentAttributes>)
+  fullName: BFB.Engine.UI.Components.UIComponentExtensions.TextBoxFor<TModel>(TModel, Expression<Func<TModel, System.String>>, Action<BFB.Engine.Event.UIEvent, BFB.Engine.UI.Components.UIComponentAttributes>, Action<BFB.Engine.Event.UIEvent, BFB.Engine.UI.Components.UIComponentAttributes>, Action<BFB.Engine.Event.UIEvent, BFB.Engine.UI.Components.UIComponentAttributes>)
+  nameWithType.vb: UIComponentExtensions.TextBoxFor(Of TModel)(TModel, Expression(Of Func(Of TModel, String)), Action(Of UIEvent, UIComponentAttributes), Action(Of UIEvent, UIComponentAttributes), Action(Of UIEvent, UIComponentAttributes))
+  fullName.vb: BFB.Engine.UI.Components.UIComponentExtensions.TextBoxFor(Of TModel)(TModel, Expression(Of Func(Of TModel, System.String)), Action(Of BFB.Engine.Event.UIEvent, BFB.Engine.UI.Components.UIComponentAttributes), Action(Of BFB.Engine.Event.UIEvent, BFB.Engine.UI.Components.UIComponentAttributes), Action(Of BFB.Engine.Event.UIEvent, BFB.Engine.UI.Components.UIComponentAttributes))
+  name.vb: TextBoxFor(Of TModel)(TModel, Expression(Of Func(Of TModel, String)), Action(Of UIEvent, UIComponentAttributes), Action(Of UIEvent, UIComponentAttributes), Action(Of UIEvent, UIComponentAttributes))
+  spec.csharp:
+  - uid: BFB.Engine.UI.Components.UIComponentExtensions.TextBoxFor``1(``0,Expression{Func{``0,System.String}},Action{BFB.Engine.Event.UIEvent,BFB.Engine.UI.Components.UIComponentAttributes},Action{BFB.Engine.Event.UIEvent,BFB.Engine.UI.Components.UIComponentAttributes},Action{BFB.Engine.Event.UIEvent,BFB.Engine.UI.Components.UIComponentAttributes})
+    name: TextBoxFor<TModel>
+    nameWithType: UIComponentExtensions.TextBoxFor<TModel>
+    fullName: BFB.Engine.UI.Components.UIComponentExtensions.TextBoxFor<TModel>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: TModel
+    nameWithType: TModel
+    fullName: TModel
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: TModel
+    nameWithType: TModel
+    fullName: TModel
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Action`2
+    name: Action
+    nameWithType: Action
+    fullName: Action
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: BFB.Engine.Event.UIEvent
+    name: UIEvent
+    nameWithType: UIEvent
+    fullName: BFB.Engine.Event.UIEvent
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: BFB.Engine.UI.Components.UIComponentAttributes
+    name: UIComponentAttributes
+    nameWithType: UIComponentAttributes
+    fullName: BFB.Engine.UI.Components.UIComponentAttributes
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Action`2
+    name: Action
+    nameWithType: Action
+    fullName: Action
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: BFB.Engine.Event.UIEvent
+    name: UIEvent
+    nameWithType: UIEvent
+    fullName: BFB.Engine.Event.UIEvent
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: BFB.Engine.UI.Components.UIComponentAttributes
+    name: UIComponentAttributes
+    nameWithType: UIComponentAttributes
+    fullName: BFB.Engine.UI.Components.UIComponentAttributes
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Action`2
+    name: Action
+    nameWithType: Action
+    fullName: Action
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: BFB.Engine.Event.UIEvent
+    name: UIEvent
+    nameWithType: UIEvent
+    fullName: BFB.Engine.Event.UIEvent
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: BFB.Engine.UI.Components.UIComponentAttributes
+    name: UIComponentAttributes
+    nameWithType: UIComponentAttributes
+    fullName: BFB.Engine.UI.Components.UIComponentAttributes
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Components.UIComponentExtensions.TextBoxFor``1(``0,Expression{Func{``0,System.String}},Action{BFB.Engine.Event.UIEvent,BFB.Engine.UI.Components.UIComponentAttributes},Action{BFB.Engine.Event.UIEvent,BFB.Engine.UI.Components.UIComponentAttributes},Action{BFB.Engine.Event.UIEvent,BFB.Engine.UI.Components.UIComponentAttributes})
+    name: TextBoxFor(Of TModel)
+    nameWithType: UIComponentExtensions.TextBoxFor(Of TModel)
+    fullName: BFB.Engine.UI.Components.UIComponentExtensions.TextBoxFor(Of TModel)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: TModel
+    nameWithType: TModel
+    fullName: TModel
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: TModel
+    nameWithType: TModel
+    fullName: TModel
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Action`2
+    name: Action
+    nameWithType: Action
+    fullName: Action
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: BFB.Engine.Event.UIEvent
+    name: UIEvent
+    nameWithType: UIEvent
+    fullName: BFB.Engine.Event.UIEvent
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: BFB.Engine.UI.Components.UIComponentAttributes
+    name: UIComponentAttributes
+    nameWithType: UIComponentAttributes
+    fullName: BFB.Engine.UI.Components.UIComponentAttributes
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Action`2
+    name: Action
+    nameWithType: Action
+    fullName: Action
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: BFB.Engine.Event.UIEvent
+    name: UIEvent
+    nameWithType: UIEvent
+    fullName: BFB.Engine.Event.UIEvent
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: BFB.Engine.UI.Components.UIComponentAttributes
+    name: UIComponentAttributes
+    nameWithType: UIComponentAttributes
+    fullName: BFB.Engine.UI.Components.UIComponentAttributes
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Action`2
+    name: Action
+    nameWithType: Action
+    fullName: Action
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: BFB.Engine.Event.UIEvent
+    name: UIEvent
+    nameWithType: UIEvent
+    fullName: BFB.Engine.Event.UIEvent
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: BFB.Engine.UI.Components.UIComponentAttributes
+    name: UIComponentAttributes
+    nameWithType: UIComponentAttributes
+    fullName: BFB.Engine.UI.Components.UIComponentAttributes
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Components.UIComponent.BFB.Engine.UI.Components.UIComponentExtensions.Button(System.String,Action{BFB.Engine.Event.UIEvent,BFB.Engine.UI.Components.UIComponentAttributes},Action{BFB.Engine.Event.UIEvent,BFB.Engine.UI.Components.UIComponentAttributes})
+  commentId: M:BFB.Engine.UI.Components.UIComponentExtensions.Button(BFB.Engine.UI.Components.UIComponent,System.String,Action{BFB.Engine.Event.UIEvent,BFB.Engine.UI.Components.UIComponentAttributes},Action{BFB.Engine.Event.UIEvent,BFB.Engine.UI.Components.UIComponentAttributes})
+  parent: BFB.Engine.UI.Components.UIComponentExtensions
+  definition: BFB.Engine.UI.Components.UIComponentExtensions.Button(BFB.Engine.UI.Components.UIComponent,System.String,Action{BFB.Engine.Event.UIEvent,BFB.Engine.UI.Components.UIComponentAttributes},Action{BFB.Engine.Event.UIEvent,BFB.Engine.UI.Components.UIComponentAttributes})
+  name: Button(String, Action<UIEvent, UIComponentAttributes>, Action<UIEvent, UIComponentAttributes>)
+  nameWithType: UIComponentExtensions.Button(String, Action<UIEvent, UIComponentAttributes>, Action<UIEvent, UIComponentAttributes>)
+  fullName: BFB.Engine.UI.Components.UIComponentExtensions.Button(System.String, Action<BFB.Engine.Event.UIEvent, BFB.Engine.UI.Components.UIComponentAttributes>, Action<BFB.Engine.Event.UIEvent, BFB.Engine.UI.Components.UIComponentAttributes>)
+  nameWithType.vb: UIComponentExtensions.Button(String, Action(Of UIEvent, UIComponentAttributes), Action(Of UIEvent, UIComponentAttributes))
+  fullName.vb: BFB.Engine.UI.Components.UIComponentExtensions.Button(System.String, Action(Of BFB.Engine.Event.UIEvent, BFB.Engine.UI.Components.UIComponentAttributes), Action(Of BFB.Engine.Event.UIEvent, BFB.Engine.UI.Components.UIComponentAttributes))
+  name.vb: Button(String, Action(Of UIEvent, UIComponentAttributes), Action(Of UIEvent, UIComponentAttributes))
+  spec.csharp:
+  - uid: BFB.Engine.UI.Components.UIComponentExtensions.Button(System.String,Action{BFB.Engine.Event.UIEvent,BFB.Engine.UI.Components.UIComponentAttributes},Action{BFB.Engine.Event.UIEvent,BFB.Engine.UI.Components.UIComponentAttributes})
+    name: Button
+    nameWithType: UIComponentExtensions.Button
+    fullName: BFB.Engine.UI.Components.UIComponentExtensions.Button
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Action`2
+    name: Action
+    nameWithType: Action
+    fullName: Action
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: BFB.Engine.Event.UIEvent
+    name: UIEvent
+    nameWithType: UIEvent
+    fullName: BFB.Engine.Event.UIEvent
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: BFB.Engine.UI.Components.UIComponentAttributes
+    name: UIComponentAttributes
+    nameWithType: UIComponentAttributes
+    fullName: BFB.Engine.UI.Components.UIComponentAttributes
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Action`2
+    name: Action
+    nameWithType: Action
+    fullName: Action
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: BFB.Engine.Event.UIEvent
+    name: UIEvent
+    nameWithType: UIEvent
+    fullName: BFB.Engine.Event.UIEvent
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: BFB.Engine.UI.Components.UIComponentAttributes
+    name: UIComponentAttributes
+    nameWithType: UIComponentAttributes
+    fullName: BFB.Engine.UI.Components.UIComponentAttributes
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Components.UIComponentExtensions.Button(System.String,Action{BFB.Engine.Event.UIEvent,BFB.Engine.UI.Components.UIComponentAttributes},Action{BFB.Engine.Event.UIEvent,BFB.Engine.UI.Components.UIComponentAttributes})
+    name: Button
+    nameWithType: UIComponentExtensions.Button
+    fullName: BFB.Engine.UI.Components.UIComponentExtensions.Button
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Action`2
+    name: Action
+    nameWithType: Action
+    fullName: Action
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: BFB.Engine.Event.UIEvent
+    name: UIEvent
+    nameWithType: UIEvent
+    fullName: BFB.Engine.Event.UIEvent
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: BFB.Engine.UI.Components.UIComponentAttributes
+    name: UIComponentAttributes
+    nameWithType: UIComponentAttributes
+    fullName: BFB.Engine.UI.Components.UIComponentAttributes
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Action`2
+    name: Action
+    nameWithType: Action
+    fullName: Action
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: BFB.Engine.Event.UIEvent
+    name: UIEvent
+    nameWithType: UIEvent
+    fullName: BFB.Engine.Event.UIEvent
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: BFB.Engine.UI.Components.UIComponentAttributes
+    name: UIComponentAttributes
+    nameWithType: UIComponentAttributes
+    fullName: BFB.Engine.UI.Components.UIComponentAttributes
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Components.UITextComponent`1.BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{BFB.Engine.UI.Components.UITextComponent{{TModel}},{TValue}}},{TValue})
+  commentId: M:BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  parent: BFB.Engine.UI.Components.LambdaExtensions
+  definition: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  name: SetPropertyValue<UITextComponent<TModel>, TValue>(Expression<Func<UITextComponent<TModel>, TValue>>, TValue)
+  nameWithType: LambdaExtensions.SetPropertyValue<UITextComponent<TModel>, TValue>(Expression<Func<UITextComponent<TModel>, TValue>>, TValue)
+  fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<BFB.Engine.UI.Components.UITextComponent<TModel>, TValue>(Expression<Func<BFB.Engine.UI.Components.UITextComponent<TModel>, TValue>>, TValue)
+  nameWithType.vb: LambdaExtensions.SetPropertyValue(Of UITextComponent(Of TModel), TValue)(Expression(Of Func(Of UITextComponent(Of TModel), TValue)), TValue)
+  fullName.vb: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of BFB.Engine.UI.Components.UITextComponent(Of TModel), TValue)(Expression(Of Func(Of BFB.Engine.UI.Components.UITextComponent(Of TModel), TValue)), TValue)
+  name.vb: SetPropertyValue(Of UITextComponent(Of TModel), TValue)(Expression(Of Func(Of UITextComponent(Of TModel), TValue)), TValue)
+  spec.csharp:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue<UITextComponent<TModel>, TValue>
+    nameWithType: LambdaExtensions.SetPropertyValue<UITextComponent<TModel>, TValue>
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<BFB.Engine.UI.Components.UITextComponent<TModel>, TValue>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: BFB.Engine.UI.Components.UITextComponent`1
+    name: UITextComponent
+    nameWithType: UITextComponent
+    fullName: BFB.Engine.UI.Components.UITextComponent
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: TModel
+    nameWithType: TModel
+    fullName: TModel
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue(Of UITextComponent(Of TModel), TValue)
+    nameWithType: LambdaExtensions.SetPropertyValue(Of UITextComponent(Of TModel), TValue)
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of BFB.Engine.UI.Components.UITextComponent(Of TModel), TValue)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: BFB.Engine.UI.Components.UITextComponent`1
+    name: UITextComponent
+    nameWithType: UITextComponent
+    fullName: BFB.Engine.UI.Components.UITextComponent
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: TModel
+    nameWithType: TModel
+    fullName: TModel
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Components.UIComponent.BFB.Engine.UI.Constraints.UIConstraintExtensions.Width(System.Int32)
+  commentId: M:BFB.Engine.UI.Constraints.UIConstraintExtensions.Width(BFB.Engine.UI.Components.UIComponent,System.Int32)
+  parent: BFB.Engine.UI.Constraints.UIConstraintExtensions
+  definition: BFB.Engine.UI.Constraints.UIConstraintExtensions.Width(BFB.Engine.UI.Components.UIComponent,System.Int32)
+  name: Width(Int32)
+  nameWithType: UIConstraintExtensions.Width(Int32)
+  fullName: BFB.Engine.UI.Constraints.UIConstraintExtensions.Width(System.Int32)
+  spec.csharp:
+  - uid: BFB.Engine.UI.Constraints.UIConstraintExtensions.Width(System.Int32)
+    name: Width
+    nameWithType: UIConstraintExtensions.Width
+    fullName: BFB.Engine.UI.Constraints.UIConstraintExtensions.Width
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Constraints.UIConstraintExtensions.Width(System.Int32)
+    name: Width
+    nameWithType: UIConstraintExtensions.Width
+    fullName: BFB.Engine.UI.Constraints.UIConstraintExtensions.Width
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Components.UIComponent.BFB.Engine.UI.Constraints.UIConstraintExtensions.Width(System.Single)
+  commentId: M:BFB.Engine.UI.Constraints.UIConstraintExtensions.Width(BFB.Engine.UI.Components.UIComponent,System.Single)
+  parent: BFB.Engine.UI.Constraints.UIConstraintExtensions
+  definition: BFB.Engine.UI.Constraints.UIConstraintExtensions.Width(BFB.Engine.UI.Components.UIComponent,System.Single)
+  name: Width(Single)
+  nameWithType: UIConstraintExtensions.Width(Single)
+  fullName: BFB.Engine.UI.Constraints.UIConstraintExtensions.Width(System.Single)
+  spec.csharp:
+  - uid: BFB.Engine.UI.Constraints.UIConstraintExtensions.Width(System.Single)
+    name: Width
+    nameWithType: UIConstraintExtensions.Width
+    fullName: BFB.Engine.UI.Constraints.UIConstraintExtensions.Width
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Single
+    name: Single
+    nameWithType: Single
+    fullName: System.Single
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Constraints.UIConstraintExtensions.Width(System.Single)
+    name: Width
+    nameWithType: UIConstraintExtensions.Width
+    fullName: BFB.Engine.UI.Constraints.UIConstraintExtensions.Width
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Single
+    name: Single
+    nameWithType: Single
+    fullName: System.Single
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Components.UIComponent.BFB.Engine.UI.Constraints.UIConstraintExtensions.Height(System.Int32)
+  commentId: M:BFB.Engine.UI.Constraints.UIConstraintExtensions.Height(BFB.Engine.UI.Components.UIComponent,System.Int32)
+  parent: BFB.Engine.UI.Constraints.UIConstraintExtensions
+  definition: BFB.Engine.UI.Constraints.UIConstraintExtensions.Height(BFB.Engine.UI.Components.UIComponent,System.Int32)
+  name: Height(Int32)
+  nameWithType: UIConstraintExtensions.Height(Int32)
+  fullName: BFB.Engine.UI.Constraints.UIConstraintExtensions.Height(System.Int32)
+  spec.csharp:
+  - uid: BFB.Engine.UI.Constraints.UIConstraintExtensions.Height(System.Int32)
+    name: Height
+    nameWithType: UIConstraintExtensions.Height
+    fullName: BFB.Engine.UI.Constraints.UIConstraintExtensions.Height
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Constraints.UIConstraintExtensions.Height(System.Int32)
+    name: Height
+    nameWithType: UIConstraintExtensions.Height
+    fullName: BFB.Engine.UI.Constraints.UIConstraintExtensions.Height
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Components.UIComponent.BFB.Engine.UI.Constraints.UIConstraintExtensions.Height(System.Single)
+  commentId: M:BFB.Engine.UI.Constraints.UIConstraintExtensions.Height(BFB.Engine.UI.Components.UIComponent,System.Single)
+  parent: BFB.Engine.UI.Constraints.UIConstraintExtensions
+  definition: BFB.Engine.UI.Constraints.UIConstraintExtensions.Height(BFB.Engine.UI.Components.UIComponent,System.Single)
+  name: Height(Single)
+  nameWithType: UIConstraintExtensions.Height(Single)
+  fullName: BFB.Engine.UI.Constraints.UIConstraintExtensions.Height(System.Single)
+  spec.csharp:
+  - uid: BFB.Engine.UI.Constraints.UIConstraintExtensions.Height(System.Single)
+    name: Height
+    nameWithType: UIConstraintExtensions.Height
+    fullName: BFB.Engine.UI.Constraints.UIConstraintExtensions.Height
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Single
+    name: Single
+    nameWithType: Single
+    fullName: System.Single
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Constraints.UIConstraintExtensions.Height(System.Single)
+    name: Height
+    nameWithType: UIConstraintExtensions.Height
+    fullName: BFB.Engine.UI.Constraints.UIConstraintExtensions.Height
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Single
+    name: Single
+    nameWithType: Single
+    fullName: System.Single
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Components.UIComponent.BFB.Engine.UI.Constraints.UIConstraintExtensions.Top(System.Int32)
+  commentId: M:BFB.Engine.UI.Constraints.UIConstraintExtensions.Top(BFB.Engine.UI.Components.UIComponent,System.Int32)
+  parent: BFB.Engine.UI.Constraints.UIConstraintExtensions
+  definition: BFB.Engine.UI.Constraints.UIConstraintExtensions.Top(BFB.Engine.UI.Components.UIComponent,System.Int32)
+  name: Top(Int32)
+  nameWithType: UIConstraintExtensions.Top(Int32)
+  fullName: BFB.Engine.UI.Constraints.UIConstraintExtensions.Top(System.Int32)
+  spec.csharp:
+  - uid: BFB.Engine.UI.Constraints.UIConstraintExtensions.Top(System.Int32)
+    name: Top
+    nameWithType: UIConstraintExtensions.Top
+    fullName: BFB.Engine.UI.Constraints.UIConstraintExtensions.Top
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Constraints.UIConstraintExtensions.Top(System.Int32)
+    name: Top
+    nameWithType: UIConstraintExtensions.Top
+    fullName: BFB.Engine.UI.Constraints.UIConstraintExtensions.Top
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Components.UIComponent.BFB.Engine.UI.Constraints.UIConstraintExtensions.Right(System.Int32)
+  commentId: M:BFB.Engine.UI.Constraints.UIConstraintExtensions.Right(BFB.Engine.UI.Components.UIComponent,System.Int32)
+  parent: BFB.Engine.UI.Constraints.UIConstraintExtensions
+  definition: BFB.Engine.UI.Constraints.UIConstraintExtensions.Right(BFB.Engine.UI.Components.UIComponent,System.Int32)
+  name: Right(Int32)
+  nameWithType: UIConstraintExtensions.Right(Int32)
+  fullName: BFB.Engine.UI.Constraints.UIConstraintExtensions.Right(System.Int32)
+  spec.csharp:
+  - uid: BFB.Engine.UI.Constraints.UIConstraintExtensions.Right(System.Int32)
+    name: Right
+    nameWithType: UIConstraintExtensions.Right
+    fullName: BFB.Engine.UI.Constraints.UIConstraintExtensions.Right
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Constraints.UIConstraintExtensions.Right(System.Int32)
+    name: Right
+    nameWithType: UIConstraintExtensions.Right
+    fullName: BFB.Engine.UI.Constraints.UIConstraintExtensions.Right
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Components.UIComponent.BFB.Engine.UI.Constraints.UIConstraintExtensions.Bottom(System.Int32)
+  commentId: M:BFB.Engine.UI.Constraints.UIConstraintExtensions.Bottom(BFB.Engine.UI.Components.UIComponent,System.Int32)
+  parent: BFB.Engine.UI.Constraints.UIConstraintExtensions
+  definition: BFB.Engine.UI.Constraints.UIConstraintExtensions.Bottom(BFB.Engine.UI.Components.UIComponent,System.Int32)
+  name: Bottom(Int32)
+  nameWithType: UIConstraintExtensions.Bottom(Int32)
+  fullName: BFB.Engine.UI.Constraints.UIConstraintExtensions.Bottom(System.Int32)
+  spec.csharp:
+  - uid: BFB.Engine.UI.Constraints.UIConstraintExtensions.Bottom(System.Int32)
+    name: Bottom
+    nameWithType: UIConstraintExtensions.Bottom
+    fullName: BFB.Engine.UI.Constraints.UIConstraintExtensions.Bottom
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Constraints.UIConstraintExtensions.Bottom(System.Int32)
+    name: Bottom
+    nameWithType: UIConstraintExtensions.Bottom
+    fullName: BFB.Engine.UI.Constraints.UIConstraintExtensions.Bottom
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Components.UIComponent.BFB.Engine.UI.Constraints.UIConstraintExtensions.Left(System.Int32)
+  commentId: M:BFB.Engine.UI.Constraints.UIConstraintExtensions.Left(BFB.Engine.UI.Components.UIComponent,System.Int32)
+  parent: BFB.Engine.UI.Constraints.UIConstraintExtensions
+  definition: BFB.Engine.UI.Constraints.UIConstraintExtensions.Left(BFB.Engine.UI.Components.UIComponent,System.Int32)
+  name: Left(Int32)
+  nameWithType: UIConstraintExtensions.Left(Int32)
+  fullName: BFB.Engine.UI.Constraints.UIConstraintExtensions.Left(System.Int32)
+  spec.csharp:
+  - uid: BFB.Engine.UI.Constraints.UIConstraintExtensions.Left(System.Int32)
+    name: Left
+    nameWithType: UIConstraintExtensions.Left
+    fullName: BFB.Engine.UI.Constraints.UIConstraintExtensions.Left
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Constraints.UIConstraintExtensions.Left(System.Int32)
+    name: Left
+    nameWithType: UIConstraintExtensions.Left
+    fullName: BFB.Engine.UI.Constraints.UIConstraintExtensions.Left
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Components.UIComponent.BFB.Engine.UI.Constraints.UIConstraintExtensions.Image(System.String)
+  commentId: M:BFB.Engine.UI.Constraints.UIConstraintExtensions.Image(BFB.Engine.UI.Components.UIComponent,System.String)
+  parent: BFB.Engine.UI.Constraints.UIConstraintExtensions
+  definition: BFB.Engine.UI.Constraints.UIConstraintExtensions.Image(BFB.Engine.UI.Components.UIComponent,System.String)
+  name: Image(String)
+  nameWithType: UIConstraintExtensions.Image(String)
+  fullName: BFB.Engine.UI.Constraints.UIConstraintExtensions.Image(System.String)
+  spec.csharp:
+  - uid: BFB.Engine.UI.Constraints.UIConstraintExtensions.Image(System.String)
+    name: Image
+    nameWithType: UIConstraintExtensions.Image
+    fullName: BFB.Engine.UI.Constraints.UIConstraintExtensions.Image
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Constraints.UIConstraintExtensions.Image(System.String)
+    name: Image
+    nameWithType: UIConstraintExtensions.Image
+    fullName: BFB.Engine.UI.Constraints.UIConstraintExtensions.Image
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Components.UIComponent.BFB.Engine.UI.Constraints.UIConstraintExtensions.Center
+  commentId: M:BFB.Engine.UI.Constraints.UIConstraintExtensions.Center(BFB.Engine.UI.Components.UIComponent)
+  parent: BFB.Engine.UI.Constraints.UIConstraintExtensions
+  definition: BFB.Engine.UI.Constraints.UIConstraintExtensions.Center(BFB.Engine.UI.Components.UIComponent)
+  name: Center()
+  nameWithType: UIConstraintExtensions.Center()
+  fullName: BFB.Engine.UI.Constraints.UIConstraintExtensions.Center()
+  spec.csharp:
+  - uid: BFB.Engine.UI.Constraints.UIConstraintExtensions.Center
+    name: Center
+    nameWithType: UIConstraintExtensions.Center
+    fullName: BFB.Engine.UI.Constraints.UIConstraintExtensions.Center
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Constraints.UIConstraintExtensions.Center
+    name: Center
+    nameWithType: UIConstraintExtensions.Center
+    fullName: BFB.Engine.UI.Constraints.UIConstraintExtensions.Center
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Components.UIComponent.BFB.Engine.UI.Constraints.UIConstraintExtensions.Grow(System.Int32)
+  commentId: M:BFB.Engine.UI.Constraints.UIConstraintExtensions.Grow(BFB.Engine.UI.Components.UIComponent,System.Int32)
+  parent: BFB.Engine.UI.Constraints.UIConstraintExtensions
+  definition: BFB.Engine.UI.Constraints.UIConstraintExtensions.Grow(BFB.Engine.UI.Components.UIComponent,System.Int32)
+  name: Grow(Int32)
+  nameWithType: UIConstraintExtensions.Grow(Int32)
+  fullName: BFB.Engine.UI.Constraints.UIConstraintExtensions.Grow(System.Int32)
+  spec.csharp:
+  - uid: BFB.Engine.UI.Constraints.UIConstraintExtensions.Grow(System.Int32)
+    name: Grow
+    nameWithType: UIConstraintExtensions.Grow
+    fullName: BFB.Engine.UI.Constraints.UIConstraintExtensions.Grow
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Constraints.UIConstraintExtensions.Grow(System.Int32)
+    name: Grow
+    nameWithType: UIConstraintExtensions.Grow
+    fullName: BFB.Engine.UI.Constraints.UIConstraintExtensions.Grow
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Components.UIComponent.BFB.Engine.UI.Constraints.UIConstraintExtensions.AspectRatio(System.Single)
+  commentId: M:BFB.Engine.UI.Constraints.UIConstraintExtensions.AspectRatio(BFB.Engine.UI.Components.UIComponent,System.Single)
+  parent: BFB.Engine.UI.Constraints.UIConstraintExtensions
+  definition: BFB.Engine.UI.Constraints.UIConstraintExtensions.AspectRatio(BFB.Engine.UI.Components.UIComponent,System.Single)
+  name: AspectRatio(Single)
+  nameWithType: UIConstraintExtensions.AspectRatio(Single)
+  fullName: BFB.Engine.UI.Constraints.UIConstraintExtensions.AspectRatio(System.Single)
+  spec.csharp:
+  - uid: BFB.Engine.UI.Constraints.UIConstraintExtensions.AspectRatio(System.Single)
+    name: AspectRatio
+    nameWithType: UIConstraintExtensions.AspectRatio
+    fullName: BFB.Engine.UI.Constraints.UIConstraintExtensions.AspectRatio
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Single
+    name: Single
+    nameWithType: Single
+    fullName: System.Single
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Constraints.UIConstraintExtensions.AspectRatio(System.Single)
+    name: AspectRatio
+    nameWithType: UIConstraintExtensions.AspectRatio
+    fullName: BFB.Engine.UI.Constraints.UIConstraintExtensions.AspectRatio
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Single
+    name: Single
+    nameWithType: Single
+    fullName: System.Single
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Components.UIComponent.BFB.Engine.UI.Constraints.UIConstraintExtensions.FontSize(System.Single)
+  commentId: M:BFB.Engine.UI.Constraints.UIConstraintExtensions.FontSize(BFB.Engine.UI.Components.UIComponent,System.Single)
+  parent: BFB.Engine.UI.Constraints.UIConstraintExtensions
+  definition: BFB.Engine.UI.Constraints.UIConstraintExtensions.FontSize(BFB.Engine.UI.Components.UIComponent,System.Single)
+  name: FontSize(Single)
+  nameWithType: UIConstraintExtensions.FontSize(Single)
+  fullName: BFB.Engine.UI.Constraints.UIConstraintExtensions.FontSize(System.Single)
+  spec.csharp:
+  - uid: BFB.Engine.UI.Constraints.UIConstraintExtensions.FontSize(System.Single)
+    name: FontSize
+    nameWithType: UIConstraintExtensions.FontSize
+    fullName: BFB.Engine.UI.Constraints.UIConstraintExtensions.FontSize
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Single
+    name: Single
+    nameWithType: Single
+    fullName: System.Single
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Constraints.UIConstraintExtensions.FontSize(System.Single)
+    name: FontSize
+    nameWithType: UIConstraintExtensions.FontSize
+    fullName: BFB.Engine.UI.Constraints.UIConstraintExtensions.FontSize
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Single
+    name: Single
+    nameWithType: Single
+    fullName: System.Single
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Components.UIComponent.BFB.Engine.UI.Constraints.UIConstraintExtensions.Background(System.Nullable{Color})
+  commentId: M:BFB.Engine.UI.Constraints.UIConstraintExtensions.Background(BFB.Engine.UI.Components.UIComponent,System.Nullable{Color})
+  parent: BFB.Engine.UI.Constraints.UIConstraintExtensions
+  definition: BFB.Engine.UI.Constraints.UIConstraintExtensions.Background(BFB.Engine.UI.Components.UIComponent,System.Nullable{Color})
+  name: Background(Nullable<Color>)
+  nameWithType: UIConstraintExtensions.Background(Nullable<Color>)
+  fullName: BFB.Engine.UI.Constraints.UIConstraintExtensions.Background(System.Nullable<Color>)
+  nameWithType.vb: UIConstraintExtensions.Background(Nullable(Of Color))
+  fullName.vb: BFB.Engine.UI.Constraints.UIConstraintExtensions.Background(System.Nullable(Of Color))
+  name.vb: Background(Nullable(Of Color))
+  spec.csharp:
+  - uid: BFB.Engine.UI.Constraints.UIConstraintExtensions.Background(System.Nullable{Color})
+    name: Background
+    nameWithType: UIConstraintExtensions.Background
+    fullName: BFB.Engine.UI.Constraints.UIConstraintExtensions.Background
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Nullable`1
+    name: Nullable
+    nameWithType: Nullable
+    fullName: System.Nullable
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Color
+    name: Color
+    nameWithType: Color
+    fullName: Color
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Constraints.UIConstraintExtensions.Background(System.Nullable{Color})
+    name: Background
+    nameWithType: UIConstraintExtensions.Background
+    fullName: BFB.Engine.UI.Constraints.UIConstraintExtensions.Background
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Nullable`1
+    name: Nullable
+    nameWithType: Nullable
+    fullName: System.Nullable
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Color
+    name: Color
+    nameWithType: Color
+    fullName: Color
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Components.UIComponent.BFB.Engine.UI.Constraints.UIConstraintExtensions.Color(System.Nullable{Color})
+  commentId: M:BFB.Engine.UI.Constraints.UIConstraintExtensions.Color(BFB.Engine.UI.Components.UIComponent,System.Nullable{Color})
+  parent: BFB.Engine.UI.Constraints.UIConstraintExtensions
+  definition: BFB.Engine.UI.Constraints.UIConstraintExtensions.Color(BFB.Engine.UI.Components.UIComponent,System.Nullable{Color})
+  name: Color(Nullable<Color>)
+  nameWithType: UIConstraintExtensions.Color(Nullable<Color>)
+  fullName: BFB.Engine.UI.Constraints.UIConstraintExtensions.Color(System.Nullable<Color>)
+  nameWithType.vb: UIConstraintExtensions.Color(Nullable(Of Color))
+  fullName.vb: BFB.Engine.UI.Constraints.UIConstraintExtensions.Color(System.Nullable(Of Color))
+  name.vb: Color(Nullable(Of Color))
+  spec.csharp:
+  - uid: BFB.Engine.UI.Constraints.UIConstraintExtensions.Color(System.Nullable{Color})
+    name: Color
+    nameWithType: UIConstraintExtensions.Color
+    fullName: BFB.Engine.UI.Constraints.UIConstraintExtensions.Color
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Nullable`1
+    name: Nullable
+    nameWithType: Nullable
+    fullName: System.Nullable
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Color
+    name: Color
+    nameWithType: Color
+    fullName: Color
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Constraints.UIConstraintExtensions.Color(System.Nullable{Color})
+    name: Color
+    nameWithType: UIConstraintExtensions.Color
+    fullName: BFB.Engine.UI.Constraints.UIConstraintExtensions.Color
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Nullable`1
+    name: Nullable
+    nameWithType: Nullable
+    fullName: System.Nullable
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Color
+    name: Color
+    nameWithType: Color
+    fullName: Color
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Components.UIComponentExtensions.Vstack(BFB.Engine.UI.Components.UIComponent,Action{BFB.Engine.UI.Components.UIComponent})
+  commentId: M:BFB.Engine.UI.Components.UIComponentExtensions.Vstack(BFB.Engine.UI.Components.UIComponent,Action{BFB.Engine.UI.Components.UIComponent})
+  isExternal: true
+  name: Vstack(UIComponent, Action<UIComponent>)
+  nameWithType: UIComponentExtensions.Vstack(UIComponent, Action<UIComponent>)
+  fullName: BFB.Engine.UI.Components.UIComponentExtensions.Vstack(BFB.Engine.UI.Components.UIComponent, Action<BFB.Engine.UI.Components.UIComponent>)
+  nameWithType.vb: UIComponentExtensions.Vstack(UIComponent, Action(Of UIComponent))
+  fullName.vb: BFB.Engine.UI.Components.UIComponentExtensions.Vstack(BFB.Engine.UI.Components.UIComponent, Action(Of BFB.Engine.UI.Components.UIComponent))
+  name.vb: Vstack(UIComponent, Action(Of UIComponent))
+  spec.csharp:
+  - uid: BFB.Engine.UI.Components.UIComponentExtensions.Vstack(BFB.Engine.UI.Components.UIComponent,Action{BFB.Engine.UI.Components.UIComponent})
+    name: Vstack
+    nameWithType: UIComponentExtensions.Vstack
+    fullName: BFB.Engine.UI.Components.UIComponentExtensions.Vstack
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: BFB.Engine.UI.Components.UIComponent
+    name: UIComponent
+    nameWithType: UIComponent
+    fullName: BFB.Engine.UI.Components.UIComponent
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Action`1
+    name: Action
+    nameWithType: Action
+    fullName: Action
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: BFB.Engine.UI.Components.UIComponent
+    name: UIComponent
+    nameWithType: UIComponent
+    fullName: BFB.Engine.UI.Components.UIComponent
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Components.UIComponentExtensions.Vstack(BFB.Engine.UI.Components.UIComponent,Action{BFB.Engine.UI.Components.UIComponent})
+    name: Vstack
+    nameWithType: UIComponentExtensions.Vstack
+    fullName: BFB.Engine.UI.Components.UIComponentExtensions.Vstack
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: BFB.Engine.UI.Components.UIComponent
+    name: UIComponent
+    nameWithType: UIComponent
+    fullName: BFB.Engine.UI.Components.UIComponent
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Action`1
+    name: Action
+    nameWithType: Action
+    fullName: Action
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: BFB.Engine.UI.Components.UIComponent
+    name: UIComponent
+    nameWithType: UIComponent
+    fullName: BFB.Engine.UI.Components.UIComponent
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Components.UIComponentExtensions
+  commentId: T:BFB.Engine.UI.Components.UIComponentExtensions
+  parent: BFB.Engine.UI.Components
+  name: UIComponentExtensions
+  nameWithType: UIComponentExtensions
+  fullName: BFB.Engine.UI.Components.UIComponentExtensions
+- uid: BFB.Engine.UI.Components.UIComponentExtensions.Hstack(BFB.Engine.UI.Components.UIComponent,Action{BFB.Engine.UI.Components.UIComponent})
+  commentId: M:BFB.Engine.UI.Components.UIComponentExtensions.Hstack(BFB.Engine.UI.Components.UIComponent,Action{BFB.Engine.UI.Components.UIComponent})
+  isExternal: true
+  name: Hstack(UIComponent, Action<UIComponent>)
+  nameWithType: UIComponentExtensions.Hstack(UIComponent, Action<UIComponent>)
+  fullName: BFB.Engine.UI.Components.UIComponentExtensions.Hstack(BFB.Engine.UI.Components.UIComponent, Action<BFB.Engine.UI.Components.UIComponent>)
+  nameWithType.vb: UIComponentExtensions.Hstack(UIComponent, Action(Of UIComponent))
+  fullName.vb: BFB.Engine.UI.Components.UIComponentExtensions.Hstack(BFB.Engine.UI.Components.UIComponent, Action(Of BFB.Engine.UI.Components.UIComponent))
+  name.vb: Hstack(UIComponent, Action(Of UIComponent))
+  spec.csharp:
+  - uid: BFB.Engine.UI.Components.UIComponentExtensions.Hstack(BFB.Engine.UI.Components.UIComponent,Action{BFB.Engine.UI.Components.UIComponent})
+    name: Hstack
+    nameWithType: UIComponentExtensions.Hstack
+    fullName: BFB.Engine.UI.Components.UIComponentExtensions.Hstack
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: BFB.Engine.UI.Components.UIComponent
+    name: UIComponent
+    nameWithType: UIComponent
+    fullName: BFB.Engine.UI.Components.UIComponent
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Action`1
+    name: Action
+    nameWithType: Action
+    fullName: Action
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: BFB.Engine.UI.Components.UIComponent
+    name: UIComponent
+    nameWithType: UIComponent
+    fullName: BFB.Engine.UI.Components.UIComponent
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Components.UIComponentExtensions.Hstack(BFB.Engine.UI.Components.UIComponent,Action{BFB.Engine.UI.Components.UIComponent})
+    name: Hstack
+    nameWithType: UIComponentExtensions.Hstack
+    fullName: BFB.Engine.UI.Components.UIComponentExtensions.Hstack
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: BFB.Engine.UI.Components.UIComponent
+    name: UIComponent
+    nameWithType: UIComponent
+    fullName: BFB.Engine.UI.Components.UIComponent
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Action`1
+    name: Action
+    nameWithType: Action
+    fullName: Action
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: BFB.Engine.UI.Components.UIComponent
+    name: UIComponent
+    nameWithType: UIComponent
+    fullName: BFB.Engine.UI.Components.UIComponent
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Components.UIComponentExtensions.Zstack(BFB.Engine.UI.Components.UIComponent,Action{BFB.Engine.UI.Components.UIComponent})
+  commentId: M:BFB.Engine.UI.Components.UIComponentExtensions.Zstack(BFB.Engine.UI.Components.UIComponent,Action{BFB.Engine.UI.Components.UIComponent})
+  isExternal: true
+  name: Zstack(UIComponent, Action<UIComponent>)
+  nameWithType: UIComponentExtensions.Zstack(UIComponent, Action<UIComponent>)
+  fullName: BFB.Engine.UI.Components.UIComponentExtensions.Zstack(BFB.Engine.UI.Components.UIComponent, Action<BFB.Engine.UI.Components.UIComponent>)
+  nameWithType.vb: UIComponentExtensions.Zstack(UIComponent, Action(Of UIComponent))
+  fullName.vb: BFB.Engine.UI.Components.UIComponentExtensions.Zstack(BFB.Engine.UI.Components.UIComponent, Action(Of BFB.Engine.UI.Components.UIComponent))
+  name.vb: Zstack(UIComponent, Action(Of UIComponent))
+  spec.csharp:
+  - uid: BFB.Engine.UI.Components.UIComponentExtensions.Zstack(BFB.Engine.UI.Components.UIComponent,Action{BFB.Engine.UI.Components.UIComponent})
+    name: Zstack
+    nameWithType: UIComponentExtensions.Zstack
+    fullName: BFB.Engine.UI.Components.UIComponentExtensions.Zstack
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: BFB.Engine.UI.Components.UIComponent
+    name: UIComponent
+    nameWithType: UIComponent
+    fullName: BFB.Engine.UI.Components.UIComponent
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Action`1
+    name: Action
+    nameWithType: Action
+    fullName: Action
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: BFB.Engine.UI.Components.UIComponent
+    name: UIComponent
+    nameWithType: UIComponent
+    fullName: BFB.Engine.UI.Components.UIComponent
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Components.UIComponentExtensions.Zstack(BFB.Engine.UI.Components.UIComponent,Action{BFB.Engine.UI.Components.UIComponent})
+    name: Zstack
+    nameWithType: UIComponentExtensions.Zstack
+    fullName: BFB.Engine.UI.Components.UIComponentExtensions.Zstack
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: BFB.Engine.UI.Components.UIComponent
+    name: UIComponent
+    nameWithType: UIComponent
+    fullName: BFB.Engine.UI.Components.UIComponent
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Action`1
+    name: Action
+    nameWithType: Action
+    fullName: Action
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: BFB.Engine.UI.Components.UIComponent
+    name: UIComponent
+    nameWithType: UIComponent
+    fullName: BFB.Engine.UI.Components.UIComponent
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Components.UIComponentExtensions.Spacer(BFB.Engine.UI.Components.UIComponent,System.Nullable{System.Int32})
+  commentId: M:BFB.Engine.UI.Components.UIComponentExtensions.Spacer(BFB.Engine.UI.Components.UIComponent,System.Nullable{System.Int32})
+  isExternal: true
+  name: Spacer(UIComponent, Nullable<Int32>)
+  nameWithType: UIComponentExtensions.Spacer(UIComponent, Nullable<Int32>)
+  fullName: BFB.Engine.UI.Components.UIComponentExtensions.Spacer(BFB.Engine.UI.Components.UIComponent, System.Nullable<System.Int32>)
+  nameWithType.vb: UIComponentExtensions.Spacer(UIComponent, Nullable(Of Int32))
+  fullName.vb: BFB.Engine.UI.Components.UIComponentExtensions.Spacer(BFB.Engine.UI.Components.UIComponent, System.Nullable(Of System.Int32))
+  name.vb: Spacer(UIComponent, Nullable(Of Int32))
+  spec.csharp:
+  - uid: BFB.Engine.UI.Components.UIComponentExtensions.Spacer(BFB.Engine.UI.Components.UIComponent,System.Nullable{System.Int32})
+    name: Spacer
+    nameWithType: UIComponentExtensions.Spacer
+    fullName: BFB.Engine.UI.Components.UIComponentExtensions.Spacer
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: BFB.Engine.UI.Components.UIComponent
+    name: UIComponent
+    nameWithType: UIComponent
+    fullName: BFB.Engine.UI.Components.UIComponent
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Nullable`1
+    name: Nullable
+    nameWithType: Nullable
+    fullName: System.Nullable
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Components.UIComponentExtensions.Spacer(BFB.Engine.UI.Components.UIComponent,System.Nullable{System.Int32})
+    name: Spacer
+    nameWithType: UIComponentExtensions.Spacer
+    fullName: BFB.Engine.UI.Components.UIComponentExtensions.Spacer
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: BFB.Engine.UI.Components.UIComponent
+    name: UIComponent
+    nameWithType: UIComponent
+    fullName: BFB.Engine.UI.Components.UIComponent
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Nullable`1
+    name: Nullable
+    nameWithType: Nullable
+    fullName: System.Nullable
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Components.UIComponentExtensions.TextFor``1(BFB.Engine.UI.Components.UIComponent,``0,Func{``0,System.String})
+  commentId: M:BFB.Engine.UI.Components.UIComponentExtensions.TextFor``1(BFB.Engine.UI.Components.UIComponent,``0,Func{``0,System.String})
+  isExternal: true
+  name: TextFor<TModel>(UIComponent, TModel, Func<TModel, String>)
+  nameWithType: UIComponentExtensions.TextFor<TModel>(UIComponent, TModel, Func<TModel, String>)
+  fullName: BFB.Engine.UI.Components.UIComponentExtensions.TextFor<TModel>(BFB.Engine.UI.Components.UIComponent, TModel, Func<TModel, System.String>)
+  nameWithType.vb: UIComponentExtensions.TextFor(Of TModel)(UIComponent, TModel, Func(Of TModel, String))
+  fullName.vb: BFB.Engine.UI.Components.UIComponentExtensions.TextFor(Of TModel)(BFB.Engine.UI.Components.UIComponent, TModel, Func(Of TModel, System.String))
+  name.vb: TextFor(Of TModel)(UIComponent, TModel, Func(Of TModel, String))
+  spec.csharp:
+  - uid: BFB.Engine.UI.Components.UIComponentExtensions.TextFor``1(BFB.Engine.UI.Components.UIComponent,``0,Func{``0,System.String})
+    name: TextFor<TModel>
+    nameWithType: UIComponentExtensions.TextFor<TModel>
+    fullName: BFB.Engine.UI.Components.UIComponentExtensions.TextFor<TModel>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: BFB.Engine.UI.Components.UIComponent
+    name: UIComponent
+    nameWithType: UIComponent
+    fullName: BFB.Engine.UI.Components.UIComponent
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TModel
+    nameWithType: TModel
+    fullName: TModel
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: TModel
+    nameWithType: TModel
+    fullName: TModel
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Components.UIComponentExtensions.TextFor``1(BFB.Engine.UI.Components.UIComponent,``0,Func{``0,System.String})
+    name: TextFor(Of TModel)
+    nameWithType: UIComponentExtensions.TextFor(Of TModel)
+    fullName: BFB.Engine.UI.Components.UIComponentExtensions.TextFor(Of TModel)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: BFB.Engine.UI.Components.UIComponent
+    name: UIComponent
+    nameWithType: UIComponent
+    fullName: BFB.Engine.UI.Components.UIComponent
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TModel
+    nameWithType: TModel
+    fullName: TModel
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: TModel
+    nameWithType: TModel
+    fullName: TModel
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Components.UIComponentExtensions.Text(BFB.Engine.UI.Components.UIComponent,System.String)
+  commentId: M:BFB.Engine.UI.Components.UIComponentExtensions.Text(BFB.Engine.UI.Components.UIComponent,System.String)
+  isExternal: true
+  name: Text(UIComponent, String)
+  nameWithType: UIComponentExtensions.Text(UIComponent, String)
+  fullName: BFB.Engine.UI.Components.UIComponentExtensions.Text(BFB.Engine.UI.Components.UIComponent, System.String)
+  spec.csharp:
+  - uid: BFB.Engine.UI.Components.UIComponentExtensions.Text(BFB.Engine.UI.Components.UIComponent,System.String)
+    name: Text
+    nameWithType: UIComponentExtensions.Text
+    fullName: BFB.Engine.UI.Components.UIComponentExtensions.Text
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: BFB.Engine.UI.Components.UIComponent
+    name: UIComponent
+    nameWithType: UIComponent
+    fullName: BFB.Engine.UI.Components.UIComponent
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Components.UIComponentExtensions.Text(BFB.Engine.UI.Components.UIComponent,System.String)
+    name: Text
+    nameWithType: UIComponentExtensions.Text
+    fullName: BFB.Engine.UI.Components.UIComponentExtensions.Text
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: BFB.Engine.UI.Components.UIComponent
+    name: UIComponent
+    nameWithType: UIComponent
+    fullName: BFB.Engine.UI.Components.UIComponent
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Components.UIComponentExtensions.TextBoxFor``1(BFB.Engine.UI.Components.UIComponent,``0,Expression{Func{``0,System.String}},Action{BFB.Engine.Event.UIEvent,BFB.Engine.UI.Components.UIComponentAttributes},Action{BFB.Engine.Event.UIEvent,BFB.Engine.UI.Components.UIComponentAttributes},Action{BFB.Engine.Event.UIEvent,BFB.Engine.UI.Components.UIComponentAttributes})
+  commentId: M:BFB.Engine.UI.Components.UIComponentExtensions.TextBoxFor``1(BFB.Engine.UI.Components.UIComponent,``0,Expression{Func{``0,System.String}},Action{BFB.Engine.Event.UIEvent,BFB.Engine.UI.Components.UIComponentAttributes},Action{BFB.Engine.Event.UIEvent,BFB.Engine.UI.Components.UIComponentAttributes},Action{BFB.Engine.Event.UIEvent,BFB.Engine.UI.Components.UIComponentAttributes})
+  isExternal: true
+  name: TextBoxFor<TModel>(UIComponent, TModel, Expression<Func<TModel, String>>, Action<UIEvent, UIComponentAttributes>, Action<UIEvent, UIComponentAttributes>, Action<UIEvent, UIComponentAttributes>)
+  nameWithType: UIComponentExtensions.TextBoxFor<TModel>(UIComponent, TModel, Expression<Func<TModel, String>>, Action<UIEvent, UIComponentAttributes>, Action<UIEvent, UIComponentAttributes>, Action<UIEvent, UIComponentAttributes>)
+  fullName: BFB.Engine.UI.Components.UIComponentExtensions.TextBoxFor<TModel>(BFB.Engine.UI.Components.UIComponent, TModel, Expression<Func<TModel, System.String>>, Action<BFB.Engine.Event.UIEvent, BFB.Engine.UI.Components.UIComponentAttributes>, Action<BFB.Engine.Event.UIEvent, BFB.Engine.UI.Components.UIComponentAttributes>, Action<BFB.Engine.Event.UIEvent, BFB.Engine.UI.Components.UIComponentAttributes>)
+  nameWithType.vb: UIComponentExtensions.TextBoxFor(Of TModel)(UIComponent, TModel, Expression(Of Func(Of TModel, String)), Action(Of UIEvent, UIComponentAttributes), Action(Of UIEvent, UIComponentAttributes), Action(Of UIEvent, UIComponentAttributes))
+  fullName.vb: BFB.Engine.UI.Components.UIComponentExtensions.TextBoxFor(Of TModel)(BFB.Engine.UI.Components.UIComponent, TModel, Expression(Of Func(Of TModel, System.String)), Action(Of BFB.Engine.Event.UIEvent, BFB.Engine.UI.Components.UIComponentAttributes), Action(Of BFB.Engine.Event.UIEvent, BFB.Engine.UI.Components.UIComponentAttributes), Action(Of BFB.Engine.Event.UIEvent, BFB.Engine.UI.Components.UIComponentAttributes))
+  name.vb: TextBoxFor(Of TModel)(UIComponent, TModel, Expression(Of Func(Of TModel, String)), Action(Of UIEvent, UIComponentAttributes), Action(Of UIEvent, UIComponentAttributes), Action(Of UIEvent, UIComponentAttributes))
+  spec.csharp:
+  - uid: BFB.Engine.UI.Components.UIComponentExtensions.TextBoxFor``1(BFB.Engine.UI.Components.UIComponent,``0,Expression{Func{``0,System.String}},Action{BFB.Engine.Event.UIEvent,BFB.Engine.UI.Components.UIComponentAttributes},Action{BFB.Engine.Event.UIEvent,BFB.Engine.UI.Components.UIComponentAttributes},Action{BFB.Engine.Event.UIEvent,BFB.Engine.UI.Components.UIComponentAttributes})
+    name: TextBoxFor<TModel>
+    nameWithType: UIComponentExtensions.TextBoxFor<TModel>
+    fullName: BFB.Engine.UI.Components.UIComponentExtensions.TextBoxFor<TModel>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: BFB.Engine.UI.Components.UIComponent
+    name: UIComponent
+    nameWithType: UIComponent
+    fullName: BFB.Engine.UI.Components.UIComponent
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TModel
+    nameWithType: TModel
+    fullName: TModel
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: TModel
+    nameWithType: TModel
+    fullName: TModel
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Action`2
+    name: Action
+    nameWithType: Action
+    fullName: Action
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: BFB.Engine.Event.UIEvent
+    name: UIEvent
+    nameWithType: UIEvent
+    fullName: BFB.Engine.Event.UIEvent
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: BFB.Engine.UI.Components.UIComponentAttributes
+    name: UIComponentAttributes
+    nameWithType: UIComponentAttributes
+    fullName: BFB.Engine.UI.Components.UIComponentAttributes
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Action`2
+    name: Action
+    nameWithType: Action
+    fullName: Action
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: BFB.Engine.Event.UIEvent
+    name: UIEvent
+    nameWithType: UIEvent
+    fullName: BFB.Engine.Event.UIEvent
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: BFB.Engine.UI.Components.UIComponentAttributes
+    name: UIComponentAttributes
+    nameWithType: UIComponentAttributes
+    fullName: BFB.Engine.UI.Components.UIComponentAttributes
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Action`2
+    name: Action
+    nameWithType: Action
+    fullName: Action
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: BFB.Engine.Event.UIEvent
+    name: UIEvent
+    nameWithType: UIEvent
+    fullName: BFB.Engine.Event.UIEvent
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: BFB.Engine.UI.Components.UIComponentAttributes
+    name: UIComponentAttributes
+    nameWithType: UIComponentAttributes
+    fullName: BFB.Engine.UI.Components.UIComponentAttributes
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Components.UIComponentExtensions.TextBoxFor``1(BFB.Engine.UI.Components.UIComponent,``0,Expression{Func{``0,System.String}},Action{BFB.Engine.Event.UIEvent,BFB.Engine.UI.Components.UIComponentAttributes},Action{BFB.Engine.Event.UIEvent,BFB.Engine.UI.Components.UIComponentAttributes},Action{BFB.Engine.Event.UIEvent,BFB.Engine.UI.Components.UIComponentAttributes})
+    name: TextBoxFor(Of TModel)
+    nameWithType: UIComponentExtensions.TextBoxFor(Of TModel)
+    fullName: BFB.Engine.UI.Components.UIComponentExtensions.TextBoxFor(Of TModel)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: BFB.Engine.UI.Components.UIComponent
+    name: UIComponent
+    nameWithType: UIComponent
+    fullName: BFB.Engine.UI.Components.UIComponent
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TModel
+    nameWithType: TModel
+    fullName: TModel
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: TModel
+    nameWithType: TModel
+    fullName: TModel
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Action`2
+    name: Action
+    nameWithType: Action
+    fullName: Action
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: BFB.Engine.Event.UIEvent
+    name: UIEvent
+    nameWithType: UIEvent
+    fullName: BFB.Engine.Event.UIEvent
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: BFB.Engine.UI.Components.UIComponentAttributes
+    name: UIComponentAttributes
+    nameWithType: UIComponentAttributes
+    fullName: BFB.Engine.UI.Components.UIComponentAttributes
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Action`2
+    name: Action
+    nameWithType: Action
+    fullName: Action
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: BFB.Engine.Event.UIEvent
+    name: UIEvent
+    nameWithType: UIEvent
+    fullName: BFB.Engine.Event.UIEvent
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: BFB.Engine.UI.Components.UIComponentAttributes
+    name: UIComponentAttributes
+    nameWithType: UIComponentAttributes
+    fullName: BFB.Engine.UI.Components.UIComponentAttributes
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Action`2
+    name: Action
+    nameWithType: Action
+    fullName: Action
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: BFB.Engine.Event.UIEvent
+    name: UIEvent
+    nameWithType: UIEvent
+    fullName: BFB.Engine.Event.UIEvent
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: BFB.Engine.UI.Components.UIComponentAttributes
+    name: UIComponentAttributes
+    nameWithType: UIComponentAttributes
+    fullName: BFB.Engine.UI.Components.UIComponentAttributes
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Components.UIComponentExtensions.Button(BFB.Engine.UI.Components.UIComponent,System.String,Action{BFB.Engine.Event.UIEvent,BFB.Engine.UI.Components.UIComponentAttributes},Action{BFB.Engine.Event.UIEvent,BFB.Engine.UI.Components.UIComponentAttributes})
+  commentId: M:BFB.Engine.UI.Components.UIComponentExtensions.Button(BFB.Engine.UI.Components.UIComponent,System.String,Action{BFB.Engine.Event.UIEvent,BFB.Engine.UI.Components.UIComponentAttributes},Action{BFB.Engine.Event.UIEvent,BFB.Engine.UI.Components.UIComponentAttributes})
+  isExternal: true
+  name: Button(UIComponent, String, Action<UIEvent, UIComponentAttributes>, Action<UIEvent, UIComponentAttributes>)
+  nameWithType: UIComponentExtensions.Button(UIComponent, String, Action<UIEvent, UIComponentAttributes>, Action<UIEvent, UIComponentAttributes>)
+  fullName: BFB.Engine.UI.Components.UIComponentExtensions.Button(BFB.Engine.UI.Components.UIComponent, System.String, Action<BFB.Engine.Event.UIEvent, BFB.Engine.UI.Components.UIComponentAttributes>, Action<BFB.Engine.Event.UIEvent, BFB.Engine.UI.Components.UIComponentAttributes>)
+  nameWithType.vb: UIComponentExtensions.Button(UIComponent, String, Action(Of UIEvent, UIComponentAttributes), Action(Of UIEvent, UIComponentAttributes))
+  fullName.vb: BFB.Engine.UI.Components.UIComponentExtensions.Button(BFB.Engine.UI.Components.UIComponent, System.String, Action(Of BFB.Engine.Event.UIEvent, BFB.Engine.UI.Components.UIComponentAttributes), Action(Of BFB.Engine.Event.UIEvent, BFB.Engine.UI.Components.UIComponentAttributes))
+  name.vb: Button(UIComponent, String, Action(Of UIEvent, UIComponentAttributes), Action(Of UIEvent, UIComponentAttributes))
+  spec.csharp:
+  - uid: BFB.Engine.UI.Components.UIComponentExtensions.Button(BFB.Engine.UI.Components.UIComponent,System.String,Action{BFB.Engine.Event.UIEvent,BFB.Engine.UI.Components.UIComponentAttributes},Action{BFB.Engine.Event.UIEvent,BFB.Engine.UI.Components.UIComponentAttributes})
+    name: Button
+    nameWithType: UIComponentExtensions.Button
+    fullName: BFB.Engine.UI.Components.UIComponentExtensions.Button
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: BFB.Engine.UI.Components.UIComponent
+    name: UIComponent
+    nameWithType: UIComponent
+    fullName: BFB.Engine.UI.Components.UIComponent
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Action`2
+    name: Action
+    nameWithType: Action
+    fullName: Action
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: BFB.Engine.Event.UIEvent
+    name: UIEvent
+    nameWithType: UIEvent
+    fullName: BFB.Engine.Event.UIEvent
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: BFB.Engine.UI.Components.UIComponentAttributes
+    name: UIComponentAttributes
+    nameWithType: UIComponentAttributes
+    fullName: BFB.Engine.UI.Components.UIComponentAttributes
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Action`2
+    name: Action
+    nameWithType: Action
+    fullName: Action
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: BFB.Engine.Event.UIEvent
+    name: UIEvent
+    nameWithType: UIEvent
+    fullName: BFB.Engine.Event.UIEvent
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: BFB.Engine.UI.Components.UIComponentAttributes
+    name: UIComponentAttributes
+    nameWithType: UIComponentAttributes
+    fullName: BFB.Engine.UI.Components.UIComponentAttributes
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Components.UIComponentExtensions.Button(BFB.Engine.UI.Components.UIComponent,System.String,Action{BFB.Engine.Event.UIEvent,BFB.Engine.UI.Components.UIComponentAttributes},Action{BFB.Engine.Event.UIEvent,BFB.Engine.UI.Components.UIComponentAttributes})
+    name: Button
+    nameWithType: UIComponentExtensions.Button
+    fullName: BFB.Engine.UI.Components.UIComponentExtensions.Button
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: BFB.Engine.UI.Components.UIComponent
+    name: UIComponent
+    nameWithType: UIComponent
+    fullName: BFB.Engine.UI.Components.UIComponent
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Action`2
+    name: Action
+    nameWithType: Action
+    fullName: Action
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: BFB.Engine.Event.UIEvent
+    name: UIEvent
+    nameWithType: UIEvent
+    fullName: BFB.Engine.Event.UIEvent
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: BFB.Engine.UI.Components.UIComponentAttributes
+    name: UIComponentAttributes
+    nameWithType: UIComponentAttributes
+    fullName: BFB.Engine.UI.Components.UIComponentAttributes
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Action`2
+    name: Action
+    nameWithType: Action
+    fullName: Action
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: BFB.Engine.Event.UIEvent
+    name: UIEvent
+    nameWithType: UIEvent
+    fullName: BFB.Engine.Event.UIEvent
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: BFB.Engine.UI.Components.UIComponentAttributes
+    name: UIComponentAttributes
+    nameWithType: UIComponentAttributes
+    fullName: BFB.Engine.UI.Components.UIComponentAttributes
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  commentId: M:BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  isExternal: true
+  name: SetPropertyValue<T, TValue>(T, Expression<Func<T, TValue>>, TValue)
+  nameWithType: LambdaExtensions.SetPropertyValue<T, TValue>(T, Expression<Func<T, TValue>>, TValue)
+  fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<T, TValue>(T, Expression<Func<T, TValue>>, TValue)
+  nameWithType.vb: LambdaExtensions.SetPropertyValue(Of T, TValue)(T, Expression(Of Func(Of T, TValue)), TValue)
+  fullName.vb: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of T, TValue)(T, Expression(Of Func(Of T, TValue)), TValue)
+  name.vb: SetPropertyValue(Of T, TValue)(T, Expression(Of Func(Of T, TValue)), TValue)
+  spec.csharp:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue<T, TValue>
+    nameWithType: LambdaExtensions.SetPropertyValue<T, TValue>
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<T, TValue>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue(Of T, TValue)
+    nameWithType: LambdaExtensions.SetPropertyValue(Of T, TValue)
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of T, TValue)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Components.LambdaExtensions
+  commentId: T:BFB.Engine.UI.Components.LambdaExtensions
+  parent: BFB.Engine.UI.Components
+  name: LambdaExtensions
+  nameWithType: LambdaExtensions
+  fullName: BFB.Engine.UI.Components.LambdaExtensions
+- uid: BFB.Engine.UI.Constraints.UIConstraintExtensions.Width(BFB.Engine.UI.Components.UIComponent,System.Int32)
+  commentId: M:BFB.Engine.UI.Constraints.UIConstraintExtensions.Width(BFB.Engine.UI.Components.UIComponent,System.Int32)
+  isExternal: true
+  name: Width(UIComponent, Int32)
+  nameWithType: UIConstraintExtensions.Width(UIComponent, Int32)
+  fullName: BFB.Engine.UI.Constraints.UIConstraintExtensions.Width(BFB.Engine.UI.Components.UIComponent, System.Int32)
+  spec.csharp:
+  - uid: BFB.Engine.UI.Constraints.UIConstraintExtensions.Width(BFB.Engine.UI.Components.UIComponent,System.Int32)
+    name: Width
+    nameWithType: UIConstraintExtensions.Width
+    fullName: BFB.Engine.UI.Constraints.UIConstraintExtensions.Width
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: BFB.Engine.UI.Components.UIComponent
+    name: UIComponent
+    nameWithType: UIComponent
+    fullName: BFB.Engine.UI.Components.UIComponent
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Constraints.UIConstraintExtensions.Width(BFB.Engine.UI.Components.UIComponent,System.Int32)
+    name: Width
+    nameWithType: UIConstraintExtensions.Width
+    fullName: BFB.Engine.UI.Constraints.UIConstraintExtensions.Width
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: BFB.Engine.UI.Components.UIComponent
+    name: UIComponent
+    nameWithType: UIComponent
+    fullName: BFB.Engine.UI.Components.UIComponent
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Constraints.UIConstraintExtensions
+  commentId: T:BFB.Engine.UI.Constraints.UIConstraintExtensions
+  parent: BFB.Engine.UI.Constraints
+  name: UIConstraintExtensions
+  nameWithType: UIConstraintExtensions
+  fullName: BFB.Engine.UI.Constraints.UIConstraintExtensions
+- uid: BFB.Engine.UI.Constraints.UIConstraintExtensions.Width(BFB.Engine.UI.Components.UIComponent,System.Single)
+  commentId: M:BFB.Engine.UI.Constraints.UIConstraintExtensions.Width(BFB.Engine.UI.Components.UIComponent,System.Single)
+  isExternal: true
+  name: Width(UIComponent, Single)
+  nameWithType: UIConstraintExtensions.Width(UIComponent, Single)
+  fullName: BFB.Engine.UI.Constraints.UIConstraintExtensions.Width(BFB.Engine.UI.Components.UIComponent, System.Single)
+  spec.csharp:
+  - uid: BFB.Engine.UI.Constraints.UIConstraintExtensions.Width(BFB.Engine.UI.Components.UIComponent,System.Single)
+    name: Width
+    nameWithType: UIConstraintExtensions.Width
+    fullName: BFB.Engine.UI.Constraints.UIConstraintExtensions.Width
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: BFB.Engine.UI.Components.UIComponent
+    name: UIComponent
+    nameWithType: UIComponent
+    fullName: BFB.Engine.UI.Components.UIComponent
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Single
+    name: Single
+    nameWithType: Single
+    fullName: System.Single
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Constraints.UIConstraintExtensions.Width(BFB.Engine.UI.Components.UIComponent,System.Single)
+    name: Width
+    nameWithType: UIConstraintExtensions.Width
+    fullName: BFB.Engine.UI.Constraints.UIConstraintExtensions.Width
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: BFB.Engine.UI.Components.UIComponent
+    name: UIComponent
+    nameWithType: UIComponent
+    fullName: BFB.Engine.UI.Components.UIComponent
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Single
+    name: Single
+    nameWithType: Single
+    fullName: System.Single
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Constraints.UIConstraintExtensions.Height(BFB.Engine.UI.Components.UIComponent,System.Int32)
+  commentId: M:BFB.Engine.UI.Constraints.UIConstraintExtensions.Height(BFB.Engine.UI.Components.UIComponent,System.Int32)
+  isExternal: true
+  name: Height(UIComponent, Int32)
+  nameWithType: UIConstraintExtensions.Height(UIComponent, Int32)
+  fullName: BFB.Engine.UI.Constraints.UIConstraintExtensions.Height(BFB.Engine.UI.Components.UIComponent, System.Int32)
+  spec.csharp:
+  - uid: BFB.Engine.UI.Constraints.UIConstraintExtensions.Height(BFB.Engine.UI.Components.UIComponent,System.Int32)
+    name: Height
+    nameWithType: UIConstraintExtensions.Height
+    fullName: BFB.Engine.UI.Constraints.UIConstraintExtensions.Height
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: BFB.Engine.UI.Components.UIComponent
+    name: UIComponent
+    nameWithType: UIComponent
+    fullName: BFB.Engine.UI.Components.UIComponent
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Constraints.UIConstraintExtensions.Height(BFB.Engine.UI.Components.UIComponent,System.Int32)
+    name: Height
+    nameWithType: UIConstraintExtensions.Height
+    fullName: BFB.Engine.UI.Constraints.UIConstraintExtensions.Height
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: BFB.Engine.UI.Components.UIComponent
+    name: UIComponent
+    nameWithType: UIComponent
+    fullName: BFB.Engine.UI.Components.UIComponent
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Constraints.UIConstraintExtensions.Height(BFB.Engine.UI.Components.UIComponent,System.Single)
+  commentId: M:BFB.Engine.UI.Constraints.UIConstraintExtensions.Height(BFB.Engine.UI.Components.UIComponent,System.Single)
+  isExternal: true
+  name: Height(UIComponent, Single)
+  nameWithType: UIConstraintExtensions.Height(UIComponent, Single)
+  fullName: BFB.Engine.UI.Constraints.UIConstraintExtensions.Height(BFB.Engine.UI.Components.UIComponent, System.Single)
+  spec.csharp:
+  - uid: BFB.Engine.UI.Constraints.UIConstraintExtensions.Height(BFB.Engine.UI.Components.UIComponent,System.Single)
+    name: Height
+    nameWithType: UIConstraintExtensions.Height
+    fullName: BFB.Engine.UI.Constraints.UIConstraintExtensions.Height
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: BFB.Engine.UI.Components.UIComponent
+    name: UIComponent
+    nameWithType: UIComponent
+    fullName: BFB.Engine.UI.Components.UIComponent
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Single
+    name: Single
+    nameWithType: Single
+    fullName: System.Single
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Constraints.UIConstraintExtensions.Height(BFB.Engine.UI.Components.UIComponent,System.Single)
+    name: Height
+    nameWithType: UIConstraintExtensions.Height
+    fullName: BFB.Engine.UI.Constraints.UIConstraintExtensions.Height
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: BFB.Engine.UI.Components.UIComponent
+    name: UIComponent
+    nameWithType: UIComponent
+    fullName: BFB.Engine.UI.Components.UIComponent
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Single
+    name: Single
+    nameWithType: Single
+    fullName: System.Single
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Constraints.UIConstraintExtensions.Top(BFB.Engine.UI.Components.UIComponent,System.Int32)
+  commentId: M:BFB.Engine.UI.Constraints.UIConstraintExtensions.Top(BFB.Engine.UI.Components.UIComponent,System.Int32)
+  isExternal: true
+  name: Top(UIComponent, Int32)
+  nameWithType: UIConstraintExtensions.Top(UIComponent, Int32)
+  fullName: BFB.Engine.UI.Constraints.UIConstraintExtensions.Top(BFB.Engine.UI.Components.UIComponent, System.Int32)
+  spec.csharp:
+  - uid: BFB.Engine.UI.Constraints.UIConstraintExtensions.Top(BFB.Engine.UI.Components.UIComponent,System.Int32)
+    name: Top
+    nameWithType: UIConstraintExtensions.Top
+    fullName: BFB.Engine.UI.Constraints.UIConstraintExtensions.Top
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: BFB.Engine.UI.Components.UIComponent
+    name: UIComponent
+    nameWithType: UIComponent
+    fullName: BFB.Engine.UI.Components.UIComponent
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Constraints.UIConstraintExtensions.Top(BFB.Engine.UI.Components.UIComponent,System.Int32)
+    name: Top
+    nameWithType: UIConstraintExtensions.Top
+    fullName: BFB.Engine.UI.Constraints.UIConstraintExtensions.Top
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: BFB.Engine.UI.Components.UIComponent
+    name: UIComponent
+    nameWithType: UIComponent
+    fullName: BFB.Engine.UI.Components.UIComponent
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Constraints.UIConstraintExtensions.Right(BFB.Engine.UI.Components.UIComponent,System.Int32)
+  commentId: M:BFB.Engine.UI.Constraints.UIConstraintExtensions.Right(BFB.Engine.UI.Components.UIComponent,System.Int32)
+  isExternal: true
+  name: Right(UIComponent, Int32)
+  nameWithType: UIConstraintExtensions.Right(UIComponent, Int32)
+  fullName: BFB.Engine.UI.Constraints.UIConstraintExtensions.Right(BFB.Engine.UI.Components.UIComponent, System.Int32)
+  spec.csharp:
+  - uid: BFB.Engine.UI.Constraints.UIConstraintExtensions.Right(BFB.Engine.UI.Components.UIComponent,System.Int32)
+    name: Right
+    nameWithType: UIConstraintExtensions.Right
+    fullName: BFB.Engine.UI.Constraints.UIConstraintExtensions.Right
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: BFB.Engine.UI.Components.UIComponent
+    name: UIComponent
+    nameWithType: UIComponent
+    fullName: BFB.Engine.UI.Components.UIComponent
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Constraints.UIConstraintExtensions.Right(BFB.Engine.UI.Components.UIComponent,System.Int32)
+    name: Right
+    nameWithType: UIConstraintExtensions.Right
+    fullName: BFB.Engine.UI.Constraints.UIConstraintExtensions.Right
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: BFB.Engine.UI.Components.UIComponent
+    name: UIComponent
+    nameWithType: UIComponent
+    fullName: BFB.Engine.UI.Components.UIComponent
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Constraints.UIConstraintExtensions.Bottom(BFB.Engine.UI.Components.UIComponent,System.Int32)
+  commentId: M:BFB.Engine.UI.Constraints.UIConstraintExtensions.Bottom(BFB.Engine.UI.Components.UIComponent,System.Int32)
+  isExternal: true
+  name: Bottom(UIComponent, Int32)
+  nameWithType: UIConstraintExtensions.Bottom(UIComponent, Int32)
+  fullName: BFB.Engine.UI.Constraints.UIConstraintExtensions.Bottom(BFB.Engine.UI.Components.UIComponent, System.Int32)
+  spec.csharp:
+  - uid: BFB.Engine.UI.Constraints.UIConstraintExtensions.Bottom(BFB.Engine.UI.Components.UIComponent,System.Int32)
+    name: Bottom
+    nameWithType: UIConstraintExtensions.Bottom
+    fullName: BFB.Engine.UI.Constraints.UIConstraintExtensions.Bottom
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: BFB.Engine.UI.Components.UIComponent
+    name: UIComponent
+    nameWithType: UIComponent
+    fullName: BFB.Engine.UI.Components.UIComponent
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Constraints.UIConstraintExtensions.Bottom(BFB.Engine.UI.Components.UIComponent,System.Int32)
+    name: Bottom
+    nameWithType: UIConstraintExtensions.Bottom
+    fullName: BFB.Engine.UI.Constraints.UIConstraintExtensions.Bottom
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: BFB.Engine.UI.Components.UIComponent
+    name: UIComponent
+    nameWithType: UIComponent
+    fullName: BFB.Engine.UI.Components.UIComponent
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Constraints.UIConstraintExtensions.Left(BFB.Engine.UI.Components.UIComponent,System.Int32)
+  commentId: M:BFB.Engine.UI.Constraints.UIConstraintExtensions.Left(BFB.Engine.UI.Components.UIComponent,System.Int32)
+  isExternal: true
+  name: Left(UIComponent, Int32)
+  nameWithType: UIConstraintExtensions.Left(UIComponent, Int32)
+  fullName: BFB.Engine.UI.Constraints.UIConstraintExtensions.Left(BFB.Engine.UI.Components.UIComponent, System.Int32)
+  spec.csharp:
+  - uid: BFB.Engine.UI.Constraints.UIConstraintExtensions.Left(BFB.Engine.UI.Components.UIComponent,System.Int32)
+    name: Left
+    nameWithType: UIConstraintExtensions.Left
+    fullName: BFB.Engine.UI.Constraints.UIConstraintExtensions.Left
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: BFB.Engine.UI.Components.UIComponent
+    name: UIComponent
+    nameWithType: UIComponent
+    fullName: BFB.Engine.UI.Components.UIComponent
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Constraints.UIConstraintExtensions.Left(BFB.Engine.UI.Components.UIComponent,System.Int32)
+    name: Left
+    nameWithType: UIConstraintExtensions.Left
+    fullName: BFB.Engine.UI.Constraints.UIConstraintExtensions.Left
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: BFB.Engine.UI.Components.UIComponent
+    name: UIComponent
+    nameWithType: UIComponent
+    fullName: BFB.Engine.UI.Components.UIComponent
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Constraints.UIConstraintExtensions.Image(BFB.Engine.UI.Components.UIComponent,System.String)
+  commentId: M:BFB.Engine.UI.Constraints.UIConstraintExtensions.Image(BFB.Engine.UI.Components.UIComponent,System.String)
+  isExternal: true
+  name: Image(UIComponent, String)
+  nameWithType: UIConstraintExtensions.Image(UIComponent, String)
+  fullName: BFB.Engine.UI.Constraints.UIConstraintExtensions.Image(BFB.Engine.UI.Components.UIComponent, System.String)
+  spec.csharp:
+  - uid: BFB.Engine.UI.Constraints.UIConstraintExtensions.Image(BFB.Engine.UI.Components.UIComponent,System.String)
+    name: Image
+    nameWithType: UIConstraintExtensions.Image
+    fullName: BFB.Engine.UI.Constraints.UIConstraintExtensions.Image
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: BFB.Engine.UI.Components.UIComponent
+    name: UIComponent
+    nameWithType: UIComponent
+    fullName: BFB.Engine.UI.Components.UIComponent
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Constraints.UIConstraintExtensions.Image(BFB.Engine.UI.Components.UIComponent,System.String)
+    name: Image
+    nameWithType: UIConstraintExtensions.Image
+    fullName: BFB.Engine.UI.Constraints.UIConstraintExtensions.Image
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: BFB.Engine.UI.Components.UIComponent
+    name: UIComponent
+    nameWithType: UIComponent
+    fullName: BFB.Engine.UI.Components.UIComponent
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Constraints.UIConstraintExtensions.Center(BFB.Engine.UI.Components.UIComponent)
+  commentId: M:BFB.Engine.UI.Constraints.UIConstraintExtensions.Center(BFB.Engine.UI.Components.UIComponent)
+  name: Center(UIComponent)
+  nameWithType: UIConstraintExtensions.Center(UIComponent)
+  fullName: BFB.Engine.UI.Constraints.UIConstraintExtensions.Center(BFB.Engine.UI.Components.UIComponent)
+  spec.csharp:
+  - uid: BFB.Engine.UI.Constraints.UIConstraintExtensions.Center(BFB.Engine.UI.Components.UIComponent)
+    name: Center
+    nameWithType: UIConstraintExtensions.Center
+    fullName: BFB.Engine.UI.Constraints.UIConstraintExtensions.Center
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: BFB.Engine.UI.Components.UIComponent
+    name: UIComponent
+    nameWithType: UIComponent
+    fullName: BFB.Engine.UI.Components.UIComponent
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Constraints.UIConstraintExtensions.Center(BFB.Engine.UI.Components.UIComponent)
+    name: Center
+    nameWithType: UIConstraintExtensions.Center
+    fullName: BFB.Engine.UI.Constraints.UIConstraintExtensions.Center
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: BFB.Engine.UI.Components.UIComponent
+    name: UIComponent
+    nameWithType: UIComponent
+    fullName: BFB.Engine.UI.Components.UIComponent
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Constraints.UIConstraintExtensions.Grow(BFB.Engine.UI.Components.UIComponent,System.Int32)
+  commentId: M:BFB.Engine.UI.Constraints.UIConstraintExtensions.Grow(BFB.Engine.UI.Components.UIComponent,System.Int32)
+  isExternal: true
+  name: Grow(UIComponent, Int32)
+  nameWithType: UIConstraintExtensions.Grow(UIComponent, Int32)
+  fullName: BFB.Engine.UI.Constraints.UIConstraintExtensions.Grow(BFB.Engine.UI.Components.UIComponent, System.Int32)
+  spec.csharp:
+  - uid: BFB.Engine.UI.Constraints.UIConstraintExtensions.Grow(BFB.Engine.UI.Components.UIComponent,System.Int32)
+    name: Grow
+    nameWithType: UIConstraintExtensions.Grow
+    fullName: BFB.Engine.UI.Constraints.UIConstraintExtensions.Grow
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: BFB.Engine.UI.Components.UIComponent
+    name: UIComponent
+    nameWithType: UIComponent
+    fullName: BFB.Engine.UI.Components.UIComponent
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Constraints.UIConstraintExtensions.Grow(BFB.Engine.UI.Components.UIComponent,System.Int32)
+    name: Grow
+    nameWithType: UIConstraintExtensions.Grow
+    fullName: BFB.Engine.UI.Constraints.UIConstraintExtensions.Grow
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: BFB.Engine.UI.Components.UIComponent
+    name: UIComponent
+    nameWithType: UIComponent
+    fullName: BFB.Engine.UI.Components.UIComponent
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Constraints.UIConstraintExtensions.AspectRatio(BFB.Engine.UI.Components.UIComponent,System.Single)
+  commentId: M:BFB.Engine.UI.Constraints.UIConstraintExtensions.AspectRatio(BFB.Engine.UI.Components.UIComponent,System.Single)
+  isExternal: true
+  name: AspectRatio(UIComponent, Single)
+  nameWithType: UIConstraintExtensions.AspectRatio(UIComponent, Single)
+  fullName: BFB.Engine.UI.Constraints.UIConstraintExtensions.AspectRatio(BFB.Engine.UI.Components.UIComponent, System.Single)
+  spec.csharp:
+  - uid: BFB.Engine.UI.Constraints.UIConstraintExtensions.AspectRatio(BFB.Engine.UI.Components.UIComponent,System.Single)
+    name: AspectRatio
+    nameWithType: UIConstraintExtensions.AspectRatio
+    fullName: BFB.Engine.UI.Constraints.UIConstraintExtensions.AspectRatio
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: BFB.Engine.UI.Components.UIComponent
+    name: UIComponent
+    nameWithType: UIComponent
+    fullName: BFB.Engine.UI.Components.UIComponent
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Single
+    name: Single
+    nameWithType: Single
+    fullName: System.Single
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Constraints.UIConstraintExtensions.AspectRatio(BFB.Engine.UI.Components.UIComponent,System.Single)
+    name: AspectRatio
+    nameWithType: UIConstraintExtensions.AspectRatio
+    fullName: BFB.Engine.UI.Constraints.UIConstraintExtensions.AspectRatio
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: BFB.Engine.UI.Components.UIComponent
+    name: UIComponent
+    nameWithType: UIComponent
+    fullName: BFB.Engine.UI.Components.UIComponent
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Single
+    name: Single
+    nameWithType: Single
+    fullName: System.Single
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Constraints.UIConstraintExtensions.FontSize(BFB.Engine.UI.Components.UIComponent,System.Single)
+  commentId: M:BFB.Engine.UI.Constraints.UIConstraintExtensions.FontSize(BFB.Engine.UI.Components.UIComponent,System.Single)
+  isExternal: true
+  name: FontSize(UIComponent, Single)
+  nameWithType: UIConstraintExtensions.FontSize(UIComponent, Single)
+  fullName: BFB.Engine.UI.Constraints.UIConstraintExtensions.FontSize(BFB.Engine.UI.Components.UIComponent, System.Single)
+  spec.csharp:
+  - uid: BFB.Engine.UI.Constraints.UIConstraintExtensions.FontSize(BFB.Engine.UI.Components.UIComponent,System.Single)
+    name: FontSize
+    nameWithType: UIConstraintExtensions.FontSize
+    fullName: BFB.Engine.UI.Constraints.UIConstraintExtensions.FontSize
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: BFB.Engine.UI.Components.UIComponent
+    name: UIComponent
+    nameWithType: UIComponent
+    fullName: BFB.Engine.UI.Components.UIComponent
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Single
+    name: Single
+    nameWithType: Single
+    fullName: System.Single
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Constraints.UIConstraintExtensions.FontSize(BFB.Engine.UI.Components.UIComponent,System.Single)
+    name: FontSize
+    nameWithType: UIConstraintExtensions.FontSize
+    fullName: BFB.Engine.UI.Constraints.UIConstraintExtensions.FontSize
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: BFB.Engine.UI.Components.UIComponent
+    name: UIComponent
+    nameWithType: UIComponent
+    fullName: BFB.Engine.UI.Components.UIComponent
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Single
+    name: Single
+    nameWithType: Single
+    fullName: System.Single
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Constraints.UIConstraintExtensions.Background(BFB.Engine.UI.Components.UIComponent,System.Nullable{Color})
+  commentId: M:BFB.Engine.UI.Constraints.UIConstraintExtensions.Background(BFB.Engine.UI.Components.UIComponent,System.Nullable{Color})
+  isExternal: true
+  name: Background(UIComponent, Nullable<Color>)
+  nameWithType: UIConstraintExtensions.Background(UIComponent, Nullable<Color>)
+  fullName: BFB.Engine.UI.Constraints.UIConstraintExtensions.Background(BFB.Engine.UI.Components.UIComponent, System.Nullable<Color>)
+  nameWithType.vb: UIConstraintExtensions.Background(UIComponent, Nullable(Of Color))
+  fullName.vb: BFB.Engine.UI.Constraints.UIConstraintExtensions.Background(BFB.Engine.UI.Components.UIComponent, System.Nullable(Of Color))
+  name.vb: Background(UIComponent, Nullable(Of Color))
+  spec.csharp:
+  - uid: BFB.Engine.UI.Constraints.UIConstraintExtensions.Background(BFB.Engine.UI.Components.UIComponent,System.Nullable{Color})
+    name: Background
+    nameWithType: UIConstraintExtensions.Background
+    fullName: BFB.Engine.UI.Constraints.UIConstraintExtensions.Background
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: BFB.Engine.UI.Components.UIComponent
+    name: UIComponent
+    nameWithType: UIComponent
+    fullName: BFB.Engine.UI.Components.UIComponent
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Nullable`1
+    name: Nullable
+    nameWithType: Nullable
+    fullName: System.Nullable
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Color
+    name: Color
+    nameWithType: Color
+    fullName: Color
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Constraints.UIConstraintExtensions.Background(BFB.Engine.UI.Components.UIComponent,System.Nullable{Color})
+    name: Background
+    nameWithType: UIConstraintExtensions.Background
+    fullName: BFB.Engine.UI.Constraints.UIConstraintExtensions.Background
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: BFB.Engine.UI.Components.UIComponent
+    name: UIComponent
+    nameWithType: UIComponent
+    fullName: BFB.Engine.UI.Components.UIComponent
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Nullable`1
+    name: Nullable
+    nameWithType: Nullable
+    fullName: System.Nullable
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Color
+    name: Color
+    nameWithType: Color
+    fullName: Color
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Constraints.UIConstraintExtensions.Color(BFB.Engine.UI.Components.UIComponent,System.Nullable{Color})
+  commentId: M:BFB.Engine.UI.Constraints.UIConstraintExtensions.Color(BFB.Engine.UI.Components.UIComponent,System.Nullable{Color})
+  isExternal: true
+  name: Color(UIComponent, Nullable<Color>)
+  nameWithType: UIConstraintExtensions.Color(UIComponent, Nullable<Color>)
+  fullName: BFB.Engine.UI.Constraints.UIConstraintExtensions.Color(BFB.Engine.UI.Components.UIComponent, System.Nullable<Color>)
+  nameWithType.vb: UIConstraintExtensions.Color(UIComponent, Nullable(Of Color))
+  fullName.vb: BFB.Engine.UI.Constraints.UIConstraintExtensions.Color(BFB.Engine.UI.Components.UIComponent, System.Nullable(Of Color))
+  name.vb: Color(UIComponent, Nullable(Of Color))
+  spec.csharp:
+  - uid: BFB.Engine.UI.Constraints.UIConstraintExtensions.Color(BFB.Engine.UI.Components.UIComponent,System.Nullable{Color})
+    name: Color
+    nameWithType: UIConstraintExtensions.Color
+    fullName: BFB.Engine.UI.Constraints.UIConstraintExtensions.Color
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: BFB.Engine.UI.Components.UIComponent
+    name: UIComponent
+    nameWithType: UIComponent
+    fullName: BFB.Engine.UI.Components.UIComponent
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Nullable`1
+    name: Nullable
+    nameWithType: Nullable
+    fullName: System.Nullable
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Color
+    name: Color
+    nameWithType: Color
+    fullName: Color
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Constraints.UIConstraintExtensions.Color(BFB.Engine.UI.Components.UIComponent,System.Nullable{Color})
+    name: Color
+    nameWithType: UIConstraintExtensions.Color
+    fullName: BFB.Engine.UI.Constraints.UIConstraintExtensions.Color
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: BFB.Engine.UI.Components.UIComponent
+    name: UIComponent
+    nameWithType: UIComponent
+    fullName: BFB.Engine.UI.Components.UIComponent
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Nullable`1
+    name: Nullable
+    nameWithType: Nullable
+    fullName: System.Nullable
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Color
+    name: Color
+    nameWithType: Color
+    fullName: Color
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Constraints
+  commentId: N:BFB.Engine.UI.Constraints
+  name: BFB.Engine.UI.Constraints
+  nameWithType: BFB.Engine.UI.Constraints
+  fullName: BFB.Engine.UI.Constraints
+- uid: BFB.Engine.UI.Components.UITextComponent`1.#ctor*
+  commentId: Overload:BFB.Engine.UI.Components.UITextComponent`1.#ctor
+  name: UITextComponent
+  nameWithType: UITextComponent<TModel>.UITextComponent
+  fullName: BFB.Engine.UI.Components.UITextComponent<TModel>.UITextComponent
+  nameWithType.vb: UITextComponent(Of TModel).UITextComponent
+  fullName.vb: BFB.Engine.UI.Components.UITextComponent(Of TModel).UITextComponent
+- uid: '{TModel}'
+  commentId: '!:TModel'
+  definition: TModel
+  name: TModel
+  nameWithType: TModel
+  fullName: TModel
+- uid: Func{{TModel},System.String}
+  commentId: '!:Func{``0,System.String}'
+  definition: Func`2
+  name: Func<TModel, String>
+  nameWithType: Func<TModel, String>
+  fullName: Func<TModel, System.String>
+  nameWithType.vb: Func(Of TModel, String)
+  fullName.vb: Func(Of TModel, System.String)
+  name.vb: Func(Of TModel, String)
+  spec.csharp:
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: TModel
+    nameWithType: TModel
+    fullName: TModel
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: TModel
+    nameWithType: TModel
+    fullName: TModel
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: TModel
+  name: TModel
+  nameWithType: TModel
+  fullName: TModel
+- uid: Func`2
+  isExternal: true
+  name: Func<, >
+  nameWithType: Func<, >
+  fullName: Func<, >
+  nameWithType.vb: Func(Of , )
+  fullName.vb: Func(Of , )
+  name.vb: Func(Of , )
+  spec.csharp:
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.String
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: BFB.Engine.UI.Components.UIComponent.Render(SpriteBatch,Texture2D,SpriteFont)
+  commentId: M:BFB.Engine.UI.Components.UIComponent.Render(SpriteBatch,Texture2D,SpriteFont)
+  parent: BFB.Engine.UI.Components.UIComponent
+  isExternal: true
+  name: Render(SpriteBatch, Texture2D, SpriteFont)
+  nameWithType: UIComponent.Render(SpriteBatch, Texture2D, SpriteFont)
+  fullName: BFB.Engine.UI.Components.UIComponent.Render(SpriteBatch, Texture2D, SpriteFont)
+  spec.csharp:
+  - uid: BFB.Engine.UI.Components.UIComponent.Render(SpriteBatch,Texture2D,SpriteFont)
+    name: Render
+    nameWithType: UIComponent.Render
+    fullName: BFB.Engine.UI.Components.UIComponent.Render
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: SpriteBatch
+    name: SpriteBatch
+    nameWithType: SpriteBatch
+    fullName: SpriteBatch
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Texture2D
+    name: Texture2D
+    nameWithType: Texture2D
+    fullName: Texture2D
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: SpriteFont
+    name: SpriteFont
+    nameWithType: SpriteFont
+    fullName: SpriteFont
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Components.UIComponent.Render(SpriteBatch,Texture2D,SpriteFont)
+    name: Render
+    nameWithType: UIComponent.Render
+    fullName: BFB.Engine.UI.Components.UIComponent.Render
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: SpriteBatch
+    name: SpriteBatch
+    nameWithType: SpriteBatch
+    fullName: SpriteBatch
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Texture2D
+    name: Texture2D
+    nameWithType: Texture2D
+    fullName: Texture2D
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: SpriteFont
+    name: SpriteFont
+    nameWithType: SpriteFont
+    fullName: SpriteFont
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Components.UITextComponent`1.Render*
+  commentId: Overload:BFB.Engine.UI.Components.UITextComponent`1.Render
+  name: Render
+  nameWithType: UITextComponent<TModel>.Render
+  fullName: BFB.Engine.UI.Components.UITextComponent<TModel>.Render
+  nameWithType.vb: UITextComponent(Of TModel).Render
+  fullName.vb: BFB.Engine.UI.Components.UITextComponent(Of TModel).Render
+- uid: SpriteBatch
+  isExternal: true
+  name: SpriteBatch
+  nameWithType: SpriteBatch
+  fullName: SpriteBatch
+- uid: Texture2D
+  isExternal: true
+  name: Texture2D
+  nameWithType: Texture2D
+  fullName: Texture2D
+- uid: SpriteFont
+  isExternal: true
+  name: SpriteFont
+  nameWithType: SpriteFont
+  fullName: SpriteFont
+- uid: BFB.Engine.UI.Components.UITextComponent`1.WrapText*
+  commentId: Overload:BFB.Engine.UI.Components.UITextComponent`1.WrapText
+  name: WrapText
+  nameWithType: UITextComponent<TModel>.WrapText
+  fullName: BFB.Engine.UI.Components.UITextComponent<TModel>.WrapText
+  nameWithType.vb: UITextComponent(Of TModel).WrapText
+  fullName.vb: BFB.Engine.UI.Components.UITextComponent(Of TModel).WrapText
+- uid: System.Int32
+  isExternal: true
+  name: Int32
+  nameWithType: Int32
+  fullName: System.Int32

@@ -44,6 +44,11 @@ namespace BFB.Engine.Server
         public Action<ClientSocket> OnClientReady { get; set; }
         
         /// <summary>
+        /// Called before the OnClientReady callback. Use this to send any setup information to the client.
+        /// </summary>
+        public Action<ClientSocket> OnClientPrepare { get; set; }
+
+        /// <summary>
         /// Called when a client disconnects
         /// </summary>
         public Action<string> OnClientDisconnect { get; set; }
@@ -218,6 +223,7 @@ namespace BFB.Engine.Server
                                 }
                                 else
                                 {
+                                    OnClientPrepare?.Invoke(socket);
                                     OnClientReady?.Invoke(socket);
                                     socket.Emit("ready");
                                 }

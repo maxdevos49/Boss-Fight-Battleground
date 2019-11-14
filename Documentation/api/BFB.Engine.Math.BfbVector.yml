@@ -1,0 +1,1015 @@
+### YamlMime:ManagedReference
+items:
+- uid: BFB.Engine.Math.BfbVector
+  commentId: T:BFB.Engine.Math.BfbVector
+  id: BfbVector
+  parent: BFB.Engine.Math
+  children:
+  - BFB.Engine.Math.BfbVector.#ctor
+  - BFB.Engine.Math.BfbVector.#ctor(System.Single,System.Single)
+  - BFB.Engine.Math.BfbVector.#ctor(Vector2)
+  - BFB.Engine.Math.BfbVector.Add(BFB.Engine.Math.BfbVector)
+  - BFB.Engine.Math.BfbVector.Add(BFB.Engine.Math.BfbVector,BFB.Engine.Math.BfbVector)
+  - BFB.Engine.Math.BfbVector.GetDegrees
+  - BFB.Engine.Math.BfbVector.GetRadians
+  - BFB.Engine.Math.BfbVector.Limit(System.Single)
+  - BFB.Engine.Math.BfbVector.Magnitude
+  - BFB.Engine.Math.BfbVector.Mult(BFB.Engine.Math.BfbVector,System.Single)
+  - BFB.Engine.Math.BfbVector.Mult(System.Single)
+  - BFB.Engine.Math.BfbVector.Normalize
+  - BFB.Engine.Math.BfbVector.Sub(BFB.Engine.Math.BfbVector)
+  - BFB.Engine.Math.BfbVector.Sub(BFB.Engine.Math.BfbVector,BFB.Engine.Math.BfbVector)
+  - BFB.Engine.Math.BfbVector.ToVector2
+  - BFB.Engine.Math.BfbVector.X
+  - BFB.Engine.Math.BfbVector.Y
+  langs:
+  - csharp
+  - vb
+  name: BfbVector
+  nameWithType: BfbVector
+  fullName: BFB.Engine.Math.BfbVector
+  type: Class
+  source:
+    remote:
+      path: BFB/BFB.Engine/Math/BFBVector.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: BfbVector
+    path: ../BFB/BFB.Engine/Math/BFBVector.cs
+    startLine: 9
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Math
+  summary: "\nRepresents a serializable vector\n"
+  example: []
+  syntax:
+    content: 'public class BfbVector : object'
+    content.vb: >-
+      Public Class BfbVector
+
+          Inherits Object
+  inheritance:
+  - System.Object
+  extensionMethods:
+  - BFB.Engine.Math.BfbVector.BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{BFB.Engine.Math.BfbVector,{TValue}}},{TValue})
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: BFB.Engine.Math.BfbVector.X
+  commentId: P:BFB.Engine.Math.BfbVector.X
+  id: X
+  parent: BFB.Engine.Math.BfbVector
+  langs:
+  - csharp
+  - vb
+  name: X
+  nameWithType: BfbVector.X
+  fullName: BFB.Engine.Math.BfbVector.X
+  type: Property
+  source:
+    remote:
+      path: BFB/BFB.Engine/Math/BFBVector.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: X
+    path: ../BFB/BFB.Engine/Math/BFBVector.cs
+    startLine: 18
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Math
+  summary: "\nThe x component of the vector\n"
+  example: []
+  syntax:
+    content: public float X { get; set; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: Public Property X As Single
+  overload: BFB.Engine.Math.BfbVector.X*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.Math.BfbVector.Y
+  commentId: P:BFB.Engine.Math.BfbVector.Y
+  id: Y
+  parent: BFB.Engine.Math.BfbVector
+  langs:
+  - csharp
+  - vb
+  name: Y
+  nameWithType: BfbVector.Y
+  fullName: BFB.Engine.Math.BfbVector.Y
+  type: Property
+  source:
+    remote:
+      path: BFB/BFB.Engine/Math/BFBVector.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: Y
+    path: ../BFB/BFB.Engine/Math/BFBVector.cs
+    startLine: 23
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Math
+  summary: "\nTHe y component of the vector\n"
+  example: []
+  syntax:
+    content: public float Y { get; set; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: Public Property Y As Single
+  overload: BFB.Engine.Math.BfbVector.Y*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.Math.BfbVector.Magnitude
+  commentId: P:BFB.Engine.Math.BfbVector.Magnitude
+  id: Magnitude
+  parent: BFB.Engine.Math.BfbVector
+  langs:
+  - csharp
+  - vb
+  name: Magnitude
+  nameWithType: BfbVector.Magnitude
+  fullName: BFB.Engine.Math.BfbVector.Magnitude
+  type: Property
+  source:
+    remote:
+      path: BFB/BFB.Engine/Math/BFBVector.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: Magnitude
+    path: ../BFB/BFB.Engine/Math/BFBVector.cs
+    startLine: 28
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Math
+  summary: "\nThe magnitude of the vector\n"
+  example: []
+  syntax:
+    content: public float Magnitude { get; set; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: Public Property Magnitude As Single
+  overload: BFB.Engine.Math.BfbVector.Magnitude*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.Math.BfbVector.#ctor
+  commentId: M:BFB.Engine.Math.BfbVector.#ctor
+  id: '#ctor'
+  parent: BFB.Engine.Math.BfbVector
+  langs:
+  - csharp
+  - vb
+  name: BfbVector()
+  nameWithType: BfbVector.BfbVector()
+  fullName: BFB.Engine.Math.BfbVector.BfbVector()
+  type: Constructor
+  source:
+    remote:
+      path: BFB/BFB.Engine/Math/BFBVector.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: .ctor
+    path: ../BFB/BFB.Engine/Math/BFBVector.cs
+    startLine: 45
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Math
+  summary: "\nConstructs a vector with x and components both zero.\n"
+  example: []
+  syntax:
+    content: public BfbVector()
+    content.vb: Public Sub New
+  overload: BFB.Engine.Math.BfbVector.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.Math.BfbVector.#ctor(System.Single,System.Single)
+  commentId: M:BFB.Engine.Math.BfbVector.#ctor(System.Single,System.Single)
+  id: '#ctor(System.Single,System.Single)'
+  parent: BFB.Engine.Math.BfbVector
+  langs:
+  - csharp
+  - vb
+  name: BfbVector(Single, Single)
+  nameWithType: BfbVector.BfbVector(Single, Single)
+  fullName: BFB.Engine.Math.BfbVector.BfbVector(System.Single, System.Single)
+  type: Constructor
+  source:
+    remote:
+      path: BFB/BFB.Engine/Math/BFBVector.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: .ctor
+    path: ../BFB/BFB.Engine/Math/BFBVector.cs
+    startLine: 56
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Math
+  summary: "\nConstructs a vector with given x and y components\n"
+  example: []
+  syntax:
+    content: public BfbVector(float x, float y)
+    parameters:
+    - id: x
+      type: System.Single
+      description: x component
+    - id: y
+      type: System.Single
+      description: y comnponent
+    content.vb: Public Sub New(x As Single, y As Single)
+  overload: BFB.Engine.Math.BfbVector.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.Math.BfbVector.#ctor(Vector2)
+  commentId: M:BFB.Engine.Math.BfbVector.#ctor(Vector2)
+  id: '#ctor(Vector2)'
+  parent: BFB.Engine.Math.BfbVector
+  langs:
+  - csharp
+  - vb
+  name: BfbVector(Vector2)
+  nameWithType: BfbVector.BfbVector(Vector2)
+  fullName: BFB.Engine.Math.BfbVector.BfbVector(Vector2)
+  type: Constructor
+  source:
+    remote:
+      path: BFB/BFB.Engine/Math/BFBVector.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: .ctor
+    path: ../BFB/BFB.Engine/Math/BFBVector.cs
+    startLine: 66
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Math
+  summary: "\nConstructs a vector with a given vector2\n"
+  example: []
+  syntax:
+    content: public BfbVector(Vector2 v)
+    parameters:
+    - id: v
+      type: Vector2
+      description: The given vector2
+    content.vb: Public Sub New(v As Vector2)
+  overload: BFB.Engine.Math.BfbVector.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.Math.BfbVector.Add(BFB.Engine.Math.BfbVector)
+  commentId: M:BFB.Engine.Math.BfbVector.Add(BFB.Engine.Math.BfbVector)
+  id: Add(BFB.Engine.Math.BfbVector)
+  parent: BFB.Engine.Math.BfbVector
+  langs:
+  - csharp
+  - vb
+  name: Add(BfbVector)
+  nameWithType: BfbVector.Add(BfbVector)
+  fullName: BFB.Engine.Math.BfbVector.Add(BFB.Engine.Math.BfbVector)
+  type: Method
+  source:
+    remote:
+      path: BFB/BFB.Engine/Math/BFBVector.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: Add
+    path: ../BFB/BFB.Engine/Math/BFBVector.cs
+    startLine: 80
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Math
+  summary: "\nAdds two vector together and mutates the base vector\n"
+  example: []
+  syntax:
+    content: public void Add(BfbVector v)
+    parameters:
+    - id: v
+      type: BFB.Engine.Math.BfbVector
+      description: ''
+    content.vb: Public Sub Add(v As BfbVector)
+  overload: BFB.Engine.Math.BfbVector.Add*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.Math.BfbVector.Add(BFB.Engine.Math.BfbVector,BFB.Engine.Math.BfbVector)
+  commentId: M:BFB.Engine.Math.BfbVector.Add(BFB.Engine.Math.BfbVector,BFB.Engine.Math.BfbVector)
+  id: Add(BFB.Engine.Math.BfbVector,BFB.Engine.Math.BfbVector)
+  parent: BFB.Engine.Math.BfbVector
+  langs:
+  - csharp
+  - vb
+  name: Add(BfbVector, BfbVector)
+  nameWithType: BfbVector.Add(BfbVector, BfbVector)
+  fullName: BFB.Engine.Math.BfbVector.Add(BFB.Engine.Math.BfbVector, BFB.Engine.Math.BfbVector)
+  type: Method
+  source:
+    remote:
+      path: BFB/BFB.Engine/Math/BFBVector.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: Add
+    path: ../BFB/BFB.Engine/Math/BFBVector.cs
+    startLine: 92
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Math
+  summary: "\nAdds two vectors together and returns a new vector\n"
+  example: []
+  syntax:
+    content: public static BfbVector Add(BfbVector v1, BfbVector v2)
+    parameters:
+    - id: v1
+      type: BFB.Engine.Math.BfbVector
+      description: ''
+    - id: v2
+      type: BFB.Engine.Math.BfbVector
+      description: ''
+    return:
+      type: BFB.Engine.Math.BfbVector
+      description: ''
+    content.vb: Public Shared Function Add(v1 As BfbVector, v2 As BfbVector) As BfbVector
+  overload: BFB.Engine.Math.BfbVector.Add*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: BFB.Engine.Math.BfbVector.Sub(BFB.Engine.Math.BfbVector)
+  commentId: M:BFB.Engine.Math.BfbVector.Sub(BFB.Engine.Math.BfbVector)
+  id: Sub(BFB.Engine.Math.BfbVector)
+  parent: BFB.Engine.Math.BfbVector
+  langs:
+  - csharp
+  - vb
+  name: Sub(BfbVector)
+  nameWithType: BfbVector.Sub(BfbVector)
+  fullName: BFB.Engine.Math.BfbVector.Sub(BFB.Engine.Math.BfbVector)
+  type: Method
+  source:
+    remote:
+      path: BFB/BFB.Engine/Math/BFBVector.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: Sub
+    path: ../BFB/BFB.Engine/Math/BFBVector.cs
+    startLine: 105
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Math
+  summary: "\nSubtracts two vectors and assigns the result to the base vector\n"
+  example: []
+  syntax:
+    content: public void Sub(BfbVector v)
+    parameters:
+    - id: v
+      type: BFB.Engine.Math.BfbVector
+      description: ''
+    content.vb: Public Sub Sub(v As BfbVector)
+  overload: BFB.Engine.Math.BfbVector.Sub*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.Math.BfbVector.Sub(BFB.Engine.Math.BfbVector,BFB.Engine.Math.BfbVector)
+  commentId: M:BFB.Engine.Math.BfbVector.Sub(BFB.Engine.Math.BfbVector,BFB.Engine.Math.BfbVector)
+  id: Sub(BFB.Engine.Math.BfbVector,BFB.Engine.Math.BfbVector)
+  parent: BFB.Engine.Math.BfbVector
+  langs:
+  - csharp
+  - vb
+  name: Sub(BfbVector, BfbVector)
+  nameWithType: BfbVector.Sub(BfbVector, BfbVector)
+  fullName: BFB.Engine.Math.BfbVector.Sub(BFB.Engine.Math.BfbVector, BFB.Engine.Math.BfbVector)
+  type: Method
+  source:
+    remote:
+      path: BFB/BFB.Engine/Math/BFBVector.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: Sub
+    path: ../BFB/BFB.Engine/Math/BFBVector.cs
+    startLine: 117
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Math
+  summary: "\nSubtracts two vectors and assigns the result to a new vector\n"
+  example: []
+  syntax:
+    content: public static BfbVector Sub(BfbVector v1, BfbVector v2)
+    parameters:
+    - id: v1
+      type: BFB.Engine.Math.BfbVector
+      description: ''
+    - id: v2
+      type: BFB.Engine.Math.BfbVector
+      description: ''
+    return:
+      type: BFB.Engine.Math.BfbVector
+      description: ''
+    content.vb: Public Shared Function Sub(v1 As BfbVector, v2 As BfbVector) As BfbVector
+  overload: BFB.Engine.Math.BfbVector.Sub*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: BFB.Engine.Math.BfbVector.Mult(System.Single)
+  commentId: M:BFB.Engine.Math.BfbVector.Mult(System.Single)
+  id: Mult(System.Single)
+  parent: BFB.Engine.Math.BfbVector
+  langs:
+  - csharp
+  - vb
+  name: Mult(Single)
+  nameWithType: BfbVector.Mult(Single)
+  fullName: BFB.Engine.Math.BfbVector.Mult(System.Single)
+  type: Method
+  source:
+    remote:
+      path: BFB/BFB.Engine/Math/BFBVector.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: Mult
+    path: ../BFB/BFB.Engine/Math/BFBVector.cs
+    startLine: 130
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Math
+  summary: "\nMultiplies the vector with a scalar\n"
+  example: []
+  syntax:
+    content: public void Mult(float scalar)
+    parameters:
+    - id: scalar
+      type: System.Single
+      description: The scalar
+    content.vb: Public Sub Mult(scalar As Single)
+  overload: BFB.Engine.Math.BfbVector.Mult*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.Math.BfbVector.Mult(BFB.Engine.Math.BfbVector,System.Single)
+  commentId: M:BFB.Engine.Math.BfbVector.Mult(BFB.Engine.Math.BfbVector,System.Single)
+  id: Mult(BFB.Engine.Math.BfbVector,System.Single)
+  parent: BFB.Engine.Math.BfbVector
+  langs:
+  - csharp
+  - vb
+  name: Mult(BfbVector, Single)
+  nameWithType: BfbVector.Mult(BfbVector, Single)
+  fullName: BFB.Engine.Math.BfbVector.Mult(BFB.Engine.Math.BfbVector, System.Single)
+  type: Method
+  source:
+    remote:
+      path: BFB/BFB.Engine/Math/BFBVector.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: Mult
+    path: ../BFB/BFB.Engine/Math/BFBVector.cs
+    startLine: 143
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Math
+  summary: "\nMultiplies a vector with a scalar returning a new vector\n"
+  example: []
+  syntax:
+    content: public static BfbVector Mult(BfbVector v, float scalar)
+    parameters:
+    - id: v
+      type: BFB.Engine.Math.BfbVector
+      description: ''
+    - id: scalar
+      type: System.Single
+      description: ''
+    return:
+      type: BFB.Engine.Math.BfbVector
+      description: ''
+    content.vb: Public Shared Function Mult(v As BfbVector, scalar As Single) As BfbVector
+  overload: BFB.Engine.Math.BfbVector.Mult*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: BFB.Engine.Math.BfbVector.Normalize
+  commentId: M:BFB.Engine.Math.BfbVector.Normalize
+  id: Normalize
+  parent: BFB.Engine.Math.BfbVector
+  langs:
+  - csharp
+  - vb
+  name: Normalize()
+  nameWithType: BfbVector.Normalize()
+  fullName: BFB.Engine.Math.BfbVector.Normalize()
+  type: Method
+  source:
+    remote:
+      path: BFB/BFB.Engine/Math/BFBVector.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: Normalize
+    path: ../BFB/BFB.Engine/Math/BFBVector.cs
+    startLine: 155
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Math
+  summary: "\nMutates a vector to become a unit vector\n"
+  example: []
+  syntax:
+    content: public void Normalize()
+    content.vb: Public Sub Normalize
+  overload: BFB.Engine.Math.BfbVector.Normalize*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.Math.BfbVector.Limit(System.Single)
+  commentId: M:BFB.Engine.Math.BfbVector.Limit(System.Single)
+  id: Limit(System.Single)
+  parent: BFB.Engine.Math.BfbVector
+  langs:
+  - csharp
+  - vb
+  name: Limit(Single)
+  nameWithType: BfbVector.Limit(Single)
+  fullName: BFB.Engine.Math.BfbVector.Limit(System.Single)
+  type: Method
+  source:
+    remote:
+      path: BFB/BFB.Engine/Math/BFBVector.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: Limit
+    path: ../BFB/BFB.Engine/Math/BFBVector.cs
+    startLine: 178
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Math
+  summary: "\nNormalizes the vector to a specified magnitude only if the current magnitude is bigger the the specified magnitude\n"
+  example: []
+  syntax:
+    content: public void Limit(float magnitude)
+    parameters:
+    - id: magnitude
+      type: System.Single
+      description: ''
+    content.vb: Public Sub Limit(magnitude As Single)
+  overload: BFB.Engine.Math.BfbVector.Limit*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.Math.BfbVector.GetRadians
+  commentId: M:BFB.Engine.Math.BfbVector.GetRadians
+  id: GetRadians
+  parent: BFB.Engine.Math.BfbVector
+  langs:
+  - csharp
+  - vb
+  name: GetRadians()
+  nameWithType: BfbVector.GetRadians()
+  fullName: BFB.Engine.Math.BfbVector.GetRadians()
+  type: Method
+  source:
+    remote:
+      path: BFB/BFB.Engine/Math/BFBVector.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: GetRadians
+    path: ../BFB/BFB.Engine/Math/BFBVector.cs
+    startLine: 192
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Math
+  summary: "\nReturns the angle in radians of the vector\n"
+  example: []
+  syntax:
+    content: public float GetRadians()
+    return:
+      type: System.Single
+      description: ''
+    content.vb: Public Function GetRadians As Single
+  overload: BFB.Engine.Math.BfbVector.GetRadians*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.Math.BfbVector.GetDegrees
+  commentId: M:BFB.Engine.Math.BfbVector.GetDegrees
+  id: GetDegrees
+  parent: BFB.Engine.Math.BfbVector
+  langs:
+  - csharp
+  - vb
+  name: GetDegrees()
+  nameWithType: BfbVector.GetDegrees()
+  fullName: BFB.Engine.Math.BfbVector.GetDegrees()
+  type: Method
+  source:
+    remote:
+      path: BFB/BFB.Engine/Math/BFBVector.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: GetDegrees
+    path: ../BFB/BFB.Engine/Math/BFBVector.cs
+    startLine: 205
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Math
+  summary: "\nReturns the angle in degrees of the vector\n"
+  example: []
+  syntax:
+    content: public float GetDegrees()
+    return:
+      type: System.Single
+      description: ''
+    content.vb: Public Function GetDegrees As Single
+  overload: BFB.Engine.Math.BfbVector.GetDegrees*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.Math.BfbVector.ToVector2
+  commentId: M:BFB.Engine.Math.BfbVector.ToVector2
+  id: ToVector2
+  parent: BFB.Engine.Math.BfbVector
+  langs:
+  - csharp
+  - vb
+  name: ToVector2()
+  nameWithType: BfbVector.ToVector2()
+  fullName: BFB.Engine.Math.BfbVector.ToVector2()
+  type: Method
+  source:
+    remote:
+      path: BFB/BFB.Engine/Math/BFBVector.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: ToVector2
+    path: ../BFB/BFB.Engine/Math/BFBVector.cs
+    startLine: 218
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Math
+  summary: "\nReturns a new Vector2 of the current vector\n"
+  example: []
+  syntax:
+    content: public Vector2 ToVector2()
+    return:
+      type: Vector2
+      description: ''
+    content.vb: Public Function ToVector2 As Vector2
+  overload: BFB.Engine.Math.BfbVector.ToVector2*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+references:
+- uid: BFB.Engine.Math
+  commentId: N:BFB.Engine.Math
+  name: BFB.Engine.Math
+  nameWithType: BFB.Engine.Math
+  fullName: BFB.Engine.Math
+- uid: System.Object
+  commentId: '!:System.Object'
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: BFB.Engine.Math.BfbVector.BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{BFB.Engine.Math.BfbVector,{TValue}}},{TValue})
+  commentId: M:BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  parent: BFB.Engine.UI.Components.LambdaExtensions
+  definition: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  name: SetPropertyValue<BfbVector, TValue>(Expression<Func<BfbVector, TValue>>, TValue)
+  nameWithType: LambdaExtensions.SetPropertyValue<BfbVector, TValue>(Expression<Func<BfbVector, TValue>>, TValue)
+  fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<BFB.Engine.Math.BfbVector, TValue>(Expression<Func<BFB.Engine.Math.BfbVector, TValue>>, TValue)
+  nameWithType.vb: LambdaExtensions.SetPropertyValue(Of BfbVector, TValue)(Expression(Of Func(Of BfbVector, TValue)), TValue)
+  fullName.vb: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of BFB.Engine.Math.BfbVector, TValue)(Expression(Of Func(Of BFB.Engine.Math.BfbVector, TValue)), TValue)
+  name.vb: SetPropertyValue(Of BfbVector, TValue)(Expression(Of Func(Of BfbVector, TValue)), TValue)
+  spec.csharp:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue<BfbVector, TValue>
+    nameWithType: LambdaExtensions.SetPropertyValue<BfbVector, TValue>
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<BFB.Engine.Math.BfbVector, TValue>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: BFB.Engine.Math.BfbVector
+    name: BfbVector
+    nameWithType: BfbVector
+    fullName: BFB.Engine.Math.BfbVector
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue(Of BfbVector, TValue)
+    nameWithType: LambdaExtensions.SetPropertyValue(Of BfbVector, TValue)
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of BFB.Engine.Math.BfbVector, TValue)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: BFB.Engine.Math.BfbVector
+    name: BfbVector
+    nameWithType: BfbVector
+    fullName: BFB.Engine.Math.BfbVector
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  commentId: M:BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  isExternal: true
+  name: SetPropertyValue<T, TValue>(T, Expression<Func<T, TValue>>, TValue)
+  nameWithType: LambdaExtensions.SetPropertyValue<T, TValue>(T, Expression<Func<T, TValue>>, TValue)
+  fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<T, TValue>(T, Expression<Func<T, TValue>>, TValue)
+  nameWithType.vb: LambdaExtensions.SetPropertyValue(Of T, TValue)(T, Expression(Of Func(Of T, TValue)), TValue)
+  fullName.vb: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of T, TValue)(T, Expression(Of Func(Of T, TValue)), TValue)
+  name.vb: SetPropertyValue(Of T, TValue)(T, Expression(Of Func(Of T, TValue)), TValue)
+  spec.csharp:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue<T, TValue>
+    nameWithType: LambdaExtensions.SetPropertyValue<T, TValue>
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<T, TValue>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue(Of T, TValue)
+    nameWithType: LambdaExtensions.SetPropertyValue(Of T, TValue)
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of T, TValue)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Components.LambdaExtensions
+  commentId: T:BFB.Engine.UI.Components.LambdaExtensions
+  parent: BFB.Engine.UI.Components
+  name: LambdaExtensions
+  nameWithType: LambdaExtensions
+  fullName: BFB.Engine.UI.Components.LambdaExtensions
+- uid: BFB.Engine.UI.Components
+  commentId: N:BFB.Engine.UI.Components
+  name: BFB.Engine.UI.Components
+  nameWithType: BFB.Engine.UI.Components
+  fullName: BFB.Engine.UI.Components
+- uid: BFB.Engine.Math.BfbVector.X*
+  commentId: Overload:BFB.Engine.Math.BfbVector.X
+  name: X
+  nameWithType: BfbVector.X
+  fullName: BFB.Engine.Math.BfbVector.X
+- uid: System.Single
+  isExternal: true
+  name: Single
+  nameWithType: Single
+  fullName: System.Single
+- uid: BFB.Engine.Math.BfbVector.Y*
+  commentId: Overload:BFB.Engine.Math.BfbVector.Y
+  name: Y
+  nameWithType: BfbVector.Y
+  fullName: BFB.Engine.Math.BfbVector.Y
+- uid: BFB.Engine.Math.BfbVector.Magnitude*
+  commentId: Overload:BFB.Engine.Math.BfbVector.Magnitude
+  name: Magnitude
+  nameWithType: BfbVector.Magnitude
+  fullName: BFB.Engine.Math.BfbVector.Magnitude
+- uid: BFB.Engine.Math.BfbVector.#ctor*
+  commentId: Overload:BFB.Engine.Math.BfbVector.#ctor
+  name: BfbVector
+  nameWithType: BfbVector.BfbVector
+  fullName: BFB.Engine.Math.BfbVector.BfbVector
+- uid: Vector2
+  isExternal: true
+  name: Vector2
+  nameWithType: Vector2
+  fullName: Vector2
+- uid: BFB.Engine.Math.BfbVector.Add*
+  commentId: Overload:BFB.Engine.Math.BfbVector.Add
+  name: Add
+  nameWithType: BfbVector.Add
+  fullName: BFB.Engine.Math.BfbVector.Add
+- uid: BFB.Engine.Math.BfbVector
+  commentId: T:BFB.Engine.Math.BfbVector
+  parent: BFB.Engine.Math
+  name: BfbVector
+  nameWithType: BfbVector
+  fullName: BFB.Engine.Math.BfbVector
+- uid: BFB.Engine.Math.BfbVector.Sub*
+  commentId: Overload:BFB.Engine.Math.BfbVector.Sub
+  name: Sub
+  nameWithType: BfbVector.Sub
+  fullName: BFB.Engine.Math.BfbVector.Sub
+- uid: BFB.Engine.Math.BfbVector.Mult*
+  commentId: Overload:BFB.Engine.Math.BfbVector.Mult
+  name: Mult
+  nameWithType: BfbVector.Mult
+  fullName: BFB.Engine.Math.BfbVector.Mult
+- uid: BFB.Engine.Math.BfbVector.Normalize*
+  commentId: Overload:BFB.Engine.Math.BfbVector.Normalize
+  name: Normalize
+  nameWithType: BfbVector.Normalize
+  fullName: BFB.Engine.Math.BfbVector.Normalize
+- uid: BFB.Engine.Math.BfbVector.Limit*
+  commentId: Overload:BFB.Engine.Math.BfbVector.Limit
+  name: Limit
+  nameWithType: BfbVector.Limit
+  fullName: BFB.Engine.Math.BfbVector.Limit
+- uid: BFB.Engine.Math.BfbVector.GetRadians*
+  commentId: Overload:BFB.Engine.Math.BfbVector.GetRadians
+  name: GetRadians
+  nameWithType: BfbVector.GetRadians
+  fullName: BFB.Engine.Math.BfbVector.GetRadians
+- uid: BFB.Engine.Math.BfbVector.GetDegrees*
+  commentId: Overload:BFB.Engine.Math.BfbVector.GetDegrees
+  name: GetDegrees
+  nameWithType: BfbVector.GetDegrees
+  fullName: BFB.Engine.Math.BfbVector.GetDegrees
+- uid: BFB.Engine.Math.BfbVector.ToVector2*
+  commentId: Overload:BFB.Engine.Math.BfbVector.ToVector2
+  name: ToVector2
+  nameWithType: BfbVector.ToVector2
+  fullName: BFB.Engine.Math.BfbVector.ToVector2

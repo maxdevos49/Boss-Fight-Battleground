@@ -1,0 +1,418 @@
+### YamlMime:ManagedReference
+items:
+- uid: BFB.Engine.TileMap.WorldLayer
+  commentId: T:BFB.Engine.TileMap.WorldLayer
+  id: WorldLayer
+  parent: BFB.Engine.TileMap
+  children:
+  - BFB.Engine.TileMap.WorldLayer.Block
+  - BFB.Engine.TileMap.WorldLayer.Hardness
+  - BFB.Engine.TileMap.WorldLayer.Light
+  - BFB.Engine.TileMap.WorldLayer.Wall
+  langs:
+  - csharp
+  - vb
+  name: WorldLayer
+  nameWithType: WorldLayer
+  fullName: BFB.Engine.TileMap.WorldLayer
+  type: Enum
+  source:
+    remote:
+      path: BFB/BFB.Engine/TileMap/WorldLayer.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: WorldLayer
+    path: ../BFB/BFB.Engine/TileMap/WorldLayer.cs
+    startLine: 5
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.TileMap
+  summary: "\nThe number equivalents for the world layer.\n"
+  example: []
+  syntax:
+    content: 'public enum WorldLayer : int'
+    content.vb: Public Enum WorldLayer As Integer
+  extensionMethods:
+  - BFB.Engine.TileMap.WorldLayer.BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{BFB.Engine.TileMap.WorldLayer,{TValue}}},{TValue})
+  modifiers.csharp:
+  - public
+  - enum
+  modifiers.vb:
+  - Public
+  - Enum
+- uid: BFB.Engine.TileMap.WorldLayer.Hardness
+  commentId: F:BFB.Engine.TileMap.WorldLayer.Hardness
+  id: Hardness
+  parent: BFB.Engine.TileMap.WorldLayer
+  langs:
+  - csharp
+  - vb
+  name: Hardness
+  nameWithType: WorldLayer.Hardness
+  fullName: BFB.Engine.TileMap.WorldLayer.Hardness
+  type: Field
+  source:
+    remote:
+      path: BFB/BFB.Engine/TileMap/WorldLayer.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: Hardness
+    path: ../BFB/BFB.Engine/TileMap/WorldLayer.cs
+    startLine: 7
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.TileMap
+  syntax:
+    content: Hardness = 0
+    return:
+      type: BFB.Engine.TileMap.WorldLayer
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: BFB.Engine.TileMap.WorldLayer.Light
+  commentId: F:BFB.Engine.TileMap.WorldLayer.Light
+  id: Light
+  parent: BFB.Engine.TileMap.WorldLayer
+  langs:
+  - csharp
+  - vb
+  name: Light
+  nameWithType: WorldLayer.Light
+  fullName: BFB.Engine.TileMap.WorldLayer.Light
+  type: Field
+  source:
+    remote:
+      path: BFB/BFB.Engine/TileMap/WorldLayer.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: Light
+    path: ../BFB/BFB.Engine/TileMap/WorldLayer.cs
+    startLine: 8
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.TileMap
+  syntax:
+    content: Light = 1
+    return:
+      type: BFB.Engine.TileMap.WorldLayer
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: BFB.Engine.TileMap.WorldLayer.Wall
+  commentId: F:BFB.Engine.TileMap.WorldLayer.Wall
+  id: Wall
+  parent: BFB.Engine.TileMap.WorldLayer
+  langs:
+  - csharp
+  - vb
+  name: Wall
+  nameWithType: WorldLayer.Wall
+  fullName: BFB.Engine.TileMap.WorldLayer.Wall
+  type: Field
+  source:
+    remote:
+      path: BFB/BFB.Engine/TileMap/WorldLayer.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: Wall
+    path: ../BFB/BFB.Engine/TileMap/WorldLayer.cs
+    startLine: 9
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.TileMap
+  syntax:
+    content: Wall = 2
+    return:
+      type: BFB.Engine.TileMap.WorldLayer
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: BFB.Engine.TileMap.WorldLayer.Block
+  commentId: F:BFB.Engine.TileMap.WorldLayer.Block
+  id: Block
+  parent: BFB.Engine.TileMap.WorldLayer
+  langs:
+  - csharp
+  - vb
+  name: Block
+  nameWithType: WorldLayer.Block
+  fullName: BFB.Engine.TileMap.WorldLayer.Block
+  type: Field
+  source:
+    remote:
+      path: BFB/BFB.Engine/TileMap/WorldLayer.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: Block
+    path: ../BFB/BFB.Engine/TileMap/WorldLayer.cs
+    startLine: 10
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.TileMap
+  syntax:
+    content: Block = 3
+    return:
+      type: BFB.Engine.TileMap.WorldLayer
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+references:
+- uid: BFB.Engine.TileMap
+  commentId: N:BFB.Engine.TileMap
+  name: BFB.Engine.TileMap
+  nameWithType: BFB.Engine.TileMap
+  fullName: BFB.Engine.TileMap
+- uid: BFB.Engine.TileMap.WorldLayer.BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{BFB.Engine.TileMap.WorldLayer,{TValue}}},{TValue})
+  commentId: M:BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  parent: BFB.Engine.UI.Components.LambdaExtensions
+  definition: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  name: SetPropertyValue<WorldLayer, TValue>(Expression<Func<WorldLayer, TValue>>, TValue)
+  nameWithType: LambdaExtensions.SetPropertyValue<WorldLayer, TValue>(Expression<Func<WorldLayer, TValue>>, TValue)
+  fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<BFB.Engine.TileMap.WorldLayer, TValue>(Expression<Func<BFB.Engine.TileMap.WorldLayer, TValue>>, TValue)
+  nameWithType.vb: LambdaExtensions.SetPropertyValue(Of WorldLayer, TValue)(Expression(Of Func(Of WorldLayer, TValue)), TValue)
+  fullName.vb: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of BFB.Engine.TileMap.WorldLayer, TValue)(Expression(Of Func(Of BFB.Engine.TileMap.WorldLayer, TValue)), TValue)
+  name.vb: SetPropertyValue(Of WorldLayer, TValue)(Expression(Of Func(Of WorldLayer, TValue)), TValue)
+  spec.csharp:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue<WorldLayer, TValue>
+    nameWithType: LambdaExtensions.SetPropertyValue<WorldLayer, TValue>
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<BFB.Engine.TileMap.WorldLayer, TValue>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: BFB.Engine.TileMap.WorldLayer
+    name: WorldLayer
+    nameWithType: WorldLayer
+    fullName: BFB.Engine.TileMap.WorldLayer
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue(Of WorldLayer, TValue)
+    nameWithType: LambdaExtensions.SetPropertyValue(Of WorldLayer, TValue)
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of BFB.Engine.TileMap.WorldLayer, TValue)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: BFB.Engine.TileMap.WorldLayer
+    name: WorldLayer
+    nameWithType: WorldLayer
+    fullName: BFB.Engine.TileMap.WorldLayer
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  commentId: M:BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  isExternal: true
+  name: SetPropertyValue<T, TValue>(T, Expression<Func<T, TValue>>, TValue)
+  nameWithType: LambdaExtensions.SetPropertyValue<T, TValue>(T, Expression<Func<T, TValue>>, TValue)
+  fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<T, TValue>(T, Expression<Func<T, TValue>>, TValue)
+  nameWithType.vb: LambdaExtensions.SetPropertyValue(Of T, TValue)(T, Expression(Of Func(Of T, TValue)), TValue)
+  fullName.vb: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of T, TValue)(T, Expression(Of Func(Of T, TValue)), TValue)
+  name.vb: SetPropertyValue(Of T, TValue)(T, Expression(Of Func(Of T, TValue)), TValue)
+  spec.csharp:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue<T, TValue>
+    nameWithType: LambdaExtensions.SetPropertyValue<T, TValue>
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<T, TValue>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue(Of T, TValue)
+    nameWithType: LambdaExtensions.SetPropertyValue(Of T, TValue)
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of T, TValue)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Components.LambdaExtensions
+  commentId: T:BFB.Engine.UI.Components.LambdaExtensions
+  parent: BFB.Engine.UI.Components
+  name: LambdaExtensions
+  nameWithType: LambdaExtensions
+  fullName: BFB.Engine.UI.Components.LambdaExtensions
+- uid: BFB.Engine.UI.Components
+  commentId: N:BFB.Engine.UI.Components
+  name: BFB.Engine.UI.Components
+  nameWithType: BFB.Engine.UI.Components
+  fullName: BFB.Engine.UI.Components
+- uid: BFB.Engine.TileMap.WorldLayer
+  commentId: T:BFB.Engine.TileMap.WorldLayer
+  parent: BFB.Engine.TileMap
+  name: WorldLayer
+  nameWithType: WorldLayer
+  fullName: BFB.Engine.TileMap.WorldLayer

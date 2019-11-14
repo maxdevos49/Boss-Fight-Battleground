@@ -1,0 +1,452 @@
+### YamlMime:ManagedReference
+items:
+- uid: BFB.Engine.Input.MouseInput
+  commentId: T:BFB.Engine.Input.MouseInput
+  id: MouseInput
+  parent: BFB.Engine.Input
+  children:
+  - BFB.Engine.Input.MouseInput.#ctor(BFB.Engine.Event.EventManager{BFB.Engine.Event.InputEvent})
+  - BFB.Engine.Input.MouseInput.UpdateMouse
+  langs:
+  - csharp
+  - vb
+  name: MouseInput
+  nameWithType: MouseInput
+  fullName: BFB.Engine.Input.MouseInput
+  type: Class
+  source:
+    remote:
+      path: BFB/BFB.Engine/Input/MouseInput.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: MouseInput
+    path: ../BFB/BFB.Engine/Input/MouseInput.cs
+    startLine: 11
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Input
+  summary: "\nKeeps track of the mouse input.\n"
+  example: []
+  syntax:
+    content: 'public class MouseInput : object'
+    content.vb: >-
+      Public Class MouseInput
+
+          Inherits Object
+  inheritance:
+  - System.Object
+  extensionMethods:
+  - BFB.Engine.Input.MouseInput.BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{BFB.Engine.Input.MouseInput,{TValue}}},{TValue})
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: BFB.Engine.Input.MouseInput.#ctor(BFB.Engine.Event.EventManager{BFB.Engine.Event.InputEvent})
+  commentId: M:BFB.Engine.Input.MouseInput.#ctor(BFB.Engine.Event.EventManager{BFB.Engine.Event.InputEvent})
+  id: '#ctor(BFB.Engine.Event.EventManager{BFB.Engine.Event.InputEvent})'
+  parent: BFB.Engine.Input.MouseInput
+  langs:
+  - csharp
+  - vb
+  name: MouseInput(EventManager<InputEvent>)
+  nameWithType: MouseInput.MouseInput(EventManager<InputEvent>)
+  fullName: BFB.Engine.Input.MouseInput.MouseInput(BFB.Engine.Event.EventManager<BFB.Engine.Event.InputEvent>)
+  type: Constructor
+  source:
+    remote:
+      path: BFB/BFB.Engine/Input/MouseInput.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: .ctor
+    path: ../BFB/BFB.Engine/Input/MouseInput.cs
+    startLine: 18
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Input
+  syntax:
+    content: public MouseInput(EventManager<InputEvent> eventManager)
+    parameters:
+    - id: eventManager
+      type: BFB.Engine.Event.EventManager{BFB.Engine.Event.InputEvent}
+    content.vb: Public Sub New(eventManager As EventManager(Of InputEvent))
+  overload: BFB.Engine.Input.MouseInput.#ctor*
+  nameWithType.vb: MouseInput.MouseInput(EventManager(Of InputEvent))
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+  fullName.vb: BFB.Engine.Input.MouseInput.MouseInput(BFB.Engine.Event.EventManager(Of BFB.Engine.Event.InputEvent))
+  name.vb: MouseInput(EventManager(Of InputEvent))
+- uid: BFB.Engine.Input.MouseInput.UpdateMouse
+  commentId: M:BFB.Engine.Input.MouseInput.UpdateMouse
+  id: UpdateMouse
+  parent: BFB.Engine.Input.MouseInput
+  langs:
+  - csharp
+  - vb
+  name: UpdateMouse()
+  nameWithType: MouseInput.UpdateMouse()
+  fullName: BFB.Engine.Input.MouseInput.UpdateMouse()
+  type: Method
+  source:
+    remote:
+      path: BFB/BFB.Engine/Input/MouseInput.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: UpdateMouse
+    path: ../BFB/BFB.Engine/Input/MouseInput.cs
+    startLine: 37
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Input
+  summary: "\nUpdates the mouse state and emits any button states.\n"
+  example: []
+  syntax:
+    content: public void UpdateMouse()
+    content.vb: Public Sub UpdateMouse
+  overload: BFB.Engine.Input.MouseInput.UpdateMouse*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+references:
+- uid: BFB.Engine.Input
+  commentId: N:BFB.Engine.Input
+  name: BFB.Engine.Input
+  nameWithType: BFB.Engine.Input
+  fullName: BFB.Engine.Input
+- uid: System.Object
+  commentId: '!:System.Object'
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: BFB.Engine.Input.MouseInput.BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{BFB.Engine.Input.MouseInput,{TValue}}},{TValue})
+  commentId: M:BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  parent: BFB.Engine.UI.Components.LambdaExtensions
+  definition: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  name: SetPropertyValue<MouseInput, TValue>(Expression<Func<MouseInput, TValue>>, TValue)
+  nameWithType: LambdaExtensions.SetPropertyValue<MouseInput, TValue>(Expression<Func<MouseInput, TValue>>, TValue)
+  fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<BFB.Engine.Input.MouseInput, TValue>(Expression<Func<BFB.Engine.Input.MouseInput, TValue>>, TValue)
+  nameWithType.vb: LambdaExtensions.SetPropertyValue(Of MouseInput, TValue)(Expression(Of Func(Of MouseInput, TValue)), TValue)
+  fullName.vb: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of BFB.Engine.Input.MouseInput, TValue)(Expression(Of Func(Of BFB.Engine.Input.MouseInput, TValue)), TValue)
+  name.vb: SetPropertyValue(Of MouseInput, TValue)(Expression(Of Func(Of MouseInput, TValue)), TValue)
+  spec.csharp:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue<MouseInput, TValue>
+    nameWithType: LambdaExtensions.SetPropertyValue<MouseInput, TValue>
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<BFB.Engine.Input.MouseInput, TValue>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: BFB.Engine.Input.MouseInput
+    name: MouseInput
+    nameWithType: MouseInput
+    fullName: BFB.Engine.Input.MouseInput
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue(Of MouseInput, TValue)
+    nameWithType: LambdaExtensions.SetPropertyValue(Of MouseInput, TValue)
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of BFB.Engine.Input.MouseInput, TValue)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: BFB.Engine.Input.MouseInput
+    name: MouseInput
+    nameWithType: MouseInput
+    fullName: BFB.Engine.Input.MouseInput
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  commentId: M:BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  isExternal: true
+  name: SetPropertyValue<T, TValue>(T, Expression<Func<T, TValue>>, TValue)
+  nameWithType: LambdaExtensions.SetPropertyValue<T, TValue>(T, Expression<Func<T, TValue>>, TValue)
+  fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<T, TValue>(T, Expression<Func<T, TValue>>, TValue)
+  nameWithType.vb: LambdaExtensions.SetPropertyValue(Of T, TValue)(T, Expression(Of Func(Of T, TValue)), TValue)
+  fullName.vb: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of T, TValue)(T, Expression(Of Func(Of T, TValue)), TValue)
+  name.vb: SetPropertyValue(Of T, TValue)(T, Expression(Of Func(Of T, TValue)), TValue)
+  spec.csharp:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue<T, TValue>
+    nameWithType: LambdaExtensions.SetPropertyValue<T, TValue>
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<T, TValue>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue(Of T, TValue)
+    nameWithType: LambdaExtensions.SetPropertyValue(Of T, TValue)
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of T, TValue)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Components.LambdaExtensions
+  commentId: T:BFB.Engine.UI.Components.LambdaExtensions
+  parent: BFB.Engine.UI.Components
+  name: LambdaExtensions
+  nameWithType: LambdaExtensions
+  fullName: BFB.Engine.UI.Components.LambdaExtensions
+- uid: BFB.Engine.UI.Components
+  commentId: N:BFB.Engine.UI.Components
+  name: BFB.Engine.UI.Components
+  nameWithType: BFB.Engine.UI.Components
+  fullName: BFB.Engine.UI.Components
+- uid: BFB.Engine.Input.MouseInput.#ctor*
+  commentId: Overload:BFB.Engine.Input.MouseInput.#ctor
+  name: MouseInput
+  nameWithType: MouseInput.MouseInput
+  fullName: BFB.Engine.Input.MouseInput.MouseInput
+- uid: BFB.Engine.Event.EventManager{BFB.Engine.Event.InputEvent}
+  commentId: T:BFB.Engine.Event.EventManager{BFB.Engine.Event.InputEvent}
+  parent: BFB.Engine.Event
+  definition: BFB.Engine.Event.EventManager`1
+  name: EventManager<InputEvent>
+  nameWithType: EventManager<InputEvent>
+  fullName: BFB.Engine.Event.EventManager<BFB.Engine.Event.InputEvent>
+  nameWithType.vb: EventManager(Of InputEvent)
+  fullName.vb: BFB.Engine.Event.EventManager(Of BFB.Engine.Event.InputEvent)
+  name.vb: EventManager(Of InputEvent)
+  spec.csharp:
+  - uid: BFB.Engine.Event.EventManager`1
+    name: EventManager
+    nameWithType: EventManager
+    fullName: BFB.Engine.Event.EventManager
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: BFB.Engine.Event.InputEvent
+    name: InputEvent
+    nameWithType: InputEvent
+    fullName: BFB.Engine.Event.InputEvent
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: BFB.Engine.Event.EventManager`1
+    name: EventManager
+    nameWithType: EventManager
+    fullName: BFB.Engine.Event.EventManager
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: BFB.Engine.Event.InputEvent
+    name: InputEvent
+    nameWithType: InputEvent
+    fullName: BFB.Engine.Event.InputEvent
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.Event.EventManager`1
+  commentId: T:BFB.Engine.Event.EventManager`1
+  name: EventManager<TEvent>
+  nameWithType: EventManager<TEvent>
+  fullName: BFB.Engine.Event.EventManager<TEvent>
+  nameWithType.vb: EventManager(Of TEvent)
+  fullName.vb: BFB.Engine.Event.EventManager(Of TEvent)
+  name.vb: EventManager(Of TEvent)
+  spec.csharp:
+  - uid: BFB.Engine.Event.EventManager`1
+    name: EventManager
+    nameWithType: EventManager
+    fullName: BFB.Engine.Event.EventManager
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: TEvent
+    nameWithType: TEvent
+    fullName: TEvent
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: BFB.Engine.Event.EventManager`1
+    name: EventManager
+    nameWithType: EventManager
+    fullName: BFB.Engine.Event.EventManager
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: TEvent
+    nameWithType: TEvent
+    fullName: TEvent
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.Event
+  commentId: N:BFB.Engine.Event
+  name: BFB.Engine.Event
+  nameWithType: BFB.Engine.Event
+  fullName: BFB.Engine.Event
+- uid: BFB.Engine.Input.MouseInput.UpdateMouse*
+  commentId: Overload:BFB.Engine.Input.MouseInput.UpdateMouse
+  name: UpdateMouse
+  nameWithType: MouseInput.UpdateMouse
+  fullName: BFB.Engine.Input.MouseInput.UpdateMouse

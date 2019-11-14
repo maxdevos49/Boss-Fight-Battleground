@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using BFB.Engine.Content;
 using BFB.Engine.Event;
+using BFB.Engine.Helpers;
 using BFB.Engine.UI.Components;
 using JetBrains.Annotations;
 using Microsoft.Xna.Framework;
@@ -163,10 +164,10 @@ namespace BFB.Engine.UI
             node.Render(graphics, _contentManager.GetTexture(node.RenderAttributes.TextureKey), _contentManager.GetFont(node.RenderAttributes.FontKey));
             
             if(layer.Debug)
-                DrawBorder(new Rectangle(node.RenderAttributes.X,node.RenderAttributes.Y,node.RenderAttributes.Width,node.RenderAttributes.Height),1,Color.Black, graphics,_contentManager.GetTexture("default"));//For debug
+                graphics.DrawBorder(new Rectangle(node.RenderAttributes.X,node.RenderAttributes.Y,node.RenderAttributes.Width,node.RenderAttributes.Height),1,Color.Black,_contentManager.GetTexture("default"));//For debug
             
             if(node.Focused)
-                DrawBorder(new Rectangle(node.RenderAttributes.X,node.RenderAttributes.Y,node.RenderAttributes.Width,node.RenderAttributes.Height),3,Color.Red, graphics,_contentManager.GetTexture("default"));//For Focus
+                graphics.DrawBorder(new Rectangle(node.RenderAttributes.X,node.RenderAttributes.Y,node.RenderAttributes.Width,node.RenderAttributes.Height),3,Color.Red,_contentManager.GetTexture("default"));//For Focus
 
             foreach (UIComponent childNode in node.Children)
             {
@@ -174,27 +175,9 @@ namespace BFB.Engine.UI
             }
 
         }
-        
-        /**
-         * Draws a border
-         * TODO move to a drawing class with more drawing helpers. (Extension methods for drawing??)
-         */
-        private void DrawBorder(Rectangle rectangleToDraw, int thicknessOfBorder, Color borderColor, SpriteBatch graphics, Texture2D texture)
-        {
-            // Draw top line
-            graphics.Draw(texture, new Rectangle(rectangleToDraw.X, rectangleToDraw.Y, rectangleToDraw.Width, thicknessOfBorder), borderColor);
-            
-            // Draw left line
-            graphics.Draw(texture, new Rectangle(rectangleToDraw.X, rectangleToDraw.Y, thicknessOfBorder, rectangleToDraw.Height), borderColor);
 
-            // Draw right line
-            graphics.Draw(texture, new Rectangle((rectangleToDraw.X + rectangleToDraw.Width - thicknessOfBorder), rectangleToDraw.Y, thicknessOfBorder, rectangleToDraw.Height), borderColor);
-            
-            // Draw bottom line
-            graphics.Draw(texture, new Rectangle(rectangleToDraw.X, rectangleToDraw.Y + rectangleToDraw.Height - thicknessOfBorder, rectangleToDraw.Width, thicknessOfBorder), borderColor);
-        }
 
-     #endregion
+        #endregion
 
         #region ProcessEvents
      

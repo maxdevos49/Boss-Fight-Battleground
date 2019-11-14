@@ -1,0 +1,40 @@
+### YamlMime:ManagedReference
+items:
+- uid: BFB.Engine.Server
+  commentId: N:BFB.Engine.Server
+  id: BFB.Engine.Server
+  children:
+  - BFB.Engine.Server.ClientSocket
+  - BFB.Engine.Server.ClientSocketManager
+  - BFB.Engine.Server.ServerSocketManager
+  langs:
+  - csharp
+  - vb
+  name: BFB.Engine.Server
+  nameWithType: BFB.Engine.Server
+  fullName: BFB.Engine.Server
+  type: Namespace
+  assemblies:
+  - BFB.Engine
+references:
+- uid: BFB.Engine.Server.ClientSocket
+  commentId: T:BFB.Engine.Server.ClientSocket
+  parent: BFB.Engine.Server
+  name: ClientSocket
+  nameWithType: ClientSocket
+  fullName: BFB.Engine.Server.ClientSocket
+- uid: BFB.Engine.Server.ClientSocketManager
+  commentId: T:BFB.Engine.Server.ClientSocketManager
+  name: ClientSocketManager
+  nameWithType: ClientSocketManager
+  fullName: BFB.Engine.Server.ClientSocketManager
+- uid: BFB.Engine.Server.ServerSocketManager
+  commentId: T:BFB.Engine.Server.ServerSocketManager
+  name: ServerSocketManager
+  nameWithType: ServerSocketManager
+  fullName: BFB.Engine.Server.ServerSocketManager
+- uid: BFB.Engine.Server
+  commentId: N:BFB.Engine.Server
+  name: BFB.Engine.Server
+  nameWithType: BFB.Engine.Server
+  fullName: BFB.Engine.Server
