@@ -71,7 +71,7 @@ namespace BFB.Engine.Entity
             OldPosition = new BfbVector();
             VisibleChunks = new List<string>();
             ChunkVersions = new Dictionary<string, int>();
-
+            Console.WriteLine("AHJHAHHAHAH");
             _lastTick = -1;
         }
 
