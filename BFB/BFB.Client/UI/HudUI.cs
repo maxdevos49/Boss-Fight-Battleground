@@ -22,9 +22,9 @@ namespace BFB.Client.UI
                                 {
                                     UIManager.Start(nameof(GameMenuUI));
                                 })
-                            .Width(0.07f)
-                            .Image("button")
-                            .AspectRatio(1);
+                            .Width(0.12f)
+                            .Height(0.1f)
+                            .Image("button");
                     })
                     .Top(0)
                     .Left(0);
