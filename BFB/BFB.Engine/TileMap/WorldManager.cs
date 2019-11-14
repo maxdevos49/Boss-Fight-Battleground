@@ -56,12 +56,8 @@ namespace BFB.Engine.TileMap
             };
             
             for (int y = 0; y < WorldOptions.WorldChunkHeight; y++)
-            {
                 for (int x = 0; x < WorldOptions.WorldChunkWidth; x++)
-                {
                     worldData.ChunkMapIds[x, y] = ChunkMap[x, y].ChunkKey;
-                }
-            }
             
             return worldData;
         }
@@ -85,15 +81,11 @@ namespace BFB.Engine.TileMap
             ChunkMap = new Chunk[WorldOptions.WorldChunkWidth,WorldOptions.WorldChunkHeight];
             
             for (int y = 0; y < WorldOptions.WorldChunkHeight; y++)
-            {
                 for (int x = 0; x < WorldOptions.WorldChunkWidth; x++)
-                {
                     ChunkMap[x, y] = new Chunk(WorldOptions.ChunkSize, x, y)
                     {
                         ChunkKey = message.ChunkMapIds[x, y]
                     };
-                }
-            }
             
             MapChunksToIndex();
         }
@@ -181,6 +173,9 @@ namespace BFB.Engine.TileMap
         /// <returns>A tuple representing the chunk x/y and the relative x/y blocks in the chunk</returns>
         public Tuple<int,int,int,int> TranslateBlockPosition(int xBlock, int yBlock)
         {
+            if (xBlock < 0 || yBlock < 0)
+                return null;
+            
             return new Tuple<int, int, int, int>(
                 xBlock/WorldOptions.ChunkSize,
                 yBlock/WorldOptions.ChunkSize,
@@ -355,10 +350,13 @@ namespace BFB.Engine.TileMap
         
         public WorldTile GetBlock(int xBlock, int yBlock)
         {
-            (int chunkX, int chunkY, int relativeX, int relativeY) = TranslateBlockPosition(xBlock, yBlock);
+            Tuple<int, int, int, int> locations = TranslateBlockPosition(xBlock, yBlock);
+
+            if (locations == null)
+                return WorldTile.Air;
             
-            return ChunkExist(chunkX, chunkY) 
-                ?  (WorldTile)ChunkMap[chunkX, chunkY].Block[relativeX, relativeY] 
+            return ChunkExist(locations.Item1, locations.Item2) 
+                ?  (WorldTile)ChunkMap[locations.Item1, locations.Item2].Block[locations.Item3, locations.Item4] 
                 : WorldTile.Air;
         }
 

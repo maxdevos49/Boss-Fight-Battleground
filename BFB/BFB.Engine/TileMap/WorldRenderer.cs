@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using BFB.Engine.Content;
 using BFB.Engine.Entity;
+using BFB.Engine.Helpers;
 using BFB.Engine.Math;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -13,16 +14,20 @@ namespace BFB.Engine.TileMap
     /// </summary>
     public class WorldRenderer
     {
+        
+        public const float GraphicsScale = 15f;
 
+        public bool Debug { get; set; }
         public readonly Camera Camera;
 
-        private readonly int _worldScale;
+        private readonly int _tileScale;
         private readonly int _blockWidth;
         private readonly int _blockHeight;
  
         public WorldRenderer(WorldManager world, GraphicsDevice graphicsDevice)
         {
-            _worldScale = world.WorldOptions.WorldScale;
+//            Debug = true;
+            _tileScale = world.WorldOptions.WorldScale;
             _blockWidth = world.MapBlockWidth();
             _blockHeight = world.MapBlockHeight();
             
@@ -68,10 +73,10 @@ namespace BFB.Engine.TileMap
             graphics.End();
             graphics.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, SamplerState.PointClamp, DepthStencilState.None, RasterizerState.CullCounterClockwise, null, Camera.Transform);
 
-            int xStart = (int)(Camera.Position.X - Camera.Origin.X)/_worldScale - 1;
-            int xEnd = (int)(Camera .Position.X - Camera.Origin.X + Camera.ViewWidth)/_worldScale;
-            int yStart = (int)(Camera.Position.Y - Camera.Origin.Y)/_worldScale - 1;
-            int yEnd = (int)(Camera .Position.Y - Camera.Origin.Y + Camera.ViewHeight)/_worldScale;
+            int xStart = (int)(Camera.Position.X - Camera.Origin.X)/_tileScale - 1;
+            int xEnd = (int)(Camera .Position.X - Camera.Origin.X + Camera.ViewWidth)/_tileScale + 1;
+            int yStart = (int)(Camera.Position.Y - Camera.Origin.Y)/_tileScale - 1;
+            int yEnd = (int)(Camera .Position.Y - Camera.Origin.Y + Camera.ViewHeight)/_tileScale + 1;
 
             if (xStart < 0)
                 xStart = 0;
@@ -87,27 +92,70 @@ namespace BFB.Engine.TileMap
             {
                 for (int x = xStart; x < xEnd; x++)
                 {
-                    int xPosition = x * _worldScale;
-                    int yPosition = y * _worldScale;
+                    int xPosition = x * _tileScale;
+                    int yPosition = y * _tileScale;
                     
-                    switch(world.GetBlock(x, y))//TODO change so not switch statement but add a special content for blocks
+                    switch(world.GetBlock(x, y))//TODO change so not switch statement but add a special content type for blocks
                     {
                         case WorldTile.Grass:
-                            graphics.Draw(content.GetTexture("grass"), new Vector2(xPosition, yPosition), Color.White);
+                            graphics.Draw(content.GetTexture("grass"), new Rectangle(xPosition,yPosition,_tileScale,_tileScale ),Color.White);
                             break;
                         case WorldTile.Dirt:
-                            graphics.Draw(content.GetTexture("dirt"), new Vector2(xPosition, yPosition), Color.White);
+                            graphics.Draw(content.GetTexture("dirt"), new Rectangle(xPosition,yPosition,_tileScale,_tileScale ),Color.White);
                             break;
                         case WorldTile.Stone:
-                            graphics.Draw(content.GetTexture("stone"), new Vector2(xPosition, yPosition), Color.White);
+                            graphics.Draw(content.GetTexture("stone"), new Rectangle(xPosition,yPosition,_tileScale,_tileScale ),Color.White);
                             break;
                     }
-                    
                 }
             }
+
+            #region Debug
+            
+            if (Debug)
+            {
+                for (int y = yStart; y < yEnd; y++)
+                {
+                    for (int x = xStart; x < xEnd; x++)
+                    {
+                        int xPosition = x * _tileScale;
+                        int yPosition = y * _tileScale;
+
+                        //Block Values
+                        graphics.DrawString(
+                                    content.GetFont("default"), 
+                                    (int) world.GetBlock(x, y) + "",
+                                    new Vector2(xPosition, yPosition), 
+                                    Color.Black, 
+                                    0f, 
+                                    Vector2.Zero, 
+                                    0.5f,
+                                    SpriteEffects.None,
+                                    1);
+                        
+                        if(x % world.WorldOptions.ChunkSize == 0 && y % world.WorldOptions.ChunkSize == 0)
+                            graphics.DrawBorder(
+                                new Rectangle(
+                                    xPosition, 
+                                    yPosition,
+                                    world.WorldOptions.ChunkSize * _tileScale,
+                                    world.WorldOptions.ChunkSize * _tileScale), 
+                                    1, 
+                                    Color.Red,
+                                    content.GetTexture("default"));
+                    }
+                }
+            }
+
+            #endregion
             
             foreach (ClientEntity entity in entities)
-                entity.Draw(graphics);
+            {
+                if (!Debug)
+                    entity.Draw(graphics, _tileScale/GraphicsScale);
+                else
+                    entity.DebugDraw(graphics, content,_tileScale/GraphicsScale, _tileScale);
+            }
 
             graphics.End();
             graphics.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, SamplerState.PointClamp, DepthStencilState.None, RasterizerState.CullCounterClockwise);

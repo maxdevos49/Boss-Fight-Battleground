@@ -51,30 +51,34 @@ namespace BFB.Engine.Simulation.InputComponents
                     Tuple<int, int, int, int> chunkInformation =
                         simulation.World.TranslatePixelPosition(mouseX, mouseY);
 
-                    Chunk targetChunk =
-                        simulation.World.ChunkFromChunkLocation(chunkInformation.Item1, chunkInformation.Item2);
-
-                    int xSelection = chunkInformation.Item3;
-                    int ySelection = chunkInformation.Item4;
-
-                    if (targetChunk != null)
+                    if (chunkInformation != null)
                     {
-                        if (_playerState.RightClick)
-                            targetChunk.ApplyBlockUpdate(new TileUpdate
-                            {
-                                X = (byte) xSelection,
-                                Y = (byte) ySelection,
-                                Mode = true,
-                                TileValue = (ushort) WorldTile.Dirt
-                            });
-                        else
-                            targetChunk.ApplyBlockUpdate(new TileUpdate
-                            {
-                                X = (byte) xSelection,
-                                Y = (byte) ySelection,
-                                Mode = true,
-                                TileValue = (ushort) WorldTile.Air
-                            });
+
+                        Chunk targetChunk =
+                            simulation.World.ChunkFromChunkLocation(chunkInformation.Item1, chunkInformation.Item2);
+
+                        int xSelection = chunkInformation.Item3;
+                        int ySelection = chunkInformation.Item4;
+
+                        if (targetChunk != null)
+                        {
+                            if (_playerState.RightClick)
+                                targetChunk.ApplyBlockUpdate(new TileUpdate
+                                {
+                                    X = (byte) xSelection,
+                                    Y = (byte) ySelection,
+                                    Mode = true,
+                                    TileValue = (ushort) WorldTile.Dirt
+                                });
+                            else
+                                targetChunk.ApplyBlockUpdate(new TileUpdate
+                                {
+                                    X = (byte) xSelection,
+                                    Y = (byte) ySelection,
+                                    Mode = true,
+                                    TileValue = (ushort) WorldTile.Air
+                                });
+                        }
                     }
                 }
 

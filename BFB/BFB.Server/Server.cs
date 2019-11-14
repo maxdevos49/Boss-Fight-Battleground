@@ -45,7 +45,7 @@ namespace BFB.Server
                 ChunkSize = 16,
                 WorldChunkWidth = 20,
                 WorldChunkHeight = 10,
-                WorldScale = 15,
+                WorldScale = 30,
                 WorldGenerator = options => new FlatWorld(options)
             }, 20);
         }

@@ -27,8 +27,15 @@ namespace BFB.Engine.Entity
         
         public float Rotation { get; set; }
 
-        public bool Grounded => (int) Velocity.Y == 0;
-
+        // ReSharper disable once CompareOfFloatsByEqualityOperator
+        public bool Grounded => Velocity.Y == 0f;
+        
+        public int Width => (int) Dimensions.X;
+        public int Height => (int) Dimensions.Y;
+        public int Bottom => (int)(Position.Y + Height);
+        public int Left => (int)(Position.X);
+        public int Right => (int)(Position.X + Width);
+        public int Top => (int)(Position.Y);
         
         #endregion
 

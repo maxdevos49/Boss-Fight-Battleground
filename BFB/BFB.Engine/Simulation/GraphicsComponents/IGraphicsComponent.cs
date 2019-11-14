@@ -7,6 +7,6 @@ namespace BFB.Engine.Simulation.GraphicsComponents
     {
         void Update(ClientEntity entity);
 
-        void Draw(ClientEntity entity, SpriteBatch graphics);
+        void Draw(ClientEntity entity, SpriteBatch graphics, float scale = 1);
     }
 }

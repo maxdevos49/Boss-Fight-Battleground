@@ -71,15 +71,15 @@ namespace BFB.Engine.Simulation.GraphicsComponents
             _frameSelector.Y = _frameSelector.Height * currentRow;
         }
 
-        public void Draw(ClientEntity entity, SpriteBatch graphics)
+        public void Draw(ClientEntity entity, SpriteBatch graphics, float worldScale)
         {
             graphics.Draw(_animatedTexture.Texture,
                 entity.Position.ToVector2(),
                 _frameSelector,
                 Color.White,
                 entity.Rotation,
-                new Vector2((float)_frameSelector.Width/2, (float)_frameSelector.Width/2),
-                 _animatedTexture.Scale,
+                Vector2.Zero, //This was a big problem
+                 _animatedTexture.Scale * worldScale,
                 !_currentAnimationSet.Mirror ? SpriteEffects.None : SpriteEffects.FlipHorizontally,
                 1);
         }

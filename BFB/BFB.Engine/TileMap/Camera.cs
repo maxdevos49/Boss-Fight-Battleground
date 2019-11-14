@@ -41,7 +41,7 @@ namespace BFB.Engine.TileMap
             Origin = Vector2.Zero;
             ScreenCenter = Vector2.Zero;
             Zoom = 0.3f;
-            MoveSpeed = 5.25f;
+            MoveSpeed = 10.25f;
             Rotation = 0;
         }
 
@@ -78,17 +78,6 @@ namespace BFB.Engine.TileMap
             else if(_position.X > _worldWidth - Origin.X)
                 _position.X = _worldWidth - Origin.X;
            
-        }
-        
-        //TODO remove maybe because we will not need it with better renderer maybe
-        public bool IsInView(Vector2 position, Texture2D texture)
-        {
-            // If the object is not within the horizontal bounds of the screen
-            if ( (position.X + texture.Width) < (Position.X - Origin.X - 100) || (position.X) > (Position.X + Origin.X + 100) )
-                return false;
-
-            // If the object is not within the vertical bounds of the screen
-            return !((position.Y + texture.Height) < (Position.Y - Origin.Y - 100)) && !((position.Y) > (Position.Y + Origin.Y + 100));
         }
 
     }

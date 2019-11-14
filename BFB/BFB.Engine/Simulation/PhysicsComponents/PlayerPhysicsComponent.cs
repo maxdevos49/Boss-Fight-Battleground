@@ -16,10 +16,10 @@ namespace BFB.Engine.Simulation.PhysicsComponents
         
         public PlayerPhysicsComponent()
         {
-            _acceleration = new BfbVector(3,25);
+            _acceleration = new BfbVector(5,25);
             _maxSpeed = new BfbVector(20,40);
             _gravity = new BfbVector(0, 4f);
-            _friction = 0.2f;
+            _friction = 0.8f;
 
         }
 
@@ -34,6 +34,8 @@ namespace BFB.Engine.Simulation.PhysicsComponents
             
             //Creates the new velocity
             entity.Velocity.Add(entity.DesiredVector);
+            
+            entity.Velocity.X *= _friction;
 
             //Caps your speed
             if(System.Math.Abs(entity.Velocity.X) > _maxSpeed.X)
@@ -42,22 +44,17 @@ namespace BFB.Engine.Simulation.PhysicsComponents
             if(System.Math.Abs(entity.Velocity.Y) > _maxSpeed.Y)
                 entity.Velocity.Y = entity.Velocity.Y > 0 ? _maxSpeed.Y : -_maxSpeed.Y;
             
-            if (entity.Grounded && (int)entity.DesiredVector.X == 0)
-            {
-                //This will affects changing directions back and forth -- so its like smash bros switching directions
-                entity.Velocity.Mult(_friction);
-            }
-
-            if (System.Math.Abs(entity.Velocity.X) < 1 && (int)entity.Velocity.X != 0)
-            {
-                entity.Velocity.X = 0;
-                entity.AnimationState = _previousAnimationState == AnimationState.MoveLeft ? AnimationState.IdleLeft : AnimationState.IdleRight;
-            }
-
             //Updates the position
             entity.Position.Add(entity.Velocity);
 
             Collision.DetectCollision(entity,simulation);
+            
+            // ReSharper disable once CompareOfFloatsByEqualityOperator
+            if (System.Math.Abs(entity.Velocity.X) < 2 && entity.Velocity.X != 0)
+            {
+                entity.Velocity.X = 0;
+                entity.AnimationState = _previousAnimationState == AnimationState.MoveLeft ? AnimationState.IdleLeft : AnimationState.IdleRight;
+            }
 
             //Animation states
             if (entity.Velocity.X > 1)

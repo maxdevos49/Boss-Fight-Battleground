@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using System.Drawing;
 using BFB.Engine.Math;
 using BFB.Engine.Simulation.InputComponents;
 using BFB.Engine.Simulation.PhysicsComponents;
@@ -15,8 +17,6 @@ namespace BFB.Engine.Entity
         
         public bool IsPlayer { get; set; }
         
-        public bool IsInBounds { get; set; }
-
         public BfbVector DesiredVector { get; }
 
         public BfbVector OldPosition { get; private set; }
@@ -24,16 +24,12 @@ namespace BFB.Engine.Entity
         public List<string> VisibleChunks { get; }
 
         public Dictionary<string, int> ChunkVersions { get; }
+
+        public Rectangle Bounds => new Rectangle((int)Position.X, (int)Position.Y, (int)Dimensions.X, (int)Dimensions.Y);
         
-        public int Width => (int) Dimensions.X;
-        public int Height => (int) Dimensions.Y;
-        public int Bottom => (int)(Position.Y + Height);
         public int OldBottom => (int)(OldPosition.Y + Height);
-        public int Left => (int)(Position.X);
         public int OldLeft => (int)(OldPosition.X);
-        public int Right => (int)(Position.X + Width);
         public int OldRight => (int)(OldPosition.X + Width);
-        public int Top => (int)(Position.Y);
         public int OldTop => (int)(OldPosition.Y);
 
         #endregion
@@ -128,14 +124,4 @@ namespace BFB.Engine.Entity
 
     }
 
-    //TODO Move Out
-    #region ComponentOptions
-
-        public class ComponentOptions
-        {
-            public IInputComponent Input { get; set; }
-            public IPhysicsComponent Physics { get; set; }
-        }
-
-        #endregion
 }
