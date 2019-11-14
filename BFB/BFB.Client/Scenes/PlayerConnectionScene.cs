@@ -186,6 +186,7 @@ namespace BFB.Client.Scenes
             
             if (!_server.Connect())
                 Console.WriteLine("Connection Failed.");
+            
             #region Handle Chunk Updates
 
             _server.On("/players/chunkUpdates", message =>
@@ -197,9 +198,6 @@ namespace BFB.Client.Scenes
             
             //Launch hud ui
             UIManager.Start(nameof(HudUI));
-            
-            if (!_server.Connect())
-                Console.WriteLine("Connection Failed.");
             
         }
         

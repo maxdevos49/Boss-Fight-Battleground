@@ -139,24 +139,6 @@ namespace BFB.Engine.Entity
         }
 
         #endregion
-        
-    }
-    
-    #region ComponentOptions
-    
-    /// <summary>
-    /// Options object used for creating a component
-    /// </summary>
-    public class ComponentOptions
-    {
-        /// <summary>
-        /// Input component to be applied
-        /// </summary>
-        public IInputComponent Input { get; set; }
-        /// <summary>
-        /// Physics component to be applied
-        /// </summary>
-        public IPhysicsComponent Physics { get; set; }
     }
 
 }

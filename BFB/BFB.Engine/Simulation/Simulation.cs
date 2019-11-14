@@ -24,12 +24,13 @@ namespace BFB.Engine.Simulation
         private readonly int _tickSpeed;
         private readonly Random _random;
         public int Tick { get; private set; } 
+        private readonly Dictionary<string,SimulationEntity> _entitiesIndex;
+        private readonly Dictionary<string,SimulationEntity> _playerEntitiesIndex;
         
         /// <summary>
         /// Indicates the distance at which a player causes the simulation to simulate
         /// </summary>
         public readonly int SimulationDistance;
-        
         public readonly WorldManager World;
         
         /// <summary>

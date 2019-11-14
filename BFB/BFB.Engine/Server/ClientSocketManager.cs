@@ -52,6 +52,10 @@ namespace BFB.Engine.Server
         public Action<string> OnDisconnect { get; set; }
         
         public Action<DataMessage> OnPrepare { get; set; }
+        
+        /// <summary>
+        /// Callback called when the client is ready told by the server
+        /// </summary>
         public Action OnReady { get; set; }
         
         #endregion

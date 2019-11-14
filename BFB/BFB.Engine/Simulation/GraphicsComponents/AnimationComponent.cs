@@ -3,7 +3,6 @@ using BFB.Engine.Entity;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-
 namespace BFB.Engine.Simulation.GraphicsComponents
 {
     public class AnimationComponent : IGraphicsComponent

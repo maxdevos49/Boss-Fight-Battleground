@@ -28,14 +28,6 @@ namespace BFB.Engine.TileMap
         /// The index for the chunk.
         /// </summary>
         public Dictionary<string, Chunk> ChunkIndex { get; }
-<<<<<<< HEAD
-=======
-        /// <summary>
-        /// The callback action for the world generator.
-        /// </summary>
-        public Action<string> WorldGeneratorCallback { get; set; }
-        
->>>>>>> 5d8a6aa64e8cd5934e74929028a6f2a776a530a2
         
         private readonly WorldGenerator _worldGenerator;
 
@@ -58,7 +50,6 @@ namespace BFB.Engine.TileMap
         
         #endregion
         
-<<<<<<< HEAD
         #region GetInitWorldData
 
         /// <summary>
@@ -66,14 +57,6 @@ namespace BFB.Engine.TileMap
         /// </summary>
         /// <returns>A DataMessage containing world meta information</returns>
         public WorldDataMessage GetInitWorldData()
-=======
-
-        /// <summary>
-        /// Generates the entire map at once.
-        /// </summary>
-        /// <param name="progressCallback">Gets the progress from the world generation.</param>
-        public void GenerateWorld(Action<string> progressCallback)
->>>>>>> 5d8a6aa64e8cd5934e74929028a6f2a776a530a2
         {
             WorldDataMessage worldData = new WorldDataMessage
             {
@@ -138,26 +121,7 @@ namespace BFB.Engine.TileMap
         
         #endregion
         
-<<<<<<< HEAD
         #region ApplyChunkUpdates
-=======
-        //move to world IO?
-        #region SaveWorld
-        
-
-        /// <summary>
-        /// Saves the current state of the world with a given name in the world folder.
-        /// </summary>
-        /// <param name="fileName">The name to save the file as.</param>
-        /// <returns>Returns true if world is saved, false otherwise.</returns>
-        public bool SaveWorld(string fileName)
-        {
-            WorldDataSchema worldData = new WorldDataSchema
-            {
-                WorldConfig = WorldOptions,
-                Chunks = ChunkMap
-            };
->>>>>>> 5d8a6aa64e8cd5934e74929028a6f2a776a530a2
 
         public void ApplyChunkUpdateMessage(ChunkUpdatesMessage updates)
         {
@@ -174,30 +138,9 @@ namespace BFB.Engine.TileMap
                 ChunkMap[chunkUpdate.ChunkX, chunkUpdate.ChunkY].Block = chunkUpdate.Block;
                 ChunkMap[chunkUpdate.ChunkX, chunkUpdate.ChunkY].Wall = chunkUpdate.Wall;
             }
-<<<<<<< HEAD
                 
             //process tile map updates
             foreach (ChunkTileUpdates chunkTileUpdates in updates.ChunkTileUpdates)
-=======
-        }
-        
-        #endregion
-
-        //move to world IO?
-        #region LoadWorld
-        
-        /// <summary>
-        /// Loads a world from a given filename.
-        /// </summary>
-        /// <param name="fileName">The name of the file.</param>
-        /// <returns>Returns true if file is loaded.</returns>
-        public bool LoadWorld(string fileName)
-        {
-            //TODO not sure if works at all
-            string path = Directory.GetCurrentDirectory() + "/Worlds/" + fileName + ".json";
-
-            try
->>>>>>> 5d8a6aa64e8cd5934e74929028a6f2a776a530a2
             {
                 if(!ChunkExist(chunkTileUpdates.ChunkX, chunkTileUpdates.ChunkY))
                     continue;

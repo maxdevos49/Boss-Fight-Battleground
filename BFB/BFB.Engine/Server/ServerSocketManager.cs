@@ -48,7 +48,9 @@ namespace BFB.Engine.Server
         /// </summary>
         public Action<ClientSocket> OnClientPrepare { get; set; }
 
-        
+        /// <summary>
+        /// Called when a client disconnects
+        /// </summary>
         public Action<string> OnClientDisconnect { get; set; }
         
         /// <summary>
