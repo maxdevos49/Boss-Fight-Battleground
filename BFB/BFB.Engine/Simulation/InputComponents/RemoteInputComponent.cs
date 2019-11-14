@@ -9,6 +9,9 @@ using BFB.Engine.TileMap;
 
 namespace BFB.Engine.Simulation.InputComponents
 {
+    /// <summary>
+    /// A Input component that is used for remotely controlling a entity from a socket connection
+    /// </summary>
     public class RemoteInputComponent : IInputComponent
     {
         
@@ -20,7 +23,10 @@ namespace BFB.Engine.Simulation.InputComponents
         
         #endregion
 
-        
+        /// <summary>
+        /// Constructs a RemoteInputComponent using a ClientSocket
+        /// </summary>
+        /// <param name="socket">The controlling players ClientSocket</param>
         public RemoteInputComponent(ClientSocket socket)
         {
             _lock = new object();

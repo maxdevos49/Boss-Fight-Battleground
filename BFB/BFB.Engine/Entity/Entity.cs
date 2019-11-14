@@ -5,6 +5,9 @@ using Microsoft.Xna.Framework;
 
 namespace BFB.Engine.Entity
 {
+    /// <summary>
+    /// An entity that exists in the game
+    /// </summary>
     public class Entity
     {
         #region Properties
@@ -13,18 +16,39 @@ namespace BFB.Engine.Entity
         
         public string EntityId { get; set; }
 
+        /// <summary>
+        /// Key to which texture to apply
+        /// </summary>
         public string AnimatedTextureKey { get; set; }
         
+        /// <summary>
+        /// Current state of the animation
+        /// </summary>
         public AnimationState AnimationState { get; set; }
         
+        /// <summary>
+        /// Current position of this entity on the map
+        /// </summary>
         public BfbVector Position { get; set; }
         
+        /// <summary>
+        /// Vector of dimensions for this entity
+        /// </summary>
         public BfbVector Dimensions { get; set; }
         
+        /// <summary>
+        /// Point that this entity calculates position and rotation from
+        /// </summary>
         public BfbVector Origin { get; set; }
         
+        /// <summary>
+        /// Speed and direction of movement for this entity
+        /// </summary>
         public BfbVector Velocity { get; set; }
         
+        /// <summary>
+        /// The rotation of this entity
+        /// </summary>
         public float Rotation { get; set; }
 
         // ReSharper disable once CompareOfFloatsByEqualityOperator
@@ -41,6 +65,11 @@ namespace BFB.Engine.Entity
 
         #region Constructor
 
+        /// <summary>
+        /// Creates a new Entity
+        /// </summary>
+        /// <param name="entityId">Unique ID for this entity</param>
+        /// <param name="options">Options object to be applied to this entity</param>
         protected Entity(string entityId, EntityOptions options)
         {
             EntityId = entityId;
@@ -57,6 +86,10 @@ namespace BFB.Engine.Entity
         
         #region GetState
         
+        /// <summary>
+        /// Creates and returns an EntityMessage for this entity
+        /// </summary>
+        /// <returns>New Entity Message containing the state of this entity's properties</returns>
         public EntityMessage GetState()
         {
             return new EntityMessage
@@ -79,12 +112,30 @@ namespace BFB.Engine.Entity
     
     #region EntityOptions
     
+    /// <summary>
+    /// Contains properties of an entity to be applied to an entity. Specifically a new entity while being created.
+    /// </summary>
     public class EntityOptions
     {
+        /// <summary>
+        /// Key to which texture to apply
+        /// </summary>
         public string AnimatedTextureKey { get; set; }
+        /// <summary>
+        /// Current position of this entity on the map
+        /// </summary>
         public BfbVector Position { get; set; }
+        /// <summary>
+        /// Vector of dimensions for this entity
+        /// </summary>
         public BfbVector Dimensions { get; set; }
+        /// <summary>
+        /// Point that this entity calculates position and rotation from
+        /// </summary>
         public BfbVector Origin { get; set; }
+        /// <summary>
+        /// The rotation of this entity
+        /// </summary>
         public float Rotation { get; set; }
     }
     

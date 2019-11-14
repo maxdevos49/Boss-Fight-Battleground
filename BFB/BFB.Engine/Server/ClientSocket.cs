@@ -7,10 +7,17 @@ using BFB.Engine.Server.Communication;
 
 namespace BFB.Engine.Server
 {
+    /// <summary>
+    /// Manages a clients tcp connection state on the server
+    /// </summary>
     public class ClientSocket
     {
         
         #region Properties
+        
+        /// <summary>
+        /// The id of the connected client
+        /// </summary>
         public string ClientId { get; }
         
         private readonly object _lock;
@@ -22,9 +29,11 @@ namespace BFB.Engine.Server
         
         #region Constructor
 
-        /**
-         * Basically represents a socket client
-         */
+        /// <summary>
+        /// Constructs a client socket object used to manage a client on the server
+        /// </summary>
+        /// <param name="clientId">Id for the client</param>
+        /// <param name="socket">The tcp socket for the client</param>
         public ClientSocket(string clientId, TcpClient socket)
         {
             ClientId = clientId;
@@ -38,6 +47,11 @@ namespace BFB.Engine.Server
 
         #region Emit
         
+        /// <summary>
+        /// Used to send a message only to this client
+        /// </summary>
+        /// <param name="routeKey">The route to send the message</param>
+        /// <param name="message">The message to send</param>
         public void Emit(string routeKey, DataMessage message = null)
         {
             if (!IsConnected()) return;
@@ -80,6 +94,11 @@ namespace BFB.Engine.Server
         
         #region On
 
+        /// <summary>
+        /// Used to listen for messages only from the client
+        /// </summary>
+        /// <param name="routeKey">The route to listen for</param>
+        /// <param name="handler">The callback to use for processing the message</param>
         public void On(string routeKey, Action<DataMessage> handler)
         {
             lock (_lock)
@@ -99,6 +118,10 @@ namespace BFB.Engine.Server
         
         #region Read
 
+        /// <summary>
+        /// Used to read data from the clients data buffer. Only used by the ServerSocketManager
+        /// </summary>
+        /// <returns>A DataMessage</returns>
         public DataMessage Read()
         {
             if (!IsConnected()) return null;
@@ -136,6 +159,10 @@ namespace BFB.Engine.Server
         
         #region ProcessHandler
 
+        /// <summary>
+        /// Used to process client specific routes for the client. Only used by the ServerSocketManager
+        /// </summary>
+        /// <param name="message">A DataMessage to process</param>
         public void ProcessHandler(DataMessage message)
         {
             lock (_lock)
@@ -150,6 +177,10 @@ namespace BFB.Engine.Server
         
         #region PendingData
 
+        /// <summary>
+        /// Indicates whether the ClientSocket has data to read
+        /// </summary>
+        /// <returns></returns>
         public bool PendingData()
         {
             try
@@ -166,6 +197,10 @@ namespace BFB.Engine.Server
         
         #region IsConnected
 
+        /// <summary>
+        /// Used to determine if the client is still connected
+        /// </summary>
+        /// <returns></returns>
         public bool IsConnected()
         {
             try
@@ -186,6 +221,9 @@ namespace BFB.Engine.Server
         
         #region Disconnect
 
+        /// <summary>
+        /// Used to disconnect the client
+        /// </summary>
         public void Disconnect()
         {
             lock(_lock){

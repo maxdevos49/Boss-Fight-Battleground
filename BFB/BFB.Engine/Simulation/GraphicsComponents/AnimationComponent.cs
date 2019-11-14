@@ -1,11 +1,8 @@
-﻿//C#
-
-using BFB.Engine.Content;
+﻿using BFB.Engine.Content;
 using BFB.Engine.Entity;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-//Monogame
 
 namespace BFB.Engine.Simulation.GraphicsComponents
 {

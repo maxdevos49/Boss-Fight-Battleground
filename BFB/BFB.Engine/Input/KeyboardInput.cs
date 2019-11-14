@@ -10,6 +10,9 @@ using BFB.Engine.Event;
 
 namespace BFB.Engine.Input
 {
+    /// <summary>
+    /// Takes keyboard input and emits it to the server through events.
+    /// </summary>
     public class KeyboardInput
     {
         private readonly EventManager<InputEvent> _eventManager;
@@ -23,6 +26,9 @@ namespace BFB.Engine.Input
             _pressedKeys = new List<Keys>();
         }
 
+        /// <summary>
+        /// Updates the keyboard state and emits any new events based on keys pressed.
+        /// </summary>
         public void UpdateKeyboard()
         {
             _keyboardState = Keyboard.GetState();
@@ -58,6 +64,12 @@ namespace BFB.Engine.Input
 
         }
 
+        /// <summary>
+        /// Takes a certain keyboard key and returns it as a string.
+        /// </summary>
+        /// <param name="keyStatus"></param>
+        /// <param name="outputString"></param>
+        /// <returns></returns>
         public static string KeyToString(KeyboardStatus keyStatus, string outputString)
         {
             //currently pressed key

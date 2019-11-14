@@ -8,6 +8,9 @@ using BFB.Engine.TileMap;
 
 namespace BFB.Engine.Entity
 {
+    /// <summary>
+    /// An entity stored in the game server's simulation 
+    /// </summary>
     public class SimulationEntity : Entity
     {
 
@@ -15,8 +18,14 @@ namespace BFB.Engine.Entity
 
         private int _lastTick;
         
+        /// <summary>
+        /// Whether this is a player entity or not
+        /// </summary>
         public bool IsPlayer { get; set; }
         
+        /// <summary>
+        /// Vector describing a position an entity is attempting to move to 
+        /// </summary>
         public BfbVector DesiredVector { get; }
 
         public BfbVector OldPosition { get; private set; }
@@ -42,9 +51,14 @@ namespace BFB.Engine.Entity
         #endregion
 
         #region Constructor
-
-        public SimulationEntity(string entityId, EntityOptions options, ComponentOptions components) : base(entityId,
-            options)
+        
+        /// <summary>
+        /// Creates a new entity for the game simulations
+        /// </summary>
+        /// <param name="entityId">Unique ID for this entity</param>
+        /// <param name="options">Sets the initial properties of this entity</param>
+        /// <param name="components">The components this entity contains</param>
+        public SimulationEntity(string entityId, EntityOptions options, ComponentOptions components) : base(entityId, options)
         {
             //Components
             _input = components.Input;
@@ -61,7 +75,11 @@ namespace BFB.Engine.Entity
         #endregion
 
         #region Update
-
+        
+        /// <summary>
+        /// Updates this entity as part of the chunks in the simulation of this entity
+        /// </summary>
+        /// <param name="simulation"></param>
         public void Tick(Simulation.Simulation simulation)
         {
             //Only tick entity once per frame
@@ -121,7 +139,24 @@ namespace BFB.Engine.Entity
         }
 
         #endregion
-
+        
+    }
+    
+    #region ComponentOptions
+    
+    /// <summary>
+    /// Options object used for creating a component
+    /// </summary>
+    public class ComponentOptions
+    {
+        /// <summary>
+        /// Input component to be applied
+        /// </summary>
+        public IInputComponent Input { get; set; }
+        /// <summary>
+        /// Physics component to be applied
+        /// </summary>
+        public IPhysicsComponent Physics { get; set; }
     }
 
 }

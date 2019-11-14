@@ -1,0 +1,1057 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class WorldManager
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class WorldManager
+   ">
+    <meta name="generator" content="docfx 2.47.0.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="BFB.Engine.TileMap.WorldManager">
+  
+  
+  <h1 id="BFB_Engine_TileMap_WorldManager" data-uid="BFB.Engine.TileMap.WorldManager" class="text-break">Class WorldManager
+  </h1>
+  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">WorldManager</span></div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="BFB.Engine.TileMap.html">BFB.Engine.TileMap</a></h6>
+  <h6><strong>Assembly</strong>: BFB.Engine.dll</h6>
+  <h5 id="BFB_Engine_TileMap_WorldManager_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class WorldManager : object</code></pre>
+  </div>
+  <h3 id="constructors">Constructors
+  </h3>
+  
+  
+  <a id="BFB_Engine_TileMap_WorldManager__ctor_" data-uid="BFB.Engine.TileMap.WorldManager.#ctor*"></a>
+  <h4 id="BFB_Engine_TileMap_WorldManager__ctor_BFB_Engine_TileMap_Generators_WorldOptions_" data-uid="BFB.Engine.TileMap.WorldManager.#ctor(BFB.Engine.TileMap.Generators.WorldOptions)">WorldManager(WorldOptions)</h4>
+  <div class="markdown level1 summary"><p>The constructor for worldManager.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public WorldManager(WorldOptions worldOptions)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="BFB.Engine.TileMap.Generators.WorldOptions.html">WorldOptions</a></td>
+        <td><span class="parametername">worldOptions</span></td>
+        <td><p>The options for the world configuration.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+  </h3>
+  
+  
+  <a id="BFB_Engine_TileMap_WorldManager_ChunkIndex_" data-uid="BFB.Engine.TileMap.WorldManager.ChunkIndex*"></a>
+  <h4 id="BFB_Engine_TileMap_WorldManager_ChunkIndex" data-uid="BFB.Engine.TileMap.WorldManager.ChunkIndex">ChunkIndex</h4>
+  <div class="markdown level1 summary"><p>The index for the chunk.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Dictionary&lt;string, Chunk&gt; ChunkIndex { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Dictionary</span>&lt;<span class="xref">System.String</span>, <a class="xref" href="BFB.Engine.TileMap.Chunk.html">Chunk</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="BFB_Engine_TileMap_WorldManager_ChunkMap_" data-uid="BFB.Engine.TileMap.WorldManager.ChunkMap*"></a>
+  <h4 id="BFB_Engine_TileMap_WorldManager_ChunkMap" data-uid="BFB.Engine.TileMap.WorldManager.ChunkMap">ChunkMap</h4>
+  <div class="markdown level1 summary"><p>The map for a chunk.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Chunk[, ] ChunkMap { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="BFB.Engine.TileMap.Chunk.html">Chunk</a>[,]</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="BFB_Engine_TileMap_WorldManager_WorldGeneratorCallback_" data-uid="BFB.Engine.TileMap.WorldManager.WorldGeneratorCallback*"></a>
+  <h4 id="BFB_Engine_TileMap_WorldManager_WorldGeneratorCallback" data-uid="BFB.Engine.TileMap.WorldManager.WorldGeneratorCallback">WorldGeneratorCallback</h4>
+  <div class="markdown level1 summary"><p>The callback action for the world generator.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Action&lt;string&gt; WorldGeneratorCallback { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Action</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="BFB_Engine_TileMap_WorldManager_WorldOptions_" data-uid="BFB.Engine.TileMap.WorldManager.WorldOptions*"></a>
+  <h4 id="BFB_Engine_TileMap_WorldManager_WorldOptions" data-uid="BFB.Engine.TileMap.WorldManager.WorldOptions">WorldOptions</h4>
+  <div class="markdown level1 summary"><p>The options for the world.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public WorldOptions WorldOptions { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="BFB.Engine.TileMap.Generators.WorldOptions.html">WorldOptions</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  
+  
+  <a id="BFB_Engine_TileMap_WorldManager_ChunkFromChunkLocation_" data-uid="BFB.Engine.TileMap.WorldManager.ChunkFromChunkLocation*"></a>
+  <h4 id="BFB_Engine_TileMap_WorldManager_ChunkFromChunkLocation_System_Int32_System_Int32_" data-uid="BFB.Engine.TileMap.WorldManager.ChunkFromChunkLocation(System.Int32,System.Int32)">ChunkFromChunkLocation(Int32, Int32)</h4>
+  <div class="markdown level1 summary"><p>Gets a chunk from a chunk location.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Chunk ChunkFromChunkLocation(int chunkX, int chunkY)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">chunkX</span></td>
+        <td><p>The X location of the chunk.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">chunkY</span></td>
+        <td><p>The Y location of the chunk.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="BFB.Engine.TileMap.Chunk.html">Chunk</a></td>
+        <td><p>Returns the specified chunk.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="BFB_Engine_TileMap_WorldManager_ChunkFromPixelLocation_" data-uid="BFB.Engine.TileMap.WorldManager.ChunkFromPixelLocation*"></a>
+  <h4 id="BFB_Engine_TileMap_WorldManager_ChunkFromPixelLocation_System_Int32_System_Int32_" data-uid="BFB.Engine.TileMap.WorldManager.ChunkFromPixelLocation(System.Int32,System.Int32)">ChunkFromPixelLocation(Int32, Int32)</h4>
+  <div class="markdown level1 summary"><p>Retrieves the chunk from the pixel location on the screen.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Chunk ChunkFromPixelLocation(int pixelX, int pixelY)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">pixelX</span></td>
+        <td><p>The X pixel location on the screen.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">pixelY</span></td>
+        <td><p>The Y pixel location on the screen.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="BFB.Engine.TileMap.Chunk.html">Chunk</a></td>
+        <td><p>Returns the chunk from the pixel locations.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="BFB_Engine_TileMap_WorldManager_ChunkFromTileLocation_" data-uid="BFB.Engine.TileMap.WorldManager.ChunkFromTileLocation*"></a>
+  <h4 id="BFB_Engine_TileMap_WorldManager_ChunkFromTileLocation_System_Int32_System_Int32_" data-uid="BFB.Engine.TileMap.WorldManager.ChunkFromTileLocation(System.Int32,System.Int32)">ChunkFromTileLocation(Int32, Int32)</h4>
+  <div class="markdown level1 summary"><p>Retrieves the chunk where the tile is located.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Chunk ChunkFromTileLocation(int blockX, int blockY)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">blockX</span></td>
+        <td><p>The X block location of the tileMap.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">blockY</span></td>
+        <td><p>The Y block location of the tileMap.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="BFB.Engine.TileMap.Chunk.html">Chunk</a></td>
+        <td><p>Returns the chunk from the specified block locations.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="BFB_Engine_TileMap_WorldManager_ChunkKeyFromChunkLocation_" data-uid="BFB.Engine.TileMap.WorldManager.ChunkKeyFromChunkLocation*"></a>
+  <h4 id="BFB_Engine_TileMap_WorldManager_ChunkKeyFromChunkLocation_System_Int32_System_Int32_" data-uid="BFB.Engine.TileMap.WorldManager.ChunkKeyFromChunkLocation(System.Int32,System.Int32)">ChunkKeyFromChunkLocation(Int32, Int32)</h4>
+  <div class="markdown level1 summary"><p>Retrieves the key of the chunk location.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string ChunkKeyFromChunkLocation(int chunkX, int chunkY)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">chunkX</span></td>
+        <td><p>The X location of the chunk.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">chunkY</span></td>
+        <td><p>The Y location of the chunk.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>Returns the key of the specified chunk.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="BFB_Engine_TileMap_WorldManager_GenerateWorld_" data-uid="BFB.Engine.TileMap.WorldManager.GenerateWorld*"></a>
+  <h4 id="BFB_Engine_TileMap_WorldManager_GenerateWorld_Action_System_String__" data-uid="BFB.Engine.TileMap.WorldManager.GenerateWorld(Action{System.String})">GenerateWorld(Action&lt;String&gt;)</h4>
+  <div class="markdown level1 summary"><p>Generates the entire map at once.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void GenerateWorld(Action&lt;string&gt; progressCallback)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Action</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td><span class="parametername">progressCallback</span></td>
+        <td><p>Gets the progress from the world generation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="BFB_Engine_TileMap_WorldManager_GetBlock_" data-uid="BFB.Engine.TileMap.WorldManager.GetBlock*"></a>
+  <h4 id="BFB_Engine_TileMap_WorldManager_GetBlock_System_Int32_System_Int32_" data-uid="BFB.Engine.TileMap.WorldManager.GetBlock(System.Int32,System.Int32)">GetBlock(Int32, Int32)</h4>
+  <div class="markdown level1 summary"><p>Retrieves the block value of a block.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public WorldTile GetBlock(int xBlock, int yBlock)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">xBlock</span></td>
+        <td><p>The X location of a block.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">yBlock</span></td>
+        <td><p>The Y location of a block.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="BFB.Engine.TileMap.WorldTile.html">WorldTile</a></td>
+        <td><p>Returns the block value based on the block locations.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="BFB_Engine_TileMap_WorldManager_GetHardness_" data-uid="BFB.Engine.TileMap.WorldManager.GetHardness*"></a>
+  <h4 id="BFB_Engine_TileMap_WorldManager_GetHardness_System_Int32_System_Int32_" data-uid="BFB.Engine.TileMap.WorldManager.GetHardness(System.Int32,System.Int32)">GetHardness(Int32, Int32)</h4>
+  <div class="markdown level1 summary"><p>Retrieves the hardness value of a block.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int GetHardness(int xBlock, int yBlock)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">xBlock</span></td>
+        <td><p>The X location of a block.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">yBlock</span></td>
+        <td><p>The Y location of a block.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><p>Returns the hardness value based on the block locations.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="BFB_Engine_TileMap_WorldManager_GetLight_" data-uid="BFB.Engine.TileMap.WorldManager.GetLight*"></a>
+  <h4 id="BFB_Engine_TileMap_WorldManager_GetLight_System_Int32_System_Int32_" data-uid="BFB.Engine.TileMap.WorldManager.GetLight(System.Int32,System.Int32)">GetLight(Int32, Int32)</h4>
+  <div class="markdown level1 summary"><p>Retrieves the light value of a block.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int GetLight(int xBlock, int yBlock)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">xBlock</span></td>
+        <td><p>The X location of a block.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">yBlock</span></td>
+        <td><p>The Y location of a block.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><p>Returns the light value based on the block locations.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="BFB_Engine_TileMap_WorldManager_GetWall_" data-uid="BFB.Engine.TileMap.WorldManager.GetWall*"></a>
+  <h4 id="BFB_Engine_TileMap_WorldManager_GetWall_System_Int32_System_Int32_" data-uid="BFB.Engine.TileMap.WorldManager.GetWall(System.Int32,System.Int32)">GetWall(Int32, Int32)</h4>
+  <div class="markdown level1 summary"><p>Retrieves the wall value of a block.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int GetWall(int xBlock, int yBlock)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">xBlock</span></td>
+        <td><p>The X location of a block.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">yBlock</span></td>
+        <td><p>The Y location of a block.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><p>Returns the wall value based on the block locations.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="BFB_Engine_TileMap_WorldManager_LoadWorld_" data-uid="BFB.Engine.TileMap.WorldManager.LoadWorld*"></a>
+  <h4 id="BFB_Engine_TileMap_WorldManager_LoadWorld_System_String_" data-uid="BFB.Engine.TileMap.WorldManager.LoadWorld(System.String)">LoadWorld(String)</h4>
+  <div class="markdown level1 summary"><p>Loads a world from a given filename.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool LoadWorld(string fileName)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">fileName</span></td>
+        <td><p>The name of the file.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>Returns true if file is loaded.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="BFB_Engine_TileMap_WorldManager_MoveEntity_" data-uid="BFB.Engine.TileMap.WorldManager.MoveEntity*"></a>
+  <h4 id="BFB_Engine_TileMap_WorldManager_MoveEntity_System_String_BFB_Engine_TileMap_Chunk_BFB_Engine_TileMap_Chunk_" data-uid="BFB.Engine.TileMap.WorldManager.MoveEntity(System.String,BFB.Engine.TileMap.Chunk,BFB.Engine.TileMap.Chunk)">MoveEntity(String, Chunk, Chunk)</h4>
+  <div class="markdown level1 summary"><p>Moves entity from one chunk to another.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void MoveEntity(string entityKey, Chunk originalChunk, Chunk newChunk)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">entityKey</span></td>
+        <td><p>The given entity.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="BFB.Engine.TileMap.Chunk.html">Chunk</a></td>
+        <td><span class="parametername">originalChunk</span></td>
+        <td><p>The chunk the entity is in.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="BFB.Engine.TileMap.Chunk.html">Chunk</a></td>
+        <td><span class="parametername">newChunk</span></td>
+        <td><p>The chunk the entity is going to be in.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="BFB_Engine_TileMap_WorldManager_SaveWorld_" data-uid="BFB.Engine.TileMap.WorldManager.SaveWorld*"></a>
+  <h4 id="BFB_Engine_TileMap_WorldManager_SaveWorld_System_String_" data-uid="BFB.Engine.TileMap.WorldManager.SaveWorld(System.String)">SaveWorld(String)</h4>
+  <div class="markdown level1 summary"><p>Saves the current state of the world with a given name in the world folder.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool SaveWorld(string fileName)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">fileName</span></td>
+        <td><p>The name to save the file as.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>Returns true if world is saved, false otherwise.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="BFB_Engine_TileMap_WorldManager_SetAll_" data-uid="BFB.Engine.TileMap.WorldManager.SetAll*"></a>
+  <h4 id="BFB_Engine_TileMap_WorldManager_SetAll_System_Int32_System_Int32_System_UInt16_System_Byte_System_UInt16_BFB_Engine_TileMap_WorldTile_" data-uid="BFB.Engine.TileMap.WorldManager.SetAll(System.Int32,System.Int32,System.UInt16,System.Byte,System.UInt16,BFB.Engine.TileMap.WorldTile)">SetAll(Int32, Int32, UInt16, Byte, UInt16, WorldTile)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetAll(int xBlock, int yBlock, ushort hardnessValue, byte lightValue, ushort wallValue, WorldTile tile)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">xBlock</span></td>
+        <td><p>The X location of a block.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">yBlock</span></td>
+        <td><p>The Y location of a block.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.UInt16</span></td>
+        <td><span class="parametername">hardnessValue</span></td>
+        <td><p>The value of the hardness to be set.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Byte</span></td>
+        <td><span class="parametername">lightValue</span></td>
+        <td><p>The value of the light to be set.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.UInt16</span></td>
+        <td><span class="parametername">wallValue</span></td>
+        <td><p>The value of the wall to be set.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="BFB.Engine.TileMap.WorldTile.html">WorldTile</a></td>
+        <td><span class="parametername">tile</span></td>
+        <td><p>The value of the block to be set.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="BFB_Engine_TileMap_WorldManager_SetBlock_" data-uid="BFB.Engine.TileMap.WorldManager.SetBlock*"></a>
+  <h4 id="BFB_Engine_TileMap_WorldManager_SetBlock_System_Int32_System_Int32_BFB_Engine_TileMap_WorldTile_" data-uid="BFB.Engine.TileMap.WorldManager.SetBlock(System.Int32,System.Int32,BFB.Engine.TileMap.WorldTile)">SetBlock(Int32, Int32, WorldTile)</h4>
+  <div class="markdown level1 summary"><p>Sets the block value of a block.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetBlock(int xBlock, int yBlock, WorldTile blockValue)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">xBlock</span></td>
+        <td><p>The X location of a block.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">yBlock</span></td>
+        <td><p>The Y location of a block.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="BFB.Engine.TileMap.WorldTile.html">WorldTile</a></td>
+        <td><span class="parametername">blockValue</span></td>
+        <td><p>The value of the block to be set.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="BFB_Engine_TileMap_WorldManager_SetHardness_" data-uid="BFB.Engine.TileMap.WorldManager.SetHardness*"></a>
+  <h4 id="BFB_Engine_TileMap_WorldManager_SetHardness_System_Int32_System_Int32_System_UInt16_" data-uid="BFB.Engine.TileMap.WorldManager.SetHardness(System.Int32,System.Int32,System.UInt16)">SetHardness(Int32, Int32, UInt16)</h4>
+  <div class="markdown level1 summary"><p>Sets the hardness value of a block.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetHardness(int xBlock, int yBlock, ushort hardnessValue)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">xBlock</span></td>
+        <td><p>The X location of a block.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">yBlock</span></td>
+        <td><p>The Y location of a block.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.UInt16</span></td>
+        <td><span class="parametername">hardnessValue</span></td>
+        <td><p>The value of the hardness to be set.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="BFB_Engine_TileMap_WorldManager_SetLight_" data-uid="BFB.Engine.TileMap.WorldManager.SetLight*"></a>
+  <h4 id="BFB_Engine_TileMap_WorldManager_SetLight_System_Int32_System_Int32_System_Byte_" data-uid="BFB.Engine.TileMap.WorldManager.SetLight(System.Int32,System.Int32,System.Byte)">SetLight(Int32, Int32, Byte)</h4>
+  <div class="markdown level1 summary"><p>Sets the light value of a block.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetLight(int xBlock, int yBlock, byte lightValue)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">xBlock</span></td>
+        <td><p>The X location of a block.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">yBlock</span></td>
+        <td><p>The Y location of a block.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Byte</span></td>
+        <td><span class="parametername">lightValue</span></td>
+        <td><p>The value of the light to be set.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="BFB_Engine_TileMap_WorldManager_SetWall_" data-uid="BFB.Engine.TileMap.WorldManager.SetWall*"></a>
+  <h4 id="BFB_Engine_TileMap_WorldManager_SetWall_System_Int32_System_Int32_System_UInt16_" data-uid="BFB.Engine.TileMap.WorldManager.SetWall(System.Int32,System.Int32,System.UInt16)">SetWall(Int32, Int32, UInt16)</h4>
+  <div class="markdown level1 summary"><p>Sets the wall value of a block.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetWall(int xBlock, int yBlock, ushort wallValue)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">xBlock</span></td>
+        <td><p>The X location of a block.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">yBlock</span></td>
+        <td><p>The Y location of a block.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.UInt16</span></td>
+        <td><span class="parametername">wallValue</span></td>
+        <td><p>The value of the wall to be set.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="extensionmethods">Extension Methods</h3>
+  <div>
+      <a class="xref" href="BFB.Engine.UI.Components.LambdaExtensions.html#BFB_Engine_UI_Components_LambdaExtensions_SetPropertyValue__2___0_Expression_Func___0___1_____1_">LambdaExtensions.SetPropertyValue&lt;T, TValue&gt;(T, Expression&lt;Func&lt;T, TValue&gt;&gt;, TValue)</a>
+  </div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>
