@@ -21,10 +21,11 @@ namespace BFB.Engine.Simulation.PhysicsComponents
         /// </summary>
         public PlayerPhysicsComponent()
         {
-            _acceleration = new BfbVector(1,15);
-            _maxSpeed = new BfbVector(10,20);
-            _gravity = new BfbVector(0, 0.98f);
-            _friction = 0.2f;
+            _acceleration = new BfbVector(5, 25);
+            _maxSpeed = new BfbVector(20, 40);
+            _gravity = new BfbVector(0, 4f);
+            _friction = 0.8f;
+
         }
 
         public void Update(SimulationEntity entity, Simulation simulation)
