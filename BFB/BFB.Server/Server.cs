@@ -107,14 +107,14 @@ namespace BFB.Server
                     socket.ClientId,
                     new EntityOptions
                     {
-                        AnimatedTextureKey = "Player",
+                        AnimatedTextureKey = "Spider",
                         Position = new BfbVector(200, 185),
-                        Dimensions = new BfbVector(2 * _simulation.World.WorldOptions.WorldScale, 3 * _simulation.World.WorldOptions.WorldScale),
+                        Dimensions = new BfbVector(3 * _simulation.World.WorldOptions.WorldScale, 2 * _simulation.World.WorldOptions.WorldScale),
                         Rotation = 0,
                         Origin = new BfbVector(0, 0),
                     }, new ComponentOptions
                     {
-                        Physics = new PlayerPhysicsComponent(),
+                        Physics = new SpiderPhysicsComponent(),
                         Input = new RemoteInputComponent(socket)
                     }),true);
                 

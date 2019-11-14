@@ -70,8 +70,8 @@
             "Key": "Spider",
             "Location": "Sprites\\Spider",
             "Frames": 6,
-            "FrameWidth": 45,
-            "FrameHeight": 30,
+            "FrameWidth": 40,
+            "FrameHeight": 25,
             "Columns": 2,
             "Rows": 3,
             "Scale": 1,
@@ -89,13 +89,13 @@
                     "Mirror": false
                 },
                 "MoveLeft": {
-                    "Fps": 12,
+                    "Fps": 9,
                     "FrameStart": 0,
                     "FrameEnd": 5,
                     "Mirror": true
                 },
                 "MoveRight": {
-                    "Fps": 12,
+                    "Fps": 9,
                     "FrameStart": 0,
                     "FrameEnd": 5,
                     "Mirror": false
@@ -106,7 +106,7 @@
         {
             "Key": "Zombie",
             "Location": "Sprites\\Zombie",
-            "Frames": 8,
+            "Frames": 6,
             "FrameWidth": 30,
             "FrameHeight": 45,
             "Columns": 3,
@@ -126,13 +126,13 @@
                     "Mirror": false
                 },
                 "MoveLeft": {
-                    "Fps": 9,
+                    "Fps": 5,
                     "FrameStart": 0,
                     "FrameEnd": 5,
                     "Mirror": true
                 },
                 "MoveRight": {
-                    "Fps": 9,
+                    "Fps": 5,
                     "FrameStart": 0,
                     "FrameEnd": 5,
                     "Mirror": false
@@ -163,13 +163,13 @@
                     "Mirror": false
                 },
                 "MoveLeft": {
-                    "Fps": 9,
+                    "Fps": 5,
                     "FrameStart": 0,
                     "FrameEnd": 5,
                     "Mirror": true
                 },
                 "MoveRight": {
-                    "Fps": 9,
+                    "Fps": 5,
                     "FrameStart": 0,
                     "FrameEnd": 5,
                     "Mirror": false
@@ -209,6 +209,43 @@
                     "Fps": 9,
                     "FrameStart": 0,
                     "FrameEnd": 0,
+                    "Mirror": false
+                }
+            }
+        },
+
+        {
+            "Key": "TestRunning",
+            "Location": "Sprites\\TestRunning",
+            "Frames": 8,
+            "FrameWidth": 269,
+            "FrameHeight": 300,
+            "Columns": 3,
+            "Rows": 3,
+            "Scale": 0.3,
+            "AnimationSets": {
+                "IdleLeft": {
+                    "Fps": 5,
+                    "FrameStart": 0,
+                    "FrameEnd": 0,
+                    "Mirror": true
+                },
+                "IdleRight": {
+                    "Fps": 5,
+                    "FrameStart": 0,
+                    "FrameEnd": 0,
+                    "Mirror": false
+                },
+                "MoveLeft": {
+                    "Fps": 12,
+                    "FrameStart": 0,
+                    "FrameEnd": 7,
+                    "Mirror": true
+                },
+                "MoveRight": {
+                    "Fps": 12,
+                    "FrameStart": 0,
+                    "FrameEnd": 7,
                     "Mirror": false
                 }
             }

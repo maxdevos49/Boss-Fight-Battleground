@@ -78,7 +78,7 @@ namespace BFB.Engine.Simulation.GraphicsComponents
                 _frameSelector,
                 Color.White,
                 entity.Rotation,
-                new Vector2((float)_frameSelector.Width/2, (float)_frameSelector.Width/2),
+                Vector2.Zero,
                  _animatedTexture.Scale,
                 !_currentAnimationSet.Mirror ? SpriteEffects.None : SpriteEffects.FlipHorizontally,
                 1);

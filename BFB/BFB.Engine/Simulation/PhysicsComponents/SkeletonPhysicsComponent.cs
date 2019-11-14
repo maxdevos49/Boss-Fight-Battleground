@@ -16,7 +16,7 @@ namespace BFB.Engine.Simulation.PhysicsComponents
         
         public SkeletonPhysicsComponent()
         {
-            _acceleration = new BfbVector(3,25);
+            _acceleration = new BfbVector(3,27);
             _maxSpeed = new BfbVector(20,40);
             _gravity = new BfbVector(0, 4f);
             _friction = 0.2f;
@@ -30,7 +30,10 @@ namespace BFB.Engine.Simulation.PhysicsComponents
             entity.DesiredVector.X *= _acceleration.X;
             entity.DesiredVector.Y *= _acceleration.Y;
             
-            entity.DesiredVector.Add(_gravity);
+            if (!entity.Grounded)
+            {
+                entity.DesiredVector.Add(_gravity);
+            }
             
             //Creates the new velocity
             entity.Velocity.Add(entity.DesiredVector);

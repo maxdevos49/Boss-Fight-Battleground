@@ -16,8 +16,8 @@ namespace BFB.Engine.Simulation.PhysicsComponents
         
         public ZombiePhysicsComponent()
         {
-            _acceleration = new BfbVector(3,25);
-            _maxSpeed = new BfbVector(20,40);
+            _acceleration = new BfbVector(4,25);
+            _maxSpeed = new BfbVector(15,40);
             _gravity = new BfbVector(0, 4f);
             _friction = 0.2f;
 
@@ -29,8 +29,11 @@ namespace BFB.Engine.Simulation.PhysicsComponents
             //Gives us the speed to move left and right
             entity.DesiredVector.X *= _acceleration.X;
             entity.DesiredVector.Y *= _acceleration.Y;
-            
-            entity.DesiredVector.Add(_gravity);
+
+            if (!entity.Grounded)
+            {
+                entity.DesiredVector.Add(_gravity);
+            }
             
             //Creates the new velocity
             entity.Velocity.Add(entity.DesiredVector);
@@ -61,10 +64,13 @@ namespace BFB.Engine.Simulation.PhysicsComponents
 
             //Animation states
             if (entity.Velocity.X > 1)
+            {
                 entity.AnimationState = AnimationState.MoveRight;
+            }
             else if (entity.Velocity.X < -1)
+            {
                 entity.AnimationState = AnimationState.MoveLeft;
-
+            }
             _previousAnimationState = entity.AnimationState;
 
         }
