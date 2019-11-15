@@ -52,14 +52,20 @@ namespace BFB.Engine.Simulation.InputComponents
                 if (_playerState.RightClick || _playerState.LeftClick)
                 {
                     //Combat
-                    List<SimulationEntity> targets = new List<SimulationEntity>();
-                    for (int i = 0; i < 100; i++)
+                    if (_playerState.LeftClick)
                     {
-                        SimulationEntity target = simulation.GetEntityAtPosition((int)simulationEntity.Position.X + i, (int)simulationEntity.Position.Y, simulationEntity.isFacingRight);
-                        if (target != null && target != simulationEntity && !targets.Contains(target))
-                            targets.Add(target);
+                        List<SimulationEntity> targets = new List<SimulationEntity>();
+                        for (int i = 0; i < 100; i++)
+                        {
+                            SimulationEntity target = simulation.GetEntityAtPosition(
+                                (int) simulationEntity.Position.X + i, (int) simulationEntity.Position.Y,
+                                simulationEntity.isFacingRight);
+                            if (target != null && target != simulationEntity && !targets.Contains(target))
+                                targets.Add(target);
+                        }
+
+                        Helpers.CombatService.FightPeople(simulationEntity, targets, simulation);
                     }
-                    Helpers.CombatService.FightPeople(simulationEntity, targets, simulation);
 
                     //Block Placement
                     int mouseX = (int)(_playerState.Mouse.X + 0);
