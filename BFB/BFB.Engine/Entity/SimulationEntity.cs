@@ -48,7 +48,7 @@ namespace BFB.Engine.Entity
 
         private readonly IInputComponent _input;
         private readonly IPhysicsComponent _physics;
-        private readonly IPhysicsComponent _combat;
+        public IPhysicsComponent Combat { get; }
 
         #endregion
 
@@ -66,12 +66,11 @@ namespace BFB.Engine.Entity
             //Components
             _input = components.Input;
             _physics = components.Physics;
-            _combat = components.Combat;
+            Combat = components.Combat;
             DesiredVector = new BfbVector();
             OldPosition = new BfbVector();
             VisibleChunks = new List<string>();
             ChunkVersions = new Dictionary<string, int>();
-            Console.WriteLine("AHJHAHHAHAH");
             _lastTick = -1;
         }
 
@@ -98,7 +97,7 @@ namespace BFB.Engine.Entity
             //Component Processing
             _input?.Update(this, simulation);
             _physics?.Update(this, simulation);
-            _combat?.Update(this, simulation);
+            Combat?.Update(this, simulation);
 
             //Place entity in correct chunk if in new position
             string chunkKey =

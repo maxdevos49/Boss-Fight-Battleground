@@ -8,18 +8,26 @@ namespace BFB.Engine.Simulation.PhysicsComponents
     public class CombatComponent : IPhysicsComponent
     { 
         // Combat
-        private int health;
-        private int mana;
+        public int Health;
+        public int Mana;
 
         public CombatComponent()
         {
-            health = 20;
-            mana = 1000;
+            Health = 20;
+            Mana = 1000;
         }
 
         public void Update(SimulationEntity simulationEntity, Simulation simulation)
         {
-            
+            if (Health <= 0)
+                OnDeath(simulationEntity, simulation);
+
+        }
+
+        private void OnDeath(SimulationEntity simulationEntity, Simulation simulation)
+        {
+            Console.WriteLine("YOU'VE DIED!");
+            simulation.RemoveEntity(simulationEntity.EntityId);
         }
     }
 }

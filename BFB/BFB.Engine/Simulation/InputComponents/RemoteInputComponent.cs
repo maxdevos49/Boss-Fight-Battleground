@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Security.Claims;
 using BFB.Engine.Entity;
 using BFB.Engine.Input.PlayerInput;
@@ -47,10 +48,20 @@ namespace BFB.Engine.Simulation.InputComponents
         {
             lock (_lock)
             {
-                //Check block placement
+                //Check block placement and combat
                 if (_playerState.RightClick || _playerState.LeftClick)
                 {
+                    //Combat
+                    List<SimulationEntity> targets = new List<SimulationEntity>();
+                    for (int i = 0; i < 100; i++)
+                    {
+                        SimulationEntity target = simulation.GetEntityAtPosition((int)simulationEntity.Position.X + i, (int)simulationEntity.Position.Y);
+                        if (target != null && target != simulationEntity && !targets.Contains(target))
+                            targets.Add(target);
+                    }
+                    Helpers.CombatService.FightPeople(simulationEntity, targets, simulation);
 
+                    //Block Placement
                     int mouseX = (int)(_playerState.Mouse.X + 0);
                     int mouseY = (int)(_playerState.Mouse.Y + 0);
 
@@ -77,6 +88,7 @@ namespace BFB.Engine.Simulation.InputComponents
                                     TileValue = (ushort) WorldTile.Dirt
                                 });
                             else
+                            {
                                 targetChunk.ApplyBlockUpdate(new TileUpdate
                                 {
                                     X = (byte) xSelection,
@@ -84,6 +96,7 @@ namespace BFB.Engine.Simulation.InputComponents
                                     Mode = true,
                                     TileValue = (ushort) WorldTile.Air
                                 });
+                            }
                         }
                     }
                 }
