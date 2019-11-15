@@ -25,8 +25,8 @@ namespace BFB.Engine.Simulation
         private readonly Random _random;
         public int Tick { get; private set; } 
         private readonly Dictionary<string,SimulationEntity> _entitiesIndex;
-        private readonly Dictionary<string,SimulationEntity> _playerEntitiesIndex;
-        
+        private readonly Dictionary<string, SimulationEntity> _playerEntitiesIndex;
+
         /// <summary>
         /// Indicates the distance at which a player causes the simulation to simulate
         /// </summary>
@@ -200,9 +200,30 @@ namespace BFB.Engine.Simulation
 
             OnEntityRemove?.Invoke(key,isPlayer);
         }
-        
+
         #endregion
-        
+
+        #region GetEntityAtPosition
+
+        public SimulationEntity GetEntityAtPosition(int x, int y, Boolean isFacingRight)
+        {
+            float tileSize = World.WorldOptions.WorldScale;
+            foreach (KeyValuePair<string, SimulationEntity> player in _playerEntitiesIndex)
+            {
+                if (player.Value.Position.X <= x && player.Value.Position.X + tileSize * 2 >= x)
+                {
+                    if (player.Value.Position.Y <= y && player.Value.Position.Y + tileSize * 2 >= y)
+                    {
+                        return player.Value;
+                    }
+                }
+            }
+
+            return null;
+        }
+
+        #endregion
+
         #region Start
 
         /// <summary>

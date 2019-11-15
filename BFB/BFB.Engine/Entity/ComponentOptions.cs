@@ -7,6 +7,7 @@ namespace BFB.Engine.Entity
     {
         public IInputComponent Input { get; set; }
         public IPhysicsComponent Physics { get; set; }
+        public IPhysicsComponent Combat { get; set; }
     }
 
 }

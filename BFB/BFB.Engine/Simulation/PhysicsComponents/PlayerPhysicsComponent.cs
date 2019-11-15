@@ -15,15 +15,14 @@ namespace BFB.Engine.Simulation.PhysicsComponents
         private readonly BfbVector _gravity;
         private readonly float _friction;
         private AnimationState _previousAnimationState;
-        
-        
+
         /// <summary>
         /// Constructs a player physics component.
         /// </summary>
         public PlayerPhysicsComponent()
         {
-            _acceleration = new BfbVector(5,25);
-            _maxSpeed = new BfbVector(20,40);
+            _acceleration = new BfbVector(5, 25);
+            _maxSpeed = new BfbVector(20, 40);
             _gravity = new BfbVector(0, 4f);
             _friction = 0.8f;
 
@@ -64,9 +63,15 @@ namespace BFB.Engine.Simulation.PhysicsComponents
 
             //Animation states
             if (entity.Velocity.X > 1)
+            {
                 entity.AnimationState = AnimationState.MoveRight;
+                entity.isFacingRight = true;
+            }
             else if (entity.Velocity.X < -1)
+            {
                 entity.AnimationState = AnimationState.MoveLeft;
+                entity.isFacingRight = false;
+            }
 
             _previousAnimationState = entity.AnimationState;
 

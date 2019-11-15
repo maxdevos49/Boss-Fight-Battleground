@@ -17,12 +17,12 @@ namespace BFB.Engine.Entity
         #region Properties
 
         private int _lastTick;
-        
+
         /// <summary>
         /// Whether this is a player entity or not
         /// </summary>
         public bool IsPlayer { get; set; }
-        
+
         /// <summary>
         /// Vector describing a position an entity is attempting to move to 
         /// </summary>
@@ -34,12 +34,13 @@ namespace BFB.Engine.Entity
 
         public Dictionary<string, int> ChunkVersions { get; }
 
-        public Rectangle Bounds => new Rectangle((int)Position.X, (int)Position.Y, (int)Dimensions.X, (int)Dimensions.Y);
-        
-        public int OldBottom => (int)(OldPosition.Y + Height);
-        public int OldLeft => (int)(OldPosition.X);
-        public int OldRight => (int)(OldPosition.X + Width);
-        public int OldTop => (int)(OldPosition.Y);
+        public Rectangle Bounds =>
+            new Rectangle((int) Position.X, (int) Position.Y, (int) Dimensions.X, (int) Dimensions.Y);
+
+        public int OldBottom => (int) (OldPosition.Y + Height);
+        public int OldLeft => (int) (OldPosition.X);
+        public int OldRight => (int) (OldPosition.X + Width);
+        public int OldTop => (int) (OldPosition.Y);
 
         #endregion
 
@@ -47,35 +48,39 @@ namespace BFB.Engine.Entity
 
         private readonly IInputComponent _input;
         private readonly IPhysicsComponent _physics;
+        public IPhysicsComponent Combat { get; }
+
+        public Boolean isFacingRight;
 
         #endregion
 
         #region Constructor
-        
+
         /// <summary>
         /// Creates a new entity for the game simulations
         /// </summary>
         /// <param name="entityId">Unique ID for this entity</param>
         /// <param name="options">Sets the initial properties of this entity</param>
         /// <param name="components">The components this entity contains</param>
-        public SimulationEntity(string entityId, EntityOptions options, ComponentOptions components) : base(entityId, options)
+        public SimulationEntity(string entityId, EntityOptions options, ComponentOptions components) : base(entityId,
+            options)
         {
             //Components
             _input = components.Input;
             _physics = components.Physics;
-
+            Combat = components.Combat;
             DesiredVector = new BfbVector();
             OldPosition = new BfbVector();
             VisibleChunks = new List<string>();
             ChunkVersions = new Dictionary<string, int>();
-
             _lastTick = -1;
+            isFacingRight = true;
         }
 
         #endregion
 
         #region Update
-        
+
         /// <summary>
         /// Updates this entity as part of the chunks in the simulation of this entity
         /// </summary>
@@ -95,6 +100,7 @@ namespace BFB.Engine.Entity
             //Component Processing
             _input?.Update(this, simulation);
             _physics?.Update(this, simulation);
+            Combat?.Update(this, simulation);
 
             //Place entity in correct chunk if in new position
             string chunkKey =
@@ -139,6 +145,6 @@ namespace BFB.Engine.Entity
         }
 
         #endregion
-    }
 
+    }
 }
