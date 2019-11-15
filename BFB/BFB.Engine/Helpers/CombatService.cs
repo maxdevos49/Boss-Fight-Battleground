@@ -15,7 +15,7 @@ namespace BFB.Engine.Helpers
             foreach (SimulationEntity target in targets)
             {
                 // Instead of a hard coded value here, you could call a weapon stored on the simulationEntity, and use its damage value.
-                ((CombatComponent) target.Combat).Health -= 1;
+                ((CombatComponent) target.Combat).Health -= 4;
             }
         }
     }
