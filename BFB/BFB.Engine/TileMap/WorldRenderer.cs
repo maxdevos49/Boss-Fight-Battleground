@@ -74,9 +74,9 @@ namespace BFB.Engine.TileMap
             graphics.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, SamplerState.PointClamp, DepthStencilState.None, RasterizerState.CullCounterClockwise, null, Camera.Transform);
 
             int xStart = (int)(Camera.Position.X - Camera.Origin.X)/_tileScale - 1;
-            int xEnd = (int)(Camera .Position.X - Camera.Origin.X + Camera.ViewWidth)/_tileScale + 1;
+            int xEnd = (int)(Camera .Position.X - Camera.Origin.X + Camera.ViewWidth)/_tileScale + 2;
             int yStart = (int)(Camera.Position.Y - Camera.Origin.Y)/_tileScale - 1;
-            int yEnd = (int)(Camera .Position.Y - Camera.Origin.Y + Camera.ViewHeight)/_tileScale + 1;
+            int yEnd = (int)(Camera .Position.Y - Camera.Origin.Y + Camera.ViewHeight)/_tileScale + 2;
 
             if (xStart < 0)
                 xStart = 0;
@@ -95,6 +95,20 @@ namespace BFB.Engine.TileMap
                     int xPosition = x * _tileScale;
                     int yPosition = y * _tileScale;
                     
+                    switch((WorldTile)world.GetWall(x, y))
+                    {
+                        case WorldTile.Dirt:
+                            graphics.Draw(content.GetTexture("dirt"), new Rectangle(xPosition,yPosition,_tileScale,_tileScale ),Color.White);
+                            graphics.Draw(content.GetTexture("default"), new Rectangle(xPosition,yPosition,_tileScale,_tileScale ),new Color(0,0,0,0.4f));
+                            break;
+                        case WorldTile.Stone:
+                            graphics.Draw(content.GetTexture("stone"), new Rectangle(xPosition,yPosition,_tileScale,_tileScale ),Color.White);
+                            graphics.Draw(content.GetTexture("default"), new Rectangle(xPosition,yPosition,_tileScale,_tileScale ),new Color(0,0,0,0.4f));
+                            break;
+                    }
+                    
+
+                    
                     switch(world.GetBlock(x, y))//TODO change so not switch statement but add a special content type for blocks
                     {
                         case WorldTile.Grass:
@@ -107,6 +121,7 @@ namespace BFB.Engine.TileMap
                             graphics.Draw(content.GetTexture("stone"), new Rectangle(xPosition,yPosition,_tileScale,_tileScale ),Color.White);
                             break;
                     }
+               
                 }
             }
 

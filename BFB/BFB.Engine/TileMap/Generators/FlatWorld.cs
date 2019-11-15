@@ -37,24 +37,38 @@ namespace BFB.Engine.TileMap.Generators
                     
                     if(yActual < 16)
                     {
-                        chunk.Block[xBlock,yBlock] = (int)WorldTile.Air;
+                        chunk.Block[xBlock,yBlock] = (ushort)WorldTile.Air;
                     }
                     else if (yActual < 17)
                     {
 //                        Console.WriteLine(_random.Next(10));
                         if(_random.Next(10) == 0)
-                            chunk.Block[xBlock,yBlock] = (int)WorldTile.Grass;
+                            chunk.Block[xBlock,yBlock] = (ushort)WorldTile.Grass;
                         else
-                            chunk.Block[xBlock,yBlock] = (int)WorldTile.Dirt;
+                        {
+                            chunk.Block[xBlock, yBlock] = (ushort) WorldTile.Dirt;
+                            chunk.Wall[xBlock, yBlock] = (ushort) WorldTile.Dirt;
+                        }
+
                     }
                     else if(yActual < 35)
                     {
-                        chunk.Block[xBlock,yBlock] =
-                            _random.Next(yActual) + 4 > 22 ? (ushort)WorldTile.Stone : (ushort)WorldTile.Dirt;
+                        if (_random.Next(yActual) + 4 > 22)
+                        {
+                            chunk.Block[xBlock, yBlock] = (ushort) WorldTile.Stone;
+                            chunk.Wall[xBlock, yBlock] = (ushort) WorldTile.Stone;
+                        }
+                        else
+                        {
+                            chunk.Block[xBlock,yBlock]= (ushort)WorldTile.Dirt;
+                            chunk.Wall[xBlock, yBlock] = (ushort) WorldTile.Dirt;
+                        }
+                        
                     }
                     else
                     {
-                        chunk.Block[xBlock,yBlock] = (int)WorldTile.Stone;
+                        chunk.Block[xBlock,yBlock] = (ushort)WorldTile.Stone;
+                        chunk.Wall[xBlock, yBlock] = (ushort) WorldTile.Stone;
                     }
                 }
             }
