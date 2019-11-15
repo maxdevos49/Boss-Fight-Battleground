@@ -205,17 +205,15 @@ namespace BFB.Engine.Simulation
 
         #region GetEntityAtPosition
 
-        public SimulationEntity GetEntityAtPosition(int x, int y)
+        public SimulationEntity GetEntityAtPosition(int x, int y, Boolean isFacingRight)
         {
-            float tileSize = World.WorldOptions.WorldScale;
+            float tileSize = isFacingRight ? World.WorldOptions.WorldScale : 0 - World.WorldOptions.WorldScale;
             foreach (KeyValuePair<string, SimulationEntity> player in _playerEntitiesIndex)
             {
                 if (player.Value.Position.X <= x && player.Value.Position.X + tileSize * 2 >= x)
                 {
-                    Console.WriteLine("Correct X");
                     if (player.Value.Position.Y <= y && player.Value.Position.Y + tileSize * 2 >= y)
                     {
-                        Console.WriteLine("Correct Y");
                         return player.Value;
                     }
                 }

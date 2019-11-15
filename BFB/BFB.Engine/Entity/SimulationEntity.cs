@@ -50,6 +50,8 @@ namespace BFB.Engine.Entity
         private readonly IPhysicsComponent _physics;
         public IPhysicsComponent Combat { get; }
 
+        public Boolean isFacingRight;
+
         #endregion
 
         #region Constructor
@@ -72,6 +74,7 @@ namespace BFB.Engine.Entity
             VisibleChunks = new List<string>();
             ChunkVersions = new Dictionary<string, int>();
             _lastTick = -1;
+            isFacingRight = true;
         }
 
         #endregion

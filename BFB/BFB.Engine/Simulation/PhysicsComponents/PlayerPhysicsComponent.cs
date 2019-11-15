@@ -63,9 +63,15 @@ namespace BFB.Engine.Simulation.PhysicsComponents
 
             //Animation states
             if (entity.Velocity.X > 1)
+            {
                 entity.AnimationState = AnimationState.MoveRight;
+                entity.isFacingRight = true;
+            }
             else if (entity.Velocity.X < -1)
+            {
                 entity.AnimationState = AnimationState.MoveLeft;
+                entity.isFacingRight = false;
+            }
 
             _previousAnimationState = entity.AnimationState;
 
