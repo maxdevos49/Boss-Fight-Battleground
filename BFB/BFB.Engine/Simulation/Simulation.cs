@@ -207,15 +207,18 @@ namespace BFB.Engine.Simulation
 
         public SimulationEntity GetEntityAtPosition(int x, int y)
         {
+            float tileSize = World.WorldOptions.WorldScale;
             foreach (KeyValuePair<string, SimulationEntity> player in _playerEntitiesIndex)
             {
-                //if (player.Value.Position.X <= x && player.Value.Position.X + 100 >= x)
-                //{
-                    //if (player.Value.Position.Y >= y && player.Value.Position.Y + 100 <= y)
-                   // {
+                if (player.Value.Position.X <= x && player.Value.Position.X + tileSize * 2 >= x)
+                {
+                    Console.WriteLine("Correct X");
+                    if (player.Value.Position.Y <= y && player.Value.Position.Y + tileSize * 2 >= y)
+                    {
+                        Console.WriteLine("Correct Y");
                         return player.Value;
-                   // }
-              //  }
+                    }
+                }
             }
 
             return null;
