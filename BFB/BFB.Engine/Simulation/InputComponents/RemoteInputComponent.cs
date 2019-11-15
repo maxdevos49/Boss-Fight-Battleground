@@ -57,8 +57,12 @@ namespace BFB.Engine.Simulation.InputComponents
                         List<SimulationEntity> targets = new List<SimulationEntity>();
                         for (int i = 0; i < 100; i++)
                         {
-                            SimulationEntity target = simulation.GetEntityAtPosition(
-                                (int) simulationEntity.Position.X + i, (int) simulationEntity.Position.Y,
+                            int xPos = (int) simulationEntity.Position.X + i;
+                            if (!simulationEntity.isFacingRight)
+                                xPos = (int) simulationEntity.Position.X - i;
+
+                            SimulationEntity target = simulation.GetEntityAtPosition(xPos
+                                , (int) simulationEntity.Position.Y,
                                 simulationEntity.isFacingRight);
                             if (target != null && target != simulationEntity && !targets.Contains(target))
                                 targets.Add(target);
