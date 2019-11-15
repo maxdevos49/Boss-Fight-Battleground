@@ -16,7 +16,7 @@ namespace BFB.Engine.TileMap
     {
         
         public const float GraphicsScale = 15f;
-
+        
         public bool Debug { get; set; }
         public readonly Camera Camera;
 
@@ -67,7 +67,7 @@ namespace BFB.Engine.TileMap
         
         #region Draw
 
-        public void Draw(SpriteBatch graphics, WorldManager world, List<ClientEntity> entities, BFBContentManager content)
+        public void Draw(SpriteBatch graphics, WorldManager world, IEnumerable<ClientEntity> entities, BFBContentManager content)
         {
             //Start different graphics layer
             graphics.End();

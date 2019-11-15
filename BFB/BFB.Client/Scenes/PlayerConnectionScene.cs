@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using BFB.Client.UI;
 using BFB.Engine.Content;
 using BFB.Engine.Entity;
+using BFB.Engine.Event;
 using BFB.Engine.Input.PlayerInput;
 using BFB.Engine.Math;
 using BFB.Engine.Scene;
@@ -23,7 +25,7 @@ namespace BFB.Client.Scenes
 
         private readonly object _lock;
         
-        private readonly ClientSocketManager _server;
+//        private readonly ClientSocketManager _server;
         
         private PlayerInput _playerInput;
 
@@ -37,7 +39,7 @@ namespace BFB.Client.Scenes
         {
             _lock = new object();
             _entities = new Dictionary<string, ClientEntity>();
-            _server = new ClientSocketManager("127.0.0.1", 6969);
+            Client = new ClientSocketManager();
 
             _world = new WorldManager(new WorldOptions
             {
@@ -55,11 +57,11 @@ namespace BFB.Client.Scenes
         protected override void Init()
         {
 
-            //TODO Change how the connection is supplied where its started to better handle a server menu style choice
-            MainMenuUI layer = (MainMenuUI)UIManager.GetLayer(nameof(MainMenuUI));
-            _server.Ip = layer.Model.Ip.Split(":")[0];
-            _server.Port = Convert.ToInt32(layer.Model.Ip.Split(":")[1]);
+            MainMenuUI layer = (MainMenuUI)UIManager.GetLayer(nameof(MainMenuUI));//TODO This is messy. Change sometime
+            Client.Ip = layer.Model.Ip.Split(":")[0];
+            Client.Port = Convert.ToInt32(layer.Model.Ip.Split(":")[1]);
             
+            UIManager.Start(nameof(LoadingGameUI));
             
             /**
              * Scene events
@@ -75,20 +77,21 @@ namespace BFB.Client.Scenes
              */
             #region Client Connect
 
-            _server.OnConnect = (m) =>
+            Client.OnConnect = (m) =>
             {
-                //Anything that needs done when this client connects
-                Console.WriteLine("Client Connected");
+                GlobalEventManager.Emit("onConnectionStatus", new GlobalEvent("Server Connected..."));
+                Thread.Sleep(300);
             };
             
             #endregion
             
             #region Client Authentication
             
-            _server.OnAuthentication = (m) =>
+            Client.OnAuthentication = (m) =>
             {
-                //Anything that needs done when this client authenticates.
-                Console.WriteLine("Client Authenticating");
+                GlobalEventManager.Emit("onConnectionStatus", new GlobalEvent("Authenticating User..."));
+                Thread.Sleep(300);
+
                 return null;
             };
             
@@ -96,8 +99,11 @@ namespace BFB.Client.Scenes
 
             #region Client Prepare
 
-            _server.OnPrepare = message =>
+            Client.OnPrepare = message =>
             {
+                GlobalEventManager.Emit("onConnectionStatus", new GlobalEvent("Preparing World..."));
+                Thread.Sleep(300);
+
                 _world.ApplyWorldInitData((WorldDataMessage)message);
             };
             
@@ -105,21 +111,22 @@ namespace BFB.Client.Scenes
             
             #region Client Ready
             
-            _server.OnReady = () =>
+            Client.OnReady = () =>
             {
-                Console.WriteLine("Client Ready!");
-                //Do something when client is fully ready after authentication is confirmed
+                GlobalEventManager.Emit("onConnectionStatus", new GlobalEvent("Ready..."));
                 _worldRenderer = new WorldRenderer(_world, GraphicsDeviceManager.GraphicsDevice);
+                UIManager.Start(nameof(HudUI));
             };
             
             #endregion
             
             #region Client Disconnect
             
-            _server.OnDisconnect = (m) =>
+            Client.OnDisconnect = (m) =>
             {
                 //Anything that needs done when this client disconnects
-                Console.WriteLine("Disconnected");
+//                Console.WriteLine("Disconnected");
+                GlobalEventManager.Emit("onConnectionStatus", new GlobalEvent("Disconnected By Server"));
             };
             
             #endregion
@@ -130,7 +137,7 @@ namespace BFB.Client.Scenes
 
             #region Handle Entity Disconnect
             
-            _server.On("/player/disconnect", message =>
+            Client.On("/player/disconnect", message =>
             {
                 //Remove entity who disconnected
                 lock(_lock)
@@ -143,7 +150,7 @@ namespace BFB.Client.Scenes
             
             #region Handle Entity Updates
             
-            _server.On("/players/updates", message =>
+            Client.On("/players/updates", message =>
             {
                 EntityUpdateMessage m = (EntityUpdateMessage) message;
                 
@@ -159,7 +166,7 @@ namespace BFB.Client.Scenes
                             _entities[em.EntityId].Rotation = em.Rotation;
                             _entities[em.EntityId].AnimationState = em.AnimationState;
                             
-                            if (em.EntityId == _server.ClientId)
+                            if (em.EntityId == Client.ClientId)
                                 _worldRenderer.Camera.Focus = em.Position.ToVector2();
                         }
                         else
@@ -180,25 +187,18 @@ namespace BFB.Client.Scenes
             
             #endregion
 
-            //Launch hud ui
-            //UIManager.Start(nameof(HudUI)); //TODO restart the HudUI
-            UIManager.Start(nameof(ChatUI));
-            
-            if (!_server.Connect())
-                Console.WriteLine("Connection Failed.");
-            
             #region Handle Chunk Updates
 
-            _server.On("/players/chunkUpdates", message =>
+            Client.On("/players/chunkUpdates", message =>
             {
                 _world.ApplyChunkUpdateMessage((ChunkUpdatesMessage) message);
             });
             
             #endregion
-            
-            //Launch hud ui
-            UIManager.Start(nameof(HudUI));
-            
+
+            if (!Client.Connect())
+                GlobalEventManager.Emit("onConnectionStatus", new GlobalEvent("Connection Failed"));
+
         }
         
         #endregion
@@ -207,7 +207,11 @@ namespace BFB.Client.Scenes
 
         protected override void Unload()
         {
-            _server.Disconnect("Scene Close");
+            lock (_lock)
+            {
+                _entities.Clear();
+            }
+
             base.Unload();
         }
         
@@ -222,11 +226,11 @@ namespace BFB.Client.Scenes
                 _worldRenderer?.Update(gameTime, _entities.Values.ToList());
             }
 
-            if (!_playerInput.InputChanged() || !_server.EmitAllowed() || _worldRenderer == null) return;
+            if (!_playerInput.InputChanged() || !Client.EmitAllowed() || _worldRenderer == null) return;
             
             PlayerState playerState = _playerInput.GetPlayerState();
             playerState.Mouse = _worldRenderer.ViewPointToMapPoint(playerState.Mouse);
-            _server.Emit("/player/input", new InputMessage {PlayerInputState = playerState});
+            Client.Emit("/player/input", new InputMessage {PlayerInputState = playerState});
 
         }
         

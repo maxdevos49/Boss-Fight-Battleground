@@ -66,7 +66,10 @@ namespace BFB.Engine.UI
             if (_allUILayers.ContainsKey(key))
             {
                 _activeUILayers.Add(key, _allUILayers[key]);
+                _allUILayers[key].Start();
+
                 BuildUILayer(key);
+                
             }
         }
         

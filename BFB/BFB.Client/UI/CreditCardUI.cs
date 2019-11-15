@@ -32,7 +32,7 @@ namespace BFB.Client.UI
             };
         }
 
-        public override void Init()
+        protected override void Init()
         {
             nameModel = new NameModel
             {

@@ -30,8 +30,11 @@ namespace BFB.Engine.UI
         /// </summary>
         public static SceneManager SceneManager { get; set; }
         
+        public static EventManager<GlobalEvent> GlobalEventManager { get; set; }
+//        public static EventManager<InputEvent> InputEventManager { get; set; }
+        
         /// <summary>
-        /// Used to inidicate if the scene should be drawn in debug mode
+        /// Used to indicate if the scene should be drawn in debug mode
         /// </summary>
         public bool Debug { get; set; }
         
@@ -55,6 +58,8 @@ namespace BFB.Engine.UI
          */
         private readonly List<UIComponent> _eventIndex;
 
+        private readonly List<int> _eventGlobalListenerIds;
+
         #endregion
         
         #region Constructor
@@ -69,6 +74,7 @@ namespace BFB.Engine.UI
             RootUI = null;
             Debug = false;
             
+            _eventGlobalListenerIds = new List<int>();
             _tabPosition = null;
             _tabIndex = new List<UIComponent>();
             _eventIndex = new List<UIComponent>();
@@ -219,13 +225,36 @@ namespace BFB.Engine.UI
         }
         
         #endregion
+        
+        #region AddGlobalListener
+        
+        /// <summary>
+        /// Allows for adding of event listeners that are automatically disposed of when the UILayer is stopped
+        /// </summary>
+        /// <param name="eventKey">The event to listen for</param>
+        /// <param name="eventHandler">The event handler to perform an action when a event is revieved</param>
+        public void AddGlobalListener(string eventKey, Action<GlobalEvent> eventHandler)
+        {
+            _eventGlobalListenerIds.Add(GlobalEventManager.AddEventListener(eventKey, eventHandler));
+        }
+        
+        #endregion
+        
+        #region Start
+
+        public void Start()
+        {
+            Init();
+        }
+        
+        #endregion
 
         #region Init
         
         /// <summary>
         /// An optional init method for a UILayer to use for setup. Called every time a UILayer is started
         /// </summary>
-        public virtual void Init() {}
+        protected virtual void Init() {}
         
         #endregion
 
@@ -239,9 +268,13 @@ namespace BFB.Engine.UI
             RootUI = null;
             _eventIndex.Clear();
             _tabIndex.Clear();
+            
+            foreach (int id in _eventGlobalListenerIds)
+                GlobalEventManager.RemoveEventListener(id);
         }
         
         #endregion
+        
 
         /// <summary>
         /// The area to define the UIComponent element layouts

@@ -104,7 +104,7 @@ namespace BFB.Engine.Event
             {
                 TEvent currentEvent = _eventQueue.Dequeue();
 
-                if (!(OnEventProcess?.Invoke(currentEvent) ?? false)) continue;
+                if (!(OnEventProcess?.Invoke(currentEvent) ?? true)) continue;
                 
 
                 if(!_eventHandlers.ContainsKey(currentEvent.EventKey)) continue;

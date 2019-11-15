@@ -22,14 +22,14 @@ namespace BFB.Client.UI
             };
         }
 
-        public override void Init()
+        protected override void Init()
         {
-            Model = new MainMenuModel
-            {
-                Ip = "127.0.0.1:6969"
-            };
-            Console.WriteLine("We have init");
-            base.Init();
+//            Model = new MainMenuModel
+//            {
+//                Ip = "127.0.0.1:6969"
+//            };
+//            Console.WriteLine("We have init");
+//            base.Init();
         }
 
 

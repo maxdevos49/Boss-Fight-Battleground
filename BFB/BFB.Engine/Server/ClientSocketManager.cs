@@ -67,7 +67,7 @@ namespace BFB.Engine.Server
         /// </summary>
         /// <param name="ip">Ip used to connect</param>
         /// <param name="port">Port used to connect</param>
-        public ClientSocketManager(string ip, int port)
+        public ClientSocketManager(string ip = "127.0.0.1", int port = 6969)
         {
             _lock = new object();
             Ip = ip;
@@ -83,7 +83,6 @@ namespace BFB.Engine.Server
             OnDisconnect = null;
             OnAuthentication = null;
             OnReady = null;
-            
         }
         
         #endregion

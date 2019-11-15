@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
 using BFB.Engine.Event;
+using BFB.Engine.Server;
 using BFB.Engine.UI;
 using JetBrains.Annotations;
 
@@ -46,6 +47,10 @@ namespace BFB.Engine.Scene
         /// </summary>
         public static EventManager<InputEvent> InputEventManager { get; set; }
         
+        /// <summary>
+        /// Used for interfacing a scene with a server
+        /// </summary>
+        public ClientSocketManager Client { get; set; }
         
         private readonly List<int> _eventInputListenerIds;
         private readonly List<int> _eventGlobalListenerIds;
@@ -113,6 +118,8 @@ namespace BFB.Engine.Scene
             
             foreach (int id in _eventInputListenerIds)
                 InputEventManager.RemoveEventListener(id);
+            
+            Client?.Disconnect("Scene Close");
         }
 
         public virtual void Update([UsedImplicitly] GameTime gameTime) { }
