@@ -62,8 +62,7 @@ namespace BFB.Engine.Simulation.InputComponents
                                 xPos = (int) simulationEntity.Position.X - i;
 
                             SimulationEntity target = simulation.GetEntityAtPosition(xPos
-                                , (int) simulationEntity.Position.Y,
-                                simulationEntity.isFacingRight);
+                                , (int) simulationEntity.Position.Y);
                             if (target != null && target != simulationEntity && !targets.Contains(target))
                                 targets.Add(target);
                         }

@@ -205,7 +205,7 @@ namespace BFB.Engine.Simulation
 
         #region GetEntityAtPosition
 
-        public SimulationEntity GetEntityAtPosition(int x, int y, Boolean isFacingRight)
+        public SimulationEntity GetEntityAtPosition(int x, int y)
         {
             float tileSize = World.WorldOptions.WorldScale;
             foreach (KeyValuePair<string, SimulationEntity> player in _playerEntitiesIndex)
