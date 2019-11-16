@@ -45,6 +45,7 @@ namespace BFB.Engine.TileMap
         /// The block value of a chunk (x,y) location.
         /// </summary>
         public  ushort[,] Block { get; set; }
+        
         /// <summary>
         /// The dictionary of the chunk.
         /// </summary>

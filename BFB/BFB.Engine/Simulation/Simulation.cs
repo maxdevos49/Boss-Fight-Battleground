@@ -315,7 +315,7 @@ namespace BFB.Engine.Simulation
                             entity.Tick(this);//entity components are processed here
                         
                         //randomly choose three tiles in the chunk to tick
-                        for (int i = 0; i < 19; i++)
+                        for (int i = 0; i < 3; i++)
                         {
                             int xBlock = _random.Next(World.WorldOptions.ChunkSize);
                             int yBlock = _random.Next(World.WorldOptions.ChunkSize);

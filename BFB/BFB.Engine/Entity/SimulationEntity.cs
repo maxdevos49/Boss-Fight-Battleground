@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Drawing;
 using BFB.Engine.Math;
@@ -26,13 +25,24 @@ namespace BFB.Engine.Entity
         /// <summary>
         /// Vector describing a position an entity is attempting to move to 
         /// </summary>
-        public BfbVector DesiredVector { get; }
+        public BfbVector SteeringVector { get; }
 
+        /// <summary>
+        /// The old position of the entity
+        /// </summary>
         public BfbVector OldPosition { get; private set; }
 
+        /// <summary>
+        /// A list of visible chunks a player can see
+        /// </summary>
         public List<string> VisibleChunks { get; }
 
+        /// <summary>
+        /// A dictionary of chunk versions that the player is aware of
+        /// </summary>
         public Dictionary<string, int> ChunkVersions { get; }
+        
+        public DirectionFacing Facing { get; set; }
 
         public Rectangle Bounds => new Rectangle((int)Position.X, (int)Position.Y, (int)Dimensions.X, (int)Dimensions.Y);
         
@@ -60,14 +70,15 @@ namespace BFB.Engine.Entity
         /// <param name="components">The components this entity contains</param>
         public SimulationEntity(string entityId, EntityOptions options, ComponentOptions components) : base(entityId, options)
         {
-            //Components
-            _input = components.Input;
-            _physics = components.Physics;
-
-            DesiredVector = new BfbVector();
+            SteeringVector = new BfbVector();
             OldPosition = new BfbVector();
             VisibleChunks = new List<string>();
             ChunkVersions = new Dictionary<string, int>();
+            Facing = DirectionFacing.Left;
+            
+            //Components
+            _input = components.Input;
+            _physics = components.Physics;
 
             _lastTick = -1;
         }

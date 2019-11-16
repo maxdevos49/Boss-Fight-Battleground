@@ -89,22 +89,22 @@ namespace BFB.Engine.Simulation.InputComponents
                 }
 
                 //Resets the player movement
-                simulationEntity.DesiredVector.X = 0;
-                simulationEntity.DesiredVector.Y = 0;
+                simulationEntity.SteeringVector.X = 0;
+                simulationEntity.SteeringVector.Y = 0;
                 //Moves player left
                 if (_playerState.Left)
                 {
-                    simulationEntity.DesiredVector.Add(new BfbVector(-1,0));
+                    simulationEntity.SteeringVector.Add(new BfbVector(-1,0));
                 }
                 //Moves player right
                 if (_playerState.Right)
                 {
-                    simulationEntity.DesiredVector.Add(new BfbVector(1,0));
+                    simulationEntity.SteeringVector.Add(new BfbVector(1,0));
                 }
                 //Moves player up
                 if (_playerState.Jump && simulationEntity.Grounded)
                 {
-                    simulationEntity.DesiredVector.Add(new BfbVector(0,-1));
+                    simulationEntity.SteeringVector.Add(new BfbVector(0,-1));
                 }
             }
         }

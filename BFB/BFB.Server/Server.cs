@@ -1,5 +1,6 @@
 ﻿//C#
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using Microsoft.Extensions.Configuration;
@@ -43,11 +44,11 @@ namespace BFB.Server
             {
                 Seed = 1234,
                 ChunkSize = 16,
-                WorldChunkWidth = 20,
-                WorldChunkHeight = 10,
+                WorldChunkWidth = 10,
+                WorldChunkHeight = 4,
                 WorldScale = 30,
                 WorldGenerator = options => new FlatWorld(options)
-            }, 20);
+            });
         }
         
         #endregion
@@ -112,9 +113,10 @@ namespace BFB.Server
                         Dimensions = new BfbVector(2 * _simulation.World.WorldOptions.WorldScale, 3 * _simulation.World.WorldOptions.WorldScale),
                         Rotation = 0,
                         Origin = new BfbVector(0, 0),
+                        EntityType = EntityType.Player
                     }, new ComponentOptions
                     {
-                        Physics = new PlayerPhysicsComponent(),
+                        Physics = new WalkingPhysicsComponent("human", new List<string>{"tile","human"}, null),
                         Input = new RemoteInputComponent(socket)
                     }), true);
                 

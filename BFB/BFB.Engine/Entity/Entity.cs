@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using BFB.Engine.Content;
 using BFB.Engine.Math;
 using BFB.Engine.Server.Communication;
@@ -50,6 +51,11 @@ namespace BFB.Engine.Entity
         /// The rotation of this entity
         /// </summary>
         public float Rotation { get; set; }
+        
+        /// <summary>
+        /// The type of entity the entity is
+        /// </summary>
+        public EntityType EntityType { get; set; }
 
         // ReSharper disable once CompareOfFloatsByEqualityOperator
         public bool Grounded => Velocity.Y == 0f;
@@ -79,6 +85,7 @@ namespace BFB.Engine.Entity
             Dimensions = options.Dimensions;
             Origin = options.Origin;
             Rotation = options.Rotation;
+            EntityType = options.EntityType;
             Velocity = new BfbVector();
         }
         
@@ -137,6 +144,12 @@ namespace BFB.Engine.Entity
         /// The rotation of this entity
         /// </summary>
         public float Rotation { get; set; }
+        
+        /// <summary>
+        /// Indicates the type of entity
+        /// </summary>
+        public EntityType EntityType { get; set; }
+        
     }
     
     #endregion
