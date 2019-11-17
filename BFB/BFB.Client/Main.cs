@@ -127,6 +127,7 @@ namespace BFB.Client
                 new HelpUI(), 
                 new HudUI(),
                 new GameMenuUI(),
+                new MonsterMenuUI(),
                 new ChatUI(),
                 new StoreUI(),
                 new CreditCardUI(), 

@@ -193,9 +193,19 @@ namespace BFB.Client.Scenes
             {
                 _world.ApplyChunkUpdateMessage((ChunkUpdatesMessage) message);
             });
-            
+
             #endregion
-            
+
+            #region KeyEventListener
+
+            AddInputListener("keypress", e =>
+            {
+                if (e.Keyboard.KeyEnum == Microsoft.Xna.Framework.Input.Keys.M)
+                {
+                    UIManager.Start(nameof(MonsterMenuUI));
+                }
+            });
+            #endregion
             //Launch hud ui
             UIManager.Start(nameof(HudUI));
             
