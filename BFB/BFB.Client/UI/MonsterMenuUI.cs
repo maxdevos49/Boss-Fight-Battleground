@@ -1,5 +1,4 @@
-﻿using BFB.Client.Scenes;
-using BFB.Engine.UI;
+﻿using BFB.Engine.UI;
 using BFB.Engine.UI.Components;
 using BFB.Engine.UI.Constraints;
 using Microsoft.Xna.Framework;
@@ -8,7 +7,7 @@ namespace BFB.Client.UI
 {
     public class MonsterMenuUI : UILayer
     {
-        public MonsterMenuUI() : base(nameof(GameMenuUI)) { }
+        public MonsterMenuUI() : base(nameof(MonsterMenuUI)) { }
 
         public override void Body()
         {
@@ -34,16 +33,6 @@ namespace BFB.Client.UI
                     v1.Hstack(h2 =>
                     {
                         h2.Button("Spider",
-                                clickAction: (e, a) => { SceneManager.StartScene(nameof(HudUI)); })
-                            .Height(0.8f)
-                            .Width(0.8f)
-                            .Image("button")
-                            .Center();
-                    });
-
-                    v1.Hstack(h2 =>
-                    {
-                        h2.Button("Zombie",
                                 clickAction: (e, a) => { UIManager.Start(nameof(HudUI)); })
                             .Height(0.8f)
                             .Width(0.8f)
@@ -63,7 +52,17 @@ namespace BFB.Client.UI
 
                     v1.Hstack(h2 =>
                     {
-                        h2.Button("The BOSS",
+                        h2.Button("Zombie",
+                                clickAction: (e, a) => { UIManager.Start(nameof(HudUI)); })
+                            .Height(0.8f)
+                            .Width(0.8f)
+                            .Image("button")
+                            .Center();
+                    });
+
+                    v1.Hstack(h2 =>
+                    {
+                        h2.Button("THE BOSS",
                                 clickAction: (e, a) => { UIManager.Start(nameof(HudUI)); })
                             .Height(0.8f)
                             .Width(0.8f)
