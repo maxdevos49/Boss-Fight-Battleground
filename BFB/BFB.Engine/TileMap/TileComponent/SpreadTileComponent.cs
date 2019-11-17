@@ -2,6 +2,9 @@ using System;
 
 namespace BFB.Engine.TileMap.TileComponent
 {
+    /// <summary>
+    /// Used to have a tile spread in the tilemap.
+    /// </summary>
     public class SpreadTileComponent : ITileComponent
     {
         private readonly Random _random;
@@ -11,6 +14,13 @@ namespace BFB.Engine.TileMap.TileComponent
         private readonly WorldTile _targetBlock;
         private readonly WorldTile _aboveBlock;
 
+        /// <summary>
+        /// Constructs a spread tile component with a given configuration.
+        /// </summary>
+        /// <param name="spreadBlock">The block that is placed while spreading.</param>
+        /// <param name="targetBlock">The block that will change configuration to the given spread block.</param>
+        /// <param name="aboveBlock">The block above the target block.</param>
+        /// <param name="randomness">How often the spreadBlock spreads.</param>
         public SpreadTileComponent(WorldTile spreadBlock, WorldTile targetBlock, WorldTile aboveBlock = WorldTile.Unknown, byte randomness = 100)
         {
             _random = new Random();
@@ -21,6 +31,13 @@ namespace BFB.Engine.TileMap.TileComponent
             _aboveBlock = aboveBlock;
         }
         
+        /// <summary>
+        /// The update for the tile component.
+        /// </summary>
+        /// <param name="world">The manager for the world.</param>
+        /// <param name="chunk">The chunk in a given world.</param>
+        /// <param name="blockX">The x block in the given chunk.</param>
+        /// <param name="blockY">The y block in the given chunk.</param>
         public void TickTile(WorldManager world, Chunk chunk, int blockX, int blockY)
         {
             

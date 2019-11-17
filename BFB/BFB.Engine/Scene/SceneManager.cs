@@ -47,9 +47,10 @@ namespace BFB.Engine.Scene
 
         #region AddScene(Scene[] scenes)
 
-        /**
-         * Adds an array of scenes to the scene manager
-         * */
+        /// <summary>
+        /// Adds an array of scenes to the scene manager
+        /// </summary>
+        /// <param name="scenes"></param>
         public void AddScene(IEnumerable<Scene> scenes)
         {
             foreach (Scene scene in scenes)
@@ -62,9 +63,10 @@ namespace BFB.Engine.Scene
 
         #region AddScene(Scene scenes)
 
-        /**
-         * Adds a single scene to the scene manager
-         * */
+        /// <summary>
+        /// Adds a single scene to the scene manager
+        /// </summary>
+        /// <param name="scene"></param>
         [UsedImplicitly]
         public void AddScene(Scene scene)
         {
@@ -78,9 +80,10 @@ namespace BFB.Engine.Scene
 
         #region StartScene(string key)
 
-        /**
-         * Stops all active scenes and then starts the specified scene
-         * */
+        /// <summary>
+        /// Stops all active scenes and then starts the specified scene
+        /// </summary>
+        /// <param name="key"></param>
         public void StartScene(string key)
         {
             if (!SceneExist(key)) return;
@@ -99,9 +102,10 @@ namespace BFB.Engine.Scene
 
         #region LaunchScene(string key)
 
-        /**
-         * Starts a single scene in parallel to any already running scenes.
-         * */
+        /// <summary>
+        /// Starts a single scene in parallel to any already running scenes.
+        /// </summary>
+        /// <param name="key"></param>
         public void LaunchScene(string key)
         {
             if (!SceneExist(key) || ActiveSceneExist(key)) return;
@@ -117,9 +121,10 @@ namespace BFB.Engine.Scene
 
         #region PauseScene(string key)
 
-        /**
-         * Pauses the scene that is specified
-         * */
+        /// <summary>
+        /// Pauses the scene that is specified
+        /// </summary>
+        /// <param name="key"></param>
         [UsedImplicitly]
         public void PauseScene(string key)
         {
@@ -136,9 +141,10 @@ namespace BFB.Engine.Scene
 
         #region StopScene(string key)
 
-        /**
-         * Shuts down the scene that is specified by the key
-         * */
+        /// <summary>
+        /// Shuts down the scene that is specified by the key
+        /// </summary>
+        /// <param name="key"></param>
         public void StopScene(string key)
         {
             if (!ActiveSceneExist(key)) return;
@@ -153,7 +159,9 @@ namespace BFB.Engine.Scene
                 break;
             }
         }
-
+        /// <summary>
+        /// Stops all scenes
+        /// </summary>
         [UsedImplicitly]
         public void StopScenes()
         {
@@ -170,9 +178,11 @@ namespace BFB.Engine.Scene
 
         #region DrawScenes(GameTime gameTime, SpriteBatch graphics)
 
-        /**
-         * Draws all active scenes
-         * */
+        /// <summary>
+        /// Draws all active scenes
+        /// </summary>
+        /// <param name="gameTime"></param>
+        /// <param name="graphics"></param>
         public void DrawScenes(GameTime gameTime, SpriteBatch graphics)
         {
             foreach (Scene scene in _activeScenes)
@@ -183,9 +193,10 @@ namespace BFB.Engine.Scene
 
         #region UpdateScene(GameTime gameTime)
 
-        /**
-         * Updates all active scenes
-         * */
+        /// <summary>
+        /// Updates all active scenes
+        /// </summary>
+        /// <param name="gameTime"></param>
         public void UpdateScenes(GameTime gameTime)
         {
             foreach (var scene in _activeScenes.Where(scene => scene.GetStatus() == SceneStatus.Active))
@@ -196,9 +207,11 @@ namespace BFB.Engine.Scene
 
         #region ActiveSceneExist(string key)
 
-        /**
-         * Checks if the scene is running or not
-         * */
+        /// <summary>
+        /// Checks if the scene is running or not
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
         [UsedImplicitly]
         public bool ActiveSceneExist(string key)
         {
@@ -209,9 +222,11 @@ namespace BFB.Engine.Scene
 
         #region SceneExist(string key)
 
-        /**
-         * Checks if the scene exist regardless if it is running
-         * */
+        /// <summary>
+        /// Checks if the scene exist regardless if it is running
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
         [UsedImplicitly]
         public bool SceneExist(string key)
         {

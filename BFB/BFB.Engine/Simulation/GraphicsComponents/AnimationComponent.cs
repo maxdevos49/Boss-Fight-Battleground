@@ -1,11 +1,7 @@
-﻿//C#
-
-using BFB.Engine.Content;
+﻿using BFB.Engine.Content;
 using BFB.Engine.Entity;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-
-//Monogame
 
 namespace BFB.Engine.Simulation.GraphicsComponents
 {
@@ -71,15 +67,15 @@ namespace BFB.Engine.Simulation.GraphicsComponents
             _frameSelector.Y = _frameSelector.Height * currentRow;
         }
 
-        public void Draw(ClientEntity entity, SpriteBatch graphics)
+        public void Draw(ClientEntity entity, SpriteBatch graphics, float worldScale)
         {
             graphics.Draw(_animatedTexture.Texture,
                 entity.Position.ToVector2(),
                 _frameSelector,
                 Color.White,
                 entity.Rotation,
-                Vector2.Zero,
-                 _animatedTexture.Scale,
+                Vector2.Zero, //This was a big problem
+                 _animatedTexture.Scale * worldScale,
                 !_currentAnimationSet.Mirror ? SpriteEffects.None : SpriteEffects.FlipHorizontally,
                 1);
         }

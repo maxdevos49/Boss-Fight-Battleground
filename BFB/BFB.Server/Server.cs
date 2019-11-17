@@ -45,7 +45,7 @@ namespace BFB.Server
                 ChunkSize = 16,
                 WorldChunkWidth = 20,
                 WorldChunkHeight = 10,
-                WorldScale = 15,
+                WorldScale = 30,
                 WorldGenerator = options => new FlatWorld(options)
             }, 20);
         }
@@ -115,8 +115,9 @@ namespace BFB.Server
                     }, new ComponentOptions
                     {
                         Physics = new PlayerPhysicsComponent(),
-                        Input = new RemoteInputComponent(socket)
-                    }),true);
+                        Input = new RemoteInputComponent(socket),
+                        Combat = new CombatComponent()
+                    }), true);
                 
                 _server.PrintMessage($"Client {socket.ClientId} Ready and added to Simulation");
 

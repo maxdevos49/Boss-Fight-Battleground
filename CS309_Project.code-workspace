@@ -3,23 +3,10 @@
 		{
 			"name": "Boss Fight BattleGrounds",
 			"path": "."
-		},
-		{
-			"name": "Documentation",
-			"path": "./Documentation"
-		},
-		{
-			"name": "Experiments",
-			"path": "./Experiments"
 		}
 	],
 	"settings": {
 		"files.exclude": {
-			"Documentation": true,
-			"Experiments": true,
-			// "*/**/obj": true,
-			// "*/**/bin": true,
-			// "*/**/*.csproj": true,
 			"*/**/.vs": true
 		}
 	},

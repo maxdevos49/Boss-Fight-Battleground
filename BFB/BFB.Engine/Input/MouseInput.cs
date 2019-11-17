@@ -6,6 +6,9 @@ using BFB.Engine.Event;
 
 namespace BFB.Engine.Input
 {
+    /// <summary>
+    /// Keeps track of the mouse input.
+    /// </summary>
     public class MouseInput
     {
 
@@ -29,6 +32,9 @@ namespace BFB.Engine.Input
             };
         }
 
+        /// <summary>
+        /// Updates the mouse state and emits any button states.
+        /// </summary>
         public void UpdateMouse()
         {
             MouseState mouseState = Mouse.GetState();
@@ -65,33 +71,37 @@ namespace BFB.Engine.Input
 
         }
 
-        /**
-         * Emitted whenever the mouse position is changed
-         * */
+        /// <summary>
+        /// Emitted whenever the mouse position is changed
+        /// </summary>
+        /// <param name="mouseState"></param>
         private void EmitMouseMovedEvent(MouseState mouseState)
         {
             _eventManager.Emit("mousemove", GetMouseEventPayload(mouseState));
         }
 
-        /**
-         * Emitted whenever any mouse button is down
-         * */
+        /// <summary>
+        /// Emitted whenever any mouse button is down
+        /// </summary>
+        /// <param name="mouseState"></param>
         private void EmitMousePressed(MouseState mouseState)
         {
             _eventManager.Emit("mousedown", GetMouseEventPayload(mouseState));
         }
 
-        /**
-         * Emitted whenever any mouse button is released
-         * */
+        /// <summary>
+        /// Emitted whenever any mouse button is released
+        /// </summary>
+        /// <param name="mouseState"></param>
         private void EmitMouseReleased(MouseState mouseState)
         {
             _eventManager.Emit("mouseup", GetMouseEventPayload(mouseState));
         }
 
-        /**
-         * Emitted whenever any button is pressed
-         * */
+        /// <summary>
+        ///  Emitted whenever any button is pressed
+        /// </summary>
+        /// <param name="mouseState"></param>
         private void EmitMouseClick(MouseState mouseState)
         {
             _eventManager.Emit("mouseclick", GetMouseEventPayload(mouseState));

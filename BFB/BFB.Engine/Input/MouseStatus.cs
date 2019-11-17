@@ -2,6 +2,9 @@ using Microsoft.Xna.Framework.Input;
 
 namespace BFB.Engine.Input
 {
+    /// <summary>
+    /// The state at which a mouse can be. Holds the X and Y coordinate, and the the states of each click.
+    /// </summary>
     public class MouseStatus
     {
         public int X { get; set; }

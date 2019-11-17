@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using System.Drawing;
 using BFB.Engine.Math;
 using BFB.Engine.Simulation.InputComponents;
 using BFB.Engine.Simulation.PhysicsComponents;
@@ -6,17 +8,24 @@ using BFB.Engine.TileMap;
 
 namespace BFB.Engine.Entity
 {
+    /// <summary>
+    /// An entity stored in the game server's simulation 
+    /// </summary>
     public class SimulationEntity : Entity
     {
 
         #region Properties
 
         private int _lastTick;
-        
-        public bool IsPlayer { get; set; }
-        
-        public bool IsInBounds { get; set; }
 
+        /// <summary>
+        /// Whether this is a player entity or not
+        /// </summary>
+        public bool IsPlayer { get; set; }
+
+        /// <summary>
+        /// Vector describing a position an entity is attempting to move to 
+        /// </summary>
         public BfbVector DesiredVector { get; }
 
         public BfbVector OldPosition { get; private set; }
@@ -24,17 +33,14 @@ namespace BFB.Engine.Entity
         public List<string> VisibleChunks { get; }
 
         public Dictionary<string, int> ChunkVersions { get; }
-        
-        public int Width => (int) Dimensions.X;
-        public int Height => (int) Dimensions.Y;
-        public int Bottom => (int)(Position.Y + Height);
-        public int OldBottom => (int)(OldPosition.Y + Height);
-        public int Left => (int)(Position.X);
-        public int OldLeft => (int)(OldPosition.X);
-        public int Right => (int)(Position.X + Width);
-        public int OldRight => (int)(OldPosition.X + Width);
-        public int Top => (int)(Position.Y);
-        public int OldTop => (int)(OldPosition.Y);
+
+        public Rectangle Bounds =>
+            new Rectangle((int) Position.X, (int) Position.Y, (int) Dimensions.X, (int) Dimensions.Y);
+
+        public int OldBottom => (int) (OldPosition.Y + Height);
+        public int OldLeft => (int) (OldPosition.X);
+        public int OldRight => (int) (OldPosition.X + Width);
+        public int OldTop => (int) (OldPosition.Y);
 
         #endregion
 
@@ -42,30 +48,43 @@ namespace BFB.Engine.Entity
 
         private readonly IInputComponent _input;
         private readonly IPhysicsComponent _physics;
+        public IPhysicsComponent Combat { get; }
+
+        public Boolean isFacingRight;
 
         #endregion
 
         #region Constructor
 
+        /// <summary>
+        /// Creates a new entity for the game simulations
+        /// </summary>
+        /// <param name="entityId">Unique ID for this entity</param>
+        /// <param name="options">Sets the initial properties of this entity</param>
+        /// <param name="components">The components this entity contains</param>
         public SimulationEntity(string entityId, EntityOptions options, ComponentOptions components) : base(entityId,
             options)
         {
             //Components
             _input = components.Input;
             _physics = components.Physics;
-
+            Combat = components.Combat;
             DesiredVector = new BfbVector();
             OldPosition = new BfbVector();
             VisibleChunks = new List<string>();
             ChunkVersions = new Dictionary<string, int>();
-
             _lastTick = -1;
+            isFacingRight = true;
         }
 
         #endregion
 
         #region Update
 
+        /// <summary>
+        /// Updates this entity as part of the chunks in the simulation of this entity
+        /// </summary>
+        /// <param name="simulation"></param>
         public void Tick(Simulation.Simulation simulation)
         {
             //Only tick entity once per frame
@@ -81,6 +100,7 @@ namespace BFB.Engine.Entity
             //Component Processing
             _input?.Update(this, simulation);
             _physics?.Update(this, simulation);
+            Combat?.Update(this, simulation);
 
             //Place entity in correct chunk if in new position
             string chunkKey =
@@ -127,15 +147,4 @@ namespace BFB.Engine.Entity
         #endregion
 
     }
-
-    //TODO Move Out
-    #region ComponentOptions
-
-        public class ComponentOptions
-        {
-            public IInputComponent Input { get; set; }
-            public IPhysicsComponent Physics { get; set; }
-        }
-
-        #endregion
 }

@@ -9,6 +9,9 @@ using JetBrains.Annotations;
 
 namespace BFB.Engine.Server
 {
+    /// <summary>
+    /// Manages TCP server
+    /// </summary>
     public class ServerSocketManager
     {
 
@@ -24,16 +27,40 @@ namespace BFB.Engine.Server
         private bool _isBroadcasting;
         
         #region Server Event Properties
+        
+        /// <summary>
+        /// Callback that is called when a client tries to authenticate
+        /// </summary>
         public Func<DataMessage,bool> OnClientAuthentication { get; set; }
+        
+        /// <summary>
+        /// Callback that is called when a client tries to connect
+        /// </summary>
         public Action<ClientSocket> OnClientConnect { get; set; }
+        
+        /// <summary>
+        /// Callback that is called when a client is ready
+        /// </summary>
         public Action<ClientSocket> OnClientReady { get; set; }
         
         /// <summary>
         /// Called before the OnClientReady callback. Use this to send any setup information to the client.
         /// </summary>
         public Action<ClientSocket> OnClientPrepare { get; set; }
+
+        /// <summary>
+        /// Called when a client disconnects
+        /// </summary>
         public Action<string> OnClientDisconnect { get; set; }
+        
+        /// <summary>
+        /// Called when the server is started
+        /// </summary>
         public Action OnServerStart { get; set; }
+        
+        /// <summary>
+        /// Called when the server is stopped
+        /// </summary>
         public Action OnServerStop { get; set; }
 
         #endregion
@@ -42,9 +69,11 @@ namespace BFB.Engine.Server
         
         #region Constructor
         
-        /**
-         * Constructs a server manager for accepting and routing tcp clients
-         */
+        /// <summary>
+        /// Constructs a Socket Manager that accepts, routes and handles a tcp connection
+        /// </summary>
+        /// <param name="ip">The ip to bind to</param>
+        /// <param name="port">The port to bind to</param>
         public ServerSocketManager(IPAddress ip, int port)
         {
             _listener = new TcpListener(ip, port);
@@ -64,6 +93,9 @@ namespace BFB.Engine.Server
 
         #region Start
 
+        /// <summary>
+        /// Starts the server
+        /// </summary>
         public void Start()
         {
             if (_isBroadcasting) return;
@@ -96,6 +128,9 @@ namespace BFB.Engine.Server
 
         #region Stop
 
+        /// <summary>
+        /// Stops the server
+        /// </summary>
         public void Stop()
         {
             if (!_isBroadcasting) return;
@@ -117,9 +152,11 @@ namespace BFB.Engine.Server
 
         #region Emit
 
-        /**
-         * Sends a message to all connected clients
-         */
+        /// <summary>
+        /// Sends a DataMessage to all ocnnected clients
+        /// </summary>
+        /// <param name="routeKey">The route to send too</param>
+        /// <param name="dataMessage">The message to send</param>
         public void Emit(string routeKey, DataMessage dataMessage = null)
         {
             if(dataMessage == null)
@@ -138,10 +175,11 @@ namespace BFB.Engine.Server
         
         #region On
 
-        /**
-         * Used to listen for messages from the client
-         */
-
+        /// <summary>
+        /// Used to define routes from any connected client. 
+        /// </summary>
+        /// <param name="routeKey">The route to listen for</param>
+        /// <param name="messageHandler">The callback to use for processing any received messaged</param>
         [UsedImplicitly]
         public void On(string routeKey, Action<DataMessage> messageHandler)
         {
@@ -218,12 +256,17 @@ namespace BFB.Engine.Server
         #endregion
         
         #region GetClient
-
-        public ClientSocket GetClient(string clientId)
+        
+        /// <summary>
+        /// Gets a connected client with a given key
+        /// </summary>
+        /// <param name="clientKey">The clients key</param>
+        /// <returns>A clientSocket object</returns>
+        public ClientSocket GetClient(string clientKey)
         {
             lock (_lock)
             {
-                return _clientSockets.ContainsKey(clientId) ? _clientSockets[clientId] : null;
+                return _clientSockets.ContainsKey(clientKey) ? _clientSockets[clientKey] : null;
             }
         }
         
@@ -285,6 +328,10 @@ namespace BFB.Engine.Server
 
         #region SetTerminalHeader
 
+        /// <summary>
+        /// Used define what the terminal header should look like when printing to the console
+        /// </summary>
+        /// <param name="action"></param>
         public void SetTerminalHeader(Action action)
         {
             lock(_consoleLock){
@@ -296,6 +343,11 @@ namespace BFB.Engine.Server
 
         #region PrintMessage
 
+        /// <summary>
+        /// Prints a message with terminal header to the console
+        /// </summary>
+        /// <param name="message">Message to print</param>
+        /// <param name="printHeader">Indicate whether the header should be printed</param>
         public void PrintMessage(string message = null, bool printHeader = true)
         {
             lock (_consoleLock)
@@ -313,6 +365,9 @@ namespace BFB.Engine.Server
         
         #region Dispose
 
+        /// <summary>
+        /// Disposes the server
+        /// </summary>
         [UsedImplicitly]
         public void Dispose()
         {

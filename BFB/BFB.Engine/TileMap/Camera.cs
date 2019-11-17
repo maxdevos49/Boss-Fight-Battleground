@@ -13,12 +13,30 @@ namespace BFB.Engine.TileMap
             private set => _position = value;
         }
         
+        /// <summary>
+        /// The focus point.
+        /// </summary>
         public Vector2 Focus { get; set; }
         public float Rotation { get; set; }
+        /// <summary>
+        /// The origin location.
+        /// </summary>
         public Vector2 Origin { get; set; }
+        /// <summary>
+        /// The zoom value.
+        /// </summary>
         public float Zoom { get; set; }
+        /// <summary>
+        /// The center of the screen location.
+        /// </summary>
         public Vector2 ScreenCenter { get; protected set; }
+        /// <summary>
+        /// The matrix to transform the camera.
+        /// </summary>
         public Matrix Transform { get; set; }
+        /// <summary>
+        /// The speed value of the movement.
+        /// </summary>
         public float MoveSpeed { get; set; }
         
         
@@ -40,8 +58,8 @@ namespace BFB.Engine.TileMap
             Position = Vector2.Zero;
             Origin = Vector2.Zero;
             ScreenCenter = Vector2.Zero;
-            Zoom = 0.3f;
-            MoveSpeed = 5.25f;
+            Zoom = 0.05f;
+            MoveSpeed = 10.25f;
             Rotation = 0;
         }
 
@@ -78,17 +96,6 @@ namespace BFB.Engine.TileMap
             else if(_position.X > _worldWidth - Origin.X)
                 _position.X = _worldWidth - Origin.X;
            
-        }
-        
-        //TODO remove maybe because we will not need it with better renderer maybe
-        public bool IsInView(Vector2 position, Texture2D texture)
-        {
-            // If the object is not within the horizontal bounds of the screen
-            if ( (position.X + texture.Width) < (Position.X - Origin.X - 100) || (position.X) > (Position.X + Origin.X + 100) )
-                return false;
-
-            // If the object is not within the vertical bounds of the screen
-            return !((position.Y + texture.Height) < (Position.Y - Origin.Y - 100)) && !((position.Y) > (Position.Y + Origin.Y + 100));
         }
 
     }

@@ -10,6 +10,9 @@ using BFB.Engine.TileMap.TileComponent;
 
 namespace BFB.Engine.Simulation
 {
+    /// <summary>
+    /// Creates a simulation for simulating entities and a tilemap in a game
+    /// </summary>
     public class Simulation
     {
 
@@ -21,20 +24,53 @@ namespace BFB.Engine.Simulation
         private readonly int _tickSpeed;
         private readonly Random _random;
         public int Tick { get; private set; } 
-        
+        private readonly Dictionary<string,SimulationEntity> _entitiesIndex;
+        private readonly Dictionary<string, SimulationEntity> _playerEntitiesIndex;
+
+        /// <summary>
+        /// Indicates the distance at which a player causes the simulation to simulate
+        /// </summary>
         public readonly int SimulationDistance;
         public readonly WorldManager World;
         
-        private readonly Dictionary<string,SimulationEntity> _entitiesIndex;
-        private readonly Dictionary<string,SimulationEntity> _playerEntitiesIndex;
+        /// <summary>
+        /// Holds the World Manager for maintaining world state
+        /// </summary>
+        public readonly WorldManager WorldManager;
         
-        //Simulation callbacks
+        /// <summary>
+        /// Callback that is fired on every 1% of world generation progress. Supplies the current world generating progress as a string
+        /// </summary>
         public Action<string> OnWorldGenerationProgress { get; set; }
+        
+        /// <summary>
+        /// Callback that is called when the simulation is started
+        /// </summary>
         public Action OnSimulationStart { get; set; }
+        
+        /// <summary>
+        /// Callback that is called when the simulation is stopped
+        /// </summary>
         public Action OnSimulationStop { get; set; }
+        
+        /// <summary>
+        /// Callback that is called when a entity is added. Supplies the entity key and a boolean indicating if the entity is a player.
+        /// </summary>
         public Action<string,bool> OnEntityAdd { get; set; }
+        
+        /// <summary>
+        /// Callback that is called when a entity is removed. Supplies the entity key and a boolean indicating if the entity is a player
+        /// </summary>
         public Action<string,bool> OnEntityRemove { get; set; }
+        
+        /// <summary>
+        /// Callback that is called when the simulation is ready to supply updates for a player entity. Supplies the player entity key and its relevant updates
+        /// </summary>
         public Action<string,EntityUpdateMessage> OnEntityUpdates { get; set; }
+        
+        /// <summary>
+        /// Callback that is called when the simulation is ready to provide updates for player entity. Supplies the player entity key and its relevant updates
+        /// </summary>
         public Action<string,ChunkUpdatesMessage> OnChunkUpdates { get; set; }
         public Action<string> OnSimulationOverLoad { get; set; }
         
@@ -43,14 +79,16 @@ namespace BFB.Engine.Simulation
         
         #region Constructor
         
-        /**
-         * Thread safe simulation class that can be ticked to move the simulation forward a single step at a time
-         */
-        public Simulation(WorldOptions worldOptions, int? tickSpeed = null)
+        /// <summary>
+        /// Constructs a simulation
+        /// </summary>
+        /// <param name="worldOptions">Given world options that is given to the world manager</param>
+        /// <param name="tickSpeed">A optional parameter used for indicating the ticks per second. (20tps is the default)</param>
+        public Simulation(WorldOptions worldOptions, int tickSpeed = 20)
         {
             _lock = new object();
             _simulating = false;
-            _tickSpeed = 1000/tickSpeed ?? (1000 / 60);//60 ticks a second are default
+            _tickSpeed = 1000/tickSpeed;//60 ticks a second are default
             _random = new Random();
             Tick = 0;
 
@@ -69,6 +107,9 @@ namespace BFB.Engine.Simulation
 
         #region GenerateWorld
 
+        /// <summary>
+        /// Generates the entire tilemap. Calls the OnWorldGenerationProgress during the generation
+        /// </summary>
         public void GenerateWorld()
         {
             lock (_lock)
@@ -81,6 +122,11 @@ namespace BFB.Engine.Simulation
         
         #region AddEntity
         
+        /// <summary>
+        /// Adds a entity to the simulation
+        /// </summary>
+        /// <param name="simulationEntity">The simulation entity</param>
+        /// <param name="isPlayer">Optional parameter indicating if the entity is a player.(false is default)</param>
         public void AddEntity(SimulationEntity simulationEntity, bool isPlayer = false)
         {
             lock (_lock)
@@ -119,6 +165,10 @@ namespace BFB.Engine.Simulation
         
         #region RemoveEntity
         
+        /// <summary>
+        /// Removes a entity from the simulation with a entity id.
+        /// </summary>
+        /// <param name="key">The entity Id used to determine who is being removed from the simulation.</param>
         public void RemoveEntity(string key)
         {
             bool isPlayer = false;
@@ -150,11 +200,35 @@ namespace BFB.Engine.Simulation
 
             OnEntityRemove?.Invoke(key,isPlayer);
         }
-        
+
         #endregion
-        
+
+        #region GetEntityAtPosition
+
+        public SimulationEntity GetEntityAtPosition(int x, int y)
+        {
+            float tileSize = World.WorldOptions.WorldScale;
+            foreach (KeyValuePair<string, SimulationEntity> player in _playerEntitiesIndex)
+            {
+                if (player.Value.Position.X <= x && player.Value.Position.X + tileSize * 2 >= x)
+                {
+                    if (player.Value.Position.Y <= y && player.Value.Position.Y + tileSize * 2 >= y)
+                    {
+                        return player.Value;
+                    }
+                }
+            }
+
+            return null;
+        }
+
+        #endregion
+
         #region Start
 
+        /// <summary>
+        /// Starts the simulation
+        /// </summary>
         public void Start()
         {
             OnSimulationStart?.Invoke();
@@ -171,6 +245,9 @@ namespace BFB.Engine.Simulation
         
         #region Stop
 
+        /// <summary>
+        /// Stops the simulation
+        /// </summary>
         public void Stop()
         {
             OnSimulationStop?.Invoke();
@@ -180,7 +257,7 @@ namespace BFB.Engine.Simulation
         #endregion
         
         #region SendUpdates
-
+        
         private void SendUpdates()
         {
             lock (_lock)

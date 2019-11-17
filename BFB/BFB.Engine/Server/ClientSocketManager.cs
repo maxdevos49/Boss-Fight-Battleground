@@ -21,21 +21,52 @@ namespace BFB.Engine.Server
         private bool _allowEmit;
         private readonly Dictionary<string, List<Action<DataMessage>>> _handlers;
 
-        
+        /// <summary>
+        /// Indicates the connected clients Id
+        /// </summary>
         public string ClientId { get;  private set; }
+        
+        /// <summary>
+        /// The ip used to connect to the server
+        /// </summary>
         public string Ip { get; set; }
+        
+        /// <summary>
+        /// The port used to connect to the server
+        /// </summary>
         public int Port { get; set; }
+        
+        /// <summary>
+        /// Callback called when the server asks the client for authentication
+        /// </summary>
         public Func<DataMessage,DataMessage> OnAuthentication { get; set; }
+        
+        /// <summary>
+        /// Callback called when the server has recognized the connection
+        /// </summary>
         public Action<string> OnConnect { get; set; }
+        
+        /// <summary>
+        /// Callback called when the client has disconnected
+        /// </summary>
         public Action<string> OnDisconnect { get; set; }
         
         public Action<DataMessage> OnPrepare { get; set; }
+        
+        /// <summary>
+        /// Callback called when the client is ready told by the server
+        /// </summary>
         public Action OnReady { get; set; }
         
         #endregion
 
         #region Constructor
         
+        /// <summary>
+        /// Constructs a client socket manager
+        /// </summary>
+        /// <param name="ip">Ip used to connect</param>
+        /// <param name="port">Port used to connect</param>
         public ClientSocketManager(string ip, int port)
         {
             _lock = new object();
@@ -59,6 +90,10 @@ namespace BFB.Engine.Server
         
         #region Disconnect
 
+        /// <summary>
+        /// Used to disconnect from the server or to clean up after being told to connect
+        /// </summary>
+        /// <param name="reason"></param>
         public void Disconnect(string reason)
         {
             OnDisconnect?.Invoke(reason);
@@ -69,6 +104,9 @@ namespace BFB.Engine.Server
         
         #region Dispose
 
+        /// <summary>
+        /// Disposes the client socket manager and clears all properties to there initial state
+        /// </summary>
         [UsedImplicitly]
         public void Dispose()
         {
@@ -85,9 +123,10 @@ namespace BFB.Engine.Server
         
         #region Connect
 
-        /**
-         * Connects to the server. Returns true if success
-         */
+        /// <summary>
+        /// Connects to a server
+        /// </summary>
+        /// <returns>True if connection was a success</returns>
         public bool Connect()
         {
             try
@@ -116,6 +155,11 @@ namespace BFB.Engine.Server
 
         #region Emit
         
+        /// <summary>
+        /// Used to send messages to the server
+        /// </summary>
+        /// <param name="routeKey">The route to send to</param>
+        /// <param name="message">The data to send</param>
         public void Emit(string routeKey, DataMessage message = null)
         {
             try
@@ -163,6 +207,11 @@ namespace BFB.Engine.Server
         
         #region On
 
+        /// <summary>
+        /// Used to listen for messages from the server.
+        /// </summary>
+        /// <param name="routeKey">The route to listen for</param>
+        /// <param name="handler">The callback to process the message after receiving a message</param>
         [UsedImplicitly]
         public void On(string routeKey, Action<DataMessage> handler)
         {
@@ -213,7 +262,14 @@ namespace BFB.Engine.Server
                     DataMessage message;
                     using (MemoryStream memoryStream = new MemoryStream(messageData))
                     {
-                        message = (DataMessage) new BinaryFormatter().Deserialize(memoryStream);
+                        if (memoryStream.CanRead)
+                        {
+                            message = (DataMessage) new BinaryFormatter().Deserialize(memoryStream);
+                        }
+                        else
+                        {
+                            return;
+                        }
                     }
 
                     #endregion

@@ -11,36 +11,39 @@ using JetBrains.Annotations;
 
 namespace BFB.Engine.Scene
 {
+    /// <summary>
+    /// A scene, or screen of the game.
+    /// </summary>
     public abstract class Scene
     {
-        /**
-         * Scene manager used to control scene state
-         */
+        /// <summary>
+        /// Scene manager used to control scene state
+        /// </summary>
         public static SceneManager SceneManager { get; set; }
-        
-        /**
-         * UI Manager for controlling UI related things
-         */
+
+        /// <summary>
+        /// UI Manager for controlling UI related things
+        /// </summary>
         public static UIManager UIManager { get; set; }
-        
-        /**
-         * Used to distribute content across the application without loading things twice and so on
-         */
+
+        /// <summary>
+        /// Used to distribute content across the application without loading things twice and so on
+        /// </summary>
         public static BFBContentManager ContentManager { get; set; }
-        
-        /**
-         * Contains useful drawing stuff
-         */
+
+        /// <summary>
+        /// Contains useful drawing stuff
+        /// </summary>
         public static GraphicsDeviceManager GraphicsDeviceManager { get; set; }
-        
-        /**
-         * Used for global events
-         */
+
+        /// <summary>
+        /// Used for global events
+        /// </summary>
         public static EventManager<GlobalEvent> GlobalEventManager { get; set; }
-        
-        /**
-         * Used for input events only
-         */
+
+        /// <summary>
+        /// Used for input events only
+        /// </summary>
         public static EventManager<InputEvent> InputEventManager { get; set; }
         
         
@@ -58,9 +61,9 @@ namespace BFB.Engine.Scene
             _eventGlobalListenerIds = new List<int>();
         }
 
-        /**
-         * Stops the scene by updating the scene status
-         * */
+        /// <summary>
+        /// Stops the scene by updating the scene status and calling unload on the scene
+        /// </summary>
         public void Stop()
         {
             //unload textures
@@ -68,17 +71,17 @@ namespace BFB.Engine.Scene
             Unload();
         }
 
-        /**
-         * Pauses the scene by updating the scene status
-         * */
+        /// <summary>
+        /// Pauses the scene by updating the scene status
+        /// </summary>
         public void Pause()
         {
             _status = SceneStatus.Paused;
         }
 
-        /**
-         * Starts the scene by updating the scene status
-         * */
+        /// <summary>
+        /// Starts the scene by updating the scene status
+        /// </summary>
         public void Start()
         {
             if (_status == SceneStatus.Inactive)
@@ -90,9 +93,10 @@ namespace BFB.Engine.Scene
             _status = SceneStatus.Active;
         }
 
-        /**
-         * Gets the current status of the scene
-         * */
+        /// <summary>
+        /// Gets the current status of the scene
+        /// </summary>
+        /// <returns></returns>
         public SceneStatus GetStatus()
         {
             return _status;

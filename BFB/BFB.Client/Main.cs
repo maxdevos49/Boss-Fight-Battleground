@@ -128,6 +128,10 @@ namespace BFB.Client
                 new HudUI(),
                 new GameMenuUI(),
                 new MonsterMenuUI()
+                new ChatUI(),
+                new StoreUI(),
+                new CreditCardUI(), 
+                new CompletedTransactionUI(), 
             });
             
             #endregion

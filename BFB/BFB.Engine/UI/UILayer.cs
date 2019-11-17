@@ -8,21 +8,36 @@ using Microsoft.Xna.Framework.Input;
 
 namespace BFB.Engine.UI
 {
+    /// <summary>
+    /// Used to create a layer for ui elements
+    /// </summary>
     public abstract class UILayer
     {
         #region Properties
 
+        /// <summary>
+        /// The identification key for the uilayer
+        /// </summary>
         public string Key { get; }
-
+    
+        /// <summary>
+        /// The UIManager for the UILayer
+        /// </summary>
         public static UIManager UIManager { get; set; }
         
+        /// <summary>
+        /// The SceneManager class
+        /// </summary>
         public static SceneManager SceneManager { get; set; }
         
+        /// <summary>
+        /// Used to inidicate if the scene should be drawn in debug mode
+        /// </summary>
         public bool Debug { get; set; }
         
-        /**
-         * Represents the foundation of the root UI
-         */
+        /// <summary>
+        /// Represents the foundation of the UI
+        /// </summary>
         public UIRootComponent RootUI { get; set; }
 
         /**
@@ -43,6 +58,11 @@ namespace BFB.Engine.UI
         #endregion
         
         #region Constructor
+        
+        /// <summary>
+        /// Constructs a UILayer for displaying UIElements
+        /// </summary>
+        /// <param name="key"></param>
         protected UILayer(string key)
         {
             Key = key;
@@ -58,9 +78,10 @@ namespace BFB.Engine.UI
 
         #region Initilize Root
         
-        /**
-         * Initializes the view layer for building
-         */
+        /// <summary>
+        /// Initializes the layer for drawing
+        /// </summary>
+        /// <param name="rootNode"></param>
         public void InitializeRoot(UIRootComponent rootNode)
         {
             _eventIndex.Clear();
@@ -72,9 +93,11 @@ namespace BFB.Engine.UI
 
         #region ProcessEvents
         
-        /**
-         * Routes events to there correct receivers. 
-         */
+        /// <summary>
+        /// Processes Input Events into UIEvents
+        /// </summary>
+        /// <param name="events"></param>
+        /// <returns></returns>
         public bool ProcessEvents(IEnumerable<UIEvent> events)
         {
 
@@ -149,8 +172,6 @@ namespace BFB.Engine.UI
                             _tabPosition = _tabIndex.Count - 1;
 
                         _tabIndex[(int) _tabPosition].Focused = true;
-                        
-//                        Console.WriteLine("Refocusing: " + _tabPosition);
 
                     }
 
@@ -175,6 +196,10 @@ namespace BFB.Engine.UI
         
         #region AddEventComponent
         
+        /// <summary>
+        /// Adds a UIComponents that uses events into the Event Index
+        /// </summary>
+        /// <param name="component">The UIComponent that will emit events</param>
         public void AddEventComponent(UIComponent component)
         {
             _eventIndex.Add(component);
@@ -184,6 +209,10 @@ namespace BFB.Engine.UI
         
         #region AddTabIndexComponent
         
+        /// <summary>
+        /// Adds a UIComponent to the tabindex if it can be tabbed
+        /// </summary>
+        /// <param name="component">The UIComponent that can be tabbed</param>
         public void AddTabIndexComponent(UIComponent component)
         {
             _tabIndex.Add(component);
@@ -193,15 +222,18 @@ namespace BFB.Engine.UI
 
         #region Init
         
-        public virtual void Init()
-        {
-           //Used for initilizing a UI layer 
-        }
+        /// <summary>
+        /// An optional init method for a UILayer to use for setup. Called every time a UILayer is started
+        /// </summary>
+        public virtual void Init() {}
         
         #endregion
 
         #region Stop
         
+        /// <summary>
+        /// Called when a UILayer needs to be stopped
+        /// </summary>
         public void Stop()
         {
             RootUI = null;
@@ -211,6 +243,9 @@ namespace BFB.Engine.UI
         
         #endregion
 
+        /// <summary>
+        /// The area to define the UIComponent element layouts
+        /// </summary>
         public abstract void Body();
     }
 }

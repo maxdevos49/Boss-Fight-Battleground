@@ -57,8 +57,8 @@ namespace BFB.Client.Scenes
 
             //TODO Change how the connection is supplied where its started to better handle a server menu style choice
             MainMenuUI layer = (MainMenuUI)UIManager.GetLayer(nameof(MainMenuUI));
-            _server.Ip = layer.model.Ip.Split(":")[0];
-            _server.Port = Convert.ToInt32(layer.model.Ip.Split(":")[1]);
+            _server.Ip = layer.Model.Ip.Split(":")[0];
+            _server.Port = Convert.ToInt32(layer.Model.Ip.Split(":")[1]);
             
             
             /**
@@ -180,6 +180,13 @@ namespace BFB.Client.Scenes
             
             #endregion
 
+            //Launch hud ui
+            //UIManager.Start(nameof(HudUI)); //TODO restart the HudUI
+            UIManager.Start(nameof(ChatUI));
+            
+            if (!_server.Connect())
+                Console.WriteLine("Connection Failed.");
+            
             #region Handle Chunk Updates
 
             _server.On("/players/chunkUpdates", message =>
@@ -201,9 +208,6 @@ namespace BFB.Client.Scenes
             #endregion
             //Launch hud ui
             UIManager.Start(nameof(HudUI));
-            
-            if (!_server.Connect())
-                Console.WriteLine("Connection Failed.");
             
         }
         
