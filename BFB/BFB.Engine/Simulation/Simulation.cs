@@ -31,12 +31,12 @@ namespace BFB.Engine.Simulation
         /// Indicates the distance at which a player causes the simulation to simulate
         /// </summary>
         public readonly int SimulationDistance;
-        public readonly WorldManager World;
         
         /// <summary>
         /// Holds the World Manager for maintaining world state
         /// </summary>
-        public readonly WorldManager WorldManager;
+        public readonly WorldManager World;
+
         
         /// <summary>
         /// Callback that is fired on every 1% of world generation progress. Supplies the current world generating progress as a string

@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using BFB.Engine.Math;
+using BFB.Engine.Simulation.GameComponents;
 using BFB.Engine.Simulation.InputComponents;
 using BFB.Engine.Simulation.PhysicsComponents;
 using BFB.Engine.TileMap;
@@ -15,7 +16,8 @@ namespace BFB.Engine.Entity
 
         #region Properties
 
-        private int _lastTick;
+        public int CurrentTick { get; private set; }
+        public int TicksSinceCreation { get; private set; }
         
         /// <summary>
         /// Whether this is a player entity or not
@@ -55,8 +57,9 @@ namespace BFB.Engine.Entity
 
         #region Components
 
+        public readonly IPhysicsComponent Physics;
         private readonly IInputComponent _input;
-        private readonly IPhysicsComponent _physics;
+        private readonly List<IGameComponent> _gameComponents;
 
         #endregion
 
@@ -77,10 +80,12 @@ namespace BFB.Engine.Entity
             Facing = DirectionFacing.Left;
             
             //Components
+            Physics = components.Physics;
             _input = components.Input;
-            _physics = components.Physics;
+            _gameComponents = components.GameComponents ?? new List<IGameComponent>();
 
-            _lastTick = -1;
+            CurrentTick = -1;
+            TicksSinceCreation = -1;
         }
 
         #endregion
@@ -93,19 +98,26 @@ namespace BFB.Engine.Entity
         /// <param name="simulation"></param>
         public void Tick(Simulation.Simulation simulation)
         {
+            TicksSinceCreation++;
+            
             //Only tick entity once per frame
-            if (simulation.Tick == _lastTick)
+            if (simulation.Tick == CurrentTick)
                 return;
 
             //Record last tick
-            _lastTick = simulation.Tick;
+            CurrentTick = simulation.Tick;
 
             //Record current position
             OldPosition = new BfbVector(Position.X, Position.Y);
 
             //Component Processing
             _input?.Update(this, simulation);
-            _physics?.Update(this, simulation);
+            Physics?.Update(this, simulation);
+
+            foreach (IGameComponent gameComponent in _gameComponents)
+            {
+                gameComponent.Update(this,simulation);
+            }
 
             //Place entity in correct chunk if in new position
             string chunkKey =

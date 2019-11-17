@@ -1,5 +1,7 @@
 using System;
+using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 using BFB.Engine.Entity;
 using BFB.Engine.Math;
 using BFB.Engine.Simulation.PhysicsComponents;
@@ -24,21 +26,67 @@ namespace BFB.Engine.Simulation
             
             physics.WorldBoundaryCheck(simulation, entity);
 
+            physics.EntityCollisions(simulation, entity);
 
-            if (physics.CollideWithFilters.Contains("tile"))
-            {
-                //Left and right collisions
-                physics.BroadPhaseHorizontal(simulation, entity);
+            if (!physics.CollideWithFilters.Contains("tile")) 
+                return;
+            
+            //Left and right tile collisions
+            physics.BroadPhaseHorizontal(simulation, entity);
 
-                //Detect up and down
-                physics.BroadPhaseVertical(simulation, entity);
-            }
-            
-            
+            //Detect up and down tile collisions
+            physics.BroadPhaseVertical(simulation, entity);
+
+
         }
 
         #endregion
 
+        #region EntityCollisions
+
+        private static void EntityCollisions(this IPhysicsComponent physics, Simulation simulation, SimulationEntity entity)
+        {
+            List<Chunk> chunkList = new List<Chunk>();
+            Chunk chunk = simulation.World.ChunkIndex[entity.ChunkKey];
+            chunkList.Add(chunk);
+            
+            //check right upper point chunk
+            Chunk chunkTest = simulation.World.ChunkFromPixelLocation(entity.Right, entity.Top);
+            if(chunk.ChunkY != chunkTest?.ChunkX || chunk.ChunkY != chunkTest.ChunkY)
+                chunkList.Add(chunkTest);
+            
+            //check lower right chunk
+            chunkTest = simulation.World.ChunkFromPixelLocation(entity.Right, entity.Bottom);
+            if(chunk.ChunkY != chunkTest?.ChunkX || chunk.ChunkY != chunkTest.ChunkY)
+                chunkList.Add(chunkTest);
+            
+            //check bottom left chunk
+            chunkTest = simulation.World.ChunkFromPixelLocation(entity.Left, entity.Right);
+            if(chunk.ChunkY != chunkTest?.ChunkX || chunk.ChunkY != chunkTest.ChunkY)
+                chunkList.Add(chunkTest);
+
+            foreach (Chunk chunk1 in chunkList)
+            {
+                if(chunk1 == null)
+                    continue;
+                
+                //check for entities with the specified filter
+                foreach ((string _, SimulationEntity otherEntity) in chunk1.Entities.ToList()
+                                                                    .Where(x => 
+                                                                        physics.CollideWithFilters.Contains(x.Value.Physics.CollideFilter) 
+                                                                        && x.Value.EntityId != entity.EntityId))
+                {
+                    if (IsRectangleColliding(entity.Bounds, otherEntity.Bounds))
+                    {
+                        physics.OnEntityCollision(simulation, entity, otherEntity);
+                    }
+                }
+            }
+            
+        }
+        
+        #endregion
+        
         #region WorldBoundryCollisions
 
         private static void WorldBoundaryCheck(this IPhysicsComponent physics, Simulation simulation, SimulationEntity entity)
@@ -66,7 +114,7 @@ namespace BFB.Engine.Simulation
                 physics.OnWorldBoundaryCollision(simulation, entity, CollisionSide.TopBorder);
             
             if (entity.Position.Y > simulation.World.MapPixelHeight())
-                physics.OnWorldBoundaryCollision(simulation, entity, CollisionSide.TopBorder);
+                physics.OnWorldBoundaryCollision(simulation, entity, CollisionSide.BottomBorder);
 
         }
 
@@ -214,7 +262,7 @@ namespace BFB.Engine.Simulation
             {
                 if (!IsPointColliding(entity.Left + (i * sectionXOffset), entity.Bottom, block))
                     continue;
-                
+
                 if (!physics.OnTileCollision(simulation, entity, tc))
                     return true;
 
@@ -356,13 +404,17 @@ namespace BFB.Engine.Simulation
         /// <summary>
         /// Detects if two rectangles colliding
         /// </summary>
-        /// <param name="rectangle1">The first rectangle</param>
-        /// <param name="rectangle2">The second rectangle</param>
+        /// <param name="r1">The first rectangle</param>
+        /// <param name="r2">The second rectangle</param>
         /// <returns>A boolean indicating if the rectangles are colliding</returns>
         [UsedImplicitly]
-        public static bool IsRectangleColliding(Rectangle rectangle1, Rectangle rectangle2)
+        public static bool IsRectangleColliding(Rectangle r1, Rectangle r2)
         {
-            return false;
+
+            return (r1.X + r1.Width >= r2.X && // r1 right edge past r2 left
+                    r1.X <= r2.X + r2.Width && // r1 left edge past r2 right
+                    r1.Y + r1.Height >= r2.Y && // r1 top edge past r2 bottom
+                    r1.Y <= r2.Y + r2.Height); // r1 bottom edge past r2 top
         }
         
         #endregion

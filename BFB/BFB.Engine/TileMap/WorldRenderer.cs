@@ -26,7 +26,7 @@ namespace BFB.Engine.TileMap
  
         public WorldRenderer(WorldManager world, GraphicsDevice graphicsDevice)
         {
-//            Debug = true;
+            Debug = true;
             _tileScale = world.WorldOptions.WorldScale;
             _blockWidth = world.MapBlockWidth();
             _blockHeight = world.MapBlockHeight();

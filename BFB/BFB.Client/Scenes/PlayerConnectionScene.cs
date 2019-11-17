@@ -14,6 +14,7 @@ using BFB.Engine.Server.Communication;
 using BFB.Engine.Simulation.GraphicsComponents;
 using BFB.Engine.TileMap;
 using BFB.Engine.TileMap.Generators;
+using BFB.Engine.UI;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
@@ -80,7 +81,7 @@ namespace BFB.Client.Scenes
             Client.OnConnect = (m) =>
             {
                 GlobalEventManager.Emit("onConnectionStatus", new GlobalEvent("Server Connected..."));
-                Thread.Sleep(300);
+                Thread.Sleep(100);
             };
             
             #endregion
@@ -90,7 +91,7 @@ namespace BFB.Client.Scenes
             Client.OnAuthentication = (m) =>
             {
                 GlobalEventManager.Emit("onConnectionStatus", new GlobalEvent("Authenticating User..."));
-                Thread.Sleep(300);
+                Thread.Sleep(100);
 
                 return null;
             };
@@ -102,7 +103,7 @@ namespace BFB.Client.Scenes
             Client.OnPrepare = message =>
             {
                 GlobalEventManager.Emit("onConnectionStatus", new GlobalEvent("Preparing World..."));
-                Thread.Sleep(300);
+                Thread.Sleep(100);
 
                 _world.ApplyWorldInitData((WorldDataMessage)message);
             };
@@ -124,8 +125,7 @@ namespace BFB.Client.Scenes
             
             Client.OnDisconnect = (m) =>
             {
-                //Anything that needs done when this client disconnects
-//                Console.WriteLine("Disconnected");
+                UIManager.Start(nameof(LoadingGameUI));
                 GlobalEventManager.Emit("onConnectionStatus", new GlobalEvent("Disconnected By Server"));
             };
             
@@ -171,15 +171,15 @@ namespace BFB.Client.Scenes
                         }
                         else
                         {
-                            
-                            _entities.Add(em.EntityId,new ClientEntity(em.EntityId,
+
+                            _entities.Add(em.EntityId, new ClientEntity(em.EntityId,
                                 new EntityOptions
                                 {
                                     Dimensions = em.Dimensions,
                                     Position = em.Position,
                                     Rotation = em.Rotation,
                                     Origin = em.Origin,
-                                }, new AnimationComponent(ContentManager.GetAnimatedTexture(em.AnimationTextureKey))));
+                                }, new ItemGraphicsComponent(ContentManager.GetTexture("tiles")))); // new AnimationComponent(ContentManager.GetAnimatedTexture(em.AnimationTextureKey))));
                         }
                     }
                 }

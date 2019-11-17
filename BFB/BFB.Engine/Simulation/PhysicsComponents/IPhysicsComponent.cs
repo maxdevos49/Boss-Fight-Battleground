@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using BFB.Engine.Entity;
+using BFB.Engine.Math;
 
 namespace BFB.Engine.Simulation.PhysicsComponents
 {
@@ -7,8 +8,27 @@ namespace BFB.Engine.Simulation.PhysicsComponents
     /// The interface to outline how to implement a Physics component
     /// </summary>
     public interface IPhysicsComponent
-    {
-     
+    { 
+        /// <summary>
+        /// Represents the acceleration in the two axis independently
+        /// </summary>
+        BfbVector Acceleration { get; set; }
+        
+        /// <summary>
+        /// Represents the maximum speed the entity can move in each axis
+        /// </summary>
+        BfbVector MaxSpeed { get; set; }
+        
+        /// <summary>
+        /// Indicates the strength of gravity of the tile
+        /// </summary>
+        float Gravity { get; set; }
+        
+        /// <summary>
+        /// Indicates the amount of friction the tile has when moving horizontally
+        /// </summary>
+        float Friction { get; set; }
+        
         /// <summary>
         /// Indicates the collision group the entity is in
         /// </summary>
@@ -30,9 +50,10 @@ namespace BFB.Engine.Simulation.PhysicsComponents
         /// Called whenever two entities collide
         /// </summary>
         /// <param name="simulation">The active simulation</param>
-        /// <param name="entityCollision">Data related to the two entities colliding</param>
+        /// <param name="primaryEntity">The first entity in the collision</param>
+        /// <param name="secondaryEntity">The second entity in the collision</param>
         /// <returns>whether any default actions should be performed</returns>
-        bool OnEntityCollision(Simulation simulation, EntityCollision entityCollision);
+        bool OnEntityCollision(Simulation simulation, SimulationEntity primaryEntity, SimulationEntity secondaryEntity);
 
         /// <summary>
         /// Called whenever a entity collides with a tile

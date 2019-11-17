@@ -1,8 +1,6 @@
-using System.Collections.Generic;
 using BFB.Engine.Content;
 using BFB.Engine.Math;
 using BFB.Engine.Server.Communication;
-using Microsoft.Xna.Framework;
 
 namespace BFB.Engine.Entity
 {
@@ -57,8 +55,7 @@ namespace BFB.Engine.Entity
         /// </summary>
         public EntityType EntityType { get; set; }
 
-        // ReSharper disable once CompareOfFloatsByEqualityOperator
-        public bool Grounded => Velocity.Y == 0f;
+        public bool Grounded { get; set; }
         
         public int Width => (int) Dimensions.X;
         public int Height => (int) Dimensions.Y;
@@ -86,6 +83,7 @@ namespace BFB.Engine.Entity
             Origin = options.Origin;
             Rotation = options.Rotation;
             EntityType = options.EntityType;
+            Grounded = false;
             Velocity = new BfbVector();
         }
         

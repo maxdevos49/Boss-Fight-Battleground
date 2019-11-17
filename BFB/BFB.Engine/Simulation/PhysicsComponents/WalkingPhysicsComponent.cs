@@ -12,11 +12,10 @@ namespace BFB.Engine.Simulation.PhysicsComponents
     /// </summary>
     public class  WalkingPhysicsComponent: IPhysicsComponent
     {
-        private readonly BfbVector _acceleration;
-        private readonly BfbVector _maxSpeed;
-        private readonly float _gravity;
-        private readonly float _friction;
-        
+        public BfbVector Acceleration { get; set; }
+        public BfbVector MaxSpeed { get; set; }
+        public float Gravity { get; set; }
+        public float Friction { get; set; }
         public string CollideFilter { get; set; }
         public List<string> CollideWithFilters { get; set; }
         
@@ -24,77 +23,62 @@ namespace BFB.Engine.Simulation.PhysicsComponents
         /// <summary>
         /// Constructs a Walking Physics Component
         /// </summary>
-        public WalkingPhysicsComponent(string collideFilter, List<string> collideWithFilters, WalkingConfiguration options)
+        public WalkingPhysicsComponent()
         {
-            
-            CollideFilter = collideFilter ?? "entity";
-            CollideWithFilters = collideWithFilters ?? new List<string> {"tile"};
-            
-            _acceleration = options?.Acceleration ?? new BfbVector(5,25);
-            _maxSpeed = options?.MaxSpeed ?? new BfbVector(20,40);
-            _gravity = options?.Gravity ?? 4f;
-            _friction = options?.Friction ?? 0.8f;
-
+            CollideFilter = "entity";
+            CollideWithFilters = new List<string> {"tile"};
+            Acceleration = new BfbVector(5,25);
+            MaxSpeed = new BfbVector(20,29);
+            Gravity = 4f;
+            Friction = 0.8f;
         }
 
         public void Update(SimulationEntity entity, Simulation simulation)
         {
             
-            entity.SteeringVector.X *= _acceleration.X;
-            entity.SteeringVector.Y *= _acceleration.Y;
+            entity.SteeringVector.X *= Acceleration.X;
+            entity.SteeringVector.Y *= Acceleration.Y;
             
             entity.Velocity.Add(entity.SteeringVector);
             
-            entity.Velocity.Y += _gravity;
-            entity.Velocity.X *= _friction;
+            entity.Velocity.Y += Gravity;
+            entity.Velocity.X *= Friction;
 
             //Caps your speed in specific axis
-            if(System.Math.Abs(entity.Velocity.X) > _maxSpeed.X)
-                entity.Velocity.X = entity.Velocity.X > 0 ? _maxSpeed.X : -_maxSpeed.X;
+            if(System.Math.Abs(entity.Velocity.X) > MaxSpeed.X)
+                entity.Velocity.X = entity.Velocity.X > 0 ? MaxSpeed.X : -MaxSpeed.X;
             
-            if(System.Math.Abs(entity.Velocity.Y) > _maxSpeed.Y)
-                entity.Velocity.Y = entity.Velocity.Y > 0 ? _maxSpeed.Y : -_maxSpeed.Y;
+            if(System.Math.Abs(entity.Velocity.Y) > MaxSpeed.Y)
+                entity.Velocity.Y = entity.Velocity.Y > 0 ? MaxSpeed.Y : -MaxSpeed.Y;
             
             entity.Position.Add(entity.Velocity);
 
-            //Animation states
-            if (entity.Velocity.X > 2)
-            {
-                entity.Facing = DirectionFacing.Right;
-                entity.AnimationState = AnimationState.MoveRight;
-            }
-            else if (entity.Velocity.X < -2)
-            {
-                entity.Facing = DirectionFacing.Left;
-                entity.AnimationState = AnimationState.MoveLeft;
-            }
-            else
-            {
-                entity.Velocity.X = 0;
-                entity.AnimationState = (entity.Facing == DirectionFacing.Left)
-                    ? AnimationState.IdleLeft
-                    : AnimationState.IdleRight;
-            }
-            
             //Collision Test
             this.DetectCollision(simulation, entity);
+            
+            // ReSharper disable once CompareOfFloatsByEqualityOperator
+            entity.Grounded = entity.Velocity.Y == 0.0f;
         }
 
-        public bool OnEntityCollision(Simulation simulation, EntityCollision entityCollision)
+        public bool OnEntityCollision(Simulation simulation, SimulationEntity primaryEntity, SimulationEntity secondaryEntity)
         {
-            return true;//TODO
+            simulation.RemoveEntity(secondaryEntity.EntityId);
+            
+            return true;
         }
 
         public bool OnTileCollision(Simulation simulation, SimulationEntity entity, TileCollision tc)
         {
-            
             //Auto Jump
             if (tc.Side == CollisionSide.RightBorder || tc.Side == CollisionSide.LeftBorder)
             {
                 if (tc.BottomBlockY != (int) tc.TilePosition.Y + 1 || simulation.World.GetBlock(tc.LeftBlockX, (int) tc.TilePosition.Y - 1) != WorldTile.Air)
                     return true;
-                            
-                entity.Position.Y -= simulation.World.WorldOptions.WorldScale + 4;
+
+                if (!entity.Grounded)
+                    return true;
+                
+                entity.Position.Y -= simulation.World.WorldOptions.WorldScale + 7;
                 return false;
             }
 
@@ -103,19 +87,16 @@ namespace BFB.Engine.Simulation.PhysicsComponents
 
         public bool OnWorldBoundaryCollision(Simulation simulation, SimulationEntity entity, CollisionSide side)
         {
+            //If player is below map by at least 50 pixels
+            if (side == CollisionSide.BottomBorder && entity.Position.Y > simulation.World.MapPixelHeight() + 50)
+            {
+                //In future we kill the player and initiate a respawn sequence probably
+                entity.Position.Y = 0;
+                entity.Position.X = 100;
+            }
+            
             return true;
         }
     }
 
-    public class WalkingConfiguration
-    {
-        public BfbVector Acceleration { get; set; }
-        
-        public BfbVector MaxSpeed { get; set; }
-        
-        public float Gravity { get; set; }
-        
-        public float Friction { get; set; }
-        
-    }
 }

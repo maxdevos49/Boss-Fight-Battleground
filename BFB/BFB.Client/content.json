@@ -26,6 +26,10 @@
         {
             "Key": "stone",
             "Location": "Sprites\\stone"
+        },
+        {
+            "Key": "tiles",
+            "location": "Sprites\\TileAtlas"
         }
     ],
     "AnimatedTextures": [

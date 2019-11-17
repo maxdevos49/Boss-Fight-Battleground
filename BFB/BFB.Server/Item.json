@@ -1,0 +1,40 @@
+{
+    "Items": {
+        "Grass": {
+            "ItemTextureKey": "Tile:Grass",
+            "StackLimit": 64,
+            "LeftClickComponent": "ItemComponent:Combat:Hit",
+            "RightClickComponent": "ItemComponent:Building:SetBlock",
+            "IsBlock": true,
+            "Block": {
+                "BlockTextureKey": "Tile:Grass",
+                "CollisionId": 1,
+                "BreakSpeed": 30,
+                "BlockComponents": [
+                    "GrassGrow"
+                ]
+            }
+        },
+        "Dirt": {
+            "ItemTextureKey": "Tile:Dirt",
+            "StackLimit": 64,
+            "LeftClickComponent": "ItemComponent:Combat:Hit",
+            "RightClickComponent": "ItemComponent:Building:SetBlock",
+            "IsBlock": true,
+            "Block": {
+                "BlockTextureKey": "Tile:Dirt",
+                "CollisionId": 1,
+                "BreakSpeed": 30,
+                "BlockComponents": []
+            }
+        },
+        "Sword": {
+            "ItemTextureKey": "Item:Sword",
+            "StackLimit": 1,
+            "LeftClickComponent": "ItemComponent:Combat:SwordHit",
+            "RightClickComponent": "ItemComponent:Combat:Shield",
+            "IsBlock": false,
+            "Block":  null
+        }
+    }
+}

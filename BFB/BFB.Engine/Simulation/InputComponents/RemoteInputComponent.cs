@@ -1,10 +1,13 @@
 using System;
+using System.Collections.Generic;
 using System.Security.Claims;
 using BFB.Engine.Entity;
 using BFB.Engine.Input.PlayerInput;
 using BFB.Engine.Math;
 using BFB.Engine.Server;
 using BFB.Engine.Server.Communication;
+using BFB.Engine.Simulation.GameComponents;
+using BFB.Engine.Simulation.PhysicsComponents;
 using BFB.Engine.TileMap;
 
 namespace BFB.Engine.Simulation.InputComponents
@@ -51,8 +54,8 @@ namespace BFB.Engine.Simulation.InputComponents
                 if (_playerState.RightClick || _playerState.LeftClick)
                 {
 
-                    int mouseX = (int)(_playerState.Mouse.X + 0);
-                    int mouseY = (int)(_playerState.Mouse.Y + 0);
+                    int mouseX = (int)_playerState.Mouse.X;
+                    int mouseY = (int)_playerState.Mouse.Y;
 
                     Tuple<int, int, int, int> chunkInformation =
                         simulation.World.TranslatePixelPosition(mouseX, mouseY);
@@ -69,21 +72,62 @@ namespace BFB.Engine.Simulation.InputComponents
                         if (targetChunk != null)
                         {
                             if (_playerState.RightClick)
-                                targetChunk.ApplyBlockUpdate(new TileUpdate
+                            {
+
+                                if (targetChunk.Block[xSelection, ySelection] == 0)
                                 {
-                                    X = (byte) xSelection,
-                                    Y = (byte) ySelection,
-                                    Mode = true,
-                                    TileValue = (ushort) WorldTile.Dirt
-                                });
+                                    targetChunk.ApplyBlockUpdate(new TileUpdate
+                                    {
+                                        X = (byte) xSelection,
+                                        Y = (byte) ySelection,
+                                        Mode = true,
+                                        TileValue = (ushort) WorldTile.Dirt
+                                    });
+                                }
+                            }
                             else
-                                targetChunk.ApplyBlockUpdate(new TileUpdate
+                            {
+                                if (targetChunk.Block[xSelection, ySelection] != 0)
                                 {
-                                    X = (byte) xSelection,
-                                    Y = (byte) ySelection,
-                                    Mode = true,
-                                    TileValue = (ushort) WorldTile.Air
-                                });
+                                    targetChunk.ApplyBlockUpdate(new TileUpdate
+                                    {
+                                        X = (byte) xSelection,
+                                        Y = (byte) ySelection,
+                                        Mode = true,
+                                        TileValue = (ushort) WorldTile.Air
+                                    });
+
+                                    int blockX =
+                                        ((simulation.World.WorldOptions.ChunkSize * chunkInformation.Item1) +
+                                         xSelection) *
+                                        simulation.World.WorldOptions.WorldScale;
+                                    int blockY =
+                                        ((simulation.World.WorldOptions.ChunkSize * chunkInformation.Item2) +
+                                         ySelection) *
+                                        simulation.World.WorldOptions.WorldScale;
+
+                                    simulation.AddEntity(new SimulationEntity(
+                                        Guid.NewGuid().ToString(),
+                                        new EntityOptions
+                                        {
+                                            AnimatedTextureKey = "Player",
+                                            Position = new BfbVector(blockX, blockY),
+                                            Dimensions = new BfbVector(1 * simulation.World.WorldOptions.WorldScale,
+                                                1 * simulation.World.WorldOptions.WorldScale),
+                                            Rotation = 0,
+                                            Origin = new BfbVector(0, 0),
+                                            EntityType = EntityType.Item
+                                        }, new ComponentOptions
+                                        {
+                                            Physics = new TilePhysicsComponent(),
+                                            Input = null,
+                                            GameComponents = new List<IGameComponent>
+                                            {
+                                                new LifetimeComponent(1000)
+                                            }
+                                        }));
+                                }
+                            }
                         }
                     }
                 }
@@ -91,21 +135,18 @@ namespace BFB.Engine.Simulation.InputComponents
                 //Resets the player movement
                 simulationEntity.SteeringVector.X = 0;
                 simulationEntity.SteeringVector.Y = 0;
+                
                 //Moves player left
                 if (_playerState.Left)
-                {
                     simulationEntity.SteeringVector.Add(new BfbVector(-1,0));
-                }
+                
                 //Moves player right
                 if (_playerState.Right)
-                {
                     simulationEntity.SteeringVector.Add(new BfbVector(1,0));
-                }
+                
                 //Moves player up
                 if (_playerState.Jump && simulationEntity.Grounded)
-                {
-                    simulationEntity.SteeringVector.Add(new BfbVector(0,-1));
-                }
+                    simulationEntity.SteeringVector.Add(new BfbVector(0, -1));
             }
         }
     }

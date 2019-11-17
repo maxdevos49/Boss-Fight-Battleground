@@ -11,6 +11,7 @@ using BFB.Engine.Math;
 using BFB.Engine.Server;
 using BFB.Engine.Server.Communication;
 using BFB.Engine.Simulation;
+using BFB.Engine.Simulation.GameComponents;
 using BFB.Engine.Simulation.InputComponents;
 using BFB.Engine.Simulation.PhysicsComponents;
 using BFB.Engine.TileMap.Generators;
@@ -109,15 +110,23 @@ namespace BFB.Server
                     new EntityOptions
                     {
                         AnimatedTextureKey = "Player",
-                        Position = new BfbVector(200, 200),
+                        Position = new BfbVector(200, 100),
                         Dimensions = new BfbVector(2 * _simulation.World.WorldOptions.WorldScale, 3 * _simulation.World.WorldOptions.WorldScale),
                         Rotation = 0,
                         Origin = new BfbVector(0, 0),
                         EntityType = EntityType.Player
                     }, new ComponentOptions
                     {
-                        Physics = new WalkingPhysicsComponent("human", new List<string>{"tile","human"}, null),
-                        Input = new RemoteInputComponent(socket)
+                        Physics = new WalkingPhysicsComponent
+                        {
+                            CollideFilter = "human",
+                            CollideWithFilters = new List<string>{"tile","item","projectile", "melee"}
+                        },
+                        Input = new RemoteInputComponent(socket),
+                        GameComponents = new List<IGameComponent>
+                        {
+                            new WalkingAnimationComponent()
+                        }
                     }), true);
                 
                 _server.PrintMessage($"Client {socket.ClientId} Ready and added to Simulation");

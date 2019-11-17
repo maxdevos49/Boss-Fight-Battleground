@@ -114,8 +114,7 @@ namespace BFB.Engine.Entity
             Draw(graphics, worldScale);
 
             //Position
-            graphics.DrawBackedText($"X: {(int)Position.X}, Y: {(int)Position.Y}",new BfbVector(Position.X, Position.Y - 30), content, 0.75f * worldScale);
-            graphics.DrawBackedText($"X: {(int)Position.X}, Y: {Bottom}",new BfbVector(Position.X, Position.Y - 60), content, 0.75f * worldScale);
+            graphics.DrawBackedText($"X: {(int)Position.X}, Y: {(int)Position.Y}",new BfbVector(Position.X, Position.Y - 15), content, 0.2f * worldScale);
             
             //velocity vector
             graphics.DrawVector(new Vector2(Position.X + Dimensions.X/2, Position.Y + Dimensions.Y/2),Velocity.ToVector2()  * 4 * worldScale, 1, Color.Red, content);
