@@ -42,22 +42,24 @@ namespace BFB.Engine.Simulation.InputComponents
         {
             lock (_lock)
             {
+                
                 //Add an AI monster
                 if (_playerState.RightClick)
                 {
+
                     //Add to simulation
                     simulation.AddEntity(new SimulationEntity(
                         Guid.NewGuid().ToString(),
                         new EntityOptions
                         {
-                            AnimatedTextureKey = "Zombie",
+                            AnimatedTextureKey = "Skeleton",
                             Position = new BfbVector(_playerState.Mouse.X, _playerState.Mouse.Y),
                             Dimensions = new BfbVector(2 * simulation.World.WorldOptions.WorldScale, 3 * simulation.World.WorldOptions.WorldScale),
                             Rotation = 0,
                             Origin = new BfbVector(0, 0),
                         }, new ComponentOptions
                         {
-                            Physics = new ZombiePhysicsComponent(),
+                            Physics = new SkeletonPhysicsComponent(),
                             Input = new AIInputComponent()
                         }));
                 }

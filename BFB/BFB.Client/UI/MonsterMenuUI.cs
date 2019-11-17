@@ -32,7 +32,7 @@ namespace BFB.Client.UI
 
                     v1.Hstack(h2 =>
                     {
-                        h2.Button("Spider",
+                        h2.Button("Spider // TODO",
                                 clickAction: (e, a) => { UIManager.Start(nameof(HudUI)); })
                             .Height(0.8f)
                             .Width(0.8f)
@@ -42,7 +42,7 @@ namespace BFB.Client.UI
 
                     v1.Hstack(h2 =>
                     {
-                        h2.Button("Skeleton",
+                        h2.Button("Skeleton // TODO",
                                 clickAction: (e, a) => { UIManager.Start(nameof(HudUI)); })
                             .Height(0.8f)
                             .Width(0.8f)
@@ -52,7 +52,7 @@ namespace BFB.Client.UI
 
                     v1.Hstack(h2 =>
                     {
-                        h2.Button("Zombie",
+                        h2.Button("Zombie // TODO",
                                 clickAction: (e, a) => { UIManager.Start(nameof(HudUI)); })
                             .Height(0.8f)
                             .Width(0.8f)
@@ -62,7 +62,7 @@ namespace BFB.Client.UI
 
                     v1.Hstack(h2 =>
                     {
-                        h2.Button("THE BOSS",
+                        h2.Button("THE BOSS // TODO",
                                 clickAction: (e, a) => { UIManager.Start(nameof(HudUI)); })
                             .Height(0.8f)
                             .Width(0.8f)
