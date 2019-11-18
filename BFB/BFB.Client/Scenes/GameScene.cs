@@ -18,6 +18,7 @@ using BFB.Engine.UI;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 
 namespace BFB.Client.Scenes
 {
@@ -165,21 +166,14 @@ namespace BFB.Client.Scenes
                             _entities[em.EntityId].Velocity = em.Velocity;
                             _entities[em.EntityId].Rotation = em.Rotation;
                             _entities[em.EntityId].AnimationState = em.AnimationState;
+                            _entities[em.EntityId].Facing = em.Facing;
                             
                             if (em.EntityId == Client.ClientId)
                                 _worldRenderer.Camera.Focus = em.Position.ToVector2();
                         }
                         else
                         {
-
-                            _entities.Add(em.EntityId, new ClientEntity(em.EntityId,
-                                new EntityOptions
-                                {
-                                    Dimensions = em.Dimensions,
-                                    Position = em.Position,
-                                    Rotation = em.Rotation,
-                                    Origin = em.Origin,
-                                }, new ItemGraphicsComponent(ContentManager.GetTexture("tiles")))); // new AnimationComponent(ContentManager.GetAnimatedTexture(em.AnimationTextureKey))));
+                            _entities.Add(em.EntityId, ClientEntity.ClientEntityFactory(em, ContentManager));
                         }
                     }
                 }
@@ -200,13 +194,13 @@ namespace BFB.Client.Scenes
 
             AddInputListener("keypress", e =>
             {
-                if (e.Keyboard.KeyEnum == Microsoft.Xna.Framework.Input.Keys.M)
-                {
+                if (e.Keyboard.KeyEnum == Keys.M)
                     UIManager.Start(nameof(MonsterMenuUI));
-                }
+                else if (e.Keyboard.KeyEnum == Keys.F3)
+                    _worldRenderer.Debug = !_worldRenderer.Debug;
             });
             #endregion
-
+            
             if (!Client.Connect())
                 GlobalEventManager.Emit("onConnectionStatus", new GlobalEvent("Connection Failed"));
 
@@ -255,9 +249,10 @@ namespace BFB.Client.Scenes
             {
                 _worldRenderer?.Draw(graphics, _world, _entities.Values.ToList() , ContentManager);
 
-                if (_worldRenderer != null && _playerInput != null && Client.ClientId != null && _entities.ContainsKey(Client.ClientId))
+                //This looks horrible D: - Max By max
+                if (_worldRenderer != null && _playerInput != null && Client.ClientId != null && _entities.ContainsKey(Client.ClientId) && _worldRenderer.Debug)
                 {
-                    PlayerState playerState = _playerInput.GetPlayerState();
+                    PlayerState playerState = _playerInput.PeekPlayerState();
                     playerState.Mouse = _worldRenderer.ViewPointToMapPoint(playerState.Mouse);
 
                     _worldRenderer?.DebugPanel(graphics, gameTime, _world, _entities[Client.ClientId],

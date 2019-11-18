@@ -1,5 +1,6 @@
 using System;
 using BFB.Engine.Content;
+using BFB.Engine.Entity;
 using BFB.Engine.Math;
 using Microsoft.Xna.Framework;
 
@@ -59,5 +60,14 @@ namespace BFB.Engine.Server.Communication
         /// </summary>
         public bool Grounded { get; set; }
         
+        /// <summary>
+        /// The direction the player is facing
+        /// </summary>
+        public DirectionFacing Facing { get; set; }
+        
+        /// <summary>
+        /// The type of entity it is
+        /// </summary>
+        public EntityType EntityType { get; set; }        
     }
 }

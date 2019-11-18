@@ -1,4 +1,5 @@
 using BFB.Engine.Inventory;
+using BFB.Engine.Inventory.Configuration;
 using BFB.Engine.Simulation.ItemComponents;
 using BFB.Engine.Simulation.SimulationComponents;
 using BFB.Engine.TileMap;

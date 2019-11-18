@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace BFB.Engine.Inventory
+namespace BFB.Engine.Inventory.Configuration
 {
     public class WallConfiguration
     {

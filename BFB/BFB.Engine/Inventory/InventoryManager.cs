@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using BFB.Engine.InventoryManager;
 
 namespace BFB.Engine.Inventory
 {
@@ -9,7 +8,11 @@ namespace BFB.Engine.Inventory
     {
 
         #region Properties
-        
+
+        private int _activeSlotId;
+
+        private readonly int _hotBarRange;
+
         private readonly int _inventorySize;
         
         private readonly Dictionary<int, IItem> _slots;
@@ -18,15 +21,64 @@ namespace BFB.Engine.Inventory
 
         #region Constructor
         
-        public InventoryManager(int inventorySize = 1)
+        public InventoryManager(int inventorySize = 1, int hotBarRange = 1)
         {
             if(inventorySize <= 0)
-                throw new InvalidOperationException("Inventory size must be greater then 0");
+                throw new Exception("Inventory size must be greater then 0");
             
-            _slots = new Dictionary<int, IItem>();
+            if(hotBarRange <= 0 || hotBarRange > inventorySize)
+                throw new Exception("HotBar size must be greater then 0 and Less or equal to the the size of the inventory");
+            
+            _activeSlotId = 0;
+            
             _inventorySize = inventorySize;
+            _hotBarRange = hotBarRange;
+            _slots = new Dictionary<int, IItem>();
         }
         
+        #endregion
+
+        #region IncrementHotBar
+        
+        public void IncrementHotBar()
+        {
+            if (_activeSlotId < _hotBarRange)
+                _activeSlotId++;
+            else
+                _activeSlotId = 0;
+        }
+        
+        #endregion
+
+        #region DecrementHotBar
+        
+        public void DecrementHotBar()
+        {
+            if (_activeSlotId > 0)
+                _activeSlotId--;
+            else
+                _activeSlotId = _hotBarRange;
+        }
+
+        #endregion
+        
+        #region MoveActiveSlot
+        
+        public void MoveActiveSlot(int slotId)
+        {
+            if (slotId >= 0 && slotId <= _hotBarRange)
+                _activeSlotId = slotId;
+        }
+        
+        #endregion
+
+        #region GetActiveSlot
+
+        public IItem GetActiveSlot()
+        {
+            return GetSlot(_activeSlotId);
+        }
+
         #endregion
         
         #region MaxInventorySize

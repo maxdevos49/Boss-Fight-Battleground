@@ -1,10 +1,31 @@
 using System.Collections.Generic;
-using BFB.Engine.Inventory;
 
-namespace BFB.Engine.InventoryManager
+namespace BFB.Engine.Inventory
 {
     public interface IInventoryManager
     {
+
+        /// <summary>
+        /// Increments the Active slot by one
+        /// </summary>
+        void IncrementHotBar();
+
+        /// <summary>
+        /// Decrements the Active slot by one
+        /// </summary>
+        void DecrementHotBar();
+
+        /// <summary>
+        /// Moves the active slot to the given index
+        /// </summary>
+        /// <param name="slotId">The slot index</param>
+        void MoveActiveSlot(int slotId);
+
+        /// <summary>
+        /// Gets the selected item
+        /// </summary>
+        /// <returns>The active item or null if the slot is empty</returns>
+        IItem GetActiveSlot();
         
         /// <summary>
         /// Gets the maximum size of the inventory

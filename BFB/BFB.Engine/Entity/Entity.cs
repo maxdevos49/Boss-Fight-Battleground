@@ -56,8 +56,7 @@ namespace BFB.Engine.Entity
         public EntityType EntityType { get; set; }
         
         public DirectionFacing Facing { get; set; }
-
-
+        
         public bool Grounded { get; set; }
         
         public int Width => (int) Dimensions.X;
@@ -112,7 +111,9 @@ namespace BFB.Engine.Entity
                 Origin = Origin,
                 Rotation = Rotation,
                 Velocity = Velocity,
-                Grounded = Grounded
+                Grounded = Grounded,
+                Facing = Facing,
+                EntityType = EntityType
             };
         }
         

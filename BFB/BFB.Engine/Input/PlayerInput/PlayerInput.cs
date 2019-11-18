@@ -1,4 +1,6 @@
 ﻿using BFB.Engine.Entity;
+using BFB.Engine.Math;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 
 namespace BFB.Engine.Input.PlayerInput
@@ -110,7 +112,27 @@ namespace BFB.Engine.Input.PlayerInput
         public PlayerState GetPlayerState()
         {
             _inputChange = false;
-            return _playerState;
+            return Clone();
+        }
+        
+        public PlayerState PeekPlayerState()
+        {
+            return Clone();
+        }
+
+        public PlayerState Clone()
+        {
+            return new PlayerState
+            {
+                Left = _playerState.Left,
+                Right = _playerState.Right,
+                Jump = _playerState.Jump,
+                Attack = _playerState.Attack,
+                SwitchWeapon = _playerState.SwitchWeapon,
+                LeftClick = _playerState.LeftClick,
+                RightClick = _playerState.RightClick,
+                Mouse =new BfbVector(_playerState.Mouse.X,_playerState.Mouse.Y) 
+            };
         }
 
         /// <summary>

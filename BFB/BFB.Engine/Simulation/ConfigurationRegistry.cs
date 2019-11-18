@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using BFB.Engine.Content;
 using BFB.Engine.Inventory;
+using BFB.Engine.Inventory.Configuration;
 using BFB.Engine.Simulation.ItemComponents;
 using BFB.Engine.Simulation.SimulationComponents;
 using BFB.Engine.TileMap;
@@ -13,7 +14,9 @@ namespace BFB.Engine.Simulation
 {
     
     /// <summary>
-    /// Holds a lot of configuration data read from JSON for use every where
+    /// Holds a lot of configuration data read from JSON for use every where basically.
+    /// Prevents needing a unique class for lots of things or inefficiently duplicating
+    /// instances of a class when it could be used as a singleton
     /// </summary>
     public class ConfigurationRegistry : IConfigurationRegistry
     {
@@ -136,6 +139,7 @@ namespace BFB.Engine.Simulation
             throw new NotImplementedException();
         }
         #endregion
+        
         
         #region GetInstance
         

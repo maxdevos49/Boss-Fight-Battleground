@@ -1,3 +1,4 @@
+using BFB.Engine.Inventory.Configuration;
 using BFB.Engine.Simulation;
 
 namespace BFB.Engine.Inventory

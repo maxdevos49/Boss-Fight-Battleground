@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using BFB.Engine.TileMap;
 
-namespace BFB.Engine.Inventory
+namespace BFB.Engine.Inventory.Configuration
 {
     public class ItemConfiguration
     {

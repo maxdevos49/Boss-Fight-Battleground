@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using System.Drawing;
-using BFB.Engine.InventoryManager;
+using BFB.Engine.Inventory;
 using BFB.Engine.Math;
 using BFB.Engine.Simulation.InputComponents;
 using BFB.Engine.Simulation.PhysicsComponents;

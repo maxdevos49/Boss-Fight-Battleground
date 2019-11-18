@@ -1,7 +1,6 @@
 using System.Collections.Generic;
-using BFB.Engine.TileMap;
 
-namespace BFB.Engine.Inventory
+namespace BFB.Engine.Inventory.Configuration
 {
     /// <summary>
     /// A class to represent a blocks configuration and should be treated as readonly

@@ -1,6 +1,8 @@
+using System;
 using BFB.Engine.Content;
 using BFB.Engine.Helpers;
 using BFB.Engine.Math;
+using BFB.Engine.Server.Communication;
 using BFB.Engine.Simulation.GraphicsComponents;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -60,8 +62,10 @@ namespace BFB.Engine.Entity
         
         #endregion
 
+        #region DebugDraw
+        
         public void DebugDraw(SpriteBatch graphics, BFBContentManager content, float worldScale, float tileSize)
-        {
+        {//WARNING THE FOLLOWING IS A MESS D:
 
             int topBlockY = (int) System.Math.Floor(Top / tileSize);
             int leftBlockX = (int) System.Math.Floor(Left / tileSize);
@@ -120,9 +124,43 @@ namespace BFB.Engine.Entity
             graphics.DrawVector(new Vector2(Position.X + Dimensions.X/2, Position.Y + Dimensions.Y/2),Velocity.ToVector2()  * 4 * worldScale, 1, Color.Red, content);
             
             //orientation vector
-            graphics.DrawLine(new Vector2(Position.X + Dimensions.X/2, Position.Y + 10),new Vector2((Position.X + Dimensions.X/2) + (Velocity.X < 0 ? -30 : 30), Position.Y + 10), 1, Color.Green, content);
-            
+            graphics.DrawLine(new Vector2(Position.X + Dimensions.X / 2, Position.Y + 10),
+                Facing == DirectionFacing.Left
+                    ? new Vector2((Position.X + Dimensions.X / 2) + -30, Position.Y + 10)
+                    : new Vector2((Position.X + Dimensions.X / 2) + 30, Position.Y + 10), 1, Color.Green, content);
         }
 
+        #endregion
+        
+        #region ClientEntityFactory
+
+        public static ClientEntity ClientEntityFactory(EntityMessage em, BFBContentManager content)
+        {
+            IGraphicsComponent graphicsComponent = null;
+
+            switch (em.EntityType)
+            {
+                case EntityType.Item:
+                    graphicsComponent = new ItemGraphicsComponent(content.GetTexture("tiles"));//TODO
+                    break;
+                case EntityType.Mob:
+                case EntityType.Player:
+                    graphicsComponent = new AnimationComponent(content.GetAnimatedTexture(em.AnimationTextureKey));
+                    break;
+            }
+                            
+            return new ClientEntity(em.EntityId,
+                new EntityOptions
+                {
+                    Dimensions = em.Dimensions,
+                    Position = em.Position,
+                    Rotation = em.Rotation,
+                    Origin = em.Origin,
+                    EntityType = em.EntityType
+                }, graphicsComponent);
+        
+        }
+        
+        #endregion
     }
 }
