@@ -88,7 +88,7 @@ namespace BFB.Engine.Simulation.InputComponents
                                 Origin = new BfbVector(25,25),
                             }, new ComponentOptions()
                             {
-                                Physics = new SpellPhysicsComponent(directionVector)
+                                Physics = new SpellPhysicsComponent(directionVector, simulationEntity)
                             }));
                 }
 
