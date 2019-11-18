@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Numerics;
 using System.Security.Claims;
 using BFB.Engine.Entity;
 using BFB.Engine.Input.PlayerInput;
@@ -8,6 +9,7 @@ using BFB.Engine.Server;
 using BFB.Engine.Server.Communication;
 using BFB.Engine.Simulation.PhysicsComponents;
 using BFB.Engine.TileMap;
+using Vector2 = Microsoft.Xna.Framework.Vector2;
 
 namespace BFB.Engine.Simulation.InputComponents
 {
@@ -49,7 +51,10 @@ namespace BFB.Engine.Simulation.InputComponents
         {
             lock (_lock)
             {
-                
+                //Set Mouse Position
+                int mouseX = (int)(_playerState.Mouse.X + 0);
+                int mouseY = (int)(_playerState.Mouse.Y + 0);
+
                 //Add an AI monster
                 if (_playerState.RightClick)
                 {
@@ -69,19 +74,21 @@ namespace BFB.Engine.Simulation.InputComponents
                             Physics = new SkeletonPhysicsComponent(),
                             Input = new AIInputComponent()
                         }));*/
-
+                        Vector2 player = new Vector2(simulationEntity.Position.X, simulationEntity.Position.Y);
+                        BfbVector directionVector = new BfbVector(mouseX - player.X, mouseY - player.Y);
+                        float direction = (float)System.Math.Atan2(directionVector.Y, directionVector.X);
                         simulation.AddEntity(new SimulationEntity(
                             Guid.NewGuid().ToString(),
                             new EntityOptions()
                             {
                                 AnimatedTextureKey = "Fireball",
                                 Position = new BfbVector(simulationEntity.Position.X, simulationEntity.Position.Y),
-                                Dimensions = new BfbVector(50.0f, 50.0f),
-                                Rotation = 0,
-                                Origin = new BfbVector(0,0),
+                                Dimensions = new BfbVector(50, 50),
+                                Rotation = direction + (float)(System.Math.PI / 2),
+                                Origin = new BfbVector(25,25),
                             }, new ComponentOptions()
                             {
-                                Physics = new SpellPhysicsComponent()
+                                Physics = new SpellPhysicsComponent(directionVector)
                             }));
                 }
 
@@ -107,9 +114,7 @@ namespace BFB.Engine.Simulation.InputComponents
                         Helpers.CombatService.FightPeople(simulationEntity, targets, simulation);
                     }
 
-                    //Block Placement
-                    int mouseX = (int)(_playerState.Mouse.X + 0);
-                    int mouseY = (int)(_playerState.Mouse.Y + 0);
+                    
 
                     Tuple<int, int, int, int> chunkInformation =
                         simulation.World.TranslatePixelPosition(mouseX, mouseY);
