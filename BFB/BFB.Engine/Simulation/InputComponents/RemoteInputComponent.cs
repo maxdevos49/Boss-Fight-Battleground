@@ -55,7 +55,7 @@ namespace BFB.Engine.Simulation.InputComponents
                 {
 
                     //Add to simulation
-                    simulation.AddEntity(new SimulationEntity(
+                    /*simulation.AddEntity(new SimulationEntity(
                         Guid.NewGuid().ToString(),
                         new EntityOptions
                         {
@@ -68,7 +68,7 @@ namespace BFB.Engine.Simulation.InputComponents
                         {
                             Physics = new SkeletonPhysicsComponent(),
                             Input = new AIInputComponent()
-                        }));
+                        }));*/
                 }
 
                 //Check block placement
