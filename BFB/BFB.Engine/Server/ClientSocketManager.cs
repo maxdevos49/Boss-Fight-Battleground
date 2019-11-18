@@ -75,6 +75,7 @@ namespace BFB.Engine.Server
             _socket = null;
             _stream = null;
             _handlers = new Dictionary<string, List<Action<DataMessage>>>();
+            ClientId = null;
             
             _acceptData = false;
             _allowEmit = false;

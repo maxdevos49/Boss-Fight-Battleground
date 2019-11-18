@@ -21,6 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Engine\Inventory" />
     <Folder Include="Server\" />
     <Folder Include="Engine\" />
   </ItemGroup>

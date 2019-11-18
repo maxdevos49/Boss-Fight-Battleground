@@ -1,9 +1,14 @@
 using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Linq;
 using BFB.Engine.Content;
 using BFB.Engine.Entity;
 using BFB.Engine.Helpers;
+using BFB.Engine.Input.PlayerInput;
 using BFB.Engine.Math;
+using BFB.Engine.Server;
+using BFB.Engine.TileMap.Generators;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -26,7 +31,7 @@ namespace BFB.Engine.TileMap
  
         public WorldRenderer(WorldManager world, GraphicsDevice graphicsDevice)
         {
-            Debug = true;
+//            Debug = true;
             _tileScale = world.WorldOptions.WorldScale;
             _blockWidth = world.MapBlockWidth();
             _blockHeight = world.MapBlockHeight();
@@ -64,6 +69,8 @@ namespace BFB.Engine.TileMap
         }
         
         #endregion
+        
+
         
         #region Draw
 
@@ -124,8 +131,8 @@ namespace BFB.Engine.TileMap
                
                 }
             }
-
-            #region Debug
+            
+            #region DebugTileMap
             
             if (Debug)
             {
@@ -138,15 +145,15 @@ namespace BFB.Engine.TileMap
 
                         //Block Values
                         graphics.DrawString(
-                                    content.GetFont("default"), 
-                                    (int) world.GetBlock(x, y) + "",
-                                    new Vector2(xPosition, yPosition), 
-                                    Color.Black, 
-                                    0f, 
-                                    Vector2.Zero, 
-                                    0.5f,
-                                    SpriteEffects.None,
-                                    1);
+                            content.GetFont("default"), 
+                            (int) world.GetBlock(x, y) + "",
+                            new Vector2(xPosition, yPosition), 
+                            Color.Black, 
+                            0f, 
+                            Vector2.Zero, 
+                            0.5f,
+                            SpriteEffects.None,
+                            1);
                         
                         if(x % world.WorldOptions.ChunkSize == 0 && y % world.WorldOptions.ChunkSize == 0)
                             graphics.DrawBorder(
@@ -155,18 +162,19 @@ namespace BFB.Engine.TileMap
                                     yPosition,
                                     world.WorldOptions.ChunkSize * _tileScale,
                                     world.WorldOptions.ChunkSize * _tileScale), 
-                                    1, 
-                                    Color.Red,
-                                    content.GetTexture("default"));
+                                1, 
+                                Color.Red,
+                                content.GetTexture("default"));
                     }
                 }
             }
 
             #endregion
+
             
             foreach (ClientEntity entity in entities)
             {
-                if (!Debug)
+                if(!Debug)
                     entity.Draw(graphics, _tileScale/GraphicsScale);
                 else
                     entity.DebugDraw(graphics, content,_tileScale/GraphicsScale, _tileScale);
@@ -174,6 +182,30 @@ namespace BFB.Engine.TileMap
 
             graphics.End();
             graphics.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, SamplerState.PointClamp, DepthStencilState.None, RasterizerState.CullCounterClockwise);
+        }
+        
+        #endregion
+        
+        #region DebugPanel
+
+        public void DebugPanel(SpriteBatch graphics, GameTime time ,WorldManager world, ClientEntity entity, List<ClientEntity> entities, ClientSocketManager connection, PlayerState playerState, BFBContentManager content)
+        {
+            int xPos = 5;
+            int yPos = 120;
+            int offset = 24;
+            
+            graphics.DrawBackedText($"Client FPS: {System.Math.Round(1f/(float)time.ElapsedGameTime.TotalSeconds)}/60", new BfbVector(xPos,yPos),content,0.5f);
+            graphics.DrawBackedText("Server TPS: {}/20", new BfbVector(xPos,yPos += offset),content,0.5f);
+            graphics.DrawBackedText($"X: {Camera.Position.X}, Y: {Camera.Position.Y}", new BfbVector(xPos,yPos += offset),content,0.5f);
+            Chunk chunk = world.ChunkFromPixelLocation((int) Camera.Position.X, (int) Camera.Position.Y);
+            graphics.DrawBackedText($"Chunk-X: {chunk?.ChunkX ?? 0}, Chunk-Y: {chunk?.ChunkY ?? 0}", new BfbVector(xPos,yPos +=offset),content,0.5f);
+            graphics.DrawBackedText($"Velocity-X: {entity.Velocity.X}, Velocity-Y: {entity.Velocity.Y}", new BfbVector(xPos,yPos += offset),content,0.5f);
+            graphics.DrawBackedText($"Facing: {entity.Facing}", new BfbVector(xPos,yPos += offset),content,0.5f);
+            Tuple<int, int> location = world.BlockLocationFromPixel((int)playerState.Mouse.X, (int)playerState.Mouse.Y);
+            graphics.DrawBackedText($"Mouse-X: {(int)playerState.Mouse.X}, Mouse-Y: {(int)playerState.Mouse.Y}, Block: {world.GetBlock(location.Item1,location.Item2)}, Wall: {(WorldTile)world.GetWall(location.Item1,location.Item2)}", new BfbVector(xPos,yPos += offset),content,0.5f);
+            graphics.DrawBackedText($"Entities: {entities.Count}, Players: {entities.Count(x => x.EntityType == EntityType.Player)}, Items: {entities.Count(x => x.EntityType == EntityType.Item)}", new BfbVector(xPos,yPos += offset),content,0.5f);
+            
+            graphics.DrawBackedText("Press F3 to exit Debug", new BfbVector(xPos,yPos += offset*2),content,0.5f);
             
         }
         

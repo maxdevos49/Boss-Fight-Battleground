@@ -16,11 +16,11 @@ namespace BFB.Engine.TileMap
         /// <summary>
         /// The x of a chunk.
         /// </summary>
-        public readonly int ChunkX;
+        public int ChunkX;
         /// <summary>
         /// The y of a chunk.
         /// </summary>
-        public readonly int ChunkY;
+        public int ChunkY;
         /// <summary>
         /// The size of a chunk.
         /// </summary>

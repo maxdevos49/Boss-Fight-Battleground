@@ -96,7 +96,9 @@ namespace BFB.Engine.TileMap
                 for (int x = 0; x < WorldOptions.WorldChunkWidth; x++)
                     ChunkMap[x, y] = new Chunk(WorldOptions.ChunkSize, x, y)
                     {
-                        ChunkKey = message.ChunkMapIds[x, y]
+                        ChunkKey = message.ChunkMapIds[x, y],
+                        ChunkX = x,
+                        ChunkY = y
                     };
             
             MapChunksToIndex();
@@ -356,6 +358,15 @@ namespace BFB.Engine.TileMap
         
         #endregion
         
+        #region BlockLocationFromPixel
+
+        public Tuple<int, int> BlockLocationFromPixel(int pixelX, int pixelY)
+        {
+            return new Tuple<int, int>(pixelX/WorldOptions.WorldScale, pixelY/WorldOptions.WorldScale);
+        }
+        
+        #endregion
+        
         #region GetHardness
         /// <summary>
         /// Retrieves the hardness value of a block.
@@ -395,8 +406,14 @@ namespace BFB.Engine.TileMap
         /// <returns>Returns the wall value based on the block locations.</returns>
         public int GetWall(int xBlock, int yBlock)
         {
-            (int chunkX, int chunkY, int relativeX, int relativeY) = TranslateBlockPosition(xBlock, yBlock);
-            return ChunkExist(chunkX, chunkY) ? ChunkMap[chunkX, chunkY].Wall[relativeX, relativeY] : 0;
+            Tuple<int, int, int, int> location = TranslateBlockPosition(xBlock, yBlock);
+            
+            if (location == null)
+                return 0;
+            
+            return ChunkExist(location.Item1, location.Item2) 
+                ?  ChunkMap[location.Item1, location.Item2].Wall[location.Item3, location.Item4] 
+                : 0;
         }
         
         #endregion

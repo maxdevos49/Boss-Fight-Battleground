@@ -54,6 +54,9 @@ namespace BFB.Engine.Entity
         /// The type of entity the entity is
         /// </summary>
         public EntityType EntityType { get; set; }
+        
+        public DirectionFacing Facing { get; set; }
+
 
         public bool Grounded { get; set; }
         
@@ -85,6 +88,7 @@ namespace BFB.Engine.Entity
             EntityType = options.EntityType;
             Grounded = false;
             Velocity = new BfbVector();
+            Facing = DirectionFacing.Left;
         }
         
         #endregion

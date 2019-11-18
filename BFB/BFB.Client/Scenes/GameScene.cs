@@ -243,7 +243,18 @@ namespace BFB.Client.Scenes
             lock (_lock)
             {
                 _worldRenderer?.Draw(graphics, _world, _entities.Values.ToList() , ContentManager);
+
+                if (_worldRenderer != null && _playerInput != null && Client.ClientId != null && _entities.ContainsKey(Client.ClientId))
+                {
+                    PlayerState playerState = _playerInput.GetPlayerState();
+                    playerState.Mouse = _worldRenderer.ViewPointToMapPoint(playerState.Mouse);
+
+                    _worldRenderer?.DebugPanel(graphics, gameTime, _world, _entities[Client.ClientId],
+                        _entities.Values.ToList(), Client, playerState, ContentManager);
+                }
+
             }
+
         }
         
         #endregion

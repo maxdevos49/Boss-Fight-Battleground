@@ -44,7 +44,6 @@ namespace BFB.Engine.Entity
         /// </summary>
         public Dictionary<string, int> ChunkVersions { get; }
         
-        public DirectionFacing Facing { get; set; }
 
         public Rectangle Bounds => new Rectangle((int)Position.X, (int)Position.Y, (int)Dimensions.X, (int)Dimensions.Y);
         
@@ -77,7 +76,6 @@ namespace BFB.Engine.Entity
             OldPosition = new BfbVector();
             VisibleChunks = new List<string>();
             ChunkVersions = new Dictionary<string, int>();
-            Facing = DirectionFacing.Left;
             
             //Components
             Physics = components.Physics;
