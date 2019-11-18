@@ -256,7 +256,7 @@ namespace BFB.Engine.Content
                 json = r.ReadToEnd();
             }
             
-            ContentFileSchema content = JsonConvert.DeserializeObject<ContentFileSchema>(json);
+            ContentJSONSchema content = JsonConvert.DeserializeObject<ContentJSONSchema>(json);
             
             //Parse texture
             ParseTextures(content.Textures);
@@ -353,7 +353,7 @@ namespace BFB.Engine.Content
     /// Schema for what the content will look like.
     /// </summary>
     [UsedImplicitly]
-    public class ContentFileSchema
+    public class ContentJSONSchema
     {
         [UsedImplicitly]
         public List<ContentGroupSchema> Fonts { get; set; }

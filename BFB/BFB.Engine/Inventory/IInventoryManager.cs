@@ -30,7 +30,7 @@ namespace BFB.Engine.InventoryManager
         /// </summary>
         /// <param name="item">The item to insert</param>
         /// <returns>A boolean indicating if the insert succeeded</returns>
-        bool Insert(IItem item);
+        IItem Insert(IItem item);
 
         /// <summary>
         /// Inserts a item at a given slot in the inventory
@@ -61,6 +61,14 @@ namespace BFB.Engine.InventoryManager
         /// <param name="slotId"></param>
         /// <returns></returns>
         IItem Split(int slotId);
+
+        /// <summary>
+        /// Attempts to merge two items together if the types match and gives back overflow
+        /// </summary>
+        /// <param name="slotId">The slot to merge</param>
+        /// <param name="item">The item to merge</param>
+        /// <returns>Any items that did not fit in the stack</returns>
+        IItem Merge(int slotId, IItem item);
             
         /// <summary>
         /// Gets the item at a given slot
@@ -82,6 +90,13 @@ namespace BFB.Engine.InventoryManager
         /// <param name="slotId">The slotId to check</param>
         /// <returns>A boolean indicating if the slot is a valid range</returns>
         bool SlotInRange(int slotId);
+
+        /// <summary>
+        /// Finds a slot with the type of item
+        /// </summary>
+        /// <param name="itemType">The item type</param>
+        /// <returns>Null if not slots found or the slot number to match</returns>
+        int? SlotWithItemTypeAvailable(string itemType);
 
         /// <summary>
         /// Clears the inventory

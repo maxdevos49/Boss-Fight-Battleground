@@ -8,23 +8,18 @@ using BFB.Engine.TileMap;
 
 namespace BFB.Engine.Simulation.PhysicsComponents
 {
-    /// <summary>
-    /// A player physics component that is used for normal walking like physics
-    /// </summary>
-    public class  WalkingPhysicsComponent: IPhysicsComponent
+    public class  BossPhysicsComponent: IPhysicsComponent
     {
         public BfbVector Acceleration { get; set; }
         public BfbVector MaxSpeed { get; set; }
         public float Gravity { get; set; }
         public float Friction { get; set; }
+        
         public string CollideFilter { get; set; }
         public List<string> CollideWithFilters { get; set; }
         
         
-        /// <summary>
-        /// Constructs a Walking Physics Component
-        /// </summary>
-        public WalkingPhysicsComponent()
+        public BossPhysicsComponent()
         {
             CollideFilter = "entity";
             CollideWithFilters = new List<string> {"tile"};
@@ -59,6 +54,7 @@ namespace BFB.Engine.Simulation.PhysicsComponents
             
             // ReSharper disable once CompareOfFloatsByEqualityOperator
             entity.Grounded = entity.Velocity.Y == 0.0f;
+
         }
 
         public bool OnEntityCollision(Simulation simulation, SimulationEntity primaryEntity, SimulationEntity secondaryEntity)
@@ -99,5 +95,4 @@ namespace BFB.Engine.Simulation.PhysicsComponents
             return true;
         }
     }
-
 }

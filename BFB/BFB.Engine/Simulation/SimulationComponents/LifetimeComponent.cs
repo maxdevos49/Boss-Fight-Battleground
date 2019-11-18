@@ -1,11 +1,11 @@
 using BFB.Engine.Entity;
 
-namespace BFB.Engine.Simulation.GameComponents
+namespace BFB.Engine.Simulation.SimulationComponents
 {
     /// <summary>
     /// Allows for easily removing an entity after a set amount of ticks
     /// </summary>
-    public class LifetimeComponent : IGameComponent
+    public class LifetimeComponent : ISimulationComponent
     {
 
         private readonly int _lifetime;

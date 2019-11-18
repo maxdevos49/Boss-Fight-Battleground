@@ -1,13 +1,13 @@
 using BFB.Engine.Content;
 using BFB.Engine.Entity;
 
-namespace BFB.Engine.Simulation.GameComponents
+namespace BFB.Engine.Simulation.SimulationComponents
 {
     
     /// <summary>
     /// Automatically updates the walking animation based on the entities velocity
     /// </summary>
-    public class WalkingAnimationComponent : IGameComponent
+    public class WalkingAnimationComponent : ISimulationComponent
     {
         public void Update(SimulationEntity entity, Simulation simulation)
         {

@@ -3,6 +3,7 @@ namespace BFB.Engine.Inventory
     
     public interface IItem
     {
+        string ItemConfigKey { get; set; }
         
         /// <summary>
         /// Increments the item stack by one if the item configuration allows
@@ -46,19 +47,6 @@ namespace BFB.Engine.Inventory
         /// </summary>
         /// <returns>A clone of the Item</returns>
         IItem Clone();
-        
-//        /// <summary>
-//        /// //TODO
-//        /// </summary>
-//        /// <param name="simulation"></param>
-//        /// <param name="itemEntityOwner"></param>
-//        void RightClickAction(Simulation.Simulation simulation,SimulationEntity itemEntityOwner);
-//
-//        /// <summary>
-//        /// //TODO
-//        /// </summary>
-//        /// <param name="simulation"></param>
-//        /// <param name="itemEntityOwner"></param>
-//        void LeftClickAction(Simulation.Simulation simulation, SimulationEntity itemEntityOwner);
+
     }
 }

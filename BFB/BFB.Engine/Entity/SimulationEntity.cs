@@ -1,9 +1,10 @@
 using System.Collections.Generic;
 using System.Drawing;
+using BFB.Engine.InventoryManager;
 using BFB.Engine.Math;
-using BFB.Engine.Simulation.GameComponents;
 using BFB.Engine.Simulation.InputComponents;
 using BFB.Engine.Simulation.PhysicsComponents;
+using BFB.Engine.Simulation.SimulationComponents;
 using BFB.Engine.TileMap;
 
 namespace BFB.Engine.Entity
@@ -17,13 +18,14 @@ namespace BFB.Engine.Entity
         #region Properties
 
         public int CurrentTick { get; private set; }
+        
         public int TicksSinceCreation { get; private set; }
         
         /// <summary>
         /// Whether this is a player entity or not
         /// </summary>
         public bool IsPlayer { get; set; }
-        
+
         /// <summary>
         /// Vector describing a position an entity is attempting to move to 
         /// </summary>
@@ -44,13 +46,15 @@ namespace BFB.Engine.Entity
         /// </summary>
         public Dictionary<string, int> ChunkVersions { get; }
         
+        public IInventoryManager Inventory { get; set; }
 
-        public Rectangle Bounds => new Rectangle((int)Position.X, (int)Position.Y, (int)Dimensions.X, (int)Dimensions.Y);
-        
-        public int OldBottom => (int)(OldPosition.Y + Height);
-        public int OldLeft => (int)(OldPosition.X);
-        public int OldRight => (int)(OldPosition.X + Width);
-        public int OldTop => (int)(OldPosition.Y);
+        public Rectangle Bounds =>
+            new Rectangle((int) Position.X, (int) Position.Y, (int) Dimensions.X, (int) Dimensions.Y);
+
+        public int OldBottom => (int) (OldPosition.Y + Height);
+        public int OldLeft => (int) (OldPosition.X);
+        public int OldRight => (int) (OldPosition.X + Width);
+        public int OldTop => (int) (OldPosition.Y);
 
         #endregion
 
@@ -58,19 +62,20 @@ namespace BFB.Engine.Entity
 
         public readonly IPhysicsComponent Physics;
         private readonly IInputComponent _input;
-        private readonly List<IGameComponent> _gameComponents;
+        private readonly List<ISimulationComponent> _gameComponents;
 
         #endregion
 
         #region Constructor
-        
+
         /// <summary>
         /// Creates a new entity for the game simulations
         /// </summary>
         /// <param name="entityId">Unique ID for this entity</param>
         /// <param name="options">Sets the initial properties of this entity</param>
         /// <param name="components">The components this entity contains</param>
-        public SimulationEntity(string entityId, EntityOptions options, ComponentOptions components) : base(entityId, options)
+        public SimulationEntity(string entityId, EntityOptions options, ComponentOptions components) : base(entityId,
+            options)
         {
             SteeringVector = new BfbVector();
             OldPosition = new BfbVector();
@@ -80,7 +85,7 @@ namespace BFB.Engine.Entity
             //Components
             Physics = components.Physics;
             _input = components.Input;
-            _gameComponents = components.GameComponents ?? new List<IGameComponent>();
+            _gameComponents = components.GameComponents ?? new List<ISimulationComponent>();
 
             CurrentTick = -1;
             TicksSinceCreation = -1;
@@ -89,7 +94,7 @@ namespace BFB.Engine.Entity
         #endregion
 
         #region Update
-        
+
         /// <summary>
         /// Updates this entity as part of the chunks in the simulation of this entity
         /// </summary>
@@ -112,10 +117,13 @@ namespace BFB.Engine.Entity
             _input?.Update(this, simulation);
             Physics?.Update(this, simulation);
 
-            foreach (IGameComponent gameComponent in _gameComponents)
+            foreach (ISimulationComponent gameComponent in _gameComponents)
             {
                 gameComponent.Update(this,simulation);
             }
+
+
+
 
             //Place entity in correct chunk if in new position
             string chunkKey =
@@ -160,6 +168,6 @@ namespace BFB.Engine.Entity
         }
 
         #endregion
-    }
 
+    }
 }

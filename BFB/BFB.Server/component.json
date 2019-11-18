@@ -1,0 +1,35 @@
+{
+    "SimulationComponents": {
+        "Combat": {
+            "FullyQualifiedName": "CombatComponent",
+            "Singleton": true
+        },
+        "WalkingAnimation": {
+            "FullyQualifiedName": "WalkingAnimationComponent",
+            "Singleton": true
+        },
+        "ItemLifeTime":{ 
+            "FullyQualifiedName": "LifetimeComponent",
+            "Singleton": "false",
+            "Options": [2000]
+        }
+        
+    },
+    "ItemComponents": {
+        "Building:SetBlock": {
+            "FullyQualifiedName": "TODO"
+        },
+        "Building:Break": {
+            "FullyQualifiedName": "TODO"
+        },
+        "Combat:Hit": {
+            "FullyQualifiedName": "TODO"
+        }
+    },
+    "BlockComponents": {
+        "GrassGrow": {
+            "FullyQualifiedName": "TODO",
+            "Options": []
+        }
+    }
+}

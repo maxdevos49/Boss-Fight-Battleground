@@ -7,13 +7,14 @@ using Microsoft.Extensions.Configuration;
 using System.Net;
 using System.Threading;
 using BFB.Engine.Entity;
+using BFB.Engine.Inventory;
 using BFB.Engine.Math;
 using BFB.Engine.Server;
 using BFB.Engine.Server.Communication;
 using BFB.Engine.Simulation;
-using BFB.Engine.Simulation.GameComponents;
 using BFB.Engine.Simulation.InputComponents;
 using BFB.Engine.Simulation.PhysicsComponents;
+using BFB.Engine.Simulation.SimulationComponents;
 using BFB.Engine.TileMap.Generators;
 using JetBrains.Annotations;
 
@@ -58,6 +59,8 @@ namespace BFB.Server
 
         private void Init()
         {
+            ConfigurationRegistry.InitializeRegistry();
+            
             #region Server Callbacks
             
             #region Terminal Header
@@ -123,11 +126,15 @@ namespace BFB.Server
                             CollideWithFilters = new List<string>{"tile","item","projectile", "melee"}
                         },
                         Input = new RemoteInputComponent(socket),
-                        GameComponents = new List<IGameComponent>
+                        GameComponents = new List<ISimulationComponent>
                         {
-                            new WalkingAnimationComponent()
+                            new WalkingAnimationComponent(),
+                            new CombatComponent()
                         }
-                    }), true);
+                    })
+                {
+                    Inventory = new InventoryManager(10)
+                }, true);
                 
                 _server.PrintMessage($"Client {socket.ClientId} Ready and added to Simulation");
 

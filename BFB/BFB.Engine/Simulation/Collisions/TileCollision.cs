@@ -2,7 +2,7 @@ using System.Drawing;
 using BFB.Engine.Math;
 using BFB.Engine.TileMap;
 
-namespace BFB.Engine.Simulation
+namespace BFB.Engine.Simulation.Collisions
 {
     /// <summary>
     /// Represents information about a TileCollision

@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using BFB.Engine.Entity;
 using BFB.Engine.Math;
+using BFB.Engine.Simulation.Collisions;
 
 namespace BFB.Engine.Simulation.PhysicsComponents
 {

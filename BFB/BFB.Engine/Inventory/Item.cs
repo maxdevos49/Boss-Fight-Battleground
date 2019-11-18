@@ -1,64 +1,104 @@
-using BFB.Engine.Entity;
-using BFB.Engine.InventoryManager;
+using BFB.Engine.Simulation;
 
 namespace BFB.Engine.Inventory
 {
     public class Item : IItem
     {
-//        public static ComponentRegistry component;
-        public string ItemConfigKey { get; private set; }
+        #region Properties
+        public string ItemConfigKey { get; set; }
+
+        private ItemConfiguration _configuration;
         
         private int _stackSize;
+        
+        #endregion
+        
+        #region Constructor
 
         public Item(string itemConfigKey)
         {
             ItemConfigKey = itemConfigKey;
-            _stackSize = 0;
+            _configuration = ConfigurationRegistry.GetInstance().GetItemConfiguration(itemConfigKey);
+            _stackSize = 1;
         }
+        
+        #endregion
+        
+        #region IncrementStack
         
         public bool IncrementStack()
         {
-            throw new System.NotImplementedException();
-        }
+            if (_stackSize + 1 > _configuration.StackLimit)
+                return false;
 
+            _stackSize++;
+            return true;
+        }
+        
+        #endregion
+
+        #region DecrementStack
+        
         public bool DecrementStack()
         {
-            throw new System.NotImplementedException();
-        }
+            if (_stackSize - 1 < 1)
+                return false;
 
+            _stackSize--;
+            return true;
+        }
+        
+        #endregion
+
+        #region SetStackSize
+        
         public bool SetStackSize(int stackSize)
         {
-            throw new System.NotImplementedException();
-        }
+            if (stackSize < 0 && stackSize > _configuration.StackLimit)
+                return false;
 
+            _stackSize = stackSize;
+            return true;
+        }
+        
+        #endregion
+
+        #region StackSize
+        
         public int StackSize()
         {
-            throw new System.NotImplementedException();
+            return _stackSize;
         }
+        
+        #endregion
 
+        #region MaxStackSize
+        
         public int MaxStackSize()
         {
-            throw new System.NotImplementedException();
+            return _configuration.StackLimit;
         }
+        
+        #endregion
+
+        #region IsStackFull
 
         public bool IsStackFull()
         {
-            throw new System.NotImplementedException();
+            return _stackSize == _configuration.StackLimit;
         }
+        
+        #endregion
+
+        #region Clone
 
         public IItem Clone()
         {
-            throw new System.NotImplementedException();
+            IItem clone = new Item(ItemConfigKey);
+            clone.SetStackSize(_stackSize);
+            return clone;
         }
-
-//        public void RightClickAction(Simulation.Simulation simulation, SimulationEntity itemEntityOwner)
-//        {
-//            throw new System.NotImplementedException();
-//        }
-//
-//        public void LeftClickAction(Simulation.Simulation simulation, SimulationEntity itemEntityOwner)
-//        {
-//            throw new System.NotImplementedException();
-//        }
+        
+        #endregion
     }
 }

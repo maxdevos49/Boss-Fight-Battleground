@@ -13,7 +13,7 @@ namespace BFB.Engine.Inventory
         private readonly int _inventorySize;
         
         private readonly Dictionary<int, IItem> _slots;
-
+        
         #endregion
 
         #region Constructor
@@ -61,16 +61,31 @@ namespace BFB.Engine.Inventory
         
         #region Insert
 
-        public bool Insert(IItem item)
+        public IItem Insert(IItem items)
         {
-            if (!IsSlotsAvailable())
-                return false;
+            //search for similar items
+            int? slotId = SlotWithItemTypeAvailable(items.ItemConfigKey);
 
-            int slotId = 0;
-            for (;!_slots.ContainsKey(slotId); slotId++) { }//Searches for first available slot
+            if (slotId != null)
+            {
+                IItem remainingItems = Merge((int)slotId,items);
+                if (remainingItems == null)
+                    return null;
+                
+                //assign remaining items to main item
+                items = remainingItems;
+            }
             
-            _slots.Add(slotId,item);
-            return true;
+            //If anything else is available
+            if (!IsSlotsAvailable())
+                return items;
+
+            slotId = 0;
+
+            for (;!_slots.ContainsKey((int)slotId); slotId++) { }//Searches for first available slot
+            
+            _slots.Add((int)slotId, items);
+            return null;
         }
         
         #endregion
@@ -120,6 +135,45 @@ namespace BFB.Engine.Inventory
 
         }
         
+        #endregion
+        
+        #region Merge
+
+        public IItem Merge(int slotId, IItem items)
+        {
+            if (!SlotInRange(slotId))
+                return items;
+
+            if (!SlotOccupied(slotId))
+            {
+                InsertAtSlot(slotId, items);
+                return null;
+            }
+
+            IItem mergeSlotItem = GetSlot(slotId);
+            int existingCount = mergeSlotItem.StackSize();
+            int count = items.StackSize();
+
+            if (count + existingCount <= mergeSlotItem.MaxStackSize())
+            {
+                mergeSlotItem.SetStackSize(count + existingCount);
+                return null;
+            }
+
+            mergeSlotItem.SetStackSize(mergeSlotItem.MaxStackSize());
+            items.SetStackSize((count + existingCount) - mergeSlotItem.MaxStackSize());
+            return items;
+        }
+
+        #endregion
+
+        #region SlotWithItemTypeAvailable
+
+        public int? SlotWithItemTypeAvailable(string itemType)
+        {
+            return _slots.FirstOrDefault(x => x.Value.ItemConfigKey == itemType).Key;
+        }
+
         #endregion
 
         #region Split

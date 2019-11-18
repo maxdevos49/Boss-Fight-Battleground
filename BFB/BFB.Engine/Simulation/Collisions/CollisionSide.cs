@@ -1,4 +1,4 @@
-namespace BFB.Engine.Simulation
+namespace BFB.Engine.Simulation.Collisions
 {
     public enum CollisionSide
     {

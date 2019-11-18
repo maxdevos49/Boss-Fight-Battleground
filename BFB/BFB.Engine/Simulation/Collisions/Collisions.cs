@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -8,7 +7,7 @@ using BFB.Engine.Simulation.PhysicsComponents;
 using BFB.Engine.TileMap;
 using JetBrains.Annotations;
 
-namespace BFB.Engine.Simulation
+namespace BFB.Engine.Simulation.Collisions
 {
     public static class Collision
     {
