@@ -69,6 +69,20 @@ namespace BFB.Engine.Simulation.InputComponents
                             Physics = new SkeletonPhysicsComponent(),
                             Input = new AIInputComponent()
                         }));*/
+
+                        simulation.AddEntity(new SimulationEntity(
+                            Guid.NewGuid().ToString(),
+                            new EntityOptions()
+                            {
+                                AnimatedTextureKey = "Fireball",
+                                Position = new BfbVector(simulationEntity.Position.X, simulationEntity.Position.Y),
+                                Dimensions = new BfbVector(50.0f, 50.0f),
+                                Rotation = 0,
+                                Origin = new BfbVector(0,0),
+                            }, new ComponentOptions()
+                            {
+                                Physics = new SpellPhysicsComponent()
+                            }));
                 }
 
                 //Check block placement
