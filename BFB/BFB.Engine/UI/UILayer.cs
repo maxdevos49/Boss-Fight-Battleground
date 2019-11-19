@@ -46,6 +46,11 @@ namespace BFB.Engine.UI
         /// The scene that started the UILayer
         /// </summary>
         public Scene.Scene ParentScene { get; set; }
+        
+        /// <summary>
+        /// Whether the layer needs to be rebuilt
+        /// </summary>
+        public bool Rebuild { get; set; }
 
         /**
          * Indicates the current focus position of the tabIndex

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Net.Sockets;
 using BFB.Engine.Server;
@@ -15,17 +16,19 @@ namespace BFB.Client.UI
 {
     public class ChatUI : UILayer
     {
-        private string TextBoxMessage { get; set; }
+        #region Properties
 
-        private ChatModel _model;
+        private List<string> _displayedMessages;
 
-        private Chat _chat;
+        private ChatModel _chatModel;
+
+        #endregion
 
         #region Constructor
 
         public ChatUI() : base(nameof(ChatUI))
         {
-            _model = new ChatModel() {TextBoxText = ""};
+            _displayedMessages = new List<string>();
         }
 
         #endregion
@@ -34,12 +37,11 @@ namespace BFB.Client.UI
 
         protected override void Init()
         {
-            _chat = new Chat(ParentScene.Client);
-            
-            AddGlobalListener("Chat", e =>
+            _chatModel = new ChatModel(ParentScene.Client, this)
             {
-                TextBoxMessage = e.Message;
-            });
+                TextBoxText = ""
+            };
+            AddGlobalListener("Chat", e => { });
         }
 
         #endregion
@@ -64,18 +66,22 @@ namespace BFB.Client.UI
 
                         h1.Vstack(v2 =>
                         {
-                            v2.Text("Test message").Background(grayBackground);
-                            v2.Text("Test message").Background(grayBackground);
-                            v2.Text("Test message").Background(grayBackground);
-                            v2.Text("Test message").Background(grayBackground);
-                            v2.Text("Test message").Background(grayBackground);
-                            v2.Text("Test message").Background(grayBackground);
-                            v2.TextBoxFor(_model, t => t.TextBoxText, keyPressAction: (e, a) =>
+                            _displayedMessages = _chatModel.GetRecent();
+
+                            // Add spacers when < MaxChatsDisplayed displayed
+                            for (int i = _displayedMessages.Count; i < ChatModel.MaxChatsDisplayed; i++)
+                                v2.Spacer();
+
+                            // Add text components for the most recent (MaxChatsDisplayed) chats
+                            foreach (string chat in _displayedMessages)
+                                v2.Text(chat).Background(grayBackground);
+
+                            v2.TextBoxFor(_chatModel, t => t.TextBoxText, keyPressAction: (e, a) =>
                             {
                                 if (e.Keyboard.KeyEnum != Keys.Enter) return;
-                                
-                                _chat.Send(_model.TextBoxText);
-                                _model.TextBoxText = "";
+
+                                _chatModel.Send(_chatModel.TextBoxText);
+                                _chatModel.TextBoxText = "";
                             }).Background(grayBackground);
                         }).Grow(2);
                     }).Grow(2);
@@ -88,27 +94,35 @@ namespace BFB.Client.UI
 
     public class ChatModel
     {
+        #region Properties
+
         public string TextBoxText { get; set; }
-    }
 
-    public class Chat
-    {
-        private List<string> Chats;
+        private List<ChatMessage> _chats;
 
-        private ClientSocketManager _client;
+        private readonly ClientSocketManager _client;
+
+        private readonly UILayer _layer;
+
+        public const int MaxChatsDisplayed = 6;
+
+        #endregion
 
         #region Constructor
-        
-        public Chat (ClientSocketManager client)
+
+        public ChatModel(ClientSocketManager client, UILayer layer)
         {
             _client = client;
-            
-            Chats = new List<string>();
-            
+            _layer = layer;
+
+            _chats = new List<ChatMessage>();
+
             Receive();
         }
-        
+
         #endregion
+
+        #region Send
 
         public void Send(string message)
         {
@@ -118,19 +132,57 @@ namespace BFB.Client.UI
             _client.Emit("Chat", new DataMessage {Message = message});
         }
 
+        #endregion
+
+        #region Receive
+
         private void Receive()
         {
             _client.On("Chat", (m) =>
             {
-                Chats.Add(m.Message);
+                _chats.Add(new ChatMessage(m.Message));
+                _layer.Rebuild = true;
             });
         }
 
+        #endregion
+
+        #region GetRecent
+
         public List<string> GetRecent()
         {
-            foreach(string chats in Chats)
-                Console.WriteLine(chats);
-            return Chats.Count <= 5 ? Chats : Chats.GetRange(Chats.Count - 5, Chats.Count);
+            List<string> messages = new List<string>();
+
+            if (_chats.Count > MaxChatsDisplayed)
+                _chats = _chats.GetRange(_chats.Count - MaxChatsDisplayed, MaxChatsDisplayed);
+
+            foreach (ChatMessage chat in _chats)
+            {
+                if (chat.Timer.ElapsedMilliseconds > 7000)
+                    continue;
+                
+                messages.Add(chat.Message);
+            }
+
+            return messages;
+        }
+
+        #endregion
+    }
+
+    public class ChatMessage
+    {
+        public string Message { get; set; }
+
+        public Stopwatch Timer { get; }
+
+        public ChatMessage(string message)
+        {
+            Message = message;
+            
+            Timer = new Stopwatch();
+            
+            Timer.Start();
         }
     }
 }

@@ -157,8 +157,13 @@ namespace BFB.Engine.UI
 
         public void Draw(SpriteBatch graphics)
         {
-            foreach ((string _,UILayer uiLayer) in _activeUILayers.ToList())
+            foreach ((string key,UILayer uiLayer) in _activeUILayers.ToList())
             {
+                if (uiLayer.Rebuild)
+                {
+                    BuildUILayer(key);
+//                    uiLayer.Rebuild = false;
+                }
                 RenderComponents(uiLayer.RootUI, graphics, uiLayer);
             }
         }
