@@ -1,3 +1,4 @@
+using System;
 using BFB.Engine.Entity;
 using BFB.Engine.Inventory.Configuration;
 using BFB.Engine.Simulation;
@@ -9,8 +10,10 @@ namespace BFB.Engine.Inventory
         #region Properties
         public string ItemConfigKey { get; set; }
 
-        private readonly ItemConfiguration _configuration;
-        
+        public ItemConfiguration Configuration { get; set; }
+
+        public TileTarget TileTarget { get; set; }
+
         private int _stackSize;
         
         #endregion
@@ -20,7 +23,8 @@ namespace BFB.Engine.Inventory
         public Item(string itemConfigKey)
         {
             ItemConfigKey = itemConfigKey;
-            _configuration = ConfigurationRegistry.GetInstance().GetItemConfiguration(itemConfigKey);
+            Configuration = ConfigurationRegistry.GetInstance().GetItemConfiguration(itemConfigKey);
+            TileTarget = new TileTarget();
             _stackSize = 1;
         }
         
@@ -30,7 +34,7 @@ namespace BFB.Engine.Inventory
         
         public bool IncrementStack()
         {
-            if (_stackSize + 1 > _configuration.StackLimit)
+            if (_stackSize + 1 > Configuration.StackLimit)
                 return false;
 
             _stackSize++;
@@ -56,7 +60,7 @@ namespace BFB.Engine.Inventory
         
         public bool SetStackSize(int stackSize)
         {
-            if (stackSize < 0 && stackSize > _configuration.StackLimit)
+            if (stackSize < 0 && stackSize > Configuration.StackLimit)
                 return false;
 
             _stackSize = stackSize;
@@ -78,7 +82,7 @@ namespace BFB.Engine.Inventory
         
         public int MaxStackSize()
         {
-            return _configuration.StackLimit;
+            return Configuration.StackLimit;
         }
         
         #endregion
@@ -87,7 +91,7 @@ namespace BFB.Engine.Inventory
 
         public bool IsStackFull()
         {
-            return _stackSize == _configuration.StackLimit;
+            return _stackSize == Configuration.StackLimit;
         }
         
         #endregion
@@ -107,25 +111,69 @@ namespace BFB.Engine.Inventory
         
         public void UseItemLeftClick(Simulation.Simulation simulation, SimulationEntity entity)
         {
-            throw new System.NotImplementedException();
+            if (Configuration.LeftClickComponents.Count == 0)
+            {//Do default actions if no specified item components
+//                ConfigurationRegistry.GetInstance().GetItemComponent("Hit").Use(simulation, entity, this);
+                ConfigurationRegistry.GetInstance().GetItemComponent("BreakBlock").Use(simulation, entity, this);
+
+                return;
+            }
+            
+            foreach (string componentKey in Configuration.LeftClickComponents)
+                ConfigurationRegistry.GetInstance().GetItemComponent(componentKey).Use(simulation,entity,this);
         }
         
         #endregion
 
+        #region UseItemRightClick
+        
         public void UseItemRightClick(Simulation.Simulation simulation, SimulationEntity entity)
         {
-            throw new System.NotImplementedException();
+            if (Configuration.RightClickComponents.Count == 0)
+                return;
+            
+            foreach (string componentKey in Configuration.RightClickComponents)
+                ConfigurationRegistry.GetInstance().GetItemComponent(componentKey).Use(simulation,entity,this);
         }
+        
+        #endregion
+        
+        #region UseItemLeftHold
 
         public void UseItemLeftHold(Simulation.Simulation simulation, SimulationEntity entity, int holdTicks)
         {
-            throw new System.NotImplementedException();
+            if (holdTicks % Configuration.CoolDown != 0)
+                return;
+            
+            if (Configuration.LeftHoldComponents.Count == 0)
+            {
+//                ConfigurationRegistry.GetInstance().GetItemComponent("Hit").Use(simulation, entity, this);
+                ConfigurationRegistry.GetInstance().GetItemComponent("BreakBlock").Use(simulation, entity, this);
+
+                return;
+            }
+            
+            foreach (string componentKey in Configuration.LeftHoldComponents)
+                ConfigurationRegistry.GetInstance().GetItemComponent(componentKey).Use(simulation,entity,this);
         }
+        
+        #endregion
+
+        #region UseItemRightHold
 
         public void UseItemRightHold(Simulation.Simulation simulation, SimulationEntity entity, int holdTicks)
         {
-            throw new System.NotImplementedException();
+            if (holdTicks % Configuration.CoolDown != 0)
+                return;
+            
+            if (Configuration.RightHoldComponents.Count == 0)
+                return;
+            
+            foreach (string componentKey in Configuration.RightHoldComponents)
+                ConfigurationRegistry.GetInstance().GetItemComponent(componentKey).Use(simulation,entity,this);
         }
+        
+        #endregion
 
     }
 }

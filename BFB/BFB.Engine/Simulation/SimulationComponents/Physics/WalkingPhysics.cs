@@ -18,10 +18,10 @@ namespace BFB.Engine.Simulation.PhysicsComponents
         /// <summary>
         /// Constructs a Walking Physics Component
         /// </summary>
-        public WalkingPhysics() : base(false)
+        public WalkingPhysics(int maxSpeed = 20) : base(false)
         {
             Acceleration = new BfbVector(5,25);
-            MaxSpeed = new BfbVector(20,29);
+            MaxSpeed = new BfbVector(maxSpeed,29);
             Gravity = 4f;
             Friction = 0.8f;
         }

@@ -3,7 +3,7 @@ using BFB.Engine.Math;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace BFB.Engine.Helpers
+namespace BFB.Engine.Graphics
 {
     public static class DrawingExtensions
     {
@@ -75,10 +75,10 @@ namespace BFB.Engine.Helpers
 
         }
 
-        public static void DrawAtlas(this SpriteBatch graphics, AtlasTexture atlasTexture, Rectangle rectangle, Color color)
+        public static void DrawAtlas(this SpriteBatch graphics, AtlasTexture atlasTexture, Rectangle rectangle, Color color, float scale = 1f)
         {
             graphics.Draw(atlasTexture.Texture,
-                new Rectangle(rectangle.X,rectangle.Y,30,30),
+                new Rectangle(rectangle.X,rectangle.Y,(int)(30 * scale),(int)(30 * scale)),
                 new Rectangle(atlasTexture.X,atlasTexture.Y,atlasTexture.Width,atlasTexture.Height),
                 color);
         }

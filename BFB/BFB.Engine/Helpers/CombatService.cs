@@ -14,7 +14,22 @@ namespace BFB.Engine.Helpers
             if (targets.Count <= 0) return;
             foreach (SimulationEntity target in targets)
             {
-                 //Instead of a hard coded value here, you could call a weapon stored on the simulationEntity, and use its damage value.
+                // Instead of a hard coded value here, you could call a weapon stored on the simulationEntity, and use its damage value.
+                if (target.Meta != null)
+                {
+                    target.Meta.Health -= 4;
+                    if (simulationEntity.Facing == DirectionFacing.Left)
+                    {
+                        target.Velocity.Y = -10;
+                        target.Velocity.X = -10;
+                    }
+                    else
+                    {
+                        target.Velocity.Y = -10;
+                        target.Velocity.X = 10;
+                    }
+                }
+
 //                ((CombatComponent) target.Combat).Health -= 4;//TODO
             }
         }

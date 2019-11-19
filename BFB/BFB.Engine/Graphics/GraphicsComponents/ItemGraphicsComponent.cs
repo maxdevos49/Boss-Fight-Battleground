@@ -1,5 +1,6 @@
 using BFB.Engine.Content;
 using BFB.Engine.Entity;
+using BFB.Engine.Graphics.GraphicsComponents;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -34,7 +35,7 @@ namespace BFB.Engine.Simulation.GraphicsComponents
             _rotation += _rotationStep;
         }
 
-        public void Draw(ClientEntity entity, SpriteBatch graphics, float scale = 1)
+        public void Draw(ClientEntity entity, SpriteBatch graphics,BFBContentManager content, float scale = 1)
         {
             graphics.Draw(_atlasTexture.Texture,
                 new Vector2(entity.Position.X + 15, entity.Position.Y + 15 + _yOffset),

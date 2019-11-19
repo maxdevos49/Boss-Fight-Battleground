@@ -38,6 +38,15 @@ namespace BFB.Engine.Inventory
         
         #endregion
 
+        #region GetActiveSlotId
+
+        public int GetActiveSlotId()
+        {
+            return _activeSlotId;
+        }
+
+        #endregion
+        
         #region IncrementHotBar
         
         public void IncrementHotBar()
@@ -60,6 +69,12 @@ namespace BFB.Engine.Inventory
                 _activeSlotId = _hotBarRange;
         }
 
+        #endregion
+        
+        #region NextHotBar
+        
+        
+        
         #endregion
         
         #region MoveActiveSlot
@@ -115,6 +130,9 @@ namespace BFB.Engine.Inventory
 
         public IItem Insert(IItem items)
         {
+            if (items == null)
+                return null;
+            
             //search for similar items
             int? slotId = SlotWithItemTypeAvailable(items.ItemConfigKey);
 
@@ -134,7 +152,13 @@ namespace BFB.Engine.Inventory
 
             slotId = 0;
 
-            for (;!_slots.ContainsKey((int)slotId); slotId++) { }//Searches for first available slot
+            for (int i = 0; i <= MaxInventorySize(); i++)
+            {//Searches for the first available slot
+                if (_slots.ContainsKey(i)) continue;
+                
+                slotId = i;
+                break;
+            }
             
             _slots.Add((int)slotId, items);
             return null;

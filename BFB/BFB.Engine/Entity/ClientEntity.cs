@@ -1,5 +1,6 @@
-using System;
 using BFB.Engine.Content;
+using BFB.Engine.Graphics;
+using BFB.Engine.Graphics.GraphicsComponents;
 using BFB.Engine.Helpers;
 using BFB.Engine.Math;
 using BFB.Engine.Server.Communication;
@@ -28,7 +29,7 @@ namespace BFB.Engine.Entity
         /// <param name="entityId">Unique ID of this entity</param>
         /// <param name="options">Options Object of this entity</param>
         /// <param name="graphics">Graphics component for drawing</param>
-        public ClientEntity(string entityId, EntityOptions options, IGraphicsComponent graphics) : base(entityId, options)
+        private ClientEntity(string entityId, EntityOptions options, IGraphicsComponent graphics) : base(entityId, options)
         {
             _graphics = graphics;
         }
@@ -55,9 +56,9 @@ namespace BFB.Engine.Entity
 
         #region Draw
 
-        public void Draw(SpriteBatch graphics, float worldScale)
+        public void Draw(SpriteBatch graphics,BFBContentManager content, float worldScale)
         {
-            _graphics?.Draw(this, graphics, worldScale);
+            _graphics?.Draw(this, graphics, content, worldScale);
         }
         
         #endregion
@@ -115,7 +116,7 @@ namespace BFB.Engine.Entity
             //entity Bounds
             graphics.DrawBorder(new Rectangle((int)Position.X, (int)Position.Y,(int)Dimensions.X,(int)Dimensions.Y),1,Color.Black, content.GetTexture("default"));
             
-            Draw(graphics, worldScale);
+            Draw(graphics,content, worldScale);
 
             //Position
             graphics.DrawBackedText($"X: {(int)Position.X}, Y: {(int)Position.Y}",new BfbVector(Position.X, Position.Y - 15), content, 0.2f * worldScale);

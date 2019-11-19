@@ -1,62 +1,79 @@
 {
     "Items": {
-        "Grass": {
-            "TextureKey": "Tile:Grass",
-            "StackLimit": 64,
-            "LeftHoldComponents": [],
-            "LeftClickComponents": [], 
+        "Default": {
+            "TextureKey": "Tiles:Fist",
+            "StackLimit": 1,
+            "CoolDown": 1,
+            "LeftHoldComponents": ["BreakBlock","Hit"],
+            "LeftClickComponents": ["BreakBlock","Hit"],
             "RightHoldComponents": [],
             "RightClickComponents": [],
+            "ItemType": "Tool",
+            "TileKey": "Unknown"
+        },
+        "Grass": {
+            "TextureKey": "Tiles:Grass",
+            "StackLimit": 64,
+            "CoolDown": 1,
+            "LeftHoldComponents": ["BreakBlock","Hit"],
+            "LeftClickComponents": ["BreakBlock","Hit"], 
+            "RightHoldComponents": ["PlaceBlock"],
+            "RightClickComponents": ["PlaceBlock"],
             "ItemType": "Block",
             "TileKey": "Grass"
         },
         "GrassWall": {
-            "TextureKey": "Tile:Grass",
+            "TextureKey": "Tiles:Grass",
             "StackLimit": 64,
-            "LeftHoldComponents": [],
-            "LeftClickComponents": [],
-            "RightHoldComponents": [],
-            "RightClickComponents": [],
+            "CoolDown": 1,
+            "LeftHoldComponents": ["BreakBlock","Hit"],
+            "LeftClickComponents": ["BreakBlock","Hit"],
+            "RightHoldComponents": ["PlaceBlock"],
+            "RightClickComponents": ["PlaceBlock"],
             "ItemType": "Wall",
             "TileKey": "Grass"
         },
         "Dirt": {
-            "TextureKey": "Tile:Dirt",
+            "TextureKey": "Tiles:Dirt",
             "StackLimit": 64,
-            "LeftHoldComponents": [],
-            "LeftClickComponents": [],
-            "RightHoldComponents": [],
-            "RightClickComponents": [],
+            "CoolDown": 1,
+            "LeftHoldComponents": ["BreakBlock","Hit"],
+            "LeftClickComponents": ["BreakBlock","Hit"],
+            "RightHoldComponents": ["PlaceBlock"],
+            "RightClickComponents": ["PlaceBlock"],
             "ItemType": "Block",
             "TileKey": "Dirt"
         },
         "DirtWall": {
-            "TextureKey": "Tile:Dirt",
+            "TextureKey": "Tiles:Dirt",
             "StackLimit": 64,
-            "LeftHoldComponents": [],
-            "LeftClickComponents": [],
-            "RightHoldComponents": [],
-            "RightClickComponents": [],
+            "CoolDown": 1,
+            "LeftHoldComponents": ["BreakBlock","Hit"],
+            "LeftClickComponents": ["BreakBlock","Hit"],
+            "RightHoldComponents": ["PlaceBlock"],
+            "RightClickComponents": ["PlaceBlock"],
             "ItemType": "Wall",
             "TileKey": "Dirt"
         },
         "Stone": {
-            "TextureKey": "Tile:Stone",
+            "TextureKey": "Tiles:Stone",
             "StackLimit": 64,
-            "LeftHoldComponents": [],
-            "LeftClickComponents": [],
-            "RightHoldComponents": [],
-            "RightClickComponents": [],
+            "CoolDown": 1,
+            "LeftHoldComponents": ["BreakBlock","Hit"],
+            "LeftClickComponents": ["BreakBlock","Hit"],
+            "RightHoldComponents": ["PlaceBlock"],
+            "RightClickComponents": ["PlaceBlock"],
             "ItemType": "Block",
             "TileKey": "Stone"
         },
         "StoneWall": {
-            "TextureKey": "Tile:Stone",
+            "TextureKey": "Tiles:Stone",
             "StackLimit": 64,
-            "LeftHoldComponents": [],
-            "LeftClickComponents": [],
-            "RightHoldComponents": [],
-            "RightClickComponents": [],
+            "CoolDown": 1,
+            "LeftHoldComponents": ["BreakBlock","Hit"],
+            "LeftClickComponents": ["BreakBlock","Hit"],
+            "RightHoldComponents": ["PlaceBlock"],
+            "RightClickComponents": ["PlaceBlock"],
             "ItemType": "Wall",
             "TileKey": "Stone"
     }
@@ -64,45 +81,45 @@
     
     "Blocks": {
         "Grass": {
-            "TextureKey": "Tile:Grass",
+            "TextureKey": "Tiles:Grass",
             "ItemKey": "Grass",
             "CollisionId": 1,
-            "BreakSpeed": 10,
+            "BreakSpeed": 1,
             "Components": []
         },
         "Dirt": {
-            "TextureKey": "Tile:Dirt",
+            "TextureKey": "Tiles:Dirt",
             "ItemKey": "Dirt",
             "CollisionId": 1,
-            "BreakSpeed": 10,
+            "BreakSpeed": 1,
             "Components": []
         },
         "Stone": {
-            "TextureKey": "Tile:Stone",
+            "TextureKey": "Tiles:Stone",
             "ItemKey": "Stone",
             "CollisionId": 1,
-            "BreakSpeed": 30,
+            "BreakSpeed": 1,
             "Components": []
         }
     },
     
     "Walls": {
         "Grass": {
-            "TextureKey": "Tile:Grass",
+            "TextureKey": "Tiles:Grass",
             "ItemKey": "GrassWall",
-            "BreakSpeed": 10,
+            "BreakSpeed": 4,
             "Components": []
         },
         "Dirt": {
-            "TextureKey": "Tile:Dirt",
+            "TextureKey": "Tiles:Dirt",
             "ItemKey": "DirtWall",
-            "BreakSpeed": 10,
+            "BreakSpeed": 4,
             "Components": []
         },
         "Stone": {
-            "TextureKey": "Tile:Stone",
+            "TextureKey": "Tiles:Stone",
             "ItemKey": "StoneWall",
-            "BreakSpeed": 30,
+            "BreakSpeed": 10,
             "Components": []
         }
     }

@@ -2,9 +2,9 @@ using System;
 using BFB.Engine.Collisions;
 using BFB.Engine.Entity;
 using BFB.Engine.Math;
-using BFB.Engine.Simulation.SimulationComponents;
+using BFB.Engine.Simulation.PhysicsComponents;
 
-namespace BFB.Engine.Simulation.PhysicsComponents
+namespace BFB.Engine.Simulation.SimulationComponents.Physics
 {
     public class TilePhysics : SimulationComponent, IPhysics
     {

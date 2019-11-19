@@ -1,4 +1,5 @@
 using BFB.Engine.Entity;
+using BFB.Engine.Inventory.Configuration;
 
 namespace BFB.Engine.Inventory
 {
@@ -6,6 +7,16 @@ namespace BFB.Engine.Inventory
     public interface IItem
     {
         string ItemConfigKey { get; set; }
+        
+        /// <summary>
+        /// The items configuration data
+        /// </summary>
+        ItemConfiguration Configuration { get; set; }
+        
+        /// <summary>
+        /// Meta data about a focused tile that a item component might need
+        /// </summary>
+        TileTarget TileTarget { get; set; }
         
         /// <summary>
         /// Increments the item stack by one if the item configuration allows
@@ -51,8 +62,11 @@ namespace BFB.Engine.Inventory
         IItem Clone();
 
         void UseItemLeftClick(Simulation.Simulation simulation, SimulationEntity entity);
+        
         void UseItemRightClick(Simulation.Simulation simulation, SimulationEntity entity);
+        
         void UseItemLeftHold(Simulation.Simulation simulation, SimulationEntity entity, int holdTicks);
+        
         void UseItemRightHold(Simulation.Simulation simulation, SimulationEntity entity, int holdTicks);
 
     }

@@ -167,6 +167,7 @@ namespace BFB.Client.Scenes
                             _entities[em.EntityId].Rotation = em.Rotation;
                             _entities[em.EntityId].AnimationState = em.AnimationState;
                             _entities[em.EntityId].Facing = em.Facing;
+                            _entities[em.EntityId].HoldingTexture = em.HoldingTexture;
                             
                             if (em.EntityId == Client.ClientId)
                                 _worldRenderer.Camera.Focus = em.Position.ToVector2();

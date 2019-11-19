@@ -13,6 +13,8 @@ namespace BFB.Engine.Simulation.SimulationComponents
         private bool _rightClick;
         private int _rightHoldCount;
 
+        private IItem _defaultItem;
+
         public InventoryComponent() : base(false)
         {
             _leftClick = false;
@@ -20,60 +22,71 @@ namespace BFB.Engine.Simulation.SimulationComponents
             
             _rightClick = false;
             _rightHoldCount = 0;
+            
+            _defaultItem = new Item("Default");
         }
 
         public override void Init(SimulationEntity entity)
         {
-            entity.CollideWithFilters.Add("items");
-            entity.Inventory = new InventoryManager(20, 10);
+            if(!entity.CollideWithFilters.Contains("item"))
+                entity.CollideWithFilters.Add("item");
+            
+            entity.Inventory = new InventoryManager(10, 10);
+
+            //Temp grass items
+//            Item item = new Item("Grass");
+//            item.SetStackSize(64);
+//            entity.Inventory.Insert(item);
         }
 
+        /// <summary>
+        /// Make use of the active item based on the controlState
+        /// </summary>
         public override void Update(SimulationEntity entity, Simulation simulation)
         {
             if (entity.Inventory == null || entity.ControlState == null)
                 return;
 
-            IItem activeItem = entity.Inventory.GetActiveSlot();
-            
+
+            entity.Inventory.MoveActiveSlot(entity.ControlState.HotBarLeft);
+
+            IItem activeItem = entity.Inventory.GetActiveSlot() ?? _defaultItem;
+
+            //left click actions
             if (entity.ControlState.LeftClick)
             {
                 _leftHoldCount++;
 
                 if (!_leftClick)
-                {
-                    _leftClick = true;
-                    //TODO left click components
-
-                }
+                    activeItem.UseItemLeftClick(simulation, entity);//left click
                 else
-                {
-                    //TODO left hold components
-                    
-                }
+                    activeItem.UseItemLeftHold(simulation, entity, _leftHoldCount);//left hold
+                
+                _leftClick = true;
 
-            }else if (entity.ControlState.RightClick)
+                return;
+            }
+            
+            //Right click actions
+            if (entity.ControlState.RightClick)
             {
                 _rightHoldCount++;
 
                 if (!_rightClick)
-                {
-                    _rightClick = true;
-                    //TODO right click components
-                    
-                }
+                    activeItem.UseItemRightClick(simulation, entity);//right click
                 else
-                {
-                    //TODO right hold components
-                    
-                }
+                    activeItem.UseItemRightHold(simulation, entity, _rightHoldCount);//right hold
+                
+                _rightClick = true;
+                
+                return;
             }
 
-            if (_leftClick && !entity.ControlState.Left)
-                _leftClick = false;
-
-            if (_rightClick && !entity.ControlState.Right)
-                _rightClick = false;
-
+            _leftClick = false;
+            _rightClick = false;
+            _leftHoldCount = 0;
+            _leftHoldCount = 0;
+            activeItem.TileTarget.Progress = 0;
         }
 
         /// <summary>
@@ -81,17 +94,19 @@ namespace BFB.Engine.Simulation.SimulationComponents
         /// </summary>
         public override bool OnEntityCollision(Simulation simulation, SimulationEntity primaryEntity, SimulationEntity secondaryEntity)
         {
+            
             if(secondaryEntity.EntityType != EntityType.Item)
                 return true;
 
-            if (secondaryEntity.Inventory == null || primaryEntity.Inventory == null || secondaryEntity.Inventory.MaxInventorySize() == 1)
+            if (secondaryEntity.Inventory == null || primaryEntity.Inventory == null || secondaryEntity.Inventory.MaxInventorySize() != 1)
                 return true;
 
+            
             IItem item = secondaryEntity.Inventory.GetSlot(0);
             
             if (primaryEntity.Inventory.Insert(item) == null)
                 simulation.RemoveEntity(secondaryEntity.EntityId);//Maybe needs more?
-
+            
             return false;
         }
     }

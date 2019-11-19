@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -65,12 +66,13 @@ namespace BFB.Engine.Collisions
                 if(chunk1 == null)
                     continue;
                 
+//                Console.WriteLine(entity.CollideWithFilters[1]);
+                
                 //check for entities with the specified filter
-                foreach ((string _, SimulationEntity otherEntity) in chunk1.Entities.ToList()
-                                                                    .Where(x => 
-                                                                        entity.CollideWithFilters.Contains(x.Value.CollideFilter) 
+                foreach ((string _, SimulationEntity otherEntity) in chunk1.Entities.ToList().Where(x =>  entity.CollideWithFilters.Contains(x.Value.CollideFilter) 
                                                                         && x.Value.EntityId != entity.EntityId))
                 {
+
                     if (IsRectangleColliding(entity.Bounds, otherEntity.Bounds))
                     {
                         entity.EmitOnEntityCollision(simulation, otherEntity);

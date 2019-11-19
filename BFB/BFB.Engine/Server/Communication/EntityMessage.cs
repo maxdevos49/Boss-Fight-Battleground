@@ -18,12 +18,20 @@ namespace BFB.Engine.Server.Communication
         /// </summary>
         public string EntityId { get; set; }
         
+        /// <summary>
+        /// The chunk key for the current chunk you are in
+        /// </summary>
         public string ChunkKey { get; set; }
 
         /// <summary>
         /// The animation key that the entity should use
         /// </summary>
         public string TextureKey { get; set; }
+        
+        /// <summary>
+        /// The texture of the thing you are holding
+        /// </summary>
+        public string HoldingTexture { get; set; }
 
         /// <summary>
         /// The Animation state enum that the entity is currently in

@@ -1,10 +1,10 @@
 ﻿using BFB.Engine.Content;
 using BFB.Engine.Entity;
+using BFB.Engine.Helpers;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System;
 
-namespace BFB.Engine.Simulation.GraphicsComponents
+namespace BFB.Engine.Graphics.GraphicsComponents
 {
     public class AnimationComponent : IGraphicsComponent
     {
@@ -26,8 +26,6 @@ namespace BFB.Engine.Simulation.GraphicsComponents
             _frameSelector.Height = _animatedTexture.FrameHeight;
             
             _frameTicksLeft = 0;
-            
-            
         }
         
 
@@ -70,7 +68,7 @@ namespace BFB.Engine.Simulation.GraphicsComponents
             _frameSelector.Y = _frameSelector.Height * currentRow;
         }
 
-        public void Draw(ClientEntity entity, SpriteBatch graphics, float worldScale)
+        public void Draw(ClientEntity entity, SpriteBatch graphics, BFBContentManager contentManager, float worldScale)
         {
             
             graphics.Draw(_animatedTexture.Texture,
@@ -82,6 +80,14 @@ namespace BFB.Engine.Simulation.GraphicsComponents
                  _animatedTexture.Scale * worldScale,
                 !_currentAnimationSet.Mirror ? SpriteEffects.None : SpriteEffects.FlipHorizontally,
                 1);
+
+            if (entity.HoldingTexture == null)
+                return;
+
+            int x = entity.Facing == DirectionFacing.Left ? entity.Left : entity.Right - 15;
+            int y = (int)(entity.Height / 2f + entity.Position.Y);
+
+            graphics.DrawAtlas(contentManager.GetAtlasTexture(entity.HoldingTexture), new Rectangle(x, y, 30,30), Color.White, 0.6f);
         }
     }
 }

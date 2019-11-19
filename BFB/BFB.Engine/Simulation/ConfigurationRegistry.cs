@@ -22,11 +22,13 @@ namespace BFB.Engine.Simulation
     {
         private static ConfigurationRegistry _configuration;
 
-        private static Dictionary<string, ItemConfiguration> _itemConfiguration;
+        private Dictionary<string, ItemConfiguration> _itemConfiguration;
 
-        private static Dictionary<WorldTile, BlockConfiguration> _blockConfiguration;
+        private Dictionary<WorldTile, BlockConfiguration> _blockConfiguration;
         
-        private static Dictionary<WorldTile, WallConfiguration> _wallConfiguration;
+        private Dictionary<WorldTile, WallConfiguration> _wallConfiguration;
+
+        private Dictionary<string, IItemComponent> _itemComponents;
 
         #region Constructor
         
@@ -36,7 +38,12 @@ namespace BFB.Engine.Simulation
             _blockConfiguration = new Dictionary<WorldTile, BlockConfiguration>();
             _wallConfiguration = new Dictionary<WorldTile, WallConfiguration>();
             
-            ParseItems();          
+            _itemComponents = new Dictionary<string, IItemComponent>();
+
+            
+            ParseItems();
+
+            ParseItemComponents();
         }
         
         #endregion
@@ -112,15 +119,25 @@ namespace BFB.Engine.Simulation
         #endregion
         
         
-        #region ParseItemComponents(TODO)
+        #region ParseItemComponents
+
+        private void ParseItemComponents()
+        {
+            _itemComponents.Add("PlaceBlock", new PlaceTileComponent());
+            _itemComponents.Add("BreakBlock", new BreakTileComponent());
+            _itemComponents.Add("Hit", new HitComponent());
+        }
         
         #endregion
 
-        #region GetItemComponent(TODO)
+        #region GetItemComponent
         
         public IItemComponent GetItemComponent(string componentKey)
         {
-            throw new NotImplementedException();
+            if(!_itemComponents.ContainsKey(componentKey))
+                throw new KeyNotFoundException($"The Item Component with the Key: {componentKey} was not found");
+
+            return _itemComponents[componentKey];
         }
         
         #endregion

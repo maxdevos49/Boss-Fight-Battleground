@@ -1,8 +1,12 @@
+using System;
+using System.Collections.Generic;
 using BFB.Engine.Entity;
 using BFB.Engine.Input.PlayerInput;
 using BFB.Engine.Math;
-using BFB.Engine.Server;
 using BFB.Engine.Server.Communication;
+using BFB.Engine.Simulation.PhysicsComponents;
+using BFB.Engine.Simulation.SimulationComponents.AI;
+using BFB.Engine.Simulation.SimulationComponents.Combat;
 
 namespace BFB.Engine.Simulation.SimulationComponents
 {
@@ -35,12 +39,11 @@ namespace BFB.Engine.Simulation.SimulationComponents
         public override void Update(SimulationEntity entity, Simulation simulation)
         {
             
-            //Update entities player state
             entity.ControlState = _controlState.Clone();
             
             if (entity.ControlState == null)
                 return;
-            
+
             //Resets the player movement
             entity.SteeringVector.X = 0;
             entity.SteeringVector.Y = 0;
@@ -61,130 +64,62 @@ namespace BFB.Engine.Simulation.SimulationComponents
             //Move out following
             #region Tom SpawnMonster
             
-//            //Add an AI monster//TODO
-//                if (_playerState.RightClick)
-//                {
-//
-//                    //Add to simulation
-//                    simulation.AddEntity(new SimulationEntity(
-//                        Guid.NewGuid().ToString(),
-//                        new EntityOptions
-//                        {
-//                            TextureKey = "Skeleton",
-//                            Position = new BfbVector(_playerState.Mouse.X, _playerState.Mouse.Y),
-//                            Dimensions = new BfbVector(2 * simulation.World.WorldOptions.WorldScale, 3 * simulation.World.WorldOptions.WorldScale),
-//                            Rotation = 0,
-//                            Origin = new BfbVector(0, 0),
-//                            EntityType = EntityType.Mob
-//                        }, new ComponentOptions
-//                        {
-//                            Physics = new WalkingPhysicsComponent(),
-//                            Input = new AIInputComponent(),
-//                            GameComponents = new List<ISimulationComponent>
-//                            {
-//                                new WalkingAnimationComponent()
-//                            }
-//                        }));
-//                }
+            //Add an AI monster//TODO
+                if (entity.ControlState.HotBarRight)
+                {
+
+                    var random = new Random();
+                    int type = random.Next(0, 3);
+                    string textureKey = "";
+                    int xMaxSpeed = 20;
+                    BfbVector dimensions = new BfbVector(2* simulation.World.WorldOptions.WorldScale,3* simulation.World.WorldOptions.WorldScale);
+                    
+                    switch (type)
+                    {
+                        case 0://skeleton
+                            textureKey = "Skeleton";
+                            xMaxSpeed = 18;
+                            break;
+                        case 1://zombie
+                            textureKey = "Zombie";
+                            xMaxSpeed = 15;
+                            break;
+                        case 2://spider
+                            textureKey = "Spider";
+                            xMaxSpeed = 17;
+                            dimensions = new BfbVector(3* simulation.World.WorldOptions.WorldScale,2* simulation.World.WorldOptions.WorldScale);
+                            break;
+                    }
+                    
+                    //Add to simulation
+                    simulation.AddEntity(new SimulationEntity(
+                        Guid.NewGuid().ToString(),
+                        new EntityOptions
+                        {
+                            TextureKey = textureKey,
+                            Position = new BfbVector(entity.ControlState.Mouse.X, entity.ControlState.Mouse.Y),
+                            Dimensions = dimensions,
+                            Rotation = 0,
+                            Origin = new BfbVector(0, 0),
+                            EntityType = EntityType.Mob
+                        }, 
+                         new List<SimulationComponent>
+                        {
+                            new WalkingAnimationComponent(),
+                            new WalkingPhysics(xMaxSpeed),
+                            new AIInputComponent(),
+                            new LifetimeComponent(2000),
+                            new CombatComponent()
+                        }
+                        ));
+                }
 
             #endregion
 
-            #region BlockEdit
-            //Check block placement
-//                if (_playerState.RightClick || _playerState.LeftClick)
-//                {
-//                   
-//
-//                    #region Break or place Blocks
-//                    
-//                    int mouseX = (int)_playerState.Mouse.X;
-//                    int mouseY = (int)_playerState.Mouse.Y;
-//
-//                    Tuple<int, int, int, int> chunkInformation =
-//                        simulation.World.TranslatePixelPosition(mouseX, mouseY);
-//
-//                    if (chunkInformation != null)
-//                    {
-//
-//                        Chunk targetChunk =
-//                            simulation.World.ChunkFromChunkLocation(chunkInformation.Item1, chunkInformation.Item2);
-//
-//                        int xSelection = chunkInformation.Item3;
-//                        int ySelection = chunkInformation.Item4;
-//
-//                        if (targetChunk != null)
-//                        {
-//                            
-//                            //creat block
-//                            if (_playerState.RightClick)
-//                            {
-//
-//                                if (targetChunk.Block[xSelection, ySelection] == 0)
-//                                {
-//                                    targetChunk.ApplyBlockUpdate(new TileUpdate
-//                                    {
-//                                        X = (byte) xSelection,
-//                                        Y = (byte) ySelection,
-//                                        Mode = true,
-//                                        TileValue = (ushort) WorldTile.Dirt
-//                                    });
-//                                }
-//                            }
-//                            else
-//                            {//Break block
-//                                if (targetChunk.Block[xSelection, ySelection] != 0)
-//                                {
-//                                    targetChunk.ApplyBlockUpdate(new TileUpdate
-//                                    {
-//                                        X = (byte) xSelection,
-//                                        Y = (byte) ySelection,
-//                                        Mode = true,
-//                                        TileValue = (ushort) WorldTile.Air
-//                                    });
-//
-//                                    int blockX =
-//                                        ((simulation.World.WorldOptions.ChunkSize * chunkInformation.Item1) +
-//                                         xSelection) *
-//                                        simulation.World.WorldOptions.WorldScale;
-//                                    int blockY =
-//                                        ((simulation.World.WorldOptions.ChunkSize * chunkInformation.Item2) +
-//                                         ySelection) *
-//                                        simulation.World.WorldOptions.WorldScale;
-//
-//                                    #region Create broken block Entity
-//                                    
-//                                    simulation.AddEntity(new SimulationEntity(
-//                                        Guid.NewGuid().ToString(),
-//                                        new EntityOptions
-//                                        {
-//                                            TextureKey = "Player",
-//                                            Position = new BfbVector(blockX, blockY),
-//                                            Dimensions = new BfbVector(1 * simulation.World.WorldOptions.WorldScale,
-//                                                1 * simulation.World.WorldOptions.WorldScale),
-//                                            Rotation = 0,
-//                                            Origin = new BfbVector(0, 0),
-//                                            EntityType = EntityType.Item
-//                                        }, new ComponentOptions
-//                                        {
-//                                            Physics = new TilePhysicsComponent(),
-//                                            Input = null,
-//                                            GameComponents = new List<ISimulationComponent>
-//                                            {
-//                                                new LifetimeComponent(1000)
-//                                            }
-//                                        }));
-//                                    
-//                                    #endregion
-//                                }
-//                            }
-//                        }
-//                    }
-//                    
-//                    #endregion
-//                }
-
-#endregion
-             
         }
+    }
+
+    public interface ISimulationComponent
+    {
     }
 }

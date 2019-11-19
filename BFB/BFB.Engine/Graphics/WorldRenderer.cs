@@ -4,6 +4,7 @@ using System.Data;
 using System.Linq;
 using BFB.Engine.Content;
 using BFB.Engine.Entity;
+using BFB.Engine.Graphics;
 using BFB.Engine.Helpers;
 using BFB.Engine.Input.PlayerInput;
 using BFB.Engine.Math;
@@ -187,7 +188,7 @@ namespace BFB.Engine.TileMap
             foreach (ClientEntity entity in entities.OrderBy(x => x.Position.Y).ThenBy(x => x.EntityType))
             {
                 if(!Debug)
-                    entity.Draw(graphics, _tileScale/GraphicsScale);
+                    entity.Draw(graphics, content,_tileScale/GraphicsScale);
                 else
                     entity.DebugDraw(graphics, content,_tileScale/GraphicsScale, _tileScale);
             }

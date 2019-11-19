@@ -1,4 +1,5 @@
-﻿using BFB.Engine.Entity;
+﻿using System;
+using BFB.Engine.Entity;
 using BFB.Engine.Math;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
@@ -28,6 +29,9 @@ namespace BFB.Engine.Input.PlayerInput
             {
                 switch (e.Keyboard.KeyEnum)
                 {
+                    case Keys.N:
+                        _controlState.HotBarRight = true;
+                        break;
                     case Keys.Left:
                     case Keys.A:
                         _controlState.Left = true;
@@ -53,6 +57,17 @@ namespace BFB.Engine.Input.PlayerInput
             {
                 switch (e.Keyboard.KeyEnum)
                 {
+                    case Keys.D1:
+                        Console.WriteLine("Press1");
+                        
+                        _controlState.HotBarLeft++;
+                        if (_controlState.HotBarLeft > 10)
+                            _controlState.HotBarLeft = 0;
+                        
+                        break;
+                    case Keys.N:
+                        _controlState.HotBarRight = false;
+                        break;
                     case Keys.Left:
                     case Keys.A:
                         _controlState.Left = false;
@@ -112,7 +127,8 @@ namespace BFB.Engine.Input.PlayerInput
         public ControlState GetPlayerState()
         {
             _inputChange = false;
-            return _controlState.Clone();
+            ControlState input =  _controlState.Clone();
+            return input;
         }
         
         ///<summary>

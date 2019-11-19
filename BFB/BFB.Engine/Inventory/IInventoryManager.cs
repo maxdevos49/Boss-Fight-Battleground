@@ -6,6 +6,12 @@ namespace BFB.Engine.Inventory
     {
 
         /// <summary>
+        /// Gets the active slot id
+        /// </summary>
+        /// <returns></returns>
+        int GetActiveSlotId();
+        
+        /// <summary>
         /// Increments the Active slot by one
         /// </summary>
         void IncrementHotBar();

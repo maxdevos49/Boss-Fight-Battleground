@@ -121,16 +121,17 @@ namespace BFB.Server
                         EntityType = EntityType.Player
                     },new List<SimulationComponent>
                     {
-                        new WalkingAnimationComponent(),
                         new AutoJumpComponent(),
                         new CombatComponent(),
                         new RemoteInputComponent(),
                         new WalkingPhysics(),
-                        new InventoryComponent()
+                        new InventoryComponent(),
+                        new WalkingAnimationComponent(),
+                        new HoldingAnimationComponent()
                     }, socket)
                 {
                     CollideFilter = "human",
-                    CollideWithFilters = new List<string>{"tile","item","projectile", "melee"},
+                    CollideWithFilters = new List<string>{"tile", "item", "projectile", "melee"},
                 });
                 
                 _server.PrintMessage($"Client {socket.ClientId} Ready and added to Simulation");

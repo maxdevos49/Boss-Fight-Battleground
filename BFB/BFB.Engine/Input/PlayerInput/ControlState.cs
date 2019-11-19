@@ -12,8 +12,8 @@ namespace BFB.Engine.Input.PlayerInput
         public bool Left;
         public bool Right;
         public bool Jump;
-        public bool Attack;
-        public bool SwitchWeapon;
+        public int HotBarLeft;
+        public bool HotBarRight;
         public bool LeftClick;
         public bool RightClick;
         public BfbVector Mouse;
@@ -23,8 +23,8 @@ namespace BFB.Engine.Input.PlayerInput
             Left = false;
             Right = false;
             Jump = false;
-            Attack = false;
-            SwitchWeapon = false;
+            HotBarLeft = 0;
+            HotBarRight = false;
             LeftClick = false;
             RightClick = false;
             Mouse = new BfbVector(0,0);
@@ -38,11 +38,11 @@ namespace BFB.Engine.Input.PlayerInput
                 Left = Left,
                 Right = Right,
                 Jump = Jump,
-                Attack = Attack,
-                SwitchWeapon = SwitchWeapon,
+                HotBarLeft = HotBarLeft,
+                HotBarRight = HotBarRight,
                 LeftClick = LeftClick,
                 RightClick = RightClick,
-                Mouse =new BfbVector(Mouse.X,Mouse.Y) 
+                Mouse = new BfbVector(Mouse.X,Mouse.Y) 
             };
         }
     }

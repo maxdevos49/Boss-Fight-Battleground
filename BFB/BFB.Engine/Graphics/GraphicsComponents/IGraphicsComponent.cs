@@ -1,7 +1,8 @@
+using BFB.Engine.Content;
 using BFB.Engine.Entity;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace BFB.Engine.Simulation.GraphicsComponents
+namespace BFB.Engine.Graphics.GraphicsComponents
 {
     /// <summary>
     /// The interface that outlines how to draw an entity.
@@ -16,6 +17,6 @@ namespace BFB.Engine.Simulation.GraphicsComponents
         /// <param name="entity">The given entity</param>
         void Update(ClientEntity entity);
 
-        void Draw(ClientEntity entity, SpriteBatch graphics, float scale = 1);
+        void Draw(ClientEntity entity, SpriteBatch graphics, BFBContentManager content, float scale = 1);
     }
 }
