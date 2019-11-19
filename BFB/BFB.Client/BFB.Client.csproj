@@ -30,6 +30,7 @@
     <None Remove="Content\Sprites\Effects\EffectStar.xnb" />
     <None Remove="Content\Sprites\Effects\EffectX.xnb" />
     <None Remove="Content\Sprites\SpaceshipSpritesheet.xnb" />
+    <None Remove="Content\Sprites\Spells\Bomb.xnb" />
     <None Remove="Content\Sprites\Spells\Fireball.xnb" />
     <None Remove="Content\Sprites\Spells\Heart.xnb" />
     <None Remove="Content\Sprites\Spells\MagicMissile.xnb" />

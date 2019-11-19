@@ -309,6 +309,25 @@
     },
 
     {
+      "Key": "Bomb",
+      "Location": "Sprites\\Spells\\Bomb",
+      "Frames": 2,
+      "FrameWidth": 64,
+      "FrameHeight": 80,
+      "Columns": 2,
+      "Rows": 1,
+      "Scale": 0.3,
+      "AnimationSets": {
+        "IdleRight": {
+          "Fps": 12,
+          "FrameStart": 0,
+          "FrameEnd": 2,
+          "Mirror": true
+        }
+      }
+    },
+
+    {
       "Key": "EffectMiniStar",
       "Location": "Sprites\\Effects\\EffectMiniStar",
       "Frames": 1,
