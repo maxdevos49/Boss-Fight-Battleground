@@ -77,11 +77,7 @@ namespace BFB.Client.UI
                                 h3.Button("Back",
                                     clickAction: (e, a) =>
                                     {
-<<<<<<< HEAD
-                                        UIManager.StartLayer(nameof(MainMenuUI)); 
-=======
-                                        UIManager.Start(nameof(MainMenuUI),ParentScene); 
->>>>>>> 25eb9767d2ff3738c9e8f07fa547477d11c8cf6b
+                                        UIManager.StartLayer(nameof(MainMenuUI),ParentScene); 
                                     })
                                     .Height(0.8f)
                                     .Width(0.8f)

@@ -59,25 +59,17 @@ namespace BFB.Engine.UI
         
         #region StartLayer
         
-<<<<<<< HEAD
-        public void StartLayer(string key)
-=======
-        public void Start(string key, Scene.Scene scene)
->>>>>>> 25eb9767d2ff3738c9e8f07fa547477d11c8cf6b
+        public void StartLayer(string key, Scene.Scene scene)
         {
             StopLayers();
 
             if (!_allUILayers.ContainsKey(key)) return;
-            
-<<<<<<< HEAD
-            _activeUILayers.Add(key, _allUILayers[key]);
-            _allUILayers[key].Start();
-=======
+
             if (_allUILayers.ContainsKey(key))
             {
                 _activeUILayers.Add(key, _allUILayers[key]);
                 _allUILayers[key].Start(scene);
->>>>>>> 25eb9767d2ff3738c9e8f07fa547477d11c8cf6b
+            }
 
             BuildUILayer(key);
         }
@@ -86,14 +78,14 @@ namespace BFB.Engine.UI
         
         #region LaunchLayer
 
-        public void LaunchLayer(string key)
+        public void LaunchLayer(string key, Scene.Scene scene)
         {
             if (!LayerExists(key) || ActiveLayerExists(key)) return;
             
             // Add to active layers
             _activeUILayers.Add(key, _allUILayers[key]);
             
-            _activeUILayers[key].Start();
+            _activeUILayers[key].Start(scene);
         }
         
         #endregion
@@ -250,6 +242,7 @@ namespace BFB.Engine.UI
              foreach ((string _, UILayer uiLayer) in _activeUILayers.ToList())
              {
                  if (uiLayer.ProcessEvents(uiEvent))
+                     // TODO
                      return true;
              }
              

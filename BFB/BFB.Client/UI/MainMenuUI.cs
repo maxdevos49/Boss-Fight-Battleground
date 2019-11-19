@@ -80,11 +80,7 @@ namespace BFB.Client.UI
                             h2.Button("Settings",
                                     clickAction: (e, a) =>
                                     {
-<<<<<<< HEAD
-                                        UIManager.StartLayer(nameof(SettingsUI));
-=======
-                                        UIManager.Start(nameof(SettingsUI),ParentScene);
->>>>>>> 25eb9767d2ff3738c9e8f07fa547477d11c8cf6b
+                                        UIManager.StartLayer(nameof(SettingsUI),ParentScene);
                                     })
                                 .Width(0.8f)
                                 .Height(0.8f)
@@ -98,11 +94,7 @@ namespace BFB.Client.UI
                             h2.Button("Help", 
                                     clickAction: (e, a) =>
                                     {
-<<<<<<< HEAD
-                                        UIManager.StartLayer(nameof(HelpUI));
-=======
-                                        UIManager.Start(nameof(HelpUI),ParentScene);
->>>>>>> 25eb9767d2ff3738c9e8f07fa547477d11c8cf6b
+                                        UIManager.StartLayer(nameof(HelpUI),ParentScene);
                                     })
                                 .Width(0.8f)
                                 .Height(0.8f)
@@ -115,11 +107,7 @@ namespace BFB.Client.UI
                             h2.Button("Store",
                                     clickAction: (e, a) =>
                                     {
-<<<<<<< HEAD
-                                        UIManager.StartLayer(nameof(StoreUI));
-=======
-                                        UIManager.Start(nameof(StoreUI),ParentScene);
->>>>>>> 25eb9767d2ff3738c9e8f07fa547477d11c8cf6b
+                                        UIManager.StartLayer(nameof(StoreUI),ParentScene);
                                     })
                                 .Width(0.8f)
                                 .Height(0.8f)

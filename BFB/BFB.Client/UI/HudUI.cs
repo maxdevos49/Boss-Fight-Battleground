@@ -20,11 +20,7 @@ namespace BFB.Client.UI
                         v1.Button("Menu",
                                 clickAction: (e, a) =>
                                 {
-<<<<<<< HEAD
-                                    UIManager.StartLayer(nameof(GameMenuUI));
-=======
-                                    UIManager.Start(nameof(GameMenuUI),ParentScene);
->>>>>>> 25eb9767d2ff3738c9e8f07fa547477d11c8cf6b
+                                    UIManager.StartLayer(nameof(GameMenuUI),ParentScene);
                                 })
                             .Width(0.12f)
                             .Height(0.1f)

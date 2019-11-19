@@ -116,11 +116,7 @@ namespace BFB.Client.UI
                         h2.Hstack(h3 =>
                         {
                             h3.Button("Purchase",
-<<<<<<< HEAD
-                                    clickAction: (e, a) => { UIManager.StartLayer(nameof(CompletedTransactionUI)); })
-=======
-                                    clickAction: (e, a) => { UIManager.Start(nameof(CompletedTransactionUI),ParentScene); })
->>>>>>> 25eb9767d2ff3738c9e8f07fa547477d11c8cf6b
+                                    clickAction: (e, a) => { UIManager.StartLayer(nameof(CompletedTransactionUI),ParentScene); })
                                 .Height(0.8f)
                                 .Width(0.3f)
                                 .Right(0)

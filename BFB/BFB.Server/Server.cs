@@ -232,7 +232,15 @@ namespace BFB.Server
             _server.PrintMessage();
             
             #endregion
-
+            
+            #region Chat
+            
+            _server.On("Chat", (m) =>
+            {
+                _server.Emit("Chat", m);
+            });
+            
+            #endregion
         }
         
         #endregion

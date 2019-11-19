@@ -227,7 +227,7 @@ namespace BFB.Engine.Scene
         #region SceneExists(string key)
 
         /// <summary>
-        /// Checks if the scene exist regardless if it is running
+        /// Checks if the scene exists regardless if it is running
         /// </summary>
         /// <param name="key"></param>
         /// <returns></returns>

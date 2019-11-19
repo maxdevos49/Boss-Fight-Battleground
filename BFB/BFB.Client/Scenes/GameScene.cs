@@ -63,11 +63,7 @@ namespace BFB.Client.Scenes
             Client.Ip = layer.Model.Ip.Split(":")[0];
             Client.Port = Convert.ToInt32(layer.Model.Ip.Split(":")[1]);
             
-<<<<<<< HEAD
-            UIManager.StartLayer(nameof(LoadingGameUI));
-=======
-            UIManager.Start(nameof(LoadingGameUI),this);
->>>>>>> 25eb9767d2ff3738c9e8f07fa547477d11c8cf6b
+            UIManager.StartLayer(nameof(LoadingGameUI),this);
             
             /**
              * Scene events
@@ -121,11 +117,7 @@ namespace BFB.Client.Scenes
             {
                 GlobalEventManager.Emit("onConnectionStatus", new GlobalEvent("Ready..."));
                 _worldRenderer = new WorldRenderer(_world, GraphicsDeviceManager.GraphicsDevice);
-<<<<<<< HEAD
-                UIManager.StartLayer(nameof(HudUI));
-=======
-                UIManager.Start(nameof(HudUI),this);
->>>>>>> 25eb9767d2ff3738c9e8f07fa547477d11c8cf6b
+                UIManager.StartLayer(nameof(ChatUI),this);
             };
             
             #endregion
@@ -134,11 +126,7 @@ namespace BFB.Client.Scenes
             
             Client.OnDisconnect = (m) =>
             {
-<<<<<<< HEAD
-                UIManager.StartLayer(nameof(LoadingGameUI));
-=======
-                UIManager.Start(nameof(LoadingGameUI),this);
->>>>>>> 25eb9767d2ff3738c9e8f07fa547477d11c8cf6b
+                UIManager.StartLayer(nameof(LoadingGameUI),this);
                 GlobalEventManager.Emit("onConnectionStatus", new GlobalEvent("Disconnected By Server"));
             };
             
@@ -207,11 +195,7 @@ namespace BFB.Client.Scenes
             AddInputListener("keypress", e =>
             {
                 if (e.Keyboard.KeyEnum == Keys.M)
-<<<<<<< HEAD
-                    UIManager.StartLayer(nameof(MonsterMenuUI));
-=======
-                    UIManager.Start(nameof(MonsterMenuUI),this);
->>>>>>> 25eb9767d2ff3738c9e8f07fa547477d11c8cf6b
+                    UIManager.StartLayer(nameof(MonsterMenuUI),this);
                 else if (e.Keyboard.KeyEnum == Keys.F3)
                     _worldRenderer.Debug = !_worldRenderer.Debug;
             });
