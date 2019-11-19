@@ -117,6 +117,18 @@
 /processorParam:TextureFormat=Color
 /build:Sprites/EffectMiniStar.png
 
+#begin Sprites/EffectRedBall.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/EffectRedBall.png
+
 #begin Sprites/EffectStar.png
 /importer:TextureImporter
 /processor:TextureProcessor

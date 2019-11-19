@@ -45,6 +45,28 @@ namespace BFB.Engine.Simulation.SpellComponents.Physics
             simulationEntity.Position.Add(simulationEntity.Velocity);
 
             CheckCollisions(simulationEntity, simulation);
+
+            //Spawn Effects!
+            if (simulation.World.ChunkFromPixelLocation((int)simulationEntity.Position.X, (int)simulationEntity.Position.Y) == null)
+                return;
+
+            for (int i = 0; i < 5; i++)
+            {
+                SimulationEntity effect = new SimulationEntity(
+                    Guid.NewGuid().ToString(),
+                    new EntityOptions()
+                    {
+                        AnimatedTextureKey = "EffectRedBall",
+                        Position = new BfbVector(simulationEntity.Position.X, simulationEntity.Position.Y + 3),
+                        Dimensions = new BfbVector(_random.Next(1, 100), _random.Next(1, 100)),
+                        Rotation = 0,
+                        Origin = new BfbVector(0, 0),
+                    }, new ComponentOptions
+                    {
+                        Physics = new SpellEffects2PhysicsComponent()
+                    });
+                simulation.AddEntity(effect);
+            }
         }
 
         private void CheckCollisions(SimulationEntity simulationEntity, Simulation simulation)

@@ -26,6 +26,7 @@
     <None Remove="Content\Fonts\OswaldStencil.xnb" />
     <None Remove="Content\Fonts\Roboto.xnb" />
     <None Remove="Content\Sprites\Effects\EffectMiniStar.xnb" />
+    <None Remove="Content\Sprites\Effects\EffectRedBall.xnb" />
     <None Remove="Content\Sprites\Effects\EffectStar.xnb" />
     <None Remove="Content\Sprites\Effects\EffectX.xnb" />
     <None Remove="Content\Sprites\SpaceshipSpritesheet.xnb" />
