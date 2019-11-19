@@ -2,6 +2,7 @@
 using BFB.Engine.Entity;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 
 namespace BFB.Engine.Simulation.GraphicsComponents
 {
@@ -15,7 +16,7 @@ namespace BFB.Engine.Simulation.GraphicsComponents
         private Rectangle _frameSelector;
         private int _currentFrame;
         private int _frameTicksLeft;
-        
+
         public AnimationComponent(AnimatedTexture animatedTexture)
         {
             _animatedTexture = animatedTexture;
@@ -25,6 +26,8 @@ namespace BFB.Engine.Simulation.GraphicsComponents
             _frameSelector.Height = _animatedTexture.FrameHeight;
             
             _frameTicksLeft = 0;
+            
+            
         }
         
 
@@ -69,10 +72,11 @@ namespace BFB.Engine.Simulation.GraphicsComponents
 
         public void Draw(ClientEntity entity, SpriteBatch graphics, float worldScale)
         {
+            
             graphics.Draw(_animatedTexture.Texture,
                 entity.Position.ToVector2(),
                 _frameSelector,
-                Color.White,
+                _animatedTexture.ParsedColor,
                 entity.Rotation,
                 Vector2.Zero,
                  _animatedTexture.Scale * worldScale,

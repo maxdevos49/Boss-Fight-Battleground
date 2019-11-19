@@ -141,11 +141,11 @@ namespace BFB.Engine.Entity
             switch (em.EntityType)
             {
                 case EntityType.Item:
-                    graphicsComponent = new ItemGraphicsComponent(content.GetTexture("tiles"));//TODO
+                    graphicsComponent = new ItemGraphicsComponent(content.GetAtlasTexture(em.TextureKey));
                     break;
                 case EntityType.Mob:
                 case EntityType.Player:
-                    graphicsComponent = new AnimationComponent(content.GetAnimatedTexture(em.AnimationTextureKey));
+                    graphicsComponent = new AnimationComponent(content.GetAnimatedTexture(em.TextureKey));
                     break;
             }
                             

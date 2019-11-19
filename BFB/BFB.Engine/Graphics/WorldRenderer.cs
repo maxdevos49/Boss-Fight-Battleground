@@ -80,10 +80,12 @@ namespace BFB.Engine.TileMap
             graphics.End();
             graphics.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, SamplerState.PointClamp, DepthStencilState.None, RasterizerState.CullCounterClockwise, null, Camera.Transform);
 
-            int xStart = (int)(Camera.Position.X - Camera.Origin.X)/_tileScale - 1;
-            int xEnd = (int)(Camera .Position.X - Camera.Origin.X + Camera.ViewWidth)/_tileScale + 2;
-            int yStart = (int)(Camera.Position.Y - Camera.Origin.Y)/_tileScale - 1;
-            int yEnd = (int)(Camera .Position.Y - Camera.Origin.Y + Camera.ViewHeight)/_tileScale + 2;
+            float worldScale = _tileScale / GraphicsScale;
+            
+            int xStart = (int)System.Math.Floor((Camera.Position.X - Camera.Origin.X)/_tileScale - 1);
+            int xEnd = (int)System.Math.Floor((Camera .Position.X - Camera.Origin.X + Camera.ViewWidth)/_tileScale + 2);
+            int yStart = (int)System.Math.Floor((Camera.Position.Y - Camera.Origin.Y)/_tileScale - 1);
+            int yEnd = (int)System.Math.Floor((Camera .Position.Y - Camera.Origin.Y + Camera.ViewHeight)/_tileScale + 2);
 
             if (xStart < 0)
                 xStart = 0;
@@ -108,14 +110,14 @@ namespace BFB.Engine.TileMap
                         switch ((WorldTile) world.GetWall(x, y))
                         {
                             case WorldTile.Dirt:
-                                graphics.Draw(content.GetTexture("dirt"),
+                                graphics.DrawAtlas(content.GetAtlasTexture("Tiles:Dirt"),
                                     new Rectangle(xPosition, yPosition, _tileScale, _tileScale), Color.White);
                                 graphics.Draw(content.GetTexture("default"),
                                     new Rectangle(xPosition, yPosition, _tileScale, _tileScale),
                                     new Color(0, 0, 0, 0.4f));
                                 break;
                             case WorldTile.Stone:
-                                graphics.Draw(content.GetTexture("stone"),
+                                graphics.DrawAtlas(content.GetAtlasTexture("Tiles:Stone"),
                                     new Rectangle(xPosition, yPosition, _tileScale, _tileScale), Color.White);
                                 graphics.Draw(content.GetTexture("default"),
                                     new Rectangle(xPosition, yPosition, _tileScale, _tileScale),
@@ -128,13 +130,13 @@ namespace BFB.Engine.TileMap
                         switch(world.GetBlock(x, y))//TODO change so not switch statement but add a special content type for blocks
                         {
                             case WorldTile.Grass:
-                                graphics.Draw(content.GetTexture("grass"), new Rectangle(xPosition,yPosition,_tileScale,_tileScale ),Color.White);
+                                graphics.DrawAtlas(content.GetAtlasTexture("Tiles:Grass"), new Rectangle(xPosition,yPosition,_tileScale,_tileScale ),Color.White);
                                 break;
                             case WorldTile.Dirt:
-                                graphics.Draw(content.GetTexture("dirt"), new Rectangle(xPosition,yPosition,_tileScale,_tileScale ),Color.White);
+                                graphics.DrawAtlas(content.GetAtlasTexture("Tiles:Dirt"), new Rectangle(xPosition,yPosition,_tileScale,_tileScale ),Color.White);
                                 break;
                             case WorldTile.Stone:
-                                graphics.Draw(content.GetTexture("stone"), new Rectangle(xPosition,yPosition,_tileScale,_tileScale ),Color.White);
+                                graphics.DrawAtlas(content.GetAtlasTexture("Tiles:Stone"), new Rectangle(xPosition,yPosition,_tileScale,_tileScale ),Color.White);
                                 break;
                         }
                     }
@@ -182,7 +184,7 @@ namespace BFB.Engine.TileMap
             #endregion
 
             
-            foreach (ClientEntity entity in entities)
+            foreach (ClientEntity entity in entities.OrderBy(x => x.Position.Y).ThenBy(x => x.EntityType))
             {
                 if(!Debug)
                     entity.Draw(graphics, _tileScale/GraphicsScale);
@@ -198,7 +200,7 @@ namespace BFB.Engine.TileMap
         
         #region DebugPanel
 
-        public void DebugPanel(SpriteBatch graphics, GameTime time ,WorldManager world, ClientEntity entity, List<ClientEntity> entities, ClientSocketManager connection, PlayerState playerState, BFBContentManager content)
+        public void DebugPanel(SpriteBatch graphics, GameTime time ,WorldManager world, ClientEntity entity, List<ClientEntity> entities, ClientSocketManager connection, ControlState controlState, BFBContentManager content)
         {
             int xPos = 5;
             int yPos = 120;
@@ -211,8 +213,8 @@ namespace BFB.Engine.TileMap
             graphics.DrawBackedText($"Chunk-X: {chunk?.ChunkX ?? 0}, Chunk-Y: {chunk?.ChunkY ?? 0}", new BfbVector(xPos,yPos +=offset),content,0.5f);
             graphics.DrawBackedText($"Velocity-X: {entity.Velocity.X}, Velocity-Y: {entity.Velocity.Y}", new BfbVector(xPos,yPos += offset),content,0.5f);
             graphics.DrawBackedText($"Facing: {entity.Facing}", new BfbVector(xPos,yPos += offset),content,0.5f);
-            Tuple<int, int> location = world.BlockLocationFromPixel((int)playerState.Mouse.X, (int)playerState.Mouse.Y);
-            graphics.DrawBackedText($"Mouse-X: {(int)playerState.Mouse.X}, Mouse-Y: {(int)playerState.Mouse.Y}", new BfbVector(xPos,yPos += offset),content,0.5f);
+            Tuple<int, int> location = world.BlockLocationFromPixel((int)controlState.Mouse.X, (int)controlState.Mouse.Y);
+            graphics.DrawBackedText($"Mouse-X: {(int)controlState.Mouse.X}, Mouse-Y: {(int)controlState.Mouse.Y}", new BfbVector(xPos,yPos += offset),content,0.5f);
             graphics.DrawBackedText($"Block-X: {location.Item1}, Block-Y: {location.Item2}, Block: {world.GetBlock(location.Item1,location.Item2)}, Wall: {(WorldTile)world.GetWall(location.Item1,location.Item2)}", new BfbVector(xPos,yPos += offset),content,0.5f );
             graphics.DrawBackedText($"Entities: {entities.Count}, Players: {entities.Count(x => x.EntityType == EntityType.Player)}, Items: {entities.Count(x => x.EntityType == EntityType.Item)}, Mobs: {entities.Count(x => x.EntityType == EntityType.Mob)}", new BfbVector(xPos,yPos += offset),content,0.5f);
             

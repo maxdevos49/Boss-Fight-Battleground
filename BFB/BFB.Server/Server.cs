@@ -12,9 +12,10 @@ using BFB.Engine.Math;
 using BFB.Engine.Server;
 using BFB.Engine.Server.Communication;
 using BFB.Engine.Simulation;
-using BFB.Engine.Simulation.InputComponents;
 using BFB.Engine.Simulation.PhysicsComponents;
 using BFB.Engine.Simulation.SimulationComponents;
+using BFB.Engine.Simulation.SimulationComponents.Combat;
+using BFB.Engine.Simulation.SimulationComponents.Physics;
 using BFB.Engine.TileMap.Generators;
 using JetBrains.Annotations;
 
@@ -96,7 +97,7 @@ namespace BFB.Server
 
             #region OnClientPrepare
 
-            _server.OnClientPrepare = (socket) =>
+            _server.OnClientPrepare = socket =>
             {
                 socket.Emit("prepare", _simulation.World.GetInitWorldData());
             };
@@ -112,29 +113,25 @@ namespace BFB.Server
                     socket.ClientId,
                     new EntityOptions
                     {
-                        AnimatedTextureKey = "Player",
+                        TextureKey = "Player",
                         Position = new BfbVector(200, 100),
                         Dimensions = new BfbVector(2 * _simulation.World.WorldOptions.WorldScale, 3 * _simulation.World.WorldOptions.WorldScale),
                         Rotation = 0,
                         Origin = new BfbVector(0, 0),
                         EntityType = EntityType.Player
-                    }, new ComponentOptions
+                    },new List<SimulationComponent>
                     {
-                        Physics = new WalkingPhysicsComponent
-                        {
-                            CollideFilter = "human",
-                            CollideWithFilters = new List<string>{"tile","item","projectile", "melee"}
-                        },
-                        Input = new RemoteInputComponent(socket),
-                        GameComponents = new List<ISimulationComponent>
-                        {
-                            new WalkingAnimationComponent(),
-                            new CombatComponent()
-                        }
-                    })
+                        new WalkingAnimationComponent(),
+                        new AutoJumpComponent(),
+                        new CombatComponent(),
+                        new RemoteInputComponent(),
+                        new WalkingPhysics(),
+                        new InventoryComponent()
+                    }, socket)
                 {
-                    Inventory = new InventoryManager(10)
-                }, true);
+                    CollideFilter = "human",
+                    CollideWithFilters = new List<string>{"tile","item","projectile", "melee"},
+                });
                 
                 _server.PrintMessage($"Client {socket.ClientId} Ready and added to Simulation");
 

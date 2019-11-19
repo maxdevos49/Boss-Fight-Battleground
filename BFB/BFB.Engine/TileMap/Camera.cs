@@ -58,7 +58,7 @@ namespace BFB.Engine.TileMap
             Position = Vector2.Zero;
             Origin = Vector2.Zero;
             ScreenCenter = Vector2.Zero;
-            Zoom = 0.05f;
+            Zoom = 0.005f;
             MoveSpeed = 10.25f;
             Rotation = 0;
         }

@@ -1,22 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Numerics;
 using BFB.Engine.Entity;
 using BFB.Engine.Math;
 using BFB.Engine.TileMap;
+using static System.Int32;
 
-namespace BFB.Engine.Simulation.InputComponents
+namespace BFB.Engine.Simulation.SimulationComponents.AI
 {
-    public class AIInputComponent : IInputComponent
+    public class AIInputComponent : SimulationComponent
     {
         private SimulationEntity _closestEntity;
 
-        public void Update(SimulationEntity entity, Simulation simulation)
+        public AIInputComponent() : base(false) { }
+
+        public override void Update(SimulationEntity entity, Simulation simulation)
         {
 
-            int nearest = Int32.MaxValue;
-            
+            int nearest = MaxValue;
 
             List<Chunk> chunkList = new List<Chunk>();
             Chunk chunk = simulation.World.ChunkIndex[entity.ChunkKey];
@@ -42,7 +42,7 @@ namespace BFB.Engine.Simulation.InputComponents
                 if (chunk1 == null)
                     continue;
 
-                foreach (var item in chunk1.Entities.ToList().Where(x => x.Value.EntityId != entity.EntityId && x.Value.AnimatedTextureKey == "Player"))
+                foreach (var item in chunk1.Entities.ToList().Where(x => x.Value.EntityId != entity.EntityId && x.Value.TextureKey == "Player"))
                 {
                     var distance = System.Math.Sqrt(System.Math.Pow(item.Value.Position.X - entity.Position.X,2) + System.Math.Pow(item.Value.Position.Y - entity.Position.Y, 2));
                     if (distance < nearest)
@@ -69,11 +69,12 @@ namespace BFB.Engine.Simulation.InputComponents
                 {
                     entity.SteeringVector.Add(new BfbVector(1,0));
                 }
-                //Moves player up
-                //if (_playerState.Jump && entity.Grounded)
-                //{
-                //    entity.DesiredVector.Add(new BfbVector(0,-1));
-                //}
+
+                // ReSharper disable once CompareOfFloatsByEqualityOperator
+                if (_closestEntity.Velocity.X == 0 && entity.Grounded)
+                {
+                    entity.SteeringVector.Add(new BfbVector(0,-1));
+                }
             }
         }
     }

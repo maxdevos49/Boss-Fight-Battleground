@@ -126,8 +126,7 @@ namespace BFB.Engine.Simulation
         /// Adds a entity to the simulation
         /// </summary>
         /// <param name="simulationEntity">The simulation entity</param>
-        /// <param name="isPlayer">Optional parameter indicating if the entity is a player.(false is default)</param>
-        public void AddEntity(SimulationEntity simulationEntity, bool isPlayer = false)
+        public void AddEntity(SimulationEntity simulationEntity)
         {
             lock (_lock)
             {
@@ -136,18 +135,16 @@ namespace BFB.Engine.Simulation
                     //Add to all entities
                     _entitiesIndex.Add(simulationEntity.EntityId,simulationEntity);
                     
-                    OnEntityAdd?.Invoke(simulationEntity.EntityId, isPlayer);
+                    OnEntityAdd?.Invoke(simulationEntity.EntityId, simulationEntity.EntityType == EntityType.Player);
                     
                     //add entity to starting chunk
                     World.ChunkFromPixelLocation((int) simulationEntity.Position.X, (int) simulationEntity.Position.Y)
                         .Entities.Add(simulationEntity.EntityId, simulationEntity);
 
-                    if (isPlayer)
+                    if (simulationEntity.EntityType == EntityType.Player )
                     {
                         if (!_playerEntitiesIndex.ContainsKey(simulationEntity.EntityId))
                             _playerEntitiesIndex.Add(simulationEntity.EntityId, simulationEntity);
-
-                        simulationEntity.IsPlayer = true;
                     }
 
                     simulationEntity.ChunkKey = World.ChunkFromPixelLocation(

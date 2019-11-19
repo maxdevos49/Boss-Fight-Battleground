@@ -1,3 +1,5 @@
+using BFB.Engine.Entity;
+
 namespace BFB.Engine.Inventory
 {
     
@@ -47,6 +49,11 @@ namespace BFB.Engine.Inventory
         /// </summary>
         /// <returns>A clone of the Item</returns>
         IItem Clone();
+
+        void UseItemLeftClick(Simulation.Simulation simulation, SimulationEntity entity);
+        void UseItemRightClick(Simulation.Simulation simulation, SimulationEntity entity);
+        void UseItemLeftHold(Simulation.Simulation simulation, SimulationEntity entity, int holdTicks);
+        void UseItemRightHold(Simulation.Simulation simulation, SimulationEntity entity, int holdTicks);
 
     }
 }

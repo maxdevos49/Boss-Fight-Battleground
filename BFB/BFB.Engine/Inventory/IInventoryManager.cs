@@ -26,7 +26,7 @@ namespace BFB.Engine.Inventory
         /// </summary>
         /// <returns>The active item or null if the slot is empty</returns>
         IItem GetActiveSlot();
-        
+
         /// <summary>
         /// Gets the maximum size of the inventory
         /// </summary>

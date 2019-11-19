@@ -1,3 +1,4 @@
+using BFB.Engine.Entity;
 using BFB.Engine.Inventory.Configuration;
 using BFB.Engine.Simulation;
 
@@ -8,7 +9,7 @@ namespace BFB.Engine.Inventory
         #region Properties
         public string ItemConfigKey { get; set; }
 
-        private ItemConfiguration _configuration;
+        private readonly ItemConfiguration _configuration;
         
         private int _stackSize;
         
@@ -101,5 +102,30 @@ namespace BFB.Engine.Inventory
         }
         
         #endregion
+
+        #region UseItemLeftClick
+        
+        public void UseItemLeftClick(Simulation.Simulation simulation, SimulationEntity entity)
+        {
+            throw new System.NotImplementedException();
+        }
+        
+        #endregion
+
+        public void UseItemRightClick(Simulation.Simulation simulation, SimulationEntity entity)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void UseItemLeftHold(Simulation.Simulation simulation, SimulationEntity entity, int holdTicks)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void UseItemRightHold(Simulation.Simulation simulation, SimulationEntity entity, int holdTicks)
+        {
+            throw new System.NotImplementedException();
+        }
+
     }
 }

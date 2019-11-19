@@ -7,7 +7,7 @@ namespace BFB.Engine.Input.PlayerInput
     /// Holds what state a player is. Is serializable to be sent from the server to the client.
     /// </summary>
     [Serializable]
-    public class PlayerState
+    public class ControlState
     {
         public bool Left;
         public bool Right;
@@ -18,7 +18,7 @@ namespace BFB.Engine.Input.PlayerInput
         public bool RightClick;
         public BfbVector Mouse;
         
-        public PlayerState()
+        public ControlState()
         {
             Left = false;
             Right = false;
@@ -31,9 +31,9 @@ namespace BFB.Engine.Input.PlayerInput
 
         }
         
-        public PlayerState Clone()
+        public ControlState Clone()
         {
-            return new PlayerState
+            return new ControlState
             {
                 Left = Left,
                 Right = Right,

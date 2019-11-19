@@ -1,5 +1,7 @@
 using System.Collections.Generic;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Newtonsoft.Json;
 
 namespace BFB.Engine.Content
 {
@@ -52,6 +54,21 @@ namespace BFB.Engine.Content
         /// How big the texture is relative to its original size.
         /// </summary>
         public float Scale { get; set; }
+        
+        // Use the format "<r>,<g>,<b>,<alpha>" to specify a color in the json
+        public string ColorConfig { get; set; }
+        
+        /// <summary>
+        /// The parsed color
+        /// </summary>
+        [JsonIgnore]
+        public Color ParsedColor { get; set; }
+        
+        /// <summary>
+        /// If a random color should be used as a tint
+        /// </summary>
+        public bool RandomColor {get;set;}
+
 
         /// <summary>
         /// The different animations that one texture can play.

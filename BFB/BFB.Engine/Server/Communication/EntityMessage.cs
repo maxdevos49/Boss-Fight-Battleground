@@ -23,7 +23,7 @@ namespace BFB.Engine.Server.Communication
         /// <summary>
         /// The animation key that the entity should use
         /// </summary>
-        public string AnimationTextureKey { get; set; }
+        public string TextureKey { get; set; }
 
         /// <summary>
         /// The Animation state enum that the entity is currently in

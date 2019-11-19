@@ -1,11 +1,13 @@
 using System.Collections.Generic;
 using System.Drawing;
+using BFB.Engine.Collisions;
+using BFB.Engine.Input.PlayerInput;
 using BFB.Engine.Inventory;
 using BFB.Engine.Math;
-using BFB.Engine.Simulation.InputComponents;
-using BFB.Engine.Simulation.PhysicsComponents;
+using BFB.Engine.Server;
 using BFB.Engine.Simulation.SimulationComponents;
 using BFB.Engine.TileMap;
+using JetBrains.Annotations;
 
 namespace BFB.Engine.Entity
 {
@@ -17,15 +19,13 @@ namespace BFB.Engine.Entity
 
         #region Properties
 
-        public int CurrentTick { get; private set; }
-        
-        public int TicksSinceCreation { get; private set; }
+        private int _currentTick;
         
         /// <summary>
-        /// Whether this is a player entity or not
+        /// The amount of ticks since the creation of the entity
         /// </summary>
-        public bool IsPlayer { get; set; }
-
+        public int TicksSinceCreation { get; private set; }
+        
         /// <summary>
         /// Vector describing a position an entity is attempting to move to 
         /// </summary>
@@ -46,23 +46,52 @@ namespace BFB.Engine.Entity
         /// </summary>
         public Dictionary<string, int> ChunkVersions { get; }
         
+        /// <summary>
+        /// The Inventory of the Entity
+        /// </summary>
+        [CanBeNull]
         public IInventoryManager Inventory { get; set; }
+        
+        /// <summary>
+        /// The ControlState of the Entity
+        /// </summary>
+        [CanBeNull]
+        public ControlState ControlState { get; set; }
+        
+        /// <summary>
+        /// The socket connection a entity may have if its a player
+        /// </summary>
+        [CanBeNull]
+        public ClientSocket Socket { get; set; }
+        
+        /// <summary>
+        /// Indicates the collision group  the entity is from
+        /// </summary>
+        public string CollideFilter { get; set; }
+        
+        /// <summary>
+        /// Indicates the collision groups the entity will collide with
+        /// </summary>
+        public List<string> CollideWithFilters { get; set; }
 
-        public Rectangle Bounds =>
-            new Rectangle((int) Position.X, (int) Position.Y, (int) Dimensions.X, (int) Dimensions.Y);
-
+        /// <summary>
+        /// The entity bounds as a rectangle
+        /// </summary>
+        public Rectangle Bounds => new Rectangle((int) Position.X, (int) Position.Y, (int) Dimensions.X, (int) Dimensions.Y);
+        
+        #region Entity Frame Helpers
+        
         public int OldBottom => (int) (OldPosition.Y + Height);
         public int OldLeft => (int) (OldPosition.X);
         public int OldRight => (int) (OldPosition.X + Width);
         public int OldTop => (int) (OldPosition.Y);
-
+        
         #endregion
 
-        #region Components
-
-        public readonly IPhysicsComponent Physics;
-        private readonly IInputComponent _input;
-        private readonly List<ISimulationComponent> _gameComponents;
+        /// <summary>
+        /// Game Components
+        /// </summary>
+        private readonly List<SimulationComponent> _gameComponents;
 
         #endregion
 
@@ -73,22 +102,32 @@ namespace BFB.Engine.Entity
         /// </summary>
         /// <param name="entityId">Unique ID for this entity</param>
         /// <param name="options">Sets the initial properties of this entity</param>
-        /// <param name="components">The components this entity contains</param>
-        public SimulationEntity(string entityId, EntityOptions options, ComponentOptions components) : base(entityId,
-            options)
+        /// <param name="gameComponents">The components this entity contains</param>
+        /// <param name="socket">The socket object if the entity is a player</param>
+        public SimulationEntity(string entityId, EntityOptions options,List<SimulationComponent> gameComponents, ClientSocket socket = null) : base(entityId, options)
         {
+            _currentTick = -1;
+            TicksSinceCreation = -1;
+            
             SteeringVector = new BfbVector();
             OldPosition = new BfbVector();
-            VisibleChunks = new List<string>();
-            ChunkVersions = new Dictionary<string, int>();
+
+            //Default collision info
+            CollideFilter = "entity";
+            CollideWithFilters = new List<string> {"tile"};
             
             //Components
-            Physics = components.Physics;
-            _input = components.Input;
-            _gameComponents = components.GameComponents ?? new List<ISimulationComponent>();
+            _gameComponents = gameComponents;
 
-            CurrentTick = -1;
-            TicksSinceCreation = -1;
+            if (EntityType == EntityType.Player)
+            {
+                VisibleChunks = new List<string>();
+                ChunkVersions = new Dictionary<string, int>();
+                Socket = socket;
+            }
+
+            foreach (SimulationComponent simulationComponent in _gameComponents)
+                simulationComponent.Init(this);
         }
 
         #endregion
@@ -104,27 +143,24 @@ namespace BFB.Engine.Entity
             TicksSinceCreation++;
             
             //Only tick entity once per frame
-            if (simulation.Tick == CurrentTick)
+            if (simulation.Tick == _currentTick)
                 return;
 
             //Record last tick
-            CurrentTick = simulation.Tick;
+            _currentTick = simulation.Tick;
 
             //Record current position
             OldPosition = new BfbVector(Position.X, Position.Y);
 
-            //Component Processing
-            _input?.Update(this, simulation);
-            Physics?.Update(this, simulation);
-
-            foreach (ISimulationComponent gameComponent in _gameComponents)
+            //the future
+            foreach (SimulationComponent gameComponent in _gameComponents)
             {
                 gameComponent.Update(this,simulation);
             }
 
-
-
-
+            
+            
+            
             //Place entity in correct chunk if in new position
             string chunkKey =
                 simulation.World.ChunkFromPixelLocation((int) Position.X, (int) Position.Y)
@@ -137,7 +173,7 @@ namespace BFB.Engine.Entity
                 ChunkKey = chunkKey;
             }
 
-            if (!IsPlayer || ChunkKey == null) return;
+            if (EntityType != EntityType.Player || ChunkKey == null) return;
 
             //Clear visible chunks so we dont have to figure out which chunks are no longer being seen
             VisibleChunks.Clear();
@@ -168,6 +204,54 @@ namespace BFB.Engine.Entity
         }
 
         #endregion
+        
+        #region EmitOnEntityCollision
 
+        public bool EmitOnEntityCollision(Simulation.Simulation simulation, SimulationEntity otherEntity)
+        {
+            bool defaultAction = true;
+            
+            foreach (SimulationComponent simulationComponent in _gameComponents)
+            {
+                if(!simulationComponent.OnEntityCollision(simulation, this, otherEntity))
+                    defaultAction = false;
+            }
+
+            return defaultAction;
+        }
+        
+        #endregion
+        
+        #region EmitOnWorldBoundaryCollision
+
+        public bool EmitOnWorldBoundaryCollision(Simulation.Simulation simulation, CollisionSide side)
+        {
+            bool defaultAction = true;
+            
+            foreach (SimulationComponent simulationComponent in _gameComponents)
+                if (!simulationComponent.OnWorldBoundaryCollision(simulation, this, side))
+                    defaultAction = false;
+
+            return defaultAction;
+        }
+        
+        #endregion
+
+        #region EmitOnTileCollision
+
+        public bool EmitOnTileCollision(Simulation.Simulation simulation, TileCollision tc)
+        {
+            bool defaultAction = true;
+
+            foreach (SimulationComponent simulationComponent in _gameComponents)
+            {
+                if (!simulationComponent.OnTileCollision(simulation, this, tc))
+                    defaultAction = false;
+            }
+
+            return defaultAction;
+        }
+        
+        #endregion
     }
 }

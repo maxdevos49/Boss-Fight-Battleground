@@ -127,14 +127,14 @@ namespace BFB.Engine.Simulation
 
         #region GetSimulationComponent(TODO)
         
-        public ISimulationComponent GetSimulationComponent(string componentKey)
+        public SimulationComponent GetSimulationComponent(string componentKey)
         {
             throw new NotImplementedException();
         }
         #endregion
         
         #region GetSingletonSimulationComponent(TODO)
-        public ISimulationComponent GetSingletonSimulationComponent(string componentKey)
+        public SimulationComponent GetSingletonSimulationComponent(string componentKey)
         {
             throw new NotImplementedException();
         }

@@ -3,11 +3,10 @@ using System.Drawing;
 using System.Linq;
 using BFB.Engine.Entity;
 using BFB.Engine.Math;
-using BFB.Engine.Simulation.PhysicsComponents;
 using BFB.Engine.TileMap;
 using JetBrains.Annotations;
 
-namespace BFB.Engine.Simulation.Collisions
+namespace BFB.Engine.Collisions
 {
     public static class Collision
     {
@@ -19,31 +18,28 @@ namespace BFB.Engine.Simulation.Collisions
         /// </summary>
         /// <param name="simulation"></param>
         /// <param name="entity"></param>
-        /// <param name="physics"></param>
-        public static void DetectCollision(this IPhysicsComponent physics, Simulation simulation, SimulationEntity entity)
+        public static void DetectCollision(Simulation.Simulation simulation, SimulationEntity entity)
         {
             
-            physics.WorldBoundaryCheck(simulation, entity);
+            WorldBoundaryCheck(simulation, entity);
 
-            physics.EntityCollisions(simulation, entity);
+            EntityCollisions(simulation, entity);
 
-            if (!physics.CollideWithFilters.Contains("tile")) 
+            if (!entity.CollideWithFilters.Contains("tile")) 
                 return;
             
             //Left and right tile collisions
-            physics.BroadPhaseHorizontal(simulation, entity);
+            BroadPhaseHorizontal(simulation, entity);
 
             //Detect up and down tile collisions
-            physics.BroadPhaseVertical(simulation, entity);
-
-
+            BroadPhaseVertical(simulation, entity);
         }
 
         #endregion
 
         #region EntityCollisions
 
-        private static void EntityCollisions(this IPhysicsComponent physics, Simulation simulation, SimulationEntity entity)
+        private static void EntityCollisions(Simulation.Simulation simulation, SimulationEntity entity)
         {
             List<Chunk> chunkList = new List<Chunk>();
             Chunk chunk = simulation.World.ChunkIndex[entity.ChunkKey];
@@ -72,12 +68,12 @@ namespace BFB.Engine.Simulation.Collisions
                 //check for entities with the specified filter
                 foreach ((string _, SimulationEntity otherEntity) in chunk1.Entities.ToList()
                                                                     .Where(x => 
-                                                                        physics.CollideWithFilters.Contains(x.Value.Physics.CollideFilter) 
+                                                                        entity.CollideWithFilters.Contains(x.Value.CollideFilter) 
                                                                         && x.Value.EntityId != entity.EntityId))
                 {
                     if (IsRectangleColliding(entity.Bounds, otherEntity.Bounds))
                     {
-                        physics.OnEntityCollision(simulation, entity, otherEntity);
+                        entity.EmitOnEntityCollision(simulation, otherEntity);
                     }
                 }
             }
@@ -88,12 +84,12 @@ namespace BFB.Engine.Simulation.Collisions
         
         #region WorldBoundryCollisions
 
-        private static void WorldBoundaryCheck(this IPhysicsComponent physics, Simulation simulation, SimulationEntity entity)
+        private static void WorldBoundaryCheck(Simulation.Simulation simulation, SimulationEntity entity)
         {
             //World Boundaries
             if (entity.Position.X < 0)
             {
-                if (physics.OnWorldBoundaryCollision(simulation, entity, CollisionSide.LeftBorder))
+                if (entity.EmitOnWorldBoundaryCollision(simulation, CollisionSide.LeftBorder))
                 {
                     entity.Position.X = entity.OldPosition.X = 0;
                     entity.Velocity.X = 0;
@@ -102,7 +98,7 @@ namespace BFB.Engine.Simulation.Collisions
 
             if (entity.Position.X > simulation.World.MapPixelWidth() - entity.Dimensions.X)
             {
-                if (physics.OnWorldBoundaryCollision(simulation, entity, CollisionSide.RightBorder))
+                if (entity.EmitOnWorldBoundaryCollision(simulation, CollisionSide.RightBorder))
                 {
                     entity.Position.X = entity.OldPosition.X = simulation.World.MapPixelWidth() - entity.Dimensions.X;
                     entity.Velocity.X = 0;
@@ -110,10 +106,10 @@ namespace BFB.Engine.Simulation.Collisions
             }
 
             if (entity.Position.Y < 0)
-                physics.OnWorldBoundaryCollision(simulation, entity, CollisionSide.TopBorder);
+                entity.EmitOnWorldBoundaryCollision(simulation, CollisionSide.TopBorder);
             
             if (entity.Position.Y > simulation.World.MapPixelHeight())
-                physics.OnWorldBoundaryCollision(simulation, entity, CollisionSide.BottomBorder);
+                entity.EmitOnWorldBoundaryCollision(simulation, CollisionSide.BottomBorder);
 
         }
 
@@ -121,7 +117,7 @@ namespace BFB.Engine.Simulation.Collisions
         
         #region BroadPhaseHorizontal
 
-        private static void BroadPhaseHorizontal(this IPhysicsComponent physics, Simulation simulation, SimulationEntity entity)
+        private static void BroadPhaseHorizontal(Simulation.Simulation simulation, SimulationEntity entity)
         {
             
             float tileSize = simulation.World.WorldOptions.WorldScale;
@@ -137,7 +133,7 @@ namespace BFB.Engine.Simulation.Collisions
 
                     tc.TilePosition.Y = i;
                     
-                    if (physics.RightBorderCollision(simulation, entity, tc))
+                    if (RightBorderCollision(simulation, entity, tc))
                         return;
                 }
             }
@@ -152,7 +148,7 @@ namespace BFB.Engine.Simulation.Collisions
                     
                     tc.TilePosition.Y = i;
                     
-                    if (physics.LeftBorderCollision(simulation, entity, tc))
+                    if (LeftBorderCollision(simulation, entity, tc))
                         return;
 
                 }
@@ -163,7 +159,7 @@ namespace BFB.Engine.Simulation.Collisions
         
         #region BroadPhaseVertical
 
-        private static void BroadPhaseVertical(this IPhysicsComponent physics, Simulation simulation, SimulationEntity entity)
+        private static void BroadPhaseVertical(Simulation.Simulation simulation, SimulationEntity entity)
         {
             float tileSize = simulation.World.WorldOptions.WorldScale;
             
@@ -180,7 +176,7 @@ namespace BFB.Engine.Simulation.Collisions
                     
                     tc.TilePosition.X = i;
                     
-                    if (physics.TopBorderCollision(simulation, entity, tc))
+                    if (TopBorderCollision(simulation, entity, tc))
                         return;
                 }
             }
@@ -197,7 +193,7 @@ namespace BFB.Engine.Simulation.Collisions
 
                     tc.TilePosition.X = i;
                     
-                    if (physics.BottomBorderCollision(simulation, entity, tc))
+                    if (BottomBorderCollision(simulation, entity, tc))
                         return;
                 }
             }       
@@ -243,7 +239,7 @@ namespace BFB.Engine.Simulation.Collisions
 
         #region TopCollision
         
-        private static bool TopBorderCollision(this IPhysicsComponent physics, Simulation simulation, SimulationEntity entity, TileCollision tc)
+        private static bool TopBorderCollision(Simulation.Simulation simulation, SimulationEntity entity, TileCollision tc)
         {
             int tileSize = simulation.World.WorldOptions.WorldScale;
             
@@ -262,7 +258,7 @@ namespace BFB.Engine.Simulation.Collisions
                 if (!IsPointColliding(entity.Left + (i * sectionXOffset), entity.Bottom, block))
                     continue;
 
-                if (!physics.OnTileCollision(simulation, entity, tc))
+                if (!entity.EmitOnTileCollision(simulation, tc))
                     return true;
 
                 entity.Velocity.Y = 0;
@@ -278,7 +274,7 @@ namespace BFB.Engine.Simulation.Collisions
         
         #region BottomCollision
 
-        private static bool BottomBorderCollision(this IPhysicsComponent physics, Simulation simulation, SimulationEntity entity, TileCollision tc)
+        private static bool BottomBorderCollision(Simulation.Simulation simulation, SimulationEntity entity, TileCollision tc)
         {
             int tileSize = simulation.World.WorldOptions.WorldScale;
             
@@ -298,7 +294,7 @@ namespace BFB.Engine.Simulation.Collisions
                 if (!IsPointColliding(entity.Left + (i * sectionXOffset), entity.Top, block))
                     continue;
                 
-                if (!physics.OnTileCollision(simulation,entity, tc))
+                if (!entity.EmitOnTileCollision(simulation, tc))
                     return true;
                 
                 entity.Velocity.Y = -0.001f;
@@ -314,7 +310,7 @@ namespace BFB.Engine.Simulation.Collisions
         
         #region LeftCollision
 
-        private static bool LeftBorderCollision(this IPhysicsComponent physics, Simulation simulation, SimulationEntity entity, TileCollision tc)
+        private static bool LeftBorderCollision(Simulation.Simulation simulation, SimulationEntity entity, TileCollision tc)
         {
             int tileSize = simulation.World.WorldOptions.WorldScale;
             
@@ -333,7 +329,7 @@ namespace BFB.Engine.Simulation.Collisions
                 if (!IsPointColliding(entity.Right, entity.Top + (i * sectionYOffset), block))
                     continue;
                 
-                if (!physics.OnTileCollision(simulation,entity, tc))
+                if (!entity.EmitOnTileCollision(simulation, tc))
                     return true;
 
                 entity.Velocity.X = 0;
@@ -349,7 +345,7 @@ namespace BFB.Engine.Simulation.Collisions
         
         #region RightCollision
  
-        private static bool RightBorderCollision(this IPhysicsComponent physics,Simulation simulation, SimulationEntity entity, TileCollision tc)
+        private static bool RightBorderCollision(Simulation.Simulation simulation, SimulationEntity entity, TileCollision tc)
         {
             int tileSize = simulation.World.WorldOptions.WorldScale;
             //if entity is not moving left
@@ -367,7 +363,7 @@ namespace BFB.Engine.Simulation.Collisions
                 if (!IsPointColliding(entity.Left, entity.Top + (i * sectionYOffset), block))
                     continue;
 
-                if (!physics.OnTileCollision(simulation,entity, tc))
+                if (!entity.EmitOnTileCollision(simulation, tc))
                     return true;
                 
                 entity.Velocity.X = 0;

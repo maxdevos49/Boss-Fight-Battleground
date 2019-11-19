@@ -74,5 +74,13 @@ namespace BFB.Engine.Helpers
                     1 );
 
         }
+
+        public static void DrawAtlas(this SpriteBatch graphics, AtlasTexture atlasTexture, Rectangle rectangle, Color color)
+        {
+            graphics.Draw(atlasTexture.Texture,
+                new Rectangle(rectangle.X,rectangle.Y,30,30),
+                new Rectangle(atlasTexture.X,atlasTexture.Y,atlasTexture.Width,atlasTexture.Height),
+                color);
+        }
     }
 }

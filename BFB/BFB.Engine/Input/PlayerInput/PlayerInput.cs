@@ -12,7 +12,7 @@ namespace BFB.Engine.Input.PlayerInput
     public class PlayerInput
     {
 
-        private PlayerState _playerState;
+        private ControlState _controlState;
         private bool _inputChange;
 
         /// <summary>
@@ -21,7 +21,7 @@ namespace BFB.Engine.Input.PlayerInput
         /// <param name="scene"></param>
         public PlayerInput(Scene.Scene scene)
         {
-            _playerState = new PlayerState();
+            _controlState = new ControlState();
             _inputChange = false;
             
             scene.AddInputListener("keypress", (e) =>
@@ -30,23 +30,23 @@ namespace BFB.Engine.Input.PlayerInput
                 {
                     case Keys.Left:
                     case Keys.A:
-                        _playerState.Left = true;
+                        _controlState.Left = true;
                         _inputChange = true;
                         break;
                     case Keys.Right:
                     case Keys.D:
-                        _playerState.Right = true;
+                        _controlState.Right = true;
                         _inputChange = true;
                         break;
                     case Keys.W:
                     case Keys.Space:
-                        _playerState.Jump = true;
+                        _controlState.Jump = true;
                         _inputChange = true;
                         break;
                 }
                 
-                _playerState.Mouse.X = e.Mouse.X;
-                _playerState.Mouse.Y = e.Mouse.Y;
+                _controlState.Mouse.X = e.Mouse.X;
+                _controlState.Mouse.Y = e.Mouse.Y;
             });
             
             scene.AddInputListener("keyup", (e) =>
@@ -55,51 +55,51 @@ namespace BFB.Engine.Input.PlayerInput
                 {
                     case Keys.Left:
                     case Keys.A:
-                        _playerState.Left = false;
+                        _controlState.Left = false;
                         _inputChange = true;
                         break;
                     case Keys.Right:
                     case Keys.D:
-                        _playerState.Right = false;
+                        _controlState.Right = false;
                         _inputChange = true;
                         break;
                     case Keys.W:
                     case Keys.Space:
-                        _playerState.Jump = false;
+                        _controlState.Jump = false;
                         _inputChange = true;
                         break;
                 }
                 
-                _playerState.Mouse.X = e.Mouse.X;
-                _playerState.Mouse.Y = e.Mouse.Y;
+                _controlState.Mouse.X = e.Mouse.X;
+                _controlState.Mouse.Y = e.Mouse.Y;
             });
             
             scene.AddInputListener("mousemove", (e) =>
             {
-                _playerState.Mouse.X = e.Mouse.X;
-                _playerState.Mouse.Y = e.Mouse.Y;
+                _controlState.Mouse.X = e.Mouse.X;
+                _controlState.Mouse.Y = e.Mouse.Y;
                 
                 _inputChange = true;
             });
             
             scene.AddInputListener("mouseclick", (e) =>
             {
-                _playerState.LeftClick = e.Mouse.LeftButton == ButtonState.Pressed;
-                _playerState.RightClick = e.Mouse.RightButton == ButtonState.Pressed;
+                _controlState.LeftClick = e.Mouse.LeftButton == ButtonState.Pressed;
+                _controlState.RightClick = e.Mouse.RightButton == ButtonState.Pressed;
                 
-                _playerState.Mouse.X = e.Mouse.X;
-                _playerState.Mouse.Y = e.Mouse.Y;
+                _controlState.Mouse.X = e.Mouse.X;
+                _controlState.Mouse.Y = e.Mouse.Y;
                 
                 _inputChange = true;
             });
             
             scene.AddInputListener("mouseup", (e) =>
             {
-                _playerState.LeftClick = e.Mouse.LeftButton == ButtonState.Pressed;
-                _playerState.RightClick = e.Mouse.RightButton == ButtonState.Pressed;
+                _controlState.LeftClick = e.Mouse.LeftButton == ButtonState.Pressed;
+                _controlState.RightClick = e.Mouse.RightButton == ButtonState.Pressed;
                 
-                _playerState.Mouse.X = e.Mouse.X;
-                _playerState.Mouse.Y = e.Mouse.Y;
+                _controlState.Mouse.X = e.Mouse.X;
+                _controlState.Mouse.Y = e.Mouse.Y;
                 
                 _inputChange = true;
             });
@@ -109,19 +109,19 @@ namespace BFB.Engine.Input.PlayerInput
         /// Gets the player state, shockingly enough.
         /// </summary>
         /// <returns></returns>
-        public PlayerState GetPlayerState()
+        public ControlState GetPlayerState()
         {
             _inputChange = false;
-            return _playerState.Clone();
+            return _controlState.Clone();
         }
         
         ///<summary>
         /// Allows viewing of the player state without indicating that the input had been updated
         /// </summary>
         /// <returns></returns>
-        public PlayerState PeekPlayerState()
+        public ControlState PeekPlayerState()
         {
-            return _playerState.Clone();
+            return _controlState.Clone();
         }
 
         /// <summary>

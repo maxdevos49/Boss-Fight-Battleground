@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.IO;
 using JetBrains.Annotations;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Media;
@@ -18,27 +19,16 @@ namespace BFB.Engine.Content
 
         #region Properties
 
-        /// <summary>
-        /// The Monogame Content Manager. USed to store loaded content, and access it when rendering.
-        /// </summary>
         private readonly ContentManager _contentManager;
         
-        //Dictionary<contentKey, Content>
-        /// <summary>
-        /// A dictionary that stores the loaded static textures.
-        /// </summary>
         private readonly  Dictionary<string, Texture2D> _textureContent;
-        /// <summary>
-        /// A dictionary that stores the loaded animated textures.
-        /// </summary>
+        
         private readonly Dictionary<string, AnimatedTexture> _animatedTexturesContent;
-        /// <summary>
-        /// A dictionary that stores the loaded fonts.
-        /// </summary>
+
+        private readonly Dictionary<string, AtlasTexture> _atlasTexturesContent;
+            
         private readonly  Dictionary<string, SpriteFont> _fontContent;
-        /// <summary>
-        /// A dictionary that stores the loaded audio.
-        /// </summary>
+
         private readonly  Dictionary<string, Song> _audioContent;//Probably in future when ready to use this create a wrapper class
         
         
@@ -56,6 +46,7 @@ namespace BFB.Engine.Content
             
             _textureContent = new Dictionary<string, Texture2D>();
             _animatedTexturesContent = new Dictionary<string, AnimatedTexture>();
+            _atlasTexturesContent = new Dictionary<string, AtlasTexture>();
             _fontContent = new Dictionary<string, SpriteFont>();
             _audioContent = new  Dictionary<string, Song>();
             
@@ -224,6 +215,17 @@ namespace BFB.Engine.Content
         }
         
         #endregion
+        
+        #region GetAtlasTexture
+        
+        public AtlasTexture GetAtlasTexture(string atlasKey)
+        {
+            return _atlasTexturesContent.ContainsKey(atlasKey)
+                ? _atlasTexturesContent[atlasKey]
+                : _atlasTexturesContent["Tiles:Missing"];
+        }
+        
+        #endregion
 
         #region UnloadAnimatedTexture
         /// <summary>
@@ -267,27 +269,30 @@ namespace BFB.Engine.Content
             //Parse animated textures
             ParseAnimatedTextures(content.AnimatedTextures);
             
+            //Parse atlas textures
+            ParseAtlasTextures(content.AtlasTextures);
+
             //Parse audio
-            ParseAudio(/*TODO*/);
+//            ParseAudio(/*TODO*/);
         }
         
         #endregion
         
         #region ParseTextures
         /// <summary>
-        /// PArses the textures and loads them.
+        /// Parses the textures and loads them.
         /// </summary>
-        /// <param name="textures"></param>
-        private void ParseTextures(IEnumerable<ContentGroupSchema> textures)
+        /// <param name="textureConfig"></param>
+        private void ParseTextures(Dictionary<string,string> textureConfig)
         {
-            foreach (ContentGroupSchema texture in textures)
+            foreach (var texture in textureConfig)
             {
                 Console.WriteLine("Loading Texture: " + texture.Key);
                 
                 if(_textureContent.ContainsKey(texture.Key))
                     throw new DuplicateNameException($"The texture key: {texture.Key} was found more then once while parsing textures");
                 
-                _textureContent.Add(texture.Key, _contentManager.Load<Texture2D>(texture.Location));
+                _textureContent.Add(texture.Key, _contentManager.Load<Texture2D>(texture.Value));
             }
         }
         
@@ -297,40 +302,94 @@ namespace BFB.Engine.Content
         /// <summary>
         /// Parses and loads the animated textures.
         /// </summary>
-        /// <param name="textures"></param>
-        private void ParseAnimatedTextures(List<AnimatedTexture> textures)
+        /// <param name="textureConfig"></param>
+        private void ParseAnimatedTextures(Dictionary<string,AnimatedTexture> textureConfig)
         {
-            foreach (AnimatedTexture texture in textures)
+            foreach ((string key, AnimatedTexture value) in textureConfig)
             {
-                Console.WriteLine("Loading Animated Texture: " + texture.Key);
+                Console.WriteLine("Loading Animated Texture: " + key);
                 
-                if(_animatedTexturesContent.ContainsKey(texture.Key))
-                    throw new DuplicateNameException($"The animated texture key: {texture.Key} was found more then once while parsing animated textures");
+                if(_animatedTexturesContent.ContainsKey(key))
+                    throw new DuplicateNameException($"The animated texture key: {key} was found more then once while parsing animated textures");
 
-                texture.Texture = _contentManager.Load<Texture2D>(texture.Location);
+                value.Texture = _contentManager.Load<Texture2D>(value.Location);
                 
-                _animatedTexturesContent.Add(texture.Key, texture);
+                //color
+                if (value.RandomColor == true)
+                {
+                    Random random = new Random();
+                    
 
+                    int r = random.Next(0, 255);
+                    int g = random.Next(0,255);
+                    int b = random.Next(0,255);
+                    
+                    value.ParsedColor = new Color(r,g,b,1f);
+                    Console.WriteLine(value.ParsedColor);
+                }
+                else if (value.ColorConfig == null)
+                {
+                    value.ParsedColor = Color.White;
+                }
+                else
+                {
+                    string[] colorArray = value.ColorConfig.Split(",");
+
+                    if (colorArray.Length != 4)
+                        throw new Exception($"Color parsing failed for Animation texture: {key}");
+                
+                    int r = int.Parse(colorArray[0]);
+                    int g = int.Parse(colorArray[1]);
+                    int b = int.Parse(colorArray[2]);
+                    float alpha = float.Parse(colorArray[3]);
+                
+                    value.ParsedColor = new Color(r,g,b,alpha);
+                }
+                
+                _animatedTexturesContent.Add(key, value);
+            }
+        }
+        
+        #endregion
+        
+        #region ParseAtlasTexture
+
+        private void ParseAtlasTextures(Dictionary<string,AtlasTexture> atlasConfig) 
+        {
+            foreach ((string key, AtlasTexture value) in atlasConfig)
+            {
+                Console.WriteLine("Loading Atlas Texture: " + key);
+                
+                if(_atlasTexturesContent.ContainsKey(key))
+                    throw new DuplicateNameException($"The animated texture key: {key} was found more then once while parsing animated textures");
+
+                if(!_textureContent.ContainsKey(value.TextureKey))
+                    throw new KeyNotFoundException($"The key: \"{value.TextureKey}\" was not a valid key. Try confirming that the key exist in the Textures section of the json");
+                    
+                value.Texture = _textureContent[value.TextureKey];//Get reference to the correct texture
+                
+                _atlasTexturesContent.Add(key, value);
             }
         }
         
         #endregion
         
         #region ParseFonts
+        
         /// <summary>
         /// Parses and loads the fonts.
         /// </summary>
-        /// <param name="fonts"></param>
-        private void ParseFonts(List<ContentGroupSchema> fonts)
+        /// <param name="fontConfig"></param>
+        private void ParseFonts(Dictionary<string,string> fontConfig)
         {
-            foreach (ContentGroupSchema font in fonts)
+            foreach (var font in fontConfig)
             {
                 Console.WriteLine("Loading font: " + font.Key);
                 
                 if(_textureContent.ContainsKey(font.Key))
                     throw new DuplicateNameException($"The font key: {font.Key} was found more then once while parsing fonts");
                 
-                _fontContent.Add(font.Key, _contentManager.Load<SpriteFont>(font.Location));
+                _fontContent.Add(font.Key, _contentManager.Load<SpriteFont>(font.Value));
             }
         }
         
@@ -349,42 +408,25 @@ namespace BFB.Engine.Content
     }
 
     #region Content Schema Classes
+    
     /// <summary>
     /// Schema for what the content will look like.
     /// </summary>
     [UsedImplicitly]
     public class ContentJSONSchema
     {
-        [UsedImplicitly]
-        public List<ContentGroupSchema> Fonts { get; set; }
-        
-        [UsedImplicitly]
-        public List<ContentGroupSchema> Textures { get; set; }
-        
-        [UsedImplicitly]
-        public List<ContentGroupSchema> Audio { get; set; }
+        public Dictionary<string,string> Fonts { get; set; }
 
-        [UsedImplicitly]
-        public List<AnimatedTexture> AnimatedTextures { get; set; }
+        
+        public Dictionary<string,string> Audio { get; set; }
+        
+        public Dictionary<string,string> Textures { get; set; }
+        
+        public Dictionary<string,AtlasTexture> AtlasTextures { get; set; }
+        
+        public Dictionary<string,AnimatedTexture> AnimatedTextures { get; set; }
 
     }
-    
-    /// <summary>
-    /// Schema for what a specific content group will look like.
-    /// </summary>
-    [UsedImplicitly]
-    public class ContentGroupSchema
-    {
-        [UsedImplicitly]
-
-        public string Key { get; set; }
-
-        [UsedImplicitly]
-
-        public string Location { get; set; }
-    }
-
-
     
     #endregion
     

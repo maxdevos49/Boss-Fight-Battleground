@@ -234,9 +234,9 @@ namespace BFB.Client.Scenes
 
             if (!_playerInput.InputChanged() || !Client.EmitAllowed() || _worldRenderer == null) return;
             
-            PlayerState playerState = _playerInput.GetPlayerState();
-            playerState.Mouse = _worldRenderer.ViewPointToMapPoint(playerState.Mouse);
-            Client.Emit("/player/input", new InputMessage {PlayerInputState = playerState});
+            ControlState controlState = _playerInput.GetPlayerState();
+            controlState.Mouse = _worldRenderer.ViewPointToMapPoint(controlState.Mouse);
+            Client.Emit("/player/input", new InputMessage {ControlInputState = controlState});
 
         }
         
@@ -254,11 +254,11 @@ namespace BFB.Client.Scenes
                 //This looks horrible D: - Max By max
                 if (_worldRenderer != null && _playerInput != null && Client.ClientId != null && _entities.ContainsKey(Client.ClientId) && _worldRenderer.Debug)
                 {
-                    PlayerState playerState = _playerInput.PeekPlayerState();
-                    playerState.Mouse = _worldRenderer.ViewPointToMapPoint(playerState.Mouse);
+                    ControlState controlState = _playerInput.PeekPlayerState();
+                    controlState.Mouse = _worldRenderer.ViewPointToMapPoint(controlState.Mouse);
 
                     _worldRenderer?.DebugPanel(graphics, gameTime, _world, _entities[Client.ClientId],
-                        _entities.Values.ToList(), Client, playerState, ContentManager);
+                        _entities.Values.ToList(), Client, controlState, ContentManager);
                 }
 
             }

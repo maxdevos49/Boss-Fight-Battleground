@@ -14,6 +14,6 @@ namespace BFB.Engine.Server.Communication
         /// <summary>
         /// The players current input
         /// </summary>
-        public PlayerState PlayerInputState { get; set; }
+        public ControlState ControlInputState { get; set; }
     }
 }

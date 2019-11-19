@@ -1,40 +1,49 @@
 {
-    "Fonts": [
-        {
-            "Key": "default",
-            "Location": "Fonts\\OpenSans"
+    "Fonts": {
+        "default": "Fonts\\OpenSans"
+    },
+    "Textures": {
+        "button": "Sprites\\button",
+        "Tiles": "Sprites\\TileAtlas"
+    },
+    "Audio": {
+    },
+    "AtlasTextures": {
+        "Tiles:Grass": {
+            "TextureKey": "Tiles",
+            "Scale": 1,
+            "X": 36,
+            "Y": 0,
+            "Width": 15,
+            "Height": 15
+        },
+        "Tiles:Dirt": {
+            "TextureKey": "Tiles",
+            "Scale": 1,
+            "X": 54,
+            "Y": 0,
+            "Width": 15,
+            "Height": 15
+        },
+        "Tiles:Stone": {
+            "TextureKey": "Tiles",
+            "Scale": 1,
+            "X": 0,
+            "Y": 18,
+            "Width": 15,
+            "Height": 15
+        },
+        "Tiles:Missing": {
+            "TextureKey": "Tiles",
+            "Scale": 1,
+            "X": 0,
+            "Y": 0,
+            "Width": 15,
+            "Height": 15
         }
-    ],
-    "Audio": [
-        {
-
-        }
-    ],
-    "Textures": [
-        {
-            "Key": "button",
-            "Location": "Sprites\\button"
-        },
-        {
-            "Key": "dirt",
-            "Location": "Sprites\\dirt"
-        },
-        {
-            "Key": "grass",
-            "Location": "Sprites\\grass"
-        },
-        {
-            "Key": "stone",
-            "Location": "Sprites\\stone"
-        },
-        {
-            "Key": "tiles",
-            "location": "Sprites\\TileAtlas"
-        }
-    ],
-    "AnimatedTextures": [
-        {
-            "Key": "Player",
+    },
+    "AnimatedTextures": {
+        "Player": {
             "Location": "Sprites\\Player",
             "Frames": 9,
             "FrameWidth": 30,
@@ -69,9 +78,7 @@
                 }
             }
         },
-
-        {
-            "Key": "Spider",
+        "Spider": {
             "Location": "Sprites\\Spider",
             "Frames": 6,
             "FrameWidth": 40,
@@ -106,9 +113,7 @@
                 }
             }
         },
-
-        {
-            "Key": "Zombie",
+        "Zombie": {
             "Location": "Sprites\\Zombie",
             "Frames": 6,
             "FrameWidth": 30,
@@ -143,9 +148,7 @@
                 }
             }
         },
-
-        {
-            "Key": "Skeleton",
+        "Skeleton": {
             "Location": "Sprites\\Skeleton",
             "Frames": 6,
             "FrameWidth": 30,
@@ -180,9 +183,7 @@
                 }
             }
         },
-
-        {
-            "Key": "Boss",
+        "Boss": {
             "Location": "Sprites\\Boss",
             "Frames": 1,
             "FrameWidth": 45,
@@ -217,9 +218,7 @@
                 }
             }
         },
-
-        {
-            "Key": "TestRunning",
+        "TestRunning": {
             "Location": "Sprites\\TestRunning",
             "Frames": 8,
             "FrameWidth": 269,
@@ -254,5 +253,5 @@
                 }
             }
         }
-    ]
+    }
 }
