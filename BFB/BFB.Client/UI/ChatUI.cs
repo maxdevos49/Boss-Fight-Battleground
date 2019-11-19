@@ -168,21 +168,34 @@ namespace BFB.Client.UI
         }
 
         #endregion
-    }
-
-    public class ChatMessage
-    {
-        public string Message { get; set; }
-
-        public Stopwatch Timer { get; }
-
-        public ChatMessage(string message)
+        
+        #region ChatMessage (class)
+        
+        private class ChatMessage
         {
-            Message = message;
+            #region Properties
+            public string Message { get; set; }
+
+            public Stopwatch Timer { get; }
             
-            Timer = new Stopwatch();
+            #endregion
+
+            #region Constructor
             
-            Timer.Start();
+            public ChatMessage(string message)
+            {
+                Message = message;
+            
+                Timer = new Stopwatch();
+            
+                Timer.Start();
+            }
+            
+            #endregion
         }
+        
+        #endregion
     }
+
+
 }

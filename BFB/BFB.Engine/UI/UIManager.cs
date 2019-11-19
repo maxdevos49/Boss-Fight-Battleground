@@ -154,7 +154,7 @@ namespace BFB.Engine.UI
         #endregion
 
         #region Draw
-
+        
         public void Draw(SpriteBatch graphics)
         {
             foreach ((string key,UILayer uiLayer) in _activeUILayers.ToList())
@@ -162,7 +162,8 @@ namespace BFB.Engine.UI
                 if (uiLayer.Rebuild)
                 {
                     BuildUILayer(key);
-//                    uiLayer.Rebuild = false;
+                    //TODO so UI isn't rebuilt every frame
+                    //uiLayer.Rebuild = false;
                 }
                 RenderComponents(uiLayer.RootUI, graphics, uiLayer);
             }
