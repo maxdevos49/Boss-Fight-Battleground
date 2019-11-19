@@ -74,8 +74,8 @@ namespace BFB.Engine.Simulation.InputComponents
                             Physics = new SkeletonPhysicsComponent(),
                             Input = new AIInputComponent()
                         }));*/
-                        Vector2 player = new Vector2(simulationEntity.Position.X, simulationEntity.Position.Y);
-                        BfbVector directionVector = new BfbVector(mouseX - player.X, mouseY - player.Y);
+
+                        BfbVector directionVector = new BfbVector(mouseX - simulationEntity.Position.X, mouseY - simulationEntity.Position.Y);
                         float direction = (float)System.Math.Atan2(directionVector.Y, directionVector.X);
                         simulation.AddEntity(new SimulationEntity(
                             Guid.NewGuid().ToString(),

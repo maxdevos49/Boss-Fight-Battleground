@@ -7,10 +7,10 @@ using Microsoft.Xna.Framework;
 
 namespace BFB.Engine.Simulation.PhysicsComponents
 {
-    class SpellPhysicsComponent : IPhysicsComponent
+    public class SpellPhysicsComponent : IPhysicsComponent
     {
         private int timeToLive;
-        private SimulationEntity _owner;
+        private readonly SimulationEntity _owner;
         private readonly BfbVector _acceleration;
 
         public SpellPhysicsComponent(BfbVector direction, SimulationEntity owner)
@@ -22,7 +22,6 @@ namespace BFB.Engine.Simulation.PhysicsComponents
             float xAcc = directionNorm.X;
             float yAcc = directionNorm.Y;
             _acceleration = new BfbVector(xAcc, yAcc);
-            _maxSpeed = new BfbVector(15, 15);
         }
 
         public void Update(SimulationEntity simulationEntity, Simulation simulation)
@@ -42,10 +41,10 @@ namespace BFB.Engine.Simulation.PhysicsComponents
             //Updates the position
             simulationEntity.Position.Add(simulationEntity.Velocity);
 
-            checkCollisions(simulationEntity, simulation);
+            CheckCollisions(simulationEntity, simulation);
         }
 
-        private void checkCollisions(SimulationEntity simulationEntity, Simulation simulation)
+        private void CheckCollisions(SimulationEntity simulationEntity, Simulation simulation)
         {
             // Collisions with monsters
             List<SimulationEntity> targets = new List<SimulationEntity>();
