@@ -8,6 +8,7 @@ using BFB.Engine.Math;
 using BFB.Engine.Server;
 using BFB.Engine.Server.Communication;
 using BFB.Engine.Simulation.PhysicsComponents;
+using BFB.Engine.Simulation.PhysicsComponents.Spells;
 using BFB.Engine.TileMap;
 using Vector2 = Microsoft.Xna.Framework.Vector2;
 
@@ -75,7 +76,7 @@ namespace BFB.Engine.Simulation.InputComponents
                             Input = new AIInputComponent()
                         }));*/
 
-                        BfbVector directionVector = new BfbVector(mouseX - simulationEntity.Position.X, mouseY - simulationEntity.Position.Y);
+                        /*BfbVector directionVector = new BfbVector(mouseX - simulationEntity.Position.X, mouseY - simulationEntity.Position.Y);
                         float direction = (float)System.Math.Atan2(directionVector.Y, directionVector.X);
                         simulation.AddEntity(new SimulationEntity(
                             Guid.NewGuid().ToString(),
@@ -88,7 +89,23 @@ namespace BFB.Engine.Simulation.InputComponents
                                 Origin = new BfbVector(25,25),
                             }, new ComponentOptions()
                             {
-                                Physics = new SpellPhysicsComponent(directionVector, simulationEntity)
+                                Physics = new FireballSpellPhysicsComponent(directionVector, simulationEntity)
+                            }));*/
+
+                        BfbVector directionVector = new BfbVector(mouseX - simulationEntity.Position.X, mouseY - simulationEntity.Position.Y);
+                        float direction = (float)System.Math.Atan2(directionVector.Y, directionVector.X);
+                        simulation.AddEntity(new SimulationEntity(
+                            Guid.NewGuid().ToString(),
+                            new EntityOptions()
+                            {
+                                AnimatedTextureKey = "Missile",
+                                Position = new BfbVector(simulationEntity.Position.X, simulationEntity.Position.Y),
+                                Dimensions = new BfbVector(50, 50),
+                                Rotation = direction + (float)(System.Math.PI / 2),
+                                Origin = new BfbVector(25, 25),
+                            }, new ComponentOptions()
+                            {
+                                Physics = new MagicMissileSpellPhysicsComponent(directionVector, simulationEntity)
                             }));
                 }
 
