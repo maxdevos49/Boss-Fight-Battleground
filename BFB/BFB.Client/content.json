@@ -287,6 +287,82 @@
           "Mirror": true
         }
       }
+    },
+
+    {
+      "Key": "Heart",
+      "Location": "Sprites\\Spells\\Heart",
+      "Frames": 1,
+      "FrameWidth": 32,
+      "FrameHeight": 32,
+      "Columns": 1,
+      "Rows": 1,
+      "Scale": 0.3,
+      "AnimationSets": {
+        "IdleRight": {
+          "Fps": 5,
+          "FrameStart": 0,
+          "FrameEnd": 0,
+          "Mirror": true
+        }
+      }
+    },
+
+    {
+      "Key": "EffectMiniStar",
+      "Location": "Sprites\\Effects\\EffectMiniStar",
+      "Frames": 1,
+      "FrameWidth": 6,
+      "FrameHeight": 6,
+      "Columns": 1,
+      "Rows": 1,
+      "Scale": 0.3,
+      "AnimationSets": {
+        "IdleRight": {
+          "Fps": 5,
+          "FrameStart": 0,
+          "FrameEnd": 0,
+          "Mirror": true
+        }
+      }
+    },
+
+    {
+      "Key": "EffectStar",
+      "Location": "Sprites\\Effects\\EffectStar",
+      "Frames": 1,
+      "FrameWidth": 10,
+      "FrameHeight": 10,
+      "Columns": 1,
+      "Rows": 1,
+      "Scale": 0.3,
+      "AnimationSets": {
+        "IdleRight": {
+          "Fps": 5,
+          "FrameStart": 0,
+          "FrameEnd": 0,
+          "Mirror": true
+        }
+      }
+    },
+
+    {
+      "Key": "EffectX",
+      "Location": "Sprites\\Effects\\EffectX",
+      "Frames": 1,
+      "FrameWidth": 10,
+      "FrameHeight": 10,
+      "Columns": 1,
+      "Rows": 1,
+      "Scale": 0.3,
+      "AnimationSets": {
+        "IdleRight": {
+          "Fps": 5,
+          "FrameStart": 0,
+          "FrameEnd": 0,
+          "Mirror": true
+        }
+      }
     }
   ]
 }

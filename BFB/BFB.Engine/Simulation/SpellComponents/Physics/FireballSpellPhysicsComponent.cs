@@ -3,15 +3,17 @@ using System.Collections.Generic;
 using System.Text;
 using BFB.Engine.Entity;
 using BFB.Engine.Math;
+using BFB.Engine.Simulation.PhysicsComponents;
 using Microsoft.Xna.Framework;
 
-namespace BFB.Engine.Simulation.PhysicsComponents
+namespace BFB.Engine.Simulation.SpellComponents.Physics
 {
     public class FireballSpellPhysicsComponent : IPhysicsComponent
     {
         private int timeToLive;
         private readonly SimulationEntity _owner;
         private readonly BfbVector _acceleration;
+        private Random _random;
 
         public FireballSpellPhysicsComponent(BfbVector direction, SimulationEntity owner)
         {
@@ -22,6 +24,7 @@ namespace BFB.Engine.Simulation.PhysicsComponents
             float xAcc = directionNorm.X;
             float yAcc = directionNorm.Y;
             _acceleration = new BfbVector(xAcc, yAcc);
+            _random = new Random();
         }
 
         public void Update(SimulationEntity simulationEntity, Simulation simulation)

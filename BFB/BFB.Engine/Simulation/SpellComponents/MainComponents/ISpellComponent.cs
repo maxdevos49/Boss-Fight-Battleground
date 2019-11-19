@@ -4,7 +4,7 @@ using System.Text;
 using BFB.Engine.Entity;
 using BFB.Engine.Math;
 
-namespace BFB.Engine.Simulation.PhysicsComponents.Spells.MainComponents
+namespace BFB.Engine.Simulation.SpellComponents.MainComponents
 {
     public interface ISpellComponent
     {

@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Text;
 using BFB.Engine.Entity;
 using BFB.Engine.Math;
-using BFB.Engine.Simulation.PhysicsComponents.Spells.MainComponents;
+using BFB.Engine.Simulation.PhysicsComponents;
 
-namespace BFB.Engine.Simulation.PhysicsComponents.Spells
+namespace BFB.Engine.Simulation.SpellComponents.MainComponents
 {
     public class HealSpellComponent : ISpellComponent
     {
@@ -38,11 +38,17 @@ namespace BFB.Engine.Simulation.PhysicsComponents.Spells
 
             if (_cooldown == 0 && _onCooldown)
                 _onCooldown = false;
+
+            if (_effect != null)
+            {
+                _effect.Position.Y -= 1;
+            }
         }
 
         public void OnUse(SimulationEntity simulationEntity, Simulation simulation, BfbVector mouse)
         {
             if (((CombatComponent) simulationEntity.Combat).Mana < _cost) return;
+            if (_onCooldown) return;
 
             _onCooldown = true;
             _cooldown = 10;

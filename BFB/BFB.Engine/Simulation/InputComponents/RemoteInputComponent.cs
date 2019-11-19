@@ -7,10 +7,8 @@ using BFB.Engine.Input.PlayerInput;
 using BFB.Engine.Math;
 using BFB.Engine.Server;
 using BFB.Engine.Server.Communication;
-using BFB.Engine.Simulation.PhysicsComponents;
-using BFB.Engine.Simulation.PhysicsComponents.Spells;
+using BFB.Engine.Simulation.SpellComponents.MainComponents;
 using BFB.Engine.TileMap;
-using Vector2 = Microsoft.Xna.Framework.Vector2;
 
 namespace BFB.Engine.Simulation.InputComponents
 {
@@ -99,7 +97,10 @@ namespace BFB.Engine.Simulation.InputComponents
                         Helpers.CombatService.FightPeople(simulationEntity, targets, simulation);
                     }
 
-                    
+                    if (_playerState.RightClick)
+                    {
+                        (simulationEntity.Spell).OnUse(simulationEntity, simulation, new BfbVector(mouseX, mouseY));
+                    }
 
                     Tuple<int, int, int, int> chunkInformation =
                         simulation.World.TranslatePixelPosition(mouseX, mouseY);

@@ -116,7 +116,8 @@ namespace BFB.Server
                     {
                         Physics = new PlayerPhysicsComponent(),
                         Input = new RemoteInputComponent(socket),
-                        Combat = new CombatComponent()
+                        Combat = new CombatComponent(),
+                        Spell = new BFB.Engine.Simulation.SpellComponents.MainComponents.MagicMissileSpellComponent()
                     }), true);
                 
                 _server.PrintMessage($"Client {socket.ClientId} Ready and added to Simulation");
