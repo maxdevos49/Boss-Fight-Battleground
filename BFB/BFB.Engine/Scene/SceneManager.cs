@@ -20,6 +20,8 @@ namespace BFB.Engine.Scene
 {
     public class SceneManager
     {
+        #region Properties
+        
         //Dependencies
         private readonly ContentManager _contentManager;
         private readonly GraphicsDeviceManager _graphicsManager;
@@ -29,6 +31,8 @@ namespace BFB.Engine.Scene
         //Properties
         private readonly Dictionary<string, Scene> _allScenes;
         private readonly List<Scene> _activeScenes;
+        
+        #endregion
 
         #region constructor
 
@@ -70,7 +74,7 @@ namespace BFB.Engine.Scene
         [UsedImplicitly]
         public void AddScene(Scene scene)
         {
-            if (SceneExist(scene.Key)) return;
+            if (SceneExists(scene.Key)) return;
             
 //            scene.InjectDependencies(this, _contentManager, _graphicsManager, _eventManager);
             _allScenes.Add(scene.Key, scene);
@@ -86,7 +90,7 @@ namespace BFB.Engine.Scene
         /// <param name="key"></param>
         public void StartScene(string key)
         {
-            if (!SceneExist(key)) return;
+            if (!SceneExists(key)) return;
             
             //Shutdown any currently active scenes
             StopScenes();
@@ -108,7 +112,7 @@ namespace BFB.Engine.Scene
         /// <param name="key"></param>
         public void LaunchScene(string key)
         {
-            if (!SceneExist(key) || ActiveSceneExist(key)) return;
+            if (!SceneExists(key) || ActiveSceneExists(key)) return;
             
             //Add to active scene
             _activeScenes.Add(_allScenes[key]);
@@ -128,7 +132,7 @@ namespace BFB.Engine.Scene
         [UsedImplicitly]
         public void PauseScene(string key)
         {
-            if (!ActiveSceneExist(key)) return;
+            if (!ActiveSceneExists(key)) return;
 
             foreach (var scene in _activeScenes.Where(scene => key == scene.Key))
             {
@@ -147,7 +151,7 @@ namespace BFB.Engine.Scene
         /// <param name="key"></param>
         public void StopScene(string key)
         {
-            if (!ActiveSceneExist(key)) return;
+            if (!ActiveSceneExists(key)) return;
             
             foreach (var scene in _activeScenes.Where(scene => key == scene.Key))
             {
@@ -205,7 +209,7 @@ namespace BFB.Engine.Scene
 
         #endregion
 
-        #region ActiveSceneExist(string key)
+        #region ActiveSceneExists(string key)
 
         /// <summary>
         /// Checks if the scene is running or not
@@ -213,14 +217,14 @@ namespace BFB.Engine.Scene
         /// <param name="key"></param>
         /// <returns></returns>
         [UsedImplicitly]
-        public bool ActiveSceneExist(string key)
+        public bool ActiveSceneExists(string key)
         {
             return _activeScenes.Any(scene => key == scene.Key);
         }
 
         #endregion
 
-        #region SceneExist(string key)
+        #region SceneExists(string key)
 
         /// <summary>
         /// Checks if the scene exist regardless if it is running
@@ -228,7 +232,7 @@ namespace BFB.Engine.Scene
         /// <param name="key"></param>
         /// <returns></returns>
         [UsedImplicitly]
-        public bool SceneExist(string key)
+        public bool SceneExists(string key)
         {
             return _allScenes.ContainsKey(key);
         }

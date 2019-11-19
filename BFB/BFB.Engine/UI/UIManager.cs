@@ -57,20 +57,32 @@ namespace BFB.Engine.UI
 
         #endregion
         
-        #region Start
+        #region StartLayer
         
-        public void Start(string key)
+        public void StartLayer(string key)
         {
             StopLayers();
-            
-            if (_allUILayers.ContainsKey(key))
-            {
-                _activeUILayers.Add(key, _allUILayers[key]);
-                _allUILayers[key].Start();
 
-                BuildUILayer(key);
-                
-            }
+            if (!_allUILayers.ContainsKey(key)) return;
+            
+            _activeUILayers.Add(key, _allUILayers[key]);
+            _allUILayers[key].Start();
+
+            BuildUILayer(key);
+        }
+        
+        #endregion
+        
+        #region LaunchLayer
+
+        public void LaunchLayer(string key)
+        {
+            if (!LayerExists(key) || ActiveLayerExists(key)) return;
+            
+            // Add to active layers
+            _activeUILayers.Add(key, _allUILayers[key]);
+            
+            _activeUILayers[key].Start();
         }
         
         #endregion
@@ -100,11 +112,44 @@ namespace BFB.Engine.UI
         
         #endregion
 
+        #region GetLayer
         public UILayer GetLayer(string layerKey)
         {
             return _allUILayers.ContainsKey(layerKey) ? _allUILayers[layerKey] : null;
         }
         
+        #endregion
+        
+        #region ActiveLayerExists
+
+        /// <summary>
+        /// Checks if the layer is running or not
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        [UsedImplicitly]
+        public bool ActiveLayerExists(string key)
+        {
+            return _activeUILayers.Any(scene => key == scene.Key);
+        }
+
+        #endregion
+        
+        #region LayerExists
+         
+        /// <summary>
+        /// Checks if the layer exist regardless if it is running
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        [UsedImplicitly]
+        public bool LayerExists(string key)
+        {
+            return _allUILayers.ContainsKey(key);
+        }
+         
+        #endregion
+
         #region Draw
 
         public void Draw(SpriteBatch graphics)

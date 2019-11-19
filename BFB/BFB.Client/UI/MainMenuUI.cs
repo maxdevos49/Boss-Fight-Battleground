@@ -80,7 +80,7 @@ namespace BFB.Client.UI
                             h2.Button("Settings",
                                     clickAction: (e, a) =>
                                     {
-                                        UIManager.Start(nameof(SettingsUI));
+                                        UIManager.StartLayer(nameof(SettingsUI));
                                     })
                                 .Width(0.8f)
                                 .Height(0.8f)
@@ -94,7 +94,7 @@ namespace BFB.Client.UI
                             h2.Button("Help", 
                                     clickAction: (e, a) =>
                                     {
-                                        UIManager.Start(nameof(HelpUI));
+                                        UIManager.StartLayer(nameof(HelpUI));
                                     })
                                 .Width(0.8f)
                                 .Height(0.8f)
@@ -107,7 +107,7 @@ namespace BFB.Client.UI
                             h2.Button("Store",
                                     clickAction: (e, a) =>
                                     {
-                                        UIManager.Start(nameof(StoreUI));
+                                        UIManager.StartLayer(nameof(StoreUI));
                                     })
                                 .Width(0.8f)
                                 .Height(0.8f)

@@ -14,7 +14,7 @@ namespace BFB.Client.Scenes
 
         protected override void Init()
         {
-            UIManager.Start(nameof(MainMenuUI));
+            UIManager.StartLayer(nameof(MainMenuUI));
         }
         
         protected override void Load()

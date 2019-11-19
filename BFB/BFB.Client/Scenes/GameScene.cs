@@ -63,7 +63,7 @@ namespace BFB.Client.Scenes
             Client.Ip = layer.Model.Ip.Split(":")[0];
             Client.Port = Convert.ToInt32(layer.Model.Ip.Split(":")[1]);
             
-            UIManager.Start(nameof(LoadingGameUI));
+            UIManager.StartLayer(nameof(LoadingGameUI));
             
             /**
              * Scene events
@@ -117,7 +117,7 @@ namespace BFB.Client.Scenes
             {
                 GlobalEventManager.Emit("onConnectionStatus", new GlobalEvent("Ready..."));
                 _worldRenderer = new WorldRenderer(_world, GraphicsDeviceManager.GraphicsDevice);
-                UIManager.Start(nameof(HudUI));
+                UIManager.StartLayer(nameof(HudUI));
             };
             
             #endregion
@@ -126,7 +126,7 @@ namespace BFB.Client.Scenes
             
             Client.OnDisconnect = (m) =>
             {
-                UIManager.Start(nameof(LoadingGameUI));
+                UIManager.StartLayer(nameof(LoadingGameUI));
                 GlobalEventManager.Emit("onConnectionStatus", new GlobalEvent("Disconnected By Server"));
             };
             
@@ -195,7 +195,7 @@ namespace BFB.Client.Scenes
             AddInputListener("keypress", e =>
             {
                 if (e.Keyboard.KeyEnum == Keys.M)
-                    UIManager.Start(nameof(MonsterMenuUI));
+                    UIManager.StartLayer(nameof(MonsterMenuUI));
                 else if (e.Keyboard.KeyEnum == Keys.F3)
                     _worldRenderer.Debug = !_worldRenderer.Debug;
             });
