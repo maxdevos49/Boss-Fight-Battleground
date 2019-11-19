@@ -24,7 +24,8 @@ namespace BFB.Client.Scenes
 {
     public class PlayerConnectionScene : Scene
     {
-
+        #region Properties
+        
         private readonly object _lock;
         
 //        private readonly ClientSocketManager _server;
@@ -36,7 +37,11 @@ namespace BFB.Client.Scenes
         private readonly WorldManager _world;
 
         private readonly Dictionary<string, ClientEntity> _entities;
+        
+        #endregion
 
+        #region Constructor
+        
         public PlayerConnectionScene() : base(nameof(PlayerConnectionScene))
         {
             _lock = new object();
@@ -54,6 +59,7 @@ namespace BFB.Client.Scenes
             });
         }
 
+        #endregion
         
         #region Init
         protected override void Init()

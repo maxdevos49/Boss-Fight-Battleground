@@ -238,6 +238,7 @@ namespace BFB.Server
             _server.On("Chat", (m) =>
             {
                 _server.Emit("Chat", m);
+                Console.WriteLine(m.Message);
             });
             
             #endregion

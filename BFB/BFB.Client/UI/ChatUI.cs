@@ -50,7 +50,7 @@ namespace BFB.Client.UI
         {
             Debug = false;
 
-            Color background = new Color(0, 0, 0, 100);
+            Color grayBackground = new Color(0, 0, 0, 100);
 
             RootUI.Zstack(z1 =>
             {
@@ -64,20 +64,19 @@ namespace BFB.Client.UI
 
                         h1.Vstack(v2 =>
                         {
-                            v2.Text("Test message").Background(background);
-                            v2.Text("Test message").Background(background);
-                            v2.Text("Test message").Background(background);
-                            v2.Text("Test message").Background(background);
-                            v2.Text("Test message").Background(background);
-                            v2.Text("Test message").Background(background);
+                            v2.Text("Test message").Background(grayBackground);
+                            v2.Text("Test message").Background(grayBackground);
+                            v2.Text("Test message").Background(grayBackground);
+                            v2.Text("Test message").Background(grayBackground);
+                            v2.Text("Test message").Background(grayBackground);
+                            v2.Text("Test message").Background(grayBackground);
                             v2.TextBoxFor(_model, t => t.TextBoxText, keyPressAction: (e, a) =>
                             {
-                                if (e.Keyboard.KeyEnum == Keys.Enter)
-                                {
-                                    _chat.Send(_model.TextBoxText);
-                                    _model.TextBoxText = " ";
-                                }
-                            }).Background(background);
+                                if (e.Keyboard.KeyEnum != Keys.Enter) return;
+                                
+                                _chat.Send(_model.TextBoxText);
+                                _model.TextBoxText = "";
+                            }).Background(grayBackground);
                         }).Grow(2);
                     }).Grow(2);
                 });
@@ -90,8 +89,6 @@ namespace BFB.Client.UI
     public class ChatModel
     {
         public string TextBoxText { get; set; }
-
-        public List<string> Messages;
     }
 
     public class Chat
@@ -100,6 +97,8 @@ namespace BFB.Client.UI
 
         private ClientSocketManager _client;
 
+        #region Constructor
+        
         public Chat (ClientSocketManager client)
         {
             _client = client;
@@ -108,6 +107,8 @@ namespace BFB.Client.UI
             
             Receive();
         }
+        
+        #endregion
 
         public void Send(string message)
         {
@@ -127,6 +128,8 @@ namespace BFB.Client.UI
 
         public List<string> GetRecent()
         {
+            foreach(string chats in Chats)
+                Console.WriteLine(chats);
             return Chats.Count <= 5 ? Chats : Chats.GetRange(Chats.Count - 5, Chats.Count);
         }
     }
