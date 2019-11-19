@@ -31,7 +31,6 @@ namespace BFB.Engine.UI
         public static SceneManager SceneManager { get; set; }
         
         public static EventManager<GlobalEvent> GlobalEventManager { get; set; }
-//        public static EventManager<InputEvent> InputEventManager { get; set; }
         
         /// <summary>
         /// Used to indicate if the scene should be drawn in debug mode
@@ -42,6 +41,11 @@ namespace BFB.Engine.UI
         /// Represents the foundation of the UI
         /// </summary>
         public UIRootComponent RootUI { get; set; }
+        
+        /// <summary>
+        /// The scene that started the UILayer
+        /// </summary>
+        public Scene.Scene ParentScene { get; set; }
 
         /**
          * Indicates the current focus position of the tabIndex
@@ -242,8 +246,9 @@ namespace BFB.Engine.UI
         
         #region Start
 
-        public void Start()
+        public void Start(Scene.Scene parentScene)
         {
+            ParentScene = parentScene;
             Init();
         }
         
@@ -265,6 +270,7 @@ namespace BFB.Engine.UI
         /// </summary>
         public void Stop()
         {
+            ParentScene = null;
             RootUI = null;
             _eventIndex.Clear();
             _tabIndex.Clear();

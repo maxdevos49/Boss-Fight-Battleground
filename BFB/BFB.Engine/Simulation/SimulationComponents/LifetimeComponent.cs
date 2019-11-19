@@ -7,7 +7,6 @@ namespace BFB.Engine.Simulation.SimulationComponents
     /// </summary>
     public class LifetimeComponent : ISimulationComponent
     {
-
         private readonly int _lifetime;
         
         /// <summary>

@@ -42,7 +42,7 @@ namespace BFB.Client.UI
                                     .Width(1.5f);
 
                                 h2.Button("Purchase",
-                                        clickAction: (e, a) => { UIManager.Start(nameof(CreditCardUI)); })
+                                        clickAction: (e, a) => { UIManager.Start(nameof(CreditCardUI),ParentScene); })
                                     .Height(1.0f)
                                     .Width(0.6f)
                                     .Right(0)
@@ -56,7 +56,7 @@ namespace BFB.Client.UI
                                     .Height(1.0f)
                                     .Width(1.5f);
                                 h2.Button("Purchase",
-                                        clickAction: (e, a) => { UIManager.Start(nameof(CreditCardUI)); })
+                                        clickAction: (e, a) => { UIManager.Start(nameof(CreditCardUI),ParentScene); })
                                     .Height(1.0f)
                                     .Width(0.6f)
                                     .Right(0)
@@ -70,7 +70,7 @@ namespace BFB.Client.UI
                                     .Height(1.0f)
                                     .Width(1.5f);
                                 h2.Button("Purchase",
-                                        clickAction: (e, a) => { UIManager.Start(nameof(CreditCardUI)); })
+                                        clickAction: (e, a) => { UIManager.Start(nameof(CreditCardUI),ParentScene); })
                                     .Height(1.0f)
                                     .Width(0.6f)
                                     .Right(0)
@@ -94,7 +94,7 @@ namespace BFB.Client.UI
                                 h2.Hstack(h3 =>
                                 {
                                     h3.Button("Back",
-                                            clickAction: (e, a) => { UIManager.Start(nameof(MainMenuUI)); })
+                                            clickAction: (e, a) => { UIManager.Start(nameof(MainMenuUI),ParentScene); })
                                         .Height(0.8f)
                                         .Width(0.2f)
                                         .Right(0)

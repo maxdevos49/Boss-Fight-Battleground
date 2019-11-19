@@ -59,14 +59,14 @@ namespace BFB.Engine.UI
         
         #region Start
         
-        public void Start(string key)
+        public void Start(string key, Scene.Scene scene)
         {
             StopLayers();
             
             if (_allUILayers.ContainsKey(key))
             {
                 _activeUILayers.Add(key, _allUILayers[key]);
-                _allUILayers[key].Start();
+                _allUILayers[key].Start(scene);
 
                 BuildUILayer(key);
                 
@@ -109,7 +109,7 @@ namespace BFB.Engine.UI
 
         public void Draw(SpriteBatch graphics)
         {
-            foreach ((string _,UILayer uiLayer) in _activeUILayers)
+            foreach ((string _,UILayer uiLayer) in _activeUILayers.ToList())
             {
                 RenderComponents(uiLayer.RootUI, graphics, uiLayer);
             }

@@ -10,7 +10,7 @@
         },
         "ItemLifeTime":{ 
             "FullyQualifiedName": "LifetimeComponent",
-            "Singleton": "false",
+            "Singleton": false,
             "Options": [2000]
         }
         
@@ -20,7 +20,8 @@
             "FullyQualifiedName": "TODO"
         },
         "Building:Break": {
-            "FullyQualifiedName": "TODO"
+            "FullyQualifiedName": "TODO",
+            "Options": [5]
         },
         "Combat:Hit": {
             "FullyQualifiedName": "TODO"

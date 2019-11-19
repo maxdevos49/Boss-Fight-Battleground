@@ -12,14 +12,22 @@ namespace BFB.Client.Scenes
         {
         }
 
+        #region Init
+
         protected override void Init()
         {
-            UIManager.Start(nameof(MainMenuUI));
+            UIManager.Start(nameof(MainMenuUI),this);
         }
+
+        #endregion
+        
+        #region Load
         
         protected override void Load()
         {
         }
+
+        #endregion
         
         #region Update
         
