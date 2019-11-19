@@ -4,6 +4,7 @@ using System.Drawing;
 using BFB.Engine.Math;
 using BFB.Engine.Simulation.InputComponents;
 using BFB.Engine.Simulation.PhysicsComponents;
+using BFB.Engine.Simulation.SpellComponents.MainComponents;
 using BFB.Engine.TileMap;
 
 namespace BFB.Engine.Entity
@@ -49,6 +50,7 @@ namespace BFB.Engine.Entity
         private readonly IInputComponent _input;
         private readonly IPhysicsComponent _physics;
         public IPhysicsComponent Combat { get; }
+        public ISpellComponent Spell { get; }
 
         public Boolean isFacingRight;
 
@@ -69,6 +71,7 @@ namespace BFB.Engine.Entity
             _input = components.Input;
             _physics = components.Physics;
             Combat = components.Combat;
+            Spell = components.Spell;
             DesiredVector = new BfbVector();
             OldPosition = new BfbVector();
             VisibleChunks = new List<string>();
@@ -101,6 +104,7 @@ namespace BFB.Engine.Entity
             _input?.Update(this, simulation);
             _physics?.Update(this, simulation);
             Combat?.Update(this, simulation);
+            Spell?.Update(this, simulation);
 
             //Place entity in correct chunk if in new position
             string chunkKey =
