@@ -36,6 +36,7 @@ namespace BFB.Engine.Simulation.PhysicsComponents.Spells
             simulationEntity.DesiredVector.X = _acceleration.X * 30;
             simulationEntity.DesiredVector.Y = _acceleration.Y  * 30;
 
+            //MATH IS HARD!!
             //simulationEntity.DesiredVector.Y *= MathF.Sin(_random.Next(1, 10));
 
             //Creates the new velocity
@@ -48,6 +49,24 @@ namespace BFB.Engine.Simulation.PhysicsComponents.Spells
             CheckCollisions(simulationEntity, simulation);
         }
 
+        public void OnUse(SimulationEntity simulationEntity, Simulation simulation, BfbVector mouse)
+        {
+            BfbVector directionVector = new BfbVector(mouse.X - simulationEntity.Position.X, mouse.Y - simulationEntity.Position.Y);
+            float direction = (float)System.Math.Atan2(directionVector.Y, directionVector.X);
+            simulation.AddEntity(new SimulationEntity(
+                Guid.NewGuid().ToString(),
+                new EntityOptions()
+                {
+                    AnimatedTextureKey = "Missile",
+                    Position = new BfbVector(simulationEntity.Position.X, simulationEntity.Position.Y),
+                    Dimensions = new BfbVector(50, 50),
+                    Rotation = direction + (float)(System.Math.PI / 2),
+                    Origin = new BfbVector(25, 25),
+                }, new ComponentOptions()
+                {
+                    Physics = new MagicMissileSpellPhysicsComponent(directionVector, simulationEntity)
+                }));
+        }
         private void CheckCollisions(SimulationEntity simulationEntity, Simulation simulation)
         {
             // Collisions with monsters

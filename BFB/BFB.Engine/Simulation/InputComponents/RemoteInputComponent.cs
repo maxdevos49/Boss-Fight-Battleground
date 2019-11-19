@@ -75,38 +75,6 @@ namespace BFB.Engine.Simulation.InputComponents
                             Physics = new SkeletonPhysicsComponent(),
                             Input = new AIInputComponent()
                         }));*/
-
-                        /*BfbVector directionVector = new BfbVector(mouseX - simulationEntity.Position.X, mouseY - simulationEntity.Position.Y);
-                        float direction = (float)System.Math.Atan2(directionVector.Y, directionVector.X);
-                        simulation.AddEntity(new SimulationEntity(
-                            Guid.NewGuid().ToString(),
-                            new EntityOptions()
-                            {
-                                AnimatedTextureKey = "Fireball",
-                                Position = new BfbVector(simulationEntity.Position.X, simulationEntity.Position.Y),
-                                Dimensions = new BfbVector(50, 50),
-                                Rotation = direction + (float)(System.Math.PI / 2),
-                                Origin = new BfbVector(25,25),
-                            }, new ComponentOptions()
-                            {
-                                Physics = new FireballSpellPhysicsComponent(directionVector, simulationEntity)
-                            }));*/
-
-                        BfbVector directionVector = new BfbVector(mouseX - simulationEntity.Position.X, mouseY - simulationEntity.Position.Y);
-                        float direction = (float)System.Math.Atan2(directionVector.Y, directionVector.X);
-                        simulation.AddEntity(new SimulationEntity(
-                            Guid.NewGuid().ToString(),
-                            new EntityOptions()
-                            {
-                                AnimatedTextureKey = "Missile",
-                                Position = new BfbVector(simulationEntity.Position.X, simulationEntity.Position.Y),
-                                Dimensions = new BfbVector(50, 50),
-                                Rotation = direction + (float)(System.Math.PI / 2),
-                                Origin = new BfbVector(25, 25),
-                            }, new ComponentOptions()
-                            {
-                                Physics = new MagicMissileSpellPhysicsComponent(directionVector, simulationEntity)
-                            }));
                 }
 
                 //Check block placement

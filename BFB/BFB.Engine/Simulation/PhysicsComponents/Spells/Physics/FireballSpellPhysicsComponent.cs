@@ -7,13 +7,13 @@ using Microsoft.Xna.Framework;
 
 namespace BFB.Engine.Simulation.PhysicsComponents
 {
-    public class SpellPhysicsComponent : IPhysicsComponent
+    public class FireballSpellPhysicsComponent : IPhysicsComponent
     {
         private int timeToLive;
         private readonly SimulationEntity _owner;
         private readonly BfbVector _acceleration;
 
-        public SpellPhysicsComponent(BfbVector direction, SimulationEntity owner)
+        public FireballSpellPhysicsComponent(BfbVector direction, SimulationEntity owner)
         {
             _owner = owner;
             Vector2 directionNorm = direction.ToVector2();
