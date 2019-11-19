@@ -4,7 +4,7 @@ using BFB.Engine.Inventory;
 using BFB.Engine.Math;
 using BFB.Engine.Simulation.InputComponents;
 using BFB.Engine.Simulation.PhysicsComponents;
-using BFB.Engine.Simulation.SimulationComponents;
+using BFB.Engine.Simulation.SpellComponents.MainComponents;
 using BFB.Engine.TileMap;
 
 namespace BFB.Engine.Entity
@@ -62,7 +62,11 @@ namespace BFB.Engine.Entity
 
         public readonly IPhysicsComponent Physics;
         private readonly IInputComponent _input;
-        private readonly List<ISimulationComponent> _gameComponents;
+        private readonly IPhysicsComponent _physics;
+        public IPhysicsComponent Combat { get; }
+        public ISpellComponent Spell { get; }
+
+        public Boolean isFacingRight;
 
         #endregion
 
@@ -77,7 +81,12 @@ namespace BFB.Engine.Entity
         public SimulationEntity(string entityId, EntityOptions options, ComponentOptions components) : base(entityId,
             options)
         {
-            SteeringVector = new BfbVector();
+            //Components
+            _input = components.Input;
+            _physics = components.Physics;
+            Combat = components.Combat;
+            Spell = components.Spell;
+            DesiredVector = new BfbVector();
             OldPosition = new BfbVector();
             VisibleChunks = new List<string>();
             ChunkVersions = new Dictionary<string, int>();
@@ -115,15 +124,9 @@ namespace BFB.Engine.Entity
 
             //Component Processing
             _input?.Update(this, simulation);
-            Physics?.Update(this, simulation);
-
-            foreach (ISimulationComponent gameComponent in _gameComponents)
-            {
-                gameComponent.Update(this,simulation);
-            }
-
-
-
+            _physics?.Update(this, simulation);
+            Combat?.Update(this, simulation);
+            Spell?.Update(this, simulation);
 
             //Place entity in correct chunk if in new position
             string chunkKey =

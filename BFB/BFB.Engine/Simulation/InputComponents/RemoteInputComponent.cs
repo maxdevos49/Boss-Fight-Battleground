@@ -1,13 +1,13 @@
 using System;
 using System.Collections.Generic;
+using System.Numerics;
 using System.Security.Claims;
 using BFB.Engine.Entity;
 using BFB.Engine.Input.PlayerInput;
 using BFB.Engine.Math;
 using BFB.Engine.Server;
 using BFB.Engine.Server.Communication;
-using BFB.Engine.Simulation.PhysicsComponents;
-using BFB.Engine.Simulation.SimulationComponents;
+using BFB.Engine.Simulation.SpellComponents.MainComponents;
 using BFB.Engine.TileMap;
 
 namespace BFB.Engine.Simulation.InputComponents
@@ -54,14 +54,16 @@ namespace BFB.Engine.Simulation.InputComponents
         {
             lock (_lock)
             {
-                #region Tom SpawnMonster
-                
-                //Add an AI monster//TODO
+                //Set Mouse Position
+                int mouseX = (int)(_playerState.Mouse.X + 0);
+                int mouseY = (int)(_playerState.Mouse.Y + 0);
+
+                //Add an AI monster
                 if (_playerState.RightClick)
                 {
 
                     //Add to simulation
-                    simulation.AddEntity(new SimulationEntity(
+                    /*simulation.AddEntity(new SimulationEntity(
                         Guid.NewGuid().ToString(),
                         new EntityOptions
                         {
@@ -73,13 +75,9 @@ namespace BFB.Engine.Simulation.InputComponents
                             EntityType = EntityType.Mob
                         }, new ComponentOptions
                         {
-                            Physics = new WalkingPhysicsComponent(),
-                            Input = new AIInputComponent(),
-                            GameComponents = new List<ISimulationComponent>
-                            {
-                                new WalkingAnimationComponent()
-                            }
-                        }));
+                            Physics = new SkeletonPhysicsComponent(),
+                            Input = new AIInputComponent()
+                        }));*/
                 }
 
                 #endregion
@@ -116,10 +114,10 @@ namespace BFB.Engine.Simulation.InputComponents
                     
                     #endregion
 
-                    #region Break or place Blocks
-                    
-                    int mouseX = (int)_playerState.Mouse.X;
-                    int mouseY = (int)_playerState.Mouse.Y;
+                    if (_playerState.RightClick)
+                    {
+                        (simulationEntity.Spell).OnUse(simulationEntity, simulation, new BfbVector(mouseX, mouseY));
+                    }
 
                     Tuple<int, int, int, int> chunkInformation =
                         simulation.World.TranslatePixelPosition(mouseX, mouseY);

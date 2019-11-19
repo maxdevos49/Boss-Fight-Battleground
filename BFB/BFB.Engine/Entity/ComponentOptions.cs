@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using BFB.Engine.Simulation.InputComponents;
 using BFB.Engine.Simulation.PhysicsComponents;
-using BFB.Engine.Simulation.SimulationComponents;
+using BFB.Engine.Simulation.SpellComponents.MainComponents;
 
 namespace BFB.Engine.Entity
 {
@@ -10,8 +10,8 @@ namespace BFB.Engine.Entity
         public IInputComponent Input { get; set; }
         
         public IPhysicsComponent Physics { get; set; }
-        
-        public List<ISimulationComponent> GameComponents { get; set; }
+        public IPhysicsComponent Combat { get; set; }
+        public ISpellComponent Spell { get; set; }
     }
 
 }

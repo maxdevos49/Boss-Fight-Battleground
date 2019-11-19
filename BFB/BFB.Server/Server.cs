@@ -126,15 +126,9 @@ namespace BFB.Server
                             CollideWithFilters = new List<string>{"tile","item","projectile", "melee"}
                         },
                         Input = new RemoteInputComponent(socket),
-                        GameComponents = new List<ISimulationComponent>
-                        {
-                            new WalkingAnimationComponent(),
-                            new CombatComponent()
-                        }
-                    })
-                {
-                    Inventory = new InventoryManager(10)
-                }, true);
+                        Combat = new CombatComponent(),
+                        Spell = new BFB.Engine.Simulation.SpellComponents.MainComponents.MagicMissileSpellComponent()
+                    }), true);
                 
                 _server.PrintMessage($"Client {socket.ClientId} Ready and added to Simulation");
 
