@@ -4,9 +4,9 @@ using System.Linq;
 using System.Threading;
 using BFB.Engine.Entity;
 using BFB.Engine.Server.Communication;
+using BFB.Engine.Simulation.BlockComponent;
 using BFB.Engine.TileMap;
 using BFB.Engine.TileMap.Generators;
-using BFB.Engine.TileMap.TileComponent;
 
 namespace BFB.Engine.Simulation
 {

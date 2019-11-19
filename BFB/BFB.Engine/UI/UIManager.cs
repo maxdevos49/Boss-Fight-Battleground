@@ -59,14 +59,25 @@ namespace BFB.Engine.UI
         
         #region StartLayer
         
+<<<<<<< HEAD
         public void StartLayer(string key)
+=======
+        public void Start(string key, Scene.Scene scene)
+>>>>>>> 25eb9767d2ff3738c9e8f07fa547477d11c8cf6b
         {
             StopLayers();
 
             if (!_allUILayers.ContainsKey(key)) return;
             
+<<<<<<< HEAD
             _activeUILayers.Add(key, _allUILayers[key]);
             _allUILayers[key].Start();
+=======
+            if (_allUILayers.ContainsKey(key))
+            {
+                _activeUILayers.Add(key, _allUILayers[key]);
+                _allUILayers[key].Start(scene);
+>>>>>>> 25eb9767d2ff3738c9e8f07fa547477d11c8cf6b
 
             BuildUILayer(key);
         }
@@ -154,7 +165,7 @@ namespace BFB.Engine.UI
 
         public void Draw(SpriteBatch graphics)
         {
-            foreach ((string _,UILayer uiLayer) in _activeUILayers)
+            foreach ((string _,UILayer uiLayer) in _activeUILayers.ToList())
             {
                 RenderComponents(uiLayer.RootUI, graphics, uiLayer);
             }

@@ -57,25 +57,30 @@ namespace BFB.Engine.Simulation.InputComponents
                 #region Tom SpawnMonster
                 
                 //Add an AI monster//TODO
-//                if (_playerState.RightClick)
-//                {
-//
-//                    //Add to simulation
-//                    simulation.AddEntity(new SimulationEntity(
-//                        Guid.NewGuid().ToString(),
-//                        new EntityOptions
-//                        {
-//                            AnimatedTextureKey = "Skeleton",
-//                            Position = new BfbVector(_playerState.Mouse.X, _playerState.Mouse.Y),
-//                            Dimensions = new BfbVector(2 * simulation.World.WorldOptions.WorldScale, 3 * simulation.World.WorldOptions.WorldScale),
-//                            Rotation = 0,
-//                            Origin = new BfbVector(0, 0),
-//                        }, new ComponentOptions
-//                        {
-//                            Physics = new WalkingPhysicsComponent(),
-//                            Input = new AIInputComponent()
-//                        }));
-//                }
+                if (_playerState.RightClick)
+                {
+
+                    //Add to simulation
+                    simulation.AddEntity(new SimulationEntity(
+                        Guid.NewGuid().ToString(),
+                        new EntityOptions
+                        {
+                            AnimatedTextureKey = "Skeleton",
+                            Position = new BfbVector(_playerState.Mouse.X, _playerState.Mouse.Y),
+                            Dimensions = new BfbVector(2 * simulation.World.WorldOptions.WorldScale, 3 * simulation.World.WorldOptions.WorldScale),
+                            Rotation = 0,
+                            Origin = new BfbVector(0, 0),
+                            EntityType = EntityType.Mob
+                        }, new ComponentOptions
+                        {
+                            Physics = new WalkingPhysicsComponent(),
+                            Input = new AIInputComponent(),
+                            GameComponents = new List<ISimulationComponent>
+                            {
+                                new WalkingAnimationComponent()
+                            }
+                        }));
+                }
 
                 #endregion
 

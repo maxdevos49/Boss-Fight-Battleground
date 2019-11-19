@@ -42,7 +42,11 @@ namespace BFB.Client.UI
                                     .Width(1.5f);
 
                                 h2.Button("Purchase",
+<<<<<<< HEAD
                                         clickAction: (e, a) => { UIManager.StartLayer(nameof(CreditCardUI)); })
+=======
+                                        clickAction: (e, a) => { UIManager.Start(nameof(CreditCardUI),ParentScene); })
+>>>>>>> 25eb9767d2ff3738c9e8f07fa547477d11c8cf6b
                                     .Height(1.0f)
                                     .Width(0.6f)
                                     .Right(0)
@@ -56,7 +60,11 @@ namespace BFB.Client.UI
                                     .Height(1.0f)
                                     .Width(1.5f);
                                 h2.Button("Purchase",
+<<<<<<< HEAD
                                         clickAction: (e, a) => { UIManager.StartLayer(nameof(CreditCardUI)); })
+=======
+                                        clickAction: (e, a) => { UIManager.Start(nameof(CreditCardUI),ParentScene); })
+>>>>>>> 25eb9767d2ff3738c9e8f07fa547477d11c8cf6b
                                     .Height(1.0f)
                                     .Width(0.6f)
                                     .Right(0)
@@ -70,7 +78,11 @@ namespace BFB.Client.UI
                                     .Height(1.0f)
                                     .Width(1.5f);
                                 h2.Button("Purchase",
+<<<<<<< HEAD
                                         clickAction: (e, a) => { UIManager.StartLayer(nameof(CreditCardUI)); })
+=======
+                                        clickAction: (e, a) => { UIManager.Start(nameof(CreditCardUI),ParentScene); })
+>>>>>>> 25eb9767d2ff3738c9e8f07fa547477d11c8cf6b
                                     .Height(1.0f)
                                     .Width(0.6f)
                                     .Right(0)
@@ -94,7 +106,11 @@ namespace BFB.Client.UI
                                 h2.Hstack(h3 =>
                                 {
                                     h3.Button("Back",
+<<<<<<< HEAD
                                             clickAction: (e, a) => { UIManager.StartLayer(nameof(MainMenuUI)); })
+=======
+                                            clickAction: (e, a) => { UIManager.Start(nameof(MainMenuUI),ParentScene); })
+>>>>>>> 25eb9767d2ff3738c9e8f07fa547477d11c8cf6b
                                         .Height(0.8f)
                                         .Width(0.2f)
                                         .Right(0)

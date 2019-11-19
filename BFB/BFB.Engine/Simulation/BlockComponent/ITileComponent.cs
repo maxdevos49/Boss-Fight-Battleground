@@ -1,4 +1,6 @@
-namespace BFB.Engine.TileMap.TileComponent
+using BFB.Engine.TileMap;
+
+namespace BFB.Engine.Simulation.BlockComponent
 {
     /// <summary>
     /// The interface to implement the tile component.

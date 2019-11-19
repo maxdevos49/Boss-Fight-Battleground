@@ -112,27 +112,16 @@ namespace BFB.Engine.Input.PlayerInput
         public PlayerState GetPlayerState()
         {
             _inputChange = false;
-            return Clone();
+            return _playerState.Clone();
         }
         
+        ///<summary>
+        /// Allows viewing of the player state without indicating that the input had been updated
+        /// </summary>
+        /// <returns></returns>
         public PlayerState PeekPlayerState()
         {
-            return Clone();
-        }
-
-        public PlayerState Clone()
-        {
-            return new PlayerState
-            {
-                Left = _playerState.Left,
-                Right = _playerState.Right,
-                Jump = _playerState.Jump,
-                Attack = _playerState.Attack,
-                SwitchWeapon = _playerState.SwitchWeapon,
-                LeftClick = _playerState.LeftClick,
-                RightClick = _playerState.RightClick,
-                Mouse =new BfbVector(_playerState.Mouse.X,_playerState.Mouse.Y) 
-            };
+            return _playerState.Clone();
         }
 
         /// <summary>

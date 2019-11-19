@@ -1,6 +1,7 @@
 using System;
+using BFB.Engine.TileMap;
 
-namespace BFB.Engine.TileMap.TileComponent
+namespace BFB.Engine.Simulation.BlockComponent
 {
     /// <summary>
     /// Used to have a tile spread in the tilemap.

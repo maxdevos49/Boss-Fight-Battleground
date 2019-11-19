@@ -30,5 +30,20 @@ namespace BFB.Engine.Input.PlayerInput
             Mouse = new BfbVector(0,0);
 
         }
+        
+        public PlayerState Clone()
+        {
+            return new PlayerState
+            {
+                Left = Left,
+                Right = Right,
+                Jump = Jump,
+                Attack = Attack,
+                SwitchWeapon = SwitchWeapon,
+                LeftClick = LeftClick,
+                RightClick = RightClick,
+                Mouse =new BfbVector(Mouse.X,Mouse.Y) 
+            };
+        }
     }
 }

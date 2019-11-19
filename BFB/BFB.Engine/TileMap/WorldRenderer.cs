@@ -74,7 +74,7 @@ namespace BFB.Engine.TileMap
         
         #region Draw
 
-        public void Draw(SpriteBatch graphics, WorldManager world, IEnumerable<ClientEntity> entities, BFBContentManager content)
+        public void Draw(SpriteBatch graphics, WorldManager world, IEnumerable<ClientEntity> entities, PlayerInput input, BFBContentManager content)
         {
             //Start different graphics layer
             graphics.End();
@@ -101,32 +101,42 @@ namespace BFB.Engine.TileMap
                 {
                     int xPosition = x * _tileScale;
                     int yPosition = y * _tileScale;
-                    
-                    switch((WorldTile)world.GetWall(x, y))
-                    {
-                        case WorldTile.Dirt:
-                            graphics.Draw(content.GetTexture("dirt"), new Rectangle(xPosition,yPosition,_tileScale,_tileScale ),Color.White);
-                            graphics.Draw(content.GetTexture("default"), new Rectangle(xPosition,yPosition,_tileScale,_tileScale ),new Color(0,0,0,0.4f));
-                            break;
-                        case WorldTile.Stone:
-                            graphics.Draw(content.GetTexture("stone"), new Rectangle(xPosition,yPosition,_tileScale,_tileScale ),Color.White);
-                            graphics.Draw(content.GetTexture("default"), new Rectangle(xPosition,yPosition,_tileScale,_tileScale ),new Color(0,0,0,0.4f));
-                            break;
-                    }
-                    
 
-                    
-                    switch(world.GetBlock(x, y))//TODO change so not switch statement but add a special content type for blocks
+                    if (world.GetBlock(x, y) == WorldTile.Air)
                     {
-                        case WorldTile.Grass:
-                            graphics.Draw(content.GetTexture("grass"), new Rectangle(xPosition,yPosition,_tileScale,_tileScale ),Color.White);
-                            break;
-                        case WorldTile.Dirt:
-                            graphics.Draw(content.GetTexture("dirt"), new Rectangle(xPosition,yPosition,_tileScale,_tileScale ),Color.White);
-                            break;
-                        case WorldTile.Stone:
-                            graphics.Draw(content.GetTexture("stone"), new Rectangle(xPosition,yPosition,_tileScale,_tileScale ),Color.White);
-                            break;
+
+                        switch ((WorldTile) world.GetWall(x, y))
+                        {
+                            case WorldTile.Dirt:
+                                graphics.Draw(content.GetTexture("dirt"),
+                                    new Rectangle(xPosition, yPosition, _tileScale, _tileScale), Color.White);
+                                graphics.Draw(content.GetTexture("default"),
+                                    new Rectangle(xPosition, yPosition, _tileScale, _tileScale),
+                                    new Color(0, 0, 0, 0.4f));
+                                break;
+                            case WorldTile.Stone:
+                                graphics.Draw(content.GetTexture("stone"),
+                                    new Rectangle(xPosition, yPosition, _tileScale, _tileScale), Color.White);
+                                graphics.Draw(content.GetTexture("default"),
+                                    new Rectangle(xPosition, yPosition, _tileScale, _tileScale),
+                                    new Color(0, 0, 0, 0.4f));
+                                break;
+                        }
+                    }
+                    else
+                    {
+                        switch(world.GetBlock(x, y))//TODO change so not switch statement but add a special content type for blocks
+                        {
+                            case WorldTile.Grass:
+                                graphics.Draw(content.GetTexture("grass"), new Rectangle(xPosition,yPosition,_tileScale,_tileScale ),Color.White);
+                                break;
+                            case WorldTile.Dirt:
+                                graphics.Draw(content.GetTexture("dirt"), new Rectangle(xPosition,yPosition,_tileScale,_tileScale ),Color.White);
+                                break;
+                            case WorldTile.Stone:
+                                graphics.Draw(content.GetTexture("stone"), new Rectangle(xPosition,yPosition,_tileScale,_tileScale ),Color.White);
+                                break;
+                        }
                     }
                
                 }
@@ -204,7 +214,7 @@ namespace BFB.Engine.TileMap
             Tuple<int, int> location = world.BlockLocationFromPixel((int)playerState.Mouse.X, (int)playerState.Mouse.Y);
             graphics.DrawBackedText($"Mouse-X: {(int)playerState.Mouse.X}, Mouse-Y: {(int)playerState.Mouse.Y}", new BfbVector(xPos,yPos += offset),content,0.5f);
             graphics.DrawBackedText($"Block-X: {location.Item1}, Block-Y: {location.Item2}, Block: {world.GetBlock(location.Item1,location.Item2)}, Wall: {(WorldTile)world.GetWall(location.Item1,location.Item2)}", new BfbVector(xPos,yPos += offset),content,0.5f );
-            graphics.DrawBackedText($"Entities: {entities.Count}, Players: {entities.Count(x => x.EntityType == EntityType.Player)}, Items: {entities.Count(x => x.EntityType == EntityType.Item)}", new BfbVector(xPos,yPos += offset),content,0.5f);
+            graphics.DrawBackedText($"Entities: {entities.Count}, Players: {entities.Count(x => x.EntityType == EntityType.Player)}, Items: {entities.Count(x => x.EntityType == EntityType.Item)}, Mobs: {entities.Count(x => x.EntityType == EntityType.Mob)}", new BfbVector(xPos,yPos += offset),content,0.5f);
             
             graphics.DrawBackedText("Press F3 to exit Debug", new BfbVector(xPos,yPos += offset*2),content,0.5f);
             

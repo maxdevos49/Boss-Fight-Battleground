@@ -1,6 +1,7 @@
 using System.Collections.Generic;
+using BFB.Engine.TileMap;
 
-namespace BFB.Engine.TileMap.TileComponent
+namespace BFB.Engine.Simulation.BlockComponent
 {
     /// <summary>
     /// Used to manage the tile component.

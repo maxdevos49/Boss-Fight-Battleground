@@ -33,7 +33,11 @@ namespace BFB.Client.UI
                     v1.Hstack(h2 =>
                     {
                         h2.Button("Spider // TODO",
+<<<<<<< HEAD
                                 clickAction: (e, a) => { UIManager.StartLayer(nameof(HudUI)); })
+=======
+                                clickAction: (e, a) => { UIManager.Start(nameof(HudUI),ParentScene); })
+>>>>>>> 25eb9767d2ff3738c9e8f07fa547477d11c8cf6b
                             .Height(0.8f)
                             .Width(0.8f)
                             .Image("button")
@@ -43,7 +47,11 @@ namespace BFB.Client.UI
                     v1.Hstack(h2 =>
                     {
                         h2.Button("Skeleton // TODO",
+<<<<<<< HEAD
                                 clickAction: (e, a) => { UIManager.StartLayer(nameof(HudUI)); })
+=======
+                                clickAction: (e, a) => { UIManager.Start(nameof(HudUI),ParentScene); })
+>>>>>>> 25eb9767d2ff3738c9e8f07fa547477d11c8cf6b
                             .Height(0.8f)
                             .Width(0.8f)
                             .Image("button")
@@ -53,7 +61,11 @@ namespace BFB.Client.UI
                     v1.Hstack(h2 =>
                     {
                         h2.Button("Zombie // TODO",
+<<<<<<< HEAD
                                 clickAction: (e, a) => { UIManager.StartLayer(nameof(HudUI)); })
+=======
+                                clickAction: (e, a) => { UIManager.Start(nameof(HudUI),ParentScene); })
+>>>>>>> 25eb9767d2ff3738c9e8f07fa547477d11c8cf6b
                             .Height(0.8f)
                             .Width(0.8f)
                             .Image("button")
@@ -63,7 +75,11 @@ namespace BFB.Client.UI
                     v1.Hstack(h2 =>
                     {
                         h2.Button("THE BOSS // TODO",
+<<<<<<< HEAD
                                 clickAction: (e, a) => { UIManager.StartLayer(nameof(HudUI)); })
+=======
+                                clickAction: (e, a) => { UIManager.Start(nameof(HudUI),ParentScene); })
+>>>>>>> 25eb9767d2ff3738c9e8f07fa547477d11c8cf6b
                             .Height(0.8f)
                             .Width(0.8f)
                             .Image("button")
