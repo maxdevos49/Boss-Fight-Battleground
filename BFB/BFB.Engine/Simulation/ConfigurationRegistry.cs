@@ -1,8 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using BFB.Engine.Content;
-using BFB.Engine.Inventory;
 using BFB.Engine.Inventory.Configuration;
 using BFB.Engine.Simulation.ItemComponents;
 using BFB.Engine.Simulation.SimulationComponents;
@@ -28,7 +26,7 @@ namespace BFB.Engine.Simulation
         
         private Dictionary<WorldTile, WallConfiguration> _wallConfiguration;
 
-        private Dictionary<string, IItemComponent> _itemComponents;
+        private readonly Dictionary<string, IItemComponent> _itemComponents;
 
         #region Constructor
         
@@ -124,7 +122,8 @@ namespace BFB.Engine.Simulation
         private void ParseItemComponents()
         {
             _itemComponents.Add("PlaceBlock", new PlaceTileComponent());
-            _itemComponents.Add("BreakBlock", new BreakTileComponent());
+            _itemComponents.Add("BreakBlock", new BreakBlockComponent());
+            _itemComponents.Add("BreakWall", new BreakWallComponent());
             _itemComponents.Add("Hit", new HitComponent());
         }
         
@@ -144,14 +143,14 @@ namespace BFB.Engine.Simulation
 
         #region GetSimulationComponent(TODO)
         
-        public SimulationComponent GetSimulationComponent(string componentKey)
+        public EntityComponent GetSimulationComponent(string componentKey)
         {
             throw new NotImplementedException();
         }
         #endregion
         
         #region GetSingletonSimulationComponent(TODO)
-        public SimulationComponent GetSingletonSimulationComponent(string componentKey)
+        public EntityComponent GetSingletonSimulationComponent(string componentKey)
         {
             throw new NotImplementedException();
         }

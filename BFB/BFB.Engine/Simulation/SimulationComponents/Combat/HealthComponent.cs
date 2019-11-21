@@ -5,22 +5,22 @@ using BFB.Engine.Helpers;
 
 namespace BFB.Engine.Simulation.SimulationComponents.Combat
 {
-    public class CombatComponent : SimulationComponent
+    public class HealthComponent : EntityComponent
     { 
-        public CombatComponent() : base(false) { }
+        public HealthComponent() : base(false) { }
 
         public override void Init(SimulationEntity entity)
         {
             if(entity.Meta == null)
                 entity.Meta = new EntityMeta();
             
+            //Human defaults
             entity.Meta.Health = 20;
             entity.Meta.Mana = 1000;
         }
 
         public override void Update(SimulationEntity entity, Simulation simulation)
         {
-            
             if (entity.Meta?.Health <= 0)
                 OnDeath(entity, simulation);
         }
@@ -32,14 +32,21 @@ namespace BFB.Engine.Simulation.SimulationComponents.Combat
                 simulation.RemoveEntity(entity.EntityId);
                 return;
             }
+            
+            Console.WriteLine("YOU'VE DIED!");
 
+
+            Respawn(simulation,entity);
+        }
+
+        private void Respawn(Simulation simulation, SimulationEntity entity)
+        {
+            //Respawn
             entity.Position.X = 100;
             entity.Position.Y = 100;
             
             if (entity.Meta != null) 
                 entity.Meta.Health = 20;
-            Console.WriteLine("YOU'VE DIED!");
-//            simulation.RemoveEntity(entity.EntityId);
         }
 
     }

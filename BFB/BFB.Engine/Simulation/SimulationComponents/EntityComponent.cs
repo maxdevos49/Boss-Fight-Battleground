@@ -3,7 +3,7 @@ using BFB.Engine.Entity;
 
 namespace BFB.Engine.Simulation.SimulationComponents
 {
-    public abstract class SimulationComponent
+    public abstract class EntityComponent
     {
         /// <summary>
         /// If this is true then this component can only be used by players
@@ -14,7 +14,7 @@ namespace BFB.Engine.Simulation.SimulationComponents
         /// Constructs a Simulation Component
         /// </summary>
         /// <param name="requiresPlayer">A boolean indicating if it requires a player</param>
-        protected SimulationComponent(bool requiresPlayer)
+        protected EntityComponent(bool requiresPlayer)
         {
             RequiresPlayer = requiresPlayer;
         }

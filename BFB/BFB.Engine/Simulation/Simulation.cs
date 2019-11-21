@@ -202,7 +202,7 @@ namespace BFB.Engine.Simulation
 
         #region GetEntityAtPosition
 
-        public SimulationEntity GetEntityAtPosition(int x, int y)
+        public SimulationEntity GetEntityAtPosition(int x, int y)//TODO
         {
             float tileSize = World.WorldOptions.WorldScale;
             foreach (KeyValuePair<string, SimulationEntity> player in _playerEntitiesIndex)

@@ -8,7 +8,7 @@ namespace BFB.Engine.Simulation.PhysicsComponents
     /// <summary>
     /// A player physics component that is used for normal walking like physics
     /// </summary>
-    public class  WalkingPhysics: SimulationComponent,  IPhysics
+    public class  WalkingPhysics: EntityComponent,  IPhysics
     {
         public BfbVector Acceleration { get; set; }
         public BfbVector MaxSpeed { get; set; }

@@ -81,13 +81,13 @@ namespace BFB.Engine.Graphics.GraphicsComponents
                 !_currentAnimationSet.Mirror ? SpriteEffects.None : SpriteEffects.FlipHorizontally,
                 1);
 
-            if (entity.HoldingTexture == null)
+            if (entity.Meta?.Holding?.AtlasKey == null)
                 return;
 
             int x = entity.Facing == DirectionFacing.Left ? entity.Left : entity.Right - 15;
             int y = (int)(entity.Height / 2f + entity.Position.Y);
 
-            graphics.DrawAtlas(contentManager.GetAtlasTexture(entity.HoldingTexture), new Rectangle(x, y, 30,30), Color.White, 0.6f);
+            graphics.DrawAtlas(contentManager.GetAtlasTexture(entity.Meta.Holding.AtlasKey), new Rectangle(x, y, 30,30), Color.White, 0.6f);
         }
     }
 }

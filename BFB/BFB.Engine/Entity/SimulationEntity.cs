@@ -92,7 +92,7 @@ namespace BFB.Engine.Entity
         /// <summary>
         /// Game Components
         /// </summary>
-        private readonly List<SimulationComponent> _gameComponents;
+        private readonly List<EntityComponent> _gameComponents;
 
         #endregion
 
@@ -105,7 +105,7 @@ namespace BFB.Engine.Entity
         /// <param name="options">Sets the initial properties of this entity</param>
         /// <param name="gameComponents">The components this entity contains</param>
         /// <param name="socket">The socket object if the entity is a player</param>
-        public SimulationEntity(string entityId, EntityOptions options,List<SimulationComponent> gameComponents, ClientSocket socket = null) : base(entityId, options)
+        public SimulationEntity(string entityId, EntityOptions options,List<EntityComponent> gameComponents, ClientSocket socket = null) : base(entityId, options)
         {
             _currentTick = -1;
             TicksSinceCreation = -1;
@@ -127,7 +127,7 @@ namespace BFB.Engine.Entity
                 Socket = socket;
             }
 
-            foreach (SimulationComponent simulationComponent in _gameComponents)
+            foreach (EntityComponent simulationComponent in _gameComponents)
                 simulationComponent.Init(this);
         }
 
@@ -154,7 +154,7 @@ namespace BFB.Engine.Entity
             OldPosition = new BfbVector(Position.X, Position.Y);
 
             //the future
-            foreach (SimulationComponent gameComponent in _gameComponents)
+            foreach (EntityComponent gameComponent in _gameComponents)
             {
                 gameComponent.Update(this,simulation);
             }
@@ -212,7 +212,7 @@ namespace BFB.Engine.Entity
         {
             bool defaultAction = true;
             
-            foreach (SimulationComponent simulationComponent in _gameComponents)
+            foreach (EntityComponent simulationComponent in _gameComponents)
             {
                 if(!simulationComponent.OnEntityCollision(simulation, this, otherEntity))
                     defaultAction = false;
@@ -229,7 +229,7 @@ namespace BFB.Engine.Entity
         {
             bool defaultAction = true;
             
-            foreach (SimulationComponent simulationComponent in _gameComponents)
+            foreach (EntityComponent simulationComponent in _gameComponents)
                 if (!simulationComponent.OnWorldBoundaryCollision(simulation, this, side))
                     defaultAction = false;
 
@@ -244,7 +244,7 @@ namespace BFB.Engine.Entity
         {
             bool defaultAction = true;
 
-            foreach (SimulationComponent simulationComponent in _gameComponents)
+            foreach (EntityComponent simulationComponent in _gameComponents)
             {
                 if (!simulationComponent.OnTileCollision(simulation, this, tc))
                     defaultAction = false;

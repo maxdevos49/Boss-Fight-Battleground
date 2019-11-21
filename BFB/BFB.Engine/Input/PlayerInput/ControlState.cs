@@ -12,7 +12,7 @@ namespace BFB.Engine.Input.PlayerInput
         public bool Left;
         public bool Right;
         public bool Jump;
-        public int HotBarLeft;
+        public bool HotBarLeft;
         public bool HotBarRight;
         public bool LeftClick;
         public bool RightClick;
@@ -23,7 +23,7 @@ namespace BFB.Engine.Input.PlayerInput
             Left = false;
             Right = false;
             Jump = false;
-            HotBarLeft = 0;
+            HotBarLeft = false;
             HotBarRight = false;
             LeftClick = false;
             RightClick = false;

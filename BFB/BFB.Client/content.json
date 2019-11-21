@@ -33,6 +33,30 @@
             "Width": 15,
             "Height": 15
         },
+        "Tiles:Wood": {
+            "TextureKey": "Tiles",
+            "Scale": 1,
+            "X": 18,
+            "Y": 18,
+            "Width": 15,
+            "Height": 15
+        },
+        "Tiles:Leaves": {
+            "TextureKey": "Tiles",
+            "Scale": 1,
+            "X": 36,
+            "Y": 18,
+            "Width": 15,
+            "Height": 15
+        },
+        "Tiles:Plank": {
+            "TextureKey": "Tiles",
+            "Scale": 1,
+            "X": 54,
+            "Y": 18,
+            "Width": 15,
+            "Height": 15
+        },
         "Tiles:Missing": {
             "TextureKey": "Tiles",
             "Scale": 1,

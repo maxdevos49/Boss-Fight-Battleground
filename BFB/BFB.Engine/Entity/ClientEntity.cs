@@ -66,7 +66,7 @@ namespace BFB.Engine.Entity
         #region DebugDraw
         
         public void DebugDraw(SpriteBatch graphics, BFBContentManager content, float worldScale, float tileSize)
-        {//WARNING THE FOLLOWING IS A MESS D:
+        {
 
             int topBlockY = (int) System.Math.Floor(Top / tileSize);
             int leftBlockX = (int) System.Math.Floor(Left / tileSize);

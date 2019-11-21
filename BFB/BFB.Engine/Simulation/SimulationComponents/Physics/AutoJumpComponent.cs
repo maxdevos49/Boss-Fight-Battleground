@@ -4,7 +4,7 @@ using BFB.Engine.TileMap;
 
 namespace BFB.Engine.Simulation.SimulationComponents.Physics
 {
-    public class AutoJumpComponent : SimulationComponent
+    public class AutoJumpComponent : EntityComponent
     {
         public AutoJumpComponent() : base(false) { }
 

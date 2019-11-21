@@ -3,23 +3,14 @@ using System.Collections.Generic;
 using BFB.Engine.Entity;
 using BFB.Engine.Inventory;
 using BFB.Engine.Math;
-using BFB.Engine.Simulation.PhysicsComponents;
 using BFB.Engine.Simulation.SimulationComponents;
 using BFB.Engine.Simulation.SimulationComponents.Physics;
 using BFB.Engine.TileMap;
 
 namespace BFB.Engine.Simulation.ItemComponents
 {
-    public class BreakTileComponent : IItemComponent
+    public class BreakBlockComponent : IItemComponent
     {
-
-        private int _breakSpeed;
-        
-        public BreakTileComponent(int breakSpeed = 1)
-        {
-            _breakSpeed = breakSpeed;
-        }
-        
         public void Use(Simulation simulation, SimulationEntity entity, IItem item)
         {
             if (entity.ControlState == null)
@@ -46,28 +37,22 @@ namespace BFB.Engine.Simulation.ItemComponents
                 item.TileTarget.X = xSelection;
                 item.TileTarget.Y = ySelection;
                 item.TileTarget.Progress = 0;
+                item.TileTarget.ProgressTotal = ConfigurationRegistry.GetInstance()?
+                    .GetBlockConfiguration((WorldTile) targetChunk.Block[xSelection, ySelection])?.BreakSpeed ?? 0;
                 return;
             }
             item.TileTarget.Progress++;
 
-            bool isBlock;
             WorldTile tileType;
             ConfigurationRegistry config = ConfigurationRegistry.GetInstance();
             
             if ((tileType = (WorldTile)targetChunk.Block[xSelection,ySelection]) != 0)
             {//Is block
-                isBlock = true;
                 if (item.TileTarget.Progress < config.GetBlockConfiguration(tileType).BreakSpeed)
                     return;//Not ready yet
-
-            }else if ((tileType = (WorldTile)targetChunk.Wall[xSelection, ySelection]) != 0)
-            {//is wall
-                isBlock = false;
-                if (item.TileTarget.Progress < config.GetWallConfiguration(tileType).BreakSpeed)
-                    return;//not ready yet
             }
             else
-            {//If we get here then it means there is no block or wall
+            {//is wall or air
                 return;
             }
             
@@ -76,7 +61,7 @@ namespace BFB.Engine.Simulation.ItemComponents
             {
                 X = (byte) xSelection,
                 Y = (byte) ySelection,
-                Mode = isBlock,
+                Mode = true,
                 TileValue = (ushort) WorldTile.Air
             });
             
@@ -86,12 +71,7 @@ namespace BFB.Engine.Simulation.ItemComponents
             int blockY = (simulation.World.WorldOptions.ChunkSize * chunkInformation.Item2 + ySelection) * simulation.World.WorldOptions.WorldScale;
                 
             InventoryManager inventory = new InventoryManager();
-            Item newItem;
-            if(isBlock)
-                newItem = new Item(config.GetBlockConfiguration(tileType).ItemKey);
-            else
-                newItem = new Item(config.GetWallConfiguration(tileType).ItemKey);
-            
+            Item newItem = new Item(config.GetBlockConfiguration(tileType).ItemKey);
             inventory.Insert(newItem);
             
             simulation.AddEntity(new SimulationEntity(
@@ -105,7 +85,7 @@ namespace BFB.Engine.Simulation.ItemComponents
                     Rotation = 0,
                     Origin = new BfbVector(0, 0),
                     EntityType = EntityType.Item
-                }, new List<SimulationComponent>
+                }, new List<EntityComponent>
                 {
                     new LifetimeComponent(2000),
                     new TilePhysics()

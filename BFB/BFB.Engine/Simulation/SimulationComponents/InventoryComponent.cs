@@ -5,7 +5,7 @@ using BFB.Engine.Inventory;
 
 namespace BFB.Engine.Simulation.SimulationComponents
 {
-    public class InventoryComponent : SimulationComponent
+    public class InventoryComponent : EntityComponent
     {
 
         private bool _leftClick;
@@ -33,10 +33,30 @@ namespace BFB.Engine.Simulation.SimulationComponents
             
             entity.Inventory = new InventoryManager(10, 10);
 
-            //Temp grass items
-//            Item item = new Item("Grass");
-//            item.SetStackSize(64);
-//            entity.Inventory.Insert(item);
+            //Temp items
+            Item item = new Item("Wood");
+            item.SetStackSize(64);
+            entity.Inventory.Insert(item);
+            
+            item = new Item("WoodWall");
+            item.SetStackSize(64);
+            entity.Inventory.Insert(item);
+            
+            item = new Item("Leaves");
+            item.SetStackSize(64);
+            entity.Inventory.Insert(item);
+            
+            item = new Item("LeavesWall");
+            item.SetStackSize(64);
+            entity.Inventory.Insert(item);
+            
+            item = new Item("Plank");
+            item.SetStackSize(64);
+            entity.Inventory.Insert(item);
+            
+            item = new Item("PlankWall");
+            item.SetStackSize(64);
+            entity.Inventory.Insert(item);
         }
 
         /// <summary>
@@ -47,11 +67,25 @@ namespace BFB.Engine.Simulation.SimulationComponents
             if (entity.Inventory == null || entity.ControlState == null)
                 return;
 
+            #region HotBar Selection
 
-            entity.Inventory.MoveActiveSlot(entity.ControlState.HotBarLeft);
+            if (entity.ControlState.HotBarLeft)
+            {
+                entity.Inventory.DecrementHotBar();
+                entity.ControlState.HotBarLeft = false;
 
-            IItem activeItem = entity.Inventory.GetActiveSlot() ?? _defaultItem;
+            }
+            else if (entity.ControlState.HotBarRight)
+            {
+                entity.Inventory.IncrementHotBar();
+                entity.ControlState.HotBarLeft = false;
+            }
 
+            #endregion
+
+            IItem activeItem = entity.Inventory.GetActiveSlot() ?? _defaultItem;//default item is if we are holding nothing
+
+            #region Left Click
             //left click actions
             if (entity.ControlState.LeftClick)
             {
@@ -67,7 +101,10 @@ namespace BFB.Engine.Simulation.SimulationComponents
                 return;
             }
             
-            //Right click actions
+            #endregion
+
+            #region Right Click
+
             if (entity.ControlState.RightClick)
             {
                 _rightHoldCount++;
@@ -81,11 +118,16 @@ namespace BFB.Engine.Simulation.SimulationComponents
                 
                 return;
             }
+            
+            #endregion
+
 
             _leftClick = false;
             _rightClick = false;
+            
             _leftHoldCount = 0;
             _leftHoldCount = 0;
+            
             activeItem.TileTarget.Progress = 0;
         }
 

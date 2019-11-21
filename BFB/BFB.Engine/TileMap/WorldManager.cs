@@ -362,6 +362,12 @@ namespace BFB.Engine.TileMap
 
         public Tuple<int, int> BlockLocationFromPixel(int pixelX, int pixelY)
         {
+            if (pixelX < 0 || pixelY < 0)
+                return null;
+
+            if (pixelX >= MapPixelWidth() || pixelY >= MapPixelHeight())
+                return null;
+            
             return new Tuple<int, int>(pixelX/WorldOptions.WorldScale, pixelY/WorldOptions.WorldScale);
         }
         

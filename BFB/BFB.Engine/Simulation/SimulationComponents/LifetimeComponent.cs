@@ -5,7 +5,7 @@ namespace BFB.Engine.Simulation.SimulationComponents
     /// <summary>
     /// Allows for easily removing an entity after a set amount of ticks
     /// </summary>
-    public class LifetimeComponent : SimulationComponent
+    public class LifetimeComponent : EntityComponent
     {
         private readonly int _lifetime;
 

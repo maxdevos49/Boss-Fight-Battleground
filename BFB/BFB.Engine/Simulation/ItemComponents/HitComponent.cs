@@ -17,7 +17,7 @@ namespace BFB.Engine.Simulation.ItemComponents
 
                 List<SimulationEntity> targets = new List<SimulationEntity>();
                 //check each pixel 100 pixels in front of the player
-                for (int i = 0; i < 100; i += simulation.World.WorldOptions.WorldScale/2)//We only need to check every half tile size to be accurate
+                for (int i = 0; i < 100; i += simulation.World.WorldOptions.WorldScale/2)//We only need to check every half tile size to still be accurate
                 {
                     int xPos = (int) entity.Position.X + i;
                     if (entity.Facing == DirectionFacing.Left)
@@ -27,11 +27,9 @@ namespace BFB.Engine.Simulation.ItemComponents
                     SimulationEntity target = simulation.GetEntityAtPosition(xPos, (int) entity.Position.Y);
                     
                     //determine if to add the entities
-                    if (target != null && target != entity && !targets.Contains(target))
+                    if (target != null && target.EntityId != entity.EntityId && !targets.Contains(target))
                         targets.Add(target);
                     
-                    Console.WriteLine(targets.Count);
-
                 }
 
                 //Apply actual damage

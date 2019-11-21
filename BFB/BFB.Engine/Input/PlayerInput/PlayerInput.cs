@@ -13,24 +13,31 @@ namespace BFB.Engine.Input.PlayerInput
     public class PlayerInput
     {
 
-        private ControlState _controlState;
+        private readonly ControlState _controlState;
         private bool _inputChange;
 
         /// <summary>
         /// Handles the input for each scene here.
         /// </summary>
-        /// <param name="scene"></param>
-        public PlayerInput(Scene.Scene scene)
+        public PlayerInput()
         {
             _controlState = new ControlState();
             _inputChange = false;
-            
+        }
+
+        public void Init(Scene.Scene scene)
+        {
             scene.AddInputListener("keypress", (e) =>
             {
                 switch (e.Keyboard.KeyEnum)
                 {
-                    case Keys.N:
+                    case Keys.D1:
+                        _controlState.HotBarLeft = true;
+                        _inputChange = true;
+                        break;
+                    case Keys.D2:
                         _controlState.HotBarRight = true;
+                        _inputChange = true;
                         break;
                     case Keys.Left:
                     case Keys.A:
@@ -58,15 +65,12 @@ namespace BFB.Engine.Input.PlayerInput
                 switch (e.Keyboard.KeyEnum)
                 {
                     case Keys.D1:
-                        Console.WriteLine("Press1");
-                        
-                        _controlState.HotBarLeft++;
-                        if (_controlState.HotBarLeft > 10)
-                            _controlState.HotBarLeft = 0;
-                        
+                        _controlState.HotBarLeft = false;
+                        _inputChange = true;
                         break;
-                    case Keys.N:
+                    case Keys.D2:
                         _controlState.HotBarRight = false;
+                        _inputChange = true;
                         break;
                     case Keys.Left:
                     case Keys.A:
@@ -127,8 +131,7 @@ namespace BFB.Engine.Input.PlayerInput
         public ControlState GetPlayerState()
         {
             _inputChange = false;
-            ControlState input =  _controlState.Clone();
-            return input;
+            return _controlState.Clone();
         }
         
         ///<summary>

@@ -113,9 +113,8 @@ namespace BFB.Engine.Inventory
         {
             if (Configuration.LeftClickComponents.Count == 0)
             {//Do default actions if no specified item components
-//                ConfigurationRegistry.GetInstance().GetItemComponent("Hit").Use(simulation, entity, this);
+                ConfigurationRegistry.GetInstance().GetItemComponent("Hit").Use(simulation, entity, this);
                 ConfigurationRegistry.GetInstance().GetItemComponent("BreakBlock").Use(simulation, entity, this);
-
                 return;
             }
             
@@ -147,7 +146,7 @@ namespace BFB.Engine.Inventory
             
             if (Configuration.LeftHoldComponents.Count == 0)
             {
-//                ConfigurationRegistry.GetInstance().GetItemComponent("Hit").Use(simulation, entity, this);
+                ConfigurationRegistry.GetInstance().GetItemComponent("Hit").Use(simulation, entity, this);
                 ConfigurationRegistry.GetInstance().GetItemComponent("BreakBlock").Use(simulation, entity, this);
 
                 return;

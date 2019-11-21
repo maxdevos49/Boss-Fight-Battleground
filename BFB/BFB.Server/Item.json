@@ -4,6 +4,7 @@
             "TextureKey": "Tiles:Fist",
             "StackLimit": 1,
             "CoolDown": 1,
+            "Reach": 10,
             "LeftHoldComponents": ["BreakBlock","Hit"],
             "LeftClickComponents": ["BreakBlock","Hit"],
             "RightHoldComponents": [],
@@ -15,6 +16,7 @@
             "TextureKey": "Tiles:Grass",
             "StackLimit": 64,
             "CoolDown": 1,
+            "Reach": 10,
             "LeftHoldComponents": ["BreakBlock","Hit"],
             "LeftClickComponents": ["BreakBlock","Hit"], 
             "RightHoldComponents": ["PlaceBlock"],
@@ -26,6 +28,7 @@
             "TextureKey": "Tiles:Grass",
             "StackLimit": 64,
             "CoolDown": 1,
+            "Reach": 10,
             "LeftHoldComponents": ["BreakBlock","Hit"],
             "LeftClickComponents": ["BreakBlock","Hit"],
             "RightHoldComponents": ["PlaceBlock"],
@@ -37,6 +40,7 @@
             "TextureKey": "Tiles:Dirt",
             "StackLimit": 64,
             "CoolDown": 1,
+            "Reach": 10,
             "LeftHoldComponents": ["BreakBlock","Hit"],
             "LeftClickComponents": ["BreakBlock","Hit"],
             "RightHoldComponents": ["PlaceBlock"],
@@ -48,6 +52,7 @@
             "TextureKey": "Tiles:Dirt",
             "StackLimit": 64,
             "CoolDown": 1,
+            "Reach": 10,
             "LeftHoldComponents": ["BreakBlock","Hit"],
             "LeftClickComponents": ["BreakBlock","Hit"],
             "RightHoldComponents": ["PlaceBlock"],
@@ -59,6 +64,7 @@
             "TextureKey": "Tiles:Stone",
             "StackLimit": 64,
             "CoolDown": 1,
+            "Reach": 10,
             "LeftHoldComponents": ["BreakBlock","Hit"],
             "LeftClickComponents": ["BreakBlock","Hit"],
             "RightHoldComponents": ["PlaceBlock"],
@@ -70,33 +76,127 @@
             "TextureKey": "Tiles:Stone",
             "StackLimit": 64,
             "CoolDown": 1,
+            "Reach": 10,
             "LeftHoldComponents": ["BreakBlock","Hit"],
             "LeftClickComponents": ["BreakBlock","Hit"],
             "RightHoldComponents": ["PlaceBlock"],
             "RightClickComponents": ["PlaceBlock"],
             "ItemType": "Wall",
             "TileKey": "Stone"
-    }
-},
+        },
+        "Wood": {
+            "TextureKey": "Tiles:Wood",
+            "StackLimit": 64,
+            "CoolDown": 1,
+            "Reach": 10,
+            "LeftHoldComponents": ["BreakBlock","Hit"],
+            "LeftClickComponents": ["BreakBlock","Hit"],
+            "RightHoldComponents": ["PlaceBlock"],
+            "RightClickComponents": ["PlaceBlock"],
+            "ItemType": "Block",
+            "TileKey": "Wood"
+        },
+        "WoodWall": {
+            "TextureKey": "Tiles:Wood",
+            "StackLimit": 64,
+            "CoolDown": 1,
+            "Reach": 10,
+            "LeftHoldComponents": ["BreakBlock","Hit"],
+            "LeftClickComponents": ["BreakBlock","Hit"],
+            "RightHoldComponents": ["PlaceBlock"],
+            "RightClickComponents": ["PlaceBlock"],
+            "ItemType": "Wall",
+            "TileKey": "Wood"
+        },
+        "Leaves": {
+            "TextureKey": "Tiles:Leaves",
+            "StackLimit": 64,
+            "CoolDown": 1,
+            "Reach": 10,
+            "LeftHoldComponents": ["BreakBlock","Hit"],
+            "LeftClickComponents": ["BreakBlock","Hit"],
+            "RightHoldComponents": ["PlaceBlock"],
+            "RightClickComponents": ["PlaceBlock"],
+            "ItemType": "Block",
+            "TileKey": "Leaves"
+        },
+        "LeavesWall": {
+            "TextureKey": "Tiles:Leaves",
+            "StackLimit": 64,
+            "CoolDown": 1,
+            "Reach": 10,
+            "LeftHoldComponents": ["BreakBlock","Hit"],
+            "LeftClickComponents": ["BreakBlock","Hit"],
+            "RightHoldComponents": ["PlaceBlock"],
+            "RightClickComponents": ["PlaceBlock"],
+            "ItemType": "Wall",
+            "TileKey": "Leaves"
+        },
+        "Plank": {
+            "TextureKey": "Tiles:Plank",
+            "StackLimit": 64,
+            "CoolDown": 1,
+            "Reach": 10,
+            "LeftHoldComponents": ["BreakBlock","Hit"],
+            "LeftClickComponents": ["BreakBlock","Hit"],
+            "RightHoldComponents": ["PlaceBlock"],
+            "RightClickComponents": ["PlaceBlock"],
+            "ItemType": "Block",
+            "TileKey": "Plank"
+        },
+        "PlankWall": {
+            "TextureKey": "Tiles:Plank",
+            "StackLimit": 64,
+            "CoolDown": 1,
+            "Reach": 10,
+            "LeftHoldComponents": ["BreakBlock","Hit"],
+            "LeftClickComponents": ["BreakBlock","Hit"],
+            "RightHoldComponents": ["PlaceBlock"],
+            "RightClickComponents": ["PlaceBlock"],
+            "ItemType": "Wall",
+            "TileKey": "Plank"
+        }
+    },
     
     "Blocks": {
         "Grass": {
             "TextureKey": "Tiles:Grass",
             "ItemKey": "Grass",
             "CollisionId": 1,
-            "BreakSpeed": 1,
+            "BreakSpeed": 10,
             "Components": []
         },
         "Dirt": {
             "TextureKey": "Tiles:Dirt",
             "ItemKey": "Dirt",
             "CollisionId": 1,
-            "BreakSpeed": 1,
+            "BreakSpeed": 10,
             "Components": []
         },
         "Stone": {
             "TextureKey": "Tiles:Stone",
             "ItemKey": "Stone",
+            "CollisionId": 1,
+            "BreakSpeed": 1,
+            "Components": []
+        },
+        "Wood": {
+            "TextureKey": "Tiles:Wood",
+            "ItemKey": "Wood",
+            "CollisionId": 1,
+            "BreakSpeed": 1,
+            "Components": []
+        },
+        "Leaves": {
+            "TextureKey": "Tiles:Leaves",
+            "ItemKey": "Leaves",
+            "CollisionId": 1,
+            "BreakSpeed": 1,
+            "Components": []
+        },
+        "Plank": {
+            "TextureKey": "Tiles:Plank",
+            "ItemKey": "Plank",
             "CollisionId": 1,
             "BreakSpeed": 1,
             "Components": []
@@ -120,6 +220,24 @@
             "TextureKey": "Tiles:Stone",
             "ItemKey": "StoneWall",
             "BreakSpeed": 10,
+            "Components": []
+        },
+        "Wood": {
+            "TextureKey": "Tiles:Wood",
+            "ItemKey": "Wood",
+            "BreakSpeed": 1,
+            "Components": []
+        },
+        "Leaves": {
+            "TextureKey": "Tiles:Leaves",
+            "ItemKey": "Leaves",
+            "BreakSpeed": 1,
+            "Components": []
+        },
+        "Plank": {
+            "TextureKey": "Tiles:Plank",
+            "ItemKey": "Plank",
+            "BreakSpeed": 1,
             "Components": []
         }
     }

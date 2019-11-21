@@ -7,7 +7,7 @@ using static System.Int32;
 
 namespace BFB.Engine.Simulation.SimulationComponents.AI
 {
-    public class AIInputComponent : SimulationComponent
+    public class AIInputComponent : EntityComponent
     {
         private SimulationEntity _closestEntity;
 

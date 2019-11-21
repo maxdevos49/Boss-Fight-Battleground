@@ -78,7 +78,7 @@ namespace BFB.Engine.Graphics
         public static void DrawAtlas(this SpriteBatch graphics, AtlasTexture atlasTexture, Rectangle rectangle, Color color, float scale = 1f)
         {
             graphics.Draw(atlasTexture.Texture,
-                new Rectangle(rectangle.X,rectangle.Y,(int)(30 * scale),(int)(30 * scale)),
+                new Rectangle(rectangle.X,rectangle.Y,(int)(rectangle.Width * scale),(int)(rectangle.Width * scale)),
                 new Rectangle(atlasTexture.X,atlasTexture.Y,atlasTexture.Width,atlasTexture.Height),
                 color);
         }

@@ -119,15 +119,16 @@ namespace BFB.Server
                         Rotation = 0,
                         Origin = new BfbVector(0, 0),
                         EntityType = EntityType.Player
-                    },new List<SimulationComponent>
+                    },new List<EntityComponent>
                     {
                         new AutoJumpComponent(),
-                        new CombatComponent(),
+                        new HealthComponent(),
                         new RemoteInputComponent(),
                         new WalkingPhysics(),
                         new InventoryComponent(),
                         new WalkingAnimationComponent(),
-                        new HoldingAnimationComponent()
+                        new HoldingAnimationComponent(),
+                        new VoidDeathComponent()
                     }, socket)
                 {
                     CollideFilter = "human",

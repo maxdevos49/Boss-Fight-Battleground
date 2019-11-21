@@ -2,6 +2,7 @@ using System;
 using BFB.Engine.Content;
 using BFB.Engine.Entity;
 using BFB.Engine.Math;
+using JetBrains.Annotations;
 using Microsoft.Xna.Framework;
 
 namespace BFB.Engine.Server.Communication
@@ -76,6 +77,12 @@ namespace BFB.Engine.Server.Communication
         /// <summary>
         /// The type of entity it is
         /// </summary>
-        public EntityType EntityType { get; set; }        
+        public EntityType EntityType { get; set; }       
+        
+        /// <summary>
+        /// Meta information about the entity that is always needed
+        /// </summary>
+        [CanBeNull]
+        public EntityMeta Meta { get; set; }
     }
 }

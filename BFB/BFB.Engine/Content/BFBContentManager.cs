@@ -80,6 +80,9 @@ namespace BFB.Engine.Content
         /// <returns></returns>
         public Texture2D GetTexture(string textureKey)
         {
+            if(string.IsNullOrEmpty(textureKey))
+                throw new ArgumentNullException(nameof(textureKey),"The textureKey provided was null. Try supplying a valid string");
+            
             return _textureContent.ContainsKey(textureKey) ? _textureContent[textureKey] : throw new KeyNotFoundException($"The textureKey: {textureKey} was not found.");
         } 
         

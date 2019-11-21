@@ -6,7 +6,7 @@ using BFB.Engine.Simulation.PhysicsComponents;
 
 namespace BFB.Engine.Simulation.SimulationComponents.Physics
 {
-    public class TilePhysics : SimulationComponent, IPhysics
+    public class TilePhysics : EntityComponent, IPhysics
     {
         public BfbVector Acceleration { get; set; }
         public BfbVector MaxSpeed { get; set; }

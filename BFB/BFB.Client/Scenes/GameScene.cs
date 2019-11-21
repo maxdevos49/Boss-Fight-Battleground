@@ -6,6 +6,7 @@ using BFB.Client.UI;
 using BFB.Engine.Content;
 using BFB.Engine.Entity;
 using BFB.Engine.Event;
+using BFB.Engine.Graphics;
 using BFB.Engine.Input.PlayerInput;
 using BFB.Engine.Math;
 using BFB.Engine.Scene;
@@ -27,21 +28,29 @@ namespace BFB.Client.Scenes
 
         private readonly object _lock;
         
-//        private readonly ClientSocketManager _server;
-        
-        private PlayerInput _playerInput;
+        private readonly PlayerInput _playerInput;
 
-        private WorldRenderer _worldRenderer;
+        private readonly WorldRenderer _worldRenderer;
 
         private readonly WorldManager _world;
+        
+        private bool _gameReady;
 
+        private ClientEntity _playerEntity;
+        
         private readonly Dictionary<string, ClientEntity> _entities;
+
 
         public PlayerConnectionScene() : base(nameof(PlayerConnectionScene))
         {
+            Client = new ClientSocketManager();
+            
             _lock = new object();
             _entities = new Dictionary<string, ClientEntity>();
-            Client = new ClientSocketManager();
+            _worldRenderer = new WorldRenderer();
+            _playerInput = new PlayerInput();
+
+            _gameReady = false;
 
             _world = new WorldManager(new WorldOptions
             {
@@ -70,7 +79,7 @@ namespace BFB.Client.Scenes
              */
             #region Update Input State
             
-            _playerInput = new PlayerInput(this);
+            _playerInput.Init(this);
 
             #endregion
 
@@ -107,6 +116,8 @@ namespace BFB.Client.Scenes
                 Thread.Sleep(100);
 
                 _world.ApplyWorldInitData((WorldDataMessage)message);
+                _worldRenderer.Init(_world,ContentManager, GraphicsDeviceManager.GraphicsDevice);
+
             };
             
             #endregion
@@ -116,8 +127,6 @@ namespace BFB.Client.Scenes
             Client.OnReady = () =>
             {
                 GlobalEventManager.Emit("onConnectionStatus", new GlobalEvent("Ready..."));
-                _worldRenderer = new WorldRenderer(_world, GraphicsDeviceManager.GraphicsDevice);
-                UIManager.Start(nameof(HudUI),this);
             };
             
             #endregion
@@ -126,7 +135,7 @@ namespace BFB.Client.Scenes
             
             Client.OnDisconnect = (m) =>
             {
-                UIManager.Start(nameof(LoadingGameUI),this);
+                UIManager.Start(nameof(LoadingGameUI),this);//TODO Doesnt get called very often but should never be when it is user caused
                 GlobalEventManager.Emit("onConnectionStatus", new GlobalEvent("Disconnected By Server"));
             };
             
@@ -135,7 +144,6 @@ namespace BFB.Client.Scenes
             /**
              * Custom Socket Routes
              */
-
             #region Handle Entity Disconnect
             
             Client.On("/player/disconnect", message =>
@@ -167,7 +175,7 @@ namespace BFB.Client.Scenes
                             _entities[em.EntityId].Rotation = em.Rotation;
                             _entities[em.EntityId].AnimationState = em.AnimationState;
                             _entities[em.EntityId].Facing = em.Facing;
-                            _entities[em.EntityId].HoldingTexture = em.HoldingTexture;
+                            _entities[em.EntityId].Meta = em.Meta;
                             
                             if (em.EntityId == Client.ClientId)
                                 _worldRenderer.Camera.Focus = em.Position.ToVector2();
@@ -218,7 +226,7 @@ namespace BFB.Client.Scenes
             {
                 _entities.Clear();
             }
-
+            
             base.Unload();
         }
         
@@ -230,15 +238,33 @@ namespace BFB.Client.Scenes
         {
             lock (_lock)
             {
-                _worldRenderer?.Update(gameTime, _entities.Values.ToList());
+                if (Client.EmitAllowed())
+                {
+                    _gameReady = _entities.ContainsKey(Client?.ClientId ?? "Nope Key not Found D:");
+
+                    if (_gameReady && Client?.ClientId != null)
+                    {
+                        _playerEntity = _entities[Client.ClientId];
+                        UIManager.Start(nameof(HudUI), this);
+                    }
+                    else
+                        return;
+                }
+
+                if (!_gameReady)
+                    return;
+            
+                _worldRenderer.Update(gameTime, _entities.Values.ToList());
             }
 
-            if (!_playerInput.InputChanged() || !Client.EmitAllowed() || _worldRenderer == null) return;
+            if (!_playerInput.InputChanged()) return;
             
+            //convert mouse coordinates before we send them to server
             ControlState controlState = _playerInput.GetPlayerState();
             controlState.Mouse = _worldRenderer.ViewPointToMapPoint(controlState.Mouse);
-            Client.Emit("/player/input", new InputMessage {ControlInputState = controlState});
-
+            
+            //send input to server
+            Client.Emit("/player/input", new InputMessage { ControlInputState = controlState });
         }
         
         #endregion
@@ -247,23 +273,18 @@ namespace BFB.Client.Scenes
         
         public override void Draw(GameTime gameTime, SpriteBatch graphics)
         {
+            if (!_gameReady)
+                return;
+            
+            List<ClientEntity> entities;
+
             lock (_lock)
             {
-                _worldRenderer?.Draw(graphics, _world, _entities.Values.ToList(),_playerInput, ContentManager);
-
-                
-                //This looks horrible D: - Max By max
-                if (_worldRenderer != null && _playerInput != null && Client.ClientId != null && _entities.ContainsKey(Client.ClientId) && _worldRenderer.Debug)
-                {
-                    ControlState controlState = _playerInput.PeekPlayerState();
-                    controlState.Mouse = _worldRenderer.ViewPointToMapPoint(controlState.Mouse);
-
-                    _worldRenderer?.DebugPanel(graphics, gameTime, _world, _entities[Client.ClientId],
-                        _entities.Values.ToList(), Client, controlState, ContentManager);
-                }
-
+                entities = _entities.Values.ToList();
             }
-
+            
+            //Draw world and entities
+            _worldRenderer.Draw(graphics, gameTime, _world, entities, _playerEntity,_playerInput.PeekPlayerState(), Client);
         }
         
         #endregion

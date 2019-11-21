@@ -13,7 +13,7 @@ namespace BFB.Engine.Simulation.SimulationComponents
     /// <summary>
     /// A Input component that is used for remotely controlling a entity from a socket connection
     /// </summary>
-    public class RemoteInputComponent : SimulationComponent
+    public class RemoteInputComponent : EntityComponent
     {
 
         private ControlState _controlState;
@@ -65,54 +65,54 @@ namespace BFB.Engine.Simulation.SimulationComponents
             #region Tom SpawnMonster
             
             //Add an AI monster//TODO
-                if (entity.ControlState.HotBarRight)
-                {
-
-                    var random = new Random();
-                    int type = random.Next(0, 3);
-                    string textureKey = "";
-                    int xMaxSpeed = 20;
-                    BfbVector dimensions = new BfbVector(2* simulation.World.WorldOptions.WorldScale,3* simulation.World.WorldOptions.WorldScale);
-                    
-                    switch (type)
-                    {
-                        case 0://skeleton
-                            textureKey = "Skeleton";
-                            xMaxSpeed = 18;
-                            break;
-                        case 1://zombie
-                            textureKey = "Zombie";
-                            xMaxSpeed = 15;
-                            break;
-                        case 2://spider
-                            textureKey = "Spider";
-                            xMaxSpeed = 17;
-                            dimensions = new BfbVector(3* simulation.World.WorldOptions.WorldScale,2* simulation.World.WorldOptions.WorldScale);
-                            break;
-                    }
-                    
-                    //Add to simulation
-                    simulation.AddEntity(new SimulationEntity(
-                        Guid.NewGuid().ToString(),
-                        new EntityOptions
-                        {
-                            TextureKey = textureKey,
-                            Position = new BfbVector(entity.ControlState.Mouse.X, entity.ControlState.Mouse.Y),
-                            Dimensions = dimensions,
-                            Rotation = 0,
-                            Origin = new BfbVector(0, 0),
-                            EntityType = EntityType.Mob
-                        }, 
-                         new List<SimulationComponent>
-                        {
-                            new WalkingAnimationComponent(),
-                            new WalkingPhysics(xMaxSpeed),
-                            new AIInputComponent(),
-                            new LifetimeComponent(2000),
-                            new CombatComponent()
-                        }
-                        ));
-                }
+//                if (entity.ControlState.HotBarRight)
+//                {
+//
+//                    var random = new Random();
+//                    int type = random.Next(0, 3);
+//                    string textureKey = "";
+//                    int xMaxSpeed = 20;
+//                    BfbVector dimensions = new BfbVector(2* simulation.World.WorldOptions.WorldScale,3* simulation.World.WorldOptions.WorldScale);
+//                    
+//                    switch (type)
+//                    {
+//                        case 0://skeleton
+//                            textureKey = "Skeleton";
+//                            xMaxSpeed = 18;
+//                            break;
+//                        case 1://zombie
+//                            textureKey = "Zombie";
+//                            xMaxSpeed = 15;
+//                            break;
+//                        case 2://spider
+//                            textureKey = "Spider";
+//                            xMaxSpeed = 17;
+//                            dimensions = new BfbVector(3* simulation.World.WorldOptions.WorldScale,2* simulation.World.WorldOptions.WorldScale);
+//                            break;
+//                    }
+//                    
+//                    //Add to simulation
+//                    simulation.AddEntity(new SimulationEntity(
+//                        Guid.NewGuid().ToString(),
+//                        new EntityOptions
+//                        {
+//                            TextureKey = textureKey,
+//                            Position = new BfbVector(entity.ControlState.Mouse.X, entity.ControlState.Mouse.Y),
+//                            Dimensions = dimensions,
+//                            Rotation = 0,
+//                            Origin = new BfbVector(0, 0),
+//                            EntityType = EntityType.Mob
+//                        }, 
+//                         new List<SimulationComponent>
+//                        {
+//                            new WalkingAnimationComponent(),
+//                            new WalkingPhysics(xMaxSpeed),
+//                            new AIInputComponent(),
+//                            new LifetimeComponent(2000),
+//                            new HealthComponent()
+//                        }
+//                        ));
+//                }
 
             #endregion
 

@@ -71,7 +71,6 @@ namespace BFB.Engine.Scene
         /// </summary>
         public void Stop()
         {
-            //unload textures
             _status = SceneStatus.Inactive;
             Unload();
         }

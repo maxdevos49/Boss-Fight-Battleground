@@ -22,11 +22,6 @@ namespace BFB.Engine.Entity
         public string TextureKey { get; set; }
         
         /// <summary>
-        /// The texture of the thing you are holding
-        /// </summary>
-        public string HoldingTexture { get; set; }
-        
-        /// <summary>
         /// Current state of the animation
         /// </summary>
         public AnimationState AnimationState { get; set; }
@@ -146,7 +141,6 @@ namespace BFB.Engine.Entity
                 EntityId = EntityId,
                 ChunkKey = ChunkKey,
                 TextureKey = TextureKey,
-                HoldingTexture = HoldingTexture,
                 AnimationState = AnimationState,
                 Position = Position,
                 Dimensions = Dimensions,
@@ -155,7 +149,8 @@ namespace BFB.Engine.Entity
                 Velocity = Velocity,
                 Grounded = Grounded,
                 Facing = Facing,
-                EntityType = EntityType
+                EntityType = EntityType,
+                Meta = Meta
             };
         }
         

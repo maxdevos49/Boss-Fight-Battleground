@@ -41,13 +41,13 @@ namespace BFB.Engine.Simulation
         /// </summary>
         /// <param name="componentKey"></param>
         /// <returns></returns>
-        SimulationComponent GetSimulationComponent(string componentKey);
+        EntityComponent GetSimulationComponent(string componentKey);
         
         /// <summary>
         /// </summary>
         /// <param name="componentKey"></param>
         /// <returns></returns>
-        SimulationComponent GetSingletonSimulationComponent(string componentKey);
+        EntityComponent GetSingletonSimulationComponent(string componentKey);
 
     }
 }

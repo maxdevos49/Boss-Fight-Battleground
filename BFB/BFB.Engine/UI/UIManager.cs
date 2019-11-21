@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using BFB.Engine.Content;
@@ -164,6 +165,9 @@ namespace BFB.Engine.UI
          */
         private void RenderComponents(UIComponent node, SpriteBatch graphics, UILayer layer)
         {
+
+            if (node == null || string.IsNullOrEmpty(node.RenderAttributes.TextureKey))
+                return;
             
             node.Render(graphics, _contentManager.GetTexture(node.RenderAttributes.TextureKey), _contentManager.GetFont(node.RenderAttributes.FontKey));
             
