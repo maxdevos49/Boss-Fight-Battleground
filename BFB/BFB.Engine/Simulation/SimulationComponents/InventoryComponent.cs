@@ -83,9 +83,32 @@ namespace BFB.Engine.Simulation.SimulationComponents
 
             #endregion
 
+            #region Reach
+            
             IItem activeItem = entity.Inventory.GetActiveSlot() ?? _defaultItem;//default item is if we are holding nothing
 
+            Tuple<int, int> block = simulation.World.BlockLocationFromPixel((int) entity.ControlState.Mouse.X, (int) entity.ControlState.Mouse.Y);
+
+            if (block != null)
+            {
+                int playerX = (int) (entity.Position.X + entity.Width / 2f);
+                int playerY = (int) (entity.Position.Y + entity.Height / 2f);
+                int blockPixelX = block.Item1 * simulation.World.WorldOptions.WorldScale; //x position of block mouse is over
+                int blockPixelY = block.Item2 * simulation.World.WorldOptions.WorldScale; //y position of block mouse is over
+
+                int distance =
+                    (int) System.Math.Sqrt(System.Math.Pow(playerX - blockPixelX, 2) +
+                                           System.Math.Pow(playerY - blockPixelY, 2)) / simulation.World.WorldOptions.WorldScale;
+                int reach = activeItem.Configuration.Reach == 0 ? 100 : activeItem.Configuration.Reach;
+
+                if(distance >= reach)
+                    return;
+            }
+            
+            #endregion
+
             #region Left Click
+            
             //left click actions
             if (entity.ControlState.LeftClick)
             {
@@ -120,7 +143,6 @@ namespace BFB.Engine.Simulation.SimulationComponents
             }
             
             #endregion
-
 
             _leftClick = false;
             _rightClick = false;

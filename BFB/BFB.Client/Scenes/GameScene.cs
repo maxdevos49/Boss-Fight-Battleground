@@ -226,7 +226,8 @@ namespace BFB.Client.Scenes
             {
                 _entities.Clear();
             }
-            
+
+            _gameReady = false;
             base.Unload();
         }
         
@@ -239,17 +240,15 @@ namespace BFB.Client.Scenes
             lock (_lock)
             {
                 if (Client.EmitAllowed())
-                {
-                    _gameReady = _entities.ContainsKey(Client?.ClientId ?? "Nope Key not Found D:");
-
-                    if (_gameReady && Client?.ClientId != null)
+                    if (!_gameReady)
                     {
+                        if (!_entities.ContainsKey(Client?.ClientId ?? "Nope Key not Found D:"))
+                            return;
+                        
+                        _gameReady = true;
                         _playerEntity = _entities[Client.ClientId];
                         UIManager.Start(nameof(HudUI), this);
                     }
-                    else
-                        return;
-                }
 
                 if (!_gameReady)
                     return;

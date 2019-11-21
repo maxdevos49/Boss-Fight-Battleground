@@ -231,9 +231,6 @@ namespace BFB.Engine.Graphics
                 BfbVector mouse = ViewPointToMapPoint(input.Mouse);
                 Tuple<int, int> block = world.BlockLocationFromPixel((int) mouse.X, (int) mouse.Y);
                 
-//                Console.WriteLine("Mouse: " + mouse.X + " - "+ mouse.Y);
-//                Console.WriteLine("Block: "+ block?.Item1 + " - "+ block?.Item2);
-                
                 //if the mouse is inside the map
                 if (block != null)
                 {
@@ -242,7 +239,8 @@ namespace BFB.Engine.Graphics
                     int blockPixelX = block.Item1 * _tileScale;//x position of block mouse is over
                     int blockPixelY = block.Item2 * _tileScale;//y position of block mouse is over
                     
-                    int distance = (int) System.Math.Sqrt(System.Math.Pow(playerX - blockPixelX, 2) + System.Math.Pow(playerY - blockPixelY, 2)) / _tileScale;
+                    int distance = (int) System.Math.Sqrt(System.Math.Pow(playerX - blockPixelX, 2) + 
+                                                          System.Math.Pow(playerY - blockPixelY, 2)) / _tileScale;
                     int reach = playerEntity.Meta.Holding.Reach;
 
                     switch (playerEntity.Meta.Holding.ItemType)
@@ -253,7 +251,7 @@ namespace BFB.Engine.Graphics
                             {
                                 graphics.Draw(_content.GetTexture("default"),
                                     new Rectangle(blockPixelX, blockPixelY, _tileScale, _tileScale),
-                                    distance > reach ? new Color(255, 0, 0, 0.2f) :
+                                    distance >= reach ? new Color(255, 0, 0, 0.2f) :
                                         new Color(0, 0, 0, 0.2f));
                             }
                             else
@@ -283,7 +281,7 @@ namespace BFB.Engine.Graphics
                             {
                                 graphics.Draw(_content.GetTexture("default"),
                                     new Rectangle(blockPixelX, blockPixelY, _tileScale, _tileScale),
-                                    distance > reach ? new Color(255, 0, 0, 0.2f) :
+                                    distance >= reach ? new Color(255, 0, 0, 0.2f) :
                                         new Color(0, 0, 0, 0.2f));
                             } else
                             {
