@@ -20,6 +20,21 @@ namespace BFB.Engine.Inventory.Configuration
         public byte Reach { get; set; }
         
         [UsedImplicitly]
+        public ushort ManaGain { get; set; }
+        
+        [UsedImplicitly]
+        public ushort ManaCost { get; set; }
+        
+        [UsedImplicitly]
+        public ushort HealthGain { get; set; }
+
+        [UsedImplicitly]
+        public ushort HealthCost { get; set; }
+        
+        [UsedImplicitly]
+        public ushort Damage { get; set; }
+        
+        [UsedImplicitly]
         public List<string> LeftHoldComponents { get; set; }
         
         [UsedImplicitly]

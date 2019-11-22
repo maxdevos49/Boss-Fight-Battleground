@@ -61,7 +61,7 @@ namespace BFB.Engine.Simulation.SpellComponents.Physics
             //Updates the position
             simulationEntity.Position.Add(simulationEntity.Velocity);
 
-//            CheckCollisions(_owner, simulation);
+            CheckCollisions(_owner, simulation);
         }
 
         #region Explode 
@@ -84,6 +84,7 @@ namespace BFB.Engine.Simulation.SpellComponents.Physics
                         Origin = new BfbVector(0, 0),
                     }, new List<EntityComponent>
                     {
+                        new LifetimeComponent(10),
                         new SpellEffects3PhysicsComponent()
                     });
                 
@@ -100,6 +101,7 @@ namespace BFB.Engine.Simulation.SpellComponents.Physics
                         Origin = new BfbVector(0, 0),
                     }, new List<EntityComponent>
                     {
+                        new LifetimeComponent(10),
                         new SpellEffects3PhysicsComponent()
                     });
                 simulation.AddEntity(effect);
@@ -115,6 +117,7 @@ namespace BFB.Engine.Simulation.SpellComponents.Physics
                         Origin = new BfbVector(0, 0),
                     }, new List<EntityComponent>
                     {
+                        new LifetimeComponent(10),
                         new SpellEffects3PhysicsComponent()
                     });
                 simulation.AddEntity(effect);
@@ -124,33 +127,33 @@ namespace BFB.Engine.Simulation.SpellComponents.Physics
         #endregion
 
 
-//        private void CheckCollisions(SimulationEntity simulationEntity, Simulation simulation)
-//        {
-//            // Collisions with monsters
-//            List<SimulationEntity> targets = new List<SimulationEntity>();
-//            for (int i = 0; i < 10; i++)
-//            {
-//                int xPos = (int) simulationEntity.Position.X;
-//                SimulationEntity target = simulation.GetEntityAtPosition(xPos, (int) simulationEntity.Position.Y);
-//                if (target != null && target != simulationEntity && !targets.Contains(target))
-//                    targets.Add(target);
-//            }
-//
-//            targets.Remove(_owner);
-//            if (targets.Count >= 1)
-//            {
-////                DamageTargets(targets);
-//                simulation.RemoveEntity(simulationEntity.EntityId);
-//            }
-//        }
+        private void CheckCollisions(SimulationEntity simulationEntity, Simulation simulation)
+        {
+            // Collisions with monsters
+            List<SimulationEntity> targets = new List<SimulationEntity>();
+            for (int i = 0; i < 10; i++)
+            {
+                int xPos = (int) simulationEntity.Position.X;
+                SimulationEntity target = simulation.GetEntityAtPosition(xPos, (int) simulationEntity.Position.Y);
+                if (target != null && target != simulationEntity && !targets.Contains(target))
+                    targets.Add(target);
+            }
 
-//        private void DamageTargets(List<SimulationEntity> targets)
-//        {
-//            foreach (SimulationEntity target in targets)
-//            {
-//                // Instead of a hard coded value here, you could call a weapon stored on the simulationEntity, and use its damage value.
-//                ((CombatComponent)target.Combat).Health -= 15;
-//            }
-//        }
+            targets.Remove(_owner);
+            if (targets.Count >= 1)
+            {
+//                DamageTargets(targets);
+                simulation.RemoveEntity(simulationEntity.EntityId);
+            }
+        }
+
+        private void DamageTargets(List<SimulationEntity> targets)
+        {
+            foreach (SimulationEntity target in targets)
+            {
+                // Instead of a hard coded value here, you could call a weapon stored on the simulationEntity, and use its damage value.
+                if (target.Meta != null) target.Meta.Health -= 15;
+            }
+        }
     }
 }

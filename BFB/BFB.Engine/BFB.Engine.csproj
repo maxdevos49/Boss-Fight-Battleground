@@ -13,7 +13,6 @@
     <Folder Include="Input\" />
     <Folder Include="Server\" />
     <Folder Include="Debug\" />
-    <Folder Include="Simulation\EntityComponents\Spells" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="JetBrains.Annotations" Version="2019.1.3" />

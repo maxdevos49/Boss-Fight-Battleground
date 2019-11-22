@@ -22,6 +22,8 @@ namespace BFB.Engine.Entity
 
         private int _currentTick;
         
+        public string ParentEntityId { get; set; }
+        
         /// <summary>
         /// The amount of ticks since the creation of the entity
         /// </summary>
@@ -30,7 +32,7 @@ namespace BFB.Engine.Entity
         /// <summary>
         /// Vector describing a position an entity is attempting to move to 
         /// </summary>
-        public BfbVector SteeringVector { get; }
+        public BfbVector SteeringVector { get; set; }
 
         /// <summary>
         /// The old position of the entity
@@ -74,6 +76,7 @@ namespace BFB.Engine.Entity
         /// Indicates the collision groups the entity will collide with
         /// </summary>
         public List<string> CollideWithFilters { get; set; }
+        
 
         /// <summary>
         /// The entity bounds as a rectangle
@@ -109,6 +112,7 @@ namespace BFB.Engine.Entity
         {
             _currentTick = -1;
             TicksSinceCreation = -1;
+            ParentEntityId = null;
             
             SteeringVector = new BfbVector();
             OldPosition = new BfbVector();

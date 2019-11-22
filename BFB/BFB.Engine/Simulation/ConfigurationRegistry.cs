@@ -125,6 +125,7 @@ namespace BFB.Engine.Simulation
             _itemComponents.Add("BreakBlock", new BreakBlockComponent());
             _itemComponents.Add("BreakWall", new BreakWallComponent());
             _itemComponents.Add("Hit", new HitComponent());
+            _itemComponents.Add("CastSpell", new CastSpell());
         }
         
         #endregion
