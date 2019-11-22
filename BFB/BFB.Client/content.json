@@ -6,8 +6,7 @@
         "button": "Sprites\\button",
         "Tiles": "Sprites\\TileAtlas"
     },
-    "Audio": {
-    },
+    "Audio": {},
     "AtlasTextures": {
         "Tiles:Grass": {
             "TextureKey": "Tiles",
@@ -275,6 +274,142 @@
                     "FrameEnd": 7,
                     "Mirror": false
                 }
+            }
+        }
+    },
+    "Fireball": {
+        "Location": "Sprites\\Spells\\Fireball",
+        "Frames": 8,
+        "FrameWidth": 24,
+        "FrameHeight": 39,
+        "Columns": 3,
+        "Rows": 2,
+        "Scale": 0.3,
+        "AnimationSets": {
+            "IdleRight": {
+                "Fps": 5,
+                "FrameStart": 0,
+                "FrameEnd": 4,
+                "Mirror": true
+            }
+        }
+    },
+    "Missile": {
+        "Location": "Sprites\\Spells\\MagicMissile",
+        "Frames": 3,
+        "FrameWidth": 32,
+        "FrameHeight": 48,
+        "Columns": 2,
+        "Rows": 2,
+        "Scale": 0.3,
+        "AnimationSets": {
+            "IdleRight": {
+                "Fps": 5,
+                "FrameStart": 0,
+                "FrameEnd": 2,
+                "Mirror": true
+            }
+        }
+    },
+    "Heart": {
+        "Location": "Sprites\\Spells\\Heart",
+        "Frames": 1,
+        "FrameWidth": 32,
+        "FrameHeight": 32,
+        "Columns": 1,
+        "Rows": 1,
+        "Scale": 0.3,
+        "AnimationSets": {
+            "IdleRight": {
+                "Fps": 5,
+                "FrameStart": 0,
+                "FrameEnd": 0,
+                "Mirror": true
+            }
+        }
+    },
+    "Bomb": {
+        "Location": "Sprites\\Spells\\Bomb",
+        "Frames": 2,
+        "FrameWidth": 64,
+        "FrameHeight": 80,
+        "Columns": 2,
+        "Rows": 1,
+        "Scale": 0.3,
+        "AnimationSets": {
+            "IdleRight": {
+                "Fps": 12,
+                "FrameStart": 0,
+                "FrameEnd": 2,
+                "Mirror": true
+            }
+        }
+    },
+    "EffectMiniStar": {
+        "Location": "Sprites\\Effects\\EffectMiniStar",
+        "Frames": 1,
+        "FrameWidth": 6,
+        "FrameHeight": 6,
+        "Columns": 1,
+        "Rows": 1,
+        "Scale": 0.3,
+        "AnimationSets": {
+            "IdleRight": {
+                "Fps": 5,
+                "FrameStart": 0,
+                "FrameEnd": 0,
+                "Mirror": true
+            }
+        }
+    },
+    "EffectStar": {
+        "Location": "Sprites\\Effects\\EffectStar",
+        "Frames": 1,
+        "FrameWidth": 10,
+        "FrameHeight": 10,
+        "Columns": 1,
+        "Rows": 1,
+        "Scale": 0.3,
+        "AnimationSets": {
+            "IdleRight": {
+                "Fps": 5,
+                "FrameStart": 0,
+                "FrameEnd": 0,
+                "Mirror": true
+            }
+        }
+    },
+    "EffectX": {
+        "Location": "Sprites\\Effects\\EffectX",
+        "Frames": 1,
+        "FrameWidth": 10,
+        "FrameHeight": 10,
+        "Columns": 1,
+        "Rows": 1,
+        "Scale": 0.3,
+        "AnimationSets": {
+            "IdleRight": {
+                "Fps": 5,
+                "FrameStart": 0,
+                "FrameEnd": 0,
+                "Mirror": true
+            }
+        }
+    },
+    "EffectRedBall": {
+        "Location": "Sprites\\Effects\\EffectRedBall",
+        "Frames": 1,
+        "FrameWidth": 10,
+        "FrameHeight": 10,
+        "Columns": 1,
+        "Rows": 1,
+        "Scale": 0.3,
+        "AnimationSets": {
+            "IdleRight": {
+                "Fps": 5,
+                "FrameStart": 0,
+                "FrameEnd": 0,
+                "Mirror": true
             }
         }
     }

@@ -46,5 +46,10 @@ namespace BFB.Engine.Simulation.SimulationComponents
         {
             return true;
         }
+
+        public virtual void OnSimulationRemove(Simulation simulation, SimulationEntity entity, EntityRemovalReason reason)
+        {
+            
+        }
     }
 }
