@@ -1,6 +1,7 @@
 ﻿using BFB.Engine.Content;
 using BFB.Engine.Entity;
 using BFB.Engine.Helpers;
+using BFB.Engine.Inventory;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -88,6 +89,12 @@ namespace BFB.Engine.Graphics.GraphicsComponents
             int y = (int)(entity.Height / 2f + entity.Position.Y);
 
             graphics.DrawAtlas(contentManager.GetAtlasTexture(entity.Meta.Holding.AtlasKey), new Rectangle(x, y, 30,30), Color.White, 0.6f);
+            if (entity.Meta.Holding.ItemType == ItemType.Wall)
+                graphics.Draw(contentManager.GetTexture("default"),
+                    new Rectangle(x,y,(int)(30 * 0.6f),(int)(30* 0.6f)),
+                    new Rectangle(0,0,1,1),
+                    new Color(0,0,0,0.6f));
+            
         }
     }
 }

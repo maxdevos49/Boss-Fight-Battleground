@@ -31,14 +31,6 @@ namespace BFB.Engine.Input.PlayerInput
             {
                 switch (e.Keyboard.KeyEnum)
                 {
-                    case Keys.D1:
-                        _controlState.HotBarLeft = true;
-                        _inputChange = true;
-                        break;
-                    case Keys.D2:
-                        _controlState.HotBarRight = true;
-                        _inputChange = true;
-                        break;
                     case Keys.Left:
                     case Keys.A:
                         _controlState.Left = true;
@@ -65,11 +57,11 @@ namespace BFB.Engine.Input.PlayerInput
                 switch (e.Keyboard.KeyEnum)
                 {
                     case Keys.D1:
-                        _controlState.HotBarLeft = false;
+                        _controlState.HotBarLeft = true;
                         _inputChange = true;
                         break;
                     case Keys.D2:
-                        _controlState.HotBarRight = false;
+                        _controlState.HotBarRight = true;
                         _inputChange = true;
                         break;
                     case Keys.Left:
@@ -130,8 +122,13 @@ namespace BFB.Engine.Input.PlayerInput
         /// <returns></returns>
         public ControlState GetPlayerState()
         {
-            _inputChange = false;
-            return _controlState.Clone();
+            if(!_controlState.HotBarLeft && !_controlState.HotBarRight)//We need to send on the tick for these otherwise we get super scrolling effect
+                _inputChange = false;
+            
+            ControlState input = _controlState.Clone();
+            _controlState.HotBarRight = false;
+            _controlState.HotBarLeft = false;
+            return input;
         }
         
         ///<summary>

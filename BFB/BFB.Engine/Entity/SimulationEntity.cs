@@ -155,17 +155,21 @@ namespace BFB.Engine.Entity
 
             //the future
             foreach (EntityComponent gameComponent in _gameComponents)
-            {
                 gameComponent.Update(this,simulation);
-            }
 
-            
-            
-            
+            MoveEntity(simulation);
+        }
+
+        #endregion 
+        
+        #region MoveEntity
+
+        private void MoveEntity(Simulation.Simulation simulation)
+        {
             //Place entity in correct chunk if in new position
             string chunkKey =
                 simulation.World.ChunkFromPixelLocation((int) Position.X, (int) Position.Y)
-                    ?.ChunkKey; //If this is null then we are outside of map... Bad
+                    ?.ChunkKey;
 
             if (chunkKey != ChunkKey && chunkKey != null)
             {
@@ -173,9 +177,19 @@ namespace BFB.Engine.Entity
                     simulation.World.ChunkIndex[chunkKey]);
                 ChunkKey = chunkKey;
             }
-
+            
             if (EntityType != EntityType.Player || ChunkKey == null) return;
 
+            UpdateVisibleChunks(simulation);
+
+        }
+        
+        #endregion
+        
+        #region UpdateVisibleChunks
+
+        private void UpdateVisibleChunks(Simulation.Simulation simulation)
+        {
             //Clear visible chunks so we dont have to figure out which chunks are no longer being seen
             VisibleChunks.Clear();
             Chunk rootChunk = simulation.World.ChunkIndex[ChunkKey];
@@ -203,7 +217,7 @@ namespace BFB.Engine.Entity
                 }
             }
         }
-
+        
         #endregion
         
         #region EmitOnEntityCollision

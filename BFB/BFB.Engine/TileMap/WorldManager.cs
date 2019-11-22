@@ -94,7 +94,7 @@ namespace BFB.Engine.TileMap
             
             for (int y = 0; y < WorldOptions.WorldChunkHeight; y++)
                 for (int x = 0; x < WorldOptions.WorldChunkWidth; x++)
-                    ChunkMap[x, y] = new Chunk(WorldOptions.ChunkSize, x, y)
+                    ChunkMap[x, y] = new Chunk(WorldOptions.ChunkSize, x, y,WorldOptions.WorldScale )
                     {
                         ChunkKey = message.ChunkMapIds[x, y],
                         ChunkX = x,
@@ -373,21 +373,6 @@ namespace BFB.Engine.TileMap
         
         #endregion
         
-        #region GetHardness
-        /// <summary>
-        /// Retrieves the hardness value of a block.
-        /// </summary>
-        /// <param name="xBlock">The X location of a block.</param>
-        /// <param name="yBlock">The Y location of a block.</param>
-        /// <returns>Returns the hardness value based on the block locations.</returns>
-        public int GetHardness(int xBlock, int yBlock)
-        {
-            (int chunkX, int chunkY, int relativeX, int relativeY) = TranslateBlockPosition(xBlock, yBlock);
-            return ChunkExist(chunkX,chunkY) ? ChunkMap[chunkX,chunkY].Hardness[relativeX, relativeY] : 0;
-        }
-        
-        #endregion
-        
         #region GetLight
         /// <summary>
         /// Retrieves the light value of a block.
@@ -445,22 +430,6 @@ namespace BFB.Engine.TileMap
 
         #endregion
 
-        #region SetHardness
-        /// <summary>
-        /// Sets the hardness value of a block.
-        /// </summary>
-        /// <param name="xBlock">The X location of a block.</param>
-        /// <param name="yBlock">The Y location of a block.</param>
-        /// <param name="hardnessValue">The value of the hardness to be set.</param>
-        public void SetHardness(int xBlock, int yBlock, ushort hardnessValue)
-        {
-            (int chunkX, int chunkY, int relativeX, int relativeY) = TranslateBlockPosition(xBlock, yBlock);
-            if(ChunkExist(chunkX,chunkY))    
-                ChunkMap[chunkX, chunkY].Hardness[relativeX, relativeY] = hardnessValue;
-        }
-        
-        #endregion
-        
         #region SetLight
         /// <summary>
         /// Sets the light value of a block.
@@ -516,14 +485,12 @@ namespace BFB.Engine.TileMap
         /// </summary>
         /// <param name="xBlock">The X location of a block.</param>
         /// <param name="yBlock">The Y location of a block.</param>
-        /// <param name="hardnessValue">The value of the hardness to be set.</param>
         /// <param name="lightValue">The value of the light to be set.</param>
         /// <param name="wallValue">The value of the wall to be set.</param>
         /// <param name="tile">The value of the block to be set.</param>
-        public void SetAll(int xBlock, int yBlock, ushort hardnessValue, byte lightValue, ushort wallValue, WorldTile tile)
+        public void SetAll(int xBlock, int yBlock, byte lightValue, ushort wallValue, WorldTile tile)
         {
             (int chunkX, int chunkY, int relativeX, int relativeY) = TranslateBlockPosition(xBlock, yBlock);
-            ChunkMap[chunkX, chunkY].Hardness[relativeX, relativeY] = hardnessValue;
             ChunkMap[chunkX, chunkY].Light[relativeX, relativeY] = lightValue;
             ChunkMap[chunkX, chunkY].Wall[relativeX, relativeY] = wallValue;
             ChunkMap[chunkX, chunkY].Block[relativeX, relativeY] = (ushort)tile;
@@ -567,7 +534,7 @@ namespace BFB.Engine.TileMap
             {
                 for (int x = 0; x < WorldOptions.WorldChunkWidth; x++)
                 {
-                    ChunkMap[x, y] = _worldGenerator.GenerateChunk(x * WorldOptions.ChunkSize, y * WorldOptions.ChunkSize);
+                    ChunkMap[x, y] = _worldGenerator.GenerateChunk(x * WorldOptions.ChunkSize, y * WorldOptions.ChunkSize, WorldOptions.WorldScale);
 
                     int currentPercent = (int)(progress++ / (WorldOptions.WorldChunkHeight * WorldOptions.WorldChunkWidth) * 100f);
                     

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using BFB.Engine.Entity;
+using BFB.Engine.Helpers;
 using BFB.Engine.Math;
 using BFB.Engine.TileMap;
 using JetBrains.Annotations;
@@ -42,44 +43,9 @@ namespace BFB.Engine.Collisions
 
         private static void EntityCollisions(Simulation.Simulation simulation, SimulationEntity entity)
         {
-            List<Chunk> chunkList = new List<Chunk>();
-            Chunk chunk = simulation.World.ChunkIndex[entity.ChunkKey];
-            chunkList.Add(chunk);
-            
-            //check right upper point chunk
-            Chunk chunkTest = simulation.World.ChunkFromPixelLocation(entity.Right, entity.Top);
-            if(chunk.ChunkY != chunkTest?.ChunkX || chunk.ChunkY != chunkTest.ChunkY)
-                chunkList.Add(chunkTest);
-            
-            //check lower right chunk
-            chunkTest = simulation.World.ChunkFromPixelLocation(entity.Right, entity.Bottom);
-            if(chunk.ChunkY != chunkTest?.ChunkX || chunk.ChunkY != chunkTest.ChunkY)
-                chunkList.Add(chunkTest);
-            
-            //check bottom left chunk
-            chunkTest = simulation.World.ChunkFromPixelLocation(entity.Left, entity.Right);
-            if(chunk.ChunkY != chunkTest?.ChunkX || chunk.ChunkY != chunkTest.ChunkY)
-                chunkList.Add(chunkTest);
-
-            foreach (Chunk chunk1 in chunkList)
-            {
-                if(chunk1 == null)
-                    continue;
-                
-//                Console.WriteLine(entity.CollideWithFilters[1]);
-                
-                //check for entities with the specified filter
-                foreach ((string _, SimulationEntity otherEntity) in chunk1.Entities.ToList().Where(x =>  entity.CollideWithFilters.Contains(x.Value.CollideFilter) 
-                                                                        && x.Value.EntityId != entity.EntityId))
-                {
-
-                    if (IsRectangleColliding(entity.Bounds, otherEntity.Bounds))
-                    {
-                        entity.EmitOnEntityCollision(simulation, otherEntity);
-                    }
-                }
-            }
-            
+            foreach (SimulationEntity targetEntity in simulation.World.QueryEntities(entity.Bounds, entity.CollideWithFilters))
+                if (targetEntity.EntityId != entity.EntityId)
+                    entity.EmitOnEntityCollision(simulation, targetEntity);
         }
         
         #endregion

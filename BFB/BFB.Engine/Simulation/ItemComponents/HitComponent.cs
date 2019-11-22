@@ -1,8 +1,10 @@
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using BFB.Engine.Entity;
 using BFB.Engine.Helpers;
 using BFB.Engine.Inventory;
+using JetBrains.Annotations;
 
 namespace BFB.Engine.Simulation.ItemComponents
 {
@@ -11,26 +13,16 @@ namespace BFB.Engine.Simulation.ItemComponents
         public void Use(Simulation simulation, SimulationEntity entity, IItem item)
         {
             
-            
             if (entity.ControlState != null && entity.ControlState.LeftClick)
             {
-
+                int reach = simulation.World.WorldOptions.WorldScale * item.Configuration.Reach;
                 List<SimulationEntity> targets = new List<SimulationEntity>();
-                //check each pixel 100 pixels in front of the player
-                for (int i = 0; i < 100; i += simulation.World.WorldOptions.WorldScale/2)//We only need to check every half tile size to still be accurate
-                {
-                    int xPos = (int) entity.Position.X + i;
-                    if (entity.Facing == DirectionFacing.Left)
-                        xPos = (int) entity.Position.X - i;
 
-                    //get possible entity at location
-                    SimulationEntity target = simulation.GetEntityAtPosition(xPos, (int) entity.Position.Y);
-                    
-                    //determine if to add the entities
-                    if (target != null && target.EntityId != entity.EntityId && !targets.Contains(target))
-                        targets.Add(target);
-                    
-                }
+                if (entity.Facing == DirectionFacing.Left)
+                    targets = simulation.World.QueryEntities(new Rectangle(entity.Left - reach, entity.Top + entity.Height/2,reach,2), new List<string> {"melee"});
+                else
+                    targets = simulation.World.QueryEntities(new Rectangle(entity.Right, entity.Top + entity.Height/2,reach,2), new List<string> {"melee"});
+
 
                 //Apply actual damage
                 CombatService.FightPeople(entity, targets, simulation);

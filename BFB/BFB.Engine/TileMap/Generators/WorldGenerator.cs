@@ -18,14 +18,15 @@ namespace BFB.Engine.TileMap.Generators
         {
             WorldOptions = options;
         }
-        
+
         /// <summary>
         /// Generates the chunk at the given x,y block position.
         /// </summary>
         /// <param name="chunkX">The chunk X location with the given block X location.</param>
         /// <param name="chunkY">The chunk Y location with the given block Y location.</param>
+        /// <param name="tileScale"></param>
         /// <returns>Returns the generated chuck.</returns>
-        public abstract Chunk GenerateChunk(int chunkX, int chunkY);
+        public abstract Chunk GenerateChunk(int chunkX, int chunkY, int tileScale);
 
     }
 }

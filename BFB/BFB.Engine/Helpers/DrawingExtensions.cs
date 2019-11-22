@@ -3,7 +3,7 @@ using BFB.Engine.Math;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace BFB.Engine.Graphics
+namespace BFB.Engine.Helpers
 {
     public static class DrawingExtensions
     {
@@ -79,7 +79,7 @@ namespace BFB.Engine.Graphics
         {
             graphics.Draw(atlasTexture.Texture,
                 new Rectangle(rectangle.X,rectangle.Y,(int)(rectangle.Width * scale),(int)(rectangle.Width * scale)),
-                new Rectangle(atlasTexture.X,atlasTexture.Y,atlasTexture.Width,atlasTexture.Height),
+                new Rectangle(atlasTexture.X,atlasTexture.Y,atlasTexture.Width-2,atlasTexture.Height-2),
                 color);
         }
     }

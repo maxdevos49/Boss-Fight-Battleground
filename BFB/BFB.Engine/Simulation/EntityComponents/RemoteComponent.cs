@@ -38,9 +38,9 @@ namespace BFB.Engine.Simulation.SimulationComponents
 
         public override void Update(SimulationEntity entity, Simulation simulation)
         {
-            
+         
             entity.ControlState = _controlState.Clone();
-            
+
             if (entity.ControlState == null)
                 return;
 

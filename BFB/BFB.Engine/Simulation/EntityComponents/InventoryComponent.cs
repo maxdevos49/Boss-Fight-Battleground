@@ -75,7 +75,8 @@ namespace BFB.Engine.Simulation.SimulationComponents
                 entity.ControlState.HotBarLeft = false;
 
             }
-            else if (entity.ControlState.HotBarRight)
+            
+            if (entity.ControlState.HotBarRight)
             {
                 entity.Inventory.IncrementHotBar();
                 entity.ControlState.HotBarLeft = false;
