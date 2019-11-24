@@ -1,14 +1,9 @@
-using System;
-using System.Collections.Generic;
 using BFB.Engine.Entity;
 using BFB.Engine.Input.PlayerInput;
 using BFB.Engine.Math;
 using BFB.Engine.Server.Communication;
-using BFB.Engine.Simulation.PhysicsComponents;
-using BFB.Engine.Simulation.SimulationComponents.AI;
-using BFB.Engine.Simulation.SimulationComponents.Combat;
 
-namespace BFB.Engine.Simulation.SimulationComponents
+namespace BFB.Engine.Simulation.EntityComponents
 {
     /// <summary>
     /// A Input component that is used for remotely controlling a entity from a socket connection

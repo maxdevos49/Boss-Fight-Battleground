@@ -1,7 +1,7 @@
 using BFB.Engine.Collisions;
 using BFB.Engine.Entity;
 
-namespace BFB.Engine.Simulation.SimulationComponents
+namespace BFB.Engine.Simulation.EntityComponents
 {
     public abstract class EntityComponent
     {
@@ -47,7 +47,7 @@ namespace BFB.Engine.Simulation.SimulationComponents
             return true;
         }
 
-        public virtual void OnSimulationRemove(Simulation simulation, SimulationEntity entity, EntityRemovalReason reason)
+        public virtual void OnSimulationRemove(Simulation simulation, SimulationEntity entity, EntityRemovalReason? reason)
         {
             
         }

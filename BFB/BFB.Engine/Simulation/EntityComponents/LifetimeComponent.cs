@@ -1,6 +1,6 @@
 using BFB.Engine.Entity;
 
-namespace BFB.Engine.Simulation.SimulationComponents
+namespace BFB.Engine.Simulation.EntityComponents
 {
     /// <summary>
     /// Allows for easily removing an entity after a set amount of ticks

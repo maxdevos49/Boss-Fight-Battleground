@@ -125,31 +125,40 @@ namespace BFB.Engine.Simulation
         /// <summary>
         /// Adds a entity to the simulation
         /// </summary>
-        /// <param name="simulationEntity">The simulation entity</param>
-        public void AddEntity(SimulationEntity simulationEntity)
+        /// <param name="entity">The simulation entity</param>
+        public void AddEntity(SimulationEntity entity)
         {
+            
+            //init components
+            entity.Init();
+            
+            
             lock (_lock)
             {
-                if (!_entitiesIndex.ContainsKey(simulationEntity.EntityId))
+                if (!_entitiesIndex.ContainsKey(entity.EntityId))
                 {
                     //Add to all entities
-                    _entitiesIndex.Add(simulationEntity.EntityId,simulationEntity);
+                    _entitiesIndex.Add(entity.EntityId,entity);
                     
-                    OnEntityAdd?.Invoke(simulationEntity.EntityId, simulationEntity.EntityType == EntityType.Player);
+                    OnEntityAdd?.Invoke(entity.EntityId, entity.EntityType == EntityType.Player);
                     
                     //add entity to starting chunk
-                    World.ChunkFromPixelLocation((int) simulationEntity.Position.X, (int) simulationEntity.Position.Y)
-                        .Entities.Add(simulationEntity.EntityId, simulationEntity);
+                    var chunk = World.ChunkFromPixelLocation((int) entity.Position.X, (int) entity.Position.Y);
+                        
+                    if(chunk == null)
+                        return;
+                            
+                    chunk.Entities.Add(entity.EntityId, entity);
 
-                    if (simulationEntity.EntityType == EntityType.Player )
+                    if (entity.EntityType == EntityType.Player )
                     {
-                        if (!_playerEntitiesIndex.ContainsKey(simulationEntity.EntityId))
-                            _playerEntitiesIndex.Add(simulationEntity.EntityId, simulationEntity);
+                        if (!_playerEntitiesIndex.ContainsKey(entity.EntityId))
+                            _playerEntitiesIndex.Add(entity.EntityId, entity);
                     }
 
-                    simulationEntity.ChunkKey = World.ChunkFromPixelLocation(
-                                                                    (int) simulationEntity.Position.X,
-                                                                    (int) simulationEntity.Position.Y).ChunkKey;
+                    entity.ChunkKey = World.ChunkFromPixelLocation(
+                                                                    (int) entity.Position.X,
+                                                                    (int) entity.Position.Y).ChunkKey;
                 }
 
                 if (_playerEntitiesIndex.Count <= 0 || _simulating) return;
@@ -161,12 +170,13 @@ namespace BFB.Engine.Simulation
         #endregion
         
         #region RemoveEntity
-        
+
         /// <summary>
         /// Removes a entity from the simulation with a entity id.
         /// </summary>
         /// <param name="key">The entity Id used to determine who is being removed from the simulation.</param>
-        public void RemoveEntity(string key)
+        /// <param name="reason"></param>
+        public void RemoveEntity(string key, EntityRemovalReason? reason = null)
         {
             bool isPlayer = false;
             
@@ -175,6 +185,8 @@ namespace BFB.Engine.Simulation
                 if (_entitiesIndex.ContainsKey(key))
                 {
                     SimulationEntity entity = _entitiesIndex[key];
+
+                    entity.EmitOnSimulationRemoval(this, reason);
 
                     //Remove from chunk
                     World.ChunkIndex[entity.ChunkKey].Entities.Remove(key);

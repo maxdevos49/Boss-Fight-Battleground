@@ -2,21 +2,18 @@
 using BFB.Engine.Collisions;
 using BFB.Engine.Entity;
 using BFB.Engine.Math;
-using BFB.Engine.Simulation.SimulationComponents;
 
 namespace BFB.Engine.Simulation.EntityComponents.Physics
 {
     public class SpellHeadingPhysicsComponent : EntityComponent
     {
         private BfbVector _acceleration;
-        private Random _random;
         private bool _hitTarget;
 
         public SpellHeadingPhysicsComponent() : base(false) { }
 
         public override void Init(SimulationEntity entity)
         {
-            _random = new Random();
             _hitTarget = false;
             entity.SteeringVector.Normalize();
             _acceleration = new BfbVector(entity.SteeringVector.X, entity.SteeringVector.Y);
@@ -28,9 +25,6 @@ namespace BFB.Engine.Simulation.EntityComponents.Physics
             entity.Velocity.X = _acceleration.X * 30;
             entity.Velocity.Y = _acceleration.Y  * 30;
             
-            Console.WriteLine(entity.Velocity.X);
-            Console.WriteLine(entity.Velocity.Y);
-
             //Updates the position
             entity.Position.Add(entity.Velocity);
 
@@ -65,12 +59,12 @@ namespace BFB.Engine.Simulation.EntityComponents.Physics
         }
 
 
-        private void DamageTarget(SimulationEntity entity ,SimulationEntity target)
+        private void DamageTarget(SimulationEntity attacker ,SimulationEntity target)
         {
-            //TODO
+            //TODO get damage
             
             // Instead of a hard coded value here, you could call a weapon stored on the simulationEntity, and use its damage value.
-            if (target.Meta != null && entity.EntityId != target.EntityId)
+            if (target.Meta != null && attacker.EntityId != target.EntityId)
             {
                 target.Meta.Health -= 10;
                 _hitTarget = true;//Dont remove entity here until next frame because we want to make sure we damage all entities

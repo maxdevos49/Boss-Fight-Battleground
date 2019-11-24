@@ -1,9 +1,8 @@
 using System;
-using System.Linq;
 using BFB.Engine.Entity;
 using BFB.Engine.Inventory;
 
-namespace BFB.Engine.Simulation.SimulationComponents
+namespace BFB.Engine.Simulation.EntityComponents
 {
     public class InventoryComponent : EntityComponent
     {

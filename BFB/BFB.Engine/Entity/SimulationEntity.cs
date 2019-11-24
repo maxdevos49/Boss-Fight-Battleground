@@ -6,7 +6,8 @@ using BFB.Engine.Input.PlayerInput;
 using BFB.Engine.Inventory;
 using BFB.Engine.Math;
 using BFB.Engine.Server;
-using BFB.Engine.Simulation.SimulationComponents;
+using BFB.Engine.Simulation;
+using BFB.Engine.Simulation.EntityComponents;
 using BFB.Engine.TileMap;
 using JetBrains.Annotations;
 
@@ -131,10 +132,19 @@ namespace BFB.Engine.Entity
                 Socket = socket;
             }
 
+           
+        }
+
+        #endregion
+        
+        #region Init
+
+        public void Init()
+        {
             foreach (EntityComponent simulationComponent in _gameComponents)
                 simulationComponent.Init(this);
         }
-
+        
         #endregion
 
         #region Update
@@ -269,6 +279,16 @@ namespace BFB.Engine.Entity
             }
 
             return defaultAction;
+        }
+        
+        #endregion
+        
+        #region EmitOnSimulationRemoval
+
+        public void EmitOnSimulationRemoval(Simulation.Simulation simulation, EntityRemovalReason? reason)
+        {
+            foreach (EntityComponent simulationComponent in _gameComponents)
+                simulationComponent.OnSimulationRemove(simulation,this, reason);
         }
         
         #endregion

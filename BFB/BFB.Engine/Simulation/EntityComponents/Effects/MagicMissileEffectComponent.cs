@@ -2,8 +2,7 @@ using System;
 using System.Collections.Generic;
 using BFB.Engine.Entity;
 using BFB.Engine.Math;
-using BFB.Engine.Simulation.SimulationComponents;
-using BFB.Engine.Simulation.SpellComponents.Physics;
+using BFB.Engine.Simulation.EntityComponents.Physics;
 
 namespace BFB.Engine.Simulation.EntityComponents.Effects
 {
@@ -30,6 +29,7 @@ namespace BFB.Engine.Simulation.EntityComponents.Effects
                     Dimensions = new BfbVector(_random.Next(1, 100), _random.Next(1,100)),
                     Rotation = 0,
                     Origin = new BfbVector(0, 0),
+                    EntityType = EntityType.Effect
                 }, new List<EntityComponent>()
                 {
                     new LifetimeComponent(10),
@@ -45,7 +45,8 @@ namespace BFB.Engine.Simulation.EntityComponents.Effects
                     Dimensions = new BfbVector(_random.Next(1, 100), _random.Next(1, 100)),
                     Rotation = 0,
                     Origin = new BfbVector(0, 0),
-                }, new List<EntityComponent>()
+                    EntityType = EntityType.Effect
+                }, new List<EntityComponent>
                 {
                     new LifetimeComponent(10),
                     new SpellEffects1PhysicsComponent()
@@ -60,7 +61,8 @@ namespace BFB.Engine.Simulation.EntityComponents.Effects
                     Dimensions = new BfbVector(_random.Next(1, 100), _random.Next(1, 100)),
                     Rotation = 0,
                     Origin = new BfbVector(0, 0),
-                }, new List<EntityComponent>()
+                    EntityType = EntityType.Effect
+                }, new List<EntityComponent>
                 {
                     new LifetimeComponent(10),
                     new SpellEffects1PhysicsComponent()
@@ -76,7 +78,8 @@ namespace BFB.Engine.Simulation.EntityComponents.Effects
                     Dimensions = new BfbVector(_random.Next(1, 100), _random.Next(1, 100)),
                     Rotation = 0,
                     Origin = new BfbVector(0, 0),
-                }, new List<EntityComponent>()
+                    EntityType = EntityType.Effect
+                }, new List<EntityComponent>
                 {
                     new LifetimeComponent(10),
                     new SpellEffects1PhysicsComponent()
@@ -91,7 +94,8 @@ namespace BFB.Engine.Simulation.EntityComponents.Effects
                     Dimensions = new BfbVector(_random.Next(1, 100), _random.Next(1, 100)),
                     Rotation = 0,
                     Origin = new BfbVector(0, 0),
-                }, new List<EntityComponent>()
+                    EntityType = EntityType.Effect
+                }, new List<EntityComponent>
                 {
                     new LifetimeComponent(10),
                     new SpellEffects1PhysicsComponent()
@@ -106,7 +110,8 @@ namespace BFB.Engine.Simulation.EntityComponents.Effects
                     Dimensions = new BfbVector(_random.Next(1, 100), _random.Next(1, 100)),
                     Rotation = 0,
                     Origin = new BfbVector(0, 0),
-                }, new List<EntityComponent>()
+                    EntityType = EntityType.Effect
+                }, new List<EntityComponent>
                 {
                     new LifetimeComponent(10),
                     new SpellEffects1PhysicsComponent()

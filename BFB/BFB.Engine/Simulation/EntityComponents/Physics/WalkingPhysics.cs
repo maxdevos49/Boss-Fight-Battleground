@@ -1,9 +1,8 @@
 ﻿using BFB.Engine.Collisions;
 using BFB.Engine.Entity;
 using BFB.Engine.Math;
-using BFB.Engine.Simulation.SimulationComponents;
 
-namespace BFB.Engine.Simulation.PhysicsComponents
+namespace BFB.Engine.Simulation.EntityComponents.Physics
 {
     /// <summary>
     /// A player physics component that is used for normal walking like physics

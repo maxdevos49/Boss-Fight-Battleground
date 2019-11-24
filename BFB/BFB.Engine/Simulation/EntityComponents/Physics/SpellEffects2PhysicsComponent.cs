@@ -1,8 +1,7 @@
 ﻿using System;
 using BFB.Engine.Entity;
-using BFB.Engine.Simulation.SimulationComponents;
 
-namespace BFB.Engine.Simulation.SpellComponents.Physics
+namespace BFB.Engine.Simulation.EntityComponents.Physics
 {
     class SpellEffects2PhysicsComponent : EntityComponent
     {

@@ -147,10 +147,10 @@ namespace BFB.Engine.Entity
                 case EntityType.Mob:
                 case EntityType.Player:
                 case EntityType.Projectile:
+                case EntityType.Effect:
                     graphicsComponent = new AnimationComponent(content.GetAnimatedTexture(em.TextureKey));
                     break;
             }
-
 
             return new ClientEntity(em.EntityId,
                 new EntityOptions

@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using BFB.Engine.Entity;
 using BFB.Engine.Inventory;
 using BFB.Engine.Math;
-using BFB.Engine.Simulation.SimulationComponents;
-using BFB.Engine.Simulation.SimulationComponents.Physics;
+using BFB.Engine.Simulation.EntityComponents;
+using BFB.Engine.Simulation.EntityComponents.Physics;
 using BFB.Engine.TileMap;
 
 namespace BFB.Engine.Simulation.ItemComponents

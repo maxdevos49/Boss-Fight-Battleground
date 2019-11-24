@@ -1,6 +1,6 @@
 using BFB.Engine.Math;
 
-namespace BFB.Engine.Simulation.PhysicsComponents
+namespace BFB.Engine.Simulation.EntityComponents.Physics
 {
     /// <summary>
     /// The interface to outline how to implement a Physics component

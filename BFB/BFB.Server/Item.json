@@ -3,7 +3,7 @@
         "Default": {
             "TextureKey": "Tiles:Fist",
             "StackLimit": 1,
-            "CoolDown": 1,
+            "CoolDown": 5,
             "Reach": 10,
             "Damage": 1,
             "LeftHoldComponents": ["BreakBlock","Hit","CastSpell"],

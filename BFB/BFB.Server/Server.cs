@@ -12,10 +12,10 @@ using BFB.Engine.Math;
 using BFB.Engine.Server;
 using BFB.Engine.Server.Communication;
 using BFB.Engine.Simulation;
-using BFB.Engine.Simulation.PhysicsComponents;
-using BFB.Engine.Simulation.SimulationComponents;
-using BFB.Engine.Simulation.SimulationComponents.Combat;
-using BFB.Engine.Simulation.SimulationComponents.Physics;
+using BFB.Engine.Simulation.EntityComponents;
+using BFB.Engine.Simulation.EntityComponents.Combat;
+using BFB.Engine.Simulation.EntityComponents.Effects;
+using BFB.Engine.Simulation.EntityComponents.Physics;
 using BFB.Engine.TileMap.Generators;
 using JetBrains.Annotations;
 

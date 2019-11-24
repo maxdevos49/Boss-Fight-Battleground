@@ -4,9 +4,9 @@ using BFB.Engine.Entity;
 using BFB.Engine.Inventory;
 using BFB.Engine.Inventory.Configuration;
 using BFB.Engine.Math;
+using BFB.Engine.Simulation.EntityComponents;
+using BFB.Engine.Simulation.EntityComponents.Effects;
 using BFB.Engine.Simulation.EntityComponents.Physics;
-using BFB.Engine.Simulation.SimulationComponents;
-using BFB.Engine.Simulation.SpellComponents.Physics;
 
 namespace BFB.Engine.Simulation.ItemComponents
 {
@@ -45,7 +45,7 @@ namespace BFB.Engine.Simulation.ItemComponents
                     EntityType = EntityType.Projectile
                 }, new List<EntityComponent>
                 {
-                    new LifetimeComponent(300)
+                    new LifetimeComponent(150)
                 }));
             
             #endregion
@@ -67,6 +67,7 @@ namespace BFB.Engine.Simulation.ItemComponents
                     EntityType = EntityType.Projectile
                 }, new List<EntityComponent>
                 {
+                    new FireballEffectComponent(),
                     new SpellHeadingPhysicsComponent()
                 })
             {
@@ -92,7 +93,8 @@ namespace BFB.Engine.Simulation.ItemComponents
                     EntityType = EntityType.Projectile
                 }, new List<EntityComponent>()
                 {
-                    new BombSpellPhysicsComponent(new BfbVector(entity.ControlState.Mouse.X - entity.Left, -40), entity)
+                    new LifetimeComponent(100),
+                    new BombSpellPhysicsComponent()
                 }) 
             {
                 ParentEntityId = entity.EntityId,
@@ -117,6 +119,7 @@ namespace BFB.Engine.Simulation.ItemComponents
                     EntityType = EntityType.Projectile
                 }, new List<EntityComponent>()
                 {
+                    new MagicMissileEffectComponent(),
                     new SpellHeadingPhysicsComponent()
                 }) {
                 ParentEntityId = entity.EntityId,

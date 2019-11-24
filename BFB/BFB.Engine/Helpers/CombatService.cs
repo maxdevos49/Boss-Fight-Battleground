@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Text;
 using BFB.Engine.Entity;
-using BFB.Engine.Simulation.PhysicsComponents;
 
 namespace BFB.Engine.Helpers
 {

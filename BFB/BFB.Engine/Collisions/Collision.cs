@@ -43,7 +43,7 @@ namespace BFB.Engine.Collisions
 
         private static void EntityCollisions(Simulation.Simulation simulation, SimulationEntity entity)
         {
-            foreach (SimulationEntity targetEntity in simulation.World.QueryEntities(entity.Bounds, entity.CollideWithFilters))
+            foreach (SimulationEntity targetEntity in simulation.World.QueryEntities(entity.Bounds, entity.CollideWithFilters, entity.EntityId))
                 if (targetEntity.EntityId != entity.EntityId)
                     entity.EmitOnEntityCollision(simulation, targetEntity);
         }
