@@ -1,7 +1,7 @@
 using BFB.Engine.Content;
 using BFB.Engine.Entity;
 
-namespace BFB.Engine.Simulation.EntityComponents.Effects
+namespace BFB.Engine.Simulation.EntityComponents
 {
     
     /// <summary>

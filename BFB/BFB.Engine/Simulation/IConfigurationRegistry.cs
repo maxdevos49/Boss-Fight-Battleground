@@ -37,17 +37,5 @@ namespace BFB.Engine.Simulation
         /// <returns></returns>
         IItemComponent GetItemComponent(string componentKey);
 
-        /// <summary>
-        /// </summary>
-        /// <param name="componentKey"></param>
-        /// <returns></returns>
-        EntityComponent GetSimulationComponent(string componentKey);
-        
-        /// <summary>
-        /// </summary>
-        /// <param name="componentKey"></param>
-        /// <returns></returns>
-        EntityComponent GetSingletonSimulationComponent(string componentKey);
-
     }
 }

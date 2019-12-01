@@ -7,16 +7,16 @@ namespace BFB.Engine.Simulation.Configuration
         /// <summary>
         /// The configuration data to construct all simulation components
         /// </summary>
-        public Dictionary<string, SimulationComponentConfiguration> SimulationComponents { get; set; }
+        public Dictionary<string, EntityComponentConfiguration> EntityComponents { get; set; }
         
-        /// <summary>
-        /// The configuration data to construct all ITem components
-        /// </summary>
+//        /// <summary>
+//        /// The configuration data to construct all ITem components
+//        /// </summary>
         public Dictionary<string, ItemComponentConfiguration> ItemComponents { get; set; }
-        
-        /// <summary>
-        /// The configuration data to construct all Block componets
-        /// </summary>
+//        
+//        /// <summary>
+//        /// The configuration data to construct all Block components
+//        /// </summary>
         public Dictionary<string, BlockComponentConfiguration> BlockComponents { get; set; }
     }
 }

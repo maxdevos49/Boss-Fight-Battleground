@@ -1,21 +1,14 @@
 ﻿//C#
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using Microsoft.Extensions.Configuration;
 using System.Net;
 using System.Threading;
 using BFB.Engine.Entity;
-using BFB.Engine.Inventory;
-using BFB.Engine.Math;
 using BFB.Engine.Server;
 using BFB.Engine.Server.Communication;
 using BFB.Engine.Simulation;
-using BFB.Engine.Simulation.EntityComponents;
-using BFB.Engine.Simulation.EntityComponents.Combat;
-using BFB.Engine.Simulation.EntityComponents.Effects;
-using BFB.Engine.Simulation.EntityComponents.Physics;
 using BFB.Engine.TileMap.Generators;
 using JetBrains.Annotations;
 
@@ -29,6 +22,8 @@ namespace BFB.Server
         private readonly IConfiguration _configuration;
         private readonly Simulation _simulation;
         private readonly ServerSocketManager _server;
+
+        private static int _cursorPositionStart;
 
         #endregion
 
@@ -106,34 +101,39 @@ namespace BFB.Server
             
             #region Handle Client Ready
 
-            _server.OnClientReady = (socket) =>
+            _server.OnClientReady = socket =>
             {
                 //Add to simulation
-                _simulation.AddEntity(new SimulationEntity(
-                    socket.ClientId,
-                    new EntityOptions
-                    {
-                        TextureKey = "Player",
-                        Position = new BfbVector(200, 100),
-                        Dimensions = new BfbVector(2 * _simulation.World.WorldOptions.WorldScale, 3 * _simulation.World.WorldOptions.WorldScale),
-                        Rotation = 0,
-                        Origin = new BfbVector(0, 0),
-                        EntityType = EntityType.Player
-                    },new List<EntityComponent>
-                    {
-                        new AutoJumpComponent(),
-                        new HealthComponent(),
-                        new RemoteInputComponent(),
-                        new WalkingPhysics(),
-                        new InventoryComponent(),
-                        new WalkingAnimationComponent(),
-                        new HoldingAnimationComponent(),
-                        new VoidDeathComponent()
-                    }, socket)
-                {
-                    CollideFilter = "human",
-                    CollideWithFilters = new List<string>{"tile", "item", "projectile", "melee"},
-                });
+//                _simulation.AddEntity(new SimulationEntity(
+//                    socket.ClientId,
+//                    new EntityOptions
+//                    {
+//                        TextureKey = "Player",
+//                        Position = new BfbVector(200, 100),
+//                        Dimensions = new BfbVector(2 * _simulation.World.WorldOptions.WorldScale, 3 * _simulation.World.WorldOptions.WorldScale),
+//                        Rotation = 0,
+//                        Origin = new BfbVector(0, 0),
+//                        EntityType = EntityType.Player
+//                    },new List<EntityComponent>
+//                    {
+//                        new AutoJumpComponent(),
+//                        new HealthComponent(),
+//                        new RemoteInputComponent(),
+//                        new WalkingPhysics(),
+//                        new InventoryComponent(),
+//                        new WalkingAnimationComponent(),
+//                        new HoldingAnimationComponent(),
+//                        new VoidDeathComponent()
+//                    }, socket)
+//                {
+//                    CollideFilter = "human",
+//                    CollideWithFilters = new List<string>{"tile", "item", "projectile", "melee"},
+//                });
+
+
+                SimulationEntity player = SimulationEntity.SimulationEntityFactory("Human", socket: socket);
+                
+                _simulation.AddEntity(player);
                 
                 _server.PrintMessage($"Client {socket.ClientId} Ready and added to Simulation");
 
@@ -151,10 +151,26 @@ namespace BFB.Server
             
             #endregion
             
-            #region GenerateWorld
+            #region OnServerStart/Generate World
             
             //probably should just be triggered to generate the first time the simulation starts
-            _server.OnServerStart = () => _simulation.GenerateWorld();
+            _server.OnServerStart = () =>
+            {
+                Console.WriteLine("Generating World...");
+                Console.Write("[");
+                _cursorPositionStart = Console.CursorLeft;
+                Console.CursorLeft = _cursorPositionStart + 101;
+                Console.Write("]");
+                Console.CursorLeft = _cursorPositionStart;
+                Console.BackgroundColor = ConsoleColor.Blue;
+                Console.CursorVisible = false;
+                _simulation.GenerateWorld();
+                Console.ResetColor();
+                Console.CursorVisible = true;
+                Console.WriteLine();
+                _server.PrintMessage();
+
+            };
             
             #endregion
             
@@ -176,7 +192,14 @@ namespace BFB.Server
             
             #region OnWorldGenerationProgress
 
-            _simulation.OnWorldGenerationProgress = (progress) => _server.PrintMessage("World Generation: " + progress); 
+            _simulation.OnWorldGenerationProgress = progress =>
+            {
+                Console.Write("=");
+                int previous = Console.CursorLeft;
+                Console.CursorLeft = _cursorPositionStart + 50;
+                Console.Write(progress);
+                Console.CursorLeft = previous;
+            }; 
             
             #endregion
             
@@ -202,7 +225,7 @@ namespace BFB.Server
 
             _simulation.OnEntityUpdates = (entityKey, updates) =>
             {
-                _server.GetClient(entityKey).Emit("/players/updates", updates);
+                _server.GetClient(entityKey)?.Emit("/players/updates", updates);
             };
             
             #endregion
@@ -211,7 +234,8 @@ namespace BFB.Server
 
             _simulation.OnChunkUpdates = (entityKey, updates) =>
             {
-                _server.GetClient(entityKey).Emit("/players/chunkUpdates", updates);
+                
+                _server.GetClient(entityKey)?.Emit("/players/chunkUpdates", updates);
             };
             
             #endregion

@@ -1,10 +1,8 @@
 using System;
-using System.Collections.Generic;
 using BFB.Engine.Entity;
 using BFB.Engine.Math;
-using BFB.Engine.Simulation.EntityComponents.Physics;
 
-namespace BFB.Engine.Simulation.EntityComponents.Effects
+namespace BFB.Engine.Simulation.EntityComponents
 {
     public class FireballEffectComponent : EntityComponent
     {
@@ -30,12 +28,13 @@ namespace BFB.Engine.Simulation.EntityComponents.Effects
                         Dimensions = new BfbVector(_random.Next(1, 100), _random.Next(1, 100)),
                         Rotation = 0,
                         Origin = new BfbVector(0, 0),
-                        EntityType = EntityType.Effect
-                    }, new List<EntityComponent>()
-                    {
-                        new LifetimeComponent(5),
-                        new SpellEffects2PhysicsComponent()
-                    });
+                        EntityType = EntityType.Particle
+                    }//, new List<EntityComponent>()
+                    //{
+                    //    new LifetimeComponent(5),
+                    //    new SpellEffects2PhysicsComponent()
+                    //}
+                    );
                 simulation.AddEntity(effect);
             }
             

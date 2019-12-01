@@ -3,7 +3,7 @@ namespace BFB.Engine.Entity
     public enum EntityType
     {
         Unknown,
-        Effect,
+        Particle,
         Item,
         Projectile,
         Mob,

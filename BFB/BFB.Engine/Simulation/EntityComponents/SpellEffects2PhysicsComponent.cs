@@ -1,21 +1,21 @@
 ﻿using System;
 using BFB.Engine.Entity;
 
-namespace BFB.Engine.Simulation.EntityComponents.Physics
+namespace BFB.Engine.Simulation.EntityComponents
 {
-    class SpellEffects3PhysicsComponent : EntityComponent
+    class SpellEffects2PhysicsComponent : EntityComponent
     {
         private readonly Random _random;
 
-        public SpellEffects3PhysicsComponent() : base(false)
+        public SpellEffects2PhysicsComponent() : base(false)
         {
             _random = new Random();
         }
         public override void Update(SimulationEntity simulationEntity, Simulation simulation)
         {
             //Creates the new velocity
-            simulationEntity.Velocity.X = _random.Next(-10, 10);
-            simulationEntity.Velocity.Y = _random.Next(-10, 10);
+            simulationEntity.Velocity.X = System.Math.Abs(_random.Next(1, 10));
+            simulationEntity.Velocity.Y = System.Math.Abs(_random.Next(1, 2) * 0);
 
             //Updates the position
             simulationEntity.Position.Add(simulationEntity.Velocity);

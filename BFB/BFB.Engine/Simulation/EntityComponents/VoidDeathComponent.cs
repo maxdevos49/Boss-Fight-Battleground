@@ -1,7 +1,7 @@
 using BFB.Engine.Collisions;
 using BFB.Engine.Entity;
 
-namespace BFB.Engine.Simulation.EntityComponents.Combat
+namespace BFB.Engine.Simulation.EntityComponents
 {
     public class VoidDeathComponent : EntityComponent
     {

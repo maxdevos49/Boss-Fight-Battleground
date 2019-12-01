@@ -5,7 +5,7 @@ using BFB.Engine.Math;
 using BFB.Engine.TileMap;
 using static System.Int32;
 
-namespace BFB.Engine.Simulation.EntityComponents.AI
+namespace BFB.Engine.Simulation.EntityComponents
 {
     public class AIInputComponent : EntityComponent
     {

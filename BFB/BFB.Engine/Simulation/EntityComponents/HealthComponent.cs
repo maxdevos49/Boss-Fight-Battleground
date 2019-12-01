@@ -1,7 +1,7 @@
 ﻿using System;
 using BFB.Engine.Entity;
 
-namespace BFB.Engine.Simulation.EntityComponents.Combat
+namespace BFB.Engine.Simulation.EntityComponents
 {
     public class HealthComponent : EntityComponent
     { 

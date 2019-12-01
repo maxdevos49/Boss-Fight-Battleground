@@ -1,10 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using BFB.Engine.Collisions;
 using BFB.Engine.Entity;
 using BFB.Engine.Math;
 
-namespace BFB.Engine.Simulation.EntityComponents.Physics
+namespace BFB.Engine.Simulation.EntityComponents
 {
     public class BombSpellPhysicsComponent : EntityComponent
     {
@@ -88,11 +87,12 @@ namespace BFB.Engine.Simulation.EntityComponents.Physics
                         Rotation = 0,
                         Origin = new BfbVector(0, 0),
                         EntityType = EntityType.Projectile
-                    }, new List<EntityComponent>
-                    {
-                        new LifetimeComponent(10),
-                        new SpellEffects3PhysicsComponent()
-                    });
+                    }//, new List<EntityComponent>
+                    //{
+                     //  new LifetimeComponent(10),
+                     //   new SpellEffects3PhysicsComponent()
+                    //}
+                    );
                 
                 simulation.AddEntity(effect);
                 
@@ -106,11 +106,12 @@ namespace BFB.Engine.Simulation.EntityComponents.Physics
                         Rotation = 0,
                         Origin = new BfbVector(0, 0),
                         EntityType = EntityType.Projectile
-                    }, new List<EntityComponent>
-                    {
-                        new LifetimeComponent(10),
-                        new SpellEffects3PhysicsComponent()
-                    });
+                    }//, new List<EntityComponent>
+                    //{
+                      //  new LifetimeComponent(10),
+                       // new SpellEffects3PhysicsComponent()
+                    //}
+                    );
                 simulation.AddEntity(effect);
                 
                 effect = new SimulationEntity(
@@ -123,11 +124,12 @@ namespace BFB.Engine.Simulation.EntityComponents.Physics
                         Rotation = 0,
                         Origin = new BfbVector(0, 0),
                         EntityType = EntityType.Projectile
-                    }, new List<EntityComponent>
-                    {
-                        new LifetimeComponent(10),
-                        new SpellEffects3PhysicsComponent()
-                    });
+                    }//, new List<EntityComponent>
+                    //{
+                     //   new LifetimeComponent(10),
+                      //  new SpellEffects3PhysicsComponent()
+                    //}
+                    );
                 simulation.AddEntity(effect);
             }
         }

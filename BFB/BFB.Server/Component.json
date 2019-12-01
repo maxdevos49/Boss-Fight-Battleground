@@ -1,0 +1,59 @@
+{
+    "EntityComponents": {
+        "Health": {
+            "FullyQualifiedName": "BFB.Engine.Simulation.EntityComponents.HealthComponent"
+        },
+        "HumanPhysics": {
+            "FullyQualifiedName": "BFB.Engine.Simulation.EntityComponents.WalkingPhysics",
+            "Args": [20]
+        },
+        "ZombiePhysics": {
+            "FullyQualifiedName": "BFB.Engine.Simulation.EntityComponents.WalkingPhysics",
+            "Args": [18]
+        },
+        "SkeletonPhysics": {
+            "FullyQualifiedName": "BFB.Engine.Simulation.EntityComponents.WalkingPhysics",
+            "Args": [21]
+        },
+        "SpiderPhysics": {
+            "FullyQualifiedName": "BFB.Engine.Simulation.EntityComponents.WalkingPhysics",
+            "Args": [24]
+        },
+        "WalkingAnimation":{ 
+            "FullyQualifiedName": "BFB.Engine.Simulation.EntityComponents.WalkingAnimationComponent"
+        },
+        "AutoJump": {
+            "FullyQualifiedName": "BFB.Engine.Simulation.EntityComponents.AutoJumpComponent"
+        },
+        "Inventory": {
+            "FullyQualifiedName":"BFB.Engine.Simulation.EntityComponents.InventoryComponent"
+        },
+        "HoldingAnimation": {
+            "FullyQualifiedName": "BFB.Engine.Simulation.EntityComponents.HoldingAnimationComponent"
+        },
+        "VoidDeath": {
+            "FullyQualifiedName": "BFB.Engine.Simulation.EntityComponents.VoidDeathComponent"
+        },
+        "MagicMissilePhysics": {
+            "FullyQualifiedName": "BFB.Engine.Simulation.EntityComponents."
+        }
+    },
+    "ItemComponents": {
+        "Building:SetBlock": {
+            "FullyQualifiedName": "TODO"
+        },
+        "Building:Break": {
+            "FullyQualifiedName": "TODO",
+            "Options": [5]
+        },
+        "Combat:Hit": {
+            "FullyQualifiedName": "TODO"
+        }
+    },
+    "BlockComponents": {
+        "GrassGrow": {
+            "FullyQualifiedName": "TODO",
+            "Options": []
+        }
+    }
+}

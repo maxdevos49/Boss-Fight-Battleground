@@ -2,7 +2,7 @@ using BFB.Engine.Collisions;
 using BFB.Engine.Entity;
 using BFB.Engine.TileMap;
 
-namespace BFB.Engine.Simulation.EntityComponents.Physics
+namespace BFB.Engine.Simulation.EntityComponents
 {
     public class AutoJumpComponent : EntityComponent
     {

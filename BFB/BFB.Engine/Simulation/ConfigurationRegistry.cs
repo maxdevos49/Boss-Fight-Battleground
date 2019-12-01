@@ -1,7 +1,11 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+using BFB.Engine.Entity.Configuration;
 using BFB.Engine.Inventory.Configuration;
+using BFB.Engine.Simulation.BlockComponent;
+using BFB.Engine.Simulation.Configuration;
 using BFB.Engine.Simulation.EntityComponents;
 using BFB.Engine.Simulation.ItemComponents;
 using BFB.Engine.TileMap;
@@ -26,6 +30,10 @@ namespace BFB.Engine.Simulation
         
         private Dictionary<WorldTile, WallConfiguration> _wallConfiguration;
 
+        private Dictionary<string, EntityConfiguration> _entityConfigurations;
+        
+        private Dictionary<string, EntityComponentConfiguration> _entityComponentConfigurations;
+        
         private readonly Dictionary<string, IItemComponent> _itemComponents;
 
         #region Constructor
@@ -35,13 +43,14 @@ namespace BFB.Engine.Simulation
             _itemConfiguration = new Dictionary<string, ItemConfiguration>();
             _blockConfiguration = new Dictionary<WorldTile, BlockConfiguration>();
             _wallConfiguration = new Dictionary<WorldTile, WallConfiguration>();
-            
+            _entityConfigurations = new Dictionary<string, EntityConfiguration>();
+            _entityComponentConfigurations = new Dictionary<string, EntityComponentConfiguration>();
             _itemComponents = new Dictionary<string, IItemComponent>();
 
-            
             ParseItems();
-
-            ParseItemComponents();
+            ParseEntities();
+            
+            ParseComponents();
         }
         
         #endregion
@@ -67,8 +76,8 @@ namespace BFB.Engine.Simulation
         }
         
         #endregion
-        
 
+        
         #region ParseItemAndTileConfiguration
         
         private void ParseItems()
@@ -117,10 +126,83 @@ namespace BFB.Engine.Simulation
         #endregion
         
         
+        #region ParseEntityConfiguration
+
+        private void ParseEntities()
+        {
+            string json;
+            
+            using (StreamReader r = new StreamReader("Entity.json"))
+            {
+                json = r.ReadToEnd();
+            }
+            
+            EntityJSONSchema content = JsonConvert.DeserializeObject<EntityJSONSchema>(json);
+
+            _entityConfigurations = content.Entities;
+
+        }
+        
+        #endregion
+
+        #region GetEntityConfiguration
+        
+        public EntityConfiguration GetEntityConfiguration(string entityKey)
+        {
+            if(!_entityConfigurations.ContainsKey(entityKey))
+                throw new KeyNotFoundException($"The Entity with the Key: {entityKey} was not found");
+
+            return _entityConfigurations[entityKey];
+        }
+        
+        #endregion
+        
+        
+        #region ParseConponents
+
+        private void ParseComponents()
+        {
+            string json;
+            
+            using (StreamReader r = new StreamReader("Component.json"))
+            {
+                json = r.ReadToEnd();
+            }
+            
+            ComponentJSONSchema content = JsonConvert.DeserializeObject<ComponentJSONSchema>(json);
+
+            //Entity Components
+            _entityComponentConfigurations = content.EntityComponents;
+            
+            //Item components
+            ParseItemComponents();
+            
+            //block components
+            //TODO move from the current block component
+        }
+
+        #endregion
+        
+        #region GetEntityComponent
+
+        public EntityComponent GetEntityComponent(string componentKey)
+        {
+            if(!_entityComponentConfigurations.ContainsKey(componentKey))
+                throw new KeyNotFoundException($"The Component with the Key: {componentKey} was not found");
+
+            EntityComponentConfiguration config =  _entityComponentConfigurations[componentKey];
+
+            return (EntityComponent)GetEntityComponentInstance(config);
+        }
+
+        #endregion
+        
+        
         #region ParseItemComponents
 
         private void ParseItemComponents()
         {
+            //TODO use json configuration
             _itemComponents.Add("PlaceBlock", new PlaceTileComponent());
             _itemComponents.Add("BreakBlock", new BreakBlockComponent());
             _itemComponents.Add("BreakWall", new BreakWallComponent());
@@ -141,33 +223,60 @@ namespace BFB.Engine.Simulation
         }
         
         #endregion
+        
+        
+        #region ParseBlockComponents
 
-        #region GetSimulationComponent(TODO)
-        
-        public EntityComponent GetSimulationComponent(string componentKey)
+        private void ParseBlockComponents()
         {
-            throw new NotImplementedException();
+            //TODO move from other manager
         }
+
         #endregion
         
-        #region GetSingletonSimulationComponent(TODO)
-        public EntityComponent GetSingletonSimulationComponent(string componentKey)
+        #region GetBlockComponent
+
+        public ITileComponent GetBlockComponent()
         {
-            throw new NotImplementedException();
+            //TODO
+            return null;
         }
+        
         #endregion
         
+
+        #region GetEntityComponentInstance
         
-        #region GetInstance
-        
-        private object GetInstance(string strFullyQualifiedName)
-        {         
-            Type t = Type.GetType(strFullyQualifiedName); 
-            
-            if(t == null)
-                throw new Exception($"The fully qualified name: \"{strFullyQualifiedName}\" was not valid.");
-            
-            return  Activator.CreateInstance(t);         
+        private object GetEntityComponentInstance(EntityComponentConfiguration config)
+        {
+            try
+            {
+                Type t = Type.GetType(config.FullyQualifiedName);
+
+                if (t == null)
+                    throw new Exception($"The fully qualified name: \"{config.FullyQualifiedName}\" was not valid.");
+
+                if (config.Args == null) 
+                    return Activator.CreateInstance(t);
+                
+                //We want to speak in int32's and not int64's
+                for (int i = 0; i < config.Args.Length; i++)
+                {
+                    if (config.Args[i] is long)
+                        config.Args[i] = Convert.ToInt32(config.Args[i]);
+                }
+
+                return Activator.CreateInstance(t, config.Args);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine();
+                Console.WriteLine();
+                Console.WriteLine(config.FullyQualifiedName);
+                Console.WriteLine();
+                Console.WriteLine($"Exception: {ex}");
+                return null;
+            }
         }
         
         #endregion

@@ -147,7 +147,7 @@ namespace BFB.Engine.Entity
                 case EntityType.Mob:
                 case EntityType.Player:
                 case EntityType.Projectile:
-                case EntityType.Effect:
+                case EntityType.Particle:
                     graphicsComponent = new AnimationComponent(content.GetAnimatedTexture(em.TextureKey));
                     break;
             }

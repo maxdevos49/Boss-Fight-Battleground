@@ -116,7 +116,7 @@ namespace BFB.Engine.Entity
             EntityId = entityId;
             TextureKey = options.TextureKey;
             AnimationState = AnimationState.IdleRight;
-            Position = options.Position;
+            Position = options.Position ?? new BfbVector();
             Dimensions = options.Dimensions;
             Origin = options.Origin;
             Rotation = options.Rotation;

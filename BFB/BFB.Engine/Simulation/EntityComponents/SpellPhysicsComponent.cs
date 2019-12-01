@@ -1,16 +1,15 @@
-﻿using System;
-using BFB.Engine.Collisions;
+﻿using BFB.Engine.Collisions;
 using BFB.Engine.Entity;
 using BFB.Engine.Math;
 
-namespace BFB.Engine.Simulation.EntityComponents.Physics
+namespace BFB.Engine.Simulation.EntityComponents
 {
-    public class SpellHeadingPhysicsComponent : EntityComponent
+    public class SpellPhysicsComponent : EntityComponent
     {
         private BfbVector _acceleration;
         private bool _hitTarget;
 
-        public SpellHeadingPhysicsComponent() : base(false) { }
+        public SpellPhysicsComponent() : base(false) { }
 
         public override void Init(SimulationEntity entity)
         {
@@ -41,7 +40,7 @@ namespace BFB.Engine.Simulation.EntityComponents.Physics
                 secondaryEntity.EntityType != EntityType.Mob)
                 return true;
             
-            DamageTarget(primaryEntity,secondaryEntity);
+            DamageTarget(simulation,primaryEntity,secondaryEntity);
 
             return true;
         }
@@ -59,12 +58,11 @@ namespace BFB.Engine.Simulation.EntityComponents.Physics
         }
 
 
-        private void DamageTarget(SimulationEntity attacker ,SimulationEntity target)
+        private void DamageTarget(Simulation simulation, SimulationEntity spell ,SimulationEntity target)
         {
-            //TODO get damage
+            ushort damage = spell.Inventory?.GetActiveSlot().Configuration.Damage ?? 0;//Technically only gets the damage of the item we are currently holding so this means that the damage may not be accurate. Possible fix is to put the spell item in the inventory of the cast spell in 
             
-            // Instead of a hard coded value here, you could call a weapon stored on the simulationEntity, and use its damage value.
-            if (target.Meta != null && attacker.EntityId != target.EntityId)
+            if (target.Meta != null && spell.EntityId != target.EntityId && target.EntityId != spell.ParentEntityId)
             {
                 target.Meta.Health -= 10;
                 _hitTarget = true;//Dont remove entity here until next frame because we want to make sure we damage all entities

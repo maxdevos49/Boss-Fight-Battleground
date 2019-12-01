@@ -5,6 +5,7 @@ using BFB.Engine.Entity;
 using BFB.Engine.Server.Communication;
 using BFB.Engine.TileMap.Generators;
 using BFB.Engine.TileMap.IO;
+using JetBrains.Annotations;
 using Newtonsoft.Json;
 
 namespace BFB.Engine.TileMap
@@ -360,6 +361,7 @@ namespace BFB.Engine.TileMap
         
         #region BlockLocationFromPixel
 
+        [CanBeNull]
         public Tuple<int, int> BlockLocationFromPixel(int pixelX, int pixelY)
         {
             if (pixelX < 0 || pixelY < 0)
@@ -539,15 +541,22 @@ namespace BFB.Engine.TileMap
                     int currentPercent = (int)(progress++ / (WorldOptions.WorldChunkHeight * WorldOptions.WorldChunkWidth) * 100f);
                     
                     if (previousPercent == currentPercent) continue;
+
+                    for (int i = previousPercent; i < currentPercent; i++)
+                    {
+                        progressCallback?.Invoke(i + "%");
+                    }
                     
-                    progressCallback?.Invoke(currentPercent + "%");
                     previousPercent = currentPercent;
                 }
             }
             
             MapChunksToIndex();
             
-            progressCallback?.Invoke("100% - Generation Complete");
+            for (int i = previousPercent; i <= 100; i++)
+            {
+                progressCallback?.Invoke(i + "%");
+            }
         }
         
         #endregion

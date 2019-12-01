@@ -411,15 +411,15 @@ namespace BFB.Engine.Graphics
             graphics.DrawBackedText($"Client FPS: {System.Math.Round(1f/(float)time.ElapsedGameTime.TotalSeconds)}/60", new BfbVector(xPos,yPos),_content,0.5f);
             graphics.DrawBackedText("Server TPS: {}/20", new BfbVector(xPos,yPos += offset),_content,0.5f);
             graphics.DrawBackedText($"X: {entity.Left}, Y: {entity.Top}", new BfbVector(xPos,yPos += offset),_content,0.5f);
-            Chunk chunk = world.ChunkFromPixelLocation((int) entity.Left, (int)entity.Top);
+            Chunk chunk = world.ChunkFromPixelLocation( entity.Left, entity.Top);
             graphics.DrawBackedText($"Chunk-X: {chunk?.ChunkX ?? 0}, Chunk-Y: {chunk?.ChunkY ?? 0}", new BfbVector(xPos,yPos +=offset),_content,0.5f);
             graphics.DrawBackedText($"Velocity-X: {entity.Velocity.X}, Velocity-Y: {entity.Velocity.Y}", new BfbVector(xPos,yPos += offset),_content,0.5f);
             graphics.DrawBackedText($"Facing: {entity.Facing}", new BfbVector(xPos,yPos += offset),_content,0.5f);
             BfbVector mouse = ViewPointToMapPoint(input.Mouse);
-            (int blockX, int blockY) = world.BlockLocationFromPixel((int)mouse.X, (int)mouse.Y);
+            (int blockX, int blockY) = world.BlockLocationFromPixel((int)mouse.X, (int)mouse.Y) ?? new Tuple<int, int>(0,0);
             graphics.DrawBackedText($"Mouse-X: {(int)mouse.X}, Mouse-Y: {(int)mouse.Y}", new BfbVector(xPos,yPos += offset),_content,0.5f);
             graphics.DrawBackedText($"Block-X: {blockX}, Block-Y: {blockY}, Block: {world.GetBlock(blockX,blockY)}, Wall: {(WorldTile)world.GetWall(blockX,blockY)}", new BfbVector(xPos,yPos += offset),_content,0.5f );
-            graphics.DrawBackedText($"Entities: {entities.Count}, Players: {entities.Count(x => x.EntityType == EntityType.Player)}, Items: {entities.Count(x => x.EntityType == EntityType.Item)}, Mobs: {entities.Count(x => x.EntityType == EntityType.Mob)}", new BfbVector(xPos,yPos += offset),_content,0.5f);
+            graphics.DrawBackedText($"Entities: {entities.Count}, Players: {entities.Count(x => x.EntityType == EntityType.Player)}, Items: {entities.Count(x => x.EntityType == EntityType.Item)}, Mobs: {entities.Count(x => x.EntityType == EntityType.Mob)}, Projectiles: {entities.Count(x => x.EntityType == EntityType.Projectile)}, Particles: {entities.Count(x => x.EntityType == EntityType.Particle)}", new BfbVector(xPos,yPos += offset),_content,0.5f);
             
             graphics.DrawBackedText("Press F3 to exit Debug", new BfbVector(xPos,yPos + offset*2),_content,0.5f);
             

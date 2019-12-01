@@ -1,0 +1,124 @@
+{
+  "Entities": {
+      "Human": {
+          "TextureKey": "Player",
+          "EntityType": "Mob",
+          "Health": 20,
+          "Mana": 1000,
+          "Lifetime": 0,
+          "DimensionRange": null,
+          "Dimensions": {
+              "X": 2,
+              "Y": 3
+          },
+          "Origin": {
+              "X": 0.5,
+              "Y": 0.5
+          },
+          "CollideFilter": "mob",
+          "CollideWithFilters": ["tile","item","projectile","melee"],
+          "Components": [
+              "AutoJump",
+              "Health",
+              "HumanPhysics",
+              "WalkingAnimation",
+              "VoidDeath"
+          ]
+      },
+      "Zombie": {
+          "TextureKey": "Zombie",
+          "EntityType": "Mob",
+          "Health": 20,
+          "Mana": 1000,
+          "Lifetime": 0,
+          "DimensionRange": null,
+          "Dimensions": {
+              "X": 2,
+              "Y": 3
+          },
+          "Origin": {
+              "X": 0.5,
+              "Y": 0.5
+          },
+          "CollideFilter": "mob",
+          "CollideWithFilters": ["tile","item","projectile","melee"],
+          "Components": [
+              "AutoJump",
+              "Health",
+              "ZombiePhysics",
+              "WalkingAnimation",
+              "VoidDeath"
+          ]
+      },
+      "Skeleton": {
+          "TextureKey": "Skeleton",
+          "EntityType": "Mob",
+          "Health": 20,
+          "Mana": 1000,
+          "Lifetime": 0,
+          "DimensionRange": null,
+          "Dimensions": {
+              "X": 2,
+              "Y": 3
+          },
+          "Origin": {
+              "X": 0.5,
+              "Y": 0.5
+          },
+          "CollideFilter": "mob",
+          "CollideWithFilters": ["tile","item","projectile","melee"],
+          "Components": [
+              "AutoJump",
+              "Health",
+              "SkeletonPhysics",
+              "WalkingAnimation",
+              "VoidDeath"
+          ]
+      },
+      "Spider": {
+          "TextureKey": "Spider",
+          "EntityType": "Mob",
+          "Health": 20,
+          "Mana": 1000,
+          "Lifetime": 0,
+          "DimensionRange": null,
+          "Dimensions": {
+              "X": 3,
+              "Y": 2
+          },
+          "Origin": {
+              "X": 0.5,
+              "Y": 0.5
+          },
+          "CollideFilter": "mob",
+          "CollideWithFilters": ["tile","item","projectile","melee"],
+          "Components": [
+              "AutoJump",
+              "Health",
+              "SpiderPhysics",
+              "WalkingAnimation",
+              "VoidDeath"
+          ]
+      },
+      "MagicMissile": {
+          "TextureKey": "Missile",
+          "EntityType": "Projectile",
+          "Lifetime": 0,
+          "DimensionRange": null,
+          "Dimensions": {
+              "X": 1,
+              "Y": 1
+          },
+          "Origin": {
+              "X": 0.5,
+              "Y": 0.5
+          },
+          "CollideFilter": "projectile",
+          "CollideWithFilters": ["tile","mob"],
+          "Components": [
+              "MagicMissilePhysics",
+              "MagicMissileEffect"
+          ]
+      }
+  }
+}

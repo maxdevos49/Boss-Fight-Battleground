@@ -7,6 +7,7 @@ using BFB.Engine.Server.Communication;
 using BFB.Engine.Simulation.BlockComponent;
 using BFB.Engine.TileMap;
 using BFB.Engine.TileMap.Generators;
+using JetBrains.Annotations;
 
 namespace BFB.Engine.Simulation
 {
@@ -72,6 +73,7 @@ namespace BFB.Engine.Simulation
         /// Callback that is called when the simulation is ready to provide updates for player entity. Supplies the player entity key and its relevant updates
         /// </summary>
         public Action<string,ChunkUpdatesMessage> OnChunkUpdates { get; set; }
+        
         public Action<string> OnSimulationOverLoad { get; set; }
         
 
@@ -126,15 +128,16 @@ namespace BFB.Engine.Simulation
         /// Adds a entity to the simulation
         /// </summary>
         /// <param name="entity">The simulation entity</param>
-        public void AddEntity(SimulationEntity entity)
+        public void  AddEntity(SimulationEntity entity)
         {
             
             //init components
             entity.Init();
             
-            
             lock (_lock)
             {
+                entity.Dimensions.Mult(World.WorldOptions.WorldScale);
+
                 if (!_entitiesIndex.ContainsKey(entity.EntityId))
                 {
                     //Add to all entities
@@ -150,7 +153,7 @@ namespace BFB.Engine.Simulation
                             
                     chunk.Entities.Add(entity.EntityId, entity);
 
-                    if (entity.EntityType == EntityType.Player )
+                    if (entity.EntityType == EntityType.Player)
                     {
                         if (!_playerEntitiesIndex.ContainsKey(entity.EntityId))
                             _playerEntitiesIndex.Add(entity.EntityId, entity);
@@ -212,23 +215,33 @@ namespace BFB.Engine.Simulation
 
         #endregion
 
-        #region GetEntityAtPosition
+//        #region GetEntityAtPosition
+//
+//        public SimulationEntity GetEntityAtPosition(int x, int y)//TODO
+//        {
+//            float tileSize = World.WorldOptions.WorldScale;
+//            foreach (KeyValuePair<string, SimulationEntity> player in _playerEntitiesIndex)
+//            {
+//                if (player.Value.Position.X <= x && player.Value.Position.X + tileSize * 2 >= x)
+//                {
+//                    if (player.Value.Position.Y <= y && player.Value.Position.Y + tileSize * 2 >= y)
+//                    {
+//                        return player.Value;
+//                    }
+//                }
+//            }
+//
+//            return null;
+//        }
 
-        public SimulationEntity GetEntityAtPosition(int x, int y)//TODO
+//        #endregion
+
+        #region GetEntity
+
+        [CanBeNull]
+        public SimulationEntity GetEntity(string entityId)
         {
-            float tileSize = World.WorldOptions.WorldScale;
-            foreach (KeyValuePair<string, SimulationEntity> player in _playerEntitiesIndex)
-            {
-                if (player.Value.Position.X <= x && player.Value.Position.X + tileSize * 2 >= x)
-                {
-                    if (player.Value.Position.Y <= y && player.Value.Position.Y + tileSize * 2 >= y)
-                    {
-                        return player.Value;
-                    }
-                }
-            }
-
-            return null;
+            return _entitiesIndex.ContainsKey(entityId) ? _entitiesIndex[entityId] : null;
         }
 
         #endregion

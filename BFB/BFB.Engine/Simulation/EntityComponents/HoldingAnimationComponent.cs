@@ -1,7 +1,7 @@
 using BFB.Engine.Entity;
 using BFB.Engine.Inventory;
 
-namespace BFB.Engine.Simulation.EntityComponents.Effects
+namespace BFB.Engine.Simulation.EntityComponents
 {
     public class HoldingAnimationComponent : EntityComponent
     {

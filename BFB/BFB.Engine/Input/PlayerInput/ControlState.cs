@@ -9,14 +9,14 @@ namespace BFB.Engine.Input.PlayerInput
     [Serializable]
     public class ControlState
     {
-        public bool Left;
-        public bool Right;
-        public bool Jump;
-        public bool HotBarLeft;
-        public bool HotBarRight;
-        public bool LeftClick;
-        public bool RightClick;
-        public BfbVector Mouse;
+        public bool Left { get; set; }
+        public bool Right { get; set; }
+        public bool Jump { get; set; }
+        public bool HotBarLeft { get; set; }
+        public bool HotBarRight { get; set; }
+        public bool LeftClick { get; set; }
+        public bool RightClick { get; set; }
+        public BfbVector Mouse { get; set; }
         
         public ControlState()
         {

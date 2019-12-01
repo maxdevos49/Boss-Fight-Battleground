@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using BFB.Engine.Collisions;
+using BFB.Engine.Entity.Configuration;
 using BFB.Engine.Input.PlayerInput;
 using BFB.Engine.Inventory;
 using BFB.Engine.Math;
@@ -87,16 +88,16 @@ namespace BFB.Engine.Entity
         #region Entity Frame Helpers
         
         public int OldBottom => (int) (OldPosition.Y + Height);
-        public int OldLeft => (int) (OldPosition.X);
+        public int OldLeft => (int) OldPosition.X;
         public int OldRight => (int) (OldPosition.X + Width);
-        public int OldTop => (int) (OldPosition.Y);
+        public int OldTop => (int) OldPosition.Y;
         
         #endregion
 
         /// <summary>
         /// Game Components
         /// </summary>
-        private readonly List<EntityComponent> _gameComponents;
+        private List<EntityComponent> GameComponents { get; }
 
         #endregion
 
@@ -107,9 +108,8 @@ namespace BFB.Engine.Entity
         /// </summary>
         /// <param name="entityId">Unique ID for this entity</param>
         /// <param name="options">Sets the initial properties of this entity</param>
-        /// <param name="gameComponents">The components this entity contains</param>
         /// <param name="socket">The socket object if the entity is a player</param>
-        public SimulationEntity(string entityId, EntityOptions options,List<EntityComponent> gameComponents, ClientSocket socket = null) : base(entityId, options)
+        public SimulationEntity(string entityId, EntityOptions options, ClientSocket socket = null) : base(entityId, options)
         {
             _currentTick = -1;
             TicksSinceCreation = -1;
@@ -123,9 +123,9 @@ namespace BFB.Engine.Entity
             CollideWithFilters = new List<string> {"tile"};
             
             //Components
-            _gameComponents = gameComponents;
+            GameComponents = new List<EntityComponent>();
 
-            if (EntityType == EntityType.Player)
+            if (socket != null)
             {
                 VisibleChunks = new List<string>();
                 ChunkVersions = new Dictionary<string, int>();
@@ -141,8 +141,8 @@ namespace BFB.Engine.Entity
 
         public void Init()
         {
-            foreach (EntityComponent simulationComponent in _gameComponents)
-                simulationComponent.Init(this);
+            foreach (EntityComponent simulationComponent in GameComponents)
+                simulationComponent?.Init(this);
         }
         
         #endregion
@@ -168,8 +168,8 @@ namespace BFB.Engine.Entity
             OldPosition = new BfbVector(Position.X, Position.Y);
 
             //the future
-            foreach (EntityComponent gameComponent in _gameComponents)
-                gameComponent.Update(this,simulation);
+            foreach (EntityComponent gameComponent in GameComponents)
+                gameComponent?.Update(this,simulation);
 
             MoveEntity(simulation);
         }
@@ -240,7 +240,7 @@ namespace BFB.Engine.Entity
         {
             bool defaultAction = true;
             
-            foreach (EntityComponent simulationComponent in _gameComponents)
+            foreach (EntityComponent simulationComponent in GameComponents)
             {
                 if(!simulationComponent.OnEntityCollision(simulation, this, otherEntity))
                     defaultAction = false;
@@ -257,7 +257,7 @@ namespace BFB.Engine.Entity
         {
             bool defaultAction = true;
             
-            foreach (EntityComponent simulationComponent in _gameComponents)
+            foreach (EntityComponent simulationComponent in GameComponents)
                 if (!simulationComponent.OnWorldBoundaryCollision(simulation, this, side))
                     defaultAction = false;
 
@@ -272,7 +272,7 @@ namespace BFB.Engine.Entity
         {
             bool defaultAction = true;
 
-            foreach (EntityComponent simulationComponent in _gameComponents)
+            foreach (EntityComponent simulationComponent in GameComponents)
             {
                 if (!simulationComponent.OnTileCollision(simulation, this, tc))
                     defaultAction = false;
@@ -287,8 +287,60 @@ namespace BFB.Engine.Entity
 
         public void EmitOnSimulationRemoval(Simulation.Simulation simulation, EntityRemovalReason? reason)
         {
-            foreach (EntityComponent simulationComponent in _gameComponents)
-                simulationComponent.OnSimulationRemove(simulation,this, reason);
+            foreach (EntityComponent simulationComponent in GameComponents)
+                simulationComponent?.OnSimulationRemove(simulation,this, reason);
+        }
+        
+        #endregion
+        
+        #region SimulationEntityFactory
+
+        public static SimulationEntity SimulationEntityFactory(string entityKey, string parentKey = null, BfbVector initialHeading = null, ClientSocket socket = null)
+        {
+            Random rand = new Random();
+            
+            ConfigurationRegistry registry = ConfigurationRegistry.GetInstance();
+            EntityConfiguration config = registry.GetEntityConfiguration(entityKey);
+
+            //create new entity
+            SimulationEntity newEntity = new SimulationEntity(socket?.ClientId ?? Guid.NewGuid().ToString(),
+                new EntityOptions
+                {
+                    TextureKey = config.TextureKey,
+                    Dimensions = config.DimensionRange == null  ? config.Dimensions  : new BfbVector(
+                                                                                            rand.Next((int)config.DimensionRange.X,(int)config.DimensionRange.Y),
+                                                                                            rand.Next((int)config.DimensionRange.X,(int)config.DimensionRange.Y)),
+                    Origin = config.Origin,
+                    EntityType = config.EntityType
+                },socket)
+            {
+                CollideFilter = config.CollideFilter,
+                CollideWithFilters = config.CollideWithFilters,
+                Meta = new EntityMeta
+                {
+                    Health = config.Health,
+                    Mana = config.Mana
+                }
+            };
+            
+            //Add a lifetime component
+            if(config.Lifetime > 0)
+                newEntity.GameComponents.Add(new LifetimeComponent(config.Lifetime));
+
+            //Add components
+            foreach (string configComponent in config.Components)
+                newEntity.GameComponents.Add(registry.GetEntityComponent(configComponent));
+
+
+            if (socket == null)//We can assume if a socket is supplied then its a player
+                return newEntity;
+            
+            newEntity.EntityType = EntityType.Player;
+            newEntity.GameComponents.Add(new RemoteInputComponent());
+            newEntity.GameComponents.Add(new InventoryComponent());
+            newEntity.GameComponents.Add(new HoldingAnimationComponent());
+
+            return newEntity;
         }
         
         #endregion
