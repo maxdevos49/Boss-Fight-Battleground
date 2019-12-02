@@ -1,7 +1,9 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using BFB.Engine.Content;
 using BFB.Engine.Event;
+using BFB.Engine.Graphics;
 using BFB.Engine.Helpers;
 using BFB.Engine.UI.Components;
 using JetBrains.Annotations;
@@ -59,14 +61,17 @@ namespace BFB.Engine.UI
         
         #region Start
         
-        public void Start(string key)
+        public void Start(string key, Scene.Scene scene)
         {
             StopLayers();
             
             if (_allUILayers.ContainsKey(key))
             {
                 _activeUILayers.Add(key, _allUILayers[key]);
+                _allUILayers[key].Start(scene);
+
                 BuildUILayer(key);
+                
             }
         }
         
@@ -106,7 +111,7 @@ namespace BFB.Engine.UI
 
         public void Draw(SpriteBatch graphics)
         {
-            foreach ((string _,UILayer uiLayer) in _activeUILayers)
+            foreach ((string _,UILayer uiLayer) in _activeUILayers.ToList())
             {
                 RenderComponents(uiLayer.RootUI, graphics, uiLayer);
             }
@@ -160,6 +165,9 @@ namespace BFB.Engine.UI
          */
         private void RenderComponents(UIComponent node, SpriteBatch graphics, UILayer layer)
         {
+
+//            if (node == null || string.IsNullOrEmpty(node.RenderAttributes.TextureKey))
+//                return;
             
             node.Render(graphics, _contentManager.GetTexture(node.RenderAttributes.TextureKey), _contentManager.GetFont(node.RenderAttributes.FontKey));
             

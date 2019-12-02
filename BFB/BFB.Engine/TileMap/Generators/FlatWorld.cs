@@ -17,16 +17,17 @@ namespace BFB.Engine.TileMap.Generators
         {
             _random = new Random(WorldOptions.Seed);
         }
-        
+
         /// <summary>
         /// Generates the chunk at the given x,y block position.
         /// </summary>
         /// <param name="x">The chunk X location with the given block X location.</param>
         /// <param name="y">The chunk Y location with the given block Y location.</param>
+        /// <param name="tileScale"></param>
         /// <returns>Returns the generated chuck.</returns>
-        public override Chunk GenerateChunk(int x, int y)
+        public override Chunk GenerateChunk(int x, int y,int tileScale)
         {
-            Chunk chunk = new Chunk(WorldOptions.ChunkSize, x, y);
+            Chunk chunk = new Chunk(WorldOptions.ChunkSize, x, y, tileScale);
 
             for (int yBlock = 0; yBlock < chunk.ChunkSize; yBlock++)
             {

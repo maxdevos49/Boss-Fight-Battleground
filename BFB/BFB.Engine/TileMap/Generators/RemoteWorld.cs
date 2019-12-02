@@ -17,9 +17,9 @@ namespace BFB.Engine.TileMap.Generators
         /// <param name="chunkX">The chunk X location with the given block X location.</param>
         /// <param name="chunkY">The chunk Y location with the given block Y location.</param>
         /// <returns>Returns the generated chuck.</returns>
-        public override Chunk GenerateChunk(int chunkX, int chunkY)
+        public override Chunk GenerateChunk(int chunkX, int chunkY, int tileScale)
         {
-            return new Chunk(WorldOptions.ChunkSize, chunkX,chunkY);
+            return new Chunk(WorldOptions.ChunkSize, chunkX,chunkY,tileScale);
         }
     }
 }

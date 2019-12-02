@@ -9,6 +9,9 @@ namespace BFB.Engine.TileMap
         Grass,
         Dirt,
         Stone,
+        Wood,
+        Leaves,
+        Plank,
         Unknown
     }
 }

@@ -5,6 +5,16 @@ namespace BFB.Engine.Event
     /// </summary>
     public class GlobalEvent : Event
     {
+
+        public GlobalEvent(string message)
+        {
+            Message = message;
+        }
+
+        public GlobalEvent()
+        {
+            
+        }
         /// <summary>
         /// Message to be sent
         /// </summary>

@@ -4,9 +4,10 @@ using System.Linq;
 using System.Threading;
 using BFB.Engine.Entity;
 using BFB.Engine.Server.Communication;
+using BFB.Engine.Simulation.BlockComponent;
 using BFB.Engine.TileMap;
 using BFB.Engine.TileMap.Generators;
-using BFB.Engine.TileMap.TileComponent;
+using JetBrains.Annotations;
 
 namespace BFB.Engine.Simulation
 {
@@ -31,12 +32,12 @@ namespace BFB.Engine.Simulation
         /// Indicates the distance at which a player causes the simulation to simulate
         /// </summary>
         public readonly int SimulationDistance;
-        public readonly WorldManager World;
         
         /// <summary>
         /// Holds the World Manager for maintaining world state
         /// </summary>
-        public readonly WorldManager WorldManager;
+        public readonly WorldManager World;
+
         
         /// <summary>
         /// Callback that is fired on every 1% of world generation progress. Supplies the current world generating progress as a string
@@ -72,6 +73,9 @@ namespace BFB.Engine.Simulation
         /// Callback that is called when the simulation is ready to provide updates for player entity. Supplies the player entity key and its relevant updates
         /// </summary>
         public Action<string,ChunkUpdatesMessage> OnChunkUpdates { get; set; }
+        
+        public Action OnSimulationTick { get; set; }
+        
         public Action<string> OnSimulationOverLoad { get; set; }
         
 
@@ -88,7 +92,7 @@ namespace BFB.Engine.Simulation
         {
             _lock = new object();
             _simulating = false;
-            _tickSpeed = 1000/tickSpeed;//60 ticks a second are default
+            _tickSpeed = 1000/tickSpeed;//20 ticks a second are default
             _random = new Random();
             Tick = 0;
 
@@ -125,34 +129,44 @@ namespace BFB.Engine.Simulation
         /// <summary>
         /// Adds a entity to the simulation
         /// </summary>
-        /// <param name="simulationEntity">The simulation entity</param>
-        /// <param name="isPlayer">Optional parameter indicating if the entity is a player.(false is default)</param>
-        public void AddEntity(SimulationEntity simulationEntity, bool isPlayer = false)
+        /// <param name="entity">The simulation entity</param>
+        public void AddEntity(SimulationEntity entity)
         {
+            //init components
+            entity.Init();
+            
             lock (_lock)
             {
-                if (!_entitiesIndex.ContainsKey(simulationEntity.EntityId))
+                //Apply proper dimensions
+                entity.Dimensions.Mult(World.WorldOptions.WorldScale);
+                
+                //Apply proper origin
+                entity.Origin.X *= entity.Dimensions.X;
+                entity.Origin.Y *= entity.Dimensions.Y;
+
+                if (!_entitiesIndex.ContainsKey(entity.EntityId))
                 {
                     //Add to all entities
-                    _entitiesIndex.Add(simulationEntity.EntityId,simulationEntity);
+                    _entitiesIndex.Add(entity.EntityId,entity);
                     
-                    OnEntityAdd?.Invoke(simulationEntity.EntityId, isPlayer);
+                    OnEntityAdd?.Invoke(entity.EntityId, entity.EntityType == EntityType.Player);
                     
                     //add entity to starting chunk
-                    World.ChunkFromPixelLocation((int) simulationEntity.Position.X, (int) simulationEntity.Position.Y)
-                        .Entities.Add(simulationEntity.EntityId, simulationEntity);
+                    Chunk chunk = World.ChunkFromPixelLocation((int) entity.Position.X, (int) entity.Position.Y);
+                        
+                    if(chunk == null)
+                        return;
+                            
+                    chunk.Entities.Add(entity.EntityId, entity);
 
-                    if (isPlayer)
+                    if (entity.EntityType == EntityType.Player)
                     {
-                        if (!_playerEntitiesIndex.ContainsKey(simulationEntity.EntityId))
-                            _playerEntitiesIndex.Add(simulationEntity.EntityId, simulationEntity);
-
-                        simulationEntity.IsPlayer = true;
+                        if (!_playerEntitiesIndex.ContainsKey(entity.EntityId))
+                            _playerEntitiesIndex.Add(entity.EntityId, entity);
                     }
 
-                    simulationEntity.ChunkKey = World.ChunkFromPixelLocation(
-                                                                    (int) simulationEntity.Position.X,
-                                                                    (int) simulationEntity.Position.Y).ChunkKey;
+                    entity.ChunkKey = World.ChunkFromPixelLocation((int) entity.Position.X,
+                                                                   (int) entity.Position.Y).ChunkKey;
                 }
 
                 if (_playerEntitiesIndex.Count <= 0 || _simulating) return;
@@ -164,12 +178,13 @@ namespace BFB.Engine.Simulation
         #endregion
         
         #region RemoveEntity
-        
+
         /// <summary>
         /// Removes a entity from the simulation with a entity id.
         /// </summary>
         /// <param name="key">The entity Id used to determine who is being removed from the simulation.</param>
-        public void RemoveEntity(string key)
+        /// <param name="reason"></param>
+        public void RemoveEntity(string key, EntityRemovalReason? reason = null)
         {
             bool isPlayer = false;
             
@@ -178,6 +193,8 @@ namespace BFB.Engine.Simulation
                 if (_entitiesIndex.ContainsKey(key))
                 {
                     SimulationEntity entity = _entitiesIndex[key];
+
+                    entity.EmitOnSimulationRemoval(this, reason);
 
                     //Remove from chunk
                     World.ChunkIndex[entity.ChunkKey].Entities.Remove(key);
@@ -203,23 +220,12 @@ namespace BFB.Engine.Simulation
 
         #endregion
 
-        #region GetEntityAtPosition
+        #region GetEntity
 
-        public SimulationEntity GetEntityAtPosition(int x, int y)
+        [CanBeNull]
+        public SimulationEntity GetEntity(string entityId)
         {
-            float tileSize = World.WorldOptions.WorldScale;
-            foreach (KeyValuePair<string, SimulationEntity> player in _playerEntitiesIndex)
-            {
-                if (player.Value.Position.X <= x && player.Value.Position.X + tileSize * 2 >= x)
-                {
-                    if (player.Value.Position.Y <= y && player.Value.Position.Y + tileSize * 2 >= y)
-                    {
-                        return player.Value;
-                    }
-                }
-            }
-
-            return null;
+            return _entitiesIndex.ContainsKey(entityId) ? _entitiesIndex[entityId] : null;
         }
 
         #endregion
@@ -336,7 +342,7 @@ namespace BFB.Engine.Simulation
                             entity.Tick(this);//entity components are processed here
                         
                         //randomly choose three tiles in the chunk to tick
-                        for (int i = 0; i < 19; i++)
+                        for (int i = 0; i < 3; i++)
                         {
                             int xBlock = _random.Next(World.WorldOptions.ChunkSize);
                             int yBlock = _random.Next(World.WorldOptions.ChunkSize);
@@ -352,9 +358,12 @@ namespace BFB.Engine.Simulation
                 //Maintain the tick rate here
                 nextTick += _tickSpeed;
                 int sleepTime = (int) (nextTick - DateTime.Now.Ticks / TimeSpan.TicksPerMillisecond);
-        
+
                 if (sleepTime >= 0)
+                {
+                    OnSimulationTick?.Invoke();
                     Thread.Sleep(sleepTime);
+                }
                 else
                     OnSimulationOverLoad?.Invoke($"{sleepTime}TPS");
             }

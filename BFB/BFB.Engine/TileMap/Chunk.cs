@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using BFB.Engine.Entity;
+using Microsoft.Xna.Framework;
+using Newtonsoft.Json;
 
 namespace BFB.Engine.TileMap
 {
@@ -13,29 +15,37 @@ namespace BFB.Engine.TileMap
         /// The key of the chunk.
         /// </summary>
         public string ChunkKey { get; set; }
+        
         /// <summary>
         /// The x of a chunk.
         /// </summary>
-        public readonly int ChunkX;
+        public int ChunkX { get; set; }
+        
         /// <summary>
         /// The y of a chunk.
         /// </summary>
-        public readonly int ChunkY;
+        public int ChunkY { get; set; }
+        
         /// <summary>
         /// The size of a chunk.
         /// </summary>
-        public readonly int ChunkSize;
+        public int ChunkSize { get; set; }
+        
+        /// <summary>
+        /// The scale of the chunks tiles
+        /// </summary>
+        public int TileScale { get; set; }
+        
         /// <summary>
         /// The chunk version of a chunk.
         /// </summary>
+        [JsonIgnore]
         public int ChunkVersion { get; private set; }
-        /// <summary>
-        /// The hardness value of a chunk (x,y) location.
-        /// </summary>
-        public ushort[,] Hardness { get; }
+        
         /// <summary>
         /// The light value of a chunk (x,y) location.
         /// </summary>
+        [JsonIgnore]
         public byte[,] Light { get; set; }
         /// <summary>
         /// The wall value of a chunk (x,y) location.
@@ -45,6 +55,22 @@ namespace BFB.Engine.TileMap
         /// The block value of a chunk (x,y) location.
         /// </summary>
         public  ushort[,] Block { get; set; }
+        
+
+        #region Pixel Position Helpers
+        
+        public Rectangle Bounds => new Rectangle(Left,Right,Width,Height);
+
+        public int Width => ChunkSize * TileScale;
+        public int Height => ChunkSize * TileScale;
+        
+        public int Left => ChunkX * TileScale;
+        public int Right => ChunkX * TileScale + ChunkSize * TileScale;
+        public int Top => ChunkY * TileScale;
+        public int Bottom => ChunkY * TileScale + ChunkSize * TileScale;
+        
+        #endregion
+        
         /// <summary>
         /// The dictionary of the chunk.
         /// </summary>
@@ -63,19 +89,19 @@ namespace BFB.Engine.TileMap
         /// <param name="chunkSize">The width and height of the chunk.</param>
         /// <param name="chunkX">The X block location of the chunk.</param>
         /// <param name="chunkY">The Y block location of the chunk.</param>
-        public Chunk(int chunkSize, int chunkX, int chunkY)
+        public Chunk(int chunkSize, int chunkX, int chunkY, int tileScale)
         {
             //Chunk Meta data
             ChunkKey = Guid.NewGuid().ToString();
             ChunkSize = chunkSize;
             ChunkX = chunkX/ChunkSize;
             ChunkY = chunkY/ChunkSize;
+            TileScale = tileScale;
             
             //Tile information
             Wall = new ushort[ChunkSize, ChunkSize];
             Block = new ushort[ChunkSize, ChunkSize];
             
-            Hardness = new ushort[ChunkSize, ChunkSize];
             Light = new byte[ChunkSize, ChunkSize];
             
             //Entities

@@ -5,6 +5,7 @@ using BFB.Engine.Entity;
 using BFB.Engine.Server.Communication;
 using BFB.Engine.TileMap.Generators;
 using BFB.Engine.TileMap.IO;
+using JetBrains.Annotations;
 using Newtonsoft.Json;
 
 namespace BFB.Engine.TileMap
@@ -94,9 +95,11 @@ namespace BFB.Engine.TileMap
             
             for (int y = 0; y < WorldOptions.WorldChunkHeight; y++)
                 for (int x = 0; x < WorldOptions.WorldChunkWidth; x++)
-                    ChunkMap[x, y] = new Chunk(WorldOptions.ChunkSize, x, y)
+                    ChunkMap[x, y] = new Chunk(WorldOptions.ChunkSize, x, y,WorldOptions.WorldScale )
                     {
-                        ChunkKey = message.ChunkMapIds[x, y]
+                        ChunkKey = message.ChunkMapIds[x, y],
+                        ChunkX = x,
+                        ChunkY = y
                     };
             
             MapChunksToIndex();
@@ -356,17 +359,18 @@ namespace BFB.Engine.TileMap
         
         #endregion
         
-        #region GetHardness
-        /// <summary>
-        /// Retrieves the hardness value of a block.
-        /// </summary>
-        /// <param name="xBlock">The X location of a block.</param>
-        /// <param name="yBlock">The Y location of a block.</param>
-        /// <returns>Returns the hardness value based on the block locations.</returns>
-        public int GetHardness(int xBlock, int yBlock)
+        #region BlockLocationFromPixel
+
+        [CanBeNull]
+        public Tuple<int, int> BlockLocationFromPixel(int pixelX, int pixelY)
         {
-            (int chunkX, int chunkY, int relativeX, int relativeY) = TranslateBlockPosition(xBlock, yBlock);
-            return ChunkExist(chunkX,chunkY) ? ChunkMap[chunkX,chunkY].Hardness[relativeX, relativeY] : 0;
+            if (pixelX < 0 || pixelY < 0)
+                return null;
+
+            if (pixelX >= MapPixelWidth() || pixelY >= MapPixelHeight())
+                return null;
+            
+            return new Tuple<int, int>(pixelX/WorldOptions.WorldScale, pixelY/WorldOptions.WorldScale);
         }
         
         #endregion
@@ -395,8 +399,14 @@ namespace BFB.Engine.TileMap
         /// <returns>Returns the wall value based on the block locations.</returns>
         public int GetWall(int xBlock, int yBlock)
         {
-            (int chunkX, int chunkY, int relativeX, int relativeY) = TranslateBlockPosition(xBlock, yBlock);
-            return ChunkExist(chunkX, chunkY) ? ChunkMap[chunkX, chunkY].Wall[relativeX, relativeY] : 0;
+            Tuple<int, int, int, int> location = TranslateBlockPosition(xBlock, yBlock);
+            
+            if (location == null)
+                return 0;
+            
+            return ChunkExist(location.Item1, location.Item2) 
+                ?  ChunkMap[location.Item1, location.Item2].Wall[location.Item3, location.Item4] 
+                : 0;
         }
         
         #endregion
@@ -422,22 +432,6 @@ namespace BFB.Engine.TileMap
 
         #endregion
 
-        #region SetHardness
-        /// <summary>
-        /// Sets the hardness value of a block.
-        /// </summary>
-        /// <param name="xBlock">The X location of a block.</param>
-        /// <param name="yBlock">The Y location of a block.</param>
-        /// <param name="hardnessValue">The value of the hardness to be set.</param>
-        public void SetHardness(int xBlock, int yBlock, ushort hardnessValue)
-        {
-            (int chunkX, int chunkY, int relativeX, int relativeY) = TranslateBlockPosition(xBlock, yBlock);
-            if(ChunkExist(chunkX,chunkY))    
-                ChunkMap[chunkX, chunkY].Hardness[relativeX, relativeY] = hardnessValue;
-        }
-        
-        #endregion
-        
         #region SetLight
         /// <summary>
         /// Sets the light value of a block.
@@ -493,14 +487,12 @@ namespace BFB.Engine.TileMap
         /// </summary>
         /// <param name="xBlock">The X location of a block.</param>
         /// <param name="yBlock">The Y location of a block.</param>
-        /// <param name="hardnessValue">The value of the hardness to be set.</param>
         /// <param name="lightValue">The value of the light to be set.</param>
         /// <param name="wallValue">The value of the wall to be set.</param>
         /// <param name="tile">The value of the block to be set.</param>
-        public void SetAll(int xBlock, int yBlock, ushort hardnessValue, byte lightValue, ushort wallValue, WorldTile tile)
+        public void SetAll(int xBlock, int yBlock, byte lightValue, ushort wallValue, WorldTile tile)
         {
             (int chunkX, int chunkY, int relativeX, int relativeY) = TranslateBlockPosition(xBlock, yBlock);
-            ChunkMap[chunkX, chunkY].Hardness[relativeX, relativeY] = hardnessValue;
             ChunkMap[chunkX, chunkY].Light[relativeX, relativeY] = lightValue;
             ChunkMap[chunkX, chunkY].Wall[relativeX, relativeY] = wallValue;
             ChunkMap[chunkX, chunkY].Block[relativeX, relativeY] = (ushort)tile;
@@ -544,20 +536,27 @@ namespace BFB.Engine.TileMap
             {
                 for (int x = 0; x < WorldOptions.WorldChunkWidth; x++)
                 {
-                    ChunkMap[x, y] = _worldGenerator.GenerateChunk(x * WorldOptions.ChunkSize, y * WorldOptions.ChunkSize);
+                    ChunkMap[x, y] = _worldGenerator.GenerateChunk(x * WorldOptions.ChunkSize, y * WorldOptions.ChunkSize, WorldOptions.WorldScale);
 
                     int currentPercent = (int)(progress++ / (WorldOptions.WorldChunkHeight * WorldOptions.WorldChunkWidth) * 100f);
                     
                     if (previousPercent == currentPercent) continue;
+
+                    for (int i = previousPercent; i < currentPercent; i++)
+                    {
+                        progressCallback?.Invoke(i + "%");
+                    }
                     
-                    progressCallback?.Invoke(currentPercent + "%");
                     previousPercent = currentPercent;
                 }
             }
             
             MapChunksToIndex();
             
-            progressCallback?.Invoke("100% - Generation Complete");
+            for (int i = previousPercent; i <= 100; i++)
+            {
+                progressCallback?.Invoke(i + "%");
+            }
         }
         
         #endregion
@@ -610,7 +609,6 @@ namespace BFB.Engine.TileMap
         
         public bool LoadWorld(string fileName)
         {
-            //TODO not sure if works at all
             string path = Directory.GetCurrentDirectory() + "/Worlds/" + fileName + ".json";
 
             try

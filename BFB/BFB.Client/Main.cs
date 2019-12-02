@@ -102,6 +102,8 @@ namespace BFB.Client
             //Map dependencies on UILayers
             UILayer.SceneManager = _sceneManager;
             UILayer.UIManager = _uiManager;
+            UILayer.GlobalEventManager = _globalEventManager;
+            
 
             //catch input events
             _inputEventManager.OnEventProcess = _uiManager.ProcessEvents;
@@ -132,39 +134,23 @@ namespace BFB.Client
                 new StoreUI(),
                 new CreditCardUI(), 
                 new CompletedTransactionUI(), 
+                new LoadingGameUI(), 
             });
             
             #endregion
             
-            //start first scene
-            _sceneManager.StartScene(nameof(MainMenuScene));
-
             #region Global Keypress Event Registration
             
             _inputEventManager.AddEventListener("keypress", (e) =>
             {
-                // ReSharper disable once SwitchStatementMissingSomeCases
-                switch (e.Keyboard.KeyEnum)
-                {
-                    case Keys.F3:
-                        
-//                        //Toggle debug scene
-//                        if (_sceneManager.ActiveSceneExist(nameof(DebugScene)))
-//                            _sceneManager.StopScene(nameof(DebugScene));
-//                        else
-//                            _sceneManager.LaunchScene(nameof(DebugScene));
-//                        
-//                        break;
-                    case Keys.M:
-                        
-                        //Return to main menu
-//                        _sceneManager.StartScene(nameof(MainMenuScene));
-                            
-                        break;
-                }
+                //None :(
             });
 
             #endregion
+
+            //start first scene
+            _sceneManager.StartScene(nameof(MainMenuScene));
+
             
             base.Initialize();
         }

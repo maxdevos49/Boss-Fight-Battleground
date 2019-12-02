@@ -6,12 +6,9 @@ using Microsoft.Extensions.Configuration;
 using System.Net;
 using System.Threading;
 using BFB.Engine.Entity;
-using BFB.Engine.Math;
 using BFB.Engine.Server;
 using BFB.Engine.Server.Communication;
 using BFB.Engine.Simulation;
-using BFB.Engine.Simulation.InputComponents;
-using BFB.Engine.Simulation.PhysicsComponents;
 using BFB.Engine.TileMap.Generators;
 using JetBrains.Annotations;
 
@@ -25,6 +22,8 @@ namespace BFB.Server
         private readonly IConfiguration _configuration;
         private readonly Simulation _simulation;
         private readonly ServerSocketManager _server;
+
+        private static int _cursorPositionStart;
 
         #endregion
 
@@ -43,11 +42,11 @@ namespace BFB.Server
             {
                 Seed = 1234,
                 ChunkSize = 16,
-                WorldChunkWidth = 20,
-                WorldChunkHeight = 10,
+                WorldChunkWidth = 10,
+                WorldChunkHeight = 4,
                 WorldScale = 30,
                 WorldGenerator = options => new FlatWorld(options)
-            }, 20);
+            });
         }
         
         #endregion
@@ -56,6 +55,8 @@ namespace BFB.Server
 
         private void Init()
         {
+            ConfigurationRegistry.InitializeRegistry();
+            
             #region Server Callbacks
             
             #region Terminal Header
@@ -91,7 +92,7 @@ namespace BFB.Server
 
             #region OnClientPrepare
 
-            _server.OnClientPrepare = (socket) =>
+            _server.OnClientPrepare = socket =>
             {
                 socket.Emit("prepare", _simulation.World.GetInitWorldData());
             };
@@ -100,25 +101,11 @@ namespace BFB.Server
             
             #region Handle Client Ready
 
-            _server.OnClientReady = (socket) =>
+            _server.OnClientReady = socket =>
             {
-                //Add to simulation
-                _simulation.AddEntity(new SimulationEntity(
-                    socket.ClientId,
-                    new EntityOptions
-                    {
-                        AnimatedTextureKey = "Player",
-                        Position = new BfbVector(200, 185),
-                        Dimensions = new BfbVector(2 * _simulation.World.WorldOptions.WorldScale, 3 * _simulation.World.WorldOptions.WorldScale),
-                        Rotation = 0,
-                        Origin = new BfbVector(0, 0),
-                    }, new ComponentOptions
-                    {
-                        Physics = new PlayerPhysicsComponent(),
-                        Input = new RemoteInputComponent(socket),
-                        Combat = new CombatComponent(),
-                        Spell = new BFB.Engine.Simulation.SpellComponents.MainComponents.MagicMissileSpellComponent()
-                    }), true);
+
+                SimulationEntity player = SimulationEntity.SimulationEntityFactory("Human", socket: socket);
+                _simulation.AddEntity(player);
                 
                 _server.PrintMessage($"Client {socket.ClientId} Ready and added to Simulation");
 
@@ -136,10 +123,26 @@ namespace BFB.Server
             
             #endregion
             
-            #region GenerateWorld
+            #region OnServerStart/Generate World
             
             //probably should just be triggered to generate the first time the simulation starts
-            _server.OnServerStart = () => _simulation.GenerateWorld();
+            _server.OnServerStart = () =>
+            {
+                Console.WriteLine("Generating World...");
+                Console.Write("[");
+                _cursorPositionStart = Console.CursorLeft;
+                Console.CursorLeft = _cursorPositionStart + 101;
+                Console.Write("]");
+                Console.CursorLeft = _cursorPositionStart;
+                Console.BackgroundColor = ConsoleColor.Blue;
+                Console.CursorVisible = false;
+                _simulation.GenerateWorld();
+                Console.ResetColor();
+                Console.CursorVisible = true;
+                Console.WriteLine();
+                _server.PrintMessage();
+
+            };
             
             #endregion
             
@@ -159,9 +162,25 @@ namespace BFB.Server
             
             #endregion
             
+            #region OnSimulationTick
+
+            _simulation.OnSimulationTick = () =>
+            {
+                _server.Emit("HeartBeat");
+            };
+            
+            #endregion
+            
             #region OnWorldGenerationProgress
 
-            _simulation.OnWorldGenerationProgress = (progress) => _server.PrintMessage("World Generation: " + progress); 
+            _simulation.OnWorldGenerationProgress = progress =>
+            {
+                Console.Write("=");
+                int previous = Console.CursorLeft;
+                Console.CursorLeft = _cursorPositionStart + 50;
+                Console.Write(progress);
+                Console.CursorLeft = previous;
+            }; 
             
             #endregion
             
@@ -187,7 +206,7 @@ namespace BFB.Server
 
             _simulation.OnEntityUpdates = (entityKey, updates) =>
             {
-                _server.GetClient(entityKey).Emit("/players/updates", updates);
+                _server.GetClient(entityKey)?.Emit("/players/updates", updates);
             };
             
             #endregion
@@ -196,7 +215,8 @@ namespace BFB.Server
 
             _simulation.OnChunkUpdates = (entityKey, updates) =>
             {
-                _server.GetClient(entityKey).Emit("/players/chunkUpdates", updates);
+                
+                _server.GetClient(entityKey)?.Emit("/players/chunkUpdates", updates);
             };
             
             #endregion

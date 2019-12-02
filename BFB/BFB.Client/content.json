@@ -1,406 +1,416 @@
 {
-    "Fonts": [
-        {
-            "Key": "default",
-            "Location": "Fonts\\OpenSans"
-        }
-    ],
-    "Audio": [
-        {
-
-        }
-    ],
-    "Textures": [
-        {
-            "Key": "button",
-            "Location": "Sprites\\button"
-        },
-        {
-            "Key": "dirt",
-            "Location": "Sprites\\dirt"
-        },
-        {
-            "Key": "grass",
-            "Location": "Sprites\\grass"
-        },
-        {
-            "Key": "stone",
-            "Location": "Sprites\\stone"
-        }
-    ],
-  "AnimatedTextures": [
-    {
-      "Key": "Player",
-      "Location": "Sprites\\Player",
-      "Frames": 9,
-      "FrameWidth": 30,
-      "FrameHeight": 45,
-      "Columns": 4,
-      "Rows": 3,
-      "Scale": 1,
-      "AnimationSets": {
-        "IdleLeft": {
-          "Fps": 5,
-          "FrameStart": 8,
-          "FrameEnd": 8,
-          "Mirror": true
-        },
-        "IdleRight": {
-          "Fps": 5,
-          "FrameStart": 8,
-          "FrameEnd": 8,
-          "Mirror": false
-        },
-        "MoveLeft": {
-          "Fps": 9,
-          "FrameStart": 0,
-          "FrameEnd": 7,
-          "Mirror": true
-        },
-        "MoveRight": {
-          "Fps": 9,
-          "FrameStart": 0,
-          "FrameEnd": 7,
-          "Mirror": false
-        }
-      }
+    "Fonts": {
+        "default": "Fonts\\OpenSans"
     },
-
-    {
-      "Key": "Spider",
-      "Location": "Sprites\\Spider",
-      "Frames": 6,
-      "FrameWidth": 40,
-      "FrameHeight": 25,
-      "Columns": 2,
-      "Rows": 3,
-      "Scale": 1,
-      "AnimationSets": {
-        "IdleLeft": {
-          "Fps": 5,
-          "FrameStart": 0,
-          "FrameEnd": 0,
-          "Mirror": true
-        },
-        "IdleRight": {
-          "Fps": 5,
-          "FrameStart": 0,
-          "FrameEnd": 0,
-          "Mirror": false
-        },
-        "MoveLeft": {
-          "Fps": 9,
-          "FrameStart": 0,
-          "FrameEnd": 5,
-          "Mirror": true
-        },
-        "MoveRight": {
-          "Fps": 9,
-          "FrameStart": 0,
-          "FrameEnd": 5,
-          "Mirror": false
-        }
-      }
+    "Textures": {
+        "button": "Sprites\\button",
+        "Tiles": "Sprites\\TileAtlas"
     },
-
-    {
-      "Key": "Zombie",
-      "Location": "Sprites\\Zombie",
-      "Frames": 6,
-      "FrameWidth": 30,
-      "FrameHeight": 45,
-      "Columns": 3,
-      "Rows": 2,
-      "Scale": 1,
-      "AnimationSets": {
-        "IdleLeft": {
-          "Fps": 5,
-          "FrameStart": 1,
-          "FrameEnd": 1,
-          "Mirror": true
+    "Audio": {},
+    "AtlasTextures": {
+        "Tiles:Grass": {
+            "TextureKey": "Tiles",
+            "Scale": 1,
+            "X": 36,
+            "Y": 0,
+            "Width": 15,
+            "Height": 15
         },
-        "IdleRight": {
-          "Fps": 5,
-          "FrameStart": 1,
-          "FrameEnd": 1,
-          "Mirror": false
+        "Tiles:Dirt": {
+            "TextureKey": "Tiles",
+            "Scale": 1,
+            "X": 54,
+            "Y": 0,
+            "Width": 15,
+            "Height": 15
         },
-        "MoveLeft": {
-          "Fps": 5,
-          "FrameStart": 0,
-          "FrameEnd": 5,
-          "Mirror": true
+        "Tiles:Stone": {
+            "TextureKey": "Tiles",
+            "Scale": 1,
+            "X": 0,
+            "Y": 18,
+            "Width": 15,
+            "Height": 15
         },
-        "MoveRight": {
-          "Fps": 5,
-          "FrameStart": 0,
-          "FrameEnd": 5,
-          "Mirror": false
+        "Tiles:Wood": {
+            "TextureKey": "Tiles",
+            "Scale": 1,
+            "X": 18,
+            "Y": 18,
+            "Width": 15,
+            "Height": 15
+        },
+        "Tiles:Leaves": {
+            "TextureKey": "Tiles",
+            "Scale": 1,
+            "X": 36,
+            "Y": 18,
+            "Width": 15,
+            "Height": 15
+        },
+        "Tiles:Plank": {
+            "TextureKey": "Tiles",
+            "Scale": 1,
+            "X": 54,
+            "Y": 18,
+            "Width": 15,
+            "Height": 15
+        },
+        "Tiles:Missing": {
+            "TextureKey": "Tiles",
+            "Scale": 1,
+            "X": 0,
+            "Y": 0,
+            "Width": 15,
+            "Height": 15
         }
-      }
     },
-
-    {
-      "Key": "Skeleton",
-      "Location": "Sprites\\Skeleton",
-      "Frames": 6,
-      "FrameWidth": 30,
-      "FrameHeight": 45,
-      "Columns": 3,
-      "Rows": 2,
-      "Scale": 1,
-      "AnimationSets": {
-        "IdleLeft": {
-          "Fps": 5,
-          "FrameStart": 0,
-          "FrameEnd": 0,
-          "Mirror": true
+    "AnimatedTextures": {
+        "Player": {
+            "Location": "Sprites\\Player",
+            "Frames": 9,
+            "FrameWidth": 30,
+            "FrameHeight": 45,
+            "Columns": 4,
+            "Rows": 3,
+            "Scale": 1,
+            "AnimationSets": {
+                "IdleLeft": {
+                    "Fps": 5,
+                    "FrameStart": 8,
+                    "FrameEnd": 8,
+                    "Mirror": true
+                },
+                "IdleRight": {
+                    "Fps": 5,
+                    "FrameStart": 8,
+                    "FrameEnd": 8,
+                    "Mirror": false
+                },
+                "MoveLeft": {
+                    "Fps": 9,
+                    "FrameStart": 0,
+                    "FrameEnd": 7,
+                    "Mirror": true
+                },
+                "MoveRight": {
+                    "Fps": 9,
+                    "FrameStart": 0,
+                    "FrameEnd": 7,
+                    "Mirror": false
+                }
+            }
         },
-        "IdleRight": {
-          "Fps": 5,
-          "FrameStart": 0,
-          "FrameEnd": 0,
-          "Mirror": false
+        "Spider": {
+            "Location": "Sprites\\Spider",
+            "Frames": 6,
+            "FrameWidth": 40,
+            "FrameHeight": 25,
+            "Columns": 2,
+            "Rows": 3,
+            "Scale": 1,
+            "AnimationSets": {
+                "IdleLeft": {
+                    "Fps": 5,
+                    "FrameStart": 0,
+                    "FrameEnd": 0,
+                    "Mirror": true
+                },
+                "IdleRight": {
+                    "Fps": 5,
+                    "FrameStart": 0,
+                    "FrameEnd": 0,
+                    "Mirror": false
+                },
+                "MoveLeft": {
+                    "Fps": 9,
+                    "FrameStart": 0,
+                    "FrameEnd": 5,
+                    "Mirror": true
+                },
+                "MoveRight": {
+                    "Fps": 9,
+                    "FrameStart": 0,
+                    "FrameEnd": 5,
+                    "Mirror": false
+                }
+            }
         },
-        "MoveLeft": {
-          "Fps": 5,
-          "FrameStart": 0,
-          "FrameEnd": 5,
-          "Mirror": true
+        "Zombie": {
+            "Location": "Sprites\\Zombie",
+            "Frames": 6,
+            "FrameWidth": 30,
+            "FrameHeight": 45,
+            "Columns": 3,
+            "Rows": 2,
+            "Scale": 1,
+            "AnimationSets": {
+                "IdleLeft": {
+                    "Fps": 5,
+                    "FrameStart": 1,
+                    "FrameEnd": 1,
+                    "Mirror": true
+                },
+                "IdleRight": {
+                    "Fps": 5,
+                    "FrameStart": 1,
+                    "FrameEnd": 1,
+                    "Mirror": false
+                },
+                "MoveLeft": {
+                    "Fps": 5,
+                    "FrameStart": 0,
+                    "FrameEnd": 5,
+                    "Mirror": true
+                },
+                "MoveRight": {
+                    "Fps": 5,
+                    "FrameStart": 0,
+                    "FrameEnd": 5,
+                    "Mirror": false
+                }
+            }
         },
-        "MoveRight": {
-          "Fps": 5,
-          "FrameStart": 0,
-          "FrameEnd": 5,
-          "Mirror": false
-        }
-      }
-    },
-
-    {
-      "Key": "Boss",
-      "Location": "Sprites\\Boss",
-      "Frames": 1,
-      "FrameWidth": 45,
-      "FrameHeight": 60,
-      "Columns": 1,
-      "Rows": 1,
-      "Scale": 1,
-      "AnimationSets": {
-        "IdleLeft": {
-          "Fps": 5,
-          "FrameStart": 0,
-          "FrameEnd": 0,
-          "Mirror": true
+        "Skeleton": {
+            "Location": "Sprites\\Skeleton",
+            "Frames": 6,
+            "FrameWidth": 30,
+            "FrameHeight": 45,
+            "Columns": 3,
+            "Rows": 2,
+            "Scale": 1,
+            "AnimationSets": {
+                "IdleLeft": {
+                    "Fps": 5,
+                    "FrameStart": 0,
+                    "FrameEnd": 0,
+                    "Mirror": true
+                },
+                "IdleRight": {
+                    "Fps": 5,
+                    "FrameStart": 0,
+                    "FrameEnd": 0,
+                    "Mirror": false
+                },
+                "MoveLeft": {
+                    "Fps": 5,
+                    "FrameStart": 0,
+                    "FrameEnd": 5,
+                    "Mirror": true
+                },
+                "MoveRight": {
+                    "Fps": 5,
+                    "FrameStart": 0,
+                    "FrameEnd": 5,
+                    "Mirror": false
+                }
+            }
         },
-        "IdleRight": {
-          "Fps": 5,
-          "FrameStart": 0,
-          "FrameEnd": 0,
-          "Mirror": false
+        "Boss": {
+            "Location": "Sprites\\Boss",
+            "Frames": 1,
+            "FrameWidth": 45,
+            "FrameHeight": 60,
+            "Columns": 1,
+            "Rows": 1,
+            "Scale": 1,
+            "AnimationSets": {
+                "IdleLeft": {
+                    "Fps": 5,
+                    "FrameStart": 0,
+                    "FrameEnd": 0,
+                    "Mirror": true
+                },
+                "IdleRight": {
+                    "Fps": 5,
+                    "FrameStart": 0,
+                    "FrameEnd": 0,
+                    "Mirror": false
+                },
+                "MoveLeft": {
+                    "Fps": 9,
+                    "FrameStart": 0,
+                    "FrameEnd": 0,
+                    "Mirror": true
+                },
+                "MoveRight": {
+                    "Fps": 9,
+                    "FrameStart": 0,
+                    "FrameEnd": 0,
+                    "Mirror": false
+                }
+            }
         },
-        "MoveLeft": {
-          "Fps": 9,
-          "FrameStart": 0,
-          "FrameEnd": 0,
-          "Mirror": true
+        "TestRunning": {
+            "Location": "Sprites\\TestRunning",
+            "Frames": 8,
+            "FrameWidth": 269,
+            "FrameHeight": 300,
+            "Columns": 3,
+            "Rows": 3,
+            "Scale": 0.3,
+            "AnimationSets": {
+                "IdleLeft": {
+                    "Fps": 5,
+                    "FrameStart": 0,
+                    "FrameEnd": 0,
+                    "Mirror": true
+                },
+                "IdleRight": {
+                    "Fps": 5,
+                    "FrameStart": 0,
+                    "FrameEnd": 0,
+                    "Mirror": false
+                },
+                "MoveLeft": {
+                    "Fps": 12,
+                    "FrameStart": 0,
+                    "FrameEnd": 7,
+                    "Mirror": true
+                },
+                "MoveRight": {
+                    "Fps": 12,
+                    "FrameStart": 0,
+                    "FrameEnd": 7,
+                    "Mirror": false
+                }
+            }
         },
-        "MoveRight": {
-          "Fps": 9,
-          "FrameStart": 0,
-          "FrameEnd": 0,
-          "Mirror": false
-        }
-      }
-    },
-
-    {
-      "Key": "TestRunning",
-      "Location": "Sprites\\TestRunning",
-      "Frames": 8,
-      "FrameWidth": 269,
-      "FrameHeight": 300,
-      "Columns": 3,
-      "Rows": 3,
-      "Scale": 0.3,
-      "AnimationSets": {
-        "IdleLeft": {
-          "Fps": 5,
-          "FrameStart": 0,
-          "FrameEnd": 0,
-          "Mirror": true
+        "Fireball": {
+            "Location": "Sprites\\Spells\\Fireball",
+            "Frames": 8,
+            "FrameWidth": 24,
+            "FrameHeight": 39,
+            "Columns": 3,
+            "Rows": 2,
+            "Scale": 0.3,
+            "AnimationSets": {
+                "IdleRight": {
+                    "Fps": 5,
+                    "FrameStart": 0,
+                    "FrameEnd": 4,
+                    "Mirror": true
+                }
+            }
         },
-        "IdleRight": {
-          "Fps": 5,
-          "FrameStart": 0,
-          "FrameEnd": 0,
-          "Mirror": false
+        "Missile": {
+            "Location": "Sprites\\Spells\\MagicMissile",
+            "Frames": 3,
+            "FrameWidth": 32,
+            "FrameHeight": 48,
+            "Columns": 2,
+            "Rows": 2,
+            "Scale": 0.3,
+            "AnimationSets": {
+                "IdleRight": {
+                    "Fps": 5,
+                    "FrameStart": 0,
+                    "FrameEnd": 2,
+                    "Mirror": true
+                }
+            }
         },
-        "MoveLeft": {
-          "Fps": 12,
-          "FrameStart": 0,
-          "FrameEnd": 7,
-          "Mirror": true
+        "Heart": {
+            "Location": "Sprites\\Spells\\Heart",
+            "Frames": 1,
+            "FrameWidth": 32,
+            "FrameHeight": 32,
+            "Columns": 1,
+            "Rows": 1,
+            "Scale": 0.3,
+            "AnimationSets": {
+                "IdleRight": {
+                    "Fps": 5,
+                    "FrameStart": 0,
+                    "FrameEnd": 0,
+                    "Mirror": true
+                }
+            }
         },
-        "MoveRight": {
-          "Fps": 12,
-          "FrameStart": 0,
-          "FrameEnd": 7,
-          "Mirror": false
+        "Bomb": {
+            "Location": "Sprites\\Spells\\Bomb",
+            "Frames": 2,
+            "FrameWidth": 64,
+            "FrameHeight": 80,
+            "Columns": 2,
+            "Rows": 1,
+            "Scale": 0.3,
+            "AnimationSets": {
+                "IdleRight": {
+                    "Fps": 12,
+                    "FrameStart": 0,
+                    "FrameEnd": 2,
+                    "Mirror": true
+                }
+            }
+        },
+        "EffectMiniStar": {
+            "Location": "Sprites\\Effects\\EffectMiniStar",
+            "Frames": 1,
+            "FrameWidth": 6,
+            "FrameHeight": 6,
+            "Columns": 1,
+            "Rows": 1,
+            "Scale": 0.3,
+            "AnimationSets": {
+                "IdleRight": {
+                    "Fps": 5,
+                    "FrameStart": 0,
+                    "FrameEnd": 0,
+                    "Mirror": true
+                }
+            }
+        },
+        "EffectStar": {
+            "Location": "Sprites\\Effects\\EffectStar",
+            "Frames": 1,
+            "FrameWidth": 10,
+            "FrameHeight": 10,
+            "Columns": 1,
+            "Rows": 1,
+            "Scale": 0.3,
+            "AnimationSets": {
+                "IdleRight": {
+                    "Fps": 5,
+                    "FrameStart": 0,
+                    "FrameEnd": 0,
+                    "Mirror": true
+                }
+            }
+        },
+        "EffectX": {
+            "Location": "Sprites\\Effects\\EffectX",
+            "Frames": 1,
+            "FrameWidth": 10,
+            "FrameHeight": 10,
+            "Columns": 1,
+            "Rows": 1,
+            "Scale": 0.3,
+            "AnimationSets": {
+                "IdleRight": {
+                    "Fps": 5,
+                    "FrameStart": 0,
+                    "FrameEnd": 0,
+                    "Mirror": true
+                }
+            }
+        },
+        "EffectRedBall": {
+            "Location": "Sprites\\Effects\\EffectRedBall",
+            "Frames": 1,
+            "FrameWidth": 10,
+            "FrameHeight": 10,
+            "Columns": 1,
+            "Rows": 1,
+            "Scale": 0.3,
+            "AnimationSets": {
+                "IdleRight": {
+                    "Fps": 5,
+                    "FrameStart": 0,
+                    "FrameEnd": 0,
+                    "Mirror": true
+                }
+            }
         }
-      }
-    },
-
-    {
-      "Key": "Fireball",
-      "Location": "Sprites\\Spells\\Fireball",
-      "Frames": 8,
-      "FrameWidth": 24,
-      "FrameHeight": 39,
-      "Columns": 3,
-      "Rows": 2,
-      "Scale": 0.3,
-      "AnimationSets": {
-        "IdleRight": {
-          "Fps": 5,
-          "FrameStart": 0,
-          "FrameEnd": 4,
-          "Mirror": true
-        }
-      }
-    },
-
-    {
-      "Key": "Missile",
-      "Location": "Sprites\\Spells\\MagicMissile",
-      "Frames": 3,
-      "FrameWidth": 32,
-      "FrameHeight": 48,
-      "Columns": 2,
-      "Rows": 2,
-      "Scale": 0.3,
-      "AnimationSets": {
-        "IdleRight": {
-          "Fps": 5,
-          "FrameStart": 0,
-          "FrameEnd": 2,
-          "Mirror": true
-        }
-      }
-    },
-
-    {
-      "Key": "Heart",
-      "Location": "Sprites\\Spells\\Heart",
-      "Frames": 1,
-      "FrameWidth": 32,
-      "FrameHeight": 32,
-      "Columns": 1,
-      "Rows": 1,
-      "Scale": 0.3,
-      "AnimationSets": {
-        "IdleRight": {
-          "Fps": 5,
-          "FrameStart": 0,
-          "FrameEnd": 0,
-          "Mirror": true
-        }
-      }
-    },
-
-    {
-      "Key": "Bomb",
-      "Location": "Sprites\\Spells\\Bomb",
-      "Frames": 2,
-      "FrameWidth": 64,
-      "FrameHeight": 80,
-      "Columns": 2,
-      "Rows": 1,
-      "Scale": 0.3,
-      "AnimationSets": {
-        "IdleRight": {
-          "Fps": 12,
-          "FrameStart": 0,
-          "FrameEnd": 2,
-          "Mirror": true
-        }
-      }
-    },
-
-    {
-      "Key": "EffectMiniStar",
-      "Location": "Sprites\\Effects\\EffectMiniStar",
-      "Frames": 1,
-      "FrameWidth": 6,
-      "FrameHeight": 6,
-      "Columns": 1,
-      "Rows": 1,
-      "Scale": 0.3,
-      "AnimationSets": {
-        "IdleRight": {
-          "Fps": 5,
-          "FrameStart": 0,
-          "FrameEnd": 0,
-          "Mirror": true
-        }
-      }
-    },
-
-    {
-      "Key": "EffectStar",
-      "Location": "Sprites\\Effects\\EffectStar",
-      "Frames": 1,
-      "FrameWidth": 10,
-      "FrameHeight": 10,
-      "Columns": 1,
-      "Rows": 1,
-      "Scale": 0.3,
-      "AnimationSets": {
-        "IdleRight": {
-          "Fps": 5,
-          "FrameStart": 0,
-          "FrameEnd": 0,
-          "Mirror": true
-        }
-      }
-    },
-
-    {
-      "Key": "EffectX",
-      "Location": "Sprites\\Effects\\EffectX",
-      "Frames": 1,
-      "FrameWidth": 10,
-      "FrameHeight": 10,
-      "Columns": 1,
-      "Rows": 1,
-      "Scale": 0.3,
-      "AnimationSets": {
-        "IdleRight": {
-          "Fps": 5,
-          "FrameStart": 0,
-          "FrameEnd": 0,
-          "Mirror": true
-        }
-      }
-    },
-
-    {
-      "Key": "EffectRedBall",
-      "Location": "Sprites\\Effects\\EffectRedBall",
-      "Frames": 1,
-      "FrameWidth": 10,
-      "FrameHeight": 10,
-      "Columns": 1,
-      "Rows": 1,
-      "Scale": 0.3,
-      "AnimationSets": {
-        "IdleRight": {
-          "Fps": 5,
-          "FrameStart": 0,
-          "FrameEnd": 0,
-          "Mirror": true
-        }
-      }
     }
-  ]
 }

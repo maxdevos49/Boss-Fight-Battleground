@@ -38,6 +38,11 @@ namespace BFB.Engine.TileMap
         /// The speed value of the movement.
         /// </summary>
         public float MoveSpeed { get; set; }
+
+        public int Left => (int) (Position.X - Origin.X);
+        public int Top => (int) (Position.Y - Origin.Y);
+        public int Right => (int) (Position.X + Origin.X);
+        public int Bottom => (int) (Position.Y + Origin.Y);
         
         
         private Vector2 _position;
@@ -58,7 +63,7 @@ namespace BFB.Engine.TileMap
             Position = Vector2.Zero;
             Origin = Vector2.Zero;
             ScreenCenter = Vector2.Zero;
-            Zoom = 0.05f;
+            Zoom = 1f-0.4f;
             MoveSpeed = 10.25f;
             Rotation = 0;
         }
@@ -66,7 +71,7 @@ namespace BFB.Engine.TileMap
         public Vector3 GetScale()
         {
             float screenScale = (float)_graphicsDevice.Viewport.Width / ViewWidth;
-            return new Vector3(Zoom + screenScale, Zoom + screenScale, 0);
+            return new Vector3(Zoom * screenScale, Zoom * screenScale, 0);
         }
         
         public void Update(GameTime gameTime)

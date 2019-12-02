@@ -44,7 +44,7 @@ namespace BFB.Client.UI
                             v1.Hstack(h2 =>
                             {
                                 h2.Button("Back to Game",
-                                        clickAction: (e, a) => { UIManager.Start(nameof(HudUI)); })
+                                        clickAction: (e, a) => { UIManager.Start(nameof(HudUI), ParentScene); })
                                     .Height(0.8f)
                                     .Width(0.8f)
                                     .Image("button")

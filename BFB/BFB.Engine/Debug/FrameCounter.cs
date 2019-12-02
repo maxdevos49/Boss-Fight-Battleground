@@ -21,7 +21,7 @@ namespace BFB.Engine.Debug
         private readonly Queue<float> _sampleBuffer = new Queue<float>();
 
         /// <summary>
-        /// Updates the framerate everyt 
+        /// Updates the framerate everyt
         /// </summary>
         /// <param name="deltaTime">The change of time used to calculate FPS</param>
         /// <returns></returns>

@@ -22,14 +22,14 @@ namespace BFB.Client.UI
             };
         }
 
-        public override void Init()
+        protected override void Init()
         {
-            Model = new MainMenuModel
-            {
-                Ip = "127.0.0.1:6969"
-            };
-            Console.WriteLine("We have init");
-            base.Init();
+//            Model = new MainMenuModel
+//            {
+//                Ip = "127.0.0.1:6969"
+//            };
+//            Console.WriteLine("We have init");
+//            base.Init();
         }
 
 
@@ -80,7 +80,7 @@ namespace BFB.Client.UI
                             h2.Button("Settings",
                                     clickAction: (e, a) =>
                                     {
-                                        UIManager.Start(nameof(SettingsUI));
+                                        UIManager.Start(nameof(SettingsUI),ParentScene);
                                     })
                                 .Width(0.8f)
                                 .Height(0.8f)
@@ -94,7 +94,7 @@ namespace BFB.Client.UI
                             h2.Button("Help", 
                                     clickAction: (e, a) =>
                                     {
-                                        UIManager.Start(nameof(HelpUI));
+                                        UIManager.Start(nameof(HelpUI),ParentScene);
                                     })
                                 .Width(0.8f)
                                 .Height(0.8f)
@@ -107,7 +107,7 @@ namespace BFB.Client.UI
                             h2.Button("Store",
                                     clickAction: (e, a) =>
                                     {
-                                        UIManager.Start(nameof(StoreUI));
+                                        UIManager.Start(nameof(StoreUI),ParentScene);
                                     })
                                 .Width(0.8f)
                                 .Height(0.8f)
