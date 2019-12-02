@@ -74,6 +74,8 @@ namespace BFB.Engine.Simulation
         /// </summary>
         public Action<string,ChunkUpdatesMessage> OnChunkUpdates { get; set; }
         
+        public Action OnSimulationTick { get; set; }
+        
         public Action<string> OnSimulationOverLoad { get; set; }
         
 
@@ -90,7 +92,7 @@ namespace BFB.Engine.Simulation
         {
             _lock = new object();
             _simulating = false;
-            _tickSpeed = 1000/tickSpeed;//60 ticks a second are default
+            _tickSpeed = 1000/tickSpeed;//20 ticks a second are default
             _random = new Random();
             Tick = 0;
 
@@ -356,9 +358,12 @@ namespace BFB.Engine.Simulation
                 //Maintain the tick rate here
                 nextTick += _tickSpeed;
                 int sleepTime = (int) (nextTick - DateTime.Now.Ticks / TimeSpan.TicksPerMillisecond);
-        
+
                 if (sleepTime >= 0)
+                {
+                    OnSimulationTick?.Invoke();
                     Thread.Sleep(sleepTime);
+                }
                 else
                     OnSimulationOverLoad?.Invoke($"{sleepTime}TPS");
             }

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Net.Sockets;
 using System.Runtime.Serialization.Formatters.Binary;
@@ -19,6 +20,9 @@ namespace BFB.Engine.Server
         private NetworkStream _stream;
         private bool _acceptData;
         private bool _allowEmit;
+        private Stopwatch _timer;
+        private long _previousHeartBeat;
+        private long _heartBeatLength;
         private readonly Dictionary<string, List<Action<DataMessage>>> _handlers;
 
         /// <summary>
@@ -35,6 +39,11 @@ namespace BFB.Engine.Server
         /// The port used to connect to the server
         /// </summary>
         public int Port { get; set; }
+
+        /// <summary>
+        /// The ticks per second from the server
+        /// </summary>
+        public double Tps => System.Math.Round(1000 * (1f / _heartBeatLength));
         
         /// <summary>
         /// Callback called when the server asks the client for authentication
@@ -76,6 +85,8 @@ namespace BFB.Engine.Server
             _stream = null;
             _handlers = new Dictionary<string, List<Action<DataMessage>>>();
             ClientId = null;
+            _previousHeartBeat = 0;
+            _heartBeatLength = 0;
             
             _acceptData = false;
             _allowEmit = false;
@@ -143,6 +154,9 @@ namespace BFB.Engine.Server
                 
                 t.Start();
                 
+                _previousHeartBeat = 0;
+                _heartBeatLength = 0;
+                _timer = Stopwatch.StartNew();
                 return true;
             }
             catch (Exception)
@@ -299,6 +313,10 @@ namespace BFB.Engine.Server
                                 break;
                             case "disconnect":
                                 Disconnect("Server Requested Disconnect");
+                                break;
+                            case "HeartBeat":
+                                _heartBeatLength = _timer.ElapsedMilliseconds - _previousHeartBeat;
+                                _previousHeartBeat = _timer.ElapsedMilliseconds;
                                 break;
                             default:
                             {

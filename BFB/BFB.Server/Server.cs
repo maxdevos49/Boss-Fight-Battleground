@@ -162,6 +162,15 @@ namespace BFB.Server
             
             #endregion
             
+            #region OnSimulationTick
+
+            _simulation.OnSimulationTick = () =>
+            {
+                _server.Emit("HeartBeat");
+            };
+            
+            #endregion
+            
             #region OnWorldGenerationProgress
 
             _simulation.OnWorldGenerationProgress = progress =>

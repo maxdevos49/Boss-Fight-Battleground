@@ -171,7 +171,6 @@ namespace BFB.Engine.Graphics
                                 _content.GetAtlasTexture("Tiles:"+ tile),
                                 new Rectangle(xPosition,yPosition,_tileScale,_tileScale ),
                                 Color.White);
-
                     }
                 }
             }
@@ -262,7 +261,6 @@ namespace BFB.Engine.Graphics
 
                             break;
                         case ItemType.Tool:
-                            Console.WriteLine("Tool");
 
                             graphics.DrawAtlas(_content.GetAtlasTexture(playerEntity.Meta.Holding.AtlasKey),
                                 new Rectangle((int)mouse.X,(int) mouse.Y, _tileScale, _tileScale),
@@ -363,9 +361,9 @@ namespace BFB.Engine.Graphics
             const int xPos = 5;
             const int offset = 24;
             int yPos = 120;
-
+            
             graphics.DrawBackedText($"Client FPS: {System.Math.Round(1f/(float)time.ElapsedGameTime.TotalSeconds)}/60", new BfbVector(xPos,yPos),_content,0.5f);
-            graphics.DrawBackedText("Server TPS: {}/20", new BfbVector(xPos,yPos += offset),_content,0.5f);
+            graphics.DrawBackedText($"Server TPS: {connection.Tps}/20", new BfbVector(xPos,yPos += offset),_content,0.5f);
             graphics.DrawBackedText($"X: {entity.Left}, Y: {entity.Top}", new BfbVector(xPos,yPos += offset),_content,0.5f);
             Chunk chunk = world.ChunkFromPixelLocation( entity.Left, entity.Top);
             graphics.DrawBackedText($"Chunk-X: {chunk?.ChunkX ?? 0}, Chunk-Y: {chunk?.ChunkY ?? 0}", new BfbVector(xPos,yPos +=offset),_content,0.5f);
