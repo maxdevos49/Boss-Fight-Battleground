@@ -8,7 +8,7 @@ namespace BFB.Engine.Simulation.EntityComponents
     /// <summary>
     /// A Input component that is used for remotely controlling a entity from a socket connection
     /// </summary>
-    public class RemoteInputComponent : EntityComponent
+    public class InputRemote : EntityComponent
     {
 
         private ControlState _controlState;
@@ -16,7 +16,7 @@ namespace BFB.Engine.Simulation.EntityComponents
         /// <summary>
         /// Constructs a RemoteInputComponent
         /// </summary>
-        public RemoteInputComponent() : base(true)
+        public InputRemote() : base(true)
         {
             _controlState = new ControlState();
         }
@@ -112,9 +112,5 @@ namespace BFB.Engine.Simulation.EntityComponents
             #endregion
 
         }
-    }
-
-    public interface ISimulationComponent
-    {
     }
 }

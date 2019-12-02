@@ -103,36 +103,8 @@ namespace BFB.Server
 
             _server.OnClientReady = socket =>
             {
-                //Add to simulation
-//                _simulation.AddEntity(new SimulationEntity(
-//                    socket.ClientId,
-//                    new EntityOptions
-//                    {
-//                        TextureKey = "Player",
-//                        Position = new BfbVector(200, 100),
-//                        Dimensions = new BfbVector(2 * _simulation.World.WorldOptions.WorldScale, 3 * _simulation.World.WorldOptions.WorldScale),
-//                        Rotation = 0,
-//                        Origin = new BfbVector(0, 0),
-//                        EntityType = EntityType.Player
-//                    },new List<EntityComponent>
-//                    {
-//                        new AutoJumpComponent(),
-//                        new HealthComponent(),
-//                        new RemoteInputComponent(),
-//                        new WalkingPhysics(),
-//                        new InventoryComponent(),
-//                        new WalkingAnimationComponent(),
-//                        new HoldingAnimationComponent(),
-//                        new VoidDeathComponent()
-//                    }, socket)
-//                {
-//                    CollideFilter = "human",
-//                    CollideWithFilters = new List<string>{"tile", "item", "projectile", "melee"},
-//                });
-
 
                 SimulationEntity player = SimulationEntity.SimulationEntityFactory("Human", socket: socket);
-                
                 _simulation.AddEntity(player);
                 
                 _server.PrintMessage($"Client {socket.ClientId} Ready and added to Simulation");

@@ -68,59 +68,68 @@ namespace BFB.Engine.Entity
         public void DebugDraw(SpriteBatch graphics, BFBContentManager content, float worldScale, float tileSize)
         {
 
-            int topBlockY = (int) System.Math.Floor(Top / tileSize);
-            int leftBlockX = (int) System.Math.Floor(Left / tileSize);
-            int bottomBlockY = (int) System.Math.Floor((Bottom - 1) / tileSize);
-            int rightBlockX = (int) System.Math.Floor((Right - 1) / tileSize);
-            
-            //left upper 
-            graphics.Draw(
-                content.GetTexture("default"),
-                new Rectangle(
-                    (int) (leftBlockX * tileSize),
-                    (int) ( topBlockY * tileSize), 
-                    (int) tileSize, 
-                    (int) tileSize),
-                new Color(0, 100, 0, 0.2f));
-            
-            //left upper 
-            graphics.Draw(
-                content.GetTexture("default"),
-                new Rectangle(
-                    (int) (leftBlockX * tileSize),
-                    (int) ( bottomBlockY * tileSize), 
-                    (int) tileSize, 
-                    (int) tileSize),
-                new Color(0, 100, 0, 0.2f));
-            
-            //right lower 
-            graphics.Draw(
-                content.GetTexture("default"),
-                new Rectangle(
-                    (int) (rightBlockX * tileSize),
-                    (int) ( bottomBlockY * tileSize), 
-                    (int) tileSize, 
-                    (int) tileSize),
-                new Color(0, 100, 0, 0.2f));
-            
-            //right upper 
-            graphics.Draw(
-                content.GetTexture("default"),
-                new Rectangle(
-                    (int) (rightBlockX * tileSize),
-                    (int) ( topBlockY * tileSize), 
-                    (int) tileSize, 
-                    (int) tileSize),
-                new Color(0, 100, 0, 0.2f));
+            if (EntityType != EntityType.Particle)
+            {
+                int topBlockY = (int) System.Math.Floor(Top / tileSize);
+                int leftBlockX = (int) System.Math.Floor(Left / tileSize);
+                int bottomBlockY = (int) System.Math.Floor((Bottom - 1) / tileSize);
+                int rightBlockX = (int) System.Math.Floor((Right - 1) / tileSize);
 
-            //entity Bounds
-            graphics.DrawBorder(new Rectangle((int)Position.X, (int)Position.Y,(int)Dimensions.X,(int)Dimensions.Y),1,Color.Black, content.GetTexture("default"));
-            
+                //left upper 
+                graphics.Draw(
+                    content.GetTexture("default"),
+                    new Rectangle(
+                        (int) (leftBlockX * tileSize),
+                        (int) (topBlockY * tileSize),
+                        (int) tileSize,
+                        (int) tileSize),
+                    new Color(0, 100, 0, 0.2f));
+
+                //left upper 
+                graphics.Draw(
+                    content.GetTexture("default"),
+                    new Rectangle(
+                        (int) (leftBlockX * tileSize),
+                        (int) (bottomBlockY * tileSize),
+                        (int) tileSize,
+                        (int) tileSize),
+                    new Color(0, 100, 0, 0.2f));
+
+                //right lower 
+                graphics.Draw(
+                    content.GetTexture("default"),
+                    new Rectangle(
+                        (int) (rightBlockX * tileSize),
+                        (int) (bottomBlockY * tileSize),
+                        (int) tileSize,
+                        (int) tileSize),
+                    new Color(0, 100, 0, 0.2f));
+
+                //right upper 
+                graphics.Draw(
+                    content.GetTexture("default"),
+                    new Rectangle(
+                        (int) (rightBlockX * tileSize),
+                        (int) (topBlockY * tileSize),
+                        (int) tileSize,
+                        (int) tileSize),
+                    new Color(0, 100, 0, 0.2f));
+
+            }
+                //entity Bounds
+                graphics.DrawBorder(
+                    new Rectangle((int) Position.X, (int) Position.Y, (int) Dimensions.X, (int) Dimensions.Y), 1,
+                    Color.Black, content.GetTexture("default"));
+
             Draw(graphics,content, worldScale);
 
-            //Position
-            graphics.DrawBackedText($"X: {(int)Position.X}, Y: {(int)Position.Y}",new BfbVector(Position.X, Position.Y - 15), content, 0.2f * worldScale);
-            
+            if (EntityType != EntityType.Particle)
+            {
+                //Position
+                graphics.DrawBackedText($"X: {(int) Position.X}, Y: {(int) Position.Y}",
+                    new BfbVector(Position.X, Position.Y - 15), content, 0.2f * worldScale);
+            }
+
             //velocity vector
             graphics.DrawVector(new Vector2(Position.X + Dimensions.X/2, Position.Y + Dimensions.Y/2),Velocity.ToVector2()  * 4 * worldScale, 1, Color.Red, content);
             

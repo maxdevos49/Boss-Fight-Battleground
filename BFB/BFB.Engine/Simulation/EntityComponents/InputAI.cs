@@ -7,11 +7,11 @@ using static System.Int32;
 
 namespace BFB.Engine.Simulation.EntityComponents
 {
-    public class AIInputComponent : EntityComponent
+    public class InputAI : EntityComponent
     {
         private SimulationEntity _closestEntity;
 
-        public AIInputComponent() : base(false) { }
+        public InputAI() : base(false) { }
 
         public override void Update(SimulationEntity entity, Simulation simulation)
         {

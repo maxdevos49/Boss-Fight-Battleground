@@ -5,7 +5,7 @@ using BFB.Engine.Math;
 
 namespace BFB.Engine.Simulation.EntityComponents
 {
-    public class TilePhysics : EntityComponent, IPhysics
+    public class PhysicsItem : EntityComponent, IPhysics
     {
         public BfbVector Acceleration { get; set; }
         public BfbVector MaxSpeed { get; set; }
@@ -13,7 +13,7 @@ namespace BFB.Engine.Simulation.EntityComponents
         public float Friction { get; set; }
 
 
-        public TilePhysics() : base(false)
+        public PhysicsItem() : base(false)
         {
             Acceleration = new BfbVector(5,5);
             MaxSpeed = new BfbVector(20,29);

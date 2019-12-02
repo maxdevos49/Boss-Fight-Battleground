@@ -4,9 +4,9 @@ using BFB.Engine.TileMap;
 
 namespace BFB.Engine.Simulation.EntityComponents
 {
-    public class AutoJumpComponent : EntityComponent
+    public class PhysicsAutoJump : EntityComponent
     {
-        public AutoJumpComponent() : base(false) { }
+        public PhysicsAutoJump() : base(false) { }
 
         
         public override bool OnTileCollision(Simulation simulation, SimulationEntity entity, TileCollision tc)

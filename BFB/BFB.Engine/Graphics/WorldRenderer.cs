@@ -147,75 +147,31 @@ namespace BFB.Engine.Graphics
                     if (world.GetBlock(x, y) == WorldTile.Air)
                     {
 
-                        #region Render Walls
+                        WorldTile tile = (WorldTile) world.GetWall(x, y);
+
+                        if (tile == WorldTile.Air) continue;
                         
-                        switch ((WorldTile) world.GetWall(x, y))
-                        {
-                            case WorldTile.Dirt:
-                                graphics.DrawAtlas(_content.GetAtlasTexture("Tiles:Dirt"),
-                                    new Rectangle(xPosition, yPosition, _tileScale, _tileScale), Color.White);
-                                graphics.Draw(_content.GetTexture("default"),
-                                    new Rectangle(xPosition, yPosition, _tileScale, _tileScale),
-                                    new Color(0, 0, 0, 0.4f));
-                                break;
-                            case WorldTile.Stone:
-                                graphics.DrawAtlas(_content.GetAtlasTexture("Tiles:Stone"),
-                                    new Rectangle(xPosition, yPosition, _tileScale, _tileScale), Color.White);
-                                graphics.Draw(_content.GetTexture("default"),
-                                    new Rectangle(xPosition, yPosition, _tileScale, _tileScale),
-                                    new Color(0, 0, 0, 0.4f));
-                                break;
-                            case WorldTile.Wood:
-                                graphics.DrawAtlas(_content.GetAtlasTexture("Tiles:Wood"),
-                                    new Rectangle(xPosition, yPosition, _tileScale, _tileScale), Color.White);
-                                graphics.Draw(_content.GetTexture("default"),
-                                    new Rectangle(xPosition, yPosition, _tileScale, _tileScale),
-                                    new Color(0, 0, 0, 0.4f));
-                                break;
-                            case WorldTile.Leaves:
-                                graphics.DrawAtlas(_content.GetAtlasTexture("Tiles:Leaves"),
-                                    new Rectangle(xPosition, yPosition, _tileScale, _tileScale), Color.White);
-                                graphics.Draw(_content.GetTexture("default"),
-                                    new Rectangle(xPosition, yPosition, _tileScale, _tileScale),
-                                    new Color(0, 0, 0, 0.4f));
-                                break;
-                            case WorldTile.Plank:
-                                graphics.DrawAtlas(_content.GetAtlasTexture("Tiles:Plank"),
-                                    new Rectangle(xPosition, yPosition, _tileScale, _tileScale), Color.White);
-                                graphics.Draw(_content.GetTexture("default"),
-                                    new Rectangle(xPosition, yPosition, _tileScale, _tileScale),
-                                    new Color(0, 0, 0, 0.4f));
-                                break;
-                        }
+                        graphics.DrawAtlas(
+                            _content.GetAtlasTexture("Tiles:" + tile),
+                            new Rectangle(xPosition, yPosition, _tileScale, _tileScale)
+                            , Color.White);
                         
-                        #endregion
+                        graphics.Draw(_content.GetTexture("default"),
+                            new Rectangle(xPosition, yPosition, _tileScale, _tileScale),
+                            new Color(0, 0, 0, 0.4f));
+
                     }
                     else
                     {
-                        #region Render Blocks
                         
-                        switch(world.GetBlock(x, y))//TODO change so not switch statement but add a special content type for blocks
-                        {
-                            case WorldTile.Grass:
-                                graphics.DrawAtlas(_content.GetAtlasTexture("Tiles:Grass"), new Rectangle(xPosition,yPosition,_tileScale,_tileScale ),Color.White);
-                                break;
-                            case WorldTile.Dirt:
-                                graphics.DrawAtlas(_content.GetAtlasTexture("Tiles:Dirt"), new Rectangle(xPosition,yPosition,_tileScale,_tileScale ),Color.White);
-                                break;
-                            case WorldTile.Stone:
-                                graphics.DrawAtlas(_content.GetAtlasTexture("Tiles:Stone"), new Rectangle(xPosition,yPosition,_tileScale,_tileScale ),Color.White);
-                                break;
-                            case WorldTile.Wood:
-                                graphics.DrawAtlas(_content.GetAtlasTexture("Tiles:Wood"), new Rectangle(xPosition,yPosition,_tileScale,_tileScale ),Color.White);
-                                break;
-                            case WorldTile.Leaves:
-                                graphics.DrawAtlas(_content.GetAtlasTexture("Tiles:Leaves"), new Rectangle(xPosition,yPosition,_tileScale,_tileScale ),Color.White);
-                                break;
-                            case WorldTile.Plank:
-                                graphics.DrawAtlas(_content.GetAtlasTexture("Tiles:Plank"), new Rectangle(xPosition,yPosition,_tileScale,_tileScale ),Color.White);
-                                break;
-                        }
-                    #endregion
+                        WorldTile tile = world.GetBlock(x, y);
+
+                        if (tile != WorldTile.Air)
+                            graphics.DrawAtlas(
+                                _content.GetAtlasTexture("Tiles:"+ tile),
+                                new Rectangle(xPosition,yPosition,_tileScale,_tileScale ),
+                                Color.White);
+
                     }
                 }
             }

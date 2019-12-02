@@ -23,109 +23,24 @@ namespace BFB.Engine.Simulation.ItemComponents
             entity.Meta.Mana += itemConfig.ManaGain;
             entity.Meta.Mana -= itemConfig.ManaCost;
             
-            BfbVector directionVector = BfbVector.Sub(entity.ControlState.Mouse,entity.Position);
-            float direction = (float)System.Math.Atan2(directionVector.Y, directionVector.X);
+            BfbVector directionVector = BfbVector.Sub(entity.ControlState.Mouse, entity.Position);
+            float direction = (float)System.Math.Atan2(directionVector.Y, directionVector.X) + (float)(System.Math.PI / 2);
                 
-            #region HealSpell
+            //place a copy of the spell config inside the projectile
+            InventoryManager inventory = new InventoryManager();
+            Item newItem = new Item(item.ItemConfigKey);
+            inventory.Insert(newItem);
             
-            simulation.AddEntity(new SimulationEntity( //TODO simulation entity factory
-                Guid.NewGuid().ToString(),
-                new EntityOptions()
-                {
-                    TextureKey = "Heart",
-                    Position = new BfbVector(entity.Position.X, entity.Position.Y),
-                    Dimensions = new BfbVector(50, 50),
-                    Rotation = 0,
-                    Origin = new BfbVector(25, 25),
-                    EntityType = EntityType.Projectile
-                }//, new List<EntityComponent>
-                //{
-                //    new LifetimeComponent(150)
-                //})
-                ));
+            SimulationEntity spellEntity = SimulationEntity.SimulationEntityFactory(itemConfig.EntitySpawnKey);
+            spellEntity.SteeringVector = directionVector;
+            spellEntity.Rotation = direction;
+            spellEntity.ParentEntityId = entity.EntityId;
+            spellEntity.Position = entity.Position.Clone();
+            spellEntity.Position.X += entity.Dimensions.X / 2;
+            spellEntity.Position.Y -= entity.Origin.Y / 4;
+            spellEntity.Inventory = inventory;
             
-            #endregion
-            
-            #region Fireball
-        
-            simulation.AddEntity(new SimulationEntity(//TODO entity factory
-                Guid.NewGuid().ToString(),
-                new EntityOptions()
-                {
-                    TextureKey = "Fireball",
-                    Position = new BfbVector(entity.Position.X, entity.Position.Y),
-                    Dimensions = new BfbVector(50, 50),
-                    Rotation = direction + (float)(System.Math.PI / 2),
-                    Origin = new BfbVector(25, 25),
-                    EntityType = EntityType.Projectile
-                }//, new List<EntityComponent>
-                //{
-                 //   new FireballEffectComponent(),
-                 //   new SpellHeadingPhysicsComponent()
-                //}
-                )
-            {
-                ParentEntityId = entity.EntityId,
-                SteeringVector = directionVector,
-                CollideFilter = "projectile",
-                CollideWithFilters = new List<string> { "tile", "human", "monster"}
-            });
-            
-            #endregion
-            
-            #region Bomb
-            
-            simulation.AddEntity(new SimulationEntity( //TODO simulationEntity factory
-                Guid.NewGuid().ToString(),
-                new EntityOptions()
-                {
-                    TextureKey = "Bomb",
-                    Position = new BfbVector(entity.Position.X, entity.Position.Y),
-                    Dimensions = new BfbVector(50, 50),
-                    Rotation = 0,
-                    Origin = new BfbVector(25, 25),
-                    EntityType = EntityType.Projectile
-                }//, new List<EntityComponent>()
-//                {
-//                    new LifetimeComponent(100),
-//                    new BombSpellPhysicsComponent()
-//                })
-                )
-            {
-                ParentEntityId = entity.EntityId,
-                SteeringVector = directionVector,
-                CollideFilter = "projectile",
-                CollideWithFilters = new List<string> { "tile", "human", "monster"}
-            });
-            
-            #endregion
-            
-            #region MagicMissile
-            
-            simulation.AddEntity(new SimulationEntity(//TODO simulation entity factory
-                Guid.NewGuid().ToString(),
-                new EntityOptions()
-                {
-                    TextureKey = "Missile",
-                    Position = new BfbVector(entity.Position.X, entity.Position.Y),
-                    Dimensions = new BfbVector(50, 50),
-                    Rotation = direction + (float)(System.Math.PI / 2),
-                    Origin = new BfbVector(25, 25),
-                    EntityType = EntityType.Projectile
-                }//, new List<EntityComponent>
-                //{
-                 //   new MagicMissileEffectComponent(),
-                 //   new SpellHeadingPhysicsComponent()
-                //}
-        )
-            {
-                ParentEntityId = entity.EntityId,
-                SteeringVector = directionVector,
-                CollideFilter = "projectile",
-                CollideWithFilters = new List<string> { "tile", "human", "monster"}
-            });
-            
-            #endregion
+            simulation.AddEntity(spellEntity);
         }
     }
 }

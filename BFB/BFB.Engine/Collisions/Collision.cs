@@ -27,7 +27,7 @@ namespace BFB.Engine.Collisions
 
             EntityCollisions(simulation, entity);
 
-            if (!entity.CollideWithFilters.Contains("tile")) 
+            if (!entity.CollideWithFilters?.Contains("tile") ?? false)
                 return;
             
             //Left and right tile collisions

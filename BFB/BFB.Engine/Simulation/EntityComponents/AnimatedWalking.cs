@@ -7,23 +7,17 @@ namespace BFB.Engine.Simulation.EntityComponents
     /// <summary>
     /// Automatically updates the walking animation based on the entities velocity
     /// </summary>
-    public class WalkingAnimationComponent : EntityComponent
+    public class AnimatedWalking : EntityComponent
     {
-        public WalkingAnimationComponent(): base(false) { }
+        public AnimatedWalking(): base(false) { }
         
         public override void Update(SimulationEntity entity, Simulation simulation)
         {
             
             if (entity.Velocity.X > 2)
-            {
-                entity.Facing = DirectionFacing.Right;
                 entity.AnimationState = AnimationState.MoveRight;
-            }
             else if (entity.Velocity.X < -2)
-            {
-                entity.Facing = DirectionFacing.Left;
                 entity.AnimationState = AnimationState.MoveLeft;
-            }
             else
             {
                 entity.Velocity.X = 0;

@@ -222,6 +222,11 @@ namespace BFB.Engine.Math
         }
         
         #endregion
+
+        public BfbVector Clone()
+        {
+            return new BfbVector(X,Y);
+        }
         
     }
 }

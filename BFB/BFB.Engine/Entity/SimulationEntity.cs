@@ -109,7 +109,7 @@ namespace BFB.Engine.Entity
         /// <param name="entityId">Unique ID for this entity</param>
         /// <param name="options">Sets the initial properties of this entity</param>
         /// <param name="socket">The socket object if the entity is a player</param>
-        public SimulationEntity(string entityId, EntityOptions options, ClientSocket socket = null) : base(entityId, options)
+        private SimulationEntity(string entityId, EntityOptions options, ClientSocket socket = null) : base(entityId, options)
         {
             _currentTick = -1;
             TicksSinceCreation = -1;
@@ -131,8 +131,6 @@ namespace BFB.Engine.Entity
                 ChunkVersions = new Dictionary<string, int>();
                 Socket = socket;
             }
-
-           
         }
 
         #endregion
@@ -295,7 +293,7 @@ namespace BFB.Engine.Entity
         
         #region SimulationEntityFactory
 
-        public static SimulationEntity SimulationEntityFactory(string entityKey, string parentKey = null, BfbVector initialHeading = null, ClientSocket socket = null)
+        public static SimulationEntity SimulationEntityFactory(string entityKey, ClientSocket socket = null)
         {
             Random rand = new Random();
             
@@ -323,7 +321,10 @@ namespace BFB.Engine.Entity
                 }
             };
             
-            //Add a lifetime component
+            //Required components
+            newEntity.GameComponents.Add(new EntityFacing());
+            
+            //Add a lifetime component if needed
             if(config.Lifetime > 0)
                 newEntity.GameComponents.Add(new LifetimeComponent(config.Lifetime));
 
@@ -331,14 +332,13 @@ namespace BFB.Engine.Entity
             foreach (string configComponent in config.Components)
                 newEntity.GameComponents.Add(registry.GetEntityComponent(configComponent));
 
-
             if (socket == null)//We can assume if a socket is supplied then its a player
                 return newEntity;
             
             newEntity.EntityType = EntityType.Player;
-            newEntity.GameComponents.Add(new RemoteInputComponent());
+            newEntity.GameComponents.Add(new InputRemote());
             newEntity.GameComponents.Add(new InventoryComponent());
-            newEntity.GameComponents.Add(new HoldingAnimationComponent());
+            newEntity.GameComponents.Add(new AnimatedHolding());
 
             return newEntity;
         }

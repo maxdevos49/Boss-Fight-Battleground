@@ -609,7 +609,6 @@ namespace BFB.Engine.TileMap
         
         public bool LoadWorld(string fileName)
         {
-            //TODO not sure if works at all
             string path = Directory.GetCurrentDirectory() + "/Worlds/" + fileName + ".json";
 
             try

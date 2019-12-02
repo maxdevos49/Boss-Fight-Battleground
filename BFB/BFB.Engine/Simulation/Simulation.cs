@@ -128,15 +128,19 @@ namespace BFB.Engine.Simulation
         /// Adds a entity to the simulation
         /// </summary>
         /// <param name="entity">The simulation entity</param>
-        public void  AddEntity(SimulationEntity entity)
+        public void AddEntity(SimulationEntity entity)
         {
-            
             //init components
             entity.Init();
             
             lock (_lock)
             {
+                //Apply proper dimensions
                 entity.Dimensions.Mult(World.WorldOptions.WorldScale);
+                
+                //Apply proper origin
+                entity.Origin.X *= entity.Dimensions.X;
+                entity.Origin.Y *= entity.Dimensions.Y;
 
                 if (!_entitiesIndex.ContainsKey(entity.EntityId))
                 {
@@ -146,7 +150,7 @@ namespace BFB.Engine.Simulation
                     OnEntityAdd?.Invoke(entity.EntityId, entity.EntityType == EntityType.Player);
                     
                     //add entity to starting chunk
-                    var chunk = World.ChunkFromPixelLocation((int) entity.Position.X, (int) entity.Position.Y);
+                    Chunk chunk = World.ChunkFromPixelLocation((int) entity.Position.X, (int) entity.Position.Y);
                         
                     if(chunk == null)
                         return;
@@ -159,9 +163,8 @@ namespace BFB.Engine.Simulation
                             _playerEntitiesIndex.Add(entity.EntityId, entity);
                     }
 
-                    entity.ChunkKey = World.ChunkFromPixelLocation(
-                                                                    (int) entity.Position.X,
-                                                                    (int) entity.Position.Y).ChunkKey;
+                    entity.ChunkKey = World.ChunkFromPixelLocation((int) entity.Position.X,
+                                                                   (int) entity.Position.Y).ChunkKey;
                 }
 
                 if (_playerEntitiesIndex.Count <= 0 || _simulating) return;
@@ -214,27 +217,6 @@ namespace BFB.Engine.Simulation
         }
 
         #endregion
-
-//        #region GetEntityAtPosition
-//
-//        public SimulationEntity GetEntityAtPosition(int x, int y)//TODO
-//        {
-//            float tileSize = World.WorldOptions.WorldScale;
-//            foreach (KeyValuePair<string, SimulationEntity> player in _playerEntitiesIndex)
-//            {
-//                if (player.Value.Position.X <= x && player.Value.Position.X + tileSize * 2 >= x)
-//                {
-//                    if (player.Value.Position.Y <= y && player.Value.Position.Y + tileSize * 2 >= y)
-//                    {
-//                        return player.Value;
-//                    }
-//                }
-//            }
-//
-//            return null;
-//        }
-
-//        #endregion
 
         #region GetEntity
 

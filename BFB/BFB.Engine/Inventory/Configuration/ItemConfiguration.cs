@@ -52,5 +52,8 @@ namespace BFB.Engine.Inventory.Configuration
         [UsedImplicitly]
         public WorldTile TileKey { get; set; }
         
+        [UsedImplicitly]
+        public string EntitySpawnKey { get; set; }
+        
     }
 }

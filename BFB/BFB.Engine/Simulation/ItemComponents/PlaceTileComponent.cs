@@ -1,7 +1,6 @@
 using System;
 using BFB.Engine.Entity;
 using BFB.Engine.Inventory;
-using BFB.Engine.Inventory.Configuration;
 using BFB.Engine.TileMap;
 
 namespace BFB.Engine.Simulation.ItemComponents

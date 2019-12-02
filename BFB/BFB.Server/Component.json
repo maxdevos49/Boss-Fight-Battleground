@@ -1,59 +1,85 @@
 {
     "EntityComponents": {
-        "Health": {
-            "FullyQualifiedName": "BFB.Engine.Simulation.EntityComponents.HealthComponent"
-        },
         "HumanPhysics": {
-            "FullyQualifiedName": "BFB.Engine.Simulation.EntityComponents.WalkingPhysics",
-            "Args": [20]
+            "FullyQualifiedName": "BFB.Engine.Simulation.EntityComponents.PhysicsWalking",
+            "Args": [
+                20
+            ]
         },
         "ZombiePhysics": {
-            "FullyQualifiedName": "BFB.Engine.Simulation.EntityComponents.WalkingPhysics",
-            "Args": [18]
+            "FullyQualifiedName": "BFB.Engine.Simulation.EntityComponents.PhysicsWalking",
+            "Args": [
+                18
+            ]
         },
         "SkeletonPhysics": {
-            "FullyQualifiedName": "BFB.Engine.Simulation.EntityComponents.WalkingPhysics",
-            "Args": [21]
+            "FullyQualifiedName": "BFB.Engine.Simulation.EntityComponents.PhysicsWalking",
+            "Args": [
+                21
+            ]
         },
         "SpiderPhysics": {
-            "FullyQualifiedName": "BFB.Engine.Simulation.EntityComponents.WalkingPhysics",
-            "Args": [24]
+            "FullyQualifiedName": "BFB.Engine.Simulation.EntityComponents.PhysicsWalking",
+            "Args": [
+                24
+            ]
         },
-        "WalkingAnimation":{ 
-            "FullyQualifiedName": "BFB.Engine.Simulation.EntityComponents.WalkingAnimationComponent"
+        "FloatPhysics": {
+            "FullyQualifiedName": "BFB.Engine.Simulation.EntityComponents.PhysicsFloat"
         },
-        "AutoJump": {
-            "FullyQualifiedName": "BFB.Engine.Simulation.EntityComponents.AutoJumpComponent"
+        "BombPhysics": {
+            "FullyQualifiedName": "BFB.Engine.Simulation.EntityComponents.PhysicsProjectile",
+            "Args": [30, true]
         },
-        "Inventory": {
-            "FullyQualifiedName":"BFB.Engine.Simulation.EntityComponents.InventoryComponent"
+        "FireballPhysics": {
+            "FullyQualifiedName": "BFB.Engine.Simulation.EntityComponents.PhysicsProjectile",
+            "Args": [30, false]
+        },
+        "MagicMissilePhysics": {
+            "FullyQualifiedName": "BFB.Engine.Simulation.EntityComponents.PhysicsProjectile",
+            "Args": [40, false]
+        },
+        "ItemPhysics": {
+            "FullyQualifiedName": "BFB.Engine.Simulation.EntityComponents.PhysicsItem"
+        },
+        
+        "WalkingAnimation": {
+            "FullyQualifiedName": "BFB.Engine.Simulation.EntityComponents.AnimatedWalking"
         },
         "HoldingAnimation": {
-            "FullyQualifiedName": "BFB.Engine.Simulation.EntityComponents.HoldingAnimationComponent"
+            "FullyQualifiedName": "BFB.Engine.Simulation.EntityComponents.AnimatedHolding"
+        },
+        
+        "AutoJump": {
+            "FullyQualifiedName": "BFB.Engine.Simulation.EntityComponents.PhysicsAutoJump"
+        },
+        "Inventory": {
+            "FullyQualifiedName": "BFB.Engine.Simulation.EntityComponents.InventoryComponent"
+        },
+        "Health": {
+            "FullyQualifiedName": "BFB.Engine.Simulation.EntityComponents.HealthComponent"
         },
         "VoidDeath": {
             "FullyQualifiedName": "BFB.Engine.Simulation.EntityComponents.VoidDeathComponent"
         },
-        "MagicMissilePhysics": {
-            "FullyQualifiedName": "BFB.Engine.Simulation.EntityComponents."
-        }
-    },
-    "ItemComponents": {
-        "Building:SetBlock": {
-            "FullyQualifiedName": "TODO"
+
+        "FireballParticleEffect": {
+            "FullyQualifiedName": "BFB.Engine.Simulation.EntityComponents.ParticleFireballEffect"
         },
-        "Building:Break": {
-            "FullyQualifiedName": "TODO",
-            "Options": [5]
+        "ParticleExplosionEffect": {
+            "FullyQualifiedName": "BFB.Engine.Simulation.EntityComponents.ParticleExplosionEffect"
         },
-        "Combat:Hit": {
-            "FullyQualifiedName": "TODO"
-        }
-    },
-    "BlockComponents": {
-        "GrassGrow": {
-            "FullyQualifiedName": "TODO",
-            "Options": []
+        "ParticleTrailEffect": {
+            "FullyQualifiedName": "BFB.Engine.Simulation.EntityComponents.ParticleTrailEffect"
+        },
+        "ParticleEffect1": {
+            "FullyQualifiedName": "BFB.Engine.Simulation.EntityComponents.ParticleEffect1"
+        },
+        "ParticleEffect2": {
+            "FullyQualifiedName": "BFB.Engine.Simulation.EntityComponents.ParticleEffect2"
+        },
+        "ParticleEffect3": {
+            "FullyQualifiedName": "BFB.Engine.Simulation.EntityComponents.ParticleEffect3"
         }
     }
 }

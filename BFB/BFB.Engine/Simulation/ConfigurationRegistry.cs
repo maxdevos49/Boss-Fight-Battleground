@@ -152,7 +152,7 @@ namespace BFB.Engine.Simulation
             if(!_entityConfigurations.ContainsKey(entityKey))
                 throw new KeyNotFoundException($"The Entity with the Key: {entityKey} was not found");
 
-            return _entityConfigurations[entityKey];
+            return _entityConfigurations[entityKey].Clone();
         }
         
         #endregion

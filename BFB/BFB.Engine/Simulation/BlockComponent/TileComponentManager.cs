@@ -26,7 +26,6 @@ namespace BFB.Engine.Simulation.BlockComponent
 //                {WorldTile.Dirt, new SpreadTileComponent(WorldTile.Air, WorldTile.Dirt, WorldTile.Air)},
             };
 
-            //TODO load json configuration for block components
         }
 
         /// <summary>

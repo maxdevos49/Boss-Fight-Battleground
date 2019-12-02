@@ -49,8 +49,6 @@ namespace BFB.Engine.Content
             _atlasTexturesContent = new Dictionary<string, AtlasTexture>();
             _fontContent = new Dictionary<string, SpriteFont>();
             _audioContent = new  Dictionary<string, Song>();
-            
-            //TODO in future add groups so groups can be loaded and unloaded together
         }
         
         #endregion
@@ -318,7 +316,7 @@ namespace BFB.Engine.Content
                 value.Texture = _contentManager.Load<Texture2D>(value.Location);
                 
                 //color
-                if (value.RandomColor == true)
+                if (value.RandomColor)
                 {
                     Random random = new Random();
                     

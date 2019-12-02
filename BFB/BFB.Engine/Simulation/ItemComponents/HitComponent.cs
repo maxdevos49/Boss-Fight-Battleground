@@ -16,7 +16,7 @@ namespace BFB.Engine.Simulation.ItemComponents
             if (entity.ControlState != null && entity.ControlState.LeftClick)
             {
                 int reach = simulation.World.WorldOptions.WorldScale * item.Configuration.Reach;
-                List<SimulationEntity> targets = new List<SimulationEntity>();
+                List<SimulationEntity> targets;
 
                 if (entity.Facing == DirectionFacing.Left)
                     targets = simulation.World.QueryEntities(new Rectangle(entity.Left - reach, entity.Top + entity.Height/2,reach,2), new List<string> {"melee"});

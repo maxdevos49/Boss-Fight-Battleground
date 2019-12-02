@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using BFB.Engine.Entity;
 
 namespace BFB.Engine.Helpers
@@ -8,26 +6,29 @@ namespace BFB.Engine.Helpers
     public static class CombatService
     {
 
-        public static void FightPeople(SimulationEntity simulationEntity, List<SimulationEntity> targets, Simulation.Simulation simulation)
+        public static void FightPeople(SimulationEntity entity, List<SimulationEntity> targets, Simulation.Simulation simulation)
         {
             if (targets.Count <= 0) return;
             
+            ushort damage = entity.Inventory?.GetActiveSlot().Configuration.Damage ?? 0;
+
+            
             foreach (SimulationEntity target in targets)
             {
-                // Instead of a hard coded value here, you could call a weapon stored on the simulationEntity, and use its damage value.
-                if (target.Meta != null)
+                if (target.Meta == null) continue;
+                
+                target.Meta.Health -= damage;
+
+                float knockBack = (float)System.Math.Pow(2, damage);
+                if (entity.Facing == DirectionFacing.Left)
                 {
-                    target.Meta.Health -= 4;
-                    if (simulationEntity.Facing == DirectionFacing.Left)
-                    {
-                        target.Velocity.Y = -10;
-                        target.Velocity.X = -10;
-                    }
-                    else
-                    {
-                        target.Velocity.Y = -10;
-                        target.Velocity.X = 10;
-                    }
+                    target.Velocity.Y = -knockBack/2;
+                    target.Velocity.X = -knockBack;
+                }
+                else
+                {
+                    target.Velocity.Y = -knockBack/2;
+                    target.Velocity.X = knockBack;
                 }
             }
         }

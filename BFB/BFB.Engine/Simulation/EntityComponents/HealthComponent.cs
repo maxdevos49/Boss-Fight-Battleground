@@ -44,7 +44,7 @@ namespace BFB.Engine.Simulation.EntityComponents
             entity.Position.Y = 100;
             
             if (entity.Meta != null) 
-                entity.Meta.Health = 20;
+                entity.Meta.Health = 20;//TODO health fro entity config
         }
 
     }

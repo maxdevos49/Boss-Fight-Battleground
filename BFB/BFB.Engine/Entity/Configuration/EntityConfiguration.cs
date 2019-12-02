@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using BFB.Engine.Math;
 using JetBrains.Annotations;
 
@@ -39,5 +40,23 @@ namespace BFB.Engine.Entity.Configuration
         
         [UsedImplicitly]
         public List<string> CollideWithFilters { get; set; }
+
+        public EntityConfiguration Clone()
+        {
+            return new EntityConfiguration
+            {
+                TextureKey = TextureKey,
+                EntityType = EntityType,
+                Health = Health,
+                Mana = Mana,
+                Lifetime = Lifetime,
+                DimensionRange = DimensionRange?.Clone(),
+                Dimensions = Dimensions?.Clone(),
+                Origin = Origin?.Clone(),
+                Components = Components?.ToList(),
+                CollideFilter = CollideFilter,
+                CollideWithFilters = CollideWithFilters?.ToList()
+            };
+        }
     }
 }

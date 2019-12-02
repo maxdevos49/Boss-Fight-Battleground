@@ -73,7 +73,12 @@ namespace BFB.Engine.Simulation.ItemComponents
             Item newItem = new Item(config.GetBlockConfiguration(tileType).ItemKey);
             inventory.Insert(newItem);
             
-            //TODO simulation entity factory
+            SimulationEntity itemEntity = SimulationEntity.SimulationEntityFactory("Item");
+            itemEntity.TextureKey = config.GetBlockConfiguration(tileType).TextureKey;
+            itemEntity.Position = new BfbVector(blockX,blockY);
+            itemEntity.Inventory = inventory;
+            simulation.AddEntity(itemEntity);
+            
 //            simulation.AddEntity(new SimulationEntity(
 //                Guid.NewGuid().ToString(),
 //                new EntityOptions
@@ -95,7 +100,7 @@ namespace BFB.Engine.Simulation.ItemComponents
 //                CollideWithFilters = new List<string>{ "tile" },
 //                Inventory = inventory
 //            });
-                    
+
         }
     }
 }

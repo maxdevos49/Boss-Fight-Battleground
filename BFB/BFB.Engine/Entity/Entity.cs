@@ -102,6 +102,8 @@ namespace BFB.Engine.Entity
         /// </summary>
         public int Top => (int)(Position.Y);
         
+        public BfbVector OriginPosition => new BfbVector(Position.X + Origin.X, Position.Y + Origin.Y);
+        
         #endregion
 
         #region Constructor
