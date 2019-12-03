@@ -44,5 +44,9 @@
   <ItemGroup>
     <ProjectReference Include="..\BFB.Engine\BFB.Engine.csproj" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Content\Audio\" />
+  </ItemGroup>
   
 </Project>
