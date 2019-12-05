@@ -13,7 +13,7 @@ namespace BFB.Engine.Simulation.EntityComponents
         
         private void Explode(Simulation simulation, SimulationEntity entity)
         {
-            for (int i = 0; i < 50; i++)
+            for (int i = 0; i < 25; i++)
             {
                 if (simulation.World.ChunkFromPixelLocation((int) entity.Position.X, (int) entity.Position.Y) == null)
                     return;

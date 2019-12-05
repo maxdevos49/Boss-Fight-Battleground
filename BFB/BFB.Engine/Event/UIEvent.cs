@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using BFB.Engine.UI;
 using BFB.Engine.UI.Components;
 using Microsoft.Xna.Framework.Input;
 
@@ -40,6 +41,8 @@ namespace BFB.Engine.Event
                     {
                         EventKey = "hover"
                     });
+                    //enter
+                    //exit
                     
                     break;
                 case "mouseclick":
@@ -75,11 +78,6 @@ namespace BFB.Engine.Event
                         {
                             EventKey = "focus"
                         });
-
-//                        eventList.Add(new UIEvent(inputEvent)
-//                        {
-//                            EventKey = "unfocus"
-//                        });
                     }
 
                     break;
@@ -100,6 +98,12 @@ namespace BFB.Engine.Event
                         EventKey = "keydown"
                     });
                     
+                    break;
+                case "mousescroll":
+                    eventList.Add(new UIEvent(inputEvent)
+                    {
+                        EventKey = "mousescroll"
+                    });
                     break;
             }
 

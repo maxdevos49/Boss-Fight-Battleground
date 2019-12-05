@@ -16,9 +16,9 @@ namespace BFB.Engine.UI.Components
         private readonly TModel _model;
         private readonly Expression<Func<TModel, string>> _selector;
 
-        private readonly Action<UIEvent, UIComponentAttributes> _clickAction;
-        private readonly Action<UIEvent, UIComponentAttributes> _keyPressAction;
-        private readonly Action<UIEvent, UIComponentAttributes> _hoverAction;
+        private readonly Action<UIEvent, UIAttributes> _clickAction;
+        private readonly Action<UIEvent, UIAttributes> _keyPressAction;
+        private readonly Action<UIEvent, UIAttributes> _hoverAction;
 
         private Keys _previousKey;
         private int _keyRepeatCounter;
@@ -32,9 +32,9 @@ namespace BFB.Engine.UI.Components
         public UITextBoxComponent(
             TModel model, 
             Expression<Func<TModel,string>> selector, 
-            Action<UIEvent,UIComponentAttributes> clickAction = null,
-            Action<UIEvent,UIComponentAttributes> keyPressAction = null,
-            Action<UIEvent,UIComponentAttributes> hoverAction = null) : base(nameof(UITextBoxComponent<TModel>))
+            Action<UIEvent,UIAttributes> clickAction = null,
+            Action<UIEvent,UIAttributes> keyPressAction = null,
+            Action<UIEvent,UIAttributes> hoverAction = null) : base(nameof(UITextBoxComponent<TModel>))
         {
             Focusable = true;
             
@@ -72,7 +72,7 @@ namespace BFB.Engine.UI.Components
                 
             ProcessKeys(e);
                 
-            UIComponentAttributes attr = new UIComponentAttributes();
+            UIAttributes attr = new UIAttributes();
             _keyPressAction?.Invoke(e,attr);
             RenderAttributes = DefaultAttributes.CascadeAttributes(attr);
         }
@@ -97,7 +97,7 @@ namespace BFB.Engine.UI.Components
 
         private void HoverEvent(UIEvent e)
         {
-            UIComponentAttributes attr = new UIComponentAttributes();
+            UIAttributes attr = new UIAttributes();
             _hoverAction?.Invoke(e,attr);
             RenderAttributes = DefaultAttributes.CascadeAttributes(attr);
         }     
@@ -108,7 +108,7 @@ namespace BFB.Engine.UI.Components
 
         private void ClickEvent(UIEvent e)
         {
-            UIComponentAttributes attr = new UIComponentAttributes();
+            UIAttributes attr = new UIAttributes();
             _clickAction?.Invoke(e,attr);
             RenderAttributes = DefaultAttributes.CascadeAttributes(attr);
         }     
@@ -225,7 +225,7 @@ namespace BFB.Engine.UI.Components
                     text += "_";
             }
                 
-            
+            #region graphics.Begin()
             //Stop global buffer
             graphics.End();
             
@@ -235,20 +235,22 @@ namespace BFB.Engine.UI.Components
             
             //Start new special buffer
             graphics.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, SamplerState.PointClamp, DepthStencilState.None,r);
+            #endregion
             
             //Draw our text
             DrawString(graphics, font,text,new Rectangle(RenderAttributes.X, RenderAttributes.Y,RenderAttributes.Width,RenderAttributes.Height));
-//            graphics.DrawString(font, text, new Vector2(RenderAttributes.X + width/2 ,RenderAttributes.Y + height/2) , RenderAttributes.Color,0,new Vector2(RenderAttributes.Width/2,RenderAttributes.Height/2), RenderAttributes.FontSize,SpriteEffects.None,1);
 
+            #region graphics.End()
+            
             //Begin next drawing after ending the special buffer
             graphics.End();
             graphics.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, SamplerState.PointClamp, DepthStencilState.None, RasterizerState.CullCounterClockwise);
             
-//            DrawString(graphics, font, text, new Rectangle(RenderAttributes.X,RenderAttributes.Y,RenderAttributes.Width ,RenderAttributes.Height ));
+            #endregion
         }
         
         #endregion
-        
+
         //TODO make into helper
         private void DrawString(SpriteBatch graphics, SpriteFont font, string strToDraw, Rectangle boundaries)
         {

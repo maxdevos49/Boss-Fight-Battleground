@@ -22,15 +22,9 @@ namespace BFB.Engine.UI.Constraints
         public override void Apply(UIComponent component)
         {
             if (_pixels == null)
-            {
-                //Percent
                 component.DefaultAttributes.Width = (int)((_percent ?? 0) * component.Parent.DefaultAttributes.Width);
-            }
             else
-            {
-                //Pixel
                 component.DefaultAttributes.Width = _pixels ?? 0;
-            }
         }
     }
 }

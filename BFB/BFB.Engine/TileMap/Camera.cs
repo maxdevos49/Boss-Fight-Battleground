@@ -51,6 +51,7 @@ namespace BFB.Engine.TileMap
         private readonly int _worldHeight;
         public readonly int ViewWidth;
         public readonly int ViewHeight;
+        private float _targetZoom;
 
         public Camera(GraphicsDevice graphicsDevice,int worldWidth, int worldHeight, int viewWidth = 800, int viewHeight = 450)
         {
@@ -63,7 +64,8 @@ namespace BFB.Engine.TileMap
             Position = Vector2.Zero;
             Origin = Vector2.Zero;
             ScreenCenter = Vector2.Zero;
-            Zoom = 1f-0.4f;
+            Zoom = 0.6f;
+            _targetZoom = Zoom;
             MoveSpeed = 10.25f;
             Rotation = 0;
         }
@@ -73,9 +75,32 @@ namespace BFB.Engine.TileMap
             float screenScale = (float)_graphicsDevice.Viewport.Width / ViewWidth;
             return new Vector3(Zoom * screenScale, Zoom * screenScale, 0);
         }
+
+        public void ApplyZoom(float zoomStep)
+        {
+            _targetZoom = Zoom + zoomStep;
+            
+            if (_targetZoom > 1.5f)
+                _targetZoom = 1.5f;
+
+            if (_targetZoom < 0.6f)
+                _targetZoom = 0.6f;
+        }
         
         public void Update(GameTime gameTime)
         {
+            // ReSharper disable once CompareOfFloatsByEqualityOperator
+            if (Zoom != _targetZoom)
+            {
+                if (_targetZoom > Zoom)
+                    Zoom += System.Math.Abs(_targetZoom - Zoom)/10;
+                else
+                    Zoom -= System.Math.Abs(_targetZoom - Zoom)/10;
+
+                if (System.Math.Abs(_targetZoom - Zoom) < 0.0005f)
+                    Zoom = _targetZoom;
+            }
+            
             ScreenCenter = new Vector2((float)_graphicsDevice.Viewport.Width / 2, (float)_graphicsDevice.Viewport.Height / 2);
             
             

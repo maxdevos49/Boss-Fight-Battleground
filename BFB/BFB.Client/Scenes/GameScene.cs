@@ -72,7 +72,7 @@ namespace BFB.Client.Scenes
             Client.Ip = layer.Model.Ip.Split(":")[0];
             Client.Port = Convert.ToInt32(layer.Model.Ip.Split(":")[1]);
             
-            UIManager.Start(nameof(LoadingGameUI),this);
+            UIManager.StartLayer(nameof(LoadingGameUI),this);
             
             /**
              * Scene events
@@ -135,7 +135,7 @@ namespace BFB.Client.Scenes
             
             Client.OnDisconnect = (m) =>
             {
-                UIManager.Start(nameof(LoadingGameUI),this);//TODO Doesnt get called very often but should never be when it is user caused
+                UIManager.StartLayer(nameof(LoadingGameUI),this);//TODO Doesnt get called very often but should never be when it is user caused
                 GlobalEventManager.Emit("onConnectionStatus", new GlobalEvent("Disconnected By Server"));
             };
             
@@ -178,7 +178,7 @@ namespace BFB.Client.Scenes
                             _entities[em.EntityId].Meta = em.Meta;
                             
                             if (em.EntityId == Client.ClientId)
-                                _worldRenderer.Camera.Focus = em.Position.ToVector2();
+                                _worldRenderer.Camera.Focus = _entities[em.EntityId].OriginPosition.ToVector2();
                         }
                         else
                         {
@@ -204,11 +204,21 @@ namespace BFB.Client.Scenes
             AddInputListener("keypress", e =>
             {
                 if (e.Keyboard.KeyEnum == Keys.M)
-                    UIManager.Start(nameof(MonsterMenuUI),this);
+                    UIManager.StartLayer(nameof(MonsterMenuUI),this);
                 else if (e.Keyboard.KeyEnum == Keys.F3)
                     _worldRenderer.Debug = !_worldRenderer.Debug;
             });
             
+            #endregion
+
+            #region ScrollEventListener
+
+            AddInputListener("mousescroll", e =>
+            {
+                if(e.Keyboard.KeyboardState.IsKeyDown(Keys.LeftControl))
+                    _worldRenderer.Camera.ApplyZoom(e.Mouse.ScrollAmount/1000f);
+            });
+
             #endregion
             
             if (!Client.Connect())
@@ -247,7 +257,7 @@ namespace BFB.Client.Scenes
                         
                         _gameReady = true;
                         _playerEntity = _entities[Client.ClientId];
-                        UIManager.Start(nameof(HudUI), this);
+                        UIManager.StartLayer(nameof(HudUI), this);
                     }
 
                 if (!_gameReady)

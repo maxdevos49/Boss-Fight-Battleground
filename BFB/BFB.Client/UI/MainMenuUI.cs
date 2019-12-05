@@ -35,6 +35,7 @@ namespace BFB.Client.UI
 
         public override void Body()
         {
+            Debug = true;
             
             RootUI.Hstack(h1 =>
                 {
@@ -54,24 +55,24 @@ namespace BFB.Client.UI
                         //Play
                         v1.Hstack(h2 =>
                         {
-                            h2.Button("Play", 
-                                    clickAction: (e, a) =>
-                                    {
-                                        SceneManager.StartScene(nameof(PlayerConnectionScene));
-                                    })
-                                .Width(0.8f)
-                                .Height(0.8f)
-                                .Center()
-                                .Image("button");
+                            h2.Hstack(h3 =>
+                            {
+                                h3.Button("Play",
+                                        clickAction: (e, a) =>
+                                        {
+                                            SceneManager.StartScene(nameof(PlayerConnectionScene));
+                                        })
+                                    .Image("button");
 
-                            h2.TextBoxFor(Model, x => x.Ip)
+                                h3.TextBoxFor(Model, x => x.Ip)
+                                    .Background(Color.White)
+                                    .Grow(3)
+                                    .Color(Color.Black);
+
+                            })
                                 .Width(0.8f)
                                 .Height(0.8f)
-                                .Grow(3)
-                                .Center()
-                                .Background(Color.White)
-                                .Color(Color.Black);
-                            
+                                .Center();
                         });
                         
                         //Settings
@@ -80,7 +81,7 @@ namespace BFB.Client.UI
                             h2.Button("Settings",
                                     clickAction: (e, a) =>
                                     {
-                                        UIManager.Start(nameof(SettingsUI),ParentScene);
+                                        UIManager.StartLayer(nameof(SettingsUI),ParentScene);
                                     })
                                 .Width(0.8f)
                                 .Height(0.8f)
@@ -94,7 +95,7 @@ namespace BFB.Client.UI
                             h2.Button("Help", 
                                     clickAction: (e, a) =>
                                     {
-                                        UIManager.Start(nameof(HelpUI),ParentScene);
+                                        UIManager.StartLayer(nameof(HelpUI),ParentScene);
                                     })
                                 .Width(0.8f)
                                 .Height(0.8f)
@@ -105,10 +106,7 @@ namespace BFB.Client.UI
                         v1.Hstack(h2 =>
                         {
                             h2.Button("Store",
-                                    clickAction: (e, a) =>
-                                    {
-                                        UIManager.Start(nameof(StoreUI),ParentScene);
-                                    })
+                                    clickAction: (e, a) => { UIManager.StartLayer(nameof(StoreUI), ParentScene); })
                                 .Width(0.8f)
                                 .Height(0.8f)
                                 .Center()

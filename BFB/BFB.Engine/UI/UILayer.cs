@@ -4,6 +4,7 @@ using System.Linq;
 using BFB.Engine.Event;
 using BFB.Engine.Scene;
 using BFB.Engine.UI.Components;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 
 namespace BFB.Engine.UI
@@ -16,7 +17,7 @@ namespace BFB.Engine.UI
         #region Properties
 
         /// <summary>
-        /// The identification key for the uilayer
+        /// The identification key for the uiLayer
         /// </summary>
         public string Key { get; }
     
@@ -30,6 +31,9 @@ namespace BFB.Engine.UI
         /// </summary>
         public static SceneManager SceneManager { get; set; }
         
+        /// <summary>
+        /// The global event manager
+        /// </summary>
         public static EventManager<GlobalEvent> GlobalEventManager { get; set; }
         
         /// <summary>
@@ -45,7 +49,12 @@ namespace BFB.Engine.UI
         /// <summary>
         /// The scene that started the UILayer
         /// </summary>
-        public Scene.Scene ParentScene { get; set; }
+        protected Scene.Scene ParentScene { get; set; }
+        
+        /// <summary>
+        /// Blocks all input events from propagating after the uiLayer
+        /// </summary>
+        public bool BlockInput { get; set; }
 
         /**
          * Indicates the current focus position of the tabIndex
@@ -62,8 +71,15 @@ namespace BFB.Engine.UI
          */
         private readonly List<UIComponent> _eventIndex;
 
+        /**
+         * Contains elements that may need to be updated over time
+         */
+        private readonly List<UIComponent> _updateIndex;
+        
+        //Event stuff
         private readonly List<int> _eventGlobalListenerIds;
-
+        private readonly Dictionary<string, List<Action<InputEvent>>> _inputEventListeners;
+        
         #endregion
         
         #region Constructor
@@ -77,11 +93,14 @@ namespace BFB.Engine.UI
             Key = key;
             RootUI = null;
             Debug = false;
-            
-            _eventGlobalListenerIds = new List<int>();
+            BlockInput = false;
             _tabPosition = null;
+            
             _tabIndex = new List<UIComponent>();
             _eventIndex = new List<UIComponent>();
+            _updateIndex = new List<UIComponent>();
+            _eventGlobalListenerIds = new List<int>();
+            _inputEventListeners = new Dictionary<string, List<Action<InputEvent>>>();
         }
         
         #endregion
@@ -119,13 +138,19 @@ namespace BFB.Engine.UI
                 foreach (UIComponent component in _eventIndex)
                 {
                     component.RenderAttributes = component.DefaultAttributes.CascadeAttributes(component.DefaultAttributes);
+
+                    if (component.RenderAttributes.Position == Position.Relative)
+                    {
+                        component.RenderAttributes.X = component.RenderAttributes.OffsetX + component.Parent?.RenderAttributes.X ?? 0; 
+                        component.RenderAttributes.Y = component.RenderAttributes.OffsetY + component.Parent?.RenderAttributes.Y ?? 0; 
+                    }
                 }
                 
-                if (uiEvent.EventKey == "click" || uiEvent.EventKey == "mouseup" || uiEvent.EventKey == "hover")
+                if (uiEvent.EventKey == "click" || uiEvent.EventKey == "mouseup" || uiEvent.EventKey == "hover" || uiEvent.EventKey == "mousescroll")
                 {
-                    List<UIComponent> components = _eventIndex.Where(c => c.DefaultAttributes.X <= uiEvent.Mouse.X  && (c.DefaultAttributes.X + c.DefaultAttributes.Width) >= uiEvent.Mouse.X 
-                                                                        && c.DefaultAttributes.Y <= uiEvent.Mouse.Y  && (c.DefaultAttributes.Y + c.DefaultAttributes.Height) >= uiEvent.Mouse.Y)
-                                                                .OrderBy(c => c.DefaultAttributes.Width * c.DefaultAttributes.Height)//Smaller areas are closer to the top
+                    List<UIComponent> components = _eventIndex.Where(c => c.RenderAttributes.X <= uiEvent.Mouse.X  && (c.RenderAttributes.X + c.RenderAttributes.Width) >= uiEvent.Mouse.X 
+                                                                        && c.RenderAttributes.Y <= uiEvent.Mouse.Y  && (c.RenderAttributes.Y + c.RenderAttributes.Height) >= uiEvent.Mouse.Y)
+                                                                .OrderBy(c => c.RenderAttributes.Width * c.RenderAttributes.Height)//Smaller areas are closer to the top
                                                                 .ToList();
 
                     if (!components.Any()) 
@@ -134,9 +159,11 @@ namespace BFB.Engine.UI
                     //Focus component if it is focusable
                     if (uiEvent.EventKey == "click")
                     {
-                        if (_tabPosition != null)
-                            _tabIndex[(int)_tabPosition].Focused = false;
-                            
+                        if (_tabPosition != null && _tabPosition > 0 && _tabPosition < _tabIndex.Count)
+                        {
+                            _tabIndex[(int) _tabPosition].Focused = false;
+                        }
+
                         components[0].Focused = true;
                         _tabPosition = _tabIndex.FindIndex(x => x == components[0]);
                     }
@@ -149,7 +176,7 @@ namespace BFB.Engine.UI
                         //Process event here
                         component.ProcessEvent(uiEvent);
                        
-                        if ( uiEvent.Propagate())
+                        if (uiEvent.Propagate())
                             eventNotAccepted = false;
                     }
                 }
@@ -230,16 +257,77 @@ namespace BFB.Engine.UI
         
         #endregion
         
+        #region AddUpdateIndexComponent
+
+        public void AddUpdateIndexComponent(UIComponent component)
+        {
+            _updateIndex.Add(component);
+        }
+        
+        #endregion
+        
         #region AddGlobalListener
         
         /// <summary>
-        /// Allows for adding of event listeners that are automatically disposed of when the UILayer is stopped
+        /// Allows for adding of global event listeners that are automatically disposed of when the UILayer is stopped
         /// </summary>
         /// <param name="eventKey">The event to listen for</param>
-        /// <param name="eventHandler">The event handler to perform an action when a event is revieved</param>
-        public void AddGlobalListener(string eventKey, Action<GlobalEvent> eventHandler)
+        /// <param name="eventHandler">The event handler to perform an action when a event is received</param>
+        protected void AddGlobalListener(string eventKey, Action<GlobalEvent> eventHandler)
         {
             _eventGlobalListenerIds.Add(GlobalEventManager.AddEventListener(eventKey, eventHandler));
+        }
+        
+        #endregion
+        
+        #region ProcessInputEvent
+
+        public void ProcessInputEvent(InputEvent inputEvent)
+        {
+            if (!_inputEventListeners.ContainsKey(inputEvent.EventKey))
+                return;
+
+            foreach (Action<InputEvent> action in _inputEventListeners[inputEvent.EventKey])
+            {
+                action?.Invoke(inputEvent);
+
+                if (!inputEvent.Propagate())
+                    return;
+            }
+        }
+        
+        #endregion
+        
+        #region AddInputListener
+        
+        /// <summary>
+        /// Allows for adding of input event listeners that are automatically disposed of when the UILayer is stopped
+        /// </summary>
+        /// <param name="eventKey">The event to listen for</param>
+        /// <param name="eventHandler">The event handler to perform an action when a event is received</param>
+        protected void AddInputListener(string eventKey, Action<InputEvent> eventHandler)
+        {
+            if (_inputEventListeners.ContainsKey(eventKey))
+            {
+                _inputEventListeners[eventKey].Add(eventHandler);
+            }
+            else
+            {
+                _inputEventListeners.Add(eventKey,new List<Action<InputEvent>>());
+                _inputEventListeners[eventKey].Add(eventHandler);
+            }
+        }
+        
+        #endregion
+
+        #region UpdateLayer
+        
+        public void UpdateLayer(GameTime time)
+        {
+            Update(time);
+            
+            foreach (UIComponent uiComponent in _updateIndex.ToList())
+                uiComponent.Update(time);
         }
         
         #endregion
@@ -253,16 +341,7 @@ namespace BFB.Engine.UI
         }
         
         #endregion
-
-        #region Init
         
-        /// <summary>
-        /// An optional init method for a UILayer to use for setup. Called every time a UILayer is started
-        /// </summary>
-        protected virtual void Init() {}
-        
-        #endregion
-
         #region Stop
         
         /// <summary>
@@ -272,16 +351,31 @@ namespace BFB.Engine.UI
         {
             ParentScene = null;
             RootUI = null;
+            _tabPosition = null;
+            
             _eventIndex.Clear();
             _tabIndex.Clear();
+            _updateIndex.Clear();
             
             foreach (int id in _eventGlobalListenerIds)
-                GlobalEventManager.RemoveEventListener(id);
+                GlobalEventManager?.RemoveEventListener(id);
+            
+            _inputEventListeners.Clear();
         }
         
         #endregion
-        
 
+        /// <summary>
+        /// An optional init method for a UILayer to use for setup. Called every time a UILayer is started
+        /// </summary>
+        protected virtual void Init() {}
+        
+        /// <summary>
+        /// An optional method for updating anything that may happen in the uiLayer
+        /// </summary>
+        /// <param name="time"></param>
+        protected virtual void Update(GameTime time) {}
+        
         /// <summary>
         /// The area to define the UIComponent element layouts
         /// </summary>

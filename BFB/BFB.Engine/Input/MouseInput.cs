@@ -39,6 +39,9 @@ namespace BFB.Engine.Input
         {
             MouseState mouseState = Mouse.GetState();
 
+            if(_mouseStatus.Scroll != mouseState.ScrollWheelValue)
+                EmitMouseScroll(mouseState);
+            
             //Mouse move
             if (_mouseStatus.X != mouseState.X || _mouseStatus.Y != mouseState.Y)
                 EmitMouseMovedEvent(mouseState);
@@ -67,6 +70,8 @@ namespace BFB.Engine.Input
             _mouseStatus.LeftButton = mouseState.LeftButton;
             _mouseStatus.RightButton = mouseState.RightButton;
             _mouseStatus.MiddleButton = mouseState.MiddleButton;
+            _mouseStatus.Scroll = mouseState.ScrollWheelValue;
+            _mouseStatus.ScrollAmount = mouseState.ScrollWheelValue - _mouseStatus.ScrollAmount;
             _mouseStatus.MouseState = mouseState;
 
         }
@@ -107,7 +112,12 @@ namespace BFB.Engine.Input
             _eventManager.Emit("mouseclick", GetMouseEventPayload(mouseState));
         }
 
-        private static InputEvent GetMouseEventPayload(MouseState mouseState)
+        private void EmitMouseScroll(MouseState mouseState)
+        {
+            _eventManager.Emit("mousescroll", GetMouseEventPayload(mouseState));
+        }
+
+        private InputEvent GetMouseEventPayload(MouseState mouseState)
         {
 
             return new InputEvent()
@@ -119,6 +129,8 @@ namespace BFB.Engine.Input
                     LeftButton = mouseState.LeftButton,
                     RightButton = mouseState.RightButton,
                     MiddleButton = mouseState.MiddleButton,
+                    Scroll = mouseState.ScrollWheelValue,
+                    ScrollAmount = mouseState.ScrollWheelValue - _mouseStatus.Scroll,
                     MouseState = mouseState
                 },
                 Keyboard = new KeyboardStatus

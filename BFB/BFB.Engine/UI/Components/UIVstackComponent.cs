@@ -7,7 +7,6 @@ namespace BFB.Engine.UI.Components
         public UIVstackComponent() : base(nameof(UIVstackComponent))
         {
             DefaultAttributes.StackDirection = StackDirection.Vertical;
-            Focusable = true;
         }
     }
 }

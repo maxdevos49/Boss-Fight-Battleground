@@ -136,10 +136,12 @@
             "CollideFilter": "projectile",
             "CollideWithFilters": [
                 "tile",
-                "mob"
+                "mob",
+                "projectile"
             ],
             "Components": [
                 "MagicMissilePhysics",
+                "ParticleExplosionEffect",
                 "ParticleTrailEffect"
             ]
         },
@@ -252,7 +254,7 @@
         "rMiniStarParticle": {
             "TextureKey": "EffectMiniStar",
             "EntityType": "Particle",
-            "Lifetime": 10,
+            "Lifetime": 5,
             "DimensionRange": {
                 "X": 0,
                 "Y": 2
@@ -268,7 +270,7 @@
         "rStarParticle": {
             "TextureKey": "EffectStar",
             "EntityType": "Particle",
-            "Lifetime": 10,
+            "Lifetime": 5,
             "DimensionRange": {
                 "X": 0,
                 "Y": 2
@@ -284,7 +286,7 @@
         "rXParticle": {
             "TextureKey": "EffectX",
             "EntityType": "Particle",
-            "Lifetime": 10,
+            "Lifetime": 5,
             "DimensionRange": {
                 "X": 0,
                 "Y": 2

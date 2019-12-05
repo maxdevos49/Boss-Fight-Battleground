@@ -1,6 +1,5 @@
 using System;
 using BFB.Engine.Event;
-using BFB.Engine.UI.Constraints;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 
@@ -11,15 +10,15 @@ namespace BFB.Engine.UI.Components
 
         #region Properties
         
-        private Action<UIEvent,UIComponentAttributes> _actionClick;
+        private readonly Action<UIEvent,UIAttributes> _actionClick;
         
-        private Action<UIEvent,UIComponentAttributes> _actionHover;
+        private readonly Action<UIEvent,UIAttributes> _actionHover;
         
         #endregion
         
         #region Constructor
         
-        public UIButtonComponent(string text, Action<UIEvent,UIComponentAttributes> actionClick = null, Action<UIEvent,UIComponentAttributes> actionHover = null) : base(nameof(UIButtonComponent))
+        public UIButtonComponent(string text, Action<UIEvent,UIAttributes> actionClick = null, Action<UIEvent,UIAttributes> actionHover = null) : base(nameof(UIButtonComponent))
         {
             
             //Inner text component
@@ -57,7 +56,7 @@ namespace BFB.Engine.UI.Components
         
         private void ClickEventHandler(UIEvent e)
         {
-            UIComponentAttributes attr = new UIComponentAttributes();
+            UIAttributes attr = new UIAttributes();
             _actionClick?.Invoke(e,attr);
             RenderAttributes = DefaultAttributes.CascadeAttributes(attr);
         }
@@ -68,7 +67,7 @@ namespace BFB.Engine.UI.Components
         
         private void HoverEventHandler(UIEvent e)
         {
-            UIComponentAttributes attr = new UIComponentAttributes();
+            UIAttributes attr = new UIAttributes();
             _actionHover?.Invoke(e,attr);
             RenderAttributes = DefaultAttributes.CascadeAttributes(attr);
         }

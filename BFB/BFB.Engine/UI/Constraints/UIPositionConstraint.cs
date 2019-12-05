@@ -22,28 +22,34 @@ namespace BFB.Engine.UI.Constraints
             if (_top != null)
             {
                 component.DefaultAttributes.Y = component.Parent.DefaultAttributes.Y + (int) _top;
+                component.DefaultAttributes.OffsetY = (int)_top;
                 component.DefaultAttributes.Height -= (int) _top;
             }
 
             if (_right != null)
             {
                 component.DefaultAttributes.Width -= (int) _right;
-                component.DefaultAttributes.X = component.Parent.DefaultAttributes.X +
-                                                component.Parent.DefaultAttributes.Width -
+                component.DefaultAttributes.X += component.Parent.DefaultAttributes.Width -
                                                 component.DefaultAttributes.Width;
+                component.DefaultAttributes.OffsetX = component.Parent.DefaultAttributes.Width -
+                                                        component.DefaultAttributes.Width;
             }
 
             if (_bottom != null)
             {
                 component.DefaultAttributes.Height -= (int) _bottom;
-                component.DefaultAttributes.Y = component.Parent.DefaultAttributes.Y + 
-                                                component.Parent.DefaultAttributes.Height - 
+                
+                component.DefaultAttributes.Y += component.Parent.DefaultAttributes.Height - 
                                                 component.DefaultAttributes.Height;
+                
+                component.DefaultAttributes.OffsetY = component.Parent.DefaultAttributes.Height - 
+                                                        component.DefaultAttributes.Height;
             }
 
             if (_left != null)
             {
-                component.DefaultAttributes.X = component.Parent.DefaultAttributes.X + (int) _left;
+                component.DefaultAttributes.X += (int) _left;
+                component.DefaultAttributes.OffsetX = (int) _left;
                 component.DefaultAttributes.Width -= (int) _left;
             }
                 

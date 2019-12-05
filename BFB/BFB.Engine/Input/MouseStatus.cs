@@ -17,7 +17,12 @@ namespace BFB.Engine.Input
 
         public ButtonState MiddleButton { get; set; }
         
+        public int Scroll { get; set; }
+        
+        public int ScrollAmount { get; set; }
+        
         public MouseState MouseState { get; set; }
+        
     }
 
 }

@@ -1,13 +1,14 @@
-using BFB.Engine.UI.Components;
+using JetBrains.Annotations;
 
-namespace BFB.Engine.UI.Constraints
+namespace BFB.Engine.UI
 {
     public abstract class UIConstraint
     {
 
+        [UsedImplicitly]
         public string Name { get; set; }
 
-        public UIConstraint(string name)
+        protected UIConstraint(string name)
         {
             Name = name;
         }

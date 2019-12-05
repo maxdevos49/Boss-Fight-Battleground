@@ -8,9 +8,15 @@ namespace BFB.Engine.UI.Components
 {
     public class UITextComponent<TModel> : UIComponent
     {
+        #region Properties
+        
         private readonly string _text;
         private readonly TModel _model;
         private readonly Func<TModel, string> _propertySelector;
+        
+        #endregion
+        
+        #region Constuctors
         
         public UITextComponent(TModel model, Func<TModel,string> propertySelector) : base(nameof(UITextComponent<TModel>))
         {
@@ -24,7 +30,11 @@ namespace BFB.Engine.UI.Components
             _text = text;
             _propertySelector = null;
         }
+        
+        #endregion
 
+        #region Render
+        
         public override void Render(SpriteBatch graphics, Texture2D texture, SpriteFont font)
         {
             base.Render(graphics, texture, font);
@@ -33,6 +43,8 @@ namespace BFB.Engine.UI.Components
             
             DrawString(graphics, font, text, new Rectangle(RenderAttributes.X,RenderAttributes.Y,RenderAttributes.Width ,RenderAttributes.Height ));
         }
+        
+        #endregion
         
         //TODO make into helper
         private void DrawString(SpriteBatch graphics, SpriteFont font, string strToDraw, Rectangle boundaries)
@@ -48,7 +60,7 @@ namespace BFB.Engine.UI.Components
             Vector2 position = new Vector2()
             {
                 X = boundaries.X  - (int)(x * scale / 2) + (boundaries.Width) / 2,
-                Y = boundaries.Y - (int)(y * scale / 2) + boundaries.Height / 2 + (y*scale/10)
+                Y = boundaries.Y - (int)(y * scale / 2) + boundaries.Height / 2
             };
 
             // Draw the string to the sprite batch!

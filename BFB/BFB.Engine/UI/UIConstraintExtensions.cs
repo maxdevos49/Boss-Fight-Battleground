@@ -1,7 +1,7 @@
-using BFB.Engine.UI.Components;
+using BFB.Engine.UI.Constraints;
 using Microsoft.Xna.Framework;
 
-namespace BFB.Engine.UI.Constraints
+namespace BFB.Engine.UI
 {
     public static class UIConstraintExtensions
     {
@@ -137,6 +137,16 @@ namespace BFB.Engine.UI.Constraints
             return component.AddConstraint(new UIColorConstraint(color ?? Microsoft.Xna.Framework.Color.Black));
         }
 
+        #endregion
+        
+        #region Position
+
+        public static UIComponent Position(this UIComponent component, Position position)
+        {
+            component.DefaultAttributes.Position = position;
+            return component;
+        }
+        
         #endregion
         
     }

@@ -6,7 +6,7 @@
             "CoolDown": 5,
             "Reach": 0,
             "Damage": 5,
-            "EntitySpawnKey": "Bomb",
+            "EntitySpawnKey": "MagicMissile",
             "LeftHoldComponents": ["BreakBlock","Hit","CastSpell"],
             "LeftClickComponents": ["BreakBlock","Hit","CastSpell"],
             "RightHoldComponents": [],

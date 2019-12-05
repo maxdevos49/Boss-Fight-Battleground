@@ -3,12 +3,29 @@ using BFB.Engine.UI;
 using BFB.Engine.UI.Components;
 using BFB.Engine.UI.Constraints;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Input;
 
 namespace BFB.Client.UI
 {
     public class GameMenuUI : UILayer
     {
-        public GameMenuUI() : base(nameof(GameMenuUI)) { }
+        public GameMenuUI() : base(nameof(GameMenuUI))
+        {
+            BlockInput = true;
+        }
+
+        protected override void Init()
+        {
+            AddInputListener("keypress", e =>
+            {
+                switch (e.Keyboard.KeyEnum)
+                {
+                    case Keys.Escape:
+                        UIManager.StopLayer(nameof(GameMenuUI));
+                        break;
+                }
+            });
+        }
 
         public override void Body()
         {
@@ -44,7 +61,7 @@ namespace BFB.Client.UI
                             v1.Hstack(h2 =>
                             {
                                 h2.Button("Back to Game",
-                                        clickAction: (e, a) => { UIManager.Start(nameof(HudUI), ParentScene); })
+                                        clickAction: (e, a) => { UIManager.StartLayer(nameof(HudUI), ParentScene); })
                                     .Height(0.8f)
                                     .Width(0.8f)
                                     .Image("button")

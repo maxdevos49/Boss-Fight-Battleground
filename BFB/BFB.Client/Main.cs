@@ -6,9 +6,9 @@ using BFB.Engine.Event;
 using BFB.Engine.Input;
 using BFB.Engine.Scene;
 using BFB.Engine.UI;
+using BFB.Engine.UI.Components;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
 
 namespace BFB.Client
 {
@@ -50,8 +50,6 @@ namespace BFB.Client
             //Monogame Setup
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
-
-//            TargetElapsedTime = TimeSpan.FromSeconds(1d / 60d);
 
             //Init Graphics manager. (Needs to be in the constructor)
             _graphicsDeviceManager = new GraphicsDeviceManager(this);
@@ -103,7 +101,9 @@ namespace BFB.Client
             UILayer.SceneManager = _sceneManager;
             UILayer.UIManager = _uiManager;
             UILayer.GlobalEventManager = _globalEventManager;
-            
+
+            //map dependencies to the UIComponent
+            UIComponent.UIManager = _uiManager;
 
             //catch input events
             _inputEventManager.OnEventProcess = _uiManager.ProcessEvents;
@@ -135,23 +135,11 @@ namespace BFB.Client
                 new CreditCardUI(), 
                 new CompletedTransactionUI(), 
                 new LoadingGameUI(), 
+                new InventoryUI(), 
             });
             
             #endregion
-            
-            #region Global Keypress Event Registration
-            
-            _inputEventManager.AddEventListener("keypress", (e) =>
-            {
-                //None :(
-            });
 
-            #endregion
-
-            //start first scene
-            _sceneManager.StartScene(nameof(MainMenuScene));
-
-            
             base.Initialize();
         }
 
@@ -169,6 +157,9 @@ namespace BFB.Client
             Texture2D defaultTexture = new Texture2D(_graphicsDeviceManager.GraphicsDevice, 1, 1);
             defaultTexture.SetData(new[] { Color.White });
             _contentManager.AddTexture("default", defaultTexture);
+            
+            //start first scene
+            _sceneManager.StartScene(nameof(MainMenuScene));
         }
 
         #endregion
@@ -194,8 +185,9 @@ namespace BFB.Client
             _globalEventManager.ProcessEvents();
             _inputEventManager.ProcessEvents();
 
-            //Call update for active scenes
+            //Call update for active scenes and uiLayers
             _sceneManager.UpdateScenes(gameTime);
+            _uiManager.UpdateLayers(gameTime);
             
             base.Update(gameTime);
         }

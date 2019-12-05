@@ -319,14 +319,16 @@ namespace BFB.Engine.Content
                 if (value.RandomColor)
                 {
                     Random random = new Random();
-                    
 
-                    int r = random.Next(0, 255);
-                    int g = random.Next(0,255);
-                    int b = random.Next(0,255);
-                    
-                    value.ParsedColor = new Color(r,g,b,1f);
-                    Console.WriteLine(value.ParsedColor);
+                    Color valueParsedColor = new Color
+                    {
+                        R = (byte) random.Next(0, 255),
+                        G = (byte) random.Next(0, 255),
+                        B = (byte) random.Next(0, 255),
+                        A = 255
+                    };
+                    // = new Color(r,g,b,1f);
+                    value.ParsedColor = valueParsedColor;
                 }
                 else if (value.ColorConfig == null)
                 {
@@ -402,7 +404,7 @@ namespace BFB.Engine.Content
         /// </summary>
         private void ParseAudio()
         {
-            //TODO
+            //TODO parse audio
         }
         
         #endregion
@@ -416,15 +418,19 @@ namespace BFB.Engine.Content
     [UsedImplicitly]
     public class ContentJSONSchema
     {
+        [UsedImplicitly]
         public Dictionary<string,string> Fonts { get; set; }
 
-        
+        [UsedImplicitly]
         public Dictionary<string,string> Audio { get; set; }
         
+        [UsedImplicitly]
         public Dictionary<string,string> Textures { get; set; }
         
+        [UsedImplicitly]
         public Dictionary<string,AtlasTexture> AtlasTextures { get; set; }
         
+        [UsedImplicitly]
         public Dictionary<string,AnimatedTexture> AnimatedTextures { get; set; }
 
     }

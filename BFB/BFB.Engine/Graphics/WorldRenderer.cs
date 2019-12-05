@@ -168,7 +168,7 @@ namespace BFB.Engine.Graphics
 
                         if (tile != WorldTile.Air)
                             graphics.DrawAtlas(
-                                _content.GetAtlasTexture("Tiles:"+ tile),
+                                _content.GetAtlasTexture("Tiles:" + tile),
                                 new Rectangle(xPosition,yPosition,_tileScale,_tileScale ),
                                 Color.White);
                     }
