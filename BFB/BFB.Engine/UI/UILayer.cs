@@ -130,11 +130,15 @@ namespace BFB.Engine.UI
         public bool ProcessEvents(IEnumerable<UIEvent> events)
         {
 
-            bool eventNotAccepted = true;
+            bool eventAccepted = false;
             
+            //loop through all ui events
             foreach (UIEvent uiEvent in events)
             {
 
+                #region Reset Component Attributes
+                
+                //loop through all components in the event index and reset attributes
                 foreach (UIComponent component in _eventIndex)
                 {
                     component.RenderAttributes = component.DefaultAttributes.CascadeAttributes(component.DefaultAttributes);
@@ -146,27 +150,48 @@ namespace BFB.Engine.UI
                     }
                 }
                 
+                #endregion
+
+                #region Unfocus With click
+                
+                if (uiEvent.EventKey == "click")
+                {
+                    if (_tabPosition != null && _tabPosition > 0 && _tabPosition < _tabIndex.Count)
+                    {
+                        _tabIndex[(int) _tabPosition].Focused = false;
+                        _tabPosition = null;
+                    }
+                }
+                
+                #endregion
+
                 if (uiEvent.EventKey == "click" || uiEvent.EventKey == "mouseup" || uiEvent.EventKey == "hover" || uiEvent.EventKey == "mousescroll")
                 {
-                    List<UIComponent> components = _eventIndex.Where(c => c.RenderAttributes.X <= uiEvent.Mouse.X  && (c.RenderAttributes.X + c.RenderAttributes.Width) >= uiEvent.Mouse.X 
-                                                                        && c.RenderAttributes.Y <= uiEvent.Mouse.Y  && (c.RenderAttributes.Y + c.RenderAttributes.Height) >= uiEvent.Mouse.Y)
-                                                                .OrderBy(c => c.RenderAttributes.Width * c.RenderAttributes.Height)//Smaller areas are closer to the top
+                    
+                    //Get any event elements that the mouse is on top of
+                    List<UIComponent> components = _eventIndex.Where(c => c.RenderAttributes.X <= uiEvent.Mouse.X 
+                                                                        && c.RenderAttributes.X + c.RenderAttributes.Width >= uiEvent.Mouse.X 
+                                                                        && c.RenderAttributes.Y <= uiEvent.Mouse.Y  
+                                                                        && c.RenderAttributes.Y + c.RenderAttributes.Height >= uiEvent.Mouse.Y)
+                                                                .OrderBy(x => x.RenderAttributes.Width * x.RenderAttributes.Height)
                                                                 .ToList();
 
+                    //stop here if no elements were found
                     if (!components.Any()) 
                         continue;
 
-                    //Focus component if it is focusable
+                    #region Focus with click
+                    
                     if (uiEvent.EventKey == "click")
-                    {
-                        if (_tabPosition != null && _tabPosition > 0 && _tabPosition < _tabIndex.Count)
+                        if (components[0].Focusable)
                         {
-                            _tabIndex[(int) _tabPosition].Focused = false;
+                            components[0].Focused = true;
+                            _tabPosition = _tabIndex.FindIndex(x => x == components[0]);
                         }
-
-                        components[0].Focused = true;
-                        _tabPosition = _tabIndex.FindIndex(x => x == components[0]);
-                    }
+                    
+                    #endregion
+                    
+                    #region Process Events on each component
                     
                     //Start processing each component
                     foreach (UIComponent component in components)
@@ -176,27 +201,38 @@ namespace BFB.Engine.UI
                         //Process event here
                         component.ProcessEvent(uiEvent);
                        
-                        if (uiEvent.Propagate())
-                            eventNotAccepted = false;
+                        if (!uiEvent.Propagate())//TODO
+                            eventAccepted = true;
                     }
+                    
+                    #endregion
                 }
                 else
                 {
+                    //Key events
 
+                    #region Unfocus element with Escape
+                    
                     if (uiEvent.Keyboard.KeyboardState.IsKeyDown(Keys.Escape))
                     {
-                        if(_tabPosition!= null)
+                        if(_tabPosition != null)
                             _tabIndex[(int) _tabPosition].Focused = false;
 
                         _tabPosition = null;
                     }
                     
+                    #endregion
+                    
+                    #region Cycle Focused elements with tab/tab+lshift
+                    
                     if (uiEvent.EventKey == "focus" && _tabIndex.Any())
                     {
+                        //Unfocus previous element
                         if(_tabPosition != null)
                             _tabIndex[(int) _tabPosition].Focused = false;
                         
-                        if (_tabPosition == null)
+                        
+                        if (_tabPosition == null)//Default first position
                             _tabPosition = 0;
                         else if (uiEvent.Keyboard.KeyboardState.IsKeyDown(Keys.LeftShift))
                             _tabPosition--;//shift + tab
@@ -211,22 +247,27 @@ namespace BFB.Engine.UI
                         _tabIndex[(int) _tabPosition].Focused = true;
 
                     }
+                    
+                    #endregion
 
-                    //If no focusable elements then we are done
+                    //Key events require a focused element
                     if (!_tabIndex.Any()) 
                         continue;
-
+                    
                     if (_tabPosition == null) 
                         continue;
                     
                     uiEvent.Component = _tabIndex[(int) _tabPosition];
                         
                     _tabIndex[(int) _tabPosition].ProcessEvent(uiEvent);
+                    
+                    if (!uiEvent.Propagate())
+                        eventAccepted = true;
 
                 }
             }
 
-            return eventNotAccepted;
+            return eventAccepted;
         }
 
         #endregion
@@ -282,18 +323,20 @@ namespace BFB.Engine.UI
         
         #region ProcessInputEvent
 
-        public void ProcessInputEvent(InputEvent inputEvent)
+        public bool ProcessInputEvent(InputEvent inputEvent)
         {
             if (!_inputEventListeners.ContainsKey(inputEvent.EventKey))
-                return;
+                return false;
 
             foreach (Action<InputEvent> action in _inputEventListeners[inputEvent.EventKey])
             {
                 action?.Invoke(inputEvent);
 
                 if (!inputEvent.Propagate())
-                    return;
+                    return true;
             }
+
+            return false;
         }
         
         #endregion

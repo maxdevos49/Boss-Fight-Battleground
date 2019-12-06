@@ -83,14 +83,14 @@ namespace BFB.Engine.Graphics
         
         #region Update
 
-        public void Update(GameTime gameTime, List<ClientEntity> entities)
+        public void Update(GameTime gameTime, List<ClientEntity> entities, float interopRatio)
         {
             if (!_init)
                 return;
             
             //Interpolation
             foreach (ClientEntity entity in entities)
-                entity.Update();
+                entity.Update(interopRatio);
             
             //update camera
             Camera.Update(gameTime);

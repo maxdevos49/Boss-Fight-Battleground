@@ -18,6 +18,8 @@ namespace BFB.Engine.Content
     {
 
         #region Properties
+        
+        public  GraphicsDevice GraphicsDevice { get; set; }
 
         private readonly ContentManager _contentManager;
         
@@ -37,13 +39,13 @@ namespace BFB.Engine.Content
         #region Constructor
 
         /// <summary>
-        /// A constructor that does constructor things: initliazes parameters.
+        /// A constructor that does constructor things: initializes parameters.
         /// </summary>
         /// <param name="contentManager"></param>
-        public BFBContentManager(ContentManager contentManager)
+        public BFBContentManager(ContentManager contentManager, GraphicsDevice graphicsDevice)
         {
             _contentManager = contentManager;
-            
+            GraphicsDevice = graphicsDevice;
             _textureContent = new Dictionary<string, Texture2D>();
             _animatedTexturesContent = new Dictionary<string, AnimatedTexture>();
             _atlasTexturesContent = new Dictionary<string, AtlasTexture>();

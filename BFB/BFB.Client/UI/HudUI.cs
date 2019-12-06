@@ -20,13 +20,19 @@ namespace BFB.Client.UI
                 switch (e.Keyboard.KeyEnum)
                 {
                     case Keys.Escape:
-                        UIManager.LaunchLayer(nameof(GameMenuUI), ParentScene);
+                        UIManager.StartLayer(nameof(GameMenuUI),ParentScene);
                         break;
                     case Keys.E:
                         UIManager.LaunchLayer(nameof(InventoryUI), ParentScene);
                         break;
+                    case Keys.T:
+                        UIManager.LaunchLayer(nameof(ChatUI), ParentScene);
+                        break;
                 }
             });
+            
+            
+//            UIManager.LaunchLayer(nameof(ChatUI), ParentScene);
         }
 
         public override void Body()

@@ -43,7 +43,7 @@ namespace BFB.Engine.Server
         /// <summary>
         /// The ticks per second from the server
         /// </summary>
-        public double Tps => System.Math.Round(1000 * (1f / _heartBeatLength));
+        public float Tps => (float)System.Math.Round(1000 * (1f / _heartBeatLength));
         
         /// <summary>
         /// Callback called when the server asks the client for authentication

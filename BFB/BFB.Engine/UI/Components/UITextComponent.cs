@@ -1,6 +1,6 @@
-
 using System;
 using System.Text;
+using BFB.Engine.Content;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -10,7 +10,6 @@ namespace BFB.Engine.UI.Components
     {
         #region Properties
         
-        private readonly string _text;
         private readonly TModel _model;
         private readonly Func<TModel, string> _propertySelector;
         
@@ -27,7 +26,7 @@ namespace BFB.Engine.UI.Components
         
         public UITextComponent(string text) : base(nameof(UITextComponent<TModel>))
         {
-            _text = text;
+            Text = text;
             _propertySelector = null;
         }
         
@@ -35,13 +34,16 @@ namespace BFB.Engine.UI.Components
 
         #region Render
         
-        public override void Render(SpriteBatch graphics, Texture2D texture, SpriteFont font)
+        public override void Render(SpriteBatch graphics, BFBContentManager content)
         {
-            base.Render(graphics, texture, font);
-
-            string text = _propertySelector == null ? WrapText(font,_text, RenderAttributes.Width,RenderAttributes.Height) : WrapText(font, _propertySelector(_model), RenderAttributes.Width, RenderAttributes.Height);
+            Text = _propertySelector == null ? Text : _propertySelector(_model);
             
-            DrawString(graphics, font, text, new Rectangle(RenderAttributes.X,RenderAttributes.Y,RenderAttributes.Width ,RenderAttributes.Height ));
+            base.Render(graphics, content);
+
+//            SpriteFont font = content.GetFont(this.RenderAttributes.FontKey);
+//            string text = _propertySelector == null ? WrapText(font,_text, RenderAttributes.Width,RenderAttributes.Height) : WrapText(font, _propertySelector(_model), RenderAttributes.Width, RenderAttributes.Height);
+
+//            DrawString(graphics, font, text, new Rectangle(RenderAttributes.X,RenderAttributes.Y,RenderAttributes.Width ,RenderAttributes.Height ));
         }
         
         #endregion
@@ -59,7 +61,7 @@ namespace BFB.Engine.UI.Components
             
             Vector2 position = new Vector2()
             {
-                X = boundaries.X  - (int)(x * scale / 2) + (boundaries.Width) / 2,
+                X = boundaries.X  - (int)(x * scale / 2) + boundaries.Width / 2,
                 Y = boundaries.Y - (int)(y * scale / 2) + boundaries.Height / 2
             };
 

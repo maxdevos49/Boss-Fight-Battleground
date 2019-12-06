@@ -21,7 +21,7 @@ namespace BFB.Client.UI
                 switch (e.Keyboard.KeyEnum)
                 {
                     case Keys.Escape:
-                        UIManager.StopLayer(nameof(GameMenuUI));
+                        UIManager.StartLayer(nameof(HudUI), ParentScene);
                         break;
                 }
             });

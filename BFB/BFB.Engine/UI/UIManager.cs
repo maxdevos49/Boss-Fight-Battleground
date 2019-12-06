@@ -212,11 +212,7 @@ namespace BFB.Engine.UI
                 #endregion
             }
             
-            
-            node.Render(
-                graphics, 
-                _contentManager.GetTexture(node.RenderAttributes.TextureKey),
-                _contentManager.GetFont(node.RenderAttributes.FontKey));
+            node.Render(graphics, _contentManager);
 
             #region Debug Border
             if (layer.Debug)
@@ -266,7 +262,7 @@ namespace BFB.Engine.UI
          public bool ProcessEvents(InputEvent inputEvent)
          {
              //gets all possible events based on input event
-             List<UIEvent> uiEvent = UIEvent.ConvertInputEventToUIEvent(inputEvent);
+             List<UIEvent> uiEvents = UIEvent.ConvertInputEventToUIEvent(inputEvent);
 
              //Get layers to loop through in reverse so we start with top layer and work down for events
              List<KeyValuePair<string, UILayer>> activeLayers = _activeUILayers.ToList();
@@ -276,14 +272,11 @@ namespace BFB.Engine.UI
              foreach ((string _, UILayer uiLayer) in activeLayers)
              {
                  //if event was caught then we stop here
-                 if (!uiLayer.ProcessEvents(uiEvent))
+                 if (uiLayer.ProcessEvents(uiEvents))
                      return false;
                  
                  //see if uiLayer can use the event
-                 uiLayer.ProcessInputEvent(inputEvent);
-                 
-                 //see if uiLayer canceled the event propagation
-                 if (!inputEvent.Propagate())
+                 if(uiLayer.ProcessInputEvent(inputEvent))
                      return false;
                  
                  //If the uiLayer should block the continuation of the event propagation

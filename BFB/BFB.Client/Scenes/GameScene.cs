@@ -263,7 +263,7 @@ namespace BFB.Client.Scenes
                 if (!_gameReady)
                     return;
             
-                _worldRenderer.Update(gameTime, _entities.Values.ToList());
+                _worldRenderer.Update(gameTime, _entities.Values.ToList(), Client.Tps/60);
             }
 
             if (!_playerInput.InputChanged()) return;

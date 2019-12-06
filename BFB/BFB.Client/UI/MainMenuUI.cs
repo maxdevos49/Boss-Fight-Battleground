@@ -35,8 +35,6 @@ namespace BFB.Client.UI
 
         public override void Body()
         {
-            Debug = true;
-            
             RootUI.Hstack(h1 =>
                 {
                 h1.Spacer();

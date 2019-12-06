@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using BFB.Engine.Content;
 using BFB.Engine.Event;
+using BFB.Engine.Helpers;
 using BFB.Engine.UI.Constraints;
 using JetBrains.Annotations;
 using Microsoft.Xna.Framework;
@@ -26,6 +28,9 @@ namespace BFB.Engine.UI
          * Indicates the child Index the component is. Used for stacking elements properly
          */
         private int Index { get; set; }
+        
+        
+        public string Text { get; set; }
         
         /**
          * Used when building component and assigning child component indexs
@@ -187,9 +192,7 @@ namespace BFB.Engine.UI
         public void Build(UILayer layer)
         {
             #region Inherit/Defaults
-//            
-//            DefaultAttributes.OffsetX = 0;
-//            DefaultAttributes.OffsetY = 0;
+
             DefaultAttributes.X = Parent?.DefaultAttributes.X ?? 0;
             DefaultAttributes.Y = Parent?.DefaultAttributes.Y ?? 0;
             DefaultAttributes.Width = Parent?.DefaultAttributes.Width ?? DefaultAttributes.Width;
@@ -207,11 +210,21 @@ namespace BFB.Engine.UI
             if (DefaultAttributes.Position == Position.Inherit)
                 DefaultAttributes.Position = Parent?.DefaultAttributes.Position ?? Position.Relative;
             
+            if (DefaultAttributes.JustifyText == JustifyText.Inherit)
+                DefaultAttributes.JustifyText = Parent?.DefaultAttributes.JustifyText ?? JustifyText.Start;
+
+            if (DefaultAttributes.TextWrap == TextWrap.Inherit)
+                DefaultAttributes.TextWrap = Parent?.DefaultAttributes.TextWrap ?? TextWrap.Wrap;
+            
+            if (DefaultAttributes.TextScaleMode == TextScaleMode.Inherit)
+                DefaultAttributes.TextScaleMode = Parent?.DefaultAttributes.TextScaleMode ?? TextScaleMode.FontSizeScale;
+            
+            if (DefaultAttributes.VerticalAlignText == VerticalAlignText.Inherit)
+                DefaultAttributes.VerticalAlignText = Parent?.DefaultAttributes.VerticalAlignText ?? VerticalAlignText.Start;
+
             #endregion
 
             #region Apply Contraints/ Build Indexes
-            
-            
 
             if (EventHandlers.Any())
                 layer.AddEventComponent(this);
@@ -293,22 +306,25 @@ namespace BFB.Engine.UI
         /**
          * Used to render the UIComponent by default as a simple panel
          */
-        public virtual void Render(SpriteBatch graphics, Texture2D texture, SpriteFont font)
+        public virtual void Render(SpriteBatch graphics, BFBContentManager content)
         {
             if (RenderAttributes.Position == Position.Relative)
             {
                 RenderAttributes.X = RenderAttributes.OffsetX + Parent?.RenderAttributes.X ?? 0; 
                 RenderAttributes.Y = RenderAttributes.OffsetY + Parent?.RenderAttributes.Y ?? 0; 
             }
-            
+
             graphics.Draw(
-                texture,
+                content.GetTexture(RenderAttributes.TextureKey),
                 new Rectangle(
                     RenderAttributes.X, 
                     RenderAttributes.Y,
                     RenderAttributes.Width,
                     RenderAttributes.Height), 
                 RenderAttributes.Background);
+
+            if (!string.IsNullOrEmpty(Text))
+                graphics.DrawUIText(this, content);
         }
         
         #endregion

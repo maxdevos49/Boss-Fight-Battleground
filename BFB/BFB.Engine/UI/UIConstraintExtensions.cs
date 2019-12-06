@@ -149,5 +149,15 @@ namespace BFB.Engine.UI
         
         #endregion
         
+        #region Sizing
+
+        public static UIComponent Sizing(this UIComponent component, Sizing sizing)
+        {
+            component.DefaultAttributes.Sizing = sizing;
+            return component;
+        }
+        
+        #endregion
+        
     }
 }

@@ -12,15 +12,13 @@ namespace BFB.Engine.UI.Constraints
 
         public override void Apply(UIComponent component)
         {
-            if ((component.DefaultAttributes.Width / _ratio) > component.Parent.DefaultAttributes.Height)
-            {
-                component.DefaultAttributes.Width = (int)(component.DefaultAttributes.Height  *_ratio);
-            }
+            if (component.Parent == null)
+                return;
+            
+            if (component.DefaultAttributes.Width / _ratio > component.Parent.DefaultAttributes.Height)
+                component.DefaultAttributes.Width = (int)(component.DefaultAttributes.Height  * _ratio);
             else
-            {
                 component.DefaultAttributes.Height = (int)(component.DefaultAttributes.Width /_ratio);
-            }
-
         }
     }
 }

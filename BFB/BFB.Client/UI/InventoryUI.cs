@@ -9,7 +9,7 @@ namespace BFB.Client.UI
     {
         public InventoryUI() : base(nameof(InventoryUI))
         {
-            BlockInput = true;
+//            BlockInput = true;
             List = new List<int> {10,45,12,423,23,11,44,23,546,12,53,1212,434,23,121,545,6757};
         }
         
@@ -26,6 +26,7 @@ namespace BFB.Client.UI
                         UIManager.StopLayer(Key);
                         break;
                 }
+                e.StopPropagation();
             });
         }
         
@@ -45,7 +46,6 @@ namespace BFB.Client.UI
                     
                     stack.Hstack(h1 =>
                     {
-                        h1.Spacer(1);
                         h1.Text("Test" + item);
                         h1.Button("Test" + item)
                             .Image("button");

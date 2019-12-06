@@ -4,7 +4,6 @@ using System.Linq;
 using System.Linq.Expressions;
 using BFB.Engine.Event;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 
 namespace BFB.Engine.UI.Components
 {
@@ -24,7 +23,6 @@ namespace BFB.Engine.UI.Components
             Action<UIComponent,TItem> itemTemplate,
             StackDirection stackDirection = StackDirection.Vertical) : base(nameof(UIListComponent<TModel,TItem>),true)
         {
-            Focusable = true;
             _itemTemplate = itemTemplate;
             _list = listSelector.Compile().Invoke(model);
             _stack = stackDirection == StackDirection.Horizontal ? this.Hstack(x => { }) : this.Vstack(x => { });
@@ -56,7 +54,7 @@ namespace BFB.Engine.UI.Components
             }
             else
             {
-                int width = _stack.Children.Sum(x => x.RenderAttributes.Width);//TODO broken. Cuts off numbers
+                int width = _stack.Children.Sum(x => x.RenderAttributes.Width);//TODO broken. Cuts off items
                 scrollBottom = RenderAttributes.Width - width;
             }
             

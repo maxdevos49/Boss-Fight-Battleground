@@ -11,7 +11,7 @@ namespace BFB.Engine.UI
         public string FontKey { get; set; }
         
         public float FontSize { get; set; }
-
+        
         public int X { get; set; }
         
         public int Y { get; set; }
@@ -36,6 +36,14 @@ namespace BFB.Engine.UI
         
         public Overflow Overflow { get; set; }
         
+        public TextWrap TextWrap { get; set; }
+        
+        public JustifyText JustifyText { get; set; }
+        
+        public VerticalAlignText VerticalAlignText { get; set; }
+        
+        public TextScaleMode TextScaleMode { get; set; }
+        
         public StackDirection StackDirection { get; set; }
         
         #endregion
@@ -52,6 +60,10 @@ namespace BFB.Engine.UI
             Sizing = Sizing.Proportion;
             Overflow = Overflow.Show;
             StackDirection = StackDirection.None;
+            TextWrap = TextWrap.Wrap;
+            JustifyText = JustifyText.Start;
+            TextScaleMode = TextScaleMode.FontSizeScale;
+            VerticalAlignText = VerticalAlignText.Start;
         }
         
         #endregion
@@ -68,7 +80,7 @@ namespace BFB.Engine.UI
                 TextureKey = cascadingAttributes.TextureKey ?? TextureKey,
                 FontKey = cascadingAttributes.FontKey ?? FontKey,
                 // ReSharper disable once CompareOfFloatsByEqualityOperator
-                FontSize = cascadingAttributes.FontSize != 1 ? cascadingAttributes.FontSize : FontSize,
+                FontSize = cascadingAttributes.FontSize != 1f ? cascadingAttributes.FontSize : FontSize,
                 X = cascadingAttributes.X != 0 ? cascadingAttributes.X : X,
                 Y = cascadingAttributes.Y != 0 ? cascadingAttributes.Y : Y,
                 OffsetX = cascadingAttributes.OffsetX != 0 ? cascadingAttributes.OffsetX : OffsetX,
@@ -81,6 +93,10 @@ namespace BFB.Engine.UI
                 Position = cascadingAttributes.Position != Position.Relative ? cascadingAttributes.Position : Position,
                 Sizing = cascadingAttributes.Sizing != Sizing.Proportion ? cascadingAttributes.Sizing : Sizing,
                 Overflow = cascadingAttributes.Overflow != Overflow.Show ? cascadingAttributes.Overflow : Overflow,
+                JustifyText = cascadingAttributes.JustifyText != JustifyText.Start ? cascadingAttributes.JustifyText : JustifyText,
+                VerticalAlignText = cascadingAttributes.VerticalAlignText != VerticalAlignText.Start ? cascadingAttributes.VerticalAlignText : VerticalAlignText,
+                TextWrap = cascadingAttributes.TextWrap != TextWrap.Wrap ? cascadingAttributes.TextWrap : TextWrap,
+                TextScaleMode = cascadingAttributes.TextScaleMode != TextScaleMode.FontSizeScale ? cascadingAttributes.TextScaleMode : TextScaleMode,
                 StackDirection= cascadingAttributes.StackDirection != StackDirection.None ? cascadingAttributes.StackDirection : StackDirection,
             };
         }
@@ -114,5 +130,35 @@ namespace BFB.Engine.UI
         Inherit,
         Hide,
         Show
+    }
+
+    public enum JustifyText : byte
+    {
+        Inherit,
+        Start,
+        Center,
+        End
+    }
+
+    public enum VerticalAlignText : byte
+    {
+        Inherit,
+        Start,
+        Center,
+        End
+    }
+
+    public enum TextWrap : byte
+    {
+        Inherit,
+        NoWrap,
+        Wrap
+    }
+
+    public enum TextScaleMode : byte
+    {
+        Inherit,
+        ContainerFitScale,
+        FontSizeScale
     }
 }

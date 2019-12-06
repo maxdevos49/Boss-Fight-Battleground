@@ -6,7 +6,6 @@ using BFB.Engine.Event;
 using BFB.Engine.Input;
 using BFB.Engine.Scene;
 using BFB.Engine.UI;
-using BFB.Engine.UI.Components;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -84,7 +83,7 @@ namespace BFB.Client
             _inputEventManager = new EventManager<InputEvent>();
             
             _inputManager = new InputManager(_inputEventManager);
-            _contentManager = new BFBContentManager(Content);
+            _contentManager = new BFBContentManager(Content, GraphicsDevice);
 
             _uiManager = new UIManager(_graphicsDeviceManager.GraphicsDevice, _contentManager);
             _sceneManager = new SceneManager(Content, _graphicsDeviceManager, _globalEventManager, _uiManager);

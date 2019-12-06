@@ -1,6 +1,7 @@
 using System;
 using System.Linq.Expressions;
 using System.Reflection;
+using BFB.Engine.Content;
 using BFB.Engine.Event;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -75,6 +76,7 @@ namespace BFB.Engine.UI.Components
             UIAttributes attr = new UIAttributes();
             _keyPressAction?.Invoke(e,attr);
             RenderAttributes = DefaultAttributes.CascadeAttributes(attr);
+            e.StopPropagation();
         }
         
         #endregion
@@ -87,8 +89,12 @@ namespace BFB.Engine.UI.Components
                 _keyRepeatCounter++;
 
             if (_keyRepeatCounter > 30)
+            {
                 ProcessKeys(e);
-                  
+                e.StopPropagation();
+            }
+
+
         }
         
         #endregion
@@ -117,7 +123,7 @@ namespace BFB.Engine.UI.Components
         
         #region ProcessKeys
         
-        public void ProcessKeys(UIEvent e)
+        private void ProcessKeys(UIEvent e)
         {
             string text = _selector.Compile().Invoke(_model);
                 
@@ -129,72 +135,60 @@ namespace BFB.Engine.UI.Components
                 case Keys.Space:
                     text += " ";
                     break;
+                case Keys.NumPad0:
+                case Keys.D0:
+                    text += "0";
+                    break;
+                case Keys.NumPad1:
+                case Keys.D1:
+                    text += "1";
+                    break;
+                case Keys.NumPad2:
+                case Keys.D2:
+                    text += "2";
+                    break;
+                case Keys.NumPad3:
+                case Keys.D3:
+                    text += "3";
+                    break;
+                case Keys.NumPad4:
+                case Keys.D4:
+                    text += "4";
+                    break;
+                case Keys.NumPad5:
+                case Keys.D5:
+                    text += "5";
+                    break;
+                case Keys.NumPad6:
+                case Keys.D6:
+                    text += "6";
+                    break;
+                case Keys.NumPad7:
+                case Keys.D7:
+                    text += "7";
+                    break;
+                case Keys.NumPad8:
+                case Keys.D8:
+                    text += "8";
+                    break;
+                case Keys.NumPad9:
+                case Keys.D9:
+                    text += "9";
+                    break;
+                case Keys.OemPeriod:
+                    text += ".";
+                    break;
+                case Keys.OemSemicolon:
+                    text += ":";
+                    break;
                 default:
                 {
                     if (e.Keyboard.KeyEnum.ToString().Length == 1)
                     {
-                        if (e.Keyboard.KeyboardState.IsKeyDown(Keys.LeftShift) ||
-                            e.Keyboard.KeyboardState.IsKeyDown(Keys.RightShift)) //if shift is held down
-                            text += e.Keyboard.KeyEnum.ToString()
-                                .ToUpper(); //convert the Key enum member to uppercase string
+                        if (e.Keyboard.KeyboardState.IsKeyDown(Keys.LeftShift) || e.Keyboard.KeyboardState.IsKeyDown(Keys.RightShift)) //if shift is held down
+                            text += e.Keyboard.KeyEnum.ToString().ToUpper(); //convert the Key enum member to uppercase string
                         else
-                            text += e.Keyboard.KeyEnum.ToString()
-                                .ToLower(); //convert the Key enum member to lowercase string
-                    }
-                    else
-                    {
-                        switch (e.Keyboard.KeyEnum)
-                        {
-                            case Keys.NumPad0:
-                            case Keys.D0:
-                                text += "0";
-                                break;
-                            case Keys.NumPad1:
-                            case Keys.D1:
-                                text += "1";
-                                break;
-                            case Keys.NumPad2:
-                            case Keys.D2:
-                                text += "2";
-                                break;
-                            case Keys.NumPad3:
-                            case Keys.D3:
-                                text += "3";
-                                break;
-                            case Keys.NumPad4:
-                            case Keys.D4:
-                                text += "4";
-                                break;
-                            case Keys.NumPad5:
-                            case Keys.D5:
-                                text += "5";
-                                break;
-                            case Keys.NumPad6:
-                            case Keys.D6:
-                                text += "6";
-                                break;
-                            case Keys.NumPad7:
-                            case Keys.D7:
-                                text += "7";
-                                break;
-                            case Keys.NumPad8:
-                            case Keys.D8:
-                                text += "8";
-                                break;
-                            case Keys.NumPad9:
-                            case Keys.D9:
-                                text += "9";
-                                break;
-                            case Keys.OemPeriod:
-                                text += ".";
-                                break;
-                            case Keys.OemSemicolon:
-                                text += ":";
-                                break;
-                            default:
-                                Console.WriteLine(e.Keyboard.KeyEnum);
-                                break;
-                        }
+                            text += e.Keyboard.KeyEnum.ToString().ToLower(); //convert the Key enum member to lowercase string
                     }
                     break;
                 }
@@ -207,9 +201,9 @@ namespace BFB.Engine.UI.Components
         
         #region Render
         
-        public override void Render(SpriteBatch graphics, Texture2D texture, SpriteFont font)
+        public override void Render(SpriteBatch graphics, BFBContentManager content)
         {
-            base.Render(graphics, texture, font);
+            base.Render(graphics, content);
 
             string text =  _selector.Compile().Invoke(_model);
 
@@ -236,7 +230,8 @@ namespace BFB.Engine.UI.Components
             //Start new special buffer
             graphics.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, SamplerState.PointClamp, DepthStencilState.None,r);
             #endregion
-            
+
+            var font = content.GetFont(RenderAttributes.FontKey);
             //Draw our text
             DrawString(graphics, font,text,new Rectangle(RenderAttributes.X, RenderAttributes.Y,RenderAttributes.Width,RenderAttributes.Height));
 
@@ -264,7 +259,7 @@ namespace BFB.Engine.UI.Components
             Vector2 position = new Vector2()//Centers the sprite
             {
                 X = (x*scale + hPadding < boundaries.Width) ? boundaries.X + hPadding : boundaries.X - ((x*scale - boundaries.Width) + hPadding),
-                Y = boundaries.Y - (int)(y * scale / 2) + boundaries.Height / 2 + (y*scale/7)//Centering
+                Y = boundaries.Y - (int)(y * scale / 2) + boundaries.Height / 2
             };
 
             // Draw the string to the sprite batch!

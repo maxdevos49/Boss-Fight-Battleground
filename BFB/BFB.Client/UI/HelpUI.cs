@@ -6,7 +6,10 @@ namespace BFB.Client.UI
 {
     public class HelpUI : UILayer
     {
-        public HelpUI() : base(nameof(HelpUI)) { }
+        public HelpUI() : base(nameof(HelpUI))
+        {
+            Debug = true;
+        }
 
         public override void Body()
         {
