@@ -13,7 +13,10 @@ namespace BFB.Engine.Entity.Configuration
         
         [UsedImplicitly]
         public EntityType EntityType { get; set; }
-        
+
+        [UsedImplicitly]
+        public string EntityKey { get; set; }
+
         [UsedImplicitly]
         public ushort Health { get; set; }
         

@@ -23,7 +23,10 @@ namespace BFB.Engine.Entity
         #region Properties
 
         private int _currentTick;
-        
+
+        public EntityConfiguration EntityConfiguration { get; set; }
+
+
         public string ParentEntityId { get; set; }
         
         /// <summary>
@@ -197,6 +200,11 @@ namespace BFB.Engine.Entity
         }
         
         #endregion
+
+        public void AddComponent(EntityComponent component)
+        {
+            GameComponents.Add(component);
+        }
         
         #region UpdateVisibleChunks
 
@@ -299,6 +307,7 @@ namespace BFB.Engine.Entity
             
             ConfigurationRegistry registry = ConfigurationRegistry.GetInstance();
             EntityConfiguration config = registry.GetEntityConfiguration(entityKey);
+            config.EntityKey = entityKey;
 
             //create new entity
             SimulationEntity newEntity = new SimulationEntity(socket?.ClientId ?? Guid.NewGuid().ToString(),
@@ -318,7 +327,8 @@ namespace BFB.Engine.Entity
                 {
                     Health = config.Health,
                     Mana = config.Mana
-                }
+                },
+                EntityConfiguration = config
             };
             
             //Required components

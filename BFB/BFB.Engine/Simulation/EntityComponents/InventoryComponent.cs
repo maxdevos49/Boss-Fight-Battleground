@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using BFB.Engine.Entity;
 using BFB.Engine.Inventory;
 
@@ -13,8 +14,9 @@ namespace BFB.Engine.Simulation.EntityComponents
         private int _rightHoldCount;
 
         private IItem _defaultItem;
+        private List<IItem> _defaultItems;
 
-        public InventoryComponent() : base(false)
+        public InventoryComponent(List<IItem> items = null) : base(false)
         {
             _leftClick = false;
             _leftHoldCount = 0;
@@ -23,6 +25,8 @@ namespace BFB.Engine.Simulation.EntityComponents
             _rightHoldCount = 0;
             
             _defaultItem = new Item("Default");
+
+            _defaultItems = items??new List<IItem>();
         }
 
         public override void Init(SimulationEntity entity)
@@ -31,31 +35,35 @@ namespace BFB.Engine.Simulation.EntityComponents
                 entity.CollideWithFilters.Add("item");
             
             entity.Inventory = new InventoryManager(10, 10);
+            foreach (IItem item in _defaultItems)
+            {
+                entity.Inventory.Insert(item);
+            }
 
             //Temp items
-            Item item = new Item("Wood");
-            item.SetStackSize(64);
-            entity.Inventory.Insert(item);
-            
-            item = new Item("WoodWall");
-            item.SetStackSize(64);
-            entity.Inventory.Insert(item);
-            
-            item = new Item("Leaves");
-            item.SetStackSize(64);
-            entity.Inventory.Insert(item);
-            
-            item = new Item("LeavesWall");
-            item.SetStackSize(64);
-            entity.Inventory.Insert(item);
-            
-            item = new Item("Plank");
-            item.SetStackSize(64);
-            entity.Inventory.Insert(item);
-            
-            item = new Item("PlankWall");
-            item.SetStackSize(64);
-            entity.Inventory.Insert(item);
+//            Item item = new Item("Wood");
+//            item.SetStackSize(64);
+//            entity.Inventory.Insert(item);
+//            
+//            item = new Item("WoodWall");
+//            item.SetStackSize(64);
+//            entity.Inventory.Insert(item);
+//            
+//            item = new Item("Leaves");
+//            item.SetStackSize(64);
+//            entity.Inventory.Insert(item);
+//            
+//            item = new Item("LeavesWall");
+//            item.SetStackSize(64);
+//            entity.Inventory.Insert(item);
+//            
+//            item = new Item("Plank");
+//            item.SetStackSize(64);
+//            entity.Inventory.Insert(item);
+//            
+//            item = new Item("PlankWall");
+//            item.SetStackSize(64);
+//            entity.Inventory.Insert(item);
         }
 
         /// <summary>
@@ -158,8 +166,7 @@ namespace BFB.Engine.Simulation.EntityComponents
         /// </summary>
         public override bool OnEntityCollision(Simulation simulation, SimulationEntity primaryEntity, SimulationEntity secondaryEntity)
         {
-            
-            if(secondaryEntity.EntityType != EntityType.Item)
+            if(secondaryEntity.EntityType != EntityType.Item || primaryEntity.EntityType != EntityType.Player)
                 return true;
 
             if (secondaryEntity.Inventory == null || primaryEntity.Inventory == null || secondaryEntity.Inventory.MaxInventorySize() != 1)

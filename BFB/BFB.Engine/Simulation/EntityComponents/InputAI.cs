@@ -1,6 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using BFB.Engine.Entity;
+using BFB.Engine.Input.PlayerInput;
+using BFB.Engine.Inventory;
 using BFB.Engine.Math;
 using BFB.Engine.TileMap;
 using static System.Int32;
@@ -10,12 +13,23 @@ namespace BFB.Engine.Simulation.EntityComponents
     public class InputAI : EntityComponent
     {
         private SimulationEntity _closestEntity;
+        private Random _random;
 
         public InputAI() : base(false) { }
 
+        public override void Init(SimulationEntity entity)
+        {
+            _random = new Random();
+        }
         public override void Update(SimulationEntity entity, Simulation simulation)
         {
-
+            if (_random.Next() % 2 == 0)
+            {
+                if (entity.Facing == DirectionFacing.Left)
+                    entity.Facing = DirectionFacing.Right;
+                else
+                    entity.Facing = DirectionFacing.Left;
+            }
             int nearest = MaxValue;
 
             List<Chunk> chunkList = new List<Chunk>();

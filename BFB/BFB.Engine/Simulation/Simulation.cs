@@ -5,6 +5,7 @@ using System.Threading;
 using BFB.Engine.Entity;
 using BFB.Engine.Server.Communication;
 using BFB.Engine.Simulation.BlockComponent;
+using BFB.Engine.Simulation.GameModeComponents;
 using BFB.Engine.TileMap;
 using BFB.Engine.TileMap.Generators;
 using JetBrains.Annotations;
@@ -27,6 +28,10 @@ namespace BFB.Engine.Simulation
         public int Tick { get; private set; } 
         private readonly Dictionary<string,SimulationEntity> _entitiesIndex;
         private readonly Dictionary<string, SimulationEntity> _playerEntitiesIndex;
+        public readonly List<GameComponent> gameComponents;
+        public GameState gameState;
+
+        public int ConnectedClients;
 
         /// <summary>
         /// Indicates the distance at which a player causes the simulation to simulate
@@ -95,6 +100,7 @@ namespace BFB.Engine.Simulation
             _tickSpeed = 1000/tickSpeed;//20 ticks a second are default
             _random = new Random();
             Tick = 0;
+            ConnectedClients = 0;
 
             World = new WorldManager(worldOptions);
 
@@ -104,6 +110,11 @@ namespace BFB.Engine.Simulation
             _entitiesIndex = new Dictionary<string, SimulationEntity>();
             _playerEntitiesIndex = new Dictionary<string, SimulationEntity>();
             
+            // Gameplay
+            gameComponents = new List<GameComponent>();
+            gameComponents.Add(new PreGameComponent());
+            gameState = GameState.PreGame;
+
             TileComponentManager.LoadTileComponents();
         }
         
@@ -186,6 +197,7 @@ namespace BFB.Engine.Simulation
         /// <param name="reason"></param>
         public void RemoveEntity(string key, EntityRemovalReason? reason = null)
         {
+            
             bool isPlayer = false;
             
             lock (_lock)
@@ -195,6 +207,7 @@ namespace BFB.Engine.Simulation
                     SimulationEntity entity = _entitiesIndex[key];
 
                     entity.EmitOnSimulationRemoval(this, reason);
+                    EmitRemoveEntity(entity);
 
                     //Remove from chunk
                     World.ChunkIndex[entity.ChunkKey].Entities.Remove(key);
@@ -229,6 +242,19 @@ namespace BFB.Engine.Simulation
         }
 
         #endregion
+
+        public List<SimulationEntity> GetPlayerEntities()
+        {
+            return _playerEntitiesIndex.Values.ToList();
+        }
+
+        public void EmitRemoveEntity(SimulationEntity entity)
+        {
+            foreach (GameComponent component in gameComponents)
+            {
+                component.OnEntityRemove(this, entity);
+            }
+        }
 
         #region Start
 
@@ -349,6 +375,12 @@ namespace BFB.Engine.Simulation
                             
                             TileComponentManager.TickTile(World, chunk, xBlock, yBlock);
                         }
+                    }
+
+                    // Run all of the components to simulate gameplay.
+                    foreach (GameComponent component in gameComponents.ToList())
+                    {
+                        component.Update(this);
                     }
                 }
                 

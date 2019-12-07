@@ -15,6 +15,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Remove="content.json" />
+    <None Remove="Content\Sprites\ZombieSword.xnb" />
     <Content Include="content.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
