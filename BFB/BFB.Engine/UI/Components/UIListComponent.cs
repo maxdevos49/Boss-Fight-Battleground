@@ -1,8 +1,6 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
-using BFB.Engine.Event;
 using Microsoft.Xna.Framework;
 
 namespace BFB.Engine.UI.Components
@@ -11,10 +9,10 @@ namespace BFB.Engine.UI.Components
     {
         private readonly Action<UIComponent, TItem> _itemTemplate;
         private readonly List<TItem> _list;
-        private readonly UIComponent _stack;
-        
-        private int _scrollPosition;
-        private int _targetScrollPosition;
+//        private readonly UIComponent _stack;
+//        
+//        private int _scrollPosition;
+//        private int _targetScrollPosition;
         private int _count;
         
         public UIListComponent(
@@ -25,46 +23,46 @@ namespace BFB.Engine.UI.Components
         {
             _itemTemplate = itemTemplate;
             _list = listSelector.Compile().Invoke(model);
-            _stack = stackDirection == StackDirection.Horizontal ? this.Hstack(x => { }) : this.Vstack(x => { });
+            DefaultAttributes.StackDirection = stackDirection;
+//            _stack = stackDirection == StackDirection.Horizontal ? this.Hstack(x => { }) : this.Vstack(x => { });
             
-            DefaultAttributes.Overflow = Overflow.Hide;
-            _stack.DefaultAttributes.Sizing = Sizing.Dimension;
-            
-            _scrollPosition = 0;
-            _targetScrollPosition = 0;
+//            DefaultAttributes.Overflow = Overflow.Hide;
+//            _stack.DefaultAttributes.Sizing = Sizing.Dimension;
+//            
+//            _scrollPosition = 0;
+//            _targetScrollPosition = 0;
             _count = 0;
             
-            AddEvent("mousescroll", HandleMouseScroll);
         }
 
         #region HandleMouseScroll
         
-        private void HandleMouseScroll(UIEvent e)
-        {
-            const int fraction = 10;
-            
-            _targetScrollPosition = _scrollPosition + e.Mouse.ScrollAmount/fraction;
-
-            int scrollBottom;
-            
-            if (_stack.DefaultAttributes.StackDirection == StackDirection.Horizontal)
-            {
-                int height = _stack.Children.Sum(x => x.RenderAttributes.Height);
-                scrollBottom = RenderAttributes.Height - height;
-            }
-            else
-            {
-                int width = _stack.Children.Sum(x => x.RenderAttributes.Width);//TODO broken. Cuts off items
-                scrollBottom = RenderAttributes.Width - width;
-            }
-            
-            
-            if (_targetScrollPosition < scrollBottom - fraction)
-                _targetScrollPosition = scrollBottom - fraction;
-
-            if (_targetScrollPosition > fraction)
-                _targetScrollPosition = fraction;
-        }
+//        private void HandleMouseScroll(UIEvent e)
+//        {
+//            const int fraction = 10;
+//            
+//            _targetScrollPosition = _scrollPosition + e.Mouse.VerticalScrollAmount/fraction;
+//
+//            int scrollBottom;
+//            
+//            if (_stack.DefaultAttributes.StackDirection == StackDirection.Horizontal)
+//            {
+//                int height = _stack.Children.Sum(x => x.RenderAttributes.Height);
+//                scrollBottom = RenderAttributes.Height - height;
+//            }
+//            else
+//            {
+//                int width = _stack.Children.Sum(x => x.RenderAttributes.Width);//TODO broken. Cuts off items
+//                scrollBottom = RenderAttributes.Width - width;
+//            }
+//            
+//            
+//            if (_targetScrollPosition < scrollBottom - fraction)
+//                _targetScrollPosition = scrollBottom - fraction;
+//
+//            if (_targetScrollPosition > fraction)
+//                _targetScrollPosition = fraction;
+//        }
         
         #endregion
 
@@ -72,10 +70,10 @@ namespace BFB.Engine.UI.Components
 
         private void BuildList()
         {
-            _stack.Children.Clear();
+            Children.Clear();
 
             foreach (TItem listItem in _list)
-                _itemTemplate(_stack, listItem);
+                _itemTemplate(this, listItem);
             
             UIManager.BuildComponent(ParentLayer, this);
         }
@@ -86,28 +84,27 @@ namespace BFB.Engine.UI.Components
         
         public override void Update(GameTime time)
         {
-            if (_list.Count != _count)
-            {
-                BuildList();
-                _count = _list.Count;
+            if (_list.Count == _count)
                 return;
-            }
             
-            if (_scrollPosition != _targetScrollPosition)
-            {
-                if (_targetScrollPosition > _scrollPosition)
-                    _scrollPosition += System.Math.Abs(_targetScrollPosition - _scrollPosition)/10;
-                else
-                    _scrollPosition -= System.Math.Abs(_targetScrollPosition - _scrollPosition)/10;
+            BuildList();
+            _count = _list.Count;
 
-                if (System.Math.Abs(_targetScrollPosition - _scrollPosition) < 2)
-                    _scrollPosition = _targetScrollPosition;
-            }
-
-            if (_stack.DefaultAttributes.StackDirection == StackDirection.Horizontal)
-                _stack.RenderAttributes.OffsetX = _scrollPosition;
-            else
-                _stack.RenderAttributes.OffsetY = _scrollPosition;
+//            if (_scrollPosition != _targetScrollPosition)
+//            {
+//                if (_targetScrollPosition > _scrollPosition)
+//                    _scrollPosition += System.Math.Abs(_targetScrollPosition - _scrollPosition)/10;
+//                else
+//                    _scrollPosition -= System.Math.Abs(_targetScrollPosition - _scrollPosition)/10;
+//
+//                if (System.Math.Abs(_targetScrollPosition - _scrollPosition) < 2)
+//                    _scrollPosition = _targetScrollPosition;
+//            }
+//
+//            if (_stack.DefaultAttributes.StackDirection == StackDirection.Horizontal)
+//                _stack.RenderAttributes.OffsetX = _scrollPosition;
+//            else
+//                _stack.RenderAttributes.OffsetY = _scrollPosition;
             
         }
         

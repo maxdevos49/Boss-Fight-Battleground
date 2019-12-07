@@ -1,7 +1,10 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Linq.Expressions;
+using BFB.Engine.Entity;
 using BFB.Engine.Event;
+using BFB.Engine.Inventory;
 using BFB.Engine.UI.Components;
 
 namespace BFB.Engine.UI
@@ -103,6 +106,23 @@ namespace BFB.Engine.UI
         
         #endregion
         
+        #region ScrollableContainer
+
+        public static UIComponent ScrollableContainer(this UIComponent parentNode, Action<UIComponent> handler)
+        {
+            UIScrollableContainer child = new UIScrollableContainer();
+            parentNode.AddChild(child);
+            handler?.Invoke(child);
+            UIComponent childInner = child.Children.FirstOrDefault();
+            
+            if(childInner != null)
+                child.AddStack(childInner);
+            
+            return child;
+        }
+        
+        #endregion
+        
         #region Button
 
         public static UIComponent Button(this UIComponent component, string text, Action<UIEvent,UIAttributes> clickAction = null, Action<UIEvent,UIAttributes> hoverAction = null)
@@ -110,6 +130,15 @@ namespace BFB.Engine.UI
             return AddNode(component, new UIButtonComponent(text, clickAction, hoverAction), null);
         }
        
+        
+        #endregion
+        
+        #region UISlot
+
+        public static UIComponent InventorySlot(this UIComponent component, ClientInventory inventory, int slotId)
+        {
+            return AddNode(component, new UIInventorySlot(inventory, slotId), null);
+        }
         
         #endregion
         

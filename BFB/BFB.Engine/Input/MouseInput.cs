@@ -39,7 +39,7 @@ namespace BFB.Engine.Input
         {
             MouseState mouseState = Mouse.GetState();
 
-            if(_mouseStatus.Scroll != mouseState.ScrollWheelValue)
+            if(_mouseStatus.VerticalScroll != mouseState.ScrollWheelValue || _mouseStatus.HorizontalScroll != mouseState.HorizontalScrollWheelValue)
                 EmitMouseScroll(mouseState);
             
             //Mouse move
@@ -70,8 +70,10 @@ namespace BFB.Engine.Input
             _mouseStatus.LeftButton = mouseState.LeftButton;
             _mouseStatus.RightButton = mouseState.RightButton;
             _mouseStatus.MiddleButton = mouseState.MiddleButton;
-            _mouseStatus.Scroll = mouseState.ScrollWheelValue;
-            _mouseStatus.ScrollAmount = mouseState.ScrollWheelValue - _mouseStatus.ScrollAmount;
+            _mouseStatus.VerticalScroll = mouseState.ScrollWheelValue;
+            _mouseStatus.VerticalScrollAmount = mouseState.ScrollWheelValue - _mouseStatus.VerticalScroll;
+            _mouseStatus.HorizontalScroll = mouseState.HorizontalScrollWheelValue;
+            _mouseStatus.HorizontalScrollAmount = mouseState.HorizontalScrollWheelValue - _mouseStatus.HorizontalScroll;
             _mouseStatus.MouseState = mouseState;
 
         }
@@ -129,8 +131,10 @@ namespace BFB.Engine.Input
                     LeftButton = mouseState.LeftButton,
                     RightButton = mouseState.RightButton,
                     MiddleButton = mouseState.MiddleButton,
-                    Scroll = mouseState.ScrollWheelValue,
-                    ScrollAmount = mouseState.ScrollWheelValue - _mouseStatus.Scroll,
+                    VerticalScroll = mouseState.ScrollWheelValue,
+                    VerticalScrollAmount = mouseState.ScrollWheelValue - _mouseStatus.VerticalScroll,
+                    HorizontalScroll =  mouseState.HorizontalScrollWheelValue,
+                    HorizontalScrollAmount = mouseState.ScrollWheelValue - _mouseStatus.HorizontalScroll,
                     MouseState = mouseState
                 },
                 Keyboard = new KeyboardStatus

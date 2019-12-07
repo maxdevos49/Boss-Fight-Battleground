@@ -216,7 +216,7 @@ namespace BFB.Client.Scenes
             AddInputListener("mousescroll", e =>
             {
                 if(e.Keyboard.KeyboardState.IsKeyDown(Keys.LeftControl))
-                    _worldRenderer.Camera.ApplyZoom(e.Mouse.ScrollAmount/1000f);
+                    _worldRenderer.Camera.ApplyZoom(e.Mouse.VerticalScrollAmount/1000f);
             });
 
             #endregion

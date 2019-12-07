@@ -46,14 +46,16 @@ namespace BFB.Client.UI
             
             RootUI.Vstack(v1 =>
                 {
-                    v1.ListFor(Model, x => x.Messages, (stack, item) =>
+                    v1.ScrollableContainer(s1 =>
                     {
-                        stack.Hstack(h1 =>
-                            {
-                                h1.Text(item).FontSize(0.5f);
-                            })
-                            .Height(0.07f);
+                        s1.ListFor(Model, x => x.Messages, (stack, item) =>
+                        {
+                            stack.Hstack(h1 => { h1.Text(item).FontSize(0.5f); })
+                                .Height(0.07f);
+                        });
+                        
                     }).Grow(12);
+                    
 
                     v1.TextBoxFor(Model, x => x.TextBoxText)
                         .Background(new Color(0,0,0,0.5f))

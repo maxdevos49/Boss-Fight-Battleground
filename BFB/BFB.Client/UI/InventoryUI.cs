@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using BFB.Engine.Inventory;
 using BFB.Engine.UI;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
@@ -7,16 +8,35 @@ namespace BFB.Client.UI
 {
     public class InventoryUI : UILayer
     {
+        
+        public ClientInventory Inventory { get; set; }
+        
         public InventoryUI() : base(nameof(InventoryUI))
         {
-//            BlockInput = true;
-            List = new List<int> {10,45,12,423,23,11,44,23,546,12,53,1212,434,23,121,545,6757};
+            Debug = true;
+            BlockInput = true;
+
+            Inventory = new ClientInventory
+            {
+                InventorySize = 24,
+                HotBarRange = 5
+            };
+
+            var newSlot = new InventorySlot
+            {
+                Count = 20,
+                Name = "Dirt Blocks",
+                Mode = false,
+                SlotId = 1,
+                TextureKey = "Tiles:Dirt"
+            };
+            
+            Inventory.AddItem(1, newSlot);
         }
         
-        private List<int> List { get; set; }
-
         protected override void Init()
         {
+         
             AddInputListener("keypress", e =>
             {
                 switch (e.Keyboard.KeyEnum)
@@ -32,29 +52,37 @@ namespace BFB.Client.UI
         
         public override void Body()
         {
-            RootUI.Vstack(v1 =>
-            {
-                v1.Button("Close", clickAction: (e, a) =>
+            RootUI.Hstack(h1 =>
                 {
-                    UIManager.StopLayer(Key); //Stop this layer
-                }).Image("button");
-                
-                v1.Spacer();
-                v1.Spacer();
-                
-                v1.ListFor(this, x => x.List, (stack, item) => { 
-                    
-                    stack.Hstack(h1 =>
-                    {
-                        h1.Text("Test" + item);
-                        h1.Button("Test" + item)
-                            .Image("button");
-                    }).Width(0.3f); 
-                    
-                },StackDirection.Horizontal)
-                    .Background(Color.Beige);
+                    h1.Spacer();
 
-            });
+                    h1.Vstack(v2 =>
+                        {
+
+                            for (int i = 0; i < 27; i+=7)
+                            {
+                                int i1 = i;
+
+                                v2.Hstack(h2 =>
+                                {
+                                    h2.InventorySlot(Inventory, i1);
+                                    h2.InventorySlot(Inventory, i1 + 1);
+                                    h2.InventorySlot(Inventory, i1 + 2);
+                                    h2.InventorySlot(Inventory, i1 + 3);
+                                    h2.InventorySlot(Inventory, i1 + 4);
+                                    h2.InventorySlot(Inventory, i1 + 5);
+                                    h2.InventorySlot(Inventory, i1 + 6);
+                                });
+                            }
+                            
+                        })
+                        .AspectRatio(1.78f)
+                        .Center()
+                        .Grow(3);
+                    
+                    h1.Spacer(); 
+                })
+                .Background(new Color(0,0,0,0.4f));
 
         }
     }

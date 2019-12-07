@@ -126,7 +126,7 @@ namespace BFB.Engine.Helpers
             }
             else if(component.RenderAttributes.TextScaleMode == TextScaleMode.FontSizeScale)
             {
-                int pixelHeight = (int)(content.GraphicsDevice.Viewport.Height / 15f * component.RenderAttributes.FontSize);
+                int pixelHeight = (int)(content.GraphicsDevice.Viewport.Width / 25f * component.RenderAttributes.FontSize);
                 scale =  pixelHeight / iHeight;
             }
             
@@ -183,11 +183,12 @@ namespace BFB.Engine.Helpers
             string[] words = component.Text.Split(' ');
             StringBuilder sb = new StringBuilder();
             float lineWidth = 0f;
-            float spaceWidth = font.MeasureString(" ").X * scale;
+            (float spaceWidth, float _) = font.MeasureString(" ") * scale;
 
+            
             foreach (string word in words)
             {
-                (float wordWidth, _) = font.MeasureString(word) * scale;
+                (float wordWidth,float _) = font.MeasureString(word) * scale;
 
                 if (lineWidth + wordWidth < component.RenderAttributes.Width)
                 {
@@ -199,7 +200,7 @@ namespace BFB.Engine.Helpers
                     if (wordWidth > component.RenderAttributes.Width)
                     {
                         if (sb.ToString() == "")
-                            sb.Append(WrapUIComponentText(font, word.Insert(word.Length / 2, " ") + " ",component, scale));
+                            sb.Append(WrapUIComponentText(font, word.Insert(word.Length / 2, " ") + " ", component, scale));
                         else
                             sb.Append("\n" + WrapUIComponentText(font, word.Insert(word.Length / 2, " ") + " ", component, scale));
                     }
@@ -210,6 +211,7 @@ namespace BFB.Engine.Helpers
                     }
                 }
             }
+
 
             return sb.ToString();
         }

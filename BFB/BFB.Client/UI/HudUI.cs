@@ -42,14 +42,14 @@ namespace BFB.Client.UI
             RootUI.Zstack(z1 => { 
                 z1.Vstack(v1 =>
                     {
-                        v1.Button("Menu",
-                                clickAction: (e, a) =>
-                                {
-                                    UIManager.StartLayer(nameof(GameMenuUI),ParentScene);
-                                })
-                            .Width(0.12f)
-                            .Height(0.1f)
-                            .Image("button");
+//                        v1.Button("Menu",
+//                                clickAction: (e, a) =>
+//                                {
+//                                    UIManager.StartLayer(nameof(GameMenuUI),ParentScene);
+//                                })
+//                            .Width(0.12f)
+//                            .Height(0.1f)
+//                            .Image("button");
                     })
                     .Top(0)
                     .Left(0);

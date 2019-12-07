@@ -149,6 +149,17 @@ namespace BFB.Engine.UI
         
         #endregion
         
+        #region Border
+
+        public static UIComponent Border(this UIComponent component, int borderSize = 1,  Color? borderColor = null)
+        {
+            component.DefaultAttributes.BorderSize = borderSize;
+            component.DefaultAttributes.BorderColor = borderColor ?? Microsoft.Xna.Framework.Color.Black;
+            return component;
+        }
+        
+        #endregion
+        
         #region Sizing
 
         public static UIComponent Sizing(this UIComponent component, Sizing sizing)

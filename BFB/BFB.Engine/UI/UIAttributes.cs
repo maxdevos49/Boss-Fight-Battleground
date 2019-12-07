@@ -27,8 +27,12 @@ namespace BFB.Engine.UI
         public Color Color { get; set; }
         
         public Color Background { get; set; }
+        
+        public Color BorderColor { get; set; }
      
         public int Grow { get; set; }
+        
+        public int BorderSize { get; set; }
         
         public Position Position { get; set; }
         
@@ -54,6 +58,7 @@ namespace BFB.Engine.UI
         {
             Background = Color.Transparent;
             Color = Color.Black;
+            BorderColor = Color.Black;
             FontSize = 1;
             Grow = 1;
             Position = Position.Relative;
@@ -61,9 +66,9 @@ namespace BFB.Engine.UI
             Overflow = Overflow.Show;
             StackDirection = StackDirection.None;
             TextWrap = TextWrap.Wrap;
-            JustifyText = JustifyText.Start;
+            JustifyText = JustifyText.Center;
+            VerticalAlignText = VerticalAlignText.Center;
             TextScaleMode = TextScaleMode.FontSizeScale;
-            VerticalAlignText = VerticalAlignText.Start;
         }
         
         #endregion
@@ -90,11 +95,13 @@ namespace BFB.Engine.UI
                 Color = cascadingAttributes.Color != Color.Black ? cascadingAttributes.Color : Color,
                 Background = cascadingAttributes.Background != Color.Transparent ? cascadingAttributes.Background : Background,
                 Grow = cascadingAttributes.Grow != 1 ? cascadingAttributes.Grow : Grow,
+                BorderSize = cascadingAttributes.BorderSize != 0 ? cascadingAttributes.BorderSize : BorderSize,
+                BorderColor = cascadingAttributes.BorderColor != Color.Black ? cascadingAttributes.BorderColor : BorderColor,
                 Position = cascadingAttributes.Position != Position.Relative ? cascadingAttributes.Position : Position,
                 Sizing = cascadingAttributes.Sizing != Sizing.Proportion ? cascadingAttributes.Sizing : Sizing,
                 Overflow = cascadingAttributes.Overflow != Overflow.Show ? cascadingAttributes.Overflow : Overflow,
-                JustifyText = cascadingAttributes.JustifyText != JustifyText.Start ? cascadingAttributes.JustifyText : JustifyText,
-                VerticalAlignText = cascadingAttributes.VerticalAlignText != VerticalAlignText.Start ? cascadingAttributes.VerticalAlignText : VerticalAlignText,
+                JustifyText = cascadingAttributes.JustifyText != JustifyText.Center ? cascadingAttributes.JustifyText : JustifyText,
+                VerticalAlignText = cascadingAttributes.VerticalAlignText != VerticalAlignText.Center ? cascadingAttributes.VerticalAlignText : VerticalAlignText,
                 TextWrap = cascadingAttributes.TextWrap != TextWrap.Wrap ? cascadingAttributes.TextWrap : TextWrap,
                 TextScaleMode = cascadingAttributes.TextScaleMode != TextScaleMode.FontSizeScale ? cascadingAttributes.TextScaleMode : TextScaleMode,
                 StackDirection= cascadingAttributes.StackDirection != StackDirection.None ? cascadingAttributes.StackDirection : StackDirection,
@@ -129,7 +136,7 @@ namespace BFB.Engine.UI
     {
         Inherit,
         Hide,
-        Show
+        Show,
     }
 
     public enum JustifyText : byte

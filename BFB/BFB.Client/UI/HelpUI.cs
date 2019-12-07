@@ -26,7 +26,7 @@ namespace BFB.Client.UI
                         {
                             h2.Hstack(h3 =>
                                 {
-                                    h3.Text("Help");
+                                    h3.Text("Help").FontSize(2f);
                                 })
                                 .Height(0.7f)
                                 .Width(0.7f)
@@ -34,10 +34,11 @@ namespace BFB.Client.UI
                         })
                         .Grow(3);
 
-                    v1.Hstack(h2 =>
+                    v1.ScrollableContainer(s1 =>
                     {
-                        h2.Text("This is where we can explain how to play or other useful stuff that is similar. The text will scale to fit and we could also load the description from a json file or another source"); 
-                        
+                        s1.Text("This is where we can explain how to play or other useful stuff that is similar. The text will scale to fit and we could also load the description from a json file or another source")
+                            .Sizing(Sizing.Dimension)
+                            .Height(400);
                     }).Grow(3);
                     
                    
@@ -54,7 +55,7 @@ namespace BFB.Client.UI
                                 .Height(0.8f)
                                 .Width(0.8f)
                                 .Image("button")
-                                .Center();;
+                                .Center();
                         });
                     });
                     

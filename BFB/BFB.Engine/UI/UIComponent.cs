@@ -52,6 +52,8 @@ namespace BFB.Engine.UI
          * Indicates whether the element is focused or not
          */
         public bool Focused { get; set; }
+        
+        public bool IsHovered { get; set; }
 
         /**
          * Contains the constraints that will be applied to the component
@@ -325,6 +327,16 @@ namespace BFB.Engine.UI
 
             if (!string.IsNullOrEmpty(Text))
                 graphics.DrawUIText(this, content);
+
+            if (RenderAttributes.BorderSize > 0)
+                graphics.DrawBorder(new Rectangle(
+                                        RenderAttributes.X,
+                                        RenderAttributes.Y, 
+                                        RenderAttributes.Width,
+                                        RenderAttributes.Height),
+                                    RenderAttributes.BorderSize,
+                                    RenderAttributes.BorderColor,
+                                    content.GetTexture("default"));
         }
         
         #endregion
