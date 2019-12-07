@@ -8,7 +8,7 @@ namespace BFB.Engine.Simulation.GameModeComponents
     {
         public PostGameComponent() : base()
         {
-
+            Console.WriteLine("GAME ENDED");
         }
 
         public void Update()

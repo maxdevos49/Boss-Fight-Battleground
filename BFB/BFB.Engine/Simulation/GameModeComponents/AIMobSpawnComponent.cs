@@ -30,7 +30,6 @@ namespace BFB.Engine.Simulation.GameModeComponents
         public override void Update(Simulation simulation)
         {
             timeToSpawn -= 1;
-            Console.WriteLine(timeToSpawn);
             if (timeToSpawn <= 0)
             {
                 if (AIMonstersAlive < AIMonstersMaxSpawnAmount)
