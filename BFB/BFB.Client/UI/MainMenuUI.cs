@@ -66,7 +66,13 @@ namespace BFB.Client.UI
                                     .Background(Color.White)
                                     .Grow(3)
                                     .Color(Color.Black);
-
+                                
+                                h3.Button("Server Menu",
+                                        clickAction: (e, a) =>
+                                        {
+                                            UIManager.StartLayer(nameof(ServerMenuUI),ParentScene);
+                                        })
+                                    .Image("button");
                             })
                                 .Width(0.8f)
                                 .Height(0.8f)

@@ -129,6 +129,7 @@ namespace BFB.Client
             _uiManager.AddUILayer(new UILayer[]
             {
                 new MainMenuUI(),
+                new ServerMenuUI(),
                 new SettingsUI(),
                 new HelpUI(),
                 new HudUI(),

@@ -149,6 +149,26 @@ namespace BFB.Engine.UI
         
         #endregion
         
+        #region JustifyText
+
+        public static UIComponent JustifyText(this UIComponent component, JustifyText justifyText)
+        {
+            component.DefaultAttributes.JustifyText = justifyText;
+            return component;
+        }
+        
+        #endregion
+        
+        #region VerticalAlignText
+
+        public static UIComponent VerticalAlignText(this UIComponent component, VerticalAlignText verticalAlignText)
+        {
+            component.DefaultAttributes.VerticalAlignText = verticalAlignText;
+            return component;
+        }
+        
+        #endregion
+        
         #region Border
 
         public static UIComponent Border(this UIComponent component, int borderSize = 1,  Color? borderColor = null)
