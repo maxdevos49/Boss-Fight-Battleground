@@ -127,7 +127,6 @@ namespace BFB.Client.Scenes
             Client.OnReady = () =>
             {
                 GlobalEventManager.Emit("onConnectionStatus", new GlobalEvent("Ready..."));
-                AudioManager.playSong("HumanSong");
             };
             
             #endregion
