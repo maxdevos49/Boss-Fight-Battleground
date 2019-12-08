@@ -24,17 +24,13 @@ namespace BFB.Engine.Simulation.ItemComponents
                 else
                     targets = simulation.World.QueryEntities(new Rectangle(entity.Right, entity.Top + entity.Height/2,reach,2), new List<string> {"melee"});
 
-                try
-                {
-                    targets = (List<SimulationEntity>) targets.Where(x =>
+                    IEnumerable<SimulationEntity> enemies = targets.Where(x =>
                         x.EntityConfiguration.EntityKey != entity.EntityConfiguration.EntityKey);
-                }
-                catch (Exception e)
-                {
 
-                }
+                    if (!enemies.Any()) return;
+                    targets = (List<SimulationEntity>) enemies;
 
-                //Apply actual damage
+                    //Apply actual damage
                 CombatService.FightPeople(entity, targets, simulation);
                 
             }
