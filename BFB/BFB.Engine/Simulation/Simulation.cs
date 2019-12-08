@@ -337,14 +337,26 @@ namespace BFB.Engine.Simulation
             if (playerEntity.Inventory == null) 
                 return;
             
-            foreach ((int slotId, IItem item) in playerEntity.Inventory.GetAllItems())
+            foreach ((byte slotId, IItem item) in playerEntity.Inventory.GetAllItems())
             {
+                if (item == null)
+                {
+                    updates.SlotUpdates.Add(new InventorySlot
+                    {
+                        Mode = true,
+                        SlotId =  slotId
+                    });
+
+                    playerEntity.Inventory.Remove(slotId);
+                    continue;
+                }
+                
                 updates.SlotUpdates.Add(new InventorySlot
                 {
                     Count = item.StackSize(),
                     Name = item.ItemConfigKey,
                     Mode = false,
-                    SlotId = (ushort) slotId,
+                    SlotId =  slotId,
                     TextureKey = item.Configuration.TextureKey
                 });
             }

@@ -141,6 +141,7 @@ namespace BFB.Engine.UI
             foreach ((string _, UILayer uiLayer) in _activeUILayers.ToList())
             {
                 RenderComponents(uiLayer.RootUI, graphics, uiLayer);
+                uiLayer.Draw(graphics, _contentManager);    
             }
         }
         
@@ -179,9 +180,7 @@ namespace BFB.Engine.UI
             node.Build(layer);
 
             foreach (UIComponent childNode in node.Children)
-            {
                 BuildComponent(layer, childNode);
-            }
         }
 
         #endregion

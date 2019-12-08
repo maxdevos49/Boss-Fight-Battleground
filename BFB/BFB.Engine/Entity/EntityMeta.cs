@@ -1,5 +1,6 @@
 using System;
 using BFB.Engine.Inventory;
+using JetBrains.Annotations;
 
 namespace BFB.Engine.Entity
 {
@@ -12,6 +13,9 @@ namespace BFB.Engine.Entity
         public ushort Mana { get; set; }
         
         public HoldingItem Holding { get; set; }
+        
+        [CanBeNull]
+        public InventorySlot MouseSlot { get; set; }
         
         public EntityMeta()
         {

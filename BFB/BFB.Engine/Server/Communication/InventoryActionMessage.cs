@@ -10,7 +10,7 @@ namespace BFB.Engine.Server.Communication
         
         public bool RightClick { get; set; }
         
-        public ushort? SlotId { get; set; }
+        public byte? SlotId { get; set; }
         
     }
 }

@@ -108,7 +108,7 @@ namespace BFB.Engine.Input.PlayerInput
             });
         }
 
-        public void UpdateHotBar(int position)
+        public void UpdateHotBar(byte position)
         {
             if (position != _controlState.HotBarPosition)
             {

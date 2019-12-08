@@ -1,6 +1,14 @@
+using System;
+using System.Linq.Expressions;
+using BFB.Engine.Content;
+using BFB.Engine.Entity;
+using BFB.Engine.Helpers;
 using BFB.Engine.Inventory;
+using BFB.Engine.Math;
+using BFB.Engine.Server.Communication;
 using BFB.Engine.UI;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
 namespace BFB.Client.UI
@@ -9,11 +17,15 @@ namespace BFB.Client.UI
     {
         
         private ClientInventory Inventory { get; set; }
+        private BfbVector Mouse { get; set; }
         
         public InventoryUI() : base(nameof(InventoryUI))
         {
             BlockInput = true;
+            Mouse = new BfbVector();
         }
+        
+        #region Init
         
         protected override void Init()
         {
@@ -32,7 +44,38 @@ namespace BFB.Client.UI
                 }
                 e.StopPropagation();
             });
+            
+            AddInputListener("mousemove", e =>
+            {
+                Mouse = new BfbVector(e.Mouse.X, e.Mouse.Y);
+            });
         }
+        
+        #endregion
+        
+        #region Draw
+
+        public override void Draw(SpriteBatch graphics, BFBContentManager content)
+        {
+            InventorySlot slot = ClientDataRegistry.GetInstance()?.Client?.Meta?.MouseSlot;
+
+            if (slot == null)
+                return;
+            
+            graphics.DrawAtlas(
+                content.GetAtlasTexture(slot.TextureKey),
+                new Rectangle(
+                    (int)Mouse.X - 15, 
+                    (int)Mouse.Y - 15, 
+                    30, 
+                    30), 
+                Color.White);
+            
+        }
+
+        #endregion
+        
+        #region Body
         
         public override void Body()
         {
@@ -46,7 +89,7 @@ namespace BFB.Client.UI
                     h1.Vstack(v2 =>
                         {
 
-                            for (int i = 3; i > -1; i--)
+                            for (int i = 3; i >= 0; i--)
                             {
                                 if (i == 0)
                                     v2.Spacer(2);
@@ -59,9 +102,14 @@ namespace BFB.Client.UI
                                         int i1 = i2;
                                         int j1 = j;
                                         
-                                        h2.InventorySlot(Inventory, i1 * 7 + j1, clickAction: (e, slotId) =>
+                                        h2.InventorySlot(Inventory, (byte)(i1 * 7 + j1), clickAction: (e, slotId) =>
                                         {
-                                        
+                                            ParentScene.Client.Emit("/inventory/select", new InventoryActionMessage
+                                            {
+                                                LeftClick = e.Mouse.LeftButton == ButtonState.Pressed,
+                                                RightClick = e.Mouse.RightButton == ButtonState.Pressed,
+                                                SlotId = slotId
+                                            });
                                         });
                                     }
                                 })
@@ -79,5 +127,7 @@ namespace BFB.Client.UI
                 .Background(new Color(0,0,0,0.4f));
 
         }
+        
+        #endregion
     }
 }

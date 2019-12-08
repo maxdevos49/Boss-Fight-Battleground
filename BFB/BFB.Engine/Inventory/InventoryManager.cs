@@ -9,21 +9,19 @@ namespace BFB.Engine.Inventory
 
         #region Properties
 
-        private int _activeSlotId;
+        private byte _activeSlotId;
 
-        private readonly int _hotBarRange;
+        private readonly byte _hotBarRange;
 
-        private readonly int _inventorySize;
+        private readonly byte _inventorySize;
         
-        private IItem _swapSlot;
-        
-        private readonly Dictionary<int, IItem> _slots;
+        private readonly Dictionary<byte, IItem> _slots;
         
         #endregion
 
         #region Constructor
         
-        public InventoryManager(int inventorySize = 1, int hotBarRange = 1)
+        public InventoryManager(byte inventorySize = 1, byte hotBarRange = 1)
         {
             if(inventorySize <= 0)
                 throw new Exception("Inventory size must be greater then 0");
@@ -35,14 +33,14 @@ namespace BFB.Engine.Inventory
             
             _inventorySize = inventorySize;
             _hotBarRange = hotBarRange;
-            _slots = new Dictionary<int, IItem>();
+            _slots = new Dictionary<byte, IItem>();
         }
         
         #endregion
 
         #region GetActiveSlotId
 
-        public int GetActiveSlotId()
+        public byte GetActiveSlotId()
         {
             return _activeSlotId;
         }
@@ -75,9 +73,9 @@ namespace BFB.Engine.Inventory
         
         #region MoveActiveSlot
         
-        public void MoveActiveSlot(int slotId)
+        public void MoveActiveSlot(byte slotId)
         {
-            if (slotId >= 0 && slotId <= _hotBarRange)
+            if (slotId <= _hotBarRange)
                 _activeSlotId = slotId;
         }
         
@@ -94,7 +92,7 @@ namespace BFB.Engine.Inventory
         
         #region MaxInventorySize
         
-        public int MaxInventorySize()
+        public byte MaxInventorySize()
         {
             return _inventorySize;
         }
@@ -112,7 +110,7 @@ namespace BFB.Engine.Inventory
 
         #region IsSlotFull
         
-        public bool IsSlotFull(int slotId)
+        public bool IsSlotFull(byte slotId)
         {
             if (!SlotInRange(slotId))
                 return false;
@@ -130,11 +128,11 @@ namespace BFB.Engine.Inventory
                 return null;
             
             //search for similar items
-            int? slotId = SlotWithItemTypeAvailable(items.ItemConfigKey);
+            byte? slotId = SlotWithItemTypeAvailable(items.ItemConfigKey);
 
             if (slotId != null)
             {
-                IItem remainingItems = Merge((int)slotId,items);
+                IItem remainingItems = Merge((byte)slotId,items);
                 if (remainingItems == null)
                     return null;
                 
@@ -148,7 +146,7 @@ namespace BFB.Engine.Inventory
 
             slotId = 0;
 
-            for (int i = 0; i <= MaxInventorySize(); i++)
+            for (byte i = 0; i <= MaxInventorySize(); i++)
             {//Searches for the first available slot
                 if (_slots.ContainsKey(i)) continue;
                 
@@ -156,7 +154,7 @@ namespace BFB.Engine.Inventory
                 break;
             }
             
-            _slots.Add((int)slotId, items);
+            _slots.Add((byte)slotId, items);
             return null;
         }
         
@@ -164,7 +162,7 @@ namespace BFB.Engine.Inventory
 
         #region InsertAtSlot
         
-        public bool InsertAtSlot(int slotId, IItem item)
+        public bool InsertAtSlot(byte slotId, IItem item)
         {
             if (!SlotInRange(slotId))
                 return false;
@@ -177,7 +175,7 @@ namespace BFB.Engine.Inventory
 
         #region Remove
         
-        public IItem Remove(int slotId)
+        public IItem Remove(byte slotId)
         {
             if (!SlotInRange(slotId))
                 return null;
@@ -195,7 +193,7 @@ namespace BFB.Engine.Inventory
 
         #region Swap
         
-        public IItem Swap(int slotId, IItem item)
+        public IItem Swap(byte slotId, IItem item)
         {
             //return the item it supplied if invalid slot
             if (!SlotInRange(slotId))
@@ -211,7 +209,7 @@ namespace BFB.Engine.Inventory
         
         #region Merge
 
-        public IItem Merge(int slotId, IItem items)
+        public IItem Merge(byte slotId, IItem items)
         {
             if (!SlotInRange(slotId))
                 return items;
@@ -241,7 +239,7 @@ namespace BFB.Engine.Inventory
 
         #region SlotWithItemTypeAvailable
 
-        public int? SlotWithItemTypeAvailable(string itemType)
+        public byte? SlotWithItemTypeAvailable(string itemType)
         {
             return _slots.FirstOrDefault(x => x.Value.ItemConfigKey == itemType).Key;
         }
@@ -250,7 +248,7 @@ namespace BFB.Engine.Inventory
 
         #region Split
         
-        public IItem Split(int slotId)
+        public IItem Split(byte slotId)
         {
             if (!SlotInRange(slotId))
                 return null;
@@ -280,7 +278,7 @@ namespace BFB.Engine.Inventory
 
         #region GetSlot
         
-        public IItem GetSlot(int slotId)
+        public IItem GetSlot(byte slotId)
         {
             if (!SlotInRange(slotId))
                 return null;
@@ -292,7 +290,7 @@ namespace BFB.Engine.Inventory
 
         #region SlotOccupied
 
-        public bool SlotOccupied(int slotId)
+        public bool SlotOccupied(byte slotId)
         {
             return SlotInRange(slotId) && _slots.ContainsKey(slotId);
         }
@@ -301,9 +299,9 @@ namespace BFB.Engine.Inventory
 
         #region SlotInRange
         
-        public bool SlotInRange(int slotId)
+        public bool SlotInRange(byte slotId)
         {
-            return slotId >= 0 && slotId <= _inventorySize;
+            return slotId <= _inventorySize;
         }
         
         #endregion
@@ -319,7 +317,7 @@ namespace BFB.Engine.Inventory
 
         #region GetAllItems
         
-        public List<KeyValuePair<int, IItem>> GetAllItems()
+        public List<KeyValuePair<byte, IItem>> GetAllItems()
         {
             return _slots.ToList();
         }

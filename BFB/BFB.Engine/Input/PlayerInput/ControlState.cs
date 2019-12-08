@@ -14,7 +14,7 @@ namespace BFB.Engine.Input.PlayerInput
         public bool Jump { get; set; }
         public bool LeftClick { get; set; }
         public bool RightClick { get; set; }
-        public int HotBarPosition { get; set; }
+        public byte HotBarPosition { get; set; }
         public BfbVector Mouse { get; set; }
         
         public ControlState()

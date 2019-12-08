@@ -61,7 +61,7 @@ namespace BFB.Engine.Simulation.ItemComponents
 
             if (item.DecrementStack()) return;
             
-            int slotId = entity.Inventory.GetActiveSlotId();
+            byte slotId = entity.Inventory.GetActiveSlotId();
             entity.Inventory.Remove(slotId);
 
         }

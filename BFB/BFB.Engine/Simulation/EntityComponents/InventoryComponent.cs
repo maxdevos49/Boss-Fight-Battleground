@@ -30,7 +30,7 @@ namespace BFB.Engine.Simulation.EntityComponents
             if(!entity.CollideWithFilters.Contains("item"))
                 entity.CollideWithFilters.Add("item");
             
-            entity.Inventory = new InventoryManager(10, 10);
+            entity.Inventory = new InventoryManager(27, 7);
 
             //Temp items
             Item item = new Item("Wood");

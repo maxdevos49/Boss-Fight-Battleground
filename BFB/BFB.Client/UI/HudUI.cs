@@ -93,7 +93,7 @@ namespace BFB.Client.UI
             {
                 z1.Hstack(h2 =>
                     {
-                        for (int i = 0; i < 7; i++)
+                        for (byte i = 0; i < 7; i++)
                         {
                             h2.InventorySlot(Inventory, i, hotBarMode:true, clickAction: (e, slotId) =>
                             {

@@ -1,10 +1,12 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using BFB.Engine.Content;
 using BFB.Engine.Event;
 using BFB.Engine.Scene;
 using BFB.Engine.UI.Components;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
 namespace BFB.Engine.UI
@@ -449,8 +451,19 @@ namespace BFB.Engine.UI
         }
 
         /// <summary>
+        /// Optional Render method for rendering things on top of the ui
+        /// </summary>
+        /// <param name="graphics"></param>
+        /// <param name="content"></param>
+        public virtual void Draw(SpriteBatch graphics, BFBContentManager content)
+        {
+        }
+
+        /// <summary>
         /// The area to define the UIComponent element layouts
         /// </summary>
         public abstract void Body();
+        
+        
     }
 }

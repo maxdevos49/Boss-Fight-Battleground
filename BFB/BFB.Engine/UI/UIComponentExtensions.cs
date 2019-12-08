@@ -134,7 +134,7 @@ namespace BFB.Engine.UI
         
         #region UISlot
 
-        public static UIComponent InventorySlot(this UIComponent component, ClientInventory inventory, int slotId, Action<UIEvent, int> clickAction = null, bool hotBarMode = false)
+        public static UIComponent InventorySlot(this UIComponent component, ClientInventory inventory, byte slotId, Action<UIEvent, byte> clickAction = null, bool hotBarMode = false)
         {
             return AddNode(component, new UIInventorySlot(inventory, slotId, clickAction, hotBarMode), null);
         }

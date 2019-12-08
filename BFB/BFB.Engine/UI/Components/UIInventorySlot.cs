@@ -13,11 +13,11 @@ namespace BFB.Engine.UI.Components
     {
         private const int Padding = 10;
         private bool _hover;
-        private readonly int _slotId;
+        private readonly byte _slotId;
         private readonly bool _hotBarMode;
         private readonly ClientInventory _inventory;
 
-        public UIInventorySlot(ClientInventory inventory, int slotId, Action<UIEvent,int> clickAction = null, bool hotBarMode = false) : base(nameof(UIInventorySlot))
+        public UIInventorySlot(ClientInventory inventory, byte slotId, Action<UIEvent,byte> clickAction = null, bool hotBarMode = false) : base(nameof(UIInventorySlot))
         {
             _inventory = inventory;
             _slotId = slotId;
@@ -65,10 +65,13 @@ namespace BFB.Engine.UI.Components
                     content.GetTexture("default"));
             }
             
-            Dictionary<int, InventorySlot> slots = _inventory.GetSlots();
+            Dictionary<byte, InventorySlot> slots = _inventory.GetSlots();
             if (slots.ContainsKey(_slotId))
             {
                 InventorySlot slot = slots[_slotId];
+
+                if (string.IsNullOrEmpty(slot.TextureKey))
+                    return;
                 
                 int padding = Padding;
                 if (_hover)
