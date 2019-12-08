@@ -14,6 +14,19 @@
     <Content Include="Content\**\*.*">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Remove="Content\Audio\Song\humanSong.xnb" />
+    <None Remove="Content\Audio\Song\monsterSong.xnb" />
+    <None Remove="Content\Audio\SoundEffect\Attack.xnb" />
+    <None Remove="Content\Audio\SoundEffect\Damage0.xnb" />
+    <None Remove="Content\Audio\SoundEffect\Damage1.xnb" />
+    <None Remove="Content\Audio\SoundEffect\Damage2.xnb" />
+    <None Remove="Content\Audio\SoundEffect\Damage3.xnb" />
+    <None Remove="Content\Audio\SoundEffect\Damage4.xnb" />
+    <None Remove="Content\Audio\SoundEffect\Damage5.xnb" />
+    <None Remove="Content\Audio\SoundEffect\Damage6.xnb" />
+    <None Remove="Content\Audio\SoundEffect\Damage7.xnb" />
+    <None Remove="Content\Audio\SoundEffect\IntendedDamage.xnb" />
+    <None Remove="Content\Audio\SoundEffect\Tool.xnb" />
     <Content Include="content.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

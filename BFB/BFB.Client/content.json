@@ -7,9 +7,53 @@
         "Tiles": "Sprites\\TileAtlas"
     },
     "Audio": {
-		"Punch":{ 
-			"SoundType": "SoundEffect".
-			"Location": "Audio\\"
+		"Attack":{ 
+			"SoundType": "SoundEffect",
+			"Location": "Audio\\SoundEffect\\Attack"
+		},
+		"Damage1":{ 
+			"SoundType": "SoundEffect",
+			"Location": "Audio\\SoundEffect\\Damage1"
+		},
+		"Damage2":{ 
+			"SoundType": "SoundEffect",
+			"Location": "Audio\\SoundEffect\\Damage2"
+		},
+		"Damage3":{ 
+			"SoundType": "SoundEffect",
+			"Location": "Audio\\SoundEffect\\Damage3"
+		},
+		"Damage4":{ 
+			"SoundType": "SoundEffect",
+			"Location": "Audio\\SoundEffect\\Damage4"
+		},
+		"Damage5":{ 
+			"SoundType": "SoundEffect",
+			"Location": "Audio\\SoundEffect\\Damage5"
+		},
+		"Damage6":{ 
+			"SoundType": "SoundEffect",
+			"Location": "Audio\\SoundEffect\\Damage6"
+		},
+		"Damage7":{ 
+			"SoundType": "SoundEffect",
+			"Location": "Audio\\SoundEffect\\Damage7"
+		},
+		"IntendedDamage":{ 
+			"SoundType": "SoundEffect",
+			"Location": "Audio\\SoundEffect\\IntendedDamage"
+		},
+		"Tool":{ 
+			"SoundType": "SoundEffect",
+			"Location": "Audio\\SoundEffect\\Tool"
+		},
+		"HumanSong":{ 
+			"SoundType": "Song",
+			"Location": "Audio\\Song\\humanSong"
+		},
+		"MonsterSong":{ 
+			"SoundType": "Song",
+			"Location": "Audio\\Song\\monsterSong"
 		}
 	},
     "AtlasTextures": {

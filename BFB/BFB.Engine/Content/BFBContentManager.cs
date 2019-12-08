@@ -322,7 +322,7 @@ namespace BFB.Engine.Content
             ParseAtlasTextures(content.AtlasTextures);
 
             //Parse audio
-//            ParseAudio(/*TODO*/);
+            ParseAudio(content.Audio);
         }
         
         #endregion
@@ -448,9 +448,26 @@ namespace BFB.Engine.Content
         /// <summary>
         /// Parses and loads the audio.
         /// </summary>
-        private void ParseAudio()
+        private void ParseAudio(Dictionary<string,AudioSound> audioConfig)
         {
-            //TODO
+            foreach (var audio in audioConfig)
+            {
+                Console.WriteLine("Loading audio: " + audio.Key);
+                if(audio.Value.SoundType == AudioType.Song)
+                {
+                    if (_audioSongContent.ContainsKey(audio.Key))
+                        throw new DuplicateNameException($"The audio key: {audio.Key} was found more then once while parsing audio");
+                    _audioSongContent.Add(audio.Key, _contentManager.Load<Song>(audio.Value.Location));
+                }
+                else
+                {
+                    if (_audioSoundEffectContent.ContainsKey(audio.Key))
+                        throw new DuplicateNameException($"The audio key: {audio.Key} was found more then once while parsing audio");
+                    _audioSoundEffectContent.Add(audio.Key, _contentManager.Load<SoundEffect>(audio.Value.Location));
+                }
+
+                
+            }
         }
         
         #endregion
@@ -467,7 +484,7 @@ namespace BFB.Engine.Content
         public Dictionary<string,string> Fonts { get; set; }
 
         
-        public Dictionary<string,string> Audio { get; set; }
+        public Dictionary<string,AudioSound> Audio { get; set; }
         
         public Dictionary<string,string> Textures { get; set; }
         
