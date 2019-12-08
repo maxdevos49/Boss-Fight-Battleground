@@ -64,7 +64,7 @@ namespace BFB.Engine.Simulation.GameModeComponents
                 gameStarted = true;
 
                 DataMessage message = new DataMessage();
-                message.Message = "HudUi";
+                message.Message = "HudUI";
                 foreach (SimulationEntity entity in simulation.GetPlayerEntities())
                 {
                     entity.Socket.Emit("PlayerUIRequest", message);

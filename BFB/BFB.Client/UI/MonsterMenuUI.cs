@@ -12,6 +12,7 @@ namespace BFB.Client.UI
 
         public override void Body()
         {
+            RootUI.Background(Color.Transparent);
             RootUI.Hstack(h1 =>
             {
 

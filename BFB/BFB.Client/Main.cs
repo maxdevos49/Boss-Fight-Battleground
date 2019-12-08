@@ -146,6 +146,7 @@ namespace BFB.Client
                 new CreditCardUI(), 
                 new CompletedTransactionUI(), 
                 new LoadingGameUI(), 
+                new InventoryUI(), 
                 new CountdownUI(), 
             });
             
