@@ -109,6 +109,12 @@ namespace BFB.Client.Scenes
             {
                 GlobalEventManager.Emit("onConnectionStatus", new GlobalEvent("Ready..."));
             };
+
+            Client.On("PlayerUIRequest", (m) =>
+            {
+                UIManager.Start(m.Message, this);
+            });
+ 
             
             #endregion
             
@@ -213,6 +219,7 @@ namespace BFB.Client.Scenes
             
             if (!Client.Connect())
                 GlobalEventManager.Emit("onConnectionStatus", new GlobalEvent("Connection Failed"));
+
 
         }
         

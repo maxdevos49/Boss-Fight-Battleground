@@ -6,6 +6,7 @@ using BFB.Engine.Event;
 using BFB.Engine.Input;
 using BFB.Engine.Scene;
 using BFB.Engine.UI;
+//using BFB.Engine.Audio;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -24,6 +25,7 @@ namespace BFB.Client
         private EventManager<InputEvent> _inputEventManager;
 
         private BFBContentManager _contentManager;
+        //private AudioManager _audioManager; //TODO renable
 
         private SpriteBatch _spriteBatch;
         private bool _windowSizeIsBeingChanged;
@@ -94,6 +96,7 @@ namespace BFB.Client
 
             //Map Dependencies on scenes
             Scene.SceneManager = _sceneManager;
+            //Scene.AudioManager = _audioManager; //TODO renable
             Scene.UIManager = _uiManager;
             Scene.ContentManager = _contentManager;
             Scene.GraphicsDeviceManager = _graphicsDeviceManager;

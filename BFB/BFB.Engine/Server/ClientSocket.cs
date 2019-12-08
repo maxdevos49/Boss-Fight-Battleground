@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Net.Sockets;
 using System.Runtime.Serialization.Formatters.Binary;
 using BFB.Engine.Server.Communication;
@@ -168,7 +169,7 @@ namespace BFB.Engine.Server
             lock (_lock)
             {
                 if (!_handlers.ContainsKey(message.Route)) return;
-                foreach (Action<DataMessage> handler in _handlers[message.Route])
+                foreach (Action<DataMessage> handler in _handlers[message.Route].ToList())
                     handler(message);
             }
         }
