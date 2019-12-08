@@ -57,7 +57,15 @@
 			"Location": "Audio\\Song\\monsterSong"
 		}
 	},
-    "AtlasTextures": {
+  "AtlasTextures": {
+      "ZombieSword": {
+        "TextureKey": "ZombieSword",
+        "Scale": 1,
+        "X": 0,
+        "Y": 0,
+        "Width": 7,
+        "Height": 26
+      },
       "Tiles:Grass": {
         "TextureKey": "Tiles",
         "Scale": 1,
@@ -104,7 +112,63 @@
         "X": 54,
         "Y": 18,
         "Width": 15,
-        "Height": 15
+        "Height": 15,
+        "Tiles:Grass": {
+          "TextureKey": "Tiles",
+          "Scale": 1,
+          "X": 36,
+          "Y": 0,
+          "Width": 15,
+          "Height": 15
+        },
+        "Tiles:Dirt": {
+          "TextureKey": "Tiles",
+          "Scale": 1,
+          "X": 54,
+          "Y": 0,
+          "Width": 15,
+          "Height": 15
+        },
+        "Tiles:Stone": {
+          "TextureKey": "Tiles",
+          "Scale": 1,
+          "X": 0,
+          "Y": 18,
+          "Width": 15,
+          "Height": 15
+        },
+        "Tiles:Wood": {
+          "TextureKey": "Tiles",
+          "Scale": 1,
+          "X": 18,
+          "Y": 18,
+          "Width": 15,
+          "Height": 15
+        },
+        "Tiles:Leaves": {
+          "TextureKey": "Tiles",
+          "Scale": 1,
+          "X": 36,
+          "Y": 18,
+          "Width": 15,
+          "Height": 15
+        },
+        "Tiles:Plank": {
+          "TextureKey": "Tiles",
+          "Scale": 1,
+          "X": 54,
+          "Y": 18,
+          "Width": 15,
+          "Height": 15
+        },
+        "Tiles:Missing": {
+          "TextureKey": "Tiles",
+          "Scale": 1,
+          "X": 0,
+          "Y": 0,
+          "Width": 15,
+          "Height": 15
+        }
       },
       "Tiles:Missing": {
         "TextureKey": "Tiles",
@@ -114,7 +178,7 @@
         "Width": 15,
         "Height": 15
       }
-    },
+  },
     "AnimatedTextures": {
         "Player": {
             "Location": "Sprites\\Player",
