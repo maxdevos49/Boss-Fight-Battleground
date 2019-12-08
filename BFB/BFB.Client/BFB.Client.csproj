@@ -14,7 +14,9 @@
     <Content Include="Content\**\*.*">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Remove="Content\Audio\Song\humanSong.ogg" />
     <None Remove="Content\Audio\Song\humanSong.xnb" />
+    <None Remove="Content\Audio\Song\monsterSong.ogg" />
     <None Remove="Content\Audio\Song\monsterSong.xnb" />
     <None Remove="Content\Audio\SoundEffect\Attack.xnb" />
     <None Remove="Content\Audio\SoundEffect\Damage0.xnb" />
