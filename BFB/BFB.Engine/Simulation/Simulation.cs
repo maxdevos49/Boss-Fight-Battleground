@@ -223,7 +223,7 @@ namespace BFB.Engine.Simulation
                     EmitRemoveEntity(entity, reason);
                 }
 
-                if (_playerEntitiesIndex.Count == 0 && _simulating)
+                if (_playerEntitiesIndex.Count == 0 && _simulating && gameState != GameState.PostGame)
                     Stop();
 
             }
@@ -279,6 +279,7 @@ namespace BFB.Engine.Simulation
         /// </summary>
         public void Start()
         {
+            Console.WriteLine("SIMULATION STARTED");
             OnSimulationStart?.Invoke();
             _simulating = true;
             Thread t = new Thread(Simulate)

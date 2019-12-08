@@ -16,16 +16,17 @@ namespace BFB.Engine.Simulation.GameModeComponents
 
         public override void Update(Simulation simulation)
         {
+            if (simulation.GetPlayerEntities().Count == 0)
+            {
+                ResetGame(simulation);
+            }
+
             timeToRestart -= 1;
             if (timeToRestart <= 0)
             {
                 ConvertAllPlayersToHumans(simulation);
 
-                simulation.gameComponents.Clear();
-                simulation.gameComponents.Add(new PreGameComponent());
-
-                Console.WriteLine("Restarting Game...");
-                simulation.gameState = GameState.PreGame;
+                ResetGame(simulation);
             }
         }
 
@@ -37,6 +38,13 @@ namespace BFB.Engine.Simulation.GameModeComponents
                 SimulationEntity player = SimulationEntity.SimulationEntityFactory("Human", entity.Socket);
                 simulation.AddEntity(player);
             }
+        }
+
+        private void ResetGame(Simulation simulation)
+        {
+            simulation.gameComponents.Clear();
+            simulation.gameComponents.Add(new PreGameComponent());
+            simulation.gameState = GameState.PreGame;
         }
     }
 }
