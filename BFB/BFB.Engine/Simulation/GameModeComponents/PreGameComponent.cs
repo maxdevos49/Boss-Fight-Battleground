@@ -14,7 +14,7 @@ namespace BFB.Engine.Simulation.GameModeComponents
         {
             gameReady = false;
             gameStarted = false;
-            timeToStart = 10;
+            timeToStart = 20 * 10;
         }
 
         public override void Update(Simulation simulation)

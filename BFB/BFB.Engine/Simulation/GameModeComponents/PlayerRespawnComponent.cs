@@ -7,11 +7,6 @@ namespace BFB.Engine.Simulation.GameModeComponents
 {
     public class PlayerRespawnComponent : GameComponent
     {
-        public PlayerRespawnComponent() : base()
-        {
-
-        }
-
         public override void OnEntityRemove(Simulation simulation, SimulationEntity entity, EntityRemovalReason? reason)
         {
             if (entity.EntityType != EntityType.Player || reason == EntityRemovalReason.Disconnect || reason == EntityRemovalReason.BossSpawn) return;

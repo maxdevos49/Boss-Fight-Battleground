@@ -39,12 +39,7 @@ namespace BFB.Engine.Simulation.EntityComponents
 
         private void Respawn(Simulation simulation, SimulationEntity entity)
         {
-            //Respawn
-            entity.Position.X = 100;
-            entity.Position.Y = 100;
-            
-            if (entity.Meta != null) 
-                entity.Meta.Health = 20;//TODO health fro entity config
+            simulation.RemoveEntity(entity.EntityId);
         }
 
     }
