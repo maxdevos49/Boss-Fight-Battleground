@@ -49,7 +49,7 @@ namespace BFB.Engine.Simulation.GameModeComponents
                 who = _random.Next(simulation.GetPlayerEntities().Count);
             }
 
-            CreateBoss(simulation, simulation.GetPlayerEntities()[1]);
+            CreateBoss(simulation, simulation.GetPlayerEntities()[who]);
         }
 
         private void CreateBoss(Simulation simulation, [CanBeNull] SimulationEntity target)
