@@ -114,8 +114,7 @@ namespace BFB.Client.Scenes
             {
                 UIManager.StartLayer(m.Message, this);
             });
- 
-            
+
             #endregion
             
             #region Client Disconnect

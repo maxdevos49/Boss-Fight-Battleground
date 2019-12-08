@@ -143,10 +143,19 @@ namespace BFB.Client
                 new MonsterMenuUI(),
                 new ChatUI(),
                 new StoreUI(),
-                new CreditCardUI(),
-                new CompletedTransactionUI(),
-                new LoadingGameUI(),
-                new InventoryUI(),
+                new CreditCardUI(), 
+                new CompletedTransactionUI(), 
+                new LoadingGameUI(), 
+                new CountdownUI(), 
+            });
+            
+            #endregion
+            
+            #region Global Keypress Event Registration
+            
+            _inputEventManager.AddEventListener("keypress", (e) =>
+            {
+                //None :(
             });
 
             #endregion

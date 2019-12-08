@@ -43,7 +43,7 @@ namespace BFB.Engine.Simulation.GameModeComponents
         private void ReleaseRatsIntoEurope(Simulation simulation)
         {
             // Kill off a random human and spawn them as the boss.
-            int who = _random.Next(simulation.GetPlayerEntities().Count);
+            int who = _random.Next(simulation.GetPlayerEntities().Count); 
             while (simulation.GetPlayerEntities()[who].EntityConfiguration.EntityKey != "Human")
             {
                 who = _random.Next(simulation.GetPlayerEntities().Count);
