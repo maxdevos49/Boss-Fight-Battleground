@@ -12,41 +12,17 @@
 
   <ItemGroup>
     <Content Include="Content\**\*.*">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <None Remove="content.json" />
     <Content Include="content.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="Content\Fonts\Arial.xnb" />
-    <None Remove="Content\Fonts\Helvetica.xnb" />
-    <None Remove="Content\Fonts\Hylia.xnb" />
-    <None Remove="Content\Fonts\OpenSans-Light.xnb" />
-    <None Remove="Content\Fonts\OpenSans.xnb" />
-    <None Remove="Content\Fonts\Oswald.xnb" />
-    <None Remove="Content\Fonts\OswaldStencil.xnb" />
-    <None Remove="Content\Fonts\Roboto.xnb" />
-    <None Remove="Content\Sprites\Effects\EffectMiniStar.xnb" />
-    <None Remove="Content\Sprites\Effects\EffectRedBall.xnb" />
-    <None Remove="Content\Sprites\Effects\EffectStar.xnb" />
-    <None Remove="Content\Sprites\Effects\EffectX.xnb" />
-    <None Remove="Content\Sprites\SpaceshipSpritesheet.xnb" />
-    <None Remove="Content\Sprites\Spells\Bomb.xnb" />
-    <None Remove="Content\Sprites\Spells\Fireball.xnb" />
-    <None Remove="Content\Sprites\Spells\Heart.xnb" />
-    <None Remove="Content\Sprites\Spells\MagicMissile.xnb" />
-    <None Remove="Content\Sprites\TestRunning.xnb" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\BFB.Engine\BFB.Engine.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Content\Audio\" />
-  </ItemGroup>
+
   
 </Project>

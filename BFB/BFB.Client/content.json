@@ -6,7 +6,12 @@
         "button": "Sprites\\button",
         "Tiles": "Sprites\\TileAtlas"
     },
-    "Audio": {},
+    "Audio": {
+		"Punch":{ 
+			"SoundType": "SoundEffect".
+			"Location": "Audio\\"
+		}
+	},
     "AtlasTextures": {
         "Tiles:Grass": {
             "TextureKey": "Tiles",
