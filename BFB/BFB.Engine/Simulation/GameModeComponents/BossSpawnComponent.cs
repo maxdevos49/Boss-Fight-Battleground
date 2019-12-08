@@ -49,12 +49,11 @@ namespace BFB.Engine.Simulation.GameModeComponents
                 who = _random.Next(simulation.GetPlayerEntities().Count);
             }
 
-            CreateBoss(simulation, simulation.GetPlayerEntities()[who]);
+            CreateBoss(simulation, simulation.GetPlayerEntities()[1]);
         }
 
         private void CreateBoss(Simulation simulation, [CanBeNull] SimulationEntity target)
         {
-            Console.WriteLine("Trying to turn into boss:" + target);
             // Loop through player monsters and pick a random one to make a monster.
             if (target == null)
             {
@@ -69,7 +68,7 @@ namespace BFB.Engine.Simulation.GameModeComponents
 
             simulation.RemoveEntity(target.EntityId, EntityRemovalReason.BossSpawn);
 
-            SimulationEntity player = SimulationEntity.SimulationEntityFactory("Spider", socket: target.Socket);
+            SimulationEntity player = SimulationEntity.SimulationEntityFactory("AdamBoss", socket: target.Socket);
             player.Position.X = target.Position.X;
             player.Position.Y = target.Position.Y;
             simulation.AddEntity(player);
