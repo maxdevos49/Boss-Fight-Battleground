@@ -161,9 +161,12 @@ namespace BFB.Engine.UI
 
         private void BuildUILayer(string layer)
         {
-                _activeUILayers[layer].InitializeRoot(new UIRootComponent(_graphicsDevice.Viewport.Bounds));
-                _activeUILayers[layer].Body();
-                BuildComponent(_activeUILayers[layer], _activeUILayers[layer].RootUI);
+            if (!_activeUILayers.ContainsKey(layer)) 
+                return;
+            
+            _activeUILayers[layer].InitializeRoot(new UIRootComponent(_graphicsDevice.Viewport.Bounds));
+            _activeUILayers[layer].Body();
+            BuildComponent(_activeUILayers[layer], _activeUILayers[layer].RootUI);
         }
         
         #endregion
@@ -193,7 +196,7 @@ namespace BFB.Engine.UI
         private void RenderComponents(UIComponent node, SpriteBatch graphics, UILayer layer)
         {
 
-            if (node.RenderAttributes.Width < 10 || node.RenderAttributes.Height < 10)
+            if (node == null || node.RenderAttributes.Width < 10 || node.RenderAttributes.Height < 10)
                 return;
             
             if (node.RenderAttributes.Overflow == Overflow.Hide)

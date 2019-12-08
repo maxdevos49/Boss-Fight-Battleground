@@ -54,8 +54,8 @@ namespace BFB.Client
             //Init Graphics manager. (Needs to be in the constructor)
             _graphicsDeviceManager = new GraphicsDeviceManager(this)
             {
-                PreferredBackBufferWidth = 1000, 
-                PreferredBackBufferHeight = 600
+                PreferredBackBufferWidth = 900, 
+                PreferredBackBufferHeight = 500
             };
 
             _graphicsDeviceManager.PreparingDeviceSettings += (sender, e) =>
