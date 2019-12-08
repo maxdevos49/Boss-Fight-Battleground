@@ -112,7 +112,7 @@ namespace BFB.Client.Scenes
 
             Client.On("PlayerUIRequest", (m) =>
             {
-                UIManager.Start(m.Message, this);
+                UIManager.StartLayer(m.Message, this);
             });
  
             

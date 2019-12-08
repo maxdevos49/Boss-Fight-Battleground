@@ -488,13 +488,8 @@ namespace BFB.Engine.Content
         [UsedImplicitly]
         public Dictionary<string,string> Fonts { get; set; }
 
-<<<<<<< HEAD
-        [UsedImplicitly]
-        public Dictionary<string,string> Audio { get; set; }
-=======
         
         public Dictionary<string,AudioSound> Audio { get; set; }
->>>>>>> c6254f5ed8b4912c555c1fbe8faea5e4d81d1d79
         
         [UsedImplicitly]
         public Dictionary<string,string> Textures { get; set; }
