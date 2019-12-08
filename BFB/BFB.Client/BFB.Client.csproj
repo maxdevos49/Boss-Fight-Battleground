@@ -29,6 +29,8 @@
     <None Remove="Content\Audio\SoundEffect\Damage7.xnb" />
     <None Remove="Content\Audio\SoundEffect\IntendedDamage.xnb" />
     <None Remove="Content\Audio\SoundEffect\Tool.xnb" />
+    <None Remove="content.json" />
+    <None Remove="Content\Sprites\ZombieSword.xnb" />
     <Content Include="content.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

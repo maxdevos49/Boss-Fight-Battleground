@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 using BFB.Engine.Entity;
 using BFB.Engine.Helpers;
 using BFB.Engine.Inventory;
@@ -23,6 +24,15 @@ namespace BFB.Engine.Simulation.ItemComponents
                 else
                     targets = simulation.World.QueryEntities(new Rectangle(entity.Right, entity.Top + entity.Height/2,reach,2), new List<string> {"melee"});
 
+                try
+                {
+                    targets = (List<SimulationEntity>) targets.Where(x =>
+                        x.EntityConfiguration.EntityKey != entity.EntityConfiguration.EntityKey);
+                }
+                catch (Exception e)
+                {
+
+                }
 
                 //Apply actual damage
                 CombatService.FightPeople(entity, targets, simulation);

@@ -7,6 +7,7 @@ namespace BFB.Engine.Simulation
         TimeExpiration,
         TileCollision,
         WorldBoundaryCollision,
-        EntityCollision
+        EntityCollision,
+        BossSpawn
     }
 }

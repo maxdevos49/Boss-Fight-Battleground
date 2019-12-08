@@ -106,7 +106,8 @@ namespace BFB.Server
 
                 SimulationEntity player = SimulationEntity.SimulationEntityFactory("Human", socket: socket);
                 _simulation.AddEntity(player);
-                
+                _simulation.ConnectedClients += 1;
+
                 _server.PrintMessage($"Client {socket.ClientId} Ready and added to Simulation");
 
             };
@@ -117,7 +118,8 @@ namespace BFB.Server
             
             _server.OnClientDisconnect = id =>
             {
-                _simulation.RemoveEntity(id);
+                _simulation.RemoveEntity(id, EntityRemovalReason.Disconnect);
+                _simulation.ConnectedClients -= 1;
                 _server.PrintMessage($"Client {id} Disconnected");
             };
             
