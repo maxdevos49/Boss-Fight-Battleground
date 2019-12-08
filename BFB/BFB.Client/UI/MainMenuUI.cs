@@ -2,6 +2,7 @@ using System;
 using BFB.Client.Scenes;
 using BFB.Engine.UI;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace BFB.Client.UI
 {
@@ -13,7 +14,11 @@ namespace BFB.Client.UI
 
         public MainMenuUI() : base(nameof(MainMenuUI))
         {
-            Ip = "127.0.0.1:6969";
+        }
+
+        protected override void Init()
+        {
+            Ip = ServerMenuModel.GetServers().DirectConnect;
         }
 
         public override void Body()
@@ -48,12 +53,24 @@ namespace BFB.Client.UI
                                             SceneManager.StartScene(nameof(GameScene));
                                         });
 
-                                    h3.TextBoxFor(this, x => x.Ip)
-                                        .Background(Color.White)
-                                        .Grow(3)
-                                        .Color(Color.Black);
-
+                                h3.TextBoxFor(this, x => x.Ip)
+                                    .Background(Color.White)
+                                    .Grow(3)
+                                    .Color(Color.Black);
                                 })
+                                .Width(0.8f)
+                                .Height(0.8f)
+                                .Center();
+                        });
+
+                        //Server Menu
+                        v1.Hstack(h2 =>
+                        {
+                            h2.Button("Server Menu",
+                                    clickAction: (e, a) =>
+                                    {
+                                        UIManager.StartLayer(nameof(ServerMenuUI),ParentScene);
+                                    })
                                 .Width(0.8f)
                                 .Height(0.8f)
                                 .Center();
@@ -95,8 +112,6 @@ namespace BFB.Client.UI
 
                 h1.Spacer();
             });
-
         }
     }
-
 }
