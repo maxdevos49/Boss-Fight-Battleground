@@ -118,7 +118,7 @@ namespace BFB.Server
             
             _server.OnClientDisconnect = id =>
             {
-                _simulation.RemoveEntity(id);
+                _simulation.RemoveEntity(id, EntityRemovalReason.Disconnect);
                 _simulation.ConnectedClients -= 1;
                 _server.PrintMessage($"Client {id} Disconnected");
             };

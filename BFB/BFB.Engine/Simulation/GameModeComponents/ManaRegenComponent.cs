@@ -22,7 +22,8 @@ namespace BFB.Engine.Simulation.GameModeComponents
                 {
                     if (entity.EntityConfiguration.EntityKey != "Human") return;
 
-                    entity.Meta.Mana += 5;
+                    if (entity.Meta.Mana + 5 <= 1000)
+                        entity.Meta.Mana += 5;
                 }
 
                 timeToRegen = 40;

@@ -13,6 +13,6 @@ namespace BFB.Engine.Simulation.GameModeComponents
 
         public virtual void Update(Simulation simulation) { }
 
-        public virtual void OnEntityRemove(Simulation simulation, SimulationEntity entity) { }
+        public virtual void OnEntityRemove(Simulation simulation, SimulationEntity entity, EntityRemovalReason? reason) { }
     }
 }

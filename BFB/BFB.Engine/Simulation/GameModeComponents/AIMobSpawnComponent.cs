@@ -79,7 +79,7 @@ namespace BFB.Engine.Simulation.GameModeComponents
             }
         }
 
-        public override void OnEntityRemove(Simulation simulation, SimulationEntity entity)
+        public override void OnEntityRemove(Simulation simulation, SimulationEntity entity, EntityRemovalReason? reason)
         {
             if (entity.EntityType == EntityType.Mob)
             {

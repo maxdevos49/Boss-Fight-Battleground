@@ -206,9 +206,6 @@ namespace BFB.Engine.Simulation
                 {
                     SimulationEntity entity = _entitiesIndex[key];
 
-                    entity.EmitOnSimulationRemoval(this, reason);
-                    EmitRemoveEntity(entity);
-
                     //Remove from chunk
                     World.ChunkIndex[entity.ChunkKey].Entities.Remove(key);
 
@@ -221,6 +218,9 @@ namespace BFB.Engine.Simulation
                         _playerEntitiesIndex.Remove(key);
                         isPlayer = true;
                     }
+
+                    entity.EmitOnSimulationRemoval(this, reason);
+                    EmitRemoveEntity(entity, reason);
                 }
 
                 if (_playerEntitiesIndex.Count == 0 && _simulating)
@@ -229,6 +229,27 @@ namespace BFB.Engine.Simulation
             }
 
             OnEntityRemove?.Invoke(key,isPlayer);
+        }
+
+        #endregion
+
+        #region EmitRemoveEntity
+
+        public void EmitRemoveEntity(SimulationEntity entity, EntityRemovalReason? reason)
+        {
+            foreach (GameComponent component in gameComponents)
+            {
+                component.OnEntityRemove(this, entity, reason);
+            }
+        }
+
+        #endregion
+
+        #region GetAllEntities
+
+        public List<SimulationEntity> GetAllEntities()
+        {
+            return _entitiesIndex.Values.ToList();
         }
 
         #endregion
@@ -243,18 +264,13 @@ namespace BFB.Engine.Simulation
 
         #endregion
 
+        #region GetPlayerEntities
         public List<SimulationEntity> GetPlayerEntities()
         {
             return _playerEntitiesIndex.Values.ToList();
         }
 
-        public void EmitRemoveEntity(SimulationEntity entity)
-        {
-            foreach (GameComponent component in gameComponents)
-            {
-                component.OnEntityRemove(this, entity);
-            }
-        }
+        #endregion
 
         #region Start
 

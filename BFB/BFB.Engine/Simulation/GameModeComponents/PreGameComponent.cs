@@ -35,7 +35,11 @@ namespace BFB.Engine.Simulation.GameModeComponents
                 simulation.gameComponents.Add(new ManaRegenComponent());
                 simulation.gameComponents.Add(new AIMobSpawnComponent());
                 simulation.gameComponents.Add(new BossSpawnComponent());
-                simulation.gameComponents.Add(new GameEndComponent());
+                simulation.gameComponents.Add(new PlayerRespawnComponent());
+                
+                GameComponent component = new GameEndComponent();
+                component.Init(simulation);
+                simulation.gameComponents.Add(component);
 
                 simulation.gameState = GameState.InProgress;
 

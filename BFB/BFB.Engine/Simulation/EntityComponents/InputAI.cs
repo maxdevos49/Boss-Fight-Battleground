@@ -23,13 +23,6 @@ namespace BFB.Engine.Simulation.EntityComponents
         }
         public override void Update(SimulationEntity entity, Simulation simulation)
         {
-            if (_random.Next() % 2 == 0)
-            {
-                if (entity.Facing == DirectionFacing.Left)
-                    entity.Facing = DirectionFacing.Right;
-                else
-                    entity.Facing = DirectionFacing.Left;
-            }
             int nearest = MaxValue;
 
             List<Chunk> chunkList = new List<Chunk>();
@@ -65,7 +58,6 @@ namespace BFB.Engine.Simulation.EntityComponents
                         _closestEntity = item.Value;
                     }
                 }
-                
             }
 
             if(_closestEntity != null)
