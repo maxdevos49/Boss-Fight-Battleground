@@ -214,6 +214,7 @@ namespace BFB.Client.Scenes
             if (!Client.Connect())
                 GlobalEventManager.Emit("onConnectionStatus", new GlobalEvent("Connection Failed"));
 
+
         }
         
         #endregion

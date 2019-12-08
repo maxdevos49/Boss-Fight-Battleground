@@ -7,6 +7,113 @@
         "Tiles": "Sprites\\TileAtlas",
         "ZombieSword":  "Sprites\\ZombieSword"
     },
+    "Audio": {
+		"Attack":{ 
+			"SoundType": "SoundEffect",
+			"Location": "Audio\\SoundEffect\\Attack"
+		},
+		"Damage1":{ 
+			"SoundType": "SoundEffect",
+			"Location": "Audio\\SoundEffect\\Damage1"
+		},
+		"Damage2":{ 
+			"SoundType": "SoundEffect",
+			"Location": "Audio\\SoundEffect\\Damage2"
+		},
+		"Damage3":{ 
+			"SoundType": "SoundEffect",
+			"Location": "Audio\\SoundEffect\\Damage3"
+		},
+		"Damage4":{ 
+			"SoundType": "SoundEffect",
+			"Location": "Audio\\SoundEffect\\Damage4"
+		},
+		"Damage5":{ 
+			"SoundType": "SoundEffect",
+			"Location": "Audio\\SoundEffect\\Damage5"
+		},
+		"Damage6":{ 
+			"SoundType": "SoundEffect",
+			"Location": "Audio\\SoundEffect\\Damage6"
+		},
+		"Damage7":{ 
+			"SoundType": "SoundEffect",
+			"Location": "Audio\\SoundEffect\\Damage7"
+		},
+		"IntendedDamage":{ 
+			"SoundType": "SoundEffect",
+			"Location": "Audio\\SoundEffect\\IntendedDamage"
+		},
+		"Tool":{ 
+			"SoundType": "SoundEffect",
+			"Location": "Audio\\SoundEffect\\Tool"
+		},
+		"HumanSong":{ 
+			"SoundType": "Song",
+			"Location": "Audio\\Song\\humanSong"
+		},
+		"MonsterSong":{ 
+			"SoundType": "Song",
+			"Location": "Audio\\Song\\monsterSong"
+		}
+	},
+    "AtlasTextures": {
+        "Tiles:Grass": {
+            "TextureKey": "Tiles",
+            "Scale": 1,
+            "X": 36,
+            "Y": 0,
+            "Width": 15,
+            "Height": 15
+        },
+        "Tiles:Dirt": {
+            "TextureKey": "Tiles",
+            "Scale": 1,
+            "X": 54,
+            "Y": 0,
+            "Width": 15,
+            "Height": 15
+        },
+        "Tiles:Stone": {
+            "TextureKey": "Tiles",
+            "Scale": 1,
+            "X": 0,
+            "Y": 18,
+            "Width": 15,
+            "Height": 15
+        },
+        "Tiles:Wood": {
+            "TextureKey": "Tiles",
+            "Scale": 1,
+            "X": 18,
+            "Y": 18,
+            "Width": 15,
+            "Height": 15
+        },
+        "Tiles:Leaves": {
+            "TextureKey": "Tiles",
+            "Scale": 1,
+            "X": 36,
+            "Y": 18,
+            "Width": 15,
+            "Height": 15
+        },
+        "Tiles:Plank": {
+            "TextureKey": "Tiles",
+            "Scale": 1,
+            "X": 54,
+            "Y": 18,
+            "Width": 15,
+            "Height": 15
+        },
+        "Tiles:Missing": {
+            "TextureKey": "Tiles",
+            "Scale": 1,
+            "X": 0,
+            "Y": 0,
+            "Width": 15,
+            "Height": 15
+        }
     "Audio": {},
   "AtlasTextures": {
     "ZombieSword": {

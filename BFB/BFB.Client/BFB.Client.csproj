@@ -12,8 +12,23 @@
 
   <ItemGroup>
     <Content Include="Content\**\*.*">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Remove="Content\Audio\Song\humanSong.ogg" />
+    <None Remove="Content\Audio\Song\humanSong.xnb" />
+    <None Remove="Content\Audio\Song\monsterSong.ogg" />
+    <None Remove="Content\Audio\Song\monsterSong.xnb" />
+    <None Remove="Content\Audio\SoundEffect\Attack.xnb" />
+    <None Remove="Content\Audio\SoundEffect\Damage0.xnb" />
+    <None Remove="Content\Audio\SoundEffect\Damage1.xnb" />
+    <None Remove="Content\Audio\SoundEffect\Damage2.xnb" />
+    <None Remove="Content\Audio\SoundEffect\Damage3.xnb" />
+    <None Remove="Content\Audio\SoundEffect\Damage4.xnb" />
+    <None Remove="Content\Audio\SoundEffect\Damage5.xnb" />
+    <None Remove="Content\Audio\SoundEffect\Damage6.xnb" />
+    <None Remove="Content\Audio\SoundEffect\Damage7.xnb" />
+    <None Remove="Content\Audio\SoundEffect\IntendedDamage.xnb" />
+    <None Remove="Content\Audio\SoundEffect\Tool.xnb" />
     <None Remove="content.json" />
     <None Remove="Content\Sprites\ZombieSword.xnb" />
     <Content Include="content.json">
@@ -22,28 +37,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="Content\Fonts\Arial.xnb" />
-    <None Remove="Content\Fonts\Helvetica.xnb" />
-    <None Remove="Content\Fonts\Hylia.xnb" />
-    <None Remove="Content\Fonts\OpenSans-Light.xnb" />
-    <None Remove="Content\Fonts\OpenSans.xnb" />
-    <None Remove="Content\Fonts\Oswald.xnb" />
-    <None Remove="Content\Fonts\OswaldStencil.xnb" />
-    <None Remove="Content\Fonts\Roboto.xnb" />
-    <None Remove="Content\Sprites\Effects\EffectMiniStar.xnb" />
-    <None Remove="Content\Sprites\Effects\EffectRedBall.xnb" />
-    <None Remove="Content\Sprites\Effects\EffectStar.xnb" />
-    <None Remove="Content\Sprites\Effects\EffectX.xnb" />
-    <None Remove="Content\Sprites\SpaceshipSpritesheet.xnb" />
-    <None Remove="Content\Sprites\Spells\Bomb.xnb" />
-    <None Remove="Content\Sprites\Spells\Fireball.xnb" />
-    <None Remove="Content\Sprites\Spells\Heart.xnb" />
-    <None Remove="Content\Sprites\Spells\MagicMissile.xnb" />
-    <None Remove="Content\Sprites\TestRunning.xnb" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\BFB.Engine\BFB.Engine.csproj" />
   </ItemGroup>
+
+
   
 </Project>
