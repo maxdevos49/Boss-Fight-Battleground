@@ -1,13 +1,10 @@
 ﻿using BFB.Engine.Content;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Media;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace BFB.Engine.Audio
 {
-    class AudioManager
+     public class AudioManager
     {
         private BFBContentManager _content;
         private Song curSong;
@@ -22,7 +19,7 @@ namespace BFB.Engine.Audio
         {
             curSong = _content.GetSongAudio(song);
             MediaPlayer.Play(curSong);
-            MediaPlayer.IsRepeating = true;
+            setSongRepeating(true);
         }
 
         public void playSoundEffect(string soundEffect)
@@ -31,16 +28,40 @@ namespace BFB.Engine.Audio
             curSoundEffect.Play();
         }
 
-        public void stopSong(string song)
+        public void stopSong()
         {
             MediaPlayer.Stop();
         }
 
-        public void stopSoundEffect(string soundEffect)
+        public void setSongRepeating(bool isRepeating)
         {
-
+            MediaPlayer.IsRepeating = isRepeating;
         }
 
+        public bool isSongRepeating()
+        {
+            return MediaPlayer.IsRepeating;
+        }
+
+        public void setSongVolume(float volume)
+        {
+            MediaPlayer.Volume = volume;
+        }
+
+        public float getSongVolume()
+        {
+            return MediaPlayer.Volume;
+        }
+
+        public void setSongMuted(bool isMuted)
+        {
+            MediaPlayer.IsMuted = isMuted;
+        }
+
+        public bool isSongMuted()
+        {
+            return MediaPlayer.IsMuted;
+        }
 
     }
 }
