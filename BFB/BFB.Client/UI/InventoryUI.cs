@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using BFB.Engine.Inventory;
 using BFB.Engine.UI;
 using Microsoft.Xna.Framework;
@@ -9,20 +8,16 @@ namespace BFB.Client.UI
     public class InventoryUI : UILayer
     {
         
-        public ClientInventory Inventory { get; set; }
+        private ClientInventory Inventory { get; }
         
         public InventoryUI() : base(nameof(InventoryUI))
         {
             Debug = true;
             BlockInput = true;
 
-            Inventory = new ClientInventory
-            {
-                InventorySize = 24,
-                HotBarRange = 5
-            };
+            Inventory = ClientDataRegistry.GetInstance().Inventory;
 
-            var newSlot = new InventorySlot
+            InventorySlot newSlot = new InventorySlot
             {
                 Count = 20,
                 Name = "Dirt Blocks",
@@ -52,6 +47,9 @@ namespace BFB.Client.UI
         
         public override void Body()
         {
+            
+            RootUI.Background(Color.Transparent);
+            
             RootUI.Hstack(h1 =>
                 {
                     h1.Spacer();

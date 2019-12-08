@@ -23,15 +23,18 @@ namespace BFB.Engine.UI.Components
             
             //Inner text component
             this.Text(text)
-                .Color(DefaultAttributes.Color)
-                .Background(DefaultAttributes.Background);
+                .Color(Color.Black);
+            
+            this.Background(new Color(169,170,168))
+                .Border(3, new Color(211,212,210));
             
             Focusable = true;
             
             _actionClick = actionClick;
             _actionHover = actionHover ?? ((e,a) =>
             {
-                a.Background = Color.Red;
+                a.Background = new Color(125,125,125);
+                a.Color = Color.White;
             });
             
             AddEvent("click", ClickEventHandler);

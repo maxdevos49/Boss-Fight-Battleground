@@ -18,7 +18,8 @@ namespace BFB.Engine.Inventory
             Slots = new Dictionary<int, InventorySlot>();
         }
 
-        public void AddItem(int slotId, InventorySlot slot)
+        
+        public void AddItem(int slotId, InventorySlot slot)//FOR DEBUG
         {
             lock (_lock)
             {

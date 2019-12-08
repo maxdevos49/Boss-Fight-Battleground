@@ -119,8 +119,7 @@ namespace BFB.Client.UI
                                     clickAction: (e, a) => { UIManager.StartLayer(nameof(CompletedTransactionUI),ParentScene); })
                                 .Height(0.8f)
                                 .Width(0.3f)
-                                .Right(0)
-                                .Image("button");
+                                .Right(0);
                         });
                     });
 

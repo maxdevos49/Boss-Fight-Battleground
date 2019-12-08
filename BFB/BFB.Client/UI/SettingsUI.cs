@@ -1,6 +1,7 @@
 using BFB.Engine.UI;
 using BFB.Engine.UI.Components;
 using BFB.Engine.UI.Constraints;
+using Microsoft.Xna.Framework;
 
 namespace BFB.Client.UI
 {
@@ -23,7 +24,9 @@ namespace BFB.Client.UI
                             {
                                 h2.Hstack(h3 =>
                                     {
-                                        h3.Text("Settings");
+                                        h3.Text("Settings")
+                                            .Color(Color.White)
+                                            .FontSize(2f);
                                     })
                                     .Height(0.7f)
                                     .Width(0.7f)
@@ -40,7 +43,6 @@ namespace BFB.Client.UI
                                     })
                                 .Height(0.8f)
                                 .Width(0.8f)
-                                .Image("button")
                                 .Center();
                         });
                         
@@ -53,7 +55,6 @@ namespace BFB.Client.UI
                                     })
                                 .Height(0.8f)
                                 .Width(0.8f)
-                                .Image("button")
                                 .Center();
                         });
                         
@@ -66,7 +67,6 @@ namespace BFB.Client.UI
                                     })
                                 .Height(0.8f)
                                 .Width(0.8f)
-                                .Image("button")
                                 .Center();
                         });
                         
@@ -81,7 +81,6 @@ namespace BFB.Client.UI
                                     })
                                     .Height(0.8f)
                                     .Width(0.8f)
-                                    .Image("button")
                                     .Center();
                             });
                         });

@@ -119,7 +119,7 @@ namespace BFB.Client
             _sceneManager.AddScene(new Scene[]
             {
                 new MainMenuScene(),
-                new PlayerConnectionScene(),
+                new GameScene(),
             });
 
             #endregion

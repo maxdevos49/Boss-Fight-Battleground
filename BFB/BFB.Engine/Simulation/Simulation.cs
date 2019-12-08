@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using BFB.Engine.Entity;
+using BFB.Engine.Inventory;
 using BFB.Engine.Server.Communication;
 using BFB.Engine.Simulation.BlockComponent;
 using BFB.Engine.TileMap;
@@ -271,6 +272,7 @@ namespace BFB.Engine.Simulation
                 foreach ((string _, SimulationEntity playerEntity) in _playerEntitiesIndex)
                 {
                     SendPlayerUpdates(playerEntity);
+                    SendInventoryUpdates(playerEntity);
                     SendChunkUpdates(playerEntity);
                 }
             }
@@ -317,6 +319,30 @@ namespace BFB.Engine.Simulation
             
             if(updates.ChunkUpdates.Any() || updates.ChunkTileUpdates.Any())
                 OnChunkUpdates?.Invoke(playerEntity.EntityId,updates);
+        }
+        
+        #endregion
+        
+        #region SendInventoryUpdates
+
+        private void SendInventoryUpdates(SimulationEntity playerEntity)
+        {
+            InventorySlotMessage updates = new InventorySlotMessage();
+
+            if (playerEntity.Inventory == null) 
+                return;
+            
+            foreach (IItem item in playerEntity.Inventory.GetAllItems())
+            {
+                updates.SlotUpdates.Add(new InventorySlot
+                {
+                    Count = item.StackSize(),
+                    Name = item.ItemConfigKey,
+                    Mode = false,
+                    SlotId = ,
+                    TextureKey = item.Configuration.TextureKey
+                });
+            }
         }
         
         #endregion

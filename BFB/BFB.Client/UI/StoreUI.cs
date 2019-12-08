@@ -4,6 +4,7 @@ using System.Text;
 using BFB.Engine.UI;
 using BFB.Engine.UI.Components;
 using BFB.Engine.UI.Constraints;
+using Microsoft.Xna.Framework;
 
 namespace BFB.Client.UI
 {
@@ -27,7 +28,12 @@ namespace BFB.Client.UI
                             v1.Hstack(h2 =>
                                 {
 
-                                    h2.Hstack(h3 => { h3.Text("Store"); })
+                                    h2.Hstack(h3 =>
+                                        {
+                                            h3.Text("Store")
+                                                .Color(Color.White)
+                                                .FontSize(2f);
+                                        })
                                         .Height(0.7f)
                                         .Width(0.7f)
                                         .Right(0)
@@ -42,12 +48,14 @@ namespace BFB.Client.UI
                                     .Width(1.5f);
 
                                 h2.Button("Purchase",
-                                        clickAction: (e, a) => { UIManager.StartLayer(nameof(CreditCardUI),ParentScene); })
+                                        clickAction: (e, a) =>
+                                        {
+                                            UIManager.StartLayer(nameof(CreditCardUI), ParentScene);
+                                        })
                                     .Height(1.0f)
                                     .Width(0.6f)
                                     .Right(0)
-                                    .Top(5)
-                                    .Image("button");
+                                    .Top(5);
                             }).Grow(1);
 
                             v1.Hstack(h2 =>
@@ -56,12 +64,14 @@ namespace BFB.Client.UI
                                     .Height(1.0f)
                                     .Width(1.5f);
                                 h2.Button("Purchase",
-                                        clickAction: (e, a) => { UIManager.StartLayer(nameof(CreditCardUI),ParentScene); })
+                                        clickAction: (e, a) =>
+                                        {
+                                            UIManager.StartLayer(nameof(CreditCardUI), ParentScene);
+                                        })
                                     .Height(1.0f)
                                     .Width(0.6f)
                                     .Right(0)
-                                    .Top(5)
-                                    .Image("button");
+                                    .Top(5);
                             }).Grow(1);
 
                             v1.Hstack(h2 =>
@@ -70,12 +80,14 @@ namespace BFB.Client.UI
                                     .Height(1.0f)
                                     .Width(1.5f);
                                 h2.Button("Purchase",
-                                        clickAction: (e, a) => { UIManager.StartLayer(nameof(CreditCardUI),ParentScene); })
+                                        clickAction: (e, a) =>
+                                        {
+                                            UIManager.StartLayer(nameof(CreditCardUI), ParentScene);
+                                        })
                                     .Height(1.0f)
                                     .Width(0.6f)
                                     .Right(0)
-                                    .Top(5)
-                                    .Image("button");
+                                    .Top(5);
                             }).Grow(1);
 
                             v1.Hstack(h2 =>
@@ -94,11 +106,13 @@ namespace BFB.Client.UI
                                 h2.Hstack(h3 =>
                                 {
                                     h3.Button("Back",
-                                            clickAction: (e, a) => { UIManager.StartLayer(nameof(MainMenuUI),ParentScene); })
+                                            clickAction: (e, a) =>
+                                            {
+                                                UIManager.StartLayer(nameof(MainMenuUI), ParentScene);
+                                            })
                                         .Height(0.8f)
                                         .Width(0.2f)
-                                        .Right(0)
-                                        .Image("button");
+                                        .Right(0);
                                 });
                             });
 
