@@ -42,14 +42,13 @@ namespace BFB.Engine.Entity
         /// Extends Entity's Update() method
         /// Updates this ClientEntity's information
         /// </summary>
-        public void Update()
+        public void Update(float interopRatio)
         {
             _graphics?.Update(this);
 
             //Interpolation: server is 20 tps / client is 60 tps = 1/3
-            float tickRateRatio = (float)1 / 3;
-            Position.X += Velocity.X * tickRateRatio;
-            Position.Y += Velocity.Y * tickRateRatio;
+            Position.X += Velocity.X * interopRatio;
+            Position.Y += Velocity.Y * interopRatio;
         }
         
         #endregion

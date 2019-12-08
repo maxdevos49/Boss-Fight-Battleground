@@ -39,11 +39,10 @@ namespace BFB.Client.UI
                                     DataMessage msg = new DataMessage();
                                     msg.Message = "Spider";
                                     ParentScene.Client.Emit("UISelect", msg);
-                                    UIManager.Start(nameof(HudUI), ParentScene);
+                                    UIManager.StartLayer(nameof(HudUI), ParentScene);
                                 })
                             .Height(0.8f)
                             .Width(0.8f)
-                            .Image("button")
                             .Center();
                     });
 
@@ -54,11 +53,10 @@ namespace BFB.Client.UI
                                     DataMessage msg = new DataMessage();
                                     msg.Message = "Skeleton";
                                     ParentScene.Client.Emit("UISelect", msg);
-                                    UIManager.Start(nameof(HudUI), ParentScene);
+                                    UIManager.StartLayer(nameof(HudUI), ParentScene);
                                 })
                             .Height(0.8f)
                             .Width(0.8f)
-                            .Image("button")
                             .Center();
                     });
 
@@ -69,11 +67,10 @@ namespace BFB.Client.UI
                                     DataMessage msg = new DataMessage();
                                     msg.Message = "Zombie";
                                     ParentScene.Client.Emit("UISelect", msg);
-                                    UIManager.Start(nameof(HudUI), ParentScene);
+                                    UIManager.StartLayer(nameof(HudUI), ParentScene);
                                 })
                             .Height(0.8f)
                             .Width(0.8f)
-                            .Image("button")
                             .Center();
                     });
 

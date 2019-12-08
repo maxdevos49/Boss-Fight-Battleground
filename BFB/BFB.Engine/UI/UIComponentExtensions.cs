@@ -1,9 +1,12 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Linq.Expressions;
-using System.Net.NetworkInformation;
 using BFB.Engine.Event;
+using BFB.Engine.Inventory;
+using BFB.Engine.UI.Components;
 
-namespace BFB.Engine.UI.Components
+namespace BFB.Engine.UI
 {
     public static class UIComponentExtensions
     {
@@ -56,20 +59,16 @@ namespace BFB.Engine.UI.Components
         }
         
         #endregion
-        
-        #region Slider (TODO)
-        
-        #endregion
-        
-        #region Textbox (TODO)
+   
+        #region Textbox
 
         public static UIComponent TextBoxFor<TModel>(
             this UIComponent component,
             TModel model,
             Expression<Func<TModel, string>> selector,
-            Action<UIEvent,UIComponentAttributes> clickAction = null,
-            Action<UIEvent,UIComponentAttributes> keyPressAction = null,
-            Action<UIEvent,UIComponentAttributes> hoverAction = null
+            Action<UIEvent,UIAttributes> clickAction = null,
+            Action<UIEvent,UIAttributes> keyPressAction = null,
+            Action<UIEvent,UIAttributes> hoverAction = null
             )
         {
             return AddNode(
@@ -86,9 +85,46 @@ namespace BFB.Engine.UI.Components
         
         #endregion
         
+        #region List
+
+        public static UIComponent ListFor<TModel, TItem>(
+            this UIComponent component,
+            TModel model,
+            Expression<Func<TModel, List<TItem>>> listSelector,
+            Action<UIComponent, TItem> itemTemplate,
+            StackDirection stackDirection = StackDirection.Vertical
+        )
+        {
+            return AddNode(component,
+                new UIListComponent<TModel, TItem>(
+                    model,
+                    listSelector,
+                    itemTemplate, stackDirection),
+                null);
+        }
+        
+        #endregion
+        
+        #region ScrollableContainer
+
+        public static UIComponent ScrollableContainer(this UIComponent parentNode, Action<UIComponent> handler)
+        {
+            UIScrollableContainer child = new UIScrollableContainer();
+            parentNode.AddChild(child);
+            handler?.Invoke(child);
+            UIComponent childInner = child.Children.FirstOrDefault();
+            
+            if(childInner != null)
+                child.AddStack(childInner);
+            
+            return child;
+        }
+        
+        #endregion
+        
         #region Button
 
-        public static UIComponent Button(this UIComponent component, string text, Action<UIEvent,UIComponentAttributes> clickAction = null, Action<UIEvent,UIComponentAttributes> hoverAction = null)
+        public static UIComponent Button(this UIComponent component, string text, Action<UIEvent,UIAttributes> clickAction = null, Action<UIEvent,UIAttributes> hoverAction = null)
         {
             return AddNode(component, new UIButtonComponent(text, clickAction, hoverAction), null);
         }
@@ -96,7 +132,12 @@ namespace BFB.Engine.UI.Components
         
         #endregion
         
-        #region Toggle (TODO)
+        #region UISlot
+
+        public static UIComponent InventorySlot(this UIComponent component, ClientInventory inventory, byte slotId, Action<UIEvent, byte> clickAction = null, bool hotBarMode = false)
+        {
+            return AddNode(component, new UIInventorySlot(inventory, slotId, clickAction, hotBarMode), null);
+        }
         
         #endregion
         

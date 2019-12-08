@@ -11,6 +11,12 @@ namespace BFB.Engine.Inventory.Configuration
         public string TextureKey { get; set; }
         
         [UsedImplicitly]
+        public string Name { get; set; }
+        
+        [UsedImplicitly]
+        public string Description { get; set; }
+        
+        [UsedImplicitly]
         public int StackLimit { get; set; }
         
         [UsedImplicitly]

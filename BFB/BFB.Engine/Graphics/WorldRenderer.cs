@@ -83,14 +83,14 @@ namespace BFB.Engine.Graphics
         
         #region Update
 
-        public void Update(GameTime gameTime, List<ClientEntity> entities)
+        public void Update(GameTime gameTime, List<ClientEntity> entities, float interopRatio)
         {
             if (!_init)
                 return;
             
             //Interpolation
             foreach (ClientEntity entity in entities)
-                entity.Update();
+                entity.Update(interopRatio);
             
             //update camera
             Camera.Update(gameTime);
@@ -168,7 +168,7 @@ namespace BFB.Engine.Graphics
 
                         if (tile != WorldTile.Air)
                             graphics.DrawAtlas(
-                                _content.GetAtlasTexture("Tiles:"+ tile),
+                                _content.GetAtlasTexture("Tiles:" + tile),
                                 new Rectangle(xPosition,yPosition,_tileScale,_tileScale ),
                                 Color.White);
                     }

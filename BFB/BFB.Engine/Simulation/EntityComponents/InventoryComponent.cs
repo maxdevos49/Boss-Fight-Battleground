@@ -34,11 +34,7 @@ namespace BFB.Engine.Simulation.EntityComponents
             if(!entity.CollideWithFilters.Contains("item"))
                 entity.CollideWithFilters.Add("item");
             
-            entity.Inventory = new InventoryManager(10, 10);
-            foreach (IItem item2 in _defaultItems)
-            {
-                entity.Inventory.Insert(item2);
-            }
+            entity.Inventory = new InventoryManager(27, 7);
 
             //Temp items
             Item item = new Item("Wood");
@@ -74,22 +70,7 @@ namespace BFB.Engine.Simulation.EntityComponents
             if (entity.Inventory == null || entity.ControlState == null)
                 return;
 
-            #region HotBar Selection
-
-            if (entity.ControlState.HotBarLeft)
-            {
-                entity.Inventory.DecrementHotBar();
-                entity.ControlState.HotBarLeft = false;
-
-            }
-            
-            if (entity.ControlState.HotBarRight)
-            {
-                entity.Inventory.IncrementHotBar();
-                entity.ControlState.HotBarLeft = false;
-            }
-
-            #endregion
+            entity.Inventory.MoveActiveSlot(entity.ControlState.HotBarPosition);
 
             #region Reach
             

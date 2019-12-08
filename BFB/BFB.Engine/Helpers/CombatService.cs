@@ -10,7 +10,7 @@ namespace BFB.Engine.Helpers
         {
             if (targets.Count <= 0) return;
             
-            ushort damage = entity.Inventory?.GetActiveSlot().Configuration.Damage ?? 0;
+            ushort damage = entity.Inventory?.GetActiveSlot()?.Configuration?.Damage ?? 0;
 
             
             foreach (SimulationEntity target in targets)

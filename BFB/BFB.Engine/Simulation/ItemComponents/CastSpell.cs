@@ -23,7 +23,7 @@ namespace BFB.Engine.Simulation.ItemComponents
             entity.Meta.Mana += itemConfig.ManaGain;
             entity.Meta.Mana -= itemConfig.ManaCost;
             
-            BfbVector directionVector = BfbVector.Sub(entity.ControlState.Mouse, entity.Position);
+            BfbVector directionVector = BfbVector.Sub(entity.ControlState.Mouse, entity.OriginPosition);
             float direction = (float)System.Math.Atan2(directionVector.Y, directionVector.X) + (float)(System.Math.PI / 2);
                 
             //place a copy of the spell config inside the projectile
@@ -35,9 +35,7 @@ namespace BFB.Engine.Simulation.ItemComponents
             spellEntity.SteeringVector = directionVector;
             spellEntity.Rotation = direction;
             spellEntity.ParentEntityId = entity.EntityId;
-            spellEntity.Position = entity.Position.Clone();
-            spellEntity.Position.X += entity.Dimensions.X / 2;
-            spellEntity.Position.Y -= entity.Origin.Y / 4;
+            spellEntity.Position = entity.OriginPosition.Clone();
             spellEntity.Inventory = inventory;
             
             simulation.AddEntity(spellEntity);

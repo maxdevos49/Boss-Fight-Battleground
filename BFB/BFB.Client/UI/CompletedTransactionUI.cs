@@ -44,11 +44,10 @@ namespace BFB.Client.UI
                         h2.Hstack(h3 =>
                         {
                             h3.Button("Menu",
-                                    clickAction: (e, a) => { UIManager.Start(nameof(MainMenuUI),ParentScene); })
+                                    clickAction: (e, a) => { UIManager.StartLayer(nameof(MainMenuUI), ParentScene); })
                                 .Height(0.8f)
                                 .Width(0.4f)
-                                .Center()
-                                .Image("button");
+                                .Center();
                         });
                     });
 

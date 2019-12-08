@@ -466,6 +466,7 @@
             "Columns": 1,
             "Rows": 1,
             "Scale": 0.3,
+            "RandomColor": true,
             "AnimationSets": {
                 "IdleRight": {
                     "Fps": 5,
@@ -483,6 +484,7 @@
             "Columns": 1,
             "Rows": 1,
             "Scale": 0.3,
+            "RandomColor": true,
             "AnimationSets": {
                 "IdleRight": {
                     "Fps": 5,
@@ -500,6 +502,7 @@
             "Columns": 1,
             "Rows": 1,
             "Scale": 0.3,
+            "RandomColor": true,
             "AnimationSets": {
                 "IdleRight": {
                     "Fps": 5,

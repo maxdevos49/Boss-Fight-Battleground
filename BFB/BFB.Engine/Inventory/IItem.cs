@@ -35,13 +35,13 @@ namespace BFB.Engine.Inventory
         /// </summary>
         /// <param name="stackSize">The stack size value to set</param>
         /// <returns>A boolean to indicate if the action succeeded</returns>
-        bool SetStackSize(int stackSize);
+        bool SetStackSize(byte stackSize);
         
         /// <summary>
         /// How many items are currently in the stack
         /// </summary>
         /// <returns>The number items in the stack</returns>
-        int StackSize();
+        byte StackSize();
 
         /// <summary>
         /// Returns the maximum stack size

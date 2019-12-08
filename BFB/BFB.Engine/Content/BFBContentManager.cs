@@ -19,6 +19,8 @@ namespace BFB.Engine.Content
     {
 
         #region Properties
+        
+        public  GraphicsDevice GraphicsDevice { get; set; }
 
         private readonly ContentManager _contentManager;
         
@@ -40,13 +42,13 @@ namespace BFB.Engine.Content
         #region Constructor
 
         /// <summary>
-        /// A constructor that does constructor things: initliazes parameters.
+        /// A constructor that does constructor things: initializes parameters.
         /// </summary>
         /// <param name="contentManager"></param>
-        public BFBContentManager(ContentManager contentManager)
+        public BFBContentManager(ContentManager contentManager, GraphicsDevice graphicsDevice)
         {
             _contentManager = contentManager;
-            
+            GraphicsDevice = graphicsDevice;
             _textureContent = new Dictionary<string, Texture2D>();
             _animatedTexturesContent = new Dictionary<string, AnimatedTexture>();
             _atlasTexturesContent = new Dictionary<string, AtlasTexture>();
@@ -367,14 +369,16 @@ namespace BFB.Engine.Content
                 if (value.RandomColor)
                 {
                     Random random = new Random();
-                    
 
-                    int r = random.Next(0, 255);
-                    int g = random.Next(0,255);
-                    int b = random.Next(0,255);
-                    
-                    value.ParsedColor = new Color(r,g,b,1f);
-                    Console.WriteLine(value.ParsedColor);
+                    Color valueParsedColor = new Color
+                    {
+                        R = (byte) random.Next(0, 255),
+                        G = (byte) random.Next(0, 255),
+                        B = (byte) random.Next(0, 255),
+                        A = 255
+                    };
+                    // = new Color(r,g,b,1f);
+                    value.ParsedColor = valueParsedColor;
                 }
                 else if (value.ColorConfig == null)
                 {
@@ -481,15 +485,19 @@ namespace BFB.Engine.Content
     [UsedImplicitly]
     public class ContentJSONSchema
     {
+        [UsedImplicitly]
         public Dictionary<string,string> Fonts { get; set; }
 
         
         public Dictionary<string,AudioSound> Audio { get; set; }
         
+        [UsedImplicitly]
         public Dictionary<string,string> Textures { get; set; }
         
+        [UsedImplicitly]
         public Dictionary<string,AtlasTexture> AtlasTextures { get; set; }
         
+        [UsedImplicitly]
         public Dictionary<string,AnimatedTexture> AnimatedTextures { get; set; }
 
     }

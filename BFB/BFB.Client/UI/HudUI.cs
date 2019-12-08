@@ -1,70 +1,115 @@
+using System;
+using BFB.Engine.Entity;
+using BFB.Engine.Inventory;
 using BFB.Engine.UI;
-using BFB.Engine.UI.Components;
-using BFB.Engine.UI.Constraints;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Input;
 
 namespace BFB.Client.UI
 {
     public class HudUI : UILayer
     {
-        public HudUI() : base(nameof(HudUI)) { }
+        
+        private ClientInventory Inventory { get; set; }
+        
+        private  ClientEntity ClientEntity { get; set; }
+
+        public HudUI() : base(nameof(HudUI))
+        {
+            BlockInput = false;//Prevents moving our player from inside the UI
+        }
+
+        protected override void Init()
+        {
+            
+            Inventory = ClientDataRegistry.GetInstance().Inventory;
+            ClientEntity = ClientDataRegistry.GetInstance().Client;
+
+            AddInputListener("keypress", e =>
+            {
+                switch (e.Keyboard.KeyEnum)
+                {
+                    case Keys.Escape:
+                        UIManager.StartLayer(nameof(GameMenuUI),ParentScene);
+                        break;
+                    case Keys.E:
+                        UIManager.LaunchLayer(nameof(InventoryUI), ParentScene);
+                        break;
+                    case Keys.T:
+                        UIManager.LaunchLayer(nameof(ChatUI), ParentScene);
+                        break;
+                    case Keys.D1:
+                        Inventory.ActiveSlot = 0;
+                        break;
+                    case Keys.D2:
+                        Inventory.ActiveSlot = 1;
+                        break;
+                    case Keys.D3:
+                        Inventory.ActiveSlot = 2;
+                        break;
+                    case Keys.D4:
+                        Inventory.ActiveSlot = 3;
+                        break;
+                    case Keys.D5:
+                        Inventory.ActiveSlot = 4;
+                        break;
+                    case Keys.D6:
+                        Inventory.ActiveSlot = 5;
+                        break;
+                    case Keys.D7:
+                        Inventory.ActiveSlot = 6;
+                        break;
+                }
+            });
+            
+            AddInputListener("mousescroll", e =>
+            {
+
+                if (Math.Abs(e.Mouse.VerticalScrollAmount) <= 200 || e.Keyboard.KeyboardState.IsKeyDown(Keys.LeftControl))
+                    return;
+                
+                if (e.Mouse.VerticalScrollAmount > 0)
+                    Inventory.ActiveSlot++;
+                else
+                    Inventory.ActiveSlot--;
+
+                if (Inventory.ActiveSlot < 0)
+                    Inventory.ActiveSlot = 6;
+                
+                if (Inventory.ActiveSlot > 6)
+                    Inventory.ActiveSlot = 0;
+
+            });
+            
+        }
 
         public override void Body()
         {
             //Change this to draw frame outlines or not
-            Debug = true;
-            
-            RootUI.Zstack(z1 => { 
-                z1.Vstack(v1 =>
-                    {
-                        v1.Button("Menu",
-                                clickAction: (e, a) =>
-                                {
-                                    UIManager.Start(nameof(GameMenuUI),ParentScene);
-                                })
-                            .Width(0.12f)
-                            .Height(0.1f)
-                            .Image("button");
-                    })
-                    .Top(0)
-                    .Left(0);
 
-                z1.Hstack(h1 =>
-                    {
-                        h1.Spacer(2);
+            RootUI.Background(Color.Transparent);
 
-                        h1.Hstack(h2 =>
+            RootUI.Zstack(z1 =>
+            {
+                z1.Hstack(h2 =>
+                    {
+                        for (byte i = 0; i < 7; i++)
+                        {
+                            h2.InventorySlot(Inventory, i, hotBarMode:true, clickAction: (e, slotId) =>
                             {
-                                h2.Button("Slot 0")
-                                    .Background(new Color(0, 0, 0, 100));
-                                h2.Button("Slot 1")
-                                    .Background(new Color(0, 0, 0, 100));
-                                h2.Button("Slot 2")
-                                    .Background(new Color(0, 0, 0, 100));
-                                h2.Button("Slot 3")
-                                    .Background(new Color(0, 0, 0, 100));
-                                h2.Button("Slot 4")
-                                    .Background(new Color(0, 0, 0, 100));
-                                h2.Button("Slot 5")
-                                    .Background(new Color(0, 0, 0, 100));
-                                h2.Button("Slot 6")
-                                    .Background(new Color(0, 0, 0, 100));
-                                h2.Button("Slot 7")
-                                    .Background(new Color(0, 0, 0, 100));
-                                h2.Button("Slot 8")
-                                    .Background(new Color(0, 0, 0, 100));
-                                h2.Button("Slot 9")
-                                    .Background(new Color(0, 0, 0, 100));
-
-                            })
-                            .Grow(10);
-                        
-                        h1.Spacer(2);
+                                if (e.Mouse.LeftButton == ButtonState.Pressed)
+                                {
+                                    Inventory.ActiveSlot = slotId;
+                                }
+                            });
+                        }
                     })
-                    .Height(0.07f)
+                    .Width(0.45f)
+                    .Height(0.1f)
+                    .Center()
                     .Bottom(0);
             });
-            
+
         }
     }
 }

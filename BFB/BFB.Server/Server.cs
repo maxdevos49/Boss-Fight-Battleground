@@ -222,6 +222,15 @@ namespace BFB.Server
             
             #endregion
             
+            #region OnInventoryUpdates
+
+            _simulation.OnInventoryUpdate = (entityKey, updates) =>
+            {
+                _server.GetClient(entityKey)?.Emit("/players/inventoryUpdates", updates);
+            };
+            
+            #endregion
+            
             #region OnChunkUpdates
 
             _simulation.OnChunkUpdates = (entityKey, updates) =>

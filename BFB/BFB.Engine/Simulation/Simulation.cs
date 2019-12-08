@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using BFB.Engine.Entity;
+using BFB.Engine.Inventory;
 using BFB.Engine.Server.Communication;
 using BFB.Engine.Simulation.BlockComponent;
 using BFB.Engine.Simulation.GameModeComponents;
@@ -78,6 +79,11 @@ namespace BFB.Engine.Simulation
         /// Callback that is called when the simulation is ready to provide updates for player entity. Supplies the player entity key and its relevant updates
         /// </summary>
         public Action<string,ChunkUpdatesMessage> OnChunkUpdates { get; set; }
+        
+        /// <summary>
+        /// Callback that is called when the simulation is ready to provide updates for a players inventory
+        /// </summary>
+        public Action<string, InventorySlotMessage> OnInventoryUpdate { get; set; }
         
         public Action OnSimulationTick { get; set; }
         
@@ -314,6 +320,7 @@ namespace BFB.Engine.Simulation
                 foreach ((string _, SimulationEntity playerEntity) in _playerEntitiesIndex)
                 {
                     SendPlayerUpdates(playerEntity);
+                    SendInventoryUpdates(playerEntity);
                     SendChunkUpdates(playerEntity);
                 }
             }
@@ -362,6 +369,45 @@ namespace BFB.Engine.Simulation
                 OnChunkUpdates?.Invoke(playerEntity.EntityId,updates);
         }
         
+        #endregion
+        
+        #region SendInventoryUpdates
+
+        private void SendInventoryUpdates(SimulationEntity playerEntity)
+        {
+            InventorySlotMessage updates = new InventorySlotMessage();
+
+            if (playerEntity.Inventory == null) 
+                return;
+            
+            foreach ((byte slotId, IItem item) in playerEntity.Inventory.GetAllItems())
+            {
+                if (item == null)
+                {
+                    updates.SlotUpdates.Add(new InventorySlot
+                    {
+                        Mode = true,
+                        SlotId =  slotId
+                    });
+
+                    playerEntity.Inventory.Remove(slotId);
+                    continue;
+                }
+                
+                updates.SlotUpdates.Add(new InventorySlot
+                {
+                    Count = item.StackSize(),
+                    Name = item.ItemConfigKey,
+                    Mode = false,
+                    SlotId =  slotId,
+                    TextureKey = item.Configuration.TextureKey
+                });
+            }
+            
+            if(updates.SlotUpdates.Any())
+                OnInventoryUpdate?.Invoke(playerEntity.EntityId,updates);
+        }
+
         #endregion
 
         #region Simulate

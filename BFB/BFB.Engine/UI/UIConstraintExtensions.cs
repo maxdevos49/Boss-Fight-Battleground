@@ -1,7 +1,7 @@
-using BFB.Engine.UI.Components;
+using BFB.Engine.UI.Constraints;
 using Microsoft.Xna.Framework;
 
-namespace BFB.Engine.UI.Constraints
+namespace BFB.Engine.UI
 {
     public static class UIConstraintExtensions
     {
@@ -137,6 +137,57 @@ namespace BFB.Engine.UI.Constraints
             return component.AddConstraint(new UIColorConstraint(color ?? Microsoft.Xna.Framework.Color.Black));
         }
 
+        #endregion
+        
+        #region Position
+
+        public static UIComponent Position(this UIComponent component, Position position)
+        {
+            component.DefaultAttributes.Position = position;
+            return component;
+        }
+        
+        #endregion
+        
+        #region JustifyText
+
+        public static UIComponent JustifyText(this UIComponent component, JustifyText justifyText)
+        {
+            component.DefaultAttributes.JustifyText = justifyText;
+            return component;
+        }
+        
+        #endregion
+        
+        #region VerticalAlignText
+
+        public static UIComponent VerticalAlignText(this UIComponent component, VerticalAlignText verticalAlignText)
+        {
+            component.DefaultAttributes.VerticalAlignText = verticalAlignText;
+            return component;
+        }
+        
+        #endregion
+        
+        #region Border
+
+        public static UIComponent Border(this UIComponent component, int borderSize = 1,  Color? borderColor = null)
+        {
+            component.DefaultAttributes.BorderSize = borderSize;
+            component.DefaultAttributes.BorderColor = borderColor ?? Microsoft.Xna.Framework.Color.Black;
+            return component;
+        }
+        
+        #endregion
+        
+        #region Sizing
+
+        public static UIComponent Sizing(this UIComponent component, Sizing sizing)
+        {
+            component.DefaultAttributes.Sizing = sizing;
+            return component;
+        }
+        
         #endregion
         
     }

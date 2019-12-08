@@ -14,7 +14,7 @@ namespace BFB.Engine.Inventory
 
         public TileTarget TileTarget { get; set; }
 
-        private int _stackSize;
+        private byte _stackSize;
         
         #endregion
         
@@ -58,9 +58,9 @@ namespace BFB.Engine.Inventory
 
         #region SetStackSize
         
-        public bool SetStackSize(int stackSize)
+        public bool SetStackSize(byte stackSize)
         {
-            if (stackSize < 0 && stackSize > Configuration.StackLimit)
+            if (stackSize > Configuration.StackLimit)
                 return false;
 
             _stackSize = stackSize;
@@ -71,7 +71,7 @@ namespace BFB.Engine.Inventory
 
         #region StackSize
         
-        public int StackSize()
+        public byte StackSize()
         {
             return _stackSize;
         }

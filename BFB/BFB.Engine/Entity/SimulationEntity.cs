@@ -348,6 +348,7 @@ namespace BFB.Engine.Entity
             newEntity.EntityType = EntityType.Player;
             newEntity.GameComponents.Add(new InputRemote());
             newEntity.GameComponents.Add(new InventoryComponent());
+            newEntity.GameComponents.Add(new InventoryConnection());
             newEntity.GameComponents.Add(new AnimatedHolding());
 
             return newEntity;

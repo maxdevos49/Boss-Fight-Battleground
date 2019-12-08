@@ -150,7 +150,6 @@
         "VoidDeath"
       ]
     },
-
     "MagicMissile": {
       "TextureKey": "Missile",
       "EntityType": "Projectile",
@@ -229,7 +228,6 @@
         "FireballParticleEffect"
       ]
     },
-
     "MiniStarParticle": {
       "TextureKey": "EffectMiniStar",
       "EntityType": "Particle",
@@ -278,7 +276,6 @@
         "ParticleEffect1"
       ]
     },
-
     "rMiniStarParticle": {
       "TextureKey": "EffectMiniStar",
       "EntityType": "Particle",
@@ -327,7 +324,6 @@
         "ParticleEffect3"
       ]
     },
-
     "FireBallParticle": {
       "TextureKey": "EffectRedBall",
       "EntityType": "Particle",
@@ -344,7 +340,6 @@
         "ParticleEffect2"
       ]
     },
-
     "Item": {
       "TextureKey": "Tile:Missing",
       "EntityType": "Item",
