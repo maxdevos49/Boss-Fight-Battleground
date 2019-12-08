@@ -1,6 +1,4 @@
 using BFB.Engine.UI;
-using BFB.Engine.UI.Components;
-using BFB.Engine.UI.Constraints;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 
@@ -38,18 +36,16 @@ namespace BFB.Client.UI
         public override void Body()
         {
             //Change this to draw frame outlines or not
+
+            RootUI.Background(Color.Transparent);
             
             RootUI.Zstack(z1 => { 
                 z1.Vstack(v1 =>
                     {
-//                        v1.Button("Menu",
-//                                clickAction: (e, a) =>
-//                                {
-//                                    UIManager.StartLayer(nameof(GameMenuUI),ParentScene);
-//                                })
-//                            .Width(0.12f)
-//                            .Height(0.1f)
-//                            .Image("button");
+                        v1.Button("Menu",
+                                clickAction: (e, a) => { UIManager.StartLayer(nameof(GameMenuUI), ParentScene); })
+                            .Width(0.12f)
+                            .Height(0.1f);
                     })
                     .Top(0)
                     .Left(0);

@@ -227,17 +227,17 @@ namespace BFB.Engine.Inventory
             }
 
             IItem mergeSlotItem = GetSlot(slotId);
-            int existingCount = mergeSlotItem.StackSize();
-            int count = items.StackSize();
+            byte existingCount = mergeSlotItem.StackSize();
+            byte count = items.StackSize();
 
             if (count + existingCount <= mergeSlotItem.MaxStackSize())
             {
-                mergeSlotItem.SetStackSize(count + existingCount);
+                mergeSlotItem.SetStackSize((byte)(count + existingCount));
                 return null;
             }
 
-            mergeSlotItem.SetStackSize(mergeSlotItem.MaxStackSize());
-            items.SetStackSize((count + existingCount) - mergeSlotItem.MaxStackSize());
+            mergeSlotItem.SetStackSize((byte)mergeSlotItem.MaxStackSize());
+            items.SetStackSize((byte)(count + existingCount - mergeSlotItem.MaxStackSize()));
             return items;
         }
 
@@ -271,8 +271,8 @@ namespace BFB.Engine.Inventory
                 float stackSize = item.StackSize();
                 
                 //Split stacks evenly
-                item.SetStackSize((int)System.Math.Floor(stackSize/2f));
-                newItem.SetStackSize((int)System.Math.Ceiling(stackSize/2f));
+                item.SetStackSize((byte)System.Math.Floor(stackSize/2f));
+                newItem.SetStackSize((byte)System.Math.Ceiling(stackSize/2f));
 
                 return newItem;
             }

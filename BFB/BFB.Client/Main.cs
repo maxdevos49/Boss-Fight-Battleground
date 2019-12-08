@@ -119,7 +119,7 @@ namespace BFB.Client
             _sceneManager.AddScene(new Scene[]
             {
                 new MainMenuScene(),
-                new PlayerConnectionScene(),
+                new GameScene(),
             });
 
             #endregion
@@ -128,8 +128,11 @@ namespace BFB.Client
 
             _uiManager.AddUILayer(new UILayer[]
             {
+                new LoginUI(),
                 new MainMenuUI(),
                 new ServerMenuUI(),
+                new AddServerUI(),
+                new EditServerListUI(),
                 new SettingsUI(),
                 new HelpUI(),
                 new HudUI(),

@@ -38,15 +38,15 @@ namespace BFB.Client.UI
                     v1.Spacer();
                     
                     v1.TextFor(this, x => x.LoadStatus)
+                        .Color(Color.White)
                         .Grow(2);
                     
                     v1.Spacer();
-                   
+
                     v1.Button("Cancel", clickAction: (e, a) =>
                     {
                         SceneManager.StartScene(nameof(MainMenuScene));
-                    })
-                        .Image("button");
+                    });
                     
                     v1.Spacer();
                     v1.Spacer();
@@ -55,7 +55,7 @@ namespace BFB.Client.UI
                     .Grow(2);
                 
                 h1.Spacer();
-            }).Background(Color.Brown);
+            }).Background(new Color(43,45,47));
 
         }
     }

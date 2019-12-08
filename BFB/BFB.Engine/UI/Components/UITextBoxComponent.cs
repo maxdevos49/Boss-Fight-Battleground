@@ -249,7 +249,9 @@ namespace BFB.Engine.UI.Components
         //TODO make into helper
         private void DrawString(SpriteBatch graphics, SpriteFont font, string strToDraw, Rectangle boundaries)
         {
-            
+
+            if (string.IsNullOrEmpty(strToDraw))
+                return;
             (float x, float y) = font.MeasureString(strToDraw);
 
             // Taking the smaller scaling value will result in the text always fitting in the boundaries.

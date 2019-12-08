@@ -29,6 +29,9 @@ namespace BFB.Client.UI
 
         public override void Body()
         {
+            
+            RootUI.Background(Color.Transparent);
+            
             RootUI.Hstack(h1 =>
                 {
 
@@ -54,7 +57,6 @@ namespace BFB.Client.UI
                                         clickAction: (e, a) => { SceneManager.StartScene(nameof(MainMenuScene)); })
                                     .Height(0.8f)
                                     .Width(0.8f)
-                                    .Image("button")
                                     .Center();
                             });
 
@@ -64,7 +66,6 @@ namespace BFB.Client.UI
                                         clickAction: (e, a) => { UIManager.StartLayer(nameof(HudUI), ParentScene); })
                                     .Height(0.8f)
                                     .Width(0.8f)
-                                    .Image("button")
                                     .Center();
                             });
 

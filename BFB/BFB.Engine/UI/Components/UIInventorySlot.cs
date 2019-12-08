@@ -16,6 +16,7 @@ namespace BFB.Engine.UI.Components
         private readonly int _slotId;
         private readonly ClientInventory _inventory;
         
+        
         public UIInventorySlot(ClientInventory inventory, int slotId) : base(nameof(UIInventorySlot))
         {
             _inventory = inventory;
@@ -27,30 +28,17 @@ namespace BFB.Engine.UI.Components
                 .Border(3, Color.Silver)
                 .FontSize(0.5f);
             
-            AddEvent("hover", HandleHoverEvent);
-            AddEvent("mouseenter", (e) =>
+            AddEvent("hover", e =>
             {
-                _hover = true;
+                RenderAttributes = DefaultAttributes.CascadeAttributes(new UIAttributes
+                {
+                    Background = new Color(0,0,0,0.2f)
+                });
             });
-            
-            AddEvent("mouseleave", (e) =>
-            {
-                _hover = false;
-            });
+            AddEvent("mouseenter", e => _hover = true);
+            AddEvent("mouseleave", e => _hover = false);
         }
         
-        #region HandleHoverEvent
-
-        private void HandleHoverEvent(UIEvent e)
-        {
-            RenderAttributes = DefaultAttributes.CascadeAttributes(new UIAttributes
-            {
-                Background = new Color(0,0,0,0.2f)
-            });
-        }
-        
-        #endregion
-
         #region Render
         
         public override void Render(SpriteBatch graphics, BFBContentManager content)

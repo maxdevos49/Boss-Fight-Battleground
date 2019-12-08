@@ -42,7 +42,8 @@ namespace BFB.Client.UI
         public override void Body()
         {
 
-            Debug = true;
+            
+            RootUI.Background(Color.Transparent);
             
             RootUI.Vstack(v1 =>
                 {
