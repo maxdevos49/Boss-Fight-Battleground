@@ -58,129 +58,63 @@
 		}
 	},
     "AtlasTextures": {
-        "Tiles:Grass": {
-            "TextureKey": "Tiles",
-            "Scale": 1,
-            "X": 36,
-            "Y": 0,
-            "Width": 15,
-            "Height": 15
-        },
-        "Tiles:Dirt": {
-            "TextureKey": "Tiles",
-            "Scale": 1,
-            "X": 54,
-            "Y": 0,
-            "Width": 15,
-            "Height": 15
-        },
-        "Tiles:Stone": {
-            "TextureKey": "Tiles",
-            "Scale": 1,
-            "X": 0,
-            "Y": 18,
-            "Width": 15,
-            "Height": 15
-        },
-        "Tiles:Wood": {
-            "TextureKey": "Tiles",
-            "Scale": 1,
-            "X": 18,
-            "Y": 18,
-            "Width": 15,
-            "Height": 15
-        },
-        "Tiles:Leaves": {
-            "TextureKey": "Tiles",
-            "Scale": 1,
-            "X": 36,
-            "Y": 18,
-            "Width": 15,
-            "Height": 15
-        },
-        "Tiles:Plank": {
-            "TextureKey": "Tiles",
-            "Scale": 1,
-            "X": 54,
-            "Y": 18,
-            "Width": 15,
-            "Height": 15
-        },
-        "Tiles:Missing": {
-            "TextureKey": "Tiles",
-            "Scale": 1,
-            "X": 0,
-            "Y": 0,
-            "Width": 15,
-            "Height": 15
-        }
-    "Audio": {},
-  "AtlasTextures": {
-    "ZombieSword": {
-      "TextureKey": "ZombieSword",
-      "Scale": 1,
-      "X": 0,
-      "Y": 0,
-      "Width": 7,
-      "Height": 26
+      "Tiles:Grass": {
+        "TextureKey": "Tiles",
+        "Scale": 1,
+        "X": 36,
+        "Y": 0,
+        "Width": 15,
+        "Height": 15
+      },
+      "Tiles:Dirt": {
+        "TextureKey": "Tiles",
+        "Scale": 1,
+        "X": 54,
+        "Y": 0,
+        "Width": 15,
+        "Height": 15
+      },
+      "Tiles:Stone": {
+        "TextureKey": "Tiles",
+        "Scale": 1,
+        "X": 0,
+        "Y": 18,
+        "Width": 15,
+        "Height": 15
+      },
+      "Tiles:Wood": {
+        "TextureKey": "Tiles",
+        "Scale": 1,
+        "X": 18,
+        "Y": 18,
+        "Width": 15,
+        "Height": 15
+      },
+      "Tiles:Leaves": {
+        "TextureKey": "Tiles",
+        "Scale": 1,
+        "X": 36,
+        "Y": 18,
+        "Width": 15,
+        "Height": 15
+      },
+      "Tiles:Plank": {
+        "TextureKey": "Tiles",
+        "Scale": 1,
+        "X": 54,
+        "Y": 18,
+        "Width": 15,
+        "Height": 15
+      },
+      "Tiles:Missing": {
+        "TextureKey": "Tiles",
+        "Scale": 1,
+        "X": 0,
+        "Y": 0,
+        "Width": 15,
+        "Height": 15
+      },
     },
-    "Tiles:Grass": {
-      "TextureKey": "Tiles",
-      "Scale": 1,
-      "X": 36,
-      "Y": 0,
-      "Width": 15,
-      "Height": 15
-    },
-    "Tiles:Dirt": {
-      "TextureKey": "Tiles",
-      "Scale": 1,
-      "X": 54,
-      "Y": 0,
-      "Width": 15,
-      "Height": 15
-    },
-    "Tiles:Stone": {
-      "TextureKey": "Tiles",
-      "Scale": 1,
-      "X": 0,
-      "Y": 18,
-      "Width": 15,
-      "Height": 15
-    },
-    "Tiles:Wood": {
-      "TextureKey": "Tiles",
-      "Scale": 1,
-      "X": 18,
-      "Y": 18,
-      "Width": 15,
-      "Height": 15
-    },
-    "Tiles:Leaves": {
-      "TextureKey": "Tiles",
-      "Scale": 1,
-      "X": 36,
-      "Y": 18,
-      "Width": 15,
-      "Height": 15
-    },
-    "Tiles:Plank": {
-      "TextureKey": "Tiles",
-      "Scale": 1,
-      "X": 54,
-      "Y": 18,
-      "Width": 15,
-      "Height": 15
-    },
-    "Tiles:Missing": {
-      "TextureKey": "Tiles",
-      "Scale": 1,
-      "X": 0,
-      "Y": 0,
-      "Width": 15,
-      "Height": 15
-    }
-  },
     "AnimatedTextures": {
         "Player": {
             "Location": "Sprites\\Player",
@@ -322,40 +256,40 @@
                 }
             }
         },
-      "Boss": {
-        "Location": "Sprites\\Boss",
-        "Frames": 1,
-        "FrameWidth": 45,
-        "FrameHeight": 60,
-        "Columns": 1,
-        "Rows": 1,
-        "Scale": 1,
-        "AnimationSets": {
-          "IdleLeft": {
-            "Fps": 5,
-            "FrameStart": 0,
-            "FrameEnd": 0,
-            "Mirror": true
-          },
-          "IdleRight": {
-            "Fps": 5,
-            "FrameStart": 0,
-            "FrameEnd": 0,
-            "Mirror": false
-          },
-          "MoveLeft": {
-            "Fps": 9,
-            "FrameStart": 0,
-            "FrameEnd": 0,
-            "Mirror": true
-          },
-          "MoveRight": {
-            "Fps": 9,
-            "FrameStart": 0,
-            "FrameEnd": 0,
-            "Mirror": false
+        "Boss": {
+          "Location": "Sprites\\Boss",
+          "Frames": 1,
+          "FrameWidth": 45,
+          "FrameHeight": 60,
+          "Columns": 1,
+          "Rows": 1,
+          "Scale": 1,
+          "AnimationSets": {
+            "IdleLeft": {
+              "Fps": 5,
+              "FrameStart": 0,
+              "FrameEnd": 0,
+              "Mirror": true
+            },
+            "IdleRight": {
+              "Fps": 5,
+              "FrameStart": 0,
+              "FrameEnd": 0,
+              "Mirror": false
+            },
+            "MoveLeft": {
+              "Fps": 9,
+              "FrameStart": 0,
+              "FrameEnd": 0,
+              "Mirror": true
+            },
+            "MoveRight": {
+              "Fps": 9,
+              "FrameStart": 0,
+              "FrameEnd": 0,
+              "Mirror": false
+            }
           }
-        }
       },
         "TestRunning": {
             "Location": "Sprites\\TestRunning",
