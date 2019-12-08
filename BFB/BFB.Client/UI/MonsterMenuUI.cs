@@ -1,4 +1,5 @@
-﻿using BFB.Engine.UI;
+﻿using BFB.Engine.Server.Communication;
+using BFB.Engine.UI;
 using BFB.Engine.UI.Components;
 using BFB.Engine.UI.Constraints;
 using Microsoft.Xna.Framework;
@@ -32,8 +33,14 @@ namespace BFB.Client.UI
 
                     v1.Hstack(h2 =>
                     {
-                        h2.Button("Spider // TODO",
-                                clickAction: (e, a) => { UIManager.Start(nameof(HudUI),ParentScene); })
+                        h2.Button("Spider",
+                                clickAction: (e, a) => {
+                                    
+                                    DataMessage msg = new DataMessage();
+                                    msg.Message = "Spider";
+                                    ParentScene.Client.Emit("UISelect", msg);
+                                    UIManager.Start(nameof(HudUI), ParentScene);
+                                })
                             .Height(0.8f)
                             .Width(0.8f)
                             .Image("button")
@@ -42,8 +49,13 @@ namespace BFB.Client.UI
 
                     v1.Hstack(h2 =>
                     {
-                        h2.Button("Skeleton // TODO",
-                                clickAction: (e, a) => { UIManager.Start(nameof(HudUI),ParentScene); })
+                        h2.Button("Skeleton",
+                                clickAction: (e, a) => {
+                                    DataMessage msg = new DataMessage();
+                                    msg.Message = "Skeleton";
+                                    ParentScene.Client.Emit("UISelect", msg);
+                                    UIManager.Start(nameof(HudUI), ParentScene);
+                                })
                             .Height(0.8f)
                             .Width(0.8f)
                             .Image("button")
@@ -52,18 +64,13 @@ namespace BFB.Client.UI
 
                     v1.Hstack(h2 =>
                     {
-                        h2.Button("Zombie // TODO",
-                                clickAction: (e, a) => { UIManager.Start(nameof(HudUI),ParentScene); })
-                            .Height(0.8f)
-                            .Width(0.8f)
-                            .Image("button")
-                            .Center();
-                    });
-
-                    v1.Hstack(h2 =>
-                    {
-                        h2.Button("THE BOSS // TODO",
-                                clickAction: (e, a) => { UIManager.Start(nameof(HudUI),ParentScene); })
+                        h2.Button("Zombie",
+                                clickAction: (e, a) => {
+                                    DataMessage msg = new DataMessage();
+                                    msg.Message = "Zombie";
+                                    ParentScene.Client.Emit("UISelect", msg);
+                                    UIManager.Start(nameof(HudUI), ParentScene);
+                                })
                             .Height(0.8f)
                             .Width(0.8f)
                             .Image("button")

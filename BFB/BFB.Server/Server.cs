@@ -190,7 +190,16 @@ namespace BFB.Server
 
             _simulation.OnEntityAdd = (entityKey, isPlayer) =>
             {
-                //do something here for entities if needed
+                if (isPlayer)
+                {
+                    _server.GetClient(entityKey).On("UISelect", (m) =>
+                    {
+                        SimulationEntity player = SimulationEntity.SimulationEntityFactory(m.Message, socket: _server.GetClient(m.ClientId));
+                        player.Position.X = 100;
+                        player.Position.Y = 100;
+                        _simulation.AddEntity(player);
+                    });
+                }
             };
             
             #endregion
