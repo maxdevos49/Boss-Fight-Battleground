@@ -253,7 +253,10 @@ namespace BFB.Client.Scenes
                     return;
             
                 _worldRenderer.Update(gameTime, _clientData.Entities.Values.ToList(), Client.Tps/60);
+                
+                _playerInput.UpdateHotBar(_clientData.Inventory.ActiveSlot);
             }
+            
 
             if (!_playerInput.InputChanged()) return;
             

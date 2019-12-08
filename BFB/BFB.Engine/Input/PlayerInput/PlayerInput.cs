@@ -56,14 +56,6 @@ namespace BFB.Engine.Input.PlayerInput
             {
                 switch (e.Keyboard.KeyEnum)
                 {
-                    case Keys.D1:
-                        _controlState.HotBarLeft = true;
-                        _inputChange = true;
-                        break;
-                    case Keys.D2:
-                        _controlState.HotBarRight = true;
-                        _inputChange = true;
-                        break;
                     case Keys.Left:
                     case Keys.A:
                         _controlState.Left = false;
@@ -116,18 +108,23 @@ namespace BFB.Engine.Input.PlayerInput
             });
         }
 
+        public void UpdateHotBar(int position)
+        {
+            if (position != _controlState.HotBarPosition)
+            {
+                _controlState.HotBarPosition = position;
+                _inputChange = true;
+            }
+        }
+
         /// <summary>
         /// Gets the player state, shockingly enough.
         /// </summary>
         /// <returns></returns>
         public ControlState GetPlayerState()
         {
-            if(!_controlState.HotBarLeft && !_controlState.HotBarRight)//We need to send on the tick for these otherwise we get super scrolling effect
-                _inputChange = false;
-            
+            _inputChange = false;
             ControlState input = _controlState.Clone();
-            _controlState.HotBarRight = false;
-            _controlState.HotBarLeft = false;
             return input;
         }
         

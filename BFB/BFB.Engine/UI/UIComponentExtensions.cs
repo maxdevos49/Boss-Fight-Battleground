@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using BFB.Engine.Entity;
 using BFB.Engine.Event;
 using BFB.Engine.Inventory;
 using BFB.Engine.UI.Components;
@@ -135,9 +134,9 @@ namespace BFB.Engine.UI
         
         #region UISlot
 
-        public static UIComponent InventorySlot(this UIComponent component, ClientInventory inventory, int slotId)
+        public static UIComponent InventorySlot(this UIComponent component, ClientInventory inventory, int slotId, Action<UIEvent, int> clickAction = null, bool hotBarMode = false)
         {
-            return AddNode(component, new UIInventorySlot(inventory, slotId), null);
+            return AddNode(component, new UIInventorySlot(inventory, slotId, clickAction, hotBarMode), null);
         }
         
         #endregion

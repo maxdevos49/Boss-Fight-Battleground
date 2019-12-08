@@ -1,3 +1,6 @@
+using System;
+using BFB.Engine.Entity;
+using BFB.Engine.Inventory;
 using BFB.Engine.UI;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
@@ -6,6 +9,11 @@ namespace BFB.Client.UI
 {
     public class HudUI : UILayer
     {
+        
+        private ClientInventory Inventory { get; set; }
+        
+        private  ClientEntity ClientEntity { get; set; }
+
         public HudUI() : base(nameof(HudUI))
         {
             BlockInput = false;//Prevents moving our player from inside the UI
@@ -13,6 +21,10 @@ namespace BFB.Client.UI
 
         protected override void Init()
         {
+            
+            Inventory = ClientDataRegistry.GetInstance().Inventory;
+            ClientEntity = ClientDataRegistry.GetInstance().Client;
+
             AddInputListener("keypress", e =>
             {
                 switch (e.Keyboard.KeyEnum)
@@ -26,11 +38,49 @@ namespace BFB.Client.UI
                     case Keys.T:
                         UIManager.LaunchLayer(nameof(ChatUI), ParentScene);
                         break;
+                    case Keys.D1:
+                        Inventory.ActiveSlot = 0;
+                        break;
+                    case Keys.D2:
+                        Inventory.ActiveSlot = 1;
+                        break;
+                    case Keys.D3:
+                        Inventory.ActiveSlot = 2;
+                        break;
+                    case Keys.D4:
+                        Inventory.ActiveSlot = 3;
+                        break;
+                    case Keys.D5:
+                        Inventory.ActiveSlot = 4;
+                        break;
+                    case Keys.D6:
+                        Inventory.ActiveSlot = 5;
+                        break;
+                    case Keys.D7:
+                        Inventory.ActiveSlot = 6;
+                        break;
                 }
             });
             
+            AddInputListener("mousescroll", e =>
+            {
+
+                if (Math.Abs(e.Mouse.VerticalScrollAmount) <= 200 || e.Keyboard.KeyboardState.IsKeyDown(Keys.LeftControl))
+                    return;
+                
+                if (e.Mouse.VerticalScrollAmount > 0)
+                    Inventory.ActiveSlot++;
+                else
+                    Inventory.ActiveSlot--;
+
+                if (Inventory.ActiveSlot < 0)
+                    Inventory.ActiveSlot = 6;
+                
+                if (Inventory.ActiveSlot > 6)
+                    Inventory.ActiveSlot = 0;
+
+            });
             
-//            UIManager.LaunchLayer(nameof(ChatUI), ParentScene);
         }
 
         public override void Body()
@@ -38,35 +88,28 @@ namespace BFB.Client.UI
             //Change this to draw frame outlines or not
 
             RootUI.Background(Color.Transparent);
-            
-            RootUI.Zstack(z1 => { 
-                z1.Vstack(v1 =>
-                    {
-                        v1.Button("Menu",
-                                clickAction: (e, a) => { UIManager.StartLayer(nameof(GameMenuUI), ParentScene); })
-                            .Width(0.12f)
-                            .Height(0.1f);
-                    })
-                    .Top(0)
-                    .Left(0);
 
-                z1.Hstack(h1 =>
+            RootUI.Zstack(z1 =>
+            {
+                z1.Hstack(h2 =>
                     {
-                        h1.Spacer(2);
-
-                        h1.Hstack(h2 =>
+                        for (int i = 0; i < 7; i++)
+                        {
+                            h2.InventorySlot(Inventory, i, hotBarMode:true, clickAction: (e, slotId) =>
                             {
-                
-
-                            })
-                            .Grow(10);
-                        
-                        h1.Spacer(2);
+                                if (e.Mouse.LeftButton == ButtonState.Pressed)
+                                {
+                                    Inventory.ActiveSlot = slotId;
+                                }
+                            });
+                        }
                     })
-                    .Height(0.07f)
+                    .Width(0.45f)
+                    .Height(0.1f)
+                    .Center()
                     .Bottom(0);
             });
-            
+
         }
     }
 }

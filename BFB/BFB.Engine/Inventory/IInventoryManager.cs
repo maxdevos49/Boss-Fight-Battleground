@@ -134,7 +134,7 @@ namespace BFB.Engine.Inventory
         /// Gets all items as a list from the inventory
         /// </summary>
         /// <returns>A list of all items in the inventory</returns>
-        List<IItem> GetAllItems();
+        List<KeyValuePair<int, IItem>> GetAllItems();
 
     }
 

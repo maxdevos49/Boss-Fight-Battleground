@@ -12,10 +12,9 @@ namespace BFB.Engine.Input.PlayerInput
         public bool Left { get; set; }
         public bool Right { get; set; }
         public bool Jump { get; set; }
-        public bool HotBarLeft { get; set; }
-        public bool HotBarRight { get; set; }
         public bool LeftClick { get; set; }
         public bool RightClick { get; set; }
+        public int HotBarPosition { get; set; }
         public BfbVector Mouse { get; set; }
         
         public ControlState()
@@ -23,10 +22,9 @@ namespace BFB.Engine.Input.PlayerInput
             Left = false;
             Right = false;
             Jump = false;
-            HotBarLeft = false;
-            HotBarRight = false;
             LeftClick = false;
             RightClick = false;
+            HotBarPosition = 0;
             Mouse = new BfbVector(0,0);
 
         }
@@ -38,11 +36,10 @@ namespace BFB.Engine.Input.PlayerInput
                 Left = Left,
                 Right = Right,
                 Jump = Jump,
-                HotBarLeft = HotBarLeft,
-                HotBarRight = HotBarRight,
                 LeftClick = LeftClick,
                 RightClick = RightClick,
-                Mouse = new BfbVector(Mouse.X,Mouse.Y) 
+                HotBarPosition =  HotBarPosition,
+                Mouse = Mouse.Clone()
             };
         }
     }

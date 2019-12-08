@@ -1,5 +1,8 @@
+using System;
+
 namespace BFB.Engine.Inventory
 {
+    [Serializable]
     public class InventorySlot
     {
         public int Version { get; set; }

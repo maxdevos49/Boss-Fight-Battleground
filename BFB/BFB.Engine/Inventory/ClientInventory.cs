@@ -7,8 +7,7 @@ namespace BFB.Engine.Inventory
     {
         private readonly object _lock;
         
-        public int InventorySize { get; set; }
-        public int HotBarRange { get; set; }
+        public int ActiveSlot { get; set; }
 
         private Dictionary<int, InventorySlot> Slots { get; set; }
 

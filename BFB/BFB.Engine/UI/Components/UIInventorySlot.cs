@@ -14,20 +14,27 @@ namespace BFB.Engine.UI.Components
         private const int Padding = 10;
         private bool _hover;
         private readonly int _slotId;
+        private readonly bool _hotBarMode;
         private readonly ClientInventory _inventory;
-        
-        
-        public UIInventorySlot(ClientInventory inventory, int slotId) : base(nameof(UIInventorySlot))
+
+        public UIInventorySlot(ClientInventory inventory, int slotId, Action<UIEvent,int> clickAction = null, bool hotBarMode = false) : base(nameof(UIInventorySlot))
         {
             _inventory = inventory;
             _slotId = slotId;
             _hover = false;
+            _hotBarMode = hotBarMode;
+
+            Color color = _hotBarMode ? Color.Black : Color.Silver;
 
             this.AspectRatio(1)
                 .Background(new Color(0,0,0,0.5f))
-                .Border(3, Color.Silver)
+                .Border(3, color)
                 .FontSize(0.5f);
             
+            AddEvent("click", e =>
+            {
+                clickAction?.Invoke(e, slotId);
+            });
             AddEvent("hover", e =>
             {
                 RenderAttributes = DefaultAttributes.CascadeAttributes(new UIAttributes
@@ -45,6 +52,19 @@ namespace BFB.Engine.UI.Components
         {
             base.Render(graphics, content);
 
+            if (_slotId == _inventory.ActiveSlot && _hotBarMode)
+            {
+                graphics.DrawBorder(
+                    new Rectangle(
+                        RenderAttributes.X - 2,
+                        RenderAttributes.Y - 2,
+                        RenderAttributes.Width + 2*2,
+                        RenderAttributes.Height + 2*2),
+                    5, 
+                    Color.Silver,
+                    content.GetTexture("default"));
+            }
+            
             Dictionary<int, InventorySlot> slots = _inventory.GetSlots();
             if (slots.ContainsKey(_slotId))
             {

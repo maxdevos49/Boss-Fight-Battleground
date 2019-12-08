@@ -8,29 +8,18 @@ namespace BFB.Client.UI
     public class InventoryUI : UILayer
     {
         
-        private ClientInventory Inventory { get; }
+        private ClientInventory Inventory { get; set; }
         
         public InventoryUI() : base(nameof(InventoryUI))
         {
-            Debug = true;
             BlockInput = true;
-
-            Inventory = ClientDataRegistry.GetInstance().Inventory;
-
-            InventorySlot newSlot = new InventorySlot
-            {
-                Count = 20,
-                Name = "Dirt Blocks",
-                Mode = false,
-                SlotId = 1,
-                TextureKey = "Tiles:Dirt"
-            };
-            
-            Inventory.AddItem(1, newSlot);
         }
         
         protected override void Init()
         {
+            
+            Inventory = ClientDataRegistry.GetInstance().Inventory;
+
          
             AddInputListener("keypress", e =>
             {
@@ -57,26 +46,33 @@ namespace BFB.Client.UI
                     h1.Vstack(v2 =>
                         {
 
-                            for (int i = 0; i < 27; i+=7)
+                            for (int i = 3; i > -1; i--)
                             {
-                                int i1 = i;
-
+                                if (i == 0)
+                                    v2.Spacer(2);
+                                
+                                int i2 = i;
                                 v2.Hstack(h2 =>
                                 {
-                                    h2.InventorySlot(Inventory, i1);
-                                    h2.InventorySlot(Inventory, i1 + 1);
-                                    h2.InventorySlot(Inventory, i1 + 2);
-                                    h2.InventorySlot(Inventory, i1 + 3);
-                                    h2.InventorySlot(Inventory, i1 + 4);
-                                    h2.InventorySlot(Inventory, i1 + 5);
-                                    h2.InventorySlot(Inventory, i1 + 6);
-                                });
+                                    for (int j = 0; j < 7; j++)
+                                    {
+                                        int i1 = i2;
+                                        int j1 = j;
+                                        
+                                        h2.InventorySlot(Inventory, i1 * 7 + j1, clickAction: (e, slotId) =>
+                                        {
+                                        
+                                        });
+                                    }
+                                })
+                                    .Grow(10);
+                                
                             }
                             
                         })
                         .AspectRatio(1.78f)
                         .Center()
-                        .Grow(3);
+                        .Grow(4);
                     
                     h1.Spacer(); 
                 })

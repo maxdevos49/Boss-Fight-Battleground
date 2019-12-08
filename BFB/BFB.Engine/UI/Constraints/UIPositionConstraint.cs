@@ -19,6 +19,9 @@ namespace BFB.Engine.UI.Constraints
 
         public override void Apply(UIComponent component)
         {
+            if (component.Parent == null)
+                return;
+                
             if (_top != null)
             {
                 component.DefaultAttributes.Y = component.Parent.DefaultAttributes.Y + (int) _top;
@@ -29,21 +32,17 @@ namespace BFB.Engine.UI.Constraints
             if (_right != null)
             {
                 component.DefaultAttributes.Width -= (int) _right;
-                component.DefaultAttributes.X += component.Parent.DefaultAttributes.Width -
-                                                component.DefaultAttributes.Width;
-                component.DefaultAttributes.OffsetX = component.Parent.DefaultAttributes.Width -
-                                                        component.DefaultAttributes.Width;
+                component.DefaultAttributes.X += component.Parent.DefaultAttributes.Width - component.DefaultAttributes.Width;
+                component.DefaultAttributes.OffsetX = component.Parent.DefaultAttributes.Width - component.DefaultAttributes.Width;
             }
 
             if (_bottom != null)
             {
                 component.DefaultAttributes.Height -= (int) _bottom;
                 
-                component.DefaultAttributes.Y += component.Parent.DefaultAttributes.Height - 
-                                                component.DefaultAttributes.Height;
+                component.DefaultAttributes.Y += component.Parent.DefaultAttributes.Height -  component.DefaultAttributes.Height;
                 
-                component.DefaultAttributes.OffsetY = component.Parent.DefaultAttributes.Height - 
-                                                        component.DefaultAttributes.Height;
+                component.DefaultAttributes.OffsetY = component.Parent.DefaultAttributes.Height -  component.DefaultAttributes.Height;
             }
 
             if (_left != null)

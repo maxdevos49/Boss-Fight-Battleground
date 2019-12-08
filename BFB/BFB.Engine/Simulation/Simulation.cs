@@ -75,6 +75,11 @@ namespace BFB.Engine.Simulation
         /// </summary>
         public Action<string,ChunkUpdatesMessage> OnChunkUpdates { get; set; }
         
+        /// <summary>
+        /// Callback that is called when the simulation is ready to provide updates for a players inventory
+        /// </summary>
+        public Action<string, InventorySlotMessage> OnInventoryUpdate { get; set; }
+        
         public Action OnSimulationTick { get; set; }
         
         public Action<string> OnSimulationOverLoad { get; set; }
@@ -332,19 +337,22 @@ namespace BFB.Engine.Simulation
             if (playerEntity.Inventory == null) 
                 return;
             
-            foreach (IItem item in playerEntity.Inventory.GetAllItems())
+            foreach ((int slotId, IItem item) in playerEntity.Inventory.GetAllItems())
             {
                 updates.SlotUpdates.Add(new InventorySlot
                 {
                     Count = item.StackSize(),
                     Name = item.ItemConfigKey,
                     Mode = false,
-                    SlotId = ,
+                    SlotId = (ushort) slotId,
                     TextureKey = item.Configuration.TextureKey
                 });
             }
+            
+            if(updates.SlotUpdates.Any())
+                OnInventoryUpdate?.Invoke(playerEntity.EntityId,updates);
         }
-        
+
         #endregion
 
         #region Simulate

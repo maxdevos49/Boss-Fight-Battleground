@@ -15,6 +15,8 @@ namespace BFB.Engine.Inventory
 
         private readonly int _inventorySize;
         
+        private IItem _swapSlot;
+        
         private readonly Dictionary<int, IItem> _slots;
         
         #endregion
@@ -69,12 +71,6 @@ namespace BFB.Engine.Inventory
                 _activeSlotId = _hotBarRange;
         }
 
-        #endregion
-        
-        #region NextHotBar
-        
-        
-        
         #endregion
         
         #region MoveActiveSlot
@@ -323,9 +319,9 @@ namespace BFB.Engine.Inventory
 
         #region GetAllItems
         
-        public List<IItem> GetAllItems()
+        public List<KeyValuePair<int, IItem>> GetAllItems()
         {
-            return _slots.Values.ToList();
+            return _slots.ToList();
         }
         
         #endregion
