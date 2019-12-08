@@ -58,11 +58,7 @@ namespace BFB.Engine.Simulation.GameModeComponents
                                 IItem sword = new Item("ZombieSword");
                                 mob.AddComponent(new InventoryComponent(new List<IItem>(){ sword }));
 
-                                
-//                                mob.Inventory.Insert(sword);
-
                                 mob.ControlState = new ControlState();
-                                mob.ControlState.LeftClick = true;
 
                                 mob.AddComponent(new InputAI());
                                 mob.AddComponent(new AnimatedHolding());

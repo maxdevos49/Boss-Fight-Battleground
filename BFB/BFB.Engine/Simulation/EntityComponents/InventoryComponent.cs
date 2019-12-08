@@ -35,15 +35,15 @@ namespace BFB.Engine.Simulation.EntityComponents
                 entity.CollideWithFilters.Add("item");
             
             entity.Inventory = new InventoryManager(10, 10);
-            foreach (IItem item in _defaultItems)
+            foreach (IItem item2 in _defaultItems)
             {
-                entity.Inventory.Insert(item);
+                entity.Inventory.Insert(item2);
             }
 
             //Temp items
-//            Item item = new Item("Wood");
-//            item.SetStackSize(64);
-//            entity.Inventory.Insert(item);
+            Item item = new Item("Wood");
+            item.SetStackSize(64);
+            entity.Inventory.Insert(item);
 //            
 //            item = new Item("WoodWall");
 //            item.SetStackSize(64);

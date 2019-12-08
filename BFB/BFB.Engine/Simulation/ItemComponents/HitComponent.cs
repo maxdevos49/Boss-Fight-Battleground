@@ -13,7 +13,6 @@ namespace BFB.Engine.Simulation.ItemComponents
     {
         public void Use(Simulation simulation, SimulationEntity entity, IItem item)
         {
-            
             if (entity.ControlState != null && entity.ControlState.LeftClick)
             {
                 int reach = simulation.World.WorldOptions.WorldScale * item.Configuration.Reach;
@@ -24,15 +23,13 @@ namespace BFB.Engine.Simulation.ItemComponents
                 else
                     targets = simulation.World.QueryEntities(new Rectangle(entity.Right, entity.Top + entity.Height/2,reach,2), new List<string> {"melee"});
 
-                    IEnumerable<SimulationEntity> enemies = targets.Where(x =>
+                Console.WriteLine(targets.Count);
+                IEnumerable<SimulationEntity> enemies = targets.Where(x =>
                         x.EntityConfiguration.EntityKey != entity.EntityConfiguration.EntityKey);
 
-                    if (!enemies.Any()) return;
-                    targets = (List<SimulationEntity>) enemies;
+                //targets = (List<SimulationEntity>) enemies;
 
-                    //Apply actual damage
                 CombatService.FightPeople(entity, targets, simulation);
-                
             }
             
         }

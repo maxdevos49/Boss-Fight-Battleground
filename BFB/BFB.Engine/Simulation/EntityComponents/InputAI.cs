@@ -23,6 +23,7 @@ namespace BFB.Engine.Simulation.EntityComponents
         }
         public override void Update(SimulationEntity entity, Simulation simulation)
         {
+            entity.ControlState.LeftClick = true;
             int nearest = MaxValue;
 
             List<Chunk> chunkList = new List<Chunk>();
