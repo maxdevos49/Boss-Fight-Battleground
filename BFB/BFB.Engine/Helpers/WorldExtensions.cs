@@ -62,15 +62,15 @@ namespace BFB.Engine.Helpers
 
             world.QueryChunks(selection, chunk =>
             {
-                //if (filter == null)
+//                if (filter == null)
                     entities.AddRange(chunk.Entities.Values.Where(x => 
                                                         x.EntityId != excludeKey
                                                         && Collision.IsRectangleColliding(x.Bounds, selection)));
 //                else
-//
 //                    entities.AddRange(chunk.Entities.Values.Where(x =>
-//                                                        filter.Contains(x.CollideFilter) && x.EntityId != excludeKey 
-//                                                         && Collision.IsRectangleColliding(x.Bounds, selection)));
+//                                                        filter.Contains(x.CollideFilter) 
+//                                                        && x.EntityId != excludeKey 
+//                                                        && Collision.IsRectangleColliding(x.Bounds, selection)));
             });
 
             return entities;

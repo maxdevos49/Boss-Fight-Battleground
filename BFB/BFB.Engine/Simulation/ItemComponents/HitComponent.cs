@@ -19,9 +19,9 @@ namespace BFB.Engine.Simulation.ItemComponents
                 List<SimulationEntity> targets;
 
                 if (entity.Facing == DirectionFacing.Left)
-                    targets = simulation.World.QueryEntities(new Rectangle(entity.Left - reach, entity.Top + entity.Height/2,reach,2), new List<string> {"melee"});
+                    targets = simulation.World.QueryEntities(new Rectangle(entity.Left - reach, entity.Top + entity.Height/2,reach,2), new List<string> {"melee"}, entity.EntityId);
                 else
-                    targets = simulation.World.QueryEntities(new Rectangle(entity.Right, entity.Top + entity.Height/2,reach,2), new List<string> {"melee"});
+                    targets = simulation.World.QueryEntities(new Rectangle(entity.Right, entity.Top + entity.Height/2,reach,2), new List<string> {"melee"}, entity.EntityId);
 
                 IEnumerable<SimulationEntity> enemies = targets.Where(x =>
                         x.EntityConfiguration.EntityKey != entity.EntityConfiguration.EntityKey);
