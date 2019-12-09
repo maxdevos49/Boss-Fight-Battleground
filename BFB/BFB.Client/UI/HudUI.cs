@@ -2,6 +2,7 @@ using System;
 using BFB.Engine.Entity;
 using BFB.Engine.Inventory;
 using BFB.Engine.UI;
+using BFB.Engine.UI.Components;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 
@@ -102,12 +103,19 @@ namespace BFB.Client.UI
             RootUI.Zstack(z1 =>
             {
                 z1.Hstack(h2 =>
-                {
-                    //Health Bar
+                    {
+                        //if (ClientEntity != null && ClientEntity.Meta != null)
+                        //    h2.Text = ClientEntity.Meta.Health.ToString();
+                        //else
+                        //    h2.Text = "AHAHAHA";
 
-                    //Mana Bar
-                    
-                });
+                        //Health Bar
+
+                        //Mana Bar
+
+                    }).Height(0.7f)
+                    .Width(0.7f)
+                    .Center(); ;
                 
                 //Hotbar
                 z1.Hstack(h2 =>

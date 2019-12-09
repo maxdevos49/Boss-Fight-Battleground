@@ -33,7 +33,7 @@ namespace BFB.Engine.Simulation.GameModeComponents
                 timeToSpawn -= 1;
                 if (timeToSpawn <= 0)
                 {
-                    CreateBoss(simulation, null);
+                    CreateBoss(simulation, null, true);
                     timeToSpawn = 20 * 60 * 5;
                 }
             }
@@ -49,18 +49,28 @@ namespace BFB.Engine.Simulation.GameModeComponents
                 who = _random.Next(simulation.GetPlayerEntities().Count);
             }
 
-            CreateBoss(simulation, simulation.GetPlayerEntities()[who]);
+            CreateBoss(simulation, simulation.GetPlayerEntities()[who], false);
         }
 
-        private void CreateBoss(Simulation simulation, [CanBeNull] SimulationEntity target)
+        private void CreateBoss(Simulation simulation, [CanBeNull] SimulationEntity target, bool fromMonsters)
         {
             // Loop through player monsters and pick a random one to make a monster.
             if (target == null)
             {
                 int who = _random.Next(simulation.GetPlayerEntities().Count);
-                while (simulation.GetPlayerEntities()[who].EntityConfiguration.EntityKey != "Human")
+                if (!fromMonsters)
                 {
-                    who = _random.Next(simulation.GetPlayerEntities().Count);
+                    while (simulation.GetPlayerEntities()[who].EntityConfiguration.EntityKey != "Human")
+                    {
+                        who = _random.Next(simulation.GetPlayerEntities().Count);
+                    }
+                }
+                else
+                {
+                    while (simulation.GetPlayerEntities()[who].EntityConfiguration.EntityKey == "Human")
+                    {
+                        who = _random.Next(simulation.GetPlayerEntities().Count);
+                    }
                 }
 
                 target = simulation.GetPlayerEntities()[who];
