@@ -23,45 +23,51 @@ namespace BFB.Engine.Simulation.EntityComponents
         }
         public override void Update(SimulationEntity entity, Simulation simulation)
         {
-            entity.ControlState.LeftClick = true;
+            if (entity != null)
+                entity.ControlState.LeftClick = true;
+
             int nearest = MaxValue;
 
-            List<Chunk> chunkList = new List<Chunk>();
-            Chunk chunk = simulation.World.ChunkIndex[entity.ChunkKey];
-            chunkList.Add(chunk);
-
-            //check right upper point chunk
-            Chunk chunkTest = simulation.World.ChunkFromPixelLocation(entity.Right, entity.Top);
-            if (chunk.ChunkY != chunkTest?.ChunkX || chunk.ChunkY != chunkTest.ChunkY)
-                chunkList.Add(chunkTest);
-
-            //check lower right chunk
-            chunkTest = simulation.World.ChunkFromPixelLocation(entity.Right, entity.Bottom);
-            if (chunk.ChunkY != chunkTest?.ChunkX || chunk.ChunkY != chunkTest.ChunkY)
-                chunkList.Add(chunkTest);
-
-            //check bottom left chunk
-            chunkTest = simulation.World.ChunkFromPixelLocation(entity.Left, entity.Right);
-            if (chunk.ChunkY != chunkTest?.ChunkX || chunk.ChunkY != chunkTest.ChunkY)
-                chunkList.Add(chunkTest);
-
-            foreach (Chunk chunk1 in chunkList)
+            if (_closestEntity == null)
             {
-                if (chunk1 == null)
-                    continue;
+                List<Chunk> chunkList = new List<Chunk>();
+                Chunk chunk = simulation.World.ChunkIndex[entity.ChunkKey];
+                chunkList.Add(chunk);
 
-                foreach (var item in chunk1.Entities.ToList().Where(x => x.Value.EntityId != entity.EntityId && x.Value.TextureKey == "Player"))
+                //check right upper point chunk
+                Chunk chunkTest = simulation.World.ChunkFromPixelLocation(entity.Right, entity.Top);
+                if (chunk.ChunkY != chunkTest?.ChunkX || chunk.ChunkY != chunkTest.ChunkY)
+                    chunkList.Add(chunkTest);
+
+                //check lower right chunk
+                chunkTest = simulation.World.ChunkFromPixelLocation(entity.Right, entity.Bottom);
+                if (chunk.ChunkY != chunkTest?.ChunkX || chunk.ChunkY != chunkTest.ChunkY)
+                    chunkList.Add(chunkTest);
+
+                //check bottom left chunk
+                chunkTest = simulation.World.ChunkFromPixelLocation(entity.Left, entity.Right);
+                if (chunk.ChunkY != chunkTest?.ChunkX || chunk.ChunkY != chunkTest.ChunkY)
+                    chunkList.Add(chunkTest);
+
+                foreach (Chunk chunk1 in chunkList)
                 {
-                    var distance = System.Math.Sqrt(System.Math.Pow(item.Value.Position.X - entity.Position.X,2) + System.Math.Pow(item.Value.Position.Y - entity.Position.Y, 2));
-                    if (distance < nearest)
+                    if (chunk1 == null)
+                        continue;
+
+                    foreach (var item in chunk1.Entities.ToList().Where(x =>
+                        x.Value.EntityId != entity.EntityId && x.Value.TextureKey == "Player"))
                     {
-                        nearest = (int)distance;
-                        _closestEntity = item.Value;
+                        var distance = System.Math.Sqrt(System.Math.Pow(item.Value.Position.X - entity.Position.X, 2) +
+                                                        System.Math.Pow(item.Value.Position.Y - entity.Position.Y, 2));
+                        if (distance < nearest)
+                        {
+                            nearest = (int) distance;
+                            _closestEntity = item.Value;
+                        }
                     }
                 }
             }
-
-            if(_closestEntity != null)
+            else
             {
                 //Resets the entity movement
                 entity.SteeringVector.X = 0;
