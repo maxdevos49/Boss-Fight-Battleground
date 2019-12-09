@@ -147,7 +147,8 @@ namespace BFB.Client
                 new CompletedTransactionUI(), 
                 new LoadingGameUI(), 
                 new InventoryUI(), 
-                new CountdownUI(), 
+                new CountdownUI(),
+                new GameOverUI(), 
             });
             
             #endregion
