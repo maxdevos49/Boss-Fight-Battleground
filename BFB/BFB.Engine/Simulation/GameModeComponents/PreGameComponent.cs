@@ -6,14 +6,14 @@ using BFB.Engine.Server.Communication;
 
 namespace BFB.Engine.Simulation.GameModeComponents
 {
-    public class PreGameModeComponent : GameComponent
+    public class PreGameComponent : GameComponent
     {
         private bool gameReady;
         private int timeToStart;
         private bool gameStarted;
         private bool showingCountdown;
 
-        public PreGameModeComponent() : base()
+        public PreGameComponent() : base()
         {
             gameReady = false;
             gameStarted = false;

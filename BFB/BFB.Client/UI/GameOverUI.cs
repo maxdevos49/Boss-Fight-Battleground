@@ -9,13 +9,13 @@ using Microsoft.Xna.Framework;
 
 namespace BFB.Client.UI
 {
-    public class CountdownUI : UILayer
+    public class GameOverUI : UILayer
     {
         private string displayText;
 
-        public CountdownUI() : base(nameof(CountdownUI))
+        public GameOverUI() : base(nameof(GameOverUI))
         {
-            displayText = "Starting Game!";
+            displayText = "Game over! Resetting game...";
         }
 
         protected override void Init()

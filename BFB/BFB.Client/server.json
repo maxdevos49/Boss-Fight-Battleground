@@ -1,1 +1,1 @@
-{"Servers":[{"Name":"Localhost","Ip":"127.0.0.1:6969"},{"Name":"BFB Server","Ip":"10.24.226.171:6969"},{"Name":"Random Server","Ip":"123.123.123.123:6969"},{"Name":"My Server","Ip":"10.27.135.219:6969"}],"DirectConnect":"10.27.135.219:6969"}
+{"Servers":[{"Name":"Localhost","Ip":"127.0.0.1:6969"},{"Name":"BFB Server","Ip":"10.24.226.171:6969"},{"Name":"Random Server","Ip":"123.123.123.123:6969"},{"Name":"Maxs Fun Server","Ip":"10.27.135.219:6969"}],"DirectConnect":"127.0.0.1:6969"}
