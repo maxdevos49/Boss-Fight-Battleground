@@ -9,12 +9,9 @@ namespace BFB.Engine.Simulation.GameModeComponents
     public class PostGameModeComponent : GameModeComponent
     {
         private int timeToRestart;
-<<<<<<< HEAD:BFB/BFB.Engine/Simulation/GameModeComponents/PostGameModeComponent.cs
-        public PostGameModeComponent() : base()
-=======
         private bool showingCountdown;
-        public PostGameComponent() : base()
->>>>>>> Fix respawning in pre and post game so you don't break stuff:BFB/BFB.Engine/Simulation/GameModeComponents/PostGameComponent.cs
+
+        public PostGameModeComponent() : base()
         {
             Console.WriteLine("GAME ENDED");
             timeToRestart = 20 * 10;

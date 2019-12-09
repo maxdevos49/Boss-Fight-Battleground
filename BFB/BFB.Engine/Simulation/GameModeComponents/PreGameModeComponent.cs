@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Text;
 using BFB.Engine.Entity;
 using BFB.Engine.Server.Communication;
+using Microsoft.Xna.Framework;
 
 namespace BFB.Engine.Simulation.GameModeComponents
 {
-    public class PreGameModeComponent : GameComponent
+    public class PreGameModeComponent : GameModeComponent
     {
         private bool gameReady;
         private int timeToStart;
@@ -62,16 +63,16 @@ namespace BFB.Engine.Simulation.GameModeComponents
 
             if (gameReady && timeToStart <= 0)
             {
-                simulation.gameComponents.Add(new ManaRegenComponent());
-                simulation.gameComponents.Add(new AIMobSpawnComponent());
-                simulation.gameComponents.Add(new BossSpawnComponent());
-                simulation.gameComponents.Add(new PlayerRespawnComponent());
+                simulation.GameComponents.Add(new ManaRegenModeComponent());
+                simulation.GameComponents.Add(new AIMobSpawnModeComponent());
+                simulation.GameComponents.Add(new BossSpawnModeComponent());
+                simulation.GameComponents.Add(new PlayerRespawnModeComponent());
                 
-                GameComponent component = new GameEndComponent();
+                GameModeComponent component = new GameModeEndComponent();
                 component.Init(simulation);
-                simulation.gameComponents.Add(component);
+                simulation.GameComponents.Add(component);
 
-                simulation.gameState = GameState.InProgress;
+                simulation.GameState = GameState.InProgress;
 
                 Console.WriteLine("GAME STARTED");
                 gameStarted = true;
