@@ -221,17 +221,22 @@ namespace BFB.Engine.Inventory
             }
 
             IItem mergeSlotItem = GetSlot(slotId);
-            byte existingCount = mergeSlotItem.StackSize();
-            byte count = items.StackSize();
-
-            if (count + existingCount <= mergeSlotItem.MaxStackSize())
+            
+            if (mergeSlotItem != null)
             {
-                mergeSlotItem.SetStackSize((byte)(count + existingCount));
-                return null;
+                byte existingCount = mergeSlotItem.StackSize();
+                byte count = items.StackSize();
+
+                if (count + existingCount <= mergeSlotItem.MaxStackSize())
+                {
+                    mergeSlotItem.SetStackSize((byte)(count + existingCount));
+                    return null;
+                }
+
+                mergeSlotItem.SetStackSize((byte)mergeSlotItem.MaxStackSize());
+                items.SetStackSize((byte)(count + existingCount - mergeSlotItem.MaxStackSize()));
             }
 
-            mergeSlotItem.SetStackSize((byte)mergeSlotItem.MaxStackSize());
-            items.SetStackSize((byte)(count + existingCount - mergeSlotItem.MaxStackSize()));
             return items;
         }
 
@@ -258,17 +263,20 @@ namespace BFB.Engine.Inventory
                 IItem item = GetSlot(slotId);
 
                 //if stack size is 1 then we just remove
-                if (item.MaxStackSize() == 1)
+                if (item != null && item.MaxStackSize() == 1)
                     return Remove(slotId);
 
-                IItem newItem = item.Clone();
-                float stackSize = item.StackSize();
+                if (item != null)
+                {
+                    IItem newItem = item.Clone();
+                    float stackSize = item.StackSize();
                 
-                //Split stacks evenly
-                item.SetStackSize((byte)System.Math.Floor(stackSize/2f));
-                newItem.SetStackSize((byte)System.Math.Ceiling(stackSize/2f));
+                    //Split stacks evenly
+                    item.SetStackSize((byte)System.Math.Floor(stackSize/2f));
+                    newItem.SetStackSize((byte)System.Math.Ceiling(stackSize/2f));
 
-                return newItem;
+                    return newItem;
+                }
             }
 
             return null;

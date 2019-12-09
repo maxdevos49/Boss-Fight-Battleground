@@ -1,5 +1,4 @@
 using System;
-using System.Linq.Expressions;
 using BFB.Engine.Content;
 using BFB.Engine.Entity;
 using BFB.Engine.Helpers;
@@ -39,10 +38,19 @@ namespace BFB.Client.UI
                 {
                     case Keys.Escape:
                     case Keys.E:
+                        ParentScene.Client.Emit("/inventory/throwHolding");
                         UIManager.StopLayer(Key);
                         break;
                 }
                 e.StopPropagation();
+            });
+            
+            AddInputListener("mouseclick", e =>
+            {
+                if(e.Mouse.RightButton == ButtonState.Pressed)
+                    ParentScene.Client.Emit("/inventory/throwHolding", new DataMessage {Message = "one"});
+                else
+                    ParentScene.Client.Emit("/inventory/throwHolding");
             });
             
             AddInputListener("mousemove", e =>
@@ -65,11 +73,34 @@ namespace BFB.Client.UI
             graphics.DrawAtlas(
                 content.GetAtlasTexture(slot.TextureKey),
                 new Rectangle(
-                    (int)Mouse.X - 15, 
-                    (int)Mouse.Y - 15, 
-                    30, 
-                    30), 
+                    (int)Mouse.X - 20, 
+                    (int)Mouse.Y - 20, 
+                    40, 
+                    40), 
                 Color.White);
+            
+            if(slot.ItemType == ItemType.Wall)
+                graphics.DrawAtlas(
+                    content.GetAtlasTexture("default"),
+                    new Rectangle(
+                        (int)Mouse.X - 20, 
+                        (int)Mouse.Y - 20, 
+                        40, 
+                        40), 
+                    new Color(0, 0, 0, 0.5f));
+            
+            SpriteFont font = content.GetFont("default");
+            (float width, float height) = font.MeasureString(slot.Count.ToString()) * 0.6f;
+            graphics.DrawString(
+                font,
+                slot.Count.ToString(),
+                new Vector2(Mouse.X - width + 3, Mouse.Y - height + 3),
+                Color.White,
+                0, 
+                Vector2.Zero, 
+                0.6f, 
+                SpriteEffects.None,
+                1);
             
         }
 
@@ -110,6 +141,16 @@ namespace BFB.Client.UI
                                                 RightClick = e.Mouse.RightButton == ButtonState.Pressed,
                                                 SlotId = slotId
                                             });
+                                            e.StopPropagation();
+                                        }, enterAction: (e, slotId) =>
+                                        {
+                                            if(e.Mouse.RightButton == ButtonState.Pressed)
+                                                ParentScene.Client.Emit("/inventory/select", new InventoryActionMessage
+                                                {
+                                                    LeftClick = e.Mouse.LeftButton == ButtonState.Pressed,
+                                                    RightClick = e.Mouse.RightButton == ButtonState.Pressed,
+                                                    SlotId = slotId
+                                                });
                                         });
                                     }
                                 })

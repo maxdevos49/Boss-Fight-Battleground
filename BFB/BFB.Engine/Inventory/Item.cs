@@ -106,6 +106,21 @@ namespace BFB.Engine.Inventory
         }
         
         #endregion
+        
+        #region GetInventorySlotItem
+
+        public InventorySlot GetInventorySlotItem()
+        {
+            return new InventorySlot
+            {
+                Name = ItemConfigKey,
+                Count = StackSize(),
+                ItemType = Configuration.ItemType,
+                TextureKey = Configuration.TextureKey
+            };
+        }
+
+        #endregion
 
         #region UseItemLeftClick
         

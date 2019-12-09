@@ -46,6 +46,10 @@ namespace BFB.Engine.Input.PlayerInput
                         _controlState.Jump = true;
                         _inputChange = true;
                         break;
+                    case Keys.Q:
+                        _controlState.DropItem = true;
+                        _inputChange = true;
+                        break;
                 }
                 
                 _controlState.Mouse.X = e.Mouse.X;
@@ -69,6 +73,10 @@ namespace BFB.Engine.Input.PlayerInput
                     case Keys.W:
                     case Keys.Space:
                         _controlState.Jump = false;
+                        _inputChange = true;
+                        break;
+                    case Keys.Q:
+                        _controlState.DropItem = false;
                         _inputChange = true;
                         break;
                 }

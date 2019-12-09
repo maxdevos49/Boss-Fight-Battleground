@@ -1,6 +1,9 @@
+using System;
+
 namespace BFB.Engine.Inventory
 {
-    public enum ItemType
+    [Serializable]
+    public enum ItemType : byte
     {
         Unknown,
         Tool,

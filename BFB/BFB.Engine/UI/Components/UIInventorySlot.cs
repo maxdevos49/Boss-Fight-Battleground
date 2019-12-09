@@ -17,7 +17,7 @@ namespace BFB.Engine.UI.Components
         private readonly bool _hotBarMode;
         private readonly ClientInventory _inventory;
 
-        public UIInventorySlot(ClientInventory inventory, byte slotId, Action<UIEvent,byte> clickAction = null, bool hotBarMode = false) : base(nameof(UIInventorySlot))
+        public UIInventorySlot(ClientInventory inventory, byte slotId, Action<UIEvent,byte> clickAction = null, Action<UIEvent,byte> enterAction = null, bool hotBarMode = false) : base(nameof(UIInventorySlot))
         {
             _inventory = inventory;
             _slotId = slotId;
@@ -42,7 +42,11 @@ namespace BFB.Engine.UI.Components
                     Background = new Color(0,0,0,0.2f)
                 });
             });
-            AddEvent("mouseenter", e => _hover = true);
+            AddEvent("mouseenter", e =>
+            {
+                enterAction?.Invoke(e,_slotId);
+                _hover = true;
+            });
             AddEvent("mouseleave", e => _hover = false);
         }
         
@@ -65,10 +69,9 @@ namespace BFB.Engine.UI.Components
                     content.GetTexture("default"));
             }
             
-            Dictionary<byte, InventorySlot> slots = _inventory.GetSlots();
-            if (slots.ContainsKey(_slotId))
+            if (_inventory.GetSlots().ContainsKey(_slotId))
             {
-                InventorySlot slot = slots[_slotId];
+                InventorySlot slot = _inventory.GetSlots()[_slotId];
 
                 if (string.IsNullOrEmpty(slot.TextureKey))
                     return;
@@ -86,6 +89,16 @@ namespace BFB.Engine.UI.Components
                         RenderAttributes.Width - padding*2, 
                         RenderAttributes.Height - padding*2), 
                     Color.White);
+                
+                if(slot.ItemType == ItemType.Wall)
+                    graphics.DrawAtlas(
+                        content.GetAtlasTexture("default"),
+                        new Rectangle(
+                            RenderAttributes.X + padding, 
+                            RenderAttributes.Y + padding, 
+                            RenderAttributes.Width - padding*2, 
+                            RenderAttributes.Height - padding*2), 
+                        new Color(0, 0, 0, 0.5f));
 
                 //draw count
                 if (slot.Count <= 1) 

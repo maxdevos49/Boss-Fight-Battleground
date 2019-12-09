@@ -10,6 +10,12 @@ namespace BFB.Client.UI
     {
         public MonsterMenuUI() : base(nameof(MonsterMenuUI)) { }
 
+        protected override void Init()
+        {
+            ClientDataRegistry.GetInstance().Entities.Clear();
+        }
+
+        
         public override void Body()
         {
             RootUI.Background(Color.Transparent);

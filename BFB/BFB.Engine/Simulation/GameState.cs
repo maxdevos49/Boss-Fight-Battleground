@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace BFB.Engine.Simulation
+﻿namespace BFB.Engine.Simulation
 {
-    public enum GameState
+    public enum GameState : byte
     {
-        PreGame = 0,
-        InProgress = 1,
-        PostGame = 2,
-        Error = 3
+        PreGame,
+        InProgress,
+        PostGame,
+        Error
     }
 }

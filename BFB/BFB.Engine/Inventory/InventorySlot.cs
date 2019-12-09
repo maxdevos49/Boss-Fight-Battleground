@@ -16,9 +16,6 @@ namespace BFB.Engine.Inventory
         
         public ItemType ItemType { get; set; }
 
-        /// <summary>
-        /// True means remove items at the slot. False means update
-        /// </summary>
         public bool Mode { get; set; }
     }
 }

@@ -12,7 +12,6 @@ namespace BFB.Engine.Simulation.EntityComponents
         public float Gravity { get; set; }
         public float Friction { get; set; }
 
-
         public PhysicsItem() : base(false)
         {
             Acceleration = new BfbVector(5,5);
@@ -23,10 +22,16 @@ namespace BFB.Engine.Simulation.EntityComponents
 
         public override void Init(SimulationEntity entity)
         {
-            Random rand = new Random();
+            if ((int)entity.SteeringVector.X != 0 || (int)entity.SteeringVector.Y != 0)
+                entity.Velocity = entity.SteeringVector.Clone();
+            else
+            {
+                Random rand = new Random();
 
-            entity.Velocity.X = rand.Next(-3,3) * Acceleration.X;
-            entity.Velocity.Y = rand.Next(-3,0) * Acceleration.Y;
+                entity.Velocity.X = rand.Next(-3,3) * Acceleration.X;
+                entity.Velocity.Y = rand.Next(-3,0) * Acceleration.Y;
+            }
+            
         }
 
         public override void Update(SimulationEntity entity, Simulation simulation)

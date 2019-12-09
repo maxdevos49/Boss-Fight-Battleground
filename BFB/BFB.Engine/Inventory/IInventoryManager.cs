@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using JetBrains.Annotations;
 
 namespace BFB.Engine.Inventory
 {
@@ -31,6 +32,7 @@ namespace BFB.Engine.Inventory
         /// Gets the selected item
         /// </summary>
         /// <returns>The active item or null if the slot is empty</returns>
+        [CanBeNull]
         IItem GetActiveSlot();
 
         /// <summary>
@@ -50,6 +52,7 @@ namespace BFB.Engine.Inventory
         /// </summary>
         /// <param name="slotId">The slot id to check</param>
         /// <returns>A boolean indicating if the stack is full</returns>
+        [CanBeNull]
         bool IsSlotFull(byte slotId);
         
         /// <summary>
@@ -57,6 +60,7 @@ namespace BFB.Engine.Inventory
         /// </summary>
         /// <param name="item">The item to insert</param>
         /// <returns>A boolean indicating if the insert succeeded</returns>
+        [CanBeNull]
         IItem Insert(IItem item);
 
         /// <summary>
@@ -72,6 +76,7 @@ namespace BFB.Engine.Inventory
         /// </summary>
         /// <param name="slotId">The slot to remove from</param>
         /// <returns>The items that were at that slot or null if it was empty</returns>
+        [CanBeNull]
         IItem Remove(byte slotId);
             
         /// <summary>
@@ -80,6 +85,7 @@ namespace BFB.Engine.Inventory
         /// <param name="slotId">The slot to swap on</param>
         /// <param name="item">The item to insert</param>
         /// <returns>The item that was in the slot previously</returns>
+        [CanBeNull]
         IItem Swap(byte slotId, IItem item);
             
         /// <summary>
@@ -87,6 +93,7 @@ namespace BFB.Engine.Inventory
         /// </summary>
         /// <param name="slotId"></param>
         /// <returns></returns>
+        [CanBeNull]
         IItem Split(byte slotId);
 
         /// <summary>
@@ -95,6 +102,7 @@ namespace BFB.Engine.Inventory
         /// <param name="slotId">The slot to merge</param>
         /// <param name="item">The item to merge</param>
         /// <returns>Any items that did not fit in the stack</returns>
+        [CanBeNull]
         IItem Merge(byte slotId, IItem item);
             
         /// <summary>
@@ -102,6 +110,7 @@ namespace BFB.Engine.Inventory
         /// </summary>
         /// <param name="slotId">The slot to get</param>
         /// <returns>The items at the spot</returns>
+        [CanBeNull]
         IItem GetSlot(byte slotId);
         
         /// <summary>

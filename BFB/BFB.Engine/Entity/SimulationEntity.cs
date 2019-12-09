@@ -55,6 +55,11 @@ namespace BFB.Engine.Entity
         public Dictionary<string, int> ChunkVersions { get; }
         
         /// <summary>
+        /// Indication of what to send to the client
+        /// </summary>
+        public List<byte> InventorySlotHistory { get; set; }
+        
+        /// <summary>
         /// The Inventory of the Entity
         /// </summary>
         [CanBeNull]
@@ -100,7 +105,7 @@ namespace BFB.Engine.Entity
         /// <summary>
         /// Game Components
         /// </summary>
-        private List<EntityComponent> GameComponents { get; }
+        private List<EntityComponent> EntityComponents { get; }
 
         #endregion
 
@@ -126,12 +131,13 @@ namespace BFB.Engine.Entity
             CollideWithFilters = new List<string> {"tile"};
             
             //Components
-            GameComponents = new List<EntityComponent>();
+            EntityComponents = new List<EntityComponent>();
 
             if (socket != null)
             {
                 VisibleChunks = new List<string>();
                 ChunkVersions = new Dictionary<string, int>();
+                InventorySlotHistory = new List<byte>();
                 Socket = socket;
             }
         }
@@ -142,7 +148,7 @@ namespace BFB.Engine.Entity
 
         public void Init()
         {
-            foreach (EntityComponent simulationComponent in GameComponents)
+            foreach (EntityComponent simulationComponent in EntityComponents)
                 simulationComponent?.Init(this);
         }
         
@@ -169,7 +175,7 @@ namespace BFB.Engine.Entity
             OldPosition = new BfbVector(Position.X, Position.Y);
 
             //the future
-            foreach (EntityComponent gameComponent in GameComponents)
+            foreach (EntityComponent gameComponent in EntityComponents)
                 gameComponent?.Update(this,simulation);
 
             MoveEntity(simulation);
@@ -203,7 +209,7 @@ namespace BFB.Engine.Entity
 
         public void AddComponent(EntityComponent component)
         {
-            GameComponents.Add(component);
+            EntityComponents.Add(component);
         }
         
         #region UpdateVisibleChunks
@@ -246,7 +252,7 @@ namespace BFB.Engine.Entity
         {
             bool defaultAction = true;
             
-            foreach (EntityComponent simulationComponent in GameComponents)
+            foreach (EntityComponent simulationComponent in EntityComponents)
             {
                 if(!simulationComponent.OnEntityCollision(simulation, this, otherEntity))
                     defaultAction = false;
@@ -263,7 +269,7 @@ namespace BFB.Engine.Entity
         {
             bool defaultAction = true;
             
-            foreach (EntityComponent simulationComponent in GameComponents)
+            foreach (EntityComponent simulationComponent in EntityComponents)
                 if (!simulationComponent.OnWorldBoundaryCollision(simulation, this, side))
                     defaultAction = false;
 
@@ -278,7 +284,7 @@ namespace BFB.Engine.Entity
         {
             bool defaultAction = true;
 
-            foreach (EntityComponent simulationComponent in GameComponents)
+            foreach (EntityComponent simulationComponent in EntityComponents)
             {
                 if (!simulationComponent.OnTileCollision(simulation, this, tc))
                     defaultAction = false;
@@ -293,7 +299,7 @@ namespace BFB.Engine.Entity
 
         public void EmitOnSimulationRemoval(Simulation.Simulation simulation, EntityRemovalReason? reason)
         {
-            foreach (EntityComponent simulationComponent in GameComponents)
+            foreach (EntityComponent simulationComponent in EntityComponents)
                 simulationComponent?.OnSimulationRemove(simulation,this, reason);
         }
         
@@ -332,24 +338,24 @@ namespace BFB.Engine.Entity
             };
             
             //Required components
-            newEntity.GameComponents.Add(new EntityFacing());
+            newEntity.EntityComponents.Add(new EntityFacing());
             
             //Add a lifetime component if needed
             if(config.Lifetime > 0)
-                newEntity.GameComponents.Add(new LifetimeComponent(config.Lifetime));
+                newEntity.EntityComponents.Add(new LifetimeComponent(config.Lifetime));
 
             //Add components
             foreach (string configComponent in config.Components)
-                newEntity.GameComponents.Add(registry.GetEntityComponent(configComponent));
+                newEntity.EntityComponents.Add(registry.GetEntityComponent(configComponent));
 
             if (socket == null)//We can assume if a socket is supplied then its a player
                 return newEntity;
             
             newEntity.EntityType = EntityType.Player;
-            newEntity.GameComponents.Add(new InputRemote());
-            newEntity.GameComponents.Add(new InventoryComponent());
-            newEntity.GameComponents.Add(new InventoryConnection());
-            newEntity.GameComponents.Add(new AnimatedHolding());
+            newEntity.EntityComponents.Add(new InputRemote());
+            newEntity.EntityComponents.Add(new InventoryComponent());
+            newEntity.EntityComponents.Add(new InventoryConnection());
+            newEntity.EntityComponents.Add(new AnimatedHolding());
 
             return newEntity;
         }

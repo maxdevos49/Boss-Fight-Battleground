@@ -9,6 +9,7 @@ using BFB.Engine.Inventory;
 using BFB.Engine.Math;
 using BFB.Engine.Server;
 using BFB.Engine.TileMap;
+using BFB.Engine.TileMap.Generators;
 using JetBrains.Annotations;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -165,6 +166,23 @@ namespace BFB.Engine.Graphics
                     {
                         
                         WorldTile tile = world.GetBlock(x, y);
+
+                        if (tile == WorldTile.Leaves)//TODO Hacky fix
+                        {
+                            WorldTile wallTile = (WorldTile)world.GetWall(x, y);
+                            
+                            if (wallTile != WorldTile.Air)
+                            {
+                                graphics.DrawAtlas(
+                                    _content.GetAtlasTexture("Tiles:" + wallTile),
+                                    new Rectangle(xPosition, yPosition, _tileScale, _tileScale)
+                                    , Color.White);
+
+                                graphics.Draw(_content.GetTexture("default"),
+                                    new Rectangle(xPosition, yPosition, _tileScale, _tileScale),
+                                    new Color(0, 0, 0, 0.4f));
+                            }
+                        }
 
                         if (tile != WorldTile.Air)
                             graphics.DrawAtlas(

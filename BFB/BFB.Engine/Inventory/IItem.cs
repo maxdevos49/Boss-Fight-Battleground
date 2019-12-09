@@ -17,6 +17,8 @@ namespace BFB.Engine.Inventory
         /// Meta data about a focused tile that a item component might need
         /// </summary>
         TileTarget TileTarget { get; set; }
+
+        InventorySlot GetInventorySlotItem();
         
         /// <summary>
         /// Increments the item stack by one if the item configuration allows

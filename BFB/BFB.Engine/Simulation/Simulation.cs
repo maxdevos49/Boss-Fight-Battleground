@@ -26,11 +26,13 @@ namespace BFB.Engine.Simulation
         private bool _simulating;
         private readonly int _tickSpeed;
         private readonly Random _random;
+        
         public int Tick { get; private set; } 
         private readonly Dictionary<string,SimulationEntity> _entitiesIndex;
         private readonly Dictionary<string, SimulationEntity> _playerEntitiesIndex;
-        public readonly List<GameComponent> gameComponents;
-        public GameState gameState;
+        
+        public readonly List<GameModeComponent> GameComponents;
+        public GameState GameState;
 
         public int ConnectedClients;
 
@@ -117,9 +119,9 @@ namespace BFB.Engine.Simulation
             _playerEntitiesIndex = new Dictionary<string, SimulationEntity>();
             
             // Gameplay
-            gameComponents = new List<GameComponent>();
-            gameComponents.Add(new PreGameComponent());
-            gameState = GameState.PreGame;
+            GameComponents = new List<GameModeComponent>();
+            GameComponents.Add(new PreGameModeComponent());
+            GameState = GameState.PreGame;
 
             TileComponentManager.LoadTileComponents();
         }
@@ -229,7 +231,7 @@ namespace BFB.Engine.Simulation
                     EmitRemoveEntity(entity, reason);
                 }
 
-                if (_playerEntitiesIndex.Count == 0 && _simulating && gameState != GameState.PostGame)
+                if (_playerEntitiesIndex.Count == 0 && _simulating && GameState != GameState.PostGame)
                     Stop();
 
             }
@@ -243,7 +245,7 @@ namespace BFB.Engine.Simulation
 
         public void EmitRemoveEntity(SimulationEntity entity, EntityRemovalReason? reason)
         {
-            foreach (GameComponent component in gameComponents)
+            foreach (GameModeComponent component in GameComponents)
             {
                 component.OnEntityRemove(this, entity, reason);
             }
@@ -271,6 +273,7 @@ namespace BFB.Engine.Simulation
         #endregion
 
         #region GetPlayerEntities
+        
         public List<SimulationEntity> GetPlayerEntities()
         {
             return _playerEntitiesIndex.Values.ToList();
@@ -376,6 +379,7 @@ namespace BFB.Engine.Simulation
         private void SendInventoryUpdates(SimulationEntity playerEntity)
         {
             InventorySlotMessage updates = new InventorySlotMessage();
+            List<byte> slots = new List<byte>();
 
             if (playerEntity.Inventory == null) 
                 return;
@@ -384,26 +388,38 @@ namespace BFB.Engine.Simulation
             {
                 if (item == null)
                 {
+                    playerEntity.Inventory.Remove(slotId);
+                }
+                else
+                {
                     updates.SlotUpdates.Add(new InventorySlot
                     {
-                        Mode = true,
-                        SlotId =  slotId
+                        Count = item.StackSize(),
+                        Name = item.ItemConfigKey,
+                        ItemType = item.Configuration.ItemType,
+                        Mode = false,
+                        SlotId = slotId,
+                        TextureKey = item.Configuration.TextureKey
                     });
-
-                    playerEntity.Inventory.Remove(slotId);
-                    continue;
                 }
                 
+                slots.Add(slotId);
+            }
+
+            foreach (byte slotId in playerEntity.InventorySlotHistory.Where(slotId => !slots.Contains(slotId)))
+            {
                 updates.SlotUpdates.Add(new InventorySlot
                 {
-                    Count = item.StackSize(),
-                    Name = item.ItemConfigKey,
-                    Mode = false,
-                    SlotId =  slotId,
-                    TextureKey = item.Configuration.TextureKey
+                    Mode = true,
+                    SlotId =  slotId
                 });
             }
+
+            playerEntity.InventorySlotHistory = slots;
             
+            
+
+
             if(updates.SlotUpdates.Any())
                 OnInventoryUpdate?.Invoke(playerEntity.EntityId,updates);
         }
@@ -441,7 +457,7 @@ namespace BFB.Engine.Simulation
                     }
 
                     // Run all of the components to simulate gameplay.
-                    foreach (GameComponent component in gameComponents.ToList())
+                    foreach (GameModeComponent component in GameComponents.ToList())
                     {
                         component.Update(this);
                     }

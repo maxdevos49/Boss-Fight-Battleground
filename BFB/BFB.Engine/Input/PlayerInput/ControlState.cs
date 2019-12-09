@@ -15,6 +15,7 @@ namespace BFB.Engine.Input.PlayerInput
         public bool LeftClick { get; set; }
         public bool RightClick { get; set; }
         public byte HotBarPosition { get; set; }
+        public bool DropItem { get; set; }
         public BfbVector Mouse { get; set; }
         
         public ControlState()
@@ -24,6 +25,7 @@ namespace BFB.Engine.Input.PlayerInput
             Jump = false;
             LeftClick = false;
             RightClick = false;
+            DropItem = false;
             HotBarPosition = 0;
             Mouse = new BfbVector(0,0);
 
@@ -38,6 +40,7 @@ namespace BFB.Engine.Input.PlayerInput
                 Jump = Jump,
                 LeftClick = LeftClick,
                 RightClick = RightClick,
+                DropItem = DropItem,
                 HotBarPosition =  HotBarPosition,
                 Mouse = Mouse.Clone()
             };

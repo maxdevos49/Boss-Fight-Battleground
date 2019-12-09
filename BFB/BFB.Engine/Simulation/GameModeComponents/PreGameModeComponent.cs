@@ -1,19 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using BFB.Engine.Entity;
 using BFB.Engine.Server.Communication;
 
 namespace BFB.Engine.Simulation.GameModeComponents
 {
-    public class PreGameComponent : GameComponent
+    public class PreGameModeComponent : GameModeComponent
     {
         private bool _gameReady;
         private int _timeToStart;
         private bool _gameStarted;
         private bool _showingCountdown;
 
-        public PreGameComponent() : base()
+        public PreGameModeComponent()
         {
             _gameReady = false;
             _gameStarted = false;
@@ -51,14 +49,14 @@ namespace BFB.Engine.Simulation.GameModeComponents
 
             if (_gameReady && _timeToStart <= 0)
             {
-                simulation.GameComponents.Add(new ManaRegenComponent());
-                simulation.GameComponents.Add(new AIMobSpawnComponent());
-                simulation.GameComponents.Add(new BossSpawnComponent());
-                simulation.GameComponents.Add(new PlayerRespawnComponent());
+                simulation.GameComponents.Add(new ManaRegenModeComponent());
+                simulation.GameComponents.Add(new AIMobSpawnModeComponent());
+                simulation.GameComponents.Add(new BossSpawnModeComponent());
+                simulation.GameComponents.Add(new PlayerRespawnModeComponent());
                 
-                GameComponent component = new GameEndComponent();
-                component.Init(simulation);
-                simulation.GameComponents.Add(component);
+                GameModeComponent modeComponent = new GameModeEndComponent();
+                modeComponent.Init(simulation);
+                simulation.GameComponents.Add(modeComponent);
 
                 simulation.GameState = GameState.InProgress;
 

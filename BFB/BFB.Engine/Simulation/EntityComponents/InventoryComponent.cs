@@ -37,29 +37,29 @@ namespace BFB.Engine.Simulation.EntityComponents
             entity.Inventory = new InventoryManager(27, 7);
 
             //Temp items
-            Item item = new Item("Wood");
+            Item item = new Item("ZombieSword");
+            item.SetStackSize(2);
+            entity.Inventory.Insert(item);
+            
+            item = new Item("WoodWall");
             item.SetStackSize(64);
             entity.Inventory.Insert(item);
-//            
-//            item = new Item("WoodWall");
-//            item.SetStackSize(64);
-//            entity.Inventory.Insert(item);
-//            
-//            item = new Item("Leaves");
-//            item.SetStackSize(64);
-//            entity.Inventory.Insert(item);
-//            
-//            item = new Item("LeavesWall");
-//            item.SetStackSize(64);
-//            entity.Inventory.Insert(item);
-//            
-//            item = new Item("Plank");
-//            item.SetStackSize(64);
-//            entity.Inventory.Insert(item);
-//            
-//            item = new Item("PlankWall");
-//            item.SetStackSize(64);
-//            entity.Inventory.Insert(item);
+            
+            item = new Item("Leaves");
+            item.SetStackSize(64);
+            entity.Inventory.Insert(item);
+            
+            item = new Item("LeavesWall");
+            item.SetStackSize(64);
+            entity.Inventory.Insert(item);
+            
+            item = new Item("Plank");
+            item.SetStackSize(64);
+            entity.Inventory.Insert(item);
+            
+            item = new Item("PlankWall");
+            item.SetStackSize(64);
+            entity.Inventory.Insert(item);
         }
 
         /// <summary>
