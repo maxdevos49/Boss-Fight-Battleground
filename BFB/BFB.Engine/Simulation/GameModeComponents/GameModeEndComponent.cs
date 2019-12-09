@@ -6,12 +6,12 @@ using BFB.Engine.Entity;
 
 namespace BFB.Engine.Simulation.GameModeComponents
 {
-    public class GameEndComponent : GameComponent
+    public class GameModeEndComponent : GameModeComponent
     {
         private bool _gameEnded;
         private int _humansRemaining;
 
-        public GameEndComponent() : base()
+        public GameModeEndComponent() : base()
         {
             _gameEnded = false;
         }
@@ -33,11 +33,11 @@ namespace BFB.Engine.Simulation.GameModeComponents
                     if (entity.EntityType != EntityType.Player)
                         simulation.RemoveEntity(entity.EntityId);
                 }
-                simulation.gameComponents.Clear();
+                simulation.GameComponents.Clear();
 
-                simulation.gameState = GameState.PostGame;
-                GameComponent component = new PostGameComponent();
-                simulation.gameComponents.Add(component);
+                simulation.GameState = GameState.PostGame;
+                GameModeComponent modeComponent = new PostGameModeComponent();
+                simulation.GameComponents.Add(modeComponent);
             }
         }
 

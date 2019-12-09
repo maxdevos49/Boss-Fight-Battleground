@@ -6,14 +6,14 @@ using JetBrains.Annotations;
 
 namespace BFB.Engine.Simulation.GameModeComponents
 {
-    public class BossSpawnComponent : GameComponent
+    public class BossSpawnModeComponent : GameModeComponent
     {
         private int BossesAlive;
         private int timeToSpawn;
         private bool hasPlagueOccured;
         private Random _random;
 
-        public BossSpawnComponent() : base()
+        public BossSpawnModeComponent() : base()
         {
             BossesAlive = 0;
             hasPlagueOccured = false;

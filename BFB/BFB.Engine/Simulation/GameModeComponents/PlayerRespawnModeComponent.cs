@@ -6,7 +6,7 @@ using BFB.Engine.Server.Communication;
 
 namespace BFB.Engine.Simulation.GameModeComponents
 {
-    public class PlayerRespawnComponent : GameComponent
+    public class PlayerRespawnModeComponent : GameModeComponent
     {
         public override void OnEntityRemove(Simulation simulation, SimulationEntity entity, EntityRemovalReason? reason)
         {

@@ -5,9 +5,9 @@ using BFB.Engine.Entity;
 
 namespace BFB.Engine.Simulation.GameModeComponents
 {
-    public class GameComponent
+    public class GameModeComponent
     {
-        public GameComponent() { }
+        public GameModeComponent() { }
 
         public virtual void Init(Simulation simulation) { }
 

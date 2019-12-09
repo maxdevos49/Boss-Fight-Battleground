@@ -5,10 +5,10 @@ using BFB.Engine.Entity;
 
 namespace BFB.Engine.Simulation.GameModeComponents
 {
-    public class ManaRegenComponent : GameComponent
+    public class ManaRegenModeComponent : GameModeComponent
     {
         private int timeToRegen;
-        public ManaRegenComponent() : base()
+        public ManaRegenModeComponent() : base()
         {
             timeToRegen = 40;
         }

@@ -11,7 +11,7 @@ using BFB.Engine.TileMap;
 
 namespace BFB.Engine.Simulation.GameModeComponents
 {
-    public class AIMobSpawnComponent : GameComponent
+    public class AIMobSpawnModeComponent : GameModeComponent
     {
 
         private int AIMonstersAlive;
@@ -19,7 +19,7 @@ namespace BFB.Engine.Simulation.GameModeComponents
         private int timeToSpawn;
         private Random _random;
 
-        public AIMobSpawnComponent() : base()
+        public AIMobSpawnModeComponent() : base()
         {
             AIMonstersAlive = 0;
             AIMonstersMaxSpawnAmount = 20; //TODO

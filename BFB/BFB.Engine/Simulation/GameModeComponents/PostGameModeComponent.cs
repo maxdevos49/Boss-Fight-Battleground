@@ -5,10 +5,10 @@ using BFB.Engine.Entity;
 
 namespace BFB.Engine.Simulation.GameModeComponents
 {
-    public class PostGameComponent : GameComponent
+    public class PostGameModeComponent : GameModeComponent
     {
         private int timeToRestart;
-        public PostGameComponent() : base()
+        public PostGameModeComponent() : base()
         {
             Console.WriteLine("GAME ENDED");
             timeToRestart = 20 * 10;
@@ -42,9 +42,9 @@ namespace BFB.Engine.Simulation.GameModeComponents
 
         private void ResetGame(Simulation simulation)
         {
-            simulation.gameComponents.Clear();
-            simulation.gameComponents.Add(new PreGameComponent());
-            simulation.gameState = GameState.PreGame;
+            simulation.GameComponents.Clear();
+            simulation.GameComponents.Add(new PreGameModeComponent());
+            simulation.GameState = GameState.PreGame;
         }
     }
 }
