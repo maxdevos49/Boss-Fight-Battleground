@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using BFB.Engine.Content;
 using BFB.Engine.Event;
 using BFB.Engine.Helpers;
@@ -55,7 +56,9 @@ namespace BFB.Engine.UI.Components
         public override void Render(SpriteBatch graphics, BFBContentManager content)
         {
             base.Render(graphics, content);
-
+            
+            #region DrawHotbarBorder
+            
             if (_slotId == _inventory.ActiveSlot && _hotBarMode)
             {
                 graphics.DrawBorder(
@@ -69,6 +72,10 @@ namespace BFB.Engine.UI.Components
                     content.GetTexture("default"));
             }
             
+            #endregion
+            
+            #region Draw Item
+            
             if (_inventory.GetSlots().ContainsKey(_slotId))
             {
                 InventorySlot slot = _inventory.GetSlots()[_slotId];
@@ -76,42 +83,32 @@ namespace BFB.Engine.UI.Components
                 if (string.IsNullOrEmpty(slot.TextureKey))
                     return;
                 
+                AtlasTexture atlas = content.GetAtlasTexture(slot.TextureKey);
+
                 int padding = Padding;
+                
                 if (_hover)
                     padding -= 3;
-
-                //Draw item
-                AtlasTexture atlas = content.GetAtlasTexture(slot.TextureKey);
-                int width = RenderAttributes.Width - padding * 2;
-                int height = RenderAttributes.Height - padding * 2;
                 
-                if (slot.ItemType == ItemType.Tool)
-                {
-                    width = atlas.Width * RenderAttributes.Height/atlas.Height - padding;
-                    height = atlas.Height * RenderAttributes.Height/atlas.Height - padding;
-                }
-                graphics.DrawAtlas(
-                    atlas,
-                    new Rectangle(
-                        RenderAttributes.X + padding, 
-                        RenderAttributes.Y + padding, 
-                        width, 
-                        height), 
-                    Color.White);
+                int maxHeight = RenderAttributes.Height - padding * 2;
+                int maxWidth = RenderAttributes.Width - padding * 2;
+                int scale = maxHeight / atlas.Height;
+                
+                int x = RenderAttributes.X + padding;
+                int y = RenderAttributes.Y + padding;
+                int width = atlas.Width * scale;
+                int height = atlas.Height * scale;
+                
+                graphics.DrawAtlas(atlas, new Rectangle(x, y, width, height), Color.White);
                 
                 if(slot.ItemType == ItemType.Wall)
-                    graphics.DrawAtlas(
-                        content.GetAtlasTexture("default"),
-                        new Rectangle(
-                            RenderAttributes.X + padding, 
-                            RenderAttributes.Y + padding, 
-                            RenderAttributes.Width - padding*2, 
-                            RenderAttributes.Height - padding*2), 
-                        new Color(0, 0, 0, 0.5f));
+                    graphics.DrawAtlas(atlas, new Rectangle(x, y, width, height), new Color(0,0,0,0.4f));
 
                 //draw count
                 if (slot.Count <= 1) 
                     return;
+                
+                #region Draw Stack Count
                 
                 SpriteFont font = content.GetFont(RenderAttributes.FontKey);
                 graphics.DrawString(
@@ -126,7 +123,11 @@ namespace BFB.Engine.UI.Components
                     RenderAttributes.FontSize * (graphics.GraphicsDevice.Viewport.Width/25f)/font.MeasureString(" ").Y,
                     SpriteEffects.None,
                     1);
+                
+                #endregion
             }
+            
+            #endregion
         }
         
         #endregion

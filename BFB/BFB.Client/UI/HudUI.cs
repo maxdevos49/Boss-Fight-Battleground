@@ -94,8 +94,9 @@ namespace BFB.Client.UI
 
         public override void Body()
         {
-            //Change this to draw frame outlines or not
 
+            Debug = true;
+            
             RootUI.Background(Color.Transparent);
 
             RootUI.Zstack(z1 =>
