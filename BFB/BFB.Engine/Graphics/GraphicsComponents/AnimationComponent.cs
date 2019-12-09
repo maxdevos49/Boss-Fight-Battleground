@@ -71,32 +71,59 @@ namespace BFB.Engine.Graphics.GraphicsComponents
 
         public void Draw(ClientEntity entity, SpriteBatch graphics, BFBContentManager contentManager, float worldScale)
         {
+            #region Draw Entity
             
             graphics.Draw(_animatedTexture.Texture,
                 entity.Position.ToVector2(),
                 _frameSelector,
                 _animatedTexture.ParsedColor,
                 entity.Rotation,
-                entity.Origin.ToVector2() - (entity.Dimensions.ToVector2()/2),
+                entity.Origin.ToVector2() - entity.Dimensions.ToVector2()/2,
                  _animatedTexture.Scale * worldScale,
                 !_currentAnimationSet.Mirror ? SpriteEffects.None : SpriteEffects.FlipHorizontally,
                 1);
-
+            
+            #endregion
+            
+            //Holding something?
             if (entity.Meta?.Holding?.AtlasKey == null)
                 return;
 
-            int x = entity.Facing == DirectionFacing.Left ? entity.Left : entity.Right - 15;
-            int y = (int)(entity.Height / 2f + entity.Position.Y);
+            AtlasTexture atlas = contentManager.GetAtlasTexture(entity.Meta.Holding.AtlasKey);
+            float rotation = 0;
+            float scale;
+            int x = entity.Facing == DirectionFacing.Left ? entity.Left : entity.Right;
+            int y = (int)(entity.Height / 1.5 + entity.Position.Y);
+            Vector2 origin = new Vector2(atlas.Width/2f,atlas.Height);
 
-            var atlas = contentManager.GetAtlasTexture(entity.Meta.Holding.AtlasKey);
-            graphics.DrawAtlas(atlas, new Rectangle(x-atlas.Width/2, y-atlas.Height*2, atlas.Width*2,atlas.Height*2), Color.White);
+            if (System.Math.Abs(entity.Velocity.X) > 2)
+            {
+                if (entity.Facing == DirectionFacing.Left)
+                {
+                    rotation = (float) (-45 * (System.Math.PI / 180));
+                    x += 10;
+                }
+                else
+                {
+                    rotation = (float) (45 * (System.Math.PI / 180));
+                    x -= 10;
+                }
+                y = (int)(entity.Height / 2f + entity.Position.Y);
+            }
+
+            if (entity.Meta.Holding.ItemType == ItemType.Tool)
+                scale = worldScale;
+            else
+                scale = worldScale * 0.6f;    
             
+            graphics.DrawAtlas(atlas, new Rectangle(x, y, (int)(atlas.Width * scale), (int)(atlas.Height * scale)), Color.White, rotation, origin);
             
             if (entity.Meta.Holding.ItemType == ItemType.Wall)
-                graphics.Draw(contentManager.GetTexture("default"),
-                    new Rectangle(x,y,(int)(30 * 0.6f),(int)(30* 0.6f)),
-                    new Rectangle(0,0,1,1),
-                    new Color(0,0,0,0.6f));
+                graphics.DrawAtlas(
+                    atlas, 
+                    new Rectangle(x, y, (int)(atlas.Width * scale), (int)(atlas.Height * scale)), 
+                    new Color(0,0,0,0.4f), 
+                    rotation,origin);
             
         }
     }

@@ -20,6 +20,7 @@ namespace BFB.Client
         public bool GameReady { get; set; }
         
         [UsedImplicitly]
+        [CanBeNull]
         public ClientEntity Client { get; set; }
 
         [UsedImplicitly]

@@ -178,6 +178,18 @@ namespace BFB.Client
             defaultTexture.SetData(new[] {Color.White});
             _contentManager.AddTexture("default", defaultTexture);
 
+            AtlasTexture defaultAtlas = new AtlasTexture
+            {
+                Height = 1,
+                Width = 1,
+                Scale = 1,
+                Texture = defaultTexture,
+                TextureKey = "default",
+                X = 0,
+                Y = 0
+            };
+            _contentManager.AddAtlasTexture("default", defaultAtlas);
+
             //start first scene
             _sceneManager.StartScene(nameof(MainMenuScene));
         }

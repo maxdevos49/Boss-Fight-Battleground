@@ -277,7 +277,21 @@ namespace BFB.Engine.Content
         }
         
         #endregion
+        
+        #region AddAtlasTexture
 
+        /// <summary>
+        /// Adds an animated texture to the dictionary, provided it does not already exist.
+        /// </summary>
+        /// <param name="atlasKey"></param>
+        /// <param name="texture"></param>
+        public void AddAtlasTexture(string atlasKey, AtlasTexture texture)
+        {
+            if (!_atlasTexturesContent.ContainsKey(atlasKey))
+                _atlasTexturesContent.Add(atlasKey, texture);
+        }
+        #endregion
+        
         #region UnloadAnimatedTexture
         /// <summary>
         /// Unloads the animated texture.

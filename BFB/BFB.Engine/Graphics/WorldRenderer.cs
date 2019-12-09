@@ -156,10 +156,11 @@ namespace BFB.Engine.Graphics
                             _content.GetAtlasTexture("Tiles:" + tile),
                             new Rectangle(xPosition, yPosition, _tileScale, _tileScale)
                             , Color.White);
-                        
-                        graphics.Draw(_content.GetTexture("default"),
-                            new Rectangle(xPosition, yPosition, _tileScale, _tileScale),
-                            new Color(0, 0, 0, 0.4f));
+                                
+                        graphics.DrawAtlas(
+                            _content.GetAtlasTexture("Tiles:" + tile),
+                            new Rectangle(xPosition, yPosition, _tileScale, _tileScale)
+                            , new Color(0,0,0,0.4f));
 
                     }
                     else
@@ -167,7 +168,7 @@ namespace BFB.Engine.Graphics
                         
                         WorldTile tile = world.GetBlock(x, y);
 
-                        if (tile == WorldTile.Leaves)//TODO Hacky fix
+                        if (tile == WorldTile.Leaves)
                         {
                             WorldTile wallTile = (WorldTile)world.GetWall(x, y);
                             
@@ -177,10 +178,11 @@ namespace BFB.Engine.Graphics
                                     _content.GetAtlasTexture("Tiles:" + wallTile),
                                     new Rectangle(xPosition, yPosition, _tileScale, _tileScale)
                                     , Color.White);
-
-                                graphics.Draw(_content.GetTexture("default"),
-                                    new Rectangle(xPosition, yPosition, _tileScale, _tileScale),
-                                    new Color(0, 0, 0, 0.4f));
+                                
+                                graphics.DrawAtlas(
+                                    _content.GetAtlasTexture("Tiles:" + wallTile),
+                                    new Rectangle(xPosition, yPosition, _tileScale, _tileScale)
+                                    , new Color(0,0,0,0.4f));
                             }
                         }
 
@@ -231,22 +233,17 @@ namespace BFB.Engine.Graphics
                             else
                             {
                                 float progress = playerEntity.Meta.Holding.Progress;
-                                
 
                                 if (progress < 0.05f)
-                                {
                                     graphics.DrawBorder(
                                         new Rectangle(blockPixelX, blockPixelY, _tileScale, _tileScale),
                                         2,
                                         new Color(0,0,0,0.6f), 
                                         _content.GetTexture("default"));
-                                }
                                 else
-                                {
                                     graphics.Draw(_content.GetTexture("default"),
                                         new Rectangle(blockPixelX + (int)(_tileScale*(1-progress))/2, blockPixelY + (int)(_tileScale*(1-progress))/2, (int)(_tileScale*progress), (int)(_tileScale*progress)),
                                         new Color(0,0,0,0.4f));
-                                }
                             }
                             break;
                         case ItemType.Wall:
@@ -280,8 +277,14 @@ namespace BFB.Engine.Graphics
                             break;
                         case ItemType.Tool:
 
-                            graphics.DrawAtlas(_content.GetAtlasTexture(playerEntity.Meta.Holding.AtlasKey),
-                                new Rectangle((int)mouse.X,(int) mouse.Y, _tileScale, _tileScale),
+                            var atlas = _content.GetAtlasTexture(playerEntity.Meta.Holding.AtlasKey);
+                            
+                            graphics.DrawAtlas(atlas,
+                                new Rectangle(
+                                    (int)(mouse.X - atlas.Width/2f),
+                                    (int)(mouse.Y - atlas.Height/2f), 
+                                    (int)(atlas.Width * worldScale), 
+                                    (int)(atlas.Height * worldScale)),
                                 distance > reach ? 
                                     new Color(255, 0, 0, 0.1f)
                                     : new Color(255, 255, 255, 0.1f));

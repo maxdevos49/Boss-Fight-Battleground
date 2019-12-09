@@ -16,7 +16,7 @@ namespace BFB.Client.UI
 
         public HudUI() : base(nameof(HudUI))
         {
-            BlockInput = false;//Prevents moving our player from inside the UI
+            BlockInput = false;
         }
 
         protected override void Init()
@@ -24,6 +24,8 @@ namespace BFB.Client.UI
             
             Inventory = ClientDataRegistry.GetInstance().Inventory;
             ClientEntity = ClientDataRegistry.GetInstance().Client;
+
+            #region Keypress Events
 
             AddInputListener("keypress", e =>
             {
@@ -61,6 +63,10 @@ namespace BFB.Client.UI
                         break;
                 }
             });
+
+            #endregion
+            
+            #region MouseScroll Events
             
             AddInputListener("mousescroll", e =>
             {
@@ -71,16 +77,19 @@ namespace BFB.Client.UI
                 if (e.Mouse.VerticalScrollAmount > 0)
                     Inventory.ActiveSlot++;
                 else
-                    Inventory.ActiveSlot--;
+                {
+                    if (Inventory.ActiveSlot == 0)
+                        Inventory.ActiveSlot = 6;
+                    else
+                        Inventory.ActiveSlot--;
+                }
 
-                if (Inventory.ActiveSlot < 0)
-                    Inventory.ActiveSlot = 6;
-                
                 if (Inventory.ActiveSlot > 6)
                     Inventory.ActiveSlot = 0;
 
             });
             
+            #endregion
         }
 
         public override void Body()
@@ -107,9 +116,7 @@ namespace BFB.Client.UI
                             h2.InventorySlot(Inventory, i, hotBarMode:true, clickAction: (e, slotId) =>
                             {
                                 if (e.Mouse.LeftButton == ButtonState.Pressed)
-                                {
                                     Inventory.ActiveSlot = slotId;
-                                }
                             });
                         }
                     })
