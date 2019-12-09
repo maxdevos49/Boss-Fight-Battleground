@@ -95,11 +95,23 @@ namespace BFB.Engine.Helpers
 
         #region DrawAtlas
         
-        public static void DrawAtlas(this SpriteBatch graphics, AtlasTexture atlasTexture, Rectangle rectangle, Color color, float scale = 1f)
+        public static void DrawAtlas(this SpriteBatch graphics, AtlasTexture atlasTexture, Rectangle dimensions, Color color)
         {
             graphics.Draw(atlasTexture.Texture,
-                new Rectangle(rectangle.X,rectangle.Y,(int)(rectangle.Width * scale),(int)(rectangle.Width * scale)),
+                dimensions,
                 new Rectangle(atlasTexture.X,atlasTexture.Y,atlasTexture.Width-2,atlasTexture.Height-2),
+                color);
+        }
+        
+        #endregion
+        
+        #region DrawAtlas
+        
+        public static void DrawAtlas(this SpriteBatch graphics, AtlasTexture atlasTexture, BfbVector position, Color color, float scale = 1f)
+        {
+            graphics.Draw(atlasTexture.Texture,
+                new Rectangle((int)position.X, (int)position.Y,(int)(atlasTexture.Width * scale),(int)(atlasTexture.Width * scale)),
+                new Rectangle(atlasTexture.X,atlasTexture.Y,atlasTexture.Width,atlasTexture.Height),
                 color);
         }
         

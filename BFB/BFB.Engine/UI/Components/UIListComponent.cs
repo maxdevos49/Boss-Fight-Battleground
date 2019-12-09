@@ -9,10 +9,6 @@ namespace BFB.Engine.UI.Components
     {
         private readonly Action<UIComponent, TItem> _itemTemplate;
         private readonly List<TItem> _list;
-//        private readonly UIComponent _stack;
-//        
-//        private int _scrollPosition;
-//        private int _targetScrollPosition;
         private int _count;
         
         public UIListComponent(
@@ -24,47 +20,8 @@ namespace BFB.Engine.UI.Components
             _itemTemplate = itemTemplate;
             _list = listSelector.Compile().Invoke(model);
             DefaultAttributes.StackDirection = stackDirection;
-//            _stack = stackDirection == StackDirection.Horizontal ? this.Hstack(x => { }) : this.Vstack(x => { });
-            
-//            DefaultAttributes.Overflow = Overflow.Hide;
-//            _stack.DefaultAttributes.Sizing = Sizing.Dimension;
-//            
-//            _scrollPosition = 0;
-//            _targetScrollPosition = 0;
             _count = 0;
-            
         }
-
-        #region HandleMouseScroll
-        
-//        private void HandleMouseScroll(UIEvent e)
-//        {
-//            const int fraction = 10;
-//            
-//            _targetScrollPosition = _scrollPosition + e.Mouse.VerticalScrollAmount/fraction;
-//
-//            int scrollBottom;
-//            
-//            if (_stack.DefaultAttributes.StackDirection == StackDirection.Horizontal)
-//            {
-//                int height = _stack.Children.Sum(x => x.RenderAttributes.Height);
-//                scrollBottom = RenderAttributes.Height - height;
-//            }
-//            else
-//            {
-//                int width = _stack.Children.Sum(x => x.RenderAttributes.Width);//TODO broken. Cuts off items
-//                scrollBottom = RenderAttributes.Width - width;
-//            }
-//            
-//            
-//            if (_targetScrollPosition < scrollBottom - fraction)
-//                _targetScrollPosition = scrollBottom - fraction;
-//
-//            if (_targetScrollPosition > fraction)
-//                _targetScrollPosition = fraction;
-//        }
-        
-        #endregion
 
         #region BuildList
 
@@ -89,23 +46,6 @@ namespace BFB.Engine.UI.Components
             
             BuildList();
             _count = _list.Count;
-
-//            if (_scrollPosition != _targetScrollPosition)
-//            {
-//                if (_targetScrollPosition > _scrollPosition)
-//                    _scrollPosition += System.Math.Abs(_targetScrollPosition - _scrollPosition)/10;
-//                else
-//                    _scrollPosition -= System.Math.Abs(_targetScrollPosition - _scrollPosition)/10;
-//
-//                if (System.Math.Abs(_targetScrollPosition - _scrollPosition) < 2)
-//                    _scrollPosition = _targetScrollPosition;
-//            }
-//
-//            if (_stack.DefaultAttributes.StackDirection == StackDirection.Horizontal)
-//                _stack.RenderAttributes.OffsetX = _scrollPosition;
-//            else
-//                _stack.RenderAttributes.OffsetY = _scrollPosition;
-            
         }
         
         #endregion

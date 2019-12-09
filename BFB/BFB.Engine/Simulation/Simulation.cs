@@ -387,11 +387,8 @@ namespace BFB.Engine.Simulation
             foreach ((byte slotId, IItem item) in playerEntity.Inventory.GetAllItems())
             {
                 if (item == null)
-                {
                     playerEntity.Inventory.Remove(slotId);
-                }
                 else
-                {
                     updates.SlotUpdates.Add(new InventorySlot
                     {
                         Count = item.StackSize(),
@@ -401,7 +398,6 @@ namespace BFB.Engine.Simulation
                         SlotId = slotId,
                         TextureKey = item.Configuration.TextureKey
                     });
-                }
                 
                 slots.Add(slotId);
             }
@@ -416,9 +412,6 @@ namespace BFB.Engine.Simulation
             }
 
             playerEntity.InventorySlotHistory = slots;
-            
-            
-
 
             if(updates.SlotUpdates.Any())
                 OnInventoryUpdate?.Invoke(playerEntity.EntityId,updates);

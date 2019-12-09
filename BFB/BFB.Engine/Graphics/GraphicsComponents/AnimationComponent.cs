@@ -88,7 +88,10 @@ namespace BFB.Engine.Graphics.GraphicsComponents
             int x = entity.Facing == DirectionFacing.Left ? entity.Left : entity.Right - 15;
             int y = (int)(entity.Height / 2f + entity.Position.Y);
 
-            graphics.DrawAtlas(contentManager.GetAtlasTexture(entity.Meta.Holding.AtlasKey), new Rectangle(x, y, 30,30), Color.White, 0.6f);
+            var atlas = contentManager.GetAtlasTexture(entity.Meta.Holding.AtlasKey);
+            graphics.DrawAtlas(atlas, new Rectangle(x-atlas.Width/2, y-atlas.Height*2, atlas.Width*2,atlas.Height*2), Color.White);
+            
+            
             if (entity.Meta.Holding.ItemType == ItemType.Wall)
                 graphics.Draw(contentManager.GetTexture("default"),
                     new Rectangle(x,y,(int)(30 * 0.6f),(int)(30* 0.6f)),

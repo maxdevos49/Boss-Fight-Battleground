@@ -81,13 +81,22 @@ namespace BFB.Engine.UI.Components
                     padding -= 3;
 
                 //Draw item
+                AtlasTexture atlas = content.GetAtlasTexture(slot.TextureKey);
+                int width = RenderAttributes.Width - padding * 2;
+                int height = RenderAttributes.Height - padding * 2;
+                
+                if (slot.ItemType == ItemType.Tool)
+                {
+                    width = atlas.Width * RenderAttributes.Height/atlas.Height - padding;
+                    height = atlas.Height * RenderAttributes.Height/atlas.Height - padding;
+                }
                 graphics.DrawAtlas(
-                    content.GetAtlasTexture(slot.TextureKey),
+                    atlas,
                     new Rectangle(
                         RenderAttributes.X + padding, 
                         RenderAttributes.Y + padding, 
-                        RenderAttributes.Width - padding*2, 
-                        RenderAttributes.Height - padding*2), 
+                        width, 
+                        height), 
                     Color.White);
                 
                 if(slot.ItemType == ItemType.Wall)

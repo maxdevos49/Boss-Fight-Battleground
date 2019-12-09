@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Drawing;
-using System.Text;
 using BFB.Engine.Entity;
-using BFB.Engine.Helpers;
 using BFB.Engine.Input.PlayerInput;
 using BFB.Engine.Inventory;
 using BFB.Engine.Simulation.EntityComponents;
@@ -14,25 +11,25 @@ namespace BFB.Engine.Simulation.GameModeComponents
     public class AIMobSpawnModeComponent : GameModeComponent
     {
 
-        private int AIMonstersAlive;
-        private int AIMonstersMaxSpawnAmount;
-        private int timeToSpawn;
-        private Random _random;
+        private int _aiMonstersAlive;
+        private readonly int _aiMonstersMaxSpawnAmount;
+        private int _timeToSpawn;
+        private readonly Random _random;
 
-        public AIMobSpawnModeComponent() : base()
+        public AIMobSpawnModeComponent()
         {
-            AIMonstersAlive = 0;
-            AIMonstersMaxSpawnAmount = 20; //TODO
-            timeToSpawn = 15;
+            _aiMonstersAlive = 0;
+            _aiMonstersMaxSpawnAmount = 20; //TODO
+            _timeToSpawn = 15;
             _random = new Random();
         }
 
         public override void Update(Simulation simulation)
         {
-            timeToSpawn -= 1;
-            if (timeToSpawn <= 0)
+            _timeToSpawn -= 1;
+            if (_timeToSpawn <= 0)
             {
-                if (AIMonstersAlive < AIMonstersMaxSpawnAmount)
+                if (_aiMonstersAlive < _aiMonstersMaxSpawnAmount)
                 {
                     // spawn 5 zombies on each human player.
                     foreach (SimulationEntity entity in simulation.GetPlayerEntities())
@@ -64,14 +61,13 @@ namespace BFB.Engine.Simulation.GameModeComponents
                                 mob.AddComponent(new AnimatedHolding());
                                 simulation.AddEntity(mob);
 
-
-                                AIMonstersAlive += 1;
+                                _aiMonstersAlive += 1;
                             }
                         }
                     }
                 }
 
-                timeToSpawn = 15;
+                _timeToSpawn = 15;
             }
         }
 
@@ -79,7 +75,7 @@ namespace BFB.Engine.Simulation.GameModeComponents
         {
             if (entity.EntityType == EntityType.Mob)
             {
-                AIMonstersAlive -= 1;
+                _aiMonstersAlive -= 1;
             }
         }
     }

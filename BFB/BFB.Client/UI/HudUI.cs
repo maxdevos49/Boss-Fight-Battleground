@@ -92,6 +92,15 @@ namespace BFB.Client.UI
             RootUI.Zstack(z1 =>
             {
                 z1.Hstack(h2 =>
+                {
+                    //Health Bar
+
+                    //Mana Bar
+                    
+                });
+                
+                //Hotbar
+                z1.Hstack(h2 =>
                     {
                         for (byte i = 0; i < 7; i++)
                         {
