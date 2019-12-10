@@ -33,14 +33,22 @@ namespace BFB.Engine.UI.Components
         {
             base.Render(graphics, content);
             
-            if(_model == null)
+            if(_model?.Client == null || _valueSelector == null)
                 return;
 
             Vector2 position = new Vector2(RenderAttributes.X, RenderAttributes.Y);
             int width = RenderAttributes.Width /10;
             int dimension = width - 5;
-            
-            ushort? valuep = _valueSelector(_model);
+
+            ushort? valuep;
+            try
+            {
+                valuep = _valueSelector(_model);
+            }
+            catch(Exception e)
+            {
+                return;
+            }
 
             if (valuep == null)
                 return;
