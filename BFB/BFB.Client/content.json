@@ -5,7 +5,10 @@
     "Textures": {
         "button": "Sprites\\button",
       "Tiles": "Sprites\\TileAtlas",
-        "HealSpell": "Sprites\\HealSpell",
+      "HealSpell": "Sprites\\HealSpell", 
+        "BombItem":  "Sprites\\BombItem", 
+      "MagicMissileWand": "Sprites\\MagicMissileWand",
+        "FireballWand":  "Sprites\\FireballWand", 
         "ZombieSword": "Sprites\\ZombieSword",
         "Heart": "Sprites\\HeartPixel",
         "Mana": "Sprites\\StarMana"
@@ -71,6 +74,30 @@
     },
     "Items:HealSpell": {
       "TextureKey": "HealSpell",
+      "Scale": 1,
+      "X": 0,
+      "Y": 0,
+      "Width": 15,
+      "Height": 15
+    },
+    "Items:Bomb": {
+      "TextureKey": "BombItem",
+      "Scale": 0.5,
+      "X": 0,
+      "Y": 0,
+      "Width": 40,
+      "Height": 40
+    },
+    "Items:MagicMissileWand": {
+      "TextureKey": "MagicMissileWand",
+      "Scale": 1,
+      "X": 0,
+      "Y": 0,
+      "Width": 15,
+      "Height": 15
+    },
+    "Items:FireballWand": {
+      "TextureKey": "FireballWand",
       "Scale": 1,
       "X": 0,
       "Y": 0,
@@ -412,36 +439,36 @@
             }
         },
         "Boss": {
-          "Location": "Sprites\\Boss",
+          "Location": "Sprites\\BossAdam",
           "Frames": 1,
           "FrameWidth": 45,
           "FrameHeight": 60,
-          "Columns": 1,
-          "Rows": 1,
+          "Columns": 4,
+          "Rows": 4,
           "Scale": 1,
           "AnimationSets": {
             "IdleLeft": {
-              "Fps": 5,
-              "FrameStart": 0,
-              "FrameEnd": 0,
+              "Fps": 9,
+              "FrameStart": 3,
+              "FrameEnd": 12,
               "Mirror": true
             },
             "IdleRight": {
-              "Fps": 5,
-              "FrameStart": 0,
-              "FrameEnd": 0,
+              "Fps": 9,
+              "FrameStart": 3,
+              "FrameEnd": 12,
               "Mirror": false
             },
             "MoveLeft": {
-              "Fps": 9,
-              "FrameStart": 0,
-              "FrameEnd": 0,
+              "Fps": 5,
+              "FrameStart": 1,
+              "FrameEnd": 2,
               "Mirror": true
             },
             "MoveRight": {
-              "Fps": 9,
-              "FrameStart": 0,
-              "FrameEnd": 0,
+              "Fps": 5,
+              "FrameStart": 1,
+              "FrameEnd": 2,
               "Mirror": false
             }
           }

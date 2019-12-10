@@ -203,7 +203,7 @@
       "TileKey": "Unknown"
     },
     "MagicMissile": {
-      "TextureKey": "Items:MagicMissile",
+      "TextureKey": "Items:MagicMissileWand",
       "StackLimit": 1,
       "CoolDown": 10,
       "Reach": 0,
@@ -238,8 +238,8 @@
       "ItemType": "Tool",
       "TileKey": "Unknown"
     },
-    "FireBall": {
-      "TextureKey": "Items:FireBall",
+    "Fireball": {
+      "TextureKey": "Items:FireballWand",
       "StackLimit": 1,
       "CoolDown": 10,
       "Reach": 0,

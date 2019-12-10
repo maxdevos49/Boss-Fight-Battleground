@@ -30,6 +30,10 @@
     <None Remove="Content\Audio\SoundEffect\IntendedDamage.xnb" />
     <None Remove="Content\Audio\SoundEffect\Tool.xnb" />
     <None Remove="content.json" />
+    <None Remove="Content\Sprites\BombItem.xnb" />
+    <None Remove="Content\Sprites\BossAdam.xnb" />
+    <None Remove="Content\Sprites\FireballWand.xnb" />
+    <None Remove="Content\Sprites\MagicMissileWand.xnb" />
     <None Remove="Content\Sprites\Spells\HealSpell.xnb" />
     <None Remove="Content\Sprites\ZombieSword.xnb" />
     <Content Include="content.json">
