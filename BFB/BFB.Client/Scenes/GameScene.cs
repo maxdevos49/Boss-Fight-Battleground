@@ -51,8 +51,6 @@ namespace BFB.Client.Scenes
             
             _clientData = ClientDataRegistry.GetInstance();
 
-            Client.Ip = ClientDataRegistry.Ip;
-            Client.Port = ClientDataRegistry.Port;
             
             UIManager.StartLayer(nameof(LoadingGameUI),this);
             
@@ -122,7 +120,7 @@ namespace BFB.Client.Scenes
             
             Client.OnDisconnect = (m) =>
             {
-                UIManager.StartLayer(nameof(LoadingGameUI),this);//TODO Doesnt get called very often but should never be when it is user caused
+                UIManager.StartLayer(nameof(LoadingGameUI),this);
                 GlobalEventManager.Emit("onConnectionStatus", new GlobalEvent("Disconnected By Server"));
             };
             
@@ -165,7 +163,10 @@ namespace BFB.Client.Scenes
                             _clientData.Entities[em.EntityId].Meta = em.Meta;
 
                             if (em.EntityId == Client.ClientId)
+                            {
+                                _clientData.Client = _clientData.Entities[em.EntityId];
                                 _worldRenderer.Camera.Focus = _clientData.Entities[em.EntityId].OriginPosition.ToVector2();
+                            }
                         }
                         else
                         {
@@ -217,9 +218,11 @@ namespace BFB.Client.Scenes
 
             #endregion
             
+            Client.Ip = ClientDataRegistry.Ip;
+            Client.Port = ClientDataRegistry.Port;
+            
             if (!Client.Connect())
                 GlobalEventManager.Emit("onConnectionStatus", new GlobalEvent("Connection Failed"));
-
 
         }
         
