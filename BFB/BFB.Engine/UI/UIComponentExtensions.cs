@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using BFB.Client;
 using BFB.Engine.Event;
 using BFB.Engine.Inventory;
 using BFB.Engine.UI.Components;
@@ -152,9 +153,9 @@ namespace BFB.Engine.UI
         
         #region HudMeter
 
-        public static UIComponent HudMeter<TModel>(this UIComponent component, TModel model, Expression<Func<TModel,ushort?>> valueSelector, bool percentMode = false, bool mode = false)
+        public static UIComponent HudMeter(this UIComponent component, ClientDataRegistry model, Expression<Func<ClientDataRegistry,ushort?>> valueSelector, bool percentMode = false, bool mode = false)
         {
-            return AddNode(component, new UIHudMeterComponent<TModel>(model, valueSelector, percentMode,mode), null);
+            return AddNode(component, new UIHudMeterComponent(model, valueSelector, percentMode,mode), null);
         }
         
         #endregion
