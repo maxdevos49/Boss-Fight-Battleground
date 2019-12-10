@@ -1,22 +1,22 @@
 using System;
 using System.Linq.Expressions;
+using BFB.Client;
 using BFB.Engine.Content;
 using BFB.Engine.Helpers;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Vector2 = System.Numerics.Vector2;
 
 namespace BFB.Engine.UI.Components
 {
-    public class UIHudMeterComponent<TModel> : UIComponent
+    public class UIHudMeterComponent : UIComponent
     {
-        private TModel _model;
-        private Func<TModel, ushort?> _valueSelector;
+        private ClientDataRegistry _model;
+        private Func<ClientDataRegistry, ushort?> _valueSelector;
         private bool _percentMode;
         private bool _mode;
         private string textureKey;
         
-        public UIHudMeterComponent(TModel model, Expression<Func<TModel,ushort?>> valueSelector, bool percentMode = false, bool mode = false) : base(nameof(UIHudMeterComponent<TModel>), true)
+        public UIHudMeterComponent(ClientDataRegistry model, Expression<Func<ClientDataRegistry,ushort?>> valueSelector, bool percentMode = false, bool mode = false) : base(nameof(UIHudMeterComponent), true)
         {
             _model = model;
             _valueSelector = valueSelector.Compile();
@@ -79,15 +79,6 @@ namespace BFB.Engine.UI.Components
             }
         }
 
-        private void DrawItem(MeterSection section, Vector2 position)
-        {
-        }
     }
 
-    public enum MeterSection
-    {
-        Empty,
-        Half,
-        Full
-    }
 }
