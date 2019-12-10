@@ -169,6 +169,17 @@ namespace BFB.Engine.UI
         
         #endregion
         
+        #region Overflow
+
+        public static UIComponent Overflow(this UIComponent component, Overflow overflow)
+        {
+            component.DefaultAttributes.Overflow = overflow;
+            return component;
+
+        }
+        
+        #endregion
+        
         #region Border
 
         public static UIComponent Border(this UIComponent component, int borderSize = 1,  Color? borderColor = null)

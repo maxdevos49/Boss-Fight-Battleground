@@ -39,7 +39,7 @@ namespace BFB.Client.UI
                         UIManager.LaunchLayer(nameof(InventoryUI), ParentScene);
                         break;
                     case Keys.T:
-                        UIManager.LaunchLayer(nameof(ChatUI), ParentScene);
+                        UIManager.StartLayer(nameof(ChatUI), ParentScene);
                         break;
                     case Keys.D1:
                         Inventory.ActiveSlot = 0;

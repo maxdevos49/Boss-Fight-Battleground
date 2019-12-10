@@ -1,6 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using BFB.Engine.Content;
 using BFB.Engine.Event;
 using BFB.Engine.Helpers;
@@ -91,14 +89,14 @@ namespace BFB.Engine.UI.Components
                     padding -= 3;
                 
                 int maxHeight = RenderAttributes.Height - padding * 2;
-                int maxWidth = RenderAttributes.Width - padding * 2;
                 int scale = maxHeight / atlas.Height;
                 
-                int x = RenderAttributes.X + padding;
-                int y = RenderAttributes.Y + padding;
                 int width = atlas.Width * scale;
                 int height = atlas.Height * scale;
-                
+
+                int x = RenderAttributes.X + padding;
+                int y = RenderAttributes.Y + padding;
+            
                 graphics.DrawAtlas(atlas, new Rectangle(x, y, width, height), Color.White);
                 
                 if(slot.ItemType == ItemType.Wall)

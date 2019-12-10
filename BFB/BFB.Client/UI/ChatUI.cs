@@ -1,9 +1,5 @@
-using System;
 using System.Collections.Generic;
-using BFB.Engine.Simulation.ItemComponents;
 using BFB.Engine.UI;
-using BFB.Engine.UI.Components;
-using BFB.Engine.UI.Constraints;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 
@@ -27,7 +23,7 @@ namespace BFB.Client.UI
                 switch (e.Keyboard.KeyEnum)
                 {
                     case Keys.Escape:
-                        UIManager.StopLayer(nameof(ChatUI));
+                        UIManager.StartLayer(nameof(HudUI), ParentScene);
                         break;
                 }
                 

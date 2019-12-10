@@ -1,6 +1,4 @@
-using System;
 using BFB.Engine.Content;
-using BFB.Engine.Entity;
 using BFB.Engine.Helpers;
 using BFB.Engine.Inventory;
 using BFB.Engine.Math;
@@ -69,25 +67,39 @@ namespace BFB.Client.UI
 
             if (slot == null)
                 return;
+
+            AtlasTexture atlas = content.GetAtlasTexture(slot.TextureKey);
             
+            int maxHeight = RootUI.RenderAttributes.Height/10;
+            int scale = maxHeight / atlas.Height;
+            
+            int w = atlas.Width * scale;
+            int h = atlas.Height * scale;
+
+            
+            int x = (int)Mouse.X - w/2;
+            int y = (int)Mouse.Y - h/2;
+      
             graphics.DrawAtlas(
-                content.GetAtlasTexture(slot.TextureKey),
+                atlas,
                 new Rectangle(
-                    (int)Mouse.X - 20, 
-                    (int)Mouse.Y - 20, 
-                    40, 
-                    40), 
+                    x, 
+                    y, 
+                    w, 
+                    h
+                    ), 
                 Color.White);
             
             if(slot.ItemType == ItemType.Wall)
                 graphics.DrawAtlas(
-                    content.GetAtlasTexture("default"),
+                    atlas,
                     new Rectangle(
-                        (int)Mouse.X - 20, 
-                        (int)Mouse.Y - 20, 
-                        40, 
-                        40), 
-                    new Color(0, 0, 0, 0.5f));
+                        x, 
+                        y, 
+                        w, 
+                        h
+                    ), 
+                    new Color(0,0,0,0.4f));
             
             SpriteFont font = content.GetFont("default");
             (float width, float height) = font.MeasureString(slot.Count.ToString()) * 0.6f;
