@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using BFB.Engine.Event;
 using Microsoft.Xna.Framework;
@@ -43,13 +44,16 @@ namespace BFB.Engine.UI.Components
             
             if (_scrollComponent.DefaultAttributes.StackDirection == StackDirection.Horizontal)
             {
-                int height = _scrollComponent.Children.Sum(x => x.RenderAttributes.Height);//TODO broken. Cuts off items
-                scrollBottom = RenderAttributes.Height - height;
+                int width = _scrollComponent.Children.Sum(x => x.RenderAttributes.Width);
+                scrollBottom = RenderAttributes.Width - width;
             }
             else
             {
-                int width = _scrollComponent.Children.Sum(x => x.RenderAttributes.Width);
-                scrollBottom = RenderAttributes.Width - width;
+                int height = _scrollComponent.Children.Sum(x => x.RenderAttributes.Height);
+                scrollBottom = RenderAttributes.Height - height;
+
+                if (_scrollComponent is UIChatComponent)
+                    scrollBottom = _scrollComponent.RenderAttributes.Height;
             }
             
             

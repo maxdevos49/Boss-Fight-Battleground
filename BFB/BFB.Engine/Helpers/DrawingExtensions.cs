@@ -1,14 +1,54 @@
+using System;
 using System.Text;
 using BFB.Engine.Content;
 using BFB.Engine.Math;
 using BFB.Engine.UI;
+using BFB.Engine.UI.Components;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace BFB.Engine.Helpers
 {
+    [Serializable]
+    public enum ColorOption : byte
+    {
+        Black,
+        White,
+        Red,
+        Orange,
+        Yellow,
+        Green,
+        Blue,
+        Purple
+    }
+    
     public static class DrawingExtensions
     {
+        private static readonly Color[] ForegroundColors = 
+        {
+            Color.Black,
+            Color.White, 
+            Color.Red, 
+            Color.Orange, 
+            Color.Yellow, 
+            Color.Green, 
+            Color.Blue, 
+            Color.Purple, 
+        };
+
+        private const float Transparency = 0.5f;
+        private static readonly Color[] BackgroundColors = 
+        {
+            new Color(0,0,0,Transparency), 
+            new Color(255,255,255,Transparency), 
+            new Color(Color.Red.R,Color.Red.G,Color.Red.B,Transparency), 
+            new Color(Color.Orange.R,Color.Orange.G,Color.Orange.B,Transparency), 
+            new Color(Color.Yellow.R,Color.Yellow.G,Color.Yellow.B,Transparency), 
+            new Color(Color.Green.R,Color.Green.G,Color.Green.B,Transparency), 
+            new Color(Color.Blue.R,Color.Blue.G,Color.Blue.B,Transparency), 
+            new Color(Color.Purple.R,Color.Purple.G,Color.Purple.B,Transparency)
+        };
+        
         #region DrawBorder
         
         public static void DrawBorder(this SpriteBatch graphics, Rectangle rectangleToDraw, int thicknessOfBorder, Color borderColor, Texture2D texture)
@@ -113,7 +153,96 @@ namespace BFB.Engine.Helpers
         
         #endregion
         
-        #region DrawText
+        #region DrawChatText
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="graphics"></param>
+        /// <param name="yOffset"></param>
+        /// <param name="message"></param>
+        /// <param name="container"></param>
+        /// <param name="content"></param>
+        /// <returns>The bounds of the area the message took</returns>
+        public static int DrawChatText(this SpriteBatch graphics, int yOffset, ChatMessage message, UIComponent container, BFBContentManager content)
+        {
+            #region InitDimensions
+            Rectangle bounds = new Rectangle
+            {
+                X = container.RenderAttributes.X,
+                Y = container.RenderAttributes.Y + yOffset,
+                Width = container.RenderAttributes.Width,
+                Height = message.Height
+            };
+
+            message.Width = container.RenderAttributes.Width;
+            #endregion
+            
+            SpriteFont font = content.GetFont(container.RenderAttributes.FontKey);
+            Texture2D texture = content.GetTexture(container.RenderAttributes.TextureKey);
+            
+            #region Line Height and scale
+            
+            int lineHeight = (int)(content.GraphicsDevice.Viewport.Width / 25f * container.RenderAttributes.FontSize);
+            float scale =  lineHeight / font.MeasureString(" ").Y;
+            
+            #endregion
+            
+            #region Draw Background
+            
+            graphics.Draw(texture, bounds, BackgroundColors[(int)message.BackgroundColor]);
+
+            #endregion
+            
+            Vector2 cursor = new Vector2(bounds.X,bounds.Y);
+            float startingHeight = cursor.Y;
+            int spaceWidth = (int)(font.MeasureString(" ").X * scale);
+
+            cursor = graphics.DrawColoredText(font, cursor, message.Header.Text, bounds, message.Header.ForegroundColor, scale);
+
+            foreach (ChatText chatText in message.Body)
+                cursor = graphics.DrawColoredText(font, cursor, chatText.Text, bounds, chatText.ForegroundColor, scale);
+
+            message.Height = (int) (cursor.Y - startingHeight) + lineHeight;
+
+            return (int) (cursor.Y - startingHeight) + lineHeight;
+        }
+        
+        #endregion
+
+        private static Vector2 DrawColoredText(this SpriteBatch graphics, SpriteFont font, Vector2 cursor, string text, Rectangle containerBounds, ColorOption color, float scale)
+        {
+            
+            (float spaceWidth, float lineHeight) = font.MeasureString(" ") * scale;
+            
+            foreach (string word in text.Split(" "))
+            {
+                (float wordWidth, float _) = font.MeasureString(word) * scale;
+
+                if (cursor.X + wordWidth > containerBounds.X + containerBounds.Width)
+                {
+                    cursor.X = containerBounds.X;
+                    cursor.Y += lineHeight;
+                }
+                
+                graphics.DrawString(
+                    font, 
+                    word,
+                    cursor,
+                    ForegroundColors[(int)color],
+                    0, 
+                    Vector2.Zero, 
+                    scale,
+                    SpriteEffects.None, 
+                    0);
+
+                cursor.X += wordWidth + spaceWidth;
+            }
+
+            return cursor;
+        }
+        
+        #region DrawUIText
 
         public static void DrawUIText(this SpriteBatch graphics, UIComponent component, BFBContentManager content)
         {

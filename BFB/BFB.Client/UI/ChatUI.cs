@@ -12,8 +12,6 @@ namespace BFB.Client.UI
         public ChatUI() : base(nameof(ChatUI))
         {
             BlockInput = true;
-            
-            
         }
 
         protected override void Init()
@@ -43,14 +41,10 @@ namespace BFB.Client.UI
             
             RootUI.Vstack(v1 =>
                 {
+                    
+                    
                     v1.ScrollableContainer(s1 =>
                     {
-                        s1.ListFor(Model, x => x.Messages, (stack, item) =>
-                        {
-                            stack.Hstack(h1 => { h1.Text(item).FontSize(0.5f); })
-                                .Height(0.07f);
-                        });
-                        
                     }).Grow(12);
                     
 
