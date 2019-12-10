@@ -64,9 +64,9 @@ namespace BFB.Engine.UI.Components
                 }
                 else
                 {
-                    if (1000 - value >= 2)
+                    if (value - i*100 >= 100)
                         atlasKey = textureKey + ":Full";
-                    else if (value - i * 2 >= 1)
+                    else if (value - i * 50 >= 50)
                         atlasKey = textureKey + ":Half";
                     else
                         atlasKey = textureKey + ":Empty";
