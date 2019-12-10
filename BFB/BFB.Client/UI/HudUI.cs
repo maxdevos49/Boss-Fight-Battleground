@@ -96,23 +96,17 @@ namespace BFB.Client.UI
         public override void Body()
         {
 
-            Debug = true;
-            
             RootUI.Background(Color.Transparent);
 
             RootUI.Zstack(z1 =>
             {
                 z1.Hstack(h2 =>
                     {
-                        //if (ClientEntity != null && ClientEntity.Meta != null)
-                        //    h2.Text = ClientEntity.Meta.Health.ToString();
-                        //else
-                        //    h2.Text = "AHAHAHA";
+                        h2.Text = ClientEntity?.Meta != null ? ClientEntity.Meta.Health.ToString() : "AHAHAHA";
 
                         //Health Bar
 
                         //Mana Bar
-
                     }).Height(0.7f)
                     .Width(0.7f)
                     .Center(); ;
