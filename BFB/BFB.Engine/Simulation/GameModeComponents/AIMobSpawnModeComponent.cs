@@ -40,7 +40,7 @@ namespace BFB.Engine.Simulation.GameModeComponents
                         for (int i = 0; i < 5; i++)
                         {
                             int spawnLocationX = (int)entity.Position.X + _random.Next(-500, 500);
-                            int spawnLocationY = (int)entity.Position.Y - _random.Next(0,10);
+                            int spawnLocationY = (int)entity.Position.Y - _random.Next(50,100);
 
                             Tuple<int, int> blockPos =
                                 simulation.World.BlockLocationFromPixel(spawnLocationX, spawnLocationY);

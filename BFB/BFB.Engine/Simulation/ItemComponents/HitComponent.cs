@@ -23,11 +23,6 @@ namespace BFB.Engine.Simulation.ItemComponents
                 else
                     targets = simulation.World.QueryEntities(new Rectangle(entity.Right, entity.Top + entity.Height/2,reach,2), new List<string> {"melee"}, entity.EntityId);
 
-                IEnumerable<SimulationEntity> enemies = targets.Where(x =>
-                        x.EntityConfiguration.EntityKey != entity.EntityConfiguration.EntityKey);
-
-                //targets = (List<SimulationEntity>) enemies;
-
                 CombatService.FightPeople(entity, targets, simulation);
             }
             

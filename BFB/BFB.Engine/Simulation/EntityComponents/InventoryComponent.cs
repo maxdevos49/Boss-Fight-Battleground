@@ -90,7 +90,7 @@ namespace BFB.Engine.Simulation.EntityComponents
                                            System.Math.Pow(playerY - blockPixelY, 2)) / simulation.World.WorldOptions.WorldScale;
                 int reach = activeItem.Configuration.Reach == 0 ? 100 : activeItem.Configuration.Reach;
 
-                if(distance >= reach)
+                if(distance >= reach && activeItem.Configuration.ItemType != ItemType.Tool)
                     return;
             }
             
