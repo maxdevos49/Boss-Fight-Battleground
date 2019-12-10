@@ -1,8 +1,5 @@
 using System;
-using BFB.Engine.Entity;
-using BFB.Engine.Inventory;
 using BFB.Engine.UI;
-using BFB.Engine.UI.Components;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 
@@ -11,9 +8,7 @@ namespace BFB.Client.UI
     public class HudUI : UILayer
     {
         
-        private ClientInventory Inventory { get; set; }
-        
-        private  ClientEntity ClientEntity { get; set; }
+        private  ClientDataRegistry ClientData { get; set; }
 
         public HudUI() : base(nameof(HudUI))
         {
@@ -22,9 +17,7 @@ namespace BFB.Client.UI
 
         protected override void Init()
         {
-            
-            Inventory = ClientDataRegistry.GetInstance().Inventory;
-            ClientEntity = ClientDataRegistry.GetInstance().Client;
+            ClientData = ClientDataRegistry.GetInstance();
 
             #region Keypress Events
 
@@ -42,25 +35,25 @@ namespace BFB.Client.UI
                         UIManager.StartLayer(nameof(ChatUI), ParentScene);
                         break;
                     case Keys.D1:
-                        Inventory.ActiveSlot = 0;
+                        ClientData.Inventory.ActiveSlot = 0;
                         break;
                     case Keys.D2:
-                        Inventory.ActiveSlot = 1;
+                        ClientData.Inventory.ActiveSlot = 1;
                         break;
                     case Keys.D3:
-                        Inventory.ActiveSlot = 2;
+                        ClientData.Inventory.ActiveSlot = 2;
                         break;
                     case Keys.D4:
-                        Inventory.ActiveSlot = 3;
+                        ClientData.Inventory.ActiveSlot = 3;
                         break;
                     case Keys.D5:
-                        Inventory.ActiveSlot = 4;
+                        ClientData.Inventory.ActiveSlot = 4;
                         break;
                     case Keys.D6:
-                        Inventory.ActiveSlot = 5;
+                        ClientData.Inventory.ActiveSlot = 5;
                         break;
                     case Keys.D7:
-                        Inventory.ActiveSlot = 6;
+                        ClientData.Inventory.ActiveSlot = 6;
                         break;
                 }
             });
@@ -76,17 +69,17 @@ namespace BFB.Client.UI
                     return;
                 
                 if (e.Mouse.VerticalScrollAmount > 0)
-                    Inventory.ActiveSlot++;
+                    ClientData.Inventory.ActiveSlot++;
                 else
                 {
-                    if (Inventory.ActiveSlot == 0)
-                        Inventory.ActiveSlot = 6;
+                    if (ClientData.Inventory.ActiveSlot == 0)
+                        ClientData.Inventory.ActiveSlot = 6;
                     else
-                        Inventory.ActiveSlot--;
+                        ClientData.Inventory.ActiveSlot--;
                 }
 
-                if (Inventory.ActiveSlot > 6)
-                    Inventory.ActiveSlot = 0;
+                if (ClientData.Inventory.ActiveSlot > 6)
+                    ClientData.Inventory.ActiveSlot = 0;
 
             });
             
@@ -95,37 +88,42 @@ namespace BFB.Client.UI
 
         public override void Body()
         {
+            Debug = true;
 
             RootUI.Background(Color.Transparent);
 
             RootUI.Zstack(z1 =>
             {
-                z1.Hstack(h2 =>
+                z1.Vstack(h2 =>
                     {
-                        //h2.Text = ClientEntity?.Meta != null ? ClientEntity.Meta.Health.ToString() : "AHAHAHA";
 
                         //Health Bar
-
+                        h2.HudMeter(ClientData, x => x.Client.Meta.Health);
                         //Mana Bar
-                    }).Height(0.7f)
-                    .Width(0.7f)
-                    .Center(); ;
+                        h2.HudMeter(ClientData, x => x.Client.Meta.Mana, true, true);
+
+                    })
+                    .Position(Position.Absolute)
+                    .Width(0.3f)
+                    .Height(0.1f)
+                    .Right(0)
+                    .Top(0);
                 
                 //Hotbar
                 z1.Hstack(h2 =>
                     {
                         for (byte i = 0; i < 7; i++)
                         {
-                            h2.InventorySlot(Inventory, i, hotBarMode:true, clickAction: (e, slotId) =>
+                            h2.InventorySlot(ClientData.Inventory, i, hotBarMode:true, clickAction: (e, slotId) =>
                             {
                                 if (e.Mouse.LeftButton == ButtonState.Pressed)
-                                    Inventory.ActiveSlot = slotId;
+                                    ClientData.Inventory.ActiveSlot = slotId;
                             });
                         }
                     })
-                    .Width(0.45f)
+                    .Position(Position.Absolute)
                     .Height(0.1f)
-                    .Center()
+                    .Width(0.4f)
                     .Bottom(0);
             });
 
