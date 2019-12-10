@@ -11,12 +11,12 @@ namespace BFB.Engine.UI.Components
     public class UIHudMeterComponent<TModel> : UIComponent
     {
         private TModel _model;
-        private Func<TModel, ushort> _valueSelector;
+        private Func<TModel, ushort?> _valueSelector;
         private bool _percentMode;
         private bool _mode;
         private string textureKey;
         
-        public UIHudMeterComponent(TModel model, Expression<Func<TModel,ushort>> valueSelector, bool percentMode = false, bool mode = false) : base(nameof(UIHudMeterComponent<TModel>), true)
+        public UIHudMeterComponent(TModel model, Expression<Func<TModel,ushort?>> valueSelector, bool percentMode = false, bool mode = false) : base(nameof(UIHudMeterComponent<TModel>), true)
         {
             _model = model;
             _valueSelector = valueSelector.Compile();
@@ -40,7 +40,13 @@ namespace BFB.Engine.UI.Components
             int width = RenderAttributes.Width /10;
             int dimension = width - 5;
             
-            ushort value = _valueSelector(_model);
+            ushort? valuep = _valueSelector(_model);
+
+            if (valuep == null)
+                return;
+
+            var value = (ushort)valuep;
+            
             float percent = 20f / value;
             
             for (int i = 0; i < 10; i++)

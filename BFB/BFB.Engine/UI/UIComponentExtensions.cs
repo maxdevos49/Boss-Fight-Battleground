@@ -152,7 +152,7 @@ namespace BFB.Engine.UI
         
         #region HudMeter
 
-        public static UIComponent HudMeter<TModel>(this UIComponent component, TModel model, Expression<Func<TModel,ushort>> valueSelector, bool percentMode = false, bool mode = false)
+        public static UIComponent HudMeter<TModel>(this UIComponent component, TModel model, Expression<Func<TModel,ushort?>> valueSelector, bool percentMode = false, bool mode = false)
         {
             return AddNode(component, new UIHudMeterComponent<TModel>(model, valueSelector, percentMode,mode), null);
         }
