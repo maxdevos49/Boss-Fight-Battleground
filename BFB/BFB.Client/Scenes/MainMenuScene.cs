@@ -16,7 +16,7 @@ namespace BFB.Client.Scenes
 
         protected override void Init()
         {
-            UIManager.StartLayer(nameof(LoginUI),this);
+            UIManager.StartLayer(nameof(MainMenuUI),this);
         }
 
         #endregion
