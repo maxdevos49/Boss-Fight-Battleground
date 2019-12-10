@@ -60,6 +60,9 @@ namespace BFB.Engine.Simulation.EntityComponents
             item = new Item("PlankWall");
             item.SetStackSize(64);
             entity.Inventory.Insert(item);
+
+            item = new Item("HealSpell");
+            entity.Inventory.Insert(item);
         }
 
         /// <summary>
