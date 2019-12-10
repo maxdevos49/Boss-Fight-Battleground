@@ -14,12 +14,16 @@ namespace BFB.Engine.Simulation.EntityComponents
     {
         private SimulationEntity _closestEntity;
         private Random _random;
+        private bool _wanderDirection;
+        private bool _wander;
 
         public InputAI() : base(false) { }
 
         public override void Init(SimulationEntity entity)
         {
             _random = new Random();
+            _wanderDirection = false;
+            _wander = false;
         }
         public override void Update(SimulationEntity entity, Simulation simulation)
         {
@@ -27,8 +31,7 @@ namespace BFB.Engine.Simulation.EntityComponents
                 entity.ControlState.LeftClick = true;
 
             int nearest = MaxValue;
-
-            if (_closestEntity == null)
+            if (_closestEntity == null && !_wander)
             {
                 List<Chunk> chunkList = new List<Chunk>();
                 Chunk chunk = simulation.World.ChunkIndex[entity.ChunkKey];
@@ -67,27 +70,61 @@ namespace BFB.Engine.Simulation.EntityComponents
                     }
                 }
             }
-            else
+            else if (!_wander)
             {
+                int loseTarget = _random.Next(10);
+                if (loseTarget == 1)
+                {
+                    _wander = true;
+                    _closestEntity = null;
+                }
+                else
+                {
+                    //Resets the entity movement
+                    entity.SteeringVector.X = 0;
+                    entity.SteeringVector.Y = 0;
+                    //Moves entity left
+                    if (_closestEntity.Position.X < entity.Position.X)
+                    {
+                        entity.SteeringVector.Add(new BfbVector(-1, 0));
+                    }
+
+                    //Moves entity right
+                    if (_closestEntity.Position.X > entity.Position.X)
+                    {
+                        entity.SteeringVector.Add(new BfbVector(1, 0));
+                    }
+
+                    // ReSharper disable once CompareOfFloatsByEqualityOperator
+                    if (_closestEntity.Velocity.X == 0 && entity.Grounded)
+                    {
+                        entity.SteeringVector.Add(new BfbVector(0, -1));
+                    }
+                }
+            }
+
+            if (_closestEntity == null || _wander)
+            {
+                if (_wander)
+                {
+                    int getHungry = _random.Next(10);
+                    if (getHungry == 1)
+                    {
+                        _wander = false;
+                    }
+                }
                 //Resets the entity movement
                 entity.SteeringVector.X = 0;
                 entity.SteeringVector.Y = 0;
-                //Moves entity left
-                if (_closestEntity.Position.X < entity.Position.X)
-                {
-                    entity.SteeringVector.Add(new BfbVector(-1,0));
-                }
-                //Moves entity right
-                if (_closestEntity.Position.X > entity.Position.X)
-                {
-                    entity.SteeringVector.Add(new BfbVector(1,0));
-                }
 
-                // ReSharper disable once CompareOfFloatsByEqualityOperator
-                if (_closestEntity.Velocity.X == 0 && entity.Grounded)
-                {
-                    entity.SteeringVector.Add(new BfbVector(0,-1));
-                }
+                int changeWanderDirection = _random.Next(10);
+                if (changeWanderDirection == 1)
+                    _wanderDirection = !_wanderDirection;
+
+                if (_wanderDirection)
+                    entity.SteeringVector.Add(new BfbVector(-1, 0));
+                else
+                    entity.SteeringVector.Add(new BfbVector(1, 0));
             }
         }
     }
