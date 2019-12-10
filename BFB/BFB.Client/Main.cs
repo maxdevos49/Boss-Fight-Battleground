@@ -90,13 +90,13 @@ namespace BFB.Client
 
             _inputManager = new InputManager(_inputEventManager);
             _contentManager = new BFBContentManager(Content, GraphicsDevice);
-
+            _audioManager = new AudioManager(_contentManager);
             _uiManager = new UIManager(_graphicsDeviceManager.GraphicsDevice, _contentManager);
             _sceneManager = new SceneManager(Content, _graphicsDeviceManager, _globalEventManager, _uiManager);
 
             //Map Dependencies on scenes
             Scene.SceneManager = _sceneManager;
-            //Scene.AudioManager = _audioManager; //TODO renable
+            Scene.AudioManager = _audioManager; 
             Scene.UIManager = _uiManager;
             Scene.ContentManager = _contentManager;
             Scene.GraphicsDeviceManager = _graphicsDeviceManager;

@@ -13,6 +13,7 @@ using BFB.Engine.Server.Communication;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using BFB.Engine.Audio;
 
 namespace BFB.Client.Scenes
 {
@@ -72,6 +73,8 @@ namespace BFB.Client.Scenes
             {
                 GlobalEventManager.Emit("onConnectionStatus", new GlobalEvent("Server Connected..."));
                 Thread.Sleep(100);
+                AudioManager.playSong("HumanSong");
+
             };
             
             #endregion
@@ -122,6 +125,7 @@ namespace BFB.Client.Scenes
             {
                 UIManager.StartLayer(nameof(LoadingGameUI),this);
                 GlobalEventManager.Emit("onConnectionStatus", new GlobalEvent("Disconnected By Server"));
+                AudioManager.stopSong();
             };
             
             #endregion
@@ -223,6 +227,7 @@ namespace BFB.Client.Scenes
             
             if (!Client.Connect())
                 GlobalEventManager.Emit("onConnectionStatus", new GlobalEvent("Connection Failed"));
+            
 
         }
         

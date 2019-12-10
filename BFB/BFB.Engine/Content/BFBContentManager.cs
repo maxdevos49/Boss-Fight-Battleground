@@ -4,10 +4,10 @@ using System.Data;
 using System.IO;
 using JetBrains.Annotations;
 using Microsoft.Xna.Framework;
-//using Microsoft.Xna.Framework.Audio; //TODO renable
+using Microsoft.Xna.Framework.Audio; 
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-//using Microsoft.Xna.Framework.Media; //TODO renable
+using Microsoft.Xna.Framework.Media;
 using Newtonsoft.Json;
 
 namespace BFB.Engine.Content
@@ -32,9 +32,9 @@ namespace BFB.Engine.Content
             
         private readonly  Dictionary<string, SpriteFont> _fontContent;
 
-        //private readonly  Dictionary<string, Song> _audioSongContent; //TODO renable
+        private readonly  Dictionary<string, Song> _audioSongContent;
 
-        //private readonly Dictionary<string, SoundEffect> _audioSoundEffectContent; //TODO renable
+        private readonly Dictionary<string, SoundEffect> _audioSoundEffectContent; 
 
 
         #endregion
@@ -53,8 +53,8 @@ namespace BFB.Engine.Content
             _animatedTexturesContent = new Dictionary<string, AnimatedTexture>();
             _atlasTexturesContent = new Dictionary<string, AtlasTexture>();
             _fontContent = new Dictionary<string, SpriteFont>();
-            //_audioSongContent = new  Dictionary<string, Song>();  TODO renable
-            //_audioSoundEffectContent = new Dictionary<string, SoundEffect>();
+            _audioSongContent = new  Dictionary<string, Song>();  
+            _audioSoundEffectContent = new Dictionary<string, SoundEffect>();
         }
         
         #endregion
@@ -115,11 +115,11 @@ namespace BFB.Engine.Content
         /// </summary>
         /// <param name="audioKey"></param>
         /// <param name="audio"></param>
-        /*public void AddSoundEffectAudio(string audioKey, SoundEffect audio) //TODO renable
+        public void AddSoundEffectAudio(string audioKey, SoundEffect audio) 
         {
             if (!_audioSoundEffectContent.ContainsKey(audioKey))
                 _audioSoundEffectContent.Add(audioKey, audio);
-        }*/
+        }
 
         #endregion
 
@@ -129,10 +129,10 @@ namespace BFB.Engine.Content
         /// </summary>
         /// <param name="audioKey"></param>
         /// <returns></returns>
-        /*public SoundEffect GetSoundEffectAudio(string audioKey) //TODO renable
+        public SoundEffect GetSoundEffectAudio(string audioKey) 
         {
             return _audioSoundEffectContent.ContainsKey(audioKey) ? _audioSoundEffectContent[audioKey] : throw new KeyNotFoundException($"The audioKey: {audioKey} was not found.");
-        }*/
+        }
 
         #endregion
 
@@ -141,14 +141,14 @@ namespace BFB.Engine.Content
         /// Unloads the loaded audio sound effects if we'll never use it again. Also disposes it.
         /// </summary>
         /// <param name="audioKey"></param>
-/*        public void UnloadSoundEffectAudio(string audioKey) //TODO renable
+        public void UnloadSoundEffectAudio(string audioKey) 
         {
             if (_audioSoundEffectContent.ContainsKey(audioKey))
                 return;
 
             _audioSoundEffectContent[audioKey].Dispose();
             _audioSoundEffectContent.Remove(audioKey);
-        }*/
+        }
 
 
         #endregion
@@ -159,44 +159,44 @@ namespace BFB.Engine.Content
         /// </summary>
         /// <param name="audioKey"></param>
         /// <param name="audio"></param>
-       /* public void AddSongAudio(string audioKey, Song audio) //TODO renable
+        public void AddSongAudio(string audioKey, Song audio) 
         {
             if (!_audioSongContent.ContainsKey(audioKey))
                 _audioSongContent.Add(audioKey, audio);
-        }*/
-        
+        }
+
         #endregion
-        
+
         #region GetSongAudio
         /// <summary>
         /// Returns the loaded audio for songs from the dictionary.
         /// </summary>
         /// <param name="audioKey"></param>
         /// <returns></returns>
-        /*public Song GetSongAudio(string audioKey) //TODO renable
+        public Song GetSongAudio(string audioKey) 
         {
-            return _audioSongContent.ContainsKey(audioKey) ? _audioSongContent[audioKey] :  throw new KeyNotFoundException($"The audioKey: {audioKey} was not found.");
-        }*/
-        
+            return _audioSongContent.ContainsKey(audioKey) ? _audioSongContent[audioKey] : throw new KeyNotFoundException($"The audioKey: {audioKey} was not found.");
+        }
+
         #endregion
-        
+
         #region UnloadSongAudio
         /// <summary>
         /// Unloads the loaded audio songs if we'll never use it again. Also disposes it.
         /// </summary>
         /// <param name="audioKey"></param>
-  /*      public void UnloadSongAudio(string audioKey) //TODO renable
+        public void UnloadSongAudio(string audioKey)
         {
-            if (_audioSongContent.ContainsKey(audioKey)) 
+            if (_audioSongContent.ContainsKey(audioKey))
                 return;
-            
+
             _audioSongContent[audioKey].Dispose();
             _audioSongContent.Remove(audioKey);
-        }*/
+        }
 
-        
+
         #endregion
-        
+
         #region AddFont
         /// <summary>
         /// Adds the loaded font to the dictionary, provided it does not already exist.
@@ -338,7 +338,7 @@ namespace BFB.Engine.Content
             ParseAtlasTextures(content.AtlasTextures);
 
             //Parse audio
-            //ParseAudio(content.Audio); //TODO renable
+            ParseAudio(content.Audio); 
         }
         
         #endregion
@@ -459,19 +459,19 @@ namespace BFB.Engine.Content
                 _fontContent.Add(font.Key, _contentManager.Load<SpriteFont>(font.Value));
             }
         }
-        
+
         #endregion
-        
+
         #region ParseAudio
         /// <summary>
         /// Parses and loads the audio.
         /// </summary>
-/*        private void ParseAudio(Dictionary<string,AudioSound> audioConfig) //TODO renable
+        private void ParseAudio(Dictionary<string, AudioSound> audioConfig) 
         {
             foreach (var audio in audioConfig)
             {
                 Console.WriteLine("Loading audio: " + audio.Key);
-                if(audio.Value.SoundType == AudioType.Song)
+                if (audio.Value.SoundType == AudioType.Song)
                 {
                     if (_audioSongContent.ContainsKey(audio.Key))
                         throw new DuplicateNameException($"The audio key: {audio.Key} was found more then once while parsing audio");
@@ -484,10 +484,10 @@ namespace BFB.Engine.Content
                     _audioSoundEffectContent.Add(audio.Key, _contentManager.Load<SoundEffect>(audio.Value.Location));
                 }
 
-                
+
             }
-        }*/
-        
+        }
+
         #endregion
     }
 

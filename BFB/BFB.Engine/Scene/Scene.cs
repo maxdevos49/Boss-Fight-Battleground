@@ -9,7 +9,7 @@ using BFB.Engine.Event;
 using BFB.Engine.Server;
 using BFB.Engine.UI;
 using JetBrains.Annotations;
-//using BFB.Engine.Audio;
+using BFB.Engine.Audio;
 
 namespace BFB.Engine.Scene
 {
@@ -36,7 +36,7 @@ namespace BFB.Engine.Scene
         /// <summary>
         /// Used to play audio TODO reenable
         /// </summary>
-        //public static AudioManager AudioManager { get; set; }
+        public static AudioManager AudioManager { get; set; }
 
         /// <summary>
         /// Contains useful drawing stuff

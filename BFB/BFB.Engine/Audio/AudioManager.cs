@@ -1,12 +1,12 @@
 ﻿using BFB.Engine.Content;
-//using Microsoft.Xna.Framework.Audio; //TODO renable
-//using Microsoft.Xna.Framework.Media;
+using Microsoft.Xna.Framework.Audio; 
+using Microsoft.Xna.Framework.Media;
 
 namespace BFB.Engine.Audio
 {
      public class AudioManager
     {
-        /*private BFBContentManager _content; //TODO renable
+        private BFBContentManager _content; 
         private Song curSong;
         private SoundEffect curSoundEffect;
 
@@ -61,7 +61,7 @@ namespace BFB.Engine.Audio
         public bool isSongMuted()
         {
             return MediaPlayer.IsMuted;
-        }*/
+        }
 
     }
 }
