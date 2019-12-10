@@ -4,7 +4,11 @@
     },
     "Textures": {
         "button": "Sprites\\button",
-        "Tiles": "Sprites\\TileAtlas",
+      "Tiles": "Sprites\\TileAtlas",
+      "HealSpell": "Sprites\\HealSpell", 
+        "BombItem":  "Sprites\\BombItem", 
+      "MagicMissileWand": "Sprites\\MagicMissileWand",
+        "FireballWand":  "Sprites\\FireballWand", 
         "ZombieSword": "Sprites\\ZombieSword",
         "Heart": "Sprites\\HeartPixel",
         "Mana": "Sprites\\StarMana"
@@ -59,15 +63,94 @@
 			"Location": "Audio\\Song\\monsterSong"
 		}
 	},
-    "AtlasTextures": {
-      "ZombieSword": {
-        "TextureKey": "ZombieSword",
-        "Scale": 1,
-        "X": 0,
-        "Y": 0,
-        "Width": 7,
-        "Height": 26
-      },
+  "AtlasTextures": {
+    "ZombieSword": {
+      "TextureKey": "ZombieSword",
+      "Scale": 1,
+      "X": 0,
+      "Y": 0,
+      "Width": 7,
+      "Height": 26
+    },
+    "Items:HealSpell": {
+      "TextureKey": "HealSpell",
+      "Scale": 1,
+      "X": 0,
+      "Y": 0,
+      "Width": 15,
+      "Height": 15
+    },
+    "Items:Bomb": {
+      "TextureKey": "BombItem",
+      "Scale": 0.5,
+      "X": 0,
+      "Y": 0,
+      "Width": 40,
+      "Height": 40
+    },
+    "Items:MagicMissileWand": {
+      "TextureKey": "MagicMissileWand",
+      "Scale": 1,
+      "X": 0,
+      "Y": 0,
+      "Width": 15,
+      "Height": 15
+    },
+    "Items:FireballWand": {
+      "TextureKey": "FireballWand",
+      "Scale": 1,
+      "X": 0,
+      "Y": 0,
+      "Width": 15,
+      "Height": 15
+    },
+    "Tiles:Grass": {
+      "TextureKey": "Tiles",
+      "Scale": 1,
+      "X": 36,
+      "Y": 0,
+      "Width": 15,
+      "Height": 15
+    },
+    "Tiles:Dirt": {
+      "TextureKey": "Tiles",
+      "Scale": 1,
+      "X": 54,
+      "Y": 0,
+      "Width": 15,
+      "Height": 15
+    },
+    "Tiles:Stone": {
+      "TextureKey": "Tiles",
+      "Scale": 1,
+      "X": 0,
+      "Y": 18,
+      "Width": 15,
+      "Height": 15
+    },
+    "Tiles:Wood": {
+      "TextureKey": "Tiles",
+      "Scale": 1,
+      "X": 18,
+      "Y": 18,
+      "Width": 15,
+      "Height": 15
+    },
+    "Tiles:Leaves": {
+      "TextureKey": "Tiles",
+      "Scale": 1,
+      "X": 36,
+      "Y": 18,
+      "Width": 15,
+      "Height": 15
+    },
+    "Tiles:Plank": {
+      "TextureKey": "Tiles",
+      "Scale": 1,
+      "X": 54,
+      "Y": 18,
+      "Width": 15,
+      "Height": 15,
       "Tiles:Grass": {
         "TextureKey": "Tiles",
         "Scale": 1,
@@ -114,63 +197,7 @@
         "X": 54,
         "Y": 18,
         "Width": 15,
-        "Height": 15,
-        "Tiles:Grass": {
-          "TextureKey": "Tiles",
-          "Scale": 1,
-          "X": 36,
-          "Y": 0,
-          "Width": 15,
-          "Height": 15
-        },
-        "Tiles:Dirt": {
-          "TextureKey": "Tiles",
-          "Scale": 1,
-          "X": 54,
-          "Y": 0,
-          "Width": 15,
-          "Height": 15
-        },
-        "Tiles:Stone": {
-          "TextureKey": "Tiles",
-          "Scale": 1,
-          "X": 0,
-          "Y": 18,
-          "Width": 15,
-          "Height": 15
-        },
-        "Tiles:Wood": {
-          "TextureKey": "Tiles",
-          "Scale": 1,
-          "X": 18,
-          "Y": 18,
-          "Width": 15,
-          "Height": 15
-        },
-        "Tiles:Leaves": {
-          "TextureKey": "Tiles",
-          "Scale": 1,
-          "X": 36,
-          "Y": 18,
-          "Width": 15,
-          "Height": 15
-        },
-        "Tiles:Plank": {
-          "TextureKey": "Tiles",
-          "Scale": 1,
-          "X": 54,
-          "Y": 18,
-          "Width": 15,
-          "Height": 15
-        },
-        "Tiles:Missing": {
-          "TextureKey": "Tiles",
-          "Scale": 1,
-          "X": 0,
-          "Y": 0,
-          "Width": 15,
-          "Height": 15
-        }
+        "Height": 15
       },
       "Tiles:Missing": {
         "TextureKey": "Tiles",
@@ -179,88 +206,97 @@
         "Y": 0,
         "Width": 15,
         "Height": 15
-      },
-      "Heart:Full": {
-          "TextureKey": "Heart",
-          "Scale": 1,
-          "X": 0,
-          "Y": 0,
-          "Width": 30,
-          "Height": 30
-      },
-      "Heart:Most": {
-          "TextureKey": "Heart",
-          "Scale": 1,
-          "X": 30,
-          "Y": 0,
-          "Width": 30,
-          "Height": 30
-      },
-      "Heart:Half": {
-          "TextureKey": "Heart",
-          "Scale": 1,
-          "X": 0,
-          "Y": 30,
-          "Width": 30,
-          "Height": 30
-      },
-      "Heart:Partial": {
-          "TextureKey": "Heart",
-          "Scale": 1,
-          "X": 30,
-          "Y": 30,
-          "Width": 30,
-          "Height": 30
-      },
-      "Heart:Empty": {
-          "TextureKey": "Heart",
-          "Scale": 1,
-          "X": 0,
-          "Y": 60,
-          "Width": 30,
-          "Height": 30
-      },
-      "Mana:Full": {
-          "TextureKey": "Mana",
-          "Scale": 1,
-          "X": 0,
-          "Y": 0,
-          "Width": 30,
-          "Height": 30
-      },
-      "Mana:Most": {
-          "TextureKey": "Mana",
-          "Scale": 1,
-          "X": 30,
-          "Y": 0,
-          "Width": 30,
-          "Height": 30
-      },
-      "Mana:Half": {
-          "TextureKey": "Mana",
-          "Scale": 1,
-          "X": 0,
-          "Y": 30,
-          "Width": 30,
-          "Height": 30
-      },
-      "Mana:Partial": {
-          "TextureKey": "Mana",
-          "Scale": 1,
-          "X": 30,
-          "Y": 30,
-          "Width": 30,
-          "Height": 30
-      },
-      "Mana:Empty": {
-          "TextureKey": "Mana",
-          "Scale": 1,
-          "X": 0,
-          "Y": 60,
-          "Width": 30,
-          "Height": 30
       }
     },
+    "Tiles:Missing": {
+      "TextureKey": "Tiles",
+      "Scale": 1,
+      "X": 0,
+      "Y": 0,
+      "Width": 15,
+      "Height": 15
+    },
+    "Heart:Full": {
+      "TextureKey": "Heart",
+      "Scale": 1,
+      "X": 0,
+      "Y": 0,
+      "Width": 30,
+      "Height": 30
+    },
+    "Heart:Most": {
+      "TextureKey": "Heart",
+      "Scale": 1,
+      "X": 30,
+      "Y": 0,
+      "Width": 30,
+      "Height": 30
+    },
+    "Heart:Half": {
+      "TextureKey": "Heart",
+      "Scale": 1,
+      "X": 0,
+      "Y": 30,
+      "Width": 30,
+      "Height": 30
+    },
+    "Heart:Partial": {
+      "TextureKey": "Heart",
+      "Scale": 1,
+      "X": 30,
+      "Y": 30,
+      "Width": 30,
+      "Height": 30
+    },
+    "Heart:Empty": {
+      "TextureKey": "Heart",
+      "Scale": 1,
+      "X": 0,
+      "Y": 60,
+      "Width": 30,
+      "Height": 30
+    },
+    "Mana:Full": {
+      "TextureKey": "Mana",
+      "Scale": 1,
+      "X": 0,
+      "Y": 0,
+      "Width": 30,
+      "Height": 30
+    },
+    "Mana:Most": {
+      "TextureKey": "Mana",
+      "Scale": 1,
+      "X": 30,
+      "Y": 0,
+      "Width": 30,
+      "Height": 30
+    },
+    "Mana:Half": {
+      "TextureKey": "Mana",
+      "Scale": 1,
+      "X": 0,
+      "Y": 30,
+      "Width": 30,
+      "Height": 30
+    },
+    "Mana:Partial": {
+      "TextureKey": "Mana",
+      "Scale": 1,
+      "X": 30,
+      "Y": 30,
+      "Width": 30,
+      "Height": 30
+    },
+    "Mana:Empty": {
+      "TextureKey": "Mana",
+      "Scale": 1,
+      "X": 0,
+      "Y": 60,
+      "Width": 30,
+      "Height": 30
+    }
+  },
     "AnimatedTextures": {
         "Player": {
             "Location": "Sprites\\Player",
@@ -403,36 +439,36 @@
             }
         },
         "Boss": {
-          "Location": "Sprites\\Boss",
+          "Location": "Sprites\\BossAdam",
           "Frames": 1,
           "FrameWidth": 45,
           "FrameHeight": 60,
-          "Columns": 1,
-          "Rows": 1,
+          "Columns": 4,
+          "Rows": 4,
           "Scale": 1,
           "AnimationSets": {
             "IdleLeft": {
-              "Fps": 5,
-              "FrameStart": 0,
-              "FrameEnd": 0,
+              "Fps": 9,
+              "FrameStart": 3,
+              "FrameEnd": 12,
               "Mirror": true
             },
             "IdleRight": {
-              "Fps": 5,
-              "FrameStart": 0,
-              "FrameEnd": 0,
+              "Fps": 9,
+              "FrameStart": 3,
+              "FrameEnd": 12,
               "Mirror": false
             },
             "MoveLeft": {
-              "Fps": 9,
-              "FrameStart": 0,
-              "FrameEnd": 0,
+              "Fps": 5,
+              "FrameStart": 1,
+              "FrameEnd": 2,
               "Mirror": true
             },
             "MoveRight": {
-              "Fps": 9,
-              "FrameStart": 0,
-              "FrameEnd": 0,
+              "Fps": 5,
+              "FrameStart": 1,
+              "FrameEnd": 2,
               "Mirror": false
             }
           }

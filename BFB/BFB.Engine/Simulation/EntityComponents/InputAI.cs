@@ -30,9 +30,9 @@ namespace BFB.Engine.Simulation.EntityComponents
             if (entity == null || entity.ControlState == null)
                 return;
 
-            if (_closestEntity != null && !_wander)
-                entity.ControlState.LeftClick = true;
-            else
+            //if (_closestEntity != null && !_wander)
+                //entity.ControlState.LeftClick = true;
+            //else
                 entity.ControlState.LeftClick = false;
 
             int nearest = MaxValue;

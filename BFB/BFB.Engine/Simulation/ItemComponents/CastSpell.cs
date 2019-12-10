@@ -16,13 +16,19 @@ namespace BFB.Engine.Simulation.ItemComponents
             
             if (entity.ControlState == null || entity.Meta == null || entity.Meta.Mana < itemConfig.ManaCost)
                 return;
-            
+
             entity.Meta.Health += itemConfig.HealthGain;
             entity.Meta.Health -= itemConfig.HealthCost;
             
             entity.Meta.Mana += itemConfig.ManaGain;
             entity.Meta.Mana -= itemConfig.ManaCost;
-            
+
+            if (entity.Meta.Health > entity.EntityConfiguration.Health)
+                entity.Meta.Health = entity.EntityConfiguration.Health;
+
+            if (entity.Meta.Mana > entity.EntityConfiguration.Mana)
+                entity.Meta.Health = entity.EntityConfiguration.Mana;
+
             BfbVector directionVector = BfbVector.Sub(entity.ControlState.Mouse, entity.OriginPosition);
             float direction = (float)System.Math.Atan2(directionVector.Y, directionVector.X) + (float)(System.Math.PI / 2);
                 

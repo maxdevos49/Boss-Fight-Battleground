@@ -102,7 +102,7 @@ namespace BFB.Client.UI
             {
                 z1.Hstack(h2 =>
                     {
-                        h2.Text = ClientEntity?.Meta != null ? ClientEntity.Meta.Health.ToString() : "AHAHAHA";
+                        //h2.Text = ClientEntity?.Meta != null ? ClientEntity.Meta.Health.ToString() : "AHAHAHA";
 
                         //Health Bar
 
