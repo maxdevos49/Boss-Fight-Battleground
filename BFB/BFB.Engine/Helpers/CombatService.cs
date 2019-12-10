@@ -15,7 +15,7 @@ namespace BFB.Engine.Helpers
             
             foreach (SimulationEntity target in targets)
             {
-                if (target.Meta == null) continue;
+                if (target.Meta == null || (entity.EntityConfiguration.EntityKey == target.EntityConfiguration.EntityKey)) continue;
                 
                 target.Meta.Health -= damage;
 

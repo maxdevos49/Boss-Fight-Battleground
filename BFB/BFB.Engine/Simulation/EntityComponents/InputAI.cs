@@ -27,8 +27,13 @@ namespace BFB.Engine.Simulation.EntityComponents
         }
         public override void Update(SimulationEntity entity, Simulation simulation)
         {
-            if (entity != null)
+            if (entity == null || entity.ControlState == null)
+                return;
+
+            if (_closestEntity != null && !_wander)
                 entity.ControlState.LeftClick = true;
+            else
+                entity.ControlState.LeftClick = false;
 
             int nearest = MaxValue;
             if (_closestEntity == null && !_wander)
