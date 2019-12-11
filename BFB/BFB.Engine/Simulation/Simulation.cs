@@ -303,6 +303,9 @@ namespace BFB.Engine.Simulation
         /// </summary>
         public void Stop()
         {
+            if (!(GameMode?.AnyRespawn() ?? true))
+                return;
+            
             OnSimulationStop?.Invoke();
             GameMode?.EmitSimulationStop(this);
             _state = SimulationState.ShuttingDown;
@@ -423,7 +426,7 @@ namespace BFB.Engine.Simulation
 
             if (_state == SimulationState.ShuttingDown)
                 _state = SimulationState.Shutdown;
-            
+
             //Server Game loop
             while (_state == SimulationState.Running)
             {

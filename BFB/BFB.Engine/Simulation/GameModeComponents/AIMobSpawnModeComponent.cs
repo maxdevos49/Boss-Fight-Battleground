@@ -64,7 +64,7 @@ namespace BFB.Engine.Simulation.GameModeComponents
                     mob.AddComponent(new InputAI());
                     mob.AddComponent(new AnimatedHolding());
 
-                    simulation.AddEntity(mob);
+                    GameMode.RespawnEntity(mob);
 
                     _aiMonstersAlive += 1;
                 }

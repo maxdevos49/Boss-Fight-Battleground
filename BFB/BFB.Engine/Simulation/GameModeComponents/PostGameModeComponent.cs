@@ -11,7 +11,6 @@ namespace BFB.Engine.Simulation.GameModeComponents
 
         public PostGameModeComponent()
         {
-            Console.WriteLine("GAME ENDED");
             _timeToRestart = 20 * 10;
             _showingCountdown = false;
         }
@@ -57,8 +56,10 @@ namespace BFB.Engine.Simulation.GameModeComponents
 
                 ResetGame(simulation);
 
-                DataMessage message = new DataMessage();
-                message.Message = "HudUI";
+                DataMessage message = new DataMessage
+                {
+                    Message = "HudUI"
+                };
                 foreach (SimulationEntity entity in simulation.GetPlayerEntities())
                 {
                     if (entity == null || entity.Socket == null || entity.EntityType != EntityType.Player)
@@ -77,7 +78,7 @@ namespace BFB.Engine.Simulation.GameModeComponents
             // Just respawn them if the game hasn't started
             SimulationEntity player = SimulationEntity.SimulationEntityFactory("Human", entity.Socket);
 
-            simulation.AddEntity(player);
+            GameMode.RespawnEntity(player);
         }
 
         private void ConvertAllPlayersToHumans(Simulation simulation)
@@ -86,12 +87,13 @@ namespace BFB.Engine.Simulation.GameModeComponents
             {
                 simulation.RemoveEntity(entity.EntityId);
                 SimulationEntity player = SimulationEntity.SimulationEntityFactory("Human", entity.Socket);
-                simulation.AddEntity(player);
+                GameMode.RespawnEntity(player);
             }
         }
 
         private void ResetGame(Simulation simulation)
         {
+            GameMode.SwitchGameState(GameState.PreGame);
 //            simulation.GameComponents.Clear();
 //            simulation.GameComponents.Add(new PreGameModeComponent());//TODO Change game state
 //            simulation.GameState = GameState.PreGame;

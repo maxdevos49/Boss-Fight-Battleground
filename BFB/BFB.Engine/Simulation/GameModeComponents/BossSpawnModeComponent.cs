@@ -12,10 +12,20 @@ namespace BFB.Engine.Simulation.GameModeComponents
 
         public BossSpawnModeComponent()
         {
-            _hasPlagueOccured = false;
-            _timeToSpawn = 20 * 60 * 5; //TPS * seconds in min * 5 minutes.  Should spawn a boss every 5 minutes.
             _random = new Random();
         }
+        
+        #region Init
+        
+        public override void Init(Simulation simulation, SimulationGameMode gameMode)
+        {
+            base.Init(simulation, gameMode);
+            
+            _hasPlagueOccured = false;
+            _timeToSpawn = 20 * 60 * 5; //TPS * seconds in min * 5 minutes.  Should spawn a boss every 5 minutes.
+        }
+        
+        #endregion
 
         public override void Update(Simulation simulation)
         {

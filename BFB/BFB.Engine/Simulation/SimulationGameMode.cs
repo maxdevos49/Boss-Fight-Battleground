@@ -70,6 +70,15 @@ namespace BFB.Engine.Simulation
         
         #endregion
         
+        #region AnyRespawn
+
+        public bool AnyRespawn()
+        {
+            return _respawnEntities.Any();
+        }
+        
+        #endregion
+        
         #region Update
 
         public virtual void Update(Simulation simulation)
@@ -80,11 +89,15 @@ namespace BFB.Engine.Simulation
                 gameModeComponent.Update(simulation);
             
             //respawn any entities
-            if(_respawnEntities.Any())
+            if (_respawnEntities.Any())
+            {
                 foreach (SimulationEntity entity in _respawnEntities)
                 {
                     simulation.AddEntity(entity);
                 }
+
+                _respawnEntities.Clear();
+            }
 
             //if game state changes
             if (TargetState == CurrentGameState) 
