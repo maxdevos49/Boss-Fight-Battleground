@@ -1,4 +1,5 @@
-﻿using BFB.Engine.Content;
+﻿using System;
+using BFB.Engine.Content;
 using JetBrains.Annotations;
 using Microsoft.Xna.Framework.Audio; 
 using Microsoft.Xna.Framework.Media;
@@ -32,7 +33,14 @@ namespace BFB.Engine.Audio
 
         public void StopSong()
         {
-            MediaPlayer.Stop();
+            try
+            {
+                MediaPlayer.Stop();
+            }
+            catch (Exception)
+            {
+                //Do nothing
+            }
         }
 
         [UsedImplicitly]

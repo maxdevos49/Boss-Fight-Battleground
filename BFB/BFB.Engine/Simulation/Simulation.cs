@@ -286,9 +286,9 @@ namespace BFB.Engine.Simulation
         /// <summary>
         /// Starts the simulation
         /// </summary>
+        [UsedImplicitly]
         public void Start()
         {
-            Console.WriteLine("SIMULATION STARTED");
             OnSimulationStart?.Invoke();
             _simulating = true;
             Thread t = new Thread(Simulate)

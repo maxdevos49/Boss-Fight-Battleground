@@ -504,7 +504,6 @@ namespace BFB.Engine.Content
     {
         [UsedImplicitly]
         public Dictionary<string,string> Fonts { get; set; }
-
         
         public Dictionary<string,AudioSound> Audio { get; set; }
         

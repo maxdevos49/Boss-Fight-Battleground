@@ -156,15 +156,6 @@ namespace BFB.Client
             
             #endregion
             
-            #region Global Keypress Event Registration
-            
-            _inputEventManager.AddEventListener("keypress", (e) =>
-            {
-                //None :(
-            });
-
-            #endregion
-
             base.Initialize();
         }
 
