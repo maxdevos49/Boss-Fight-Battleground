@@ -22,7 +22,6 @@ namespace BFB.Client.UI
 
                 h1.Vstack(v1 =>
                 {
-                    v1.Spacer();
 
                     v1.Hstack(h2 =>
                         {
@@ -32,13 +31,12 @@ namespace BFB.Client.UI
                                         "Your Transaction has been completed. The items have been added to your account. Happy Hunting!");
                                 })
                                 .Height(1.5f)
-                                .Width(1.5f)
-                                .Right(0)
-                                .Center();
+                                .Width(1.75f)
+                                .Left(480);
                         })
-                        .Grow(4);
+                        .Grow(10);
 
-
+                    v1.Spacer();
                     v1.Hstack(h2 =>
                     {
                         h2.Hstack(h3 =>
@@ -46,7 +44,7 @@ namespace BFB.Client.UI
                             h3.Button("Menu",
                                     clickAction: (e, a) => { UIManager.StartLayer(nameof(MainMenuUI), ParentScene); })
                                 .Height(0.8f)
-                                .Width(0.4f)
+                                .Width(0.6f)
                                 .Center();
                         });
                     });

@@ -43,50 +43,40 @@ namespace BFB.Client.UI
 
                             v1.Hstack(h2 =>
                             {
-                                h2.Hstack(h4 => { h4.Text("1 Red Gem - $0.99"); })
-                                    .Height(1.0f)
-                                    .Width(1.5f);
-
-                                h2.Button("Purchase",
+                                h2.Button("1 Red Gem - $0.99",
                                         clickAction: (e, a) =>
                                         {
                                             UIManager.StartLayer(nameof(CreditCardUI), ParentScene);
                                         })
                                     .Height(1.0f)
                                     .Width(0.6f)
-                                    .Right(0)
+                                    .Center()
                                     .Top(5);
                             }).Grow(1);
 
                             v1.Hstack(h2 =>
                             {
-                                h2.Hstack(h4 => { h4.Text("5 Red Gems - $3.99"); })
-                                    .Height(1.0f)
-                                    .Width(1.5f);
-                                h2.Button("Purchase",
+                                h2.Button("5 Red Gems - $3.99",
                                         clickAction: (e, a) =>
                                         {
                                             UIManager.StartLayer(nameof(CreditCardUI), ParentScene);
                                         })
                                     .Height(1.0f)
                                     .Width(0.6f)
-                                    .Right(0)
+                                    .Center()
                                     .Top(5);
                             }).Grow(1);
 
                             v1.Hstack(h2 =>
                             {
-                                h2.Hstack(h4 => { h4.Text("20 Red Gems - $16.99"); })
-                                    .Height(1.0f)
-                                    .Width(1.5f);
-                                h2.Button("Purchase",
+                                h2.Button("20 Red Gems - $16.99",
                                         clickAction: (e, a) =>
                                         {
                                             UIManager.StartLayer(nameof(CreditCardUI), ParentScene);
                                         })
                                     .Height(1.0f)
                                     .Width(0.6f)
-                                    .Right(0)
+                                    .Center()
                                     .Top(5);
                             }).Grow(1);
 
