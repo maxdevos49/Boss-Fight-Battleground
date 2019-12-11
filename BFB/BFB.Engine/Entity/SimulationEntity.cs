@@ -349,6 +349,10 @@ namespace BFB.Engine.Entity
             //Add components
             foreach (string configComponent in config.Components)
                 newEntity.EntityComponents.Add(registry.GetEntityComponent(configComponent));
+            
+            if(newEntity.EntityType == EntityType.Mob || newEntity.EntityType == EntityType.Player)
+                newEntity.EntityComponents.Add(new ManaRegen());
+                
 
             if (socket == null)//We can assume if a socket is supplied then its a player
                 return newEntity;

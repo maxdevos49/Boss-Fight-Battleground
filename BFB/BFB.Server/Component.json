@@ -9,7 +9,7 @@
         "ZombiePhysics": {
             "FullyQualifiedName": "BFB.Engine.Simulation.EntityComponents.PhysicsWalking",
             "Args": [
-                18
+                14
             ]
         },
         "SkeletonPhysics": {

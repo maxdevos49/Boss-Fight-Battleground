@@ -1,8 +1,10 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using BFB.Engine.Entity;
 using BFB.Engine.Simulation.GameModeComponents;
 using JetBrains.Annotations;
+using Microsoft.Xna.Framework;
 
 namespace BFB.Engine.Simulation
 {
@@ -13,29 +15,57 @@ namespace BFB.Engine.Simulation
         [UsedImplicitly]
         public int CurrentStageTicks { get; private set; }
 
-        private string _currentGameModeStage;
+        [UsedImplicitly]
+        public GameState CurrentGameState { get; private set; }
+        
+        private GameState TargetState { get; set; }
+        
+        public int RequiredPlayers { get; private set; }
 
-        private readonly Dictionary<string, List<GameModeComponent>> _gameModeComponents;
+        private readonly Dictionary<GameState, List<GameModeComponent>> _gameModeComponents;
+
+        private readonly List<SimulationEntity> _respawnEntities;
         
         #endregion
         
         #region Constructor
         
-        protected SimulationGameMode(Dictionary<string, List<GameModeComponent>> gameModeComponent)
+        protected SimulationGameMode(Dictionary<GameState, List<GameModeComponent>> gameModeComponent, int requiredPlayers = 4)
         {
-            _currentGameModeStage = "default";
+            CurrentGameState = GameState.Uninitialized;
+            TargetState = GameState.PreGame;
             _gameModeComponents = gameModeComponent;
+            RequiredPlayers = requiredPlayers;
+            _respawnEntities = new List<SimulationEntity>();
         }
         
         #endregion
         
         #region Init
 
-        public virtual void Init(Simulation simulation)
+        protected virtual void Init(Simulation simulation)
         {
-            foreach ((string _, List<GameModeComponent> value) in _gameModeComponents)
-                foreach (GameModeComponent gameModeComponent in value)
-                    gameModeComponent.Init(simulation);
+            foreach (GameModeComponent gameModeComponent in _gameModeComponents[CurrentGameState])
+                gameModeComponent.Init(simulation, this);
+        }
+        
+        #endregion
+        
+        #region Reset
+
+        private void Reset(Simulation simulation)
+        {
+            foreach (GameModeComponent gameModeComponent in _gameModeComponents[CurrentGameState].ToList())
+                gameModeComponent.Reset(simulation);
+        }
+        
+        #endregion
+        
+        #region RespawnEntity
+
+        public void RespawnEntity(SimulationEntity entity)
+        {
+            _respawnEntities.Add(entity);
         }
         
         #endregion
@@ -46,24 +76,42 @@ namespace BFB.Engine.Simulation
         {
             CurrentStageTicks++;
             
-            if (!ValidateCurrentGameStage()) 
+            foreach (GameModeComponent gameModeComponent in _gameModeComponents[CurrentGameState].ToList())
+                gameModeComponent.Update(simulation);
+            
+            //respawn any entities
+            if(_respawnEntities.Any())
+                foreach (SimulationEntity entity in _respawnEntities)
+                {
+                    simulation.AddEntity(entity);
+                }
+
+            //if game state changes
+            if (TargetState == CurrentGameState) 
                 return;
             
-            foreach (GameModeComponent gameModeComponent in _gameModeComponents[_currentGameModeStage].ToList())
-                gameModeComponent.Update(simulation);
+            //Reset current components
+            Reset(simulation);
+            //Change game state
+            CurrentGameState = TargetState;
+            //Game state ticks
+            CurrentStageTicks = 0;
+            //Init new components
+            Init(simulation);
         }
         
         #endregion
         
         #region SwitchGameStage
 
-        public void SwitchGameStage(string gameModeStage)
+        public void SwitchGameState(GameState gameModeStage)
         {
-            if (ValidateCurrentGameStage(gameModeStage))
-            {
-                CurrentStageTicks = 0;
-                _currentGameModeStage = gameModeStage;
-            }
+            Console.WriteLine(gameModeStage);
+            if (!_gameModeComponents.ContainsKey(gameModeStage))
+                return;
+            
+            
+            TargetState = gameModeStage;
         }
         
         #endregion
@@ -72,10 +120,7 @@ namespace BFB.Engine.Simulation
 
         public void EmitSimulationStart(Simulation simulation)
         {
-            if (!ValidateCurrentGameStage()) 
-                return;
-            
-            foreach (GameModeComponent gameModeComponent in _gameModeComponents[_currentGameModeStage].ToList())
+            foreach (GameModeComponent gameModeComponent in _gameModeComponents[CurrentGameState].ToList())
                 gameModeComponent.OnSimulationStart(simulation);
         }
 
@@ -85,36 +130,17 @@ namespace BFB.Engine.Simulation
 
         public void EmitSimulationStop(Simulation simulation)
         {
-            if (!ValidateCurrentGameStage()) 
-                return;
-            
-            foreach (GameModeComponent gameModeComponent in _gameModeComponents[_currentGameModeStage].ToList())
+            foreach (GameModeComponent gameModeComponent in _gameModeComponents[CurrentGameState].ToList())
                 gameModeComponent.OnSimulationStop(simulation);
         }
         
         #endregion
-        
-        #region EmitReset
 
-        public void EmitReset(Simulation simulation)
-        {
-            if (!ValidateCurrentGameStage()) 
-                return;
-            
-            foreach (GameModeComponent gameModeComponent in _gameModeComponents[_currentGameModeStage].ToList())
-                gameModeComponent.Reset(simulation);
-        }
-        
-        #endregion
-        
         #region EmitGameMessage
         
         public void EmitGameMessage(string message)
         {
-            if (!ValidateCurrentGameStage()) 
-                return;
-            
-            foreach (GameModeComponent gameModeComponent in _gameModeComponents[_currentGameModeStage].ToList())
+            foreach (GameModeComponent gameModeComponent in _gameModeComponents[CurrentGameState].ToList())
                 gameModeComponent.OnGameMessage(message);
         }
         
@@ -124,10 +150,7 @@ namespace BFB.Engine.Simulation
 
         public void EmitEntityAdd(Simulation simulation, SimulationEntity entity)
         {
-            if (!ValidateCurrentGameStage()) 
-                return;
-
-            foreach (GameModeComponent gameModeComponent in _gameModeComponents[_currentGameModeStage].ToList())
+            foreach (GameModeComponent gameModeComponent in _gameModeComponents[CurrentGameState].ToList())
                 gameModeComponent.OnEntityAdd(simulation,entity);
         }
         
@@ -137,26 +160,11 @@ namespace BFB.Engine.Simulation
 
         public void EmitEntityRemove(Simulation simulation, SimulationEntity entity, EntityRemovalReason? reason)
         {
-            if (!ValidateCurrentGameStage()) 
-                return;
-            
-            foreach (GameModeComponent gameModeComponent in _gameModeComponents[_currentGameModeStage].ToList())
+            foreach (GameModeComponent gameModeComponent in _gameModeComponents[CurrentGameState].ToList())
                 gameModeComponent.OnEntityRemove(simulation,entity,reason);
         }
         
         #endregion
-        
-        #region ValidateCurrentGameStage(private)
 
-        private bool ValidateCurrentGameStage(string gameModeStage = null)
-        {
-            if (gameModeStage == null)
-                return _gameModeComponents.ContainsKey(_currentGameModeStage);
-
-            return _gameModeComponents.ContainsKey(gameModeStage);
-        }
-        
-        #endregion
-        
     }
 }

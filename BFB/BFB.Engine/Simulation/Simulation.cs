@@ -6,7 +6,6 @@ using BFB.Engine.Entity;
 using BFB.Engine.Inventory;
 using BFB.Engine.Server.Communication;
 using BFB.Engine.Simulation.BlockComponent;
-using BFB.Engine.Simulation.GameModeComponents;
 using BFB.Engine.TileMap;
 using BFB.Engine.TileMap.Generators;
 using JetBrains.Annotations;
@@ -23,7 +22,7 @@ namespace BFB.Engine.Simulation
         
         private readonly object _lock;
         
-        private bool _simulating;
+        private SimulationState _state;
         private readonly int _tickSpeed;
         private readonly Random _random;
         
@@ -31,8 +30,8 @@ namespace BFB.Engine.Simulation
         private readonly Dictionary<string,SimulationEntity> _entitiesIndex;
         private readonly Dictionary<string, SimulationEntity> _playerEntitiesIndex;
         
-        public readonly List<GameModeComponent> GameComponents;
-        public GameState GameState;
+//        public readonly List<GameModeComponent> GameComponents;
+//        public GameState GameState;
 
         public int ConnectedClients;
 
@@ -91,21 +90,25 @@ namespace BFB.Engine.Simulation
         
         public Action<string> OnSimulationOverLoad { get; set; }
         
+        [CanBeNull] 
+        private SimulationGameMode GameMode { get; set; }
 
         #endregion
         
         #region Constructor
-        
+
         /// <summary>
         /// Constructs a simulation
         /// </summary>
+        /// <param name="gameMode"></param>
         /// <param name="worldOptions">Given world options that is given to the world manager</param>
         /// <param name="tickSpeed">A optional parameter used for indicating the ticks per second. (20tps is the default)</param>
-        public Simulation(WorldOptions worldOptions, int tickSpeed = 20)
+        public Simulation(SimulationGameMode gameMode ,WorldOptions worldOptions, int tickSpeed = 20)
         {
             _lock = new object();
-            _simulating = false;
-            _tickSpeed = 1000/tickSpeed;//20 ticks a second are default
+            GameMode = gameMode;
+            _state = SimulationState.Shutdown;
+            _tickSpeed = 1000/tickSpeed;
             _random = new Random();
             Tick = 0;
             ConnectedClients = 0;
@@ -117,11 +120,6 @@ namespace BFB.Engine.Simulation
             //entities
             _entitiesIndex = new Dictionary<string, SimulationEntity>();
             _playerEntitiesIndex = new Dictionary<string, SimulationEntity>();
-            
-            // Gameplay
-            GameComponents = new List<GameModeComponent>();
-            GameComponents.Add(new PreGameModeComponent());
-            GameState = GameState.PreGame;
 
             TileComponentManager.LoadTileComponents();
         }
@@ -169,6 +167,7 @@ namespace BFB.Engine.Simulation
                     _entitiesIndex.Add(entity.EntityId,entity);
                     
                     OnEntityAdd?.Invoke(entity.EntityId, entity.EntityType == EntityType.Player);
+                    GameMode?.EmitEntityAdd(this, entity);
                     
                     //add entity to starting chunk
                     Chunk chunk = World.ChunkFromPixelLocation((int) entity.Position.X, (int) entity.Position.Y);
@@ -188,7 +187,10 @@ namespace BFB.Engine.Simulation
                                                                    (int) entity.Position.Y).ChunkKey;
                 }
 
-                if (_playerEntitiesIndex.Count <= 0 || _simulating) return;
+                if (_state == SimulationState.ShuttingDown)
+                    _state = SimulationState.Running;
+
+                if (_playerEntitiesIndex.Count <= 0 || _state == SimulationState.Running) return;
                 
                 Start();
             }
@@ -228,27 +230,16 @@ namespace BFB.Engine.Simulation
                     }
 
                     entity.EmitOnSimulationRemoval(this, reason);
-                    EmitRemoveEntity(entity, reason);
+//                    EmitRemoveEntity(entity, reason);
+                    GameMode?.EmitEntityRemove(this, entity,reason);
                 }
 
-                if (_playerEntitiesIndex.Count == 0 && _simulating && GameState != GameState.PostGame)
+                if (_playerEntitiesIndex.Count == 0 && _state == SimulationState.Running)
                     Stop();
 
             }
 
             OnEntityRemove?.Invoke(key,isPlayer);
-        }
-
-        #endregion
-
-        #region EmitRemoveEntity
-
-        public void EmitRemoveEntity(SimulationEntity entity, EntityRemovalReason? reason)
-        {
-            foreach (GameModeComponent component in GameComponents)
-            {
-                component.OnEntityRemove(this, entity, reason);
-            }
         }
 
         #endregion
@@ -290,12 +281,16 @@ namespace BFB.Engine.Simulation
         public void Start()
         {
             OnSimulationStart?.Invoke();
-            _simulating = true;
+            GameMode?.EmitSimulationStart(this);
+            
+            _state = SimulationState.Running;
+            
             Thread t = new Thread(Simulate)
             {
                 Name = "Simulation",
                 IsBackground = true
             };
+            
             t.Start();
         }
         
@@ -309,7 +304,8 @@ namespace BFB.Engine.Simulation
         public void Stop()
         {
             OnSimulationStop?.Invoke();
-            _simulating = false;
+            GameMode?.EmitSimulationStop(this);
+            _state = SimulationState.ShuttingDown;
         }
         
         #endregion
@@ -425,8 +421,11 @@ namespace BFB.Engine.Simulation
         {
             long nextTick = DateTime.Now.Ticks / TimeSpan.TicksPerMillisecond;
 
+            if (_state == SimulationState.ShuttingDown)
+                _state = SimulationState.Shutdown;
+            
             //Server Game loop
-            while (_simulating)
+            while (_state == SimulationState.Running)
             {
                 Tick++;
 
@@ -450,10 +449,7 @@ namespace BFB.Engine.Simulation
                     }
 
                     // Run all of the components to simulate gameplay.
-                    foreach (GameModeComponent component in GameComponents.ToList())
-                    {
-                        component.Update(this);
-                    }
+                    GameMode?.Update(this);
                 }
                 
                 //This is the communication aspect
@@ -475,5 +471,12 @@ namespace BFB.Engine.Simulation
         
         #endregion
         
+    }
+
+    public enum SimulationState
+    {
+        Running,
+        Shutdown,
+        ShuttingDown
     }
 }
