@@ -76,11 +76,10 @@ namespace BFB.Client.UI
                         {
                             h2.Hstack(h4 => { h4.Text("Full Name"); })
                                 .Height(1.0f)
-                                .Width(1.0f);
+                                .Width(0.5f);
                             h2.TextBoxFor(nameModel, x => x.name)
-                                .Width(1.0f)
+                                .Width(0.5f)
                                 .Height(0.8f)
-                                .Center()
                                 .Background(Color.White)
                                 .Color(Color.Black);
                         }).Grow(1);
@@ -89,11 +88,10 @@ namespace BFB.Client.UI
                         {
                             h2.Hstack(h4 => { h4.Text("Credit Card Number"); })
                                 .Height(1.0f)
-                                .Width(1.0f);
+                                .Width(0.5f);
                             h2.TextBoxFor(cardModel, x => x.number)
-                                .Width(1.0f)
+                                .Width(0.5f)
                                 .Height(0.8f)
-                                .Center()
                                 .Background(Color.White)
                                 .Color(Color.Black);
                         }).Grow(1);
@@ -102,11 +100,10 @@ namespace BFB.Client.UI
                         {
                             h2.Hstack(h4 => { h4.Text("Security Code"); })
                                 .Height(1.0f)
-                                .Width(1.0f);
+                                .Width(0.5f);
                             h2.TextBoxFor(codeModel, x => x.code)
-                                .Width(1.0f)
+                                .Width(0.5f)
                                 .Height(0.8f)
-                                .Center()
                                 .Background(Color.White)
                                 .Color(Color.Black);
                         }).Grow(1);
