@@ -1,3 +1,4 @@
+using BFB.Client.Helpers;
 using BFB.Engine.UI;
 using Microsoft.Xna.Framework;
 
@@ -5,7 +6,7 @@ namespace BFB.Client.UI
 {
     public class EditServerListUI : UILayer
     {
-        private ServerMenuModel Model { get; set; }
+        private ServerSettings Model { get; set; }
 
         public EditServerListUI() : base(nameof(EditServerListUI))
         {
@@ -13,7 +14,7 @@ namespace BFB.Client.UI
 
         protected override void Init()
         {
-            Model = ServerMenuModel.GetServers();
+            Model = ClientSettings.GetSettings().ServerSettings;
         }
 
         public override void Body()
@@ -57,9 +58,9 @@ namespace BFB.Client.UI
                                                             clickAction: (e, a) =>
                                                             {
                                                                 int index = counter1;
-                                                                var existingServers = ServerMenuModel.GetServers();
-                                                                existingServers.DirectConnect = existingServers.Servers[index].Ip;
-                                                                ServerMenuModel.SaveServer(existingServers);
+                                                                var existingServers = ClientSettings.GetSettings();
+                                                                existingServers.ServerSettings.DirectConnect = existingServers.ServerSettings.Servers[index].Ip;
+                                                                ClientSettings.SaveSettings(existingServers);
                                                             })
                                                         .Center()
                                                         .Grow(18);
@@ -80,9 +81,9 @@ namespace BFB.Client.UI
                                                             clickAction: (e, a) =>
                                                             {
                                                                 int index = counter1;
-                                                                var existingServers = ServerMenuModel.GetServers();
-                                                                existingServers.Servers.RemoveAt(index);
-                                                                ServerMenuModel.SaveServer(existingServers);
+                                                                var existingServers = ClientSettings.GetSettings();
+                                                                existingServers.ServerSettings.Servers.RemoveAt(index);
+                                                                ClientSettings.SaveSettings(existingServers);
                                                                 UIManager.StartLayer(nameof(EditServerListUI),
                                                                     ParentScene);
                                                             })

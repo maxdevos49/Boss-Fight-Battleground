@@ -45,6 +45,7 @@ namespace BFB.Engine.Content
         /// A constructor that does constructor things: initializes parameters.
         /// </summary>
         /// <param name="contentManager"></param>
+        /// <param name="graphicsDevice"></param>
         public BFBContentManager(ContentManager contentManager, GraphicsDevice graphicsDevice)
         {
             _contentManager = contentManager;
@@ -173,9 +174,10 @@ namespace BFB.Engine.Content
         /// </summary>
         /// <param name="audioKey"></param>
         /// <returns></returns>
-        public Song GetSongAudio(string audioKey) 
+        [CanBeNull]
+        public Song GetSongAudio(string audioKey)
         {
-            return _audioSongContent.ContainsKey(audioKey) ? _audioSongContent[audioKey] : throw new KeyNotFoundException($"The audioKey: {audioKey} was not found.");
+            return _audioSongContent.ContainsKey(audioKey) ? _audioSongContent[audioKey] : null;
         }
 
         #endregion
@@ -313,7 +315,7 @@ namespace BFB.Engine.Content
         /// <summary>
         /// Parses content.json to figure out what content needs to be loaded.
         /// </summary>
-        public void ParseContent()
+        public void ParseContent(bool includeAudio = false )
         {
             string json;
             
@@ -338,7 +340,8 @@ namespace BFB.Engine.Content
             ParseAtlasTextures(content.AtlasTextures);
 
             //Parse audio
-            ParseAudio(content.Audio); 
+            if(!includeAudio)
+                ParseAudio(content.Audio); 
         }
         
         #endregion

@@ -1,3 +1,5 @@
+using BFB.Client.Helpers;
+using BFB.Engine;
 using BFB.Engine.Content;
 using BFB.Engine.Helpers;
 using BFB.Engine.Inventory;

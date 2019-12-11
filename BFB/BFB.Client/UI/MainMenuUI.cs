@@ -1,5 +1,7 @@
 using System;
+using BFB.Client.Helpers;
 using BFB.Client.Scenes;
+using BFB.Engine;
 using BFB.Engine.UI;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -9,16 +11,13 @@ namespace BFB.Client.UI
 
     public class MainMenuUI : UILayer
     {
-
         private string Ip { get; set; }
 
-        public MainMenuUI() : base(nameof(MainMenuUI))
-        {
-        }
+        public MainMenuUI() : base(nameof(MainMenuUI)) { }
 
         protected override void Init()
         {
-            Ip = ServerMenuModel.GetServers().DirectConnect;
+            Ip = ClientSettings.GetSettings().ServerSettings.DirectConnect;
         }
 
         public override void Body()
@@ -48,8 +47,8 @@ namespace BFB.Client.UI
                                     h3.Button("Play",
                                         clickAction: (e, a) =>
                                         {
-                                            ClientDataRegistry.Ip = Ip.Split(":")[0];
-                                            ClientDataRegistry.Port = Convert.ToInt32(Ip.Split(":")[1]);
+                                            ConnectionSettings.Ip = Ip.Split(":")[0];
+                                            ConnectionSettings.Port = Convert.ToInt32(Ip.Split(":")[1]);
                                             SceneManager.StartScene(nameof(GameScene));
                                         });
 
@@ -80,7 +79,7 @@ namespace BFB.Client.UI
                         v1.Hstack(h2 =>
                         {
                             h2.Button("Settings",
-                                    clickAction: (e, a) => { UIManager.StartLayer(nameof(SettingsUI), ParentScene); })
+                                    clickAction: (e, a) => { UIManager.StartLayer(nameof(SettingsMenuUI), ParentScene); })
                                 .Width(0.8f)
                                 .Height(0.8f)
                                 .Center();

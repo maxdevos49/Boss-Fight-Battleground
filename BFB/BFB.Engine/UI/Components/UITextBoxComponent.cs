@@ -3,6 +3,7 @@ using System.Linq.Expressions;
 using System.Reflection;
 using BFB.Engine.Content;
 using BFB.Engine.Event;
+using BFB.Engine.Helpers;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -266,22 +267,6 @@ namespace BFB.Engine.UI.Components
 
             // Draw the string to the sprite batch!
             graphics.DrawString(font, strToDraw, position, RenderAttributes.Color, 0, Vector2.Zero, scale, SpriteEffects.None, 0);
-        }
-    }
-    
-    //TODO move to own file in a helpers folder??
-    public static class LambdaExtensions
-    {
-        public static void SetPropertyValue<T, TValue>(this T target, Expression<Func<T, TValue>> memberLambda, TValue value)
-        {
-            if (!(memberLambda.Body is MemberExpression memberSelectorExpression)) return;
-            
-            PropertyInfo property = memberSelectorExpression.Member as PropertyInfo;
-            
-            if (property != null)
-            {
-                property.SetValue(target, value, null);
-            }
         }
     }
 }

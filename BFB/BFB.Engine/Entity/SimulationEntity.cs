@@ -332,7 +332,9 @@ namespace BFB.Engine.Entity
                 Meta = new EntityMeta
                 {
                     Health = config.Health,
-                    Mana = config.Mana
+                    Mana = config.Mana,
+                    MaxHealth = config.Health,
+                    MaxMana = config.Mana
                 },
                 EntityConfiguration = config
             };

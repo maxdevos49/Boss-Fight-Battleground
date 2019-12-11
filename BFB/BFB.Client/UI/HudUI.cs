@@ -1,4 +1,6 @@
 using System;
+using BFB.Client.Helpers;
+using BFB.Engine;
 using BFB.Engine.UI;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
@@ -88,8 +90,6 @@ namespace BFB.Client.UI
 
         public override void Body()
         {
-            Debug = true;
-
             RootUI.Background(Color.Transparent);
 
             RootUI.Zstack(z1 =>
@@ -98,9 +98,9 @@ namespace BFB.Client.UI
                     {
 
                         //Health Bar
-                        h2.HudMeter(ClientData, x => x.Client.Meta.Health);
+                        h2.HudMeter(ClientData, x => x.Client.Meta);
                         //Mana Bar
-                        h2.HudMeter(ClientData, x => x.Client.Meta.Mana, true, true);
+                        h2.HudMeter(ClientData,x => x.Client.Meta, true);
 
                     })
                     .Position(Position.Absolute)

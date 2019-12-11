@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
+using BFB.Client.Helpers;
 using BFB.Client.UI;
+using BFB.Engine;
 using BFB.Engine.Entity;
 using BFB.Engine.Event;
 using BFB.Engine.Graphics;
@@ -73,7 +75,7 @@ namespace BFB.Client.Scenes
             {
                 GlobalEventManager.Emit("onConnectionStatus", new GlobalEvent("Server Connected..."));
                 Thread.Sleep(100);
-                AudioManager.playSong("HumanSong");
+                AudioManager.PlaySong("HumanSong");
 
             };
             
@@ -125,7 +127,7 @@ namespace BFB.Client.Scenes
             {
                 UIManager.StartLayer(nameof(LoadingGameUI),this);
                 GlobalEventManager.Emit("onConnectionStatus", new GlobalEvent("Disconnected By Server"));
-                AudioManager.stopSong();
+                AudioManager.StopSong();
             };
             
             #endregion
@@ -222,8 +224,8 @@ namespace BFB.Client.Scenes
 
             #endregion
             
-            Client.Ip = ClientDataRegistry.Ip;
-            Client.Port = ClientDataRegistry.Port;
+            Client.Ip = ConnectionSettings.Ip;
+            Client.Port = ConnectionSettings.Port;
             
             if (!Client.Connect())
                 GlobalEventManager.Emit("onConnectionStatus", new GlobalEvent("Connection Failed"));

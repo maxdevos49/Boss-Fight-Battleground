@@ -1,4 +1,5 @@
 ﻿using BFB.Engine.Content;
+using JetBrains.Annotations;
 using Microsoft.Xna.Framework.Audio; 
 using Microsoft.Xna.Framework.Media;
 
@@ -6,59 +7,61 @@ namespace BFB.Engine.Audio
 {
      public class AudioManager
     {
-        private BFBContentManager _content; 
-        private Song curSong;
-        private SoundEffect curSoundEffect;
+        private readonly BFBContentManager _content; 
+        private Song _curSong;
+        private SoundEffect _curSoundEffect;
 
         public AudioManager(BFBContentManager audio)
         {
             _content = audio;
         }
 
-        public void playSong(string song)
+        public void PlaySong(string song)
         {
-            curSong = _content.GetSongAudio(song);
-            MediaPlayer.Play(curSong);
-            setSongRepeating(true);
+            _curSong = _content?.GetSongAudio(song);
+            MediaPlayer.Play(_curSong);
+            SetSongRepeating(true);
         }
 
-        public void playSoundEffect(string soundEffect)
+        public void PlaySoundEffect(string soundEffect)
         {
-            curSoundEffect = _content.GetSoundEffectAudio(soundEffect);
-            curSoundEffect.Play();
+            _curSoundEffect = _content.GetSoundEffectAudio(soundEffect);
+//            _curSoundEffect.CreateInstance()
+            _curSoundEffect.Play();
         }
 
-        public void stopSong()
+        public void StopSong()
         {
             MediaPlayer.Stop();
         }
 
-        public void setSongRepeating(bool isRepeating)
+        [UsedImplicitly]
+        public void SetSongRepeating(bool isRepeating)
         {
             MediaPlayer.IsRepeating = isRepeating;
         }
 
-        public bool isSongRepeating()
+        public bool IsSongRepeating()
         {
             return MediaPlayer.IsRepeating;
         }
 
-        public void setSongVolume(float volume)
+        public void SetSongVolume(float volume)
         {
             MediaPlayer.Volume = volume;
         }
 
-        public float getSongVolume()
+        public float GetSongVolume()
         {
             return MediaPlayer.Volume;
         }
 
-        public void setSongMuted(bool isMuted)
+        public void SetSongMuted(bool isMuted)
         {
             MediaPlayer.IsMuted = isMuted;
         }
 
-        public bool isSongMuted()
+        public bool IsSongMuted()
         {
             return MediaPlayer.IsMuted;
         }

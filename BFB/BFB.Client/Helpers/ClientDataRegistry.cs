@@ -1,35 +1,27 @@
 using System.Collections.Generic;
-using System.ComponentModel;
 using BFB.Engine.Entity;
 using BFB.Engine.Inventory;
 using BFB.Engine.TileMap;
 using BFB.Engine.TileMap.Generators;
 using JetBrains.Annotations;
 
-namespace BFB.Client
+namespace BFB.Client.Helpers
 {
     public class ClientDataRegistry
     {
-        [UsedImplicitly]
-        public static string Ip { get; set; }
+        public static ClientSettings Settings { get; set; }
         
-        [UsedImplicitly]
-        public static int Port { get; set; }
+        public static ConnectionSettings ConnectionSettings { get; set; }
         
-        [UsedImplicitly]
         public bool GameReady { get; set; }
         
-        [UsedImplicitly]
         [CanBeNull]
         public ClientEntity Client { get; set; }
 
-        [UsedImplicitly]
         public Dictionary<string, ClientEntity> Entities;
         
-        [UsedImplicitly]
         public WorldManager World { get; set; }
 
-        [UsedImplicitly] 
         public ClientInventory Inventory { get; set; }
 
         #region GetInstance

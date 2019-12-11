@@ -2,10 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using BFB.Client;
+using BFB.Engine.Entity;
 using BFB.Engine.Event;
 using BFB.Engine.Inventory;
 using BFB.Engine.UI.Components;
+using Microsoft.Xna.Framework.Input;
 
 namespace BFB.Engine.UI
 {
@@ -86,7 +87,7 @@ namespace BFB.Engine.UI
         
         #endregion
         
-        #region List
+        #region ListFor
 
         public static UIComponent ListFor<TModel, TItem>(
             this UIComponent component,
@@ -153,9 +154,36 @@ namespace BFB.Engine.UI
         
         #region HudMeter
 
-        public static UIComponent HudMeter(this UIComponent component, ClientDataRegistry model, Expression<Func<ClientDataRegistry,ushort?>> valueSelector, bool percentMode = false, bool mode = false)
+        public static UIComponent HudMeter<TModel>(this UIComponent component,TModel model, Expression<Func<TModel,EntityMeta>> valueSelector, bool mode = false)
         {
-            return AddNode(component, new UIHudMeterComponent(model, valueSelector, percentMode,mode), null);
+            return AddNode(component, new UIHudMeterComponent<TModel>(model,valueSelector,mode), null);
+        }
+        
+        #endregion
+        
+        #region CheckboxFor
+        
+        public static UIComponent CheckBoxFor<TModel>(this UIComponent component,TModel model, Expression<Func<TModel,bool>> valueSelector)
+        {
+            return AddNode(component, new UICheckboxComponent<TModel>(model, valueSelector), null);
+        }
+        
+        #endregion
+        
+        #region SliderFor
+
+        public static UIComponent SliderFor<TModel>(this UIComponent component, TModel model, Expression<Func<TModel, float>> valueSelector, int lowerRange, int upperRange)
+        {
+            return AddNode(component, new UISliderComponent<TModel>(model, valueSelector, lowerRange,upperRange), null);
+        }
+        
+        #endregion
+        
+        #region ControlFor
+
+        public static UIComponent ControlFor<TModel>(this UIComponent component, TModel model, Expression<Func<TModel, Keys>> valueSelector, Action<UIEvent,string> clickHandler = null, Action<UIEvent,string> keyHandler = null)
+        {
+            return AddNode(component, new UIControlComponent<TModel>(model, valueSelector,clickHandler,keyHandler), null);
         }
         
         #endregion

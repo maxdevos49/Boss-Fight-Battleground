@@ -218,8 +218,8 @@ namespace BFB.Engine.UI
             if (DefaultAttributes.TextWrap == TextWrap.Inherit)
                 DefaultAttributes.TextWrap = Parent?.DefaultAttributes.TextWrap ?? TextWrap.Wrap;
             
-            if (DefaultAttributes.TextScaleMode == TextScaleMode.Inherit)
-                DefaultAttributes.TextScaleMode = Parent?.DefaultAttributes.TextScaleMode ?? TextScaleMode.FontSizeScale;
+            if (DefaultAttributes.FontScaleMode == FontScaleMode.Inherit)
+                DefaultAttributes.FontScaleMode = Parent?.DefaultAttributes.FontScaleMode ?? FontScaleMode.FontSizeScale;
             
             if (DefaultAttributes.VerticalAlignText == VerticalAlignText.Inherit)
                 DefaultAttributes.VerticalAlignText = Parent?.DefaultAttributes.VerticalAlignText ?? VerticalAlignText.Start;

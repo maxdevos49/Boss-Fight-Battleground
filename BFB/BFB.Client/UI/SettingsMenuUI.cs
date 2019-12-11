@@ -5,9 +5,9 @@ using Microsoft.Xna.Framework;
 
 namespace BFB.Client.UI
 {
-    public class SettingsUI : UILayer
+    public class SettingsMenuUI : UILayer
     {
-        public SettingsUI() : base(nameof(SettingsUI)) { }
+        public SettingsMenuUI() : base(nameof(SettingsMenuUI)) { }
 
         public override void Body()
         {
@@ -36,22 +36,10 @@ namespace BFB.Client.UI
 
                         v1.Hstack(h2 =>
                         {
-                            h2.Button("Connection Options",
-                                    clickAction: (e, a) =>
-                                    {
-                                        
-                                    })
-                                .Height(0.8f)
-                                .Width(0.8f)
-                                .Center();
-                        });
-                        
-                        v1.Hstack(h2 =>
-                        {
                             h2.Button("Controls",
                                     clickAction: (e, a) =>
                                     {
-                                        
+                                        UIManager.StartLayer(nameof(ControlUI), ParentScene);
                                     })
                                 .Height(0.8f)
                                 .Width(0.8f)
@@ -60,10 +48,10 @@ namespace BFB.Client.UI
                         
                         v1.Hstack(h2 =>
                         {
-                            h2.Button("Video Options",
+                            h2.Button("Sound Options",
                                     clickAction: (e, a) =>
                                     {
-                                        
+                                        UIManager.StartLayer(nameof(SoundSettingsUI), ParentScene);
                                     })
                                 .Height(0.8f)
                                 .Width(0.8f)

@@ -1,3 +1,4 @@
+using BFB.Client.Helpers;
 using BFB.Engine.UI;
 using Microsoft.Xna.Framework;
 
@@ -7,10 +8,7 @@ namespace BFB.Client.UI
     {
         private ServerMenuItem NewServer { get; set; }
 
-        public AddServerUI() : base(nameof(AddServerUI))
-        {
-            NewServer = new ServerMenuItem();
-        }
+        public AddServerUI() : base(nameof(AddServerUI))  {}
 
         protected override void Init()
         {
@@ -52,9 +50,9 @@ namespace BFB.Client.UI
                                         if (string.IsNullOrEmpty(NewServer.Name) || string.IsNullOrEmpty(NewServer.Ip))
                                             return;
                                         
-                                        var existingServers = ServerMenuModel.GetServers();
-                                        existingServers.Servers.Add(NewServer);
-                                        ServerMenuModel.SaveServer(existingServers);
+                                        ClientSettings existingServers = ClientSettings.GetSettings();
+                                        existingServers.ServerSettings.Servers.Add(NewServer);
+                                        ClientSettings.SaveSettings(existingServers);
                                         UIManager.StartLayer(nameof(ServerMenuUI), ParentScene);
                                     })
                                 .Height(0.8f)
@@ -67,7 +65,10 @@ namespace BFB.Client.UI
                         h2.Vstack(v3 =>
                         {
                             v3.Button("Cancel",
-                                    clickAction: (e, a) => { UIManager.StartLayer(nameof(ServerMenuUI), ParentScene); })
+                                    clickAction: (e, a) =>
+                                    {
+                                        UIManager.StartLayer(nameof(ServerMenuUI), ParentScene);
+                                    })
                                 .Height(0.8f)
                                 .Center();
                         }).Grow(8);

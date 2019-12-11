@@ -1,4 +1,5 @@
 ﻿using System;
+using BFB.Client.Helpers;
 using BFB.Client.Scenes;
 using BFB.Client.UI;
 using BFB.Engine.Content;
@@ -136,7 +137,7 @@ namespace BFB.Client
                 new ServerMenuUI(),
                 new AddServerUI(),
                 new EditServerListUI(),
-                new SettingsUI(),
+                new SettingsMenuUI(),
                 new HelpUI(),
                 new HudUI(),
                 new GameMenuUI(),
@@ -149,6 +150,8 @@ namespace BFB.Client
                 new InventoryUI(), 
                 new CountdownUI(),
                 new GameOverUI(), 
+                new SoundSettingsUI(), 
+                new ControlUI()
             });
             
             #endregion
@@ -171,8 +174,10 @@ namespace BFB.Client
 
         protected override void LoadContent()
         {
+            ClientDataRegistry.Settings =  ClientSettings.GetSettings();
+            
             //Parses content data from file named "content.json"
-            _contentManager.ParseContent();
+            _contentManager.ParseContent(ClientDataRegistry.Settings.DevelopmentMode);
 
             //Global texture load
             Texture2D defaultTexture = new Texture2D(_graphicsDeviceManager.GraphicsDevice, 1, 1);

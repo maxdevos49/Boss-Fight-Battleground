@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using BFB.Client.Helpers;
 using BFB.Client.Scenes;
+using BFB.Engine;
 using BFB.Engine.UI;
 using Microsoft.Xna.Framework;
 using Newtonsoft.Json;
@@ -10,7 +12,7 @@ namespace BFB.Client.UI
 {
     public class ServerMenuUI : UILayer
     {
-        private ServerMenuModel Model { get; set; }
+        private ServerSettings Model { get; set; }
 
         public ServerMenuUI() : base(nameof(ServerMenuUI))
         {
@@ -18,7 +20,7 @@ namespace BFB.Client.UI
 
         protected override void Init()
         {
-            Model = ServerMenuModel.GetServers();
+            Model = ClientSettings.GetSettings().ServerSettings;
         }
 
         public override void Body()
@@ -56,9 +58,8 @@ namespace BFB.Client.UI
                                                 v6.Button("Join",
                                                         clickAction: (e, a) =>
                                                         {
-                                                            ClientDataRegistry.Ip = item.Ip.Split(":")[0];
-                                                            ClientDataRegistry.Port =
-                                                                Convert.ToInt32(item.Ip.Split(":")[1]);
+                                                            ConnectionSettings.Ip = item.Ip.Split(":")[0];
+                                                            ConnectionSettings.Port = Convert.ToInt32(item.Ip.Split(":")[1]);
                                                             SceneManager.StartScene(nameof(GameScene));
                                                         })
                                                     .Center()
@@ -121,61 +122,6 @@ namespace BFB.Client.UI
                 .Height(0.8f)
                 .Grow(2)
                 .Center();
-        }
-    }
-
-    public class ServerMenuItem
-    {
-        public string Name { get; set; }
-
-        public string Ip { get; set; }
-    }
-
-    public class ServerMenuModel
-    {
-        public List<ServerMenuItem> Servers { get; set; }
-
-        public string DirectConnect { get; set; }
-
-        public ServerMenuModel()
-        {
-            Servers = new List<ServerMenuItem>();
-        }
-
-        public static ServerMenuModel GetServers()
-        {
-            string json;
-
-            //Get file for Parsing
-            using (StreamReader r = new StreamReader("server.json"))
-            {
-                json = r.ReadToEnd();
-            }
-
-            return JsonConvert.DeserializeObject<ServerMenuModel>(json);
-        }
-
-        public static void SaveServer(ServerMenuModel model)
-        {
-            string serializedWorldData = JsonConvert.SerializeObject(model, Formatting.None,
-                new JsonSerializerSettings()
-                {
-                    ReferenceLoopHandling = ReferenceLoopHandling.Ignore
-                });
-
-            try
-            {
-                string path = Directory.GetCurrentDirectory() + "/server.json";
-
-                using (StreamWriter s = File.CreateText(path))
-                {
-                    s.Write(serializedWorldData);
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex);
-            }
         }
     }
 }

@@ -46,7 +46,7 @@ namespace BFB.Engine.UI
         
         public VerticalAlignText VerticalAlignText { get; set; }
         
-        public TextScaleMode TextScaleMode { get; set; }
+        public FontScaleMode FontScaleMode { get; set; }
         
         public StackDirection StackDirection { get; set; }
         
@@ -68,7 +68,7 @@ namespace BFB.Engine.UI
             TextWrap = TextWrap.Wrap;
             JustifyText = JustifyText.Center;
             VerticalAlignText = VerticalAlignText.Center;
-            TextScaleMode = TextScaleMode.FontSizeScale;
+            FontScaleMode = FontScaleMode.FontSizeScale;
         }
         
         #endregion
@@ -103,7 +103,7 @@ namespace BFB.Engine.UI
                 JustifyText = cascadingAttributes.JustifyText != JustifyText.Center ? cascadingAttributes.JustifyText : JustifyText,
                 VerticalAlignText = cascadingAttributes.VerticalAlignText != VerticalAlignText.Center ? cascadingAttributes.VerticalAlignText : VerticalAlignText,
                 TextWrap = cascadingAttributes.TextWrap != TextWrap.Wrap ? cascadingAttributes.TextWrap : TextWrap,
-                TextScaleMode = cascadingAttributes.TextScaleMode != TextScaleMode.FontSizeScale ? cascadingAttributes.TextScaleMode : TextScaleMode,
+                FontScaleMode = cascadingAttributes.FontScaleMode != FontScaleMode.FontSizeScale ? cascadingAttributes.FontScaleMode : FontScaleMode,
                 StackDirection= cascadingAttributes.StackDirection != StackDirection.None ? cascadingAttributes.StackDirection : StackDirection,
             };
         }
@@ -162,7 +162,7 @@ namespace BFB.Engine.UI
         Wrap
     }
 
-    public enum TextScaleMode : byte
+    public enum FontScaleMode : byte
     {
         Inherit,
         ContainerFitScale,

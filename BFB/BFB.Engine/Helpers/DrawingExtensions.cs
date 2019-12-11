@@ -256,12 +256,12 @@ namespace BFB.Engine.Helpers
             #region Scale Text
             
             //Decide how to scale the text
-            if (component.RenderAttributes.TextScaleMode == TextScaleMode.ContainerFitScale)
+            if (component.RenderAttributes.FontScaleMode == FontScaleMode.ContainerFitScale)
             {
                 scale = System.Math.Min(component.RenderAttributes.Width / iWidth, component.RenderAttributes.Height / iHeight);
                 scale *= 8f / 10f;
             }
-            else if(component.RenderAttributes.TextScaleMode == TextScaleMode.FontSizeScale)
+            else if(component.RenderAttributes.FontScaleMode == FontScaleMode.FontSizeScale)
             {
                 int pixelHeight = (int)(content.GraphicsDevice.Viewport.Width / 25f * component.RenderAttributes.FontSize);
                 scale =  pixelHeight / iHeight;

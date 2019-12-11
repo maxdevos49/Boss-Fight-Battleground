@@ -169,6 +169,16 @@ namespace BFB.Engine.UI
         
         #endregion
         
+        #region FontScaleMode
+
+        public static UIComponent FontScaleMode(this UIComponent component,  FontScaleMode fontScaleMode)
+        {
+            component.DefaultAttributes.FontScaleMode = fontScaleMode;
+            return component;
+        }
+        
+        #endregion
+        
         #region Overflow
 
         public static UIComponent Overflow(this UIComponent component, Overflow overflow)
