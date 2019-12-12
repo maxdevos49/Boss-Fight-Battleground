@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using BFB.Engine.Entity;
+﻿using BFB.Engine.Entity;
 using BFB.Engine.Server.Communication;
 
 namespace BFB.Engine.Simulation.GameModeComponents
@@ -13,9 +10,10 @@ namespace BFB.Engine.Simulation.GameModeComponents
             if (entity.EntityType != EntityType.Player || reason == EntityRemovalReason.Disconnect || reason == EntityRemovalReason.BossSpawn) return;
 
             // Select new screen.
-            DataMessage message = new DataMessage();
-            message.Message = "MonsterMenuUI";
-            entity.Socket.Emit("PlayerUIRequest", message);
+            entity.Socket?.Emit("PlayerUIRequest", new DataMessage
+            {
+                Message = "MonsterMenuUI"
+            });
         }
     }
 }

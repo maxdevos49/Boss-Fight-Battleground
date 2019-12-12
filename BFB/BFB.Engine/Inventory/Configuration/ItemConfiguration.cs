@@ -26,6 +26,9 @@ namespace BFB.Engine.Inventory.Configuration
         public byte Reach { get; set; }
         
         [UsedImplicitly]
+        public byte KnockBack { get; set; }
+        
+        [UsedImplicitly]
         public ushort ManaGain { get; set; }
         
         [UsedImplicitly]

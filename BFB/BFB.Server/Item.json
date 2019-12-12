@@ -176,6 +176,7 @@
       "CoolDown": 5,
       "Reach": 2,
       "Damage": 1,
+      "KnockBack": 5,
       "EntitySpawnKey": "",
       "LeftHoldComponents": ["Hit" ],
       "LeftClickComponents": [ "Hit" ],
@@ -187,7 +188,7 @@
     "HealSpell": {
       "TextureKey": "Items:HealSpell",
       "StackLimit": 1,
-      "CoolDown": 10,
+      "CoolDown": 60,
       "Reach": 0,
       "ManaGain": 0,
       "ManaCost": 50,
@@ -205,7 +206,7 @@
     "MagicMissile": {
       "TextureKey": "Items:MagicMissileWand",
       "StackLimit": 1,
-      "CoolDown": 10,
+      "CoolDown": 60,
       "Reach": 0,
       "ManaGain": 0,
       "ManaCost": 60, 
@@ -222,7 +223,7 @@
     "Bomb": {
       "TextureKey": "Items:Bomb",
       "StackLimit": 1,
-      "CoolDown": 10,
+      "CoolDown": 100,
       "Reach": 0,
       "ManaGain": 0,
       "ManaCost": 100,
@@ -240,7 +241,7 @@
     "Fireball": {
       "TextureKey": "Items:FireballWand",
       "StackLimit": 1,
-      "CoolDown": 10,
+      "CoolDown": 60,
       "Reach": 0,
       "ManaGain": 0,
       "ManaCost": 30,
@@ -262,21 +263,21 @@
             "TextureKey": "Tiles:Grass",
             "ItemKey": "Grass",
             "CollisionId": 1,
-            "BreakSpeed": 10,
+            "BreakSpeed": 5,
             "Components": []
         },
         "Dirt": {
             "TextureKey": "Tiles:Dirt",
             "ItemKey": "Dirt",
             "CollisionId": 1,
-            "BreakSpeed": 10,
+            "BreakSpeed": 5,
             "Components": []
         },
         "Stone": {
             "TextureKey": "Tiles:Stone",
             "ItemKey": "Stone",
             "CollisionId": 1,
-            "BreakSpeed": 1,
+            "BreakSpeed": 10,
             "Components": []
         },
         "Wood": {

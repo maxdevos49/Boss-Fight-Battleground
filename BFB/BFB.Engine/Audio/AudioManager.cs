@@ -19,15 +19,15 @@ namespace BFB.Engine.Audio
 
         public void PlaySong(string song)
         {
-            _curSong = _content?.GetSongAudio(song);
             try
             {
-            MediaPlayer.Play(_curSong);
-            SetSongRepeating(true);
+                _curSong = _content?.GetSongAudio(song);
+                MediaPlayer.Play(_curSong);
+                SetSongRepeating(true);
             }
             catch (Exception)
             {
-                return;
+                
             }
         }
 

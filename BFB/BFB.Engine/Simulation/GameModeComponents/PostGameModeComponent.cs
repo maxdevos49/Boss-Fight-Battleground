@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using BFB.Engine.Entity;
 using BFB.Engine.Server.Communication;
 
@@ -8,14 +6,13 @@ namespace BFB.Engine.Simulation.GameModeComponents
 {
     public class PostGameModeComponent : GameModeComponent
     {
-        private int timeToRestart;
-        private bool showingCountdown;
+        private int _timeToRestart;
+        private bool _showingCountdown;
 
-        public PostGameModeComponent() : base()
+        public PostGameModeComponent()
         {
-            Console.WriteLine("GAME ENDED");
-            timeToRestart = 20 * 10;
-            showingCountdown = false;
+            _timeToRestart = 20 * 10;
+            _showingCountdown = false;
         }
 
         public override void Update(Simulation simulation)
@@ -25,10 +22,10 @@ namespace BFB.Engine.Simulation.GameModeComponents
                 ResetGame(simulation);
             }
 
-            timeToRestart -= 1;
+            _timeToRestart -= 1;
 
             // Start the countdown to restart.
-            if (timeToRestart < 20 * 8) {
+            if (_timeToRestart < 20 * 8) {
 
                     DataMessage message = new DataMessage
                     {
@@ -37,7 +34,7 @@ namespace BFB.Engine.Simulation.GameModeComponents
 
                     DataMessage textMessage = new DataMessage
                     {
-                        Message = "Returning to pregame in " + timeToRestart + "..."
+                        Message = "Returning to pregame in " + _timeToRestart + "..."
                     };
 
                     foreach (SimulationEntity entity in simulation.GetPlayerEntities())
@@ -45,22 +42,24 @@ namespace BFB.Engine.Simulation.GameModeComponents
                         if (entity == null || entity.Socket == null || entity.EntityType != EntityType.Player)
                             return;
 
-                        if (!showingCountdown)
+                        if (!_showingCountdown)
                             entity.Socket.Emit("PlayerUIRequest", message);
 
                         entity.Socket.Emit("onUpdateDisplay", textMessage);
                     }
-                    showingCountdown = true;
+                    _showingCountdown = true;
             }
 
-            if (timeToRestart <= 0)
+            if (_timeToRestart <= 0)
             {
                 ConvertAllPlayersToHumans(simulation);
 
                 ResetGame(simulation);
 
-                DataMessage message = new DataMessage();
-                message.Message = "HudUI";
+                DataMessage message = new DataMessage
+                {
+                    Message = "HudUI"
+                };
                 foreach (SimulationEntity entity in simulation.GetPlayerEntities())
                 {
                     if (entity == null || entity.Socket == null || entity.EntityType != EntityType.Player)
@@ -79,7 +78,7 @@ namespace BFB.Engine.Simulation.GameModeComponents
             // Just respawn them if the game hasn't started
             SimulationEntity player = SimulationEntity.SimulationEntityFactory("Human", entity.Socket);
 
-            simulation.AddEntity(player);
+            GameMode.RespawnEntity(player);
         }
 
         private void ConvertAllPlayersToHumans(Simulation simulation)
@@ -88,15 +87,16 @@ namespace BFB.Engine.Simulation.GameModeComponents
             {
                 simulation.RemoveEntity(entity.EntityId);
                 SimulationEntity player = SimulationEntity.SimulationEntityFactory("Human", entity.Socket);
-                simulation.AddEntity(player);
+                GameMode.RespawnEntity(player);
             }
         }
 
         private void ResetGame(Simulation simulation)
         {
-            simulation.GameComponents.Clear();
-            simulation.GameComponents.Add(new PreGameModeComponent());
-            simulation.GameState = GameState.PreGame;
+            GameMode.SwitchGameState(GameState.PreGame);
+//            simulation.GameComponents.Clear();
+//            simulation.GameComponents.Add(new PreGameModeComponent());//TODO Change game state
+//            simulation.GameState = GameState.PreGame;
         }
     }
 }

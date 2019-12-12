@@ -19,56 +19,58 @@ namespace BFB.Engine.Simulation.GameModeComponents
         public AIMobSpawnModeComponent()
         {
             _aiMonstersAlive = 0;
-            _aiMonstersMaxSpawnAmount = 20; //TODO
-            _timeToSpawn = 15;
+            _aiMonstersMaxSpawnAmount = 10;
+            _timeToSpawn = 45;
             _random = new Random();
         }
 
         public override void Update(Simulation simulation)
         {
             _timeToSpawn -= 1;
-            if (_timeToSpawn <= 0)
+            
+            if (_timeToSpawn > 0)
+                return;
+
+
+            if (_aiMonstersAlive > _aiMonstersMaxSpawnAmount)
+                return;
+
+            // spawn 5 zombies on each human player.
+            foreach (SimulationEntity entity in simulation.GetPlayerEntities())
             {
-                if (_aiMonstersAlive < _aiMonstersMaxSpawnAmount)
+                if (entity.EntityConfiguration.EntityKey != "Human") continue;
+
+
+                for (int i = 0; i < 5; i++)
                 {
-                    // spawn 5 zombies on each human player.
-                    foreach (SimulationEntity entity in simulation.GetPlayerEntities())
-                    {
-                        if (entity.EntityConfiguration.EntityKey != "Human") continue;
+                    int spawnLocationX = (int)entity.Position.X + _random.Next(-1000, 1000);
+                    int spawnLocationY = (int)entity.Position.Y - _random.Next(50,1000);
 
+                    Tuple<int, int> blockPos = simulation.World.BlockLocationFromPixel(spawnLocationX, spawnLocationY);
 
-                        for (int i = 0; i < 5; i++)
-                        {
-                            int spawnLocationX = (int)entity.Position.X + _random.Next(-500, 500);
-                            int spawnLocationY = (int)entity.Position.Y - _random.Next(50,100);
+                    if (blockPos == null || simulation.World.GetBlock(blockPos.Item1, blockPos.Item2) != WorldTile.Air) 
+                        continue;
+                    
+                    // Actually spawn the zombie.
+                    SimulationEntity mob = SimulationEntity.SimulationEntityFactory("Zombie");
+                    
+                    mob.ControlState = new ControlState();
+                    mob.Position.X = spawnLocationX;
+                    mob.Position.Y = spawnLocationY;
 
-                            Tuple<int, int> blockPos =
-                                simulation.World.BlockLocationFromPixel(spawnLocationX, spawnLocationY);
+                    IItem sword = new Item("ZombieSword");
+                    
+                    mob.AddComponent(new InventoryComponent(new List<IItem>(){ sword }));
+                    mob.AddComponent(new InputAI());
+                    mob.AddComponent(new AnimatedHolding());
 
-                            if (blockPos != null && simulation.World.GetBlock(blockPos.Item1, blockPos.Item2) == WorldTile.Air)
-                            {
-                                // Actually spawn the zombie.
-                                SimulationEntity mob = SimulationEntity.SimulationEntityFactory("Zombie");
-                                mob.Position.X = spawnLocationX;
-                                mob.Position.Y = spawnLocationY;
+                    GameMode.RespawnEntity(mob);
 
-                                IItem sword = new Item("ZombieSword");
-                                mob.AddComponent(new InventoryComponent(new List<IItem>(){ sword }));
-
-                                mob.ControlState = new ControlState();
-
-                                mob.AddComponent(new InputAI());
-                                mob.AddComponent(new AnimatedHolding());
-                                simulation.AddEntity(mob);
-
-                                _aiMonstersAlive += 1;
-                            }
-                        }
-                    }
+                    _aiMonstersAlive += 1;
                 }
-
-                _timeToSpawn = 15;
             }
+
+            _timeToSpawn = 45;
         }
 
         public override void OnEntityRemove(Simulation simulation, SimulationEntity entity, EntityRemovalReason? reason)

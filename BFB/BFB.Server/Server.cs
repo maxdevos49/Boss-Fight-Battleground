@@ -1,5 +1,4 @@
-﻿//C#
-using System;
+﻿using System;
 using System.Diagnostics;
 using System.IO;
 using Microsoft.Extensions.Configuration;
@@ -10,6 +9,7 @@ using BFB.Engine.Server;
 using BFB.Engine.Server.Communication;
 using BFB.Engine.Simulation;
 using BFB.Engine.TileMap.Generators;
+using BFB.Server.GameModes;
 using JetBrains.Annotations;
 
 namespace BFB.Server
@@ -38,7 +38,7 @@ namespace BFB.Server
             
             _server = new ServerSocketManager(ip,port);
             
-            _simulation = new Simulation(new WorldOptions
+            _simulation = new Simulation(new Infection(),new WorldOptions
             {
                 Seed = 1234,
                 ChunkSize = 16,

@@ -11,6 +11,7 @@ namespace BFB.Engine.Helpers
             if (targets.Count <= 0) return;
             
             ushort damage = entity.Inventory?.GetActiveSlot()?.Configuration?.Damage ?? 0;
+            ushort knockback = entity.Inventory?.GetActiveSlot()?.Configuration?.KnockBack ?? 20;
 
             
             foreach (SimulationEntity target in targets)
@@ -19,16 +20,15 @@ namespace BFB.Engine.Helpers
                 
                 target.Meta.Health -= damage;
 
-                float knockBack = (float)System.Math.Pow(2, damage);
                 if (entity.Facing == DirectionFacing.Left)
                 {
-                    target.Velocity.Y = -knockBack/2;
-                    target.Velocity.X = -knockBack;
+                    target.Velocity.Y = -knockback/2f;
+                    target.Velocity.X = -knockback;
                 }
                 else
                 {
-                    target.Velocity.Y = -knockBack/2;
-                    target.Velocity.X = knockBack;
+                    target.Velocity.Y = -knockback/2f;
+                    target.Velocity.X = knockback;
                 }
             }
         }

@@ -2,6 +2,7 @@
 {
     public enum GameState : byte
     {
+        Uninitialized,
         PreGame,
         InProgress,
         PostGame,

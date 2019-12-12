@@ -1,6 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
+using System.Linq;
 using BFB.Engine.Entity;
 using BFB.Engine.Server.Communication;
 using Microsoft.Xna.Framework;
@@ -9,98 +8,90 @@ namespace BFB.Engine.Simulation.GameModeComponents
 {
     public class PreGameModeComponent : GameModeComponent
     {
-        private bool gameReady;
-        private int timeToStart;
-        private bool gameStarted;
-        private bool showingCountdown;
+        private bool _gameReady;
+        private int _timeToStart;
+        private bool _showingCountdown;
 
-        public PreGameModeComponent() : base()
+        #region  Init
+
+        public override void Init(Simulation simulation, SimulationGameMode gameMode)
         {
-            gameReady = false;
-            gameStarted = false;
-            showingCountdown = false;
-            timeToStart = 20 * 10;
+            base.Init(simulation, gameMode);
+            
+            _gameReady = false;
+            _showingCountdown = false;
+            _timeToStart = 20 * 10;
         }
+        
+        #endregion
 
+        #region Reset
+        
+        public override void Reset(Simulation simulation)
+        {
+            base.Reset(simulation);
+            
+            _gameReady = false;
+            _showingCountdown = false;
+            _timeToStart = 20 * 10;
+        }
+        
+        #endregion
+        
         public override void Update(Simulation simulation)
         {
-            if (gameStarted) return;
             // check number of players. When number of players >= 5, start a countdown.
             // once countdown ends, game starts.
-            if (simulation.ConnectedClients >= 2)
-                gameReady = true;
+            if (simulation.ConnectedClients >= GameMode.RequiredPlayers)
+                _gameReady = true;
 
-            if (gameReady)
+            if (_gameReady)
             {
-                timeToStart -= 1;
+                _timeToStart -= 1;
 
                 // Show the countdown.
-                if (timeToStart < 20 * 8)
+                if (_timeToStart < 20 * 10)
                 {
                     DataMessage message = new DataMessage
                     {
                         Message = "CountdownUI"
                     };
 
-                    DataMessage textMessage = new DataMessage
-                    {
-                        Message = "Starting in " + timeToStart + "..."
-                    };
-                    foreach (SimulationEntity entity in simulation.GetPlayerEntities())
-                    {
-                        if (entity == null || entity.Socket == null || entity.EntityType != EntityType.Player)
-                            return;
+                    foreach (SimulationEntity entity in simulation.GetPlayerEntities().Where(entity => !_showingCountdown))
+                        entity?.Socket?.Emit("PlayerUIRequest", message);
 
-                        if (!showingCountdown)
-                            entity.Socket.Emit("PlayerUIRequest", message);
-
-                        entity.Socket.Emit("onUpdateDisplay", textMessage);
-                    }
-
-                    showingCountdown = true;
+                    _showingCountdown = true;
                 }
             }
 
-            if (gameReady && timeToStart <= 0)
+            if (!_gameReady || _timeToStart > 0) 
+                return;
+            
+            GameMode.SwitchGameState(GameState.InProgress);
+
+
+            DataMessage message2 = new DataMessage
             {
-                simulation.GameComponents.Add(new ManaRegenModeComponent());
-                simulation.GameComponents.Add(new AIMobSpawnModeComponent());
-                simulation.GameComponents.Add(new BossSpawnModeComponent());
-                simulation.GameComponents.Add(new PlayerRespawnModeComponent());
-                
-                GameModeComponent component = new GameModeEndComponent();
-                component.Init(simulation);
-                simulation.GameComponents.Add(component);
+                Message = "HudUI"
+            };
+            
+            foreach (SimulationEntity entity in simulation.GetPlayerEntities())
+            {
+                if (entity?.Socket == null || entity.EntityType != EntityType.Player)
+                    return;
 
-                simulation.GameState = GameState.InProgress;
-
-                Console.WriteLine("GAME STARTED");
-                gameStarted = true;
-
-                DataMessage message = new DataMessage();
-                message.Message = "HudUI";
-                foreach (SimulationEntity entity in simulation.GetPlayerEntities())
-                {
-                    if (entity == null || entity.Socket == null || entity.EntityType != EntityType.Player)
-                        return;
-
-                    entity.Socket.Emit("PlayerUIRequest", message);
-                }
+                entity.Socket.Emit("PlayerUIRequest", message2);
             }
         }
 
         public override void OnEntityRemove(Simulation simulation, SimulationEntity entity, EntityRemovalReason? reason)
         {
-            if (gameStarted)
-                return;
-
             if (entity.EntityType != EntityType.Player || reason == EntityRemovalReason.Disconnect || reason == EntityRemovalReason.BossSpawn)
                 return;
 
             // Just respawn them if the game hasn't started
             SimulationEntity player = SimulationEntity.SimulationEntityFactory("Human", entity.Socket);
-
-            simulation.AddEntity(player);
+            GameMode.RespawnEntity(player);
         }
     }
 }
