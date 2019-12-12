@@ -1,0 +1,22 @@
+### YamlMime:ManagedReference
+items:
+- uid: BFB.Engine.TileMap.IO
+  commentId: N:BFB.Engine.TileMap.IO
+  id: BFB.Engine.TileMap.IO
+  children:
+  - BFB.Engine.TileMap.IO.WorldDataSchema
+  langs:
+  - csharp
+  - vb
+  name: BFB.Engine.TileMap.IO
+  nameWithType: BFB.Engine.TileMap.IO
+  fullName: BFB.Engine.TileMap.IO
+  type: Namespace
+  assemblies:
+  - BFB.Engine
+references:
+- uid: BFB.Engine.TileMap.IO.WorldDataSchema
+  commentId: T:BFB.Engine.TileMap.IO.WorldDataSchema
+  name: WorldDataSchema
+  nameWithType: WorldDataSchema
+  fullName: BFB.Engine.TileMap.IO.WorldDataSchema

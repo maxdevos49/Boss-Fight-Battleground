@@ -1,0 +1,538 @@
+### YamlMime:ManagedReference
+items:
+- uid: BFB.Engine.Simulation.GraphicsComponents.AnimationComponent
+  commentId: T:BFB.Engine.Simulation.GraphicsComponents.AnimationComponent
+  id: AnimationComponent
+  parent: BFB.Engine.Simulation.GraphicsComponents
+  children:
+  - BFB.Engine.Simulation.GraphicsComponents.AnimationComponent.#ctor(BFB.Engine.Content.AnimatedTexture)
+  - BFB.Engine.Simulation.GraphicsComponents.AnimationComponent.Draw(BFB.Engine.Entity.ClientEntity,SpriteBatch)
+  - BFB.Engine.Simulation.GraphicsComponents.AnimationComponent.Update(BFB.Engine.Entity.ClientEntity)
+  langs:
+  - csharp
+  - vb
+  name: AnimationComponent
+  nameWithType: AnimationComponent
+  fullName: BFB.Engine.Simulation.GraphicsComponents.AnimationComponent
+  type: Class
+  source:
+    remote:
+      path: BFB/BFB.Engine/Simulation/GraphicsComponents/AnimationComponent.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: AnimationComponent
+    path: ../BFB/BFB.Engine/Simulation/GraphicsComponents/AnimationComponent.cs
+    startLine: 11
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Simulation.GraphicsComponents
+  syntax:
+    content: 'public class AnimationComponent : object, IGraphicsComponent'
+    content.vb: >-
+      Public Class AnimationComponent
+
+          Inherits Object
+
+          Implements IGraphicsComponent
+  inheritance:
+  - System.Object
+  implements:
+  - BFB.Engine.Simulation.GraphicsComponents.IGraphicsComponent
+  extensionMethods:
+  - BFB.Engine.Simulation.GraphicsComponents.AnimationComponent.BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{BFB.Engine.Simulation.GraphicsComponents.AnimationComponent,{TValue}}},{TValue})
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: BFB.Engine.Simulation.GraphicsComponents.AnimationComponent.#ctor(BFB.Engine.Content.AnimatedTexture)
+  commentId: M:BFB.Engine.Simulation.GraphicsComponents.AnimationComponent.#ctor(BFB.Engine.Content.AnimatedTexture)
+  id: '#ctor(BFB.Engine.Content.AnimatedTexture)'
+  parent: BFB.Engine.Simulation.GraphicsComponents.AnimationComponent
+  langs:
+  - csharp
+  - vb
+  name: AnimationComponent(AnimatedTexture)
+  nameWithType: AnimationComponent.AnimationComponent(AnimatedTexture)
+  fullName: BFB.Engine.Simulation.GraphicsComponents.AnimationComponent.AnimationComponent(BFB.Engine.Content.AnimatedTexture)
+  type: Constructor
+  source:
+    remote:
+      path: BFB/BFB.Engine/Simulation/GraphicsComponents/AnimationComponent.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: .ctor
+    path: ../BFB/BFB.Engine/Simulation/GraphicsComponents/AnimationComponent.cs
+    startLine: 22
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Simulation.GraphicsComponents
+  syntax:
+    content: public AnimationComponent(AnimatedTexture animatedTexture)
+    parameters:
+    - id: animatedTexture
+      type: BFB.Engine.Content.AnimatedTexture
+    content.vb: Public Sub New(animatedTexture As AnimatedTexture)
+  overload: BFB.Engine.Simulation.GraphicsComponents.AnimationComponent.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.Simulation.GraphicsComponents.AnimationComponent.Update(BFB.Engine.Entity.ClientEntity)
+  commentId: M:BFB.Engine.Simulation.GraphicsComponents.AnimationComponent.Update(BFB.Engine.Entity.ClientEntity)
+  id: Update(BFB.Engine.Entity.ClientEntity)
+  parent: BFB.Engine.Simulation.GraphicsComponents.AnimationComponent
+  langs:
+  - csharp
+  - vb
+  name: Update(ClientEntity)
+  nameWithType: AnimationComponent.Update(ClientEntity)
+  fullName: BFB.Engine.Simulation.GraphicsComponents.AnimationComponent.Update(BFB.Engine.Entity.ClientEntity)
+  type: Method
+  source:
+    remote:
+      path: BFB/BFB.Engine/Simulation/GraphicsComponents/AnimationComponent.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: Update
+    path: ../BFB/BFB.Engine/Simulation/GraphicsComponents/AnimationComponent.cs
+    startLine: 34
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Simulation.GraphicsComponents
+  syntax:
+    content: public void Update(ClientEntity entity)
+    parameters:
+    - id: entity
+      type: BFB.Engine.Entity.ClientEntity
+    content.vb: Public Sub Update(entity As ClientEntity)
+  overload: BFB.Engine.Simulation.GraphicsComponents.AnimationComponent.Update*
+  implements:
+  - BFB.Engine.Simulation.GraphicsComponents.IGraphicsComponent.Update(BFB.Engine.Entity.ClientEntity)
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.Simulation.GraphicsComponents.AnimationComponent.Draw(BFB.Engine.Entity.ClientEntity,SpriteBatch)
+  commentId: M:BFB.Engine.Simulation.GraphicsComponents.AnimationComponent.Draw(BFB.Engine.Entity.ClientEntity,SpriteBatch)
+  id: Draw(BFB.Engine.Entity.ClientEntity,SpriteBatch)
+  parent: BFB.Engine.Simulation.GraphicsComponents.AnimationComponent
+  langs:
+  - csharp
+  - vb
+  name: Draw(ClientEntity, SpriteBatch)
+  nameWithType: AnimationComponent.Draw(ClientEntity, SpriteBatch)
+  fullName: BFB.Engine.Simulation.GraphicsComponents.AnimationComponent.Draw(BFB.Engine.Entity.ClientEntity, SpriteBatch)
+  type: Method
+  source:
+    remote:
+      path: BFB/BFB.Engine/Simulation/GraphicsComponents/AnimationComponent.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: Draw
+    path: ../BFB/BFB.Engine/Simulation/GraphicsComponents/AnimationComponent.cs
+    startLine: 73
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Simulation.GraphicsComponents
+  syntax:
+    content: public void Draw(ClientEntity entity, SpriteBatch graphics)
+    parameters:
+    - id: entity
+      type: BFB.Engine.Entity.ClientEntity
+    - id: graphics
+      type: SpriteBatch
+    content.vb: Public Sub Draw(entity As ClientEntity, graphics As SpriteBatch)
+  overload: BFB.Engine.Simulation.GraphicsComponents.AnimationComponent.Draw*
+  implements:
+  - BFB.Engine.Simulation.GraphicsComponents.IGraphicsComponent.Draw(BFB.Engine.Entity.ClientEntity,SpriteBatch)
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+references:
+- uid: BFB.Engine.Simulation.GraphicsComponents
+  commentId: N:BFB.Engine.Simulation.GraphicsComponents
+  name: BFB.Engine.Simulation.GraphicsComponents
+  nameWithType: BFB.Engine.Simulation.GraphicsComponents
+  fullName: BFB.Engine.Simulation.GraphicsComponents
+- uid: System.Object
+  commentId: '!:System.Object'
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: BFB.Engine.Simulation.GraphicsComponents.IGraphicsComponent
+  commentId: T:BFB.Engine.Simulation.GraphicsComponents.IGraphicsComponent
+  parent: BFB.Engine.Simulation.GraphicsComponents
+  name: IGraphicsComponent
+  nameWithType: IGraphicsComponent
+  fullName: BFB.Engine.Simulation.GraphicsComponents.IGraphicsComponent
+- uid: BFB.Engine.Simulation.GraphicsComponents.AnimationComponent.BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{BFB.Engine.Simulation.GraphicsComponents.AnimationComponent,{TValue}}},{TValue})
+  commentId: M:BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  parent: BFB.Engine.UI.Components.LambdaExtensions
+  definition: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  name: SetPropertyValue<AnimationComponent, TValue>(Expression<Func<AnimationComponent, TValue>>, TValue)
+  nameWithType: LambdaExtensions.SetPropertyValue<AnimationComponent, TValue>(Expression<Func<AnimationComponent, TValue>>, TValue)
+  fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<BFB.Engine.Simulation.GraphicsComponents.AnimationComponent, TValue>(Expression<Func<BFB.Engine.Simulation.GraphicsComponents.AnimationComponent, TValue>>, TValue)
+  nameWithType.vb: LambdaExtensions.SetPropertyValue(Of AnimationComponent, TValue)(Expression(Of Func(Of AnimationComponent, TValue)), TValue)
+  fullName.vb: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of BFB.Engine.Simulation.GraphicsComponents.AnimationComponent, TValue)(Expression(Of Func(Of BFB.Engine.Simulation.GraphicsComponents.AnimationComponent, TValue)), TValue)
+  name.vb: SetPropertyValue(Of AnimationComponent, TValue)(Expression(Of Func(Of AnimationComponent, TValue)), TValue)
+  spec.csharp:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue<AnimationComponent, TValue>
+    nameWithType: LambdaExtensions.SetPropertyValue<AnimationComponent, TValue>
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<BFB.Engine.Simulation.GraphicsComponents.AnimationComponent, TValue>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: BFB.Engine.Simulation.GraphicsComponents.AnimationComponent
+    name: AnimationComponent
+    nameWithType: AnimationComponent
+    fullName: BFB.Engine.Simulation.GraphicsComponents.AnimationComponent
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue(Of AnimationComponent, TValue)
+    nameWithType: LambdaExtensions.SetPropertyValue(Of AnimationComponent, TValue)
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of BFB.Engine.Simulation.GraphicsComponents.AnimationComponent, TValue)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: BFB.Engine.Simulation.GraphicsComponents.AnimationComponent
+    name: AnimationComponent
+    nameWithType: AnimationComponent
+    fullName: BFB.Engine.Simulation.GraphicsComponents.AnimationComponent
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  commentId: M:BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  isExternal: true
+  name: SetPropertyValue<T, TValue>(T, Expression<Func<T, TValue>>, TValue)
+  nameWithType: LambdaExtensions.SetPropertyValue<T, TValue>(T, Expression<Func<T, TValue>>, TValue)
+  fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<T, TValue>(T, Expression<Func<T, TValue>>, TValue)
+  nameWithType.vb: LambdaExtensions.SetPropertyValue(Of T, TValue)(T, Expression(Of Func(Of T, TValue)), TValue)
+  fullName.vb: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of T, TValue)(T, Expression(Of Func(Of T, TValue)), TValue)
+  name.vb: SetPropertyValue(Of T, TValue)(T, Expression(Of Func(Of T, TValue)), TValue)
+  spec.csharp:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue<T, TValue>
+    nameWithType: LambdaExtensions.SetPropertyValue<T, TValue>
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<T, TValue>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue(Of T, TValue)
+    nameWithType: LambdaExtensions.SetPropertyValue(Of T, TValue)
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of T, TValue)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Components.LambdaExtensions
+  commentId: T:BFB.Engine.UI.Components.LambdaExtensions
+  parent: BFB.Engine.UI.Components
+  name: LambdaExtensions
+  nameWithType: LambdaExtensions
+  fullName: BFB.Engine.UI.Components.LambdaExtensions
+- uid: BFB.Engine.UI.Components
+  commentId: N:BFB.Engine.UI.Components
+  name: BFB.Engine.UI.Components
+  nameWithType: BFB.Engine.UI.Components
+  fullName: BFB.Engine.UI.Components
+- uid: BFB.Engine.Simulation.GraphicsComponents.AnimationComponent.#ctor*
+  commentId: Overload:BFB.Engine.Simulation.GraphicsComponents.AnimationComponent.#ctor
+  name: AnimationComponent
+  nameWithType: AnimationComponent.AnimationComponent
+  fullName: BFB.Engine.Simulation.GraphicsComponents.AnimationComponent.AnimationComponent
+- uid: BFB.Engine.Content.AnimatedTexture
+  commentId: T:BFB.Engine.Content.AnimatedTexture
+  parent: BFB.Engine.Content
+  name: AnimatedTexture
+  nameWithType: AnimatedTexture
+  fullName: BFB.Engine.Content.AnimatedTexture
+- uid: BFB.Engine.Content
+  commentId: N:BFB.Engine.Content
+  name: BFB.Engine.Content
+  nameWithType: BFB.Engine.Content
+  fullName: BFB.Engine.Content
+- uid: BFB.Engine.Simulation.GraphicsComponents.AnimationComponent.Update*
+  commentId: Overload:BFB.Engine.Simulation.GraphicsComponents.AnimationComponent.Update
+  name: Update
+  nameWithType: AnimationComponent.Update
+  fullName: BFB.Engine.Simulation.GraphicsComponents.AnimationComponent.Update
+- uid: BFB.Engine.Simulation.GraphicsComponents.IGraphicsComponent.Update(BFB.Engine.Entity.ClientEntity)
+  commentId: M:BFB.Engine.Simulation.GraphicsComponents.IGraphicsComponent.Update(BFB.Engine.Entity.ClientEntity)
+  parent: BFB.Engine.Simulation.GraphicsComponents.IGraphicsComponent
+  name: Update(ClientEntity)
+  nameWithType: IGraphicsComponent.Update(ClientEntity)
+  fullName: BFB.Engine.Simulation.GraphicsComponents.IGraphicsComponent.Update(BFB.Engine.Entity.ClientEntity)
+  spec.csharp:
+  - uid: BFB.Engine.Simulation.GraphicsComponents.IGraphicsComponent.Update(BFB.Engine.Entity.ClientEntity)
+    name: Update
+    nameWithType: IGraphicsComponent.Update
+    fullName: BFB.Engine.Simulation.GraphicsComponents.IGraphicsComponent.Update
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: BFB.Engine.Entity.ClientEntity
+    name: ClientEntity
+    nameWithType: ClientEntity
+    fullName: BFB.Engine.Entity.ClientEntity
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.Simulation.GraphicsComponents.IGraphicsComponent.Update(BFB.Engine.Entity.ClientEntity)
+    name: Update
+    nameWithType: IGraphicsComponent.Update
+    fullName: BFB.Engine.Simulation.GraphicsComponents.IGraphicsComponent.Update
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: BFB.Engine.Entity.ClientEntity
+    name: ClientEntity
+    nameWithType: ClientEntity
+    fullName: BFB.Engine.Entity.ClientEntity
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.Entity.ClientEntity
+  commentId: T:BFB.Engine.Entity.ClientEntity
+  parent: BFB.Engine.Entity
+  name: ClientEntity
+  nameWithType: ClientEntity
+  fullName: BFB.Engine.Entity.ClientEntity
+- uid: BFB.Engine.Entity
+  commentId: N:BFB.Engine.Entity
+  name: BFB.Engine.Entity
+  nameWithType: BFB.Engine.Entity
+  fullName: BFB.Engine.Entity
+- uid: BFB.Engine.Simulation.GraphicsComponents.AnimationComponent.Draw*
+  commentId: Overload:BFB.Engine.Simulation.GraphicsComponents.AnimationComponent.Draw
+  name: Draw
+  nameWithType: AnimationComponent.Draw
+  fullName: BFB.Engine.Simulation.GraphicsComponents.AnimationComponent.Draw
+- uid: BFB.Engine.Simulation.GraphicsComponents.IGraphicsComponent.Draw(BFB.Engine.Entity.ClientEntity,SpriteBatch)
+  commentId: M:BFB.Engine.Simulation.GraphicsComponents.IGraphicsComponent.Draw(BFB.Engine.Entity.ClientEntity,SpriteBatch)
+  parent: BFB.Engine.Simulation.GraphicsComponents.IGraphicsComponent
+  isExternal: true
+  name: Draw(ClientEntity, SpriteBatch)
+  nameWithType: IGraphicsComponent.Draw(ClientEntity, SpriteBatch)
+  fullName: BFB.Engine.Simulation.GraphicsComponents.IGraphicsComponent.Draw(BFB.Engine.Entity.ClientEntity, SpriteBatch)
+  spec.csharp:
+  - uid: BFB.Engine.Simulation.GraphicsComponents.IGraphicsComponent.Draw(BFB.Engine.Entity.ClientEntity,SpriteBatch)
+    name: Draw
+    nameWithType: IGraphicsComponent.Draw
+    fullName: BFB.Engine.Simulation.GraphicsComponents.IGraphicsComponent.Draw
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: BFB.Engine.Entity.ClientEntity
+    name: ClientEntity
+    nameWithType: ClientEntity
+    fullName: BFB.Engine.Entity.ClientEntity
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: SpriteBatch
+    name: SpriteBatch
+    nameWithType: SpriteBatch
+    fullName: SpriteBatch
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.Simulation.GraphicsComponents.IGraphicsComponent.Draw(BFB.Engine.Entity.ClientEntity,SpriteBatch)
+    name: Draw
+    nameWithType: IGraphicsComponent.Draw
+    fullName: BFB.Engine.Simulation.GraphicsComponents.IGraphicsComponent.Draw
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: BFB.Engine.Entity.ClientEntity
+    name: ClientEntity
+    nameWithType: ClientEntity
+    fullName: BFB.Engine.Entity.ClientEntity
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: SpriteBatch
+    name: SpriteBatch
+    nameWithType: SpriteBatch
+    fullName: SpriteBatch
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: SpriteBatch
+  isExternal: true
+  name: SpriteBatch
+  nameWithType: SpriteBatch
+  fullName: SpriteBatch

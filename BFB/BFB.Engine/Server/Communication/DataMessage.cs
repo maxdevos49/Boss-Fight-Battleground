@@ -3,23 +3,26 @@ using System;
 
 namespace BFB.Engine.Server.Communication
 {
+    /// <summary>
+    /// A Base Data Structure to communicate between the client and server
+    /// </summary>
     [Serializable]
     public class DataMessage
     {
 
-        /**
-         * Target endpoint
-         * */
+        /// <summary>
+        /// Message route or endpoint
+        /// </summary>
         public string Route { get; set; }
         
-        /**
-         * Message to send
-         */
+        /// <summary>
+        /// A string message for passing information
+        /// </summary>
         public string Message { get; set; }
         
-        /**
-         * Client Id
-         */
+        /// <summary>
+        /// The sending or receiving client id
+        /// </summary>
         public string ClientId { get; set; }
         
     }

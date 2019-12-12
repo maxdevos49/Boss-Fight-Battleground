@@ -1,0 +1,847 @@
+### YamlMime:ManagedReference
+items:
+- uid: BFB.Engine.UI.Components.UIComponentAttributes
+  commentId: T:BFB.Engine.UI.Components.UIComponentAttributes
+  id: UIComponentAttributes
+  parent: BFB.Engine.UI.Components
+  children:
+  - BFB.Engine.UI.Components.UIComponentAttributes.#ctor
+  - BFB.Engine.UI.Components.UIComponentAttributes.Background
+  - BFB.Engine.UI.Components.UIComponentAttributes.CascadeAttributes(BFB.Engine.UI.Components.UIComponentAttributes)
+  - BFB.Engine.UI.Components.UIComponentAttributes.Color
+  - BFB.Engine.UI.Components.UIComponentAttributes.FontKey
+  - BFB.Engine.UI.Components.UIComponentAttributes.FontSize
+  - BFB.Engine.UI.Components.UIComponentAttributes.Grow
+  - BFB.Engine.UI.Components.UIComponentAttributes.Height
+  - BFB.Engine.UI.Components.UIComponentAttributes.StackDirection
+  - BFB.Engine.UI.Components.UIComponentAttributes.TextureKey
+  - BFB.Engine.UI.Components.UIComponentAttributes.Width
+  - BFB.Engine.UI.Components.UIComponentAttributes.X
+  - BFB.Engine.UI.Components.UIComponentAttributes.Y
+  langs:
+  - csharp
+  - vb
+  name: UIComponentAttributes
+  nameWithType: UIComponentAttributes
+  fullName: BFB.Engine.UI.Components.UIComponentAttributes
+  type: Class
+  source:
+    remote:
+      path: BFB/BFB.Engine/UI/Components/UIComponent.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: UIComponentAttributes
+    path: ../BFB/BFB.Engine/UI/Components/UIComponent.cs
+    startLine: 261
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.UI.Components
+  syntax:
+    content: 'public class UIComponentAttributes : object'
+    content.vb: >-
+      Public Class UIComponentAttributes
+
+          Inherits Object
+  inheritance:
+  - System.Object
+  extensionMethods:
+  - BFB.Engine.UI.Components.UIComponentAttributes.BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{BFB.Engine.UI.Components.UIComponentAttributes,{TValue}}},{TValue})
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: BFB.Engine.UI.Components.UIComponentAttributes.TextureKey
+  commentId: P:BFB.Engine.UI.Components.UIComponentAttributes.TextureKey
+  id: TextureKey
+  parent: BFB.Engine.UI.Components.UIComponentAttributes
+  langs:
+  - csharp
+  - vb
+  name: TextureKey
+  nameWithType: UIComponentAttributes.TextureKey
+  fullName: BFB.Engine.UI.Components.UIComponentAttributes.TextureKey
+  type: Property
+  source:
+    remote:
+      path: BFB/BFB.Engine/UI/Components/UIComponent.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: TextureKey
+    path: ../BFB/BFB.Engine/UI/Components/UIComponent.cs
+    startLine: 265
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.UI.Components
+  syntax:
+    content: public string TextureKey { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property TextureKey As String
+  overload: BFB.Engine.UI.Components.UIComponentAttributes.TextureKey*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.UI.Components.UIComponentAttributes.FontKey
+  commentId: P:BFB.Engine.UI.Components.UIComponentAttributes.FontKey
+  id: FontKey
+  parent: BFB.Engine.UI.Components.UIComponentAttributes
+  langs:
+  - csharp
+  - vb
+  name: FontKey
+  nameWithType: UIComponentAttributes.FontKey
+  fullName: BFB.Engine.UI.Components.UIComponentAttributes.FontKey
+  type: Property
+  source:
+    remote:
+      path: BFB/BFB.Engine/UI/Components/UIComponent.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: FontKey
+    path: ../BFB/BFB.Engine/UI/Components/UIComponent.cs
+    startLine: 267
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.UI.Components
+  syntax:
+    content: public string FontKey { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property FontKey As String
+  overload: BFB.Engine.UI.Components.UIComponentAttributes.FontKey*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.UI.Components.UIComponentAttributes.FontSize
+  commentId: P:BFB.Engine.UI.Components.UIComponentAttributes.FontSize
+  id: FontSize
+  parent: BFB.Engine.UI.Components.UIComponentAttributes
+  langs:
+  - csharp
+  - vb
+  name: FontSize
+  nameWithType: UIComponentAttributes.FontSize
+  fullName: BFB.Engine.UI.Components.UIComponentAttributes.FontSize
+  type: Property
+  source:
+    remote:
+      path: BFB/BFB.Engine/UI/Components/UIComponent.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: FontSize
+    path: ../BFB/BFB.Engine/UI/Components/UIComponent.cs
+    startLine: 269
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.UI.Components
+  syntax:
+    content: public float FontSize { get; set; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: Public Property FontSize As Single
+  overload: BFB.Engine.UI.Components.UIComponentAttributes.FontSize*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.UI.Components.UIComponentAttributes.X
+  commentId: P:BFB.Engine.UI.Components.UIComponentAttributes.X
+  id: X
+  parent: BFB.Engine.UI.Components.UIComponentAttributes
+  langs:
+  - csharp
+  - vb
+  name: X
+  nameWithType: UIComponentAttributes.X
+  fullName: BFB.Engine.UI.Components.UIComponentAttributes.X
+  type: Property
+  source:
+    remote:
+      path: BFB/BFB.Engine/UI/Components/UIComponent.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: X
+    path: ../BFB/BFB.Engine/UI/Components/UIComponent.cs
+    startLine: 271
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.UI.Components
+  syntax:
+    content: public int X { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property X As Integer
+  overload: BFB.Engine.UI.Components.UIComponentAttributes.X*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.UI.Components.UIComponentAttributes.Y
+  commentId: P:BFB.Engine.UI.Components.UIComponentAttributes.Y
+  id: Y
+  parent: BFB.Engine.UI.Components.UIComponentAttributes
+  langs:
+  - csharp
+  - vb
+  name: Y
+  nameWithType: UIComponentAttributes.Y
+  fullName: BFB.Engine.UI.Components.UIComponentAttributes.Y
+  type: Property
+  source:
+    remote:
+      path: BFB/BFB.Engine/UI/Components/UIComponent.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: Y
+    path: ../BFB/BFB.Engine/UI/Components/UIComponent.cs
+    startLine: 273
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.UI.Components
+  syntax:
+    content: public int Y { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property Y As Integer
+  overload: BFB.Engine.UI.Components.UIComponentAttributes.Y*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.UI.Components.UIComponentAttributes.Width
+  commentId: P:BFB.Engine.UI.Components.UIComponentAttributes.Width
+  id: Width
+  parent: BFB.Engine.UI.Components.UIComponentAttributes
+  langs:
+  - csharp
+  - vb
+  name: Width
+  nameWithType: UIComponentAttributes.Width
+  fullName: BFB.Engine.UI.Components.UIComponentAttributes.Width
+  type: Property
+  source:
+    remote:
+      path: BFB/BFB.Engine/UI/Components/UIComponent.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: Width
+    path: ../BFB/BFB.Engine/UI/Components/UIComponent.cs
+    startLine: 275
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.UI.Components
+  syntax:
+    content: public int Width { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property Width As Integer
+  overload: BFB.Engine.UI.Components.UIComponentAttributes.Width*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.UI.Components.UIComponentAttributes.Height
+  commentId: P:BFB.Engine.UI.Components.UIComponentAttributes.Height
+  id: Height
+  parent: BFB.Engine.UI.Components.UIComponentAttributes
+  langs:
+  - csharp
+  - vb
+  name: Height
+  nameWithType: UIComponentAttributes.Height
+  fullName: BFB.Engine.UI.Components.UIComponentAttributes.Height
+  type: Property
+  source:
+    remote:
+      path: BFB/BFB.Engine/UI/Components/UIComponent.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: Height
+    path: ../BFB/BFB.Engine/UI/Components/UIComponent.cs
+    startLine: 277
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.UI.Components
+  syntax:
+    content: public int Height { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property Height As Integer
+  overload: BFB.Engine.UI.Components.UIComponentAttributes.Height*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.UI.Components.UIComponentAttributes.Color
+  commentId: P:BFB.Engine.UI.Components.UIComponentAttributes.Color
+  id: Color
+  parent: BFB.Engine.UI.Components.UIComponentAttributes
+  langs:
+  - csharp
+  - vb
+  name: Color
+  nameWithType: UIComponentAttributes.Color
+  fullName: BFB.Engine.UI.Components.UIComponentAttributes.Color
+  type: Property
+  source:
+    remote:
+      path: BFB/BFB.Engine/UI/Components/UIComponent.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: Color
+    path: ../BFB/BFB.Engine/UI/Components/UIComponent.cs
+    startLine: 279
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.UI.Components
+  syntax:
+    content: public Color Color { get; set; }
+    parameters: []
+    return:
+      type: Color
+    content.vb: Public Property Color As Color
+  overload: BFB.Engine.UI.Components.UIComponentAttributes.Color*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.UI.Components.UIComponentAttributes.Background
+  commentId: P:BFB.Engine.UI.Components.UIComponentAttributes.Background
+  id: Background
+  parent: BFB.Engine.UI.Components.UIComponentAttributes
+  langs:
+  - csharp
+  - vb
+  name: Background
+  nameWithType: UIComponentAttributes.Background
+  fullName: BFB.Engine.UI.Components.UIComponentAttributes.Background
+  type: Property
+  source:
+    remote:
+      path: BFB/BFB.Engine/UI/Components/UIComponent.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: Background
+    path: ../BFB/BFB.Engine/UI/Components/UIComponent.cs
+    startLine: 281
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.UI.Components
+  syntax:
+    content: public Color Background { get; set; }
+    parameters: []
+    return:
+      type: Color
+    content.vb: Public Property Background As Color
+  overload: BFB.Engine.UI.Components.UIComponentAttributes.Background*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.UI.Components.UIComponentAttributes.Grow
+  commentId: P:BFB.Engine.UI.Components.UIComponentAttributes.Grow
+  id: Grow
+  parent: BFB.Engine.UI.Components.UIComponentAttributes
+  langs:
+  - csharp
+  - vb
+  name: Grow
+  nameWithType: UIComponentAttributes.Grow
+  fullName: BFB.Engine.UI.Components.UIComponentAttributes.Grow
+  type: Property
+  source:
+    remote:
+      path: BFB/BFB.Engine/UI/Components/UIComponent.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: Grow
+    path: ../BFB/BFB.Engine/UI/Components/UIComponent.cs
+    startLine: 290
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.UI.Components
+  example: []
+  syntax:
+    content: public int Grow { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property Grow As Integer
+  overload: BFB.Engine.UI.Components.UIComponentAttributes.Grow*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.UI.Components.UIComponentAttributes.StackDirection
+  commentId: P:BFB.Engine.UI.Components.UIComponentAttributes.StackDirection
+  id: StackDirection
+  parent: BFB.Engine.UI.Components.UIComponentAttributes
+  langs:
+  - csharp
+  - vb
+  name: StackDirection
+  nameWithType: UIComponentAttributes.StackDirection
+  fullName: BFB.Engine.UI.Components.UIComponentAttributes.StackDirection
+  type: Property
+  source:
+    remote:
+      path: BFB/BFB.Engine/UI/Components/UIComponent.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: StackDirection
+    path: ../BFB/BFB.Engine/UI/Components/UIComponent.cs
+    startLine: 296
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.UI.Components
+  example: []
+  syntax:
+    content: public StackDirection StackDirection { get; set; }
+    parameters: []
+    return:
+      type: BFB.Engine.UI.Components.StackDirection
+    content.vb: Public Property StackDirection As StackDirection
+  overload: BFB.Engine.UI.Components.UIComponentAttributes.StackDirection*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.UI.Components.UIComponentAttributes.#ctor
+  commentId: M:BFB.Engine.UI.Components.UIComponentAttributes.#ctor
+  id: '#ctor'
+  parent: BFB.Engine.UI.Components.UIComponentAttributes
+  langs:
+  - csharp
+  - vb
+  name: UIComponentAttributes()
+  nameWithType: UIComponentAttributes.UIComponentAttributes()
+  fullName: BFB.Engine.UI.Components.UIComponentAttributes.UIComponentAttributes()
+  type: Constructor
+  source:
+    remote:
+      path: BFB/BFB.Engine/UI/Components/UIComponent.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: .ctor
+    path: ../BFB/BFB.Engine/UI/Components/UIComponent.cs
+    startLine: 302
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.UI.Components
+  syntax:
+    content: public UIComponentAttributes()
+    content.vb: Public Sub New
+  overload: BFB.Engine.UI.Components.UIComponentAttributes.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.UI.Components.UIComponentAttributes.CascadeAttributes(BFB.Engine.UI.Components.UIComponentAttributes)
+  commentId: M:BFB.Engine.UI.Components.UIComponentAttributes.CascadeAttributes(BFB.Engine.UI.Components.UIComponentAttributes)
+  id: CascadeAttributes(BFB.Engine.UI.Components.UIComponentAttributes)
+  parent: BFB.Engine.UI.Components.UIComponentAttributes
+  langs:
+  - csharp
+  - vb
+  name: CascadeAttributes(UIComponentAttributes)
+  nameWithType: UIComponentAttributes.CascadeAttributes(UIComponentAttributes)
+  fullName: BFB.Engine.UI.Components.UIComponentAttributes.CascadeAttributes(BFB.Engine.UI.Components.UIComponentAttributes)
+  type: Method
+  source:
+    remote:
+      path: BFB/BFB.Engine/UI/Components/UIComponent.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: CascadeAttributes
+    path: ../BFB/BFB.Engine/UI/Components/UIComponent.cs
+    startLine: 317
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.UI.Components
+  example: []
+  syntax:
+    content: public UIComponentAttributes CascadeAttributes(UIComponentAttributes cascadingAttributes)
+    parameters:
+    - id: cascadingAttributes
+      type: BFB.Engine.UI.Components.UIComponentAttributes
+    return:
+      type: BFB.Engine.UI.Components.UIComponentAttributes
+    content.vb: Public Function CascadeAttributes(cascadingAttributes As UIComponentAttributes) As UIComponentAttributes
+  overload: BFB.Engine.UI.Components.UIComponentAttributes.CascadeAttributes*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+references:
+- uid: BFB.Engine.UI.Components
+  commentId: N:BFB.Engine.UI.Components
+  name: BFB.Engine.UI.Components
+  nameWithType: BFB.Engine.UI.Components
+  fullName: BFB.Engine.UI.Components
+- uid: System.Object
+  commentId: '!:System.Object'
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: BFB.Engine.UI.Components.UIComponentAttributes.BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{BFB.Engine.UI.Components.UIComponentAttributes,{TValue}}},{TValue})
+  commentId: M:BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  parent: BFB.Engine.UI.Components.LambdaExtensions
+  definition: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  name: SetPropertyValue<UIComponentAttributes, TValue>(Expression<Func<UIComponentAttributes, TValue>>, TValue)
+  nameWithType: LambdaExtensions.SetPropertyValue<UIComponentAttributes, TValue>(Expression<Func<UIComponentAttributes, TValue>>, TValue)
+  fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<BFB.Engine.UI.Components.UIComponentAttributes, TValue>(Expression<Func<BFB.Engine.UI.Components.UIComponentAttributes, TValue>>, TValue)
+  nameWithType.vb: LambdaExtensions.SetPropertyValue(Of UIComponentAttributes, TValue)(Expression(Of Func(Of UIComponentAttributes, TValue)), TValue)
+  fullName.vb: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of BFB.Engine.UI.Components.UIComponentAttributes, TValue)(Expression(Of Func(Of BFB.Engine.UI.Components.UIComponentAttributes, TValue)), TValue)
+  name.vb: SetPropertyValue(Of UIComponentAttributes, TValue)(Expression(Of Func(Of UIComponentAttributes, TValue)), TValue)
+  spec.csharp:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue<UIComponentAttributes, TValue>
+    nameWithType: LambdaExtensions.SetPropertyValue<UIComponentAttributes, TValue>
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<BFB.Engine.UI.Components.UIComponentAttributes, TValue>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: BFB.Engine.UI.Components.UIComponentAttributes
+    name: UIComponentAttributes
+    nameWithType: UIComponentAttributes
+    fullName: BFB.Engine.UI.Components.UIComponentAttributes
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue(Of UIComponentAttributes, TValue)
+    nameWithType: LambdaExtensions.SetPropertyValue(Of UIComponentAttributes, TValue)
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of BFB.Engine.UI.Components.UIComponentAttributes, TValue)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: BFB.Engine.UI.Components.UIComponentAttributes
+    name: UIComponentAttributes
+    nameWithType: UIComponentAttributes
+    fullName: BFB.Engine.UI.Components.UIComponentAttributes
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  commentId: M:BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  isExternal: true
+  name: SetPropertyValue<T, TValue>(T, Expression<Func<T, TValue>>, TValue)
+  nameWithType: LambdaExtensions.SetPropertyValue<T, TValue>(T, Expression<Func<T, TValue>>, TValue)
+  fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<T, TValue>(T, Expression<Func<T, TValue>>, TValue)
+  nameWithType.vb: LambdaExtensions.SetPropertyValue(Of T, TValue)(T, Expression(Of Func(Of T, TValue)), TValue)
+  fullName.vb: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of T, TValue)(T, Expression(Of Func(Of T, TValue)), TValue)
+  name.vb: SetPropertyValue(Of T, TValue)(T, Expression(Of Func(Of T, TValue)), TValue)
+  spec.csharp:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue<T, TValue>
+    nameWithType: LambdaExtensions.SetPropertyValue<T, TValue>
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<T, TValue>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue(Of T, TValue)
+    nameWithType: LambdaExtensions.SetPropertyValue(Of T, TValue)
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of T, TValue)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Components.LambdaExtensions
+  commentId: T:BFB.Engine.UI.Components.LambdaExtensions
+  parent: BFB.Engine.UI.Components
+  name: LambdaExtensions
+  nameWithType: LambdaExtensions
+  fullName: BFB.Engine.UI.Components.LambdaExtensions
+- uid: BFB.Engine.UI.Components.UIComponentAttributes.TextureKey*
+  commentId: Overload:BFB.Engine.UI.Components.UIComponentAttributes.TextureKey
+  name: TextureKey
+  nameWithType: UIComponentAttributes.TextureKey
+  fullName: BFB.Engine.UI.Components.UIComponentAttributes.TextureKey
+- uid: System.String
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: BFB.Engine.UI.Components.UIComponentAttributes.FontKey*
+  commentId: Overload:BFB.Engine.UI.Components.UIComponentAttributes.FontKey
+  name: FontKey
+  nameWithType: UIComponentAttributes.FontKey
+  fullName: BFB.Engine.UI.Components.UIComponentAttributes.FontKey
+- uid: BFB.Engine.UI.Components.UIComponentAttributes.FontSize*
+  commentId: Overload:BFB.Engine.UI.Components.UIComponentAttributes.FontSize
+  name: FontSize
+  nameWithType: UIComponentAttributes.FontSize
+  fullName: BFB.Engine.UI.Components.UIComponentAttributes.FontSize
+- uid: System.Single
+  isExternal: true
+  name: Single
+  nameWithType: Single
+  fullName: System.Single
+- uid: BFB.Engine.UI.Components.UIComponentAttributes.X*
+  commentId: Overload:BFB.Engine.UI.Components.UIComponentAttributes.X
+  name: X
+  nameWithType: UIComponentAttributes.X
+  fullName: BFB.Engine.UI.Components.UIComponentAttributes.X
+- uid: System.Int32
+  isExternal: true
+  name: Int32
+  nameWithType: Int32
+  fullName: System.Int32
+- uid: BFB.Engine.UI.Components.UIComponentAttributes.Y*
+  commentId: Overload:BFB.Engine.UI.Components.UIComponentAttributes.Y
+  name: Y
+  nameWithType: UIComponentAttributes.Y
+  fullName: BFB.Engine.UI.Components.UIComponentAttributes.Y
+- uid: BFB.Engine.UI.Components.UIComponentAttributes.Width*
+  commentId: Overload:BFB.Engine.UI.Components.UIComponentAttributes.Width
+  name: Width
+  nameWithType: UIComponentAttributes.Width
+  fullName: BFB.Engine.UI.Components.UIComponentAttributes.Width
+- uid: BFB.Engine.UI.Components.UIComponentAttributes.Height*
+  commentId: Overload:BFB.Engine.UI.Components.UIComponentAttributes.Height
+  name: Height
+  nameWithType: UIComponentAttributes.Height
+  fullName: BFB.Engine.UI.Components.UIComponentAttributes.Height
+- uid: BFB.Engine.UI.Components.UIComponentAttributes.Color*
+  commentId: Overload:BFB.Engine.UI.Components.UIComponentAttributes.Color
+  name: Color
+  nameWithType: UIComponentAttributes.Color
+  fullName: BFB.Engine.UI.Components.UIComponentAttributes.Color
+- uid: Color
+  isExternal: true
+  name: Color
+  nameWithType: Color
+  fullName: Color
+- uid: BFB.Engine.UI.Components.UIComponentAttributes.Background*
+  commentId: Overload:BFB.Engine.UI.Components.UIComponentAttributes.Background
+  name: Background
+  nameWithType: UIComponentAttributes.Background
+  fullName: BFB.Engine.UI.Components.UIComponentAttributes.Background
+- uid: BFB.Engine.UI.Components.UIComponentAttributes.Grow*
+  commentId: Overload:BFB.Engine.UI.Components.UIComponentAttributes.Grow
+  name: Grow
+  nameWithType: UIComponentAttributes.Grow
+  fullName: BFB.Engine.UI.Components.UIComponentAttributes.Grow
+- uid: BFB.Engine.UI.Components.UIComponentAttributes.StackDirection*
+  commentId: Overload:BFB.Engine.UI.Components.UIComponentAttributes.StackDirection
+  name: StackDirection
+  nameWithType: UIComponentAttributes.StackDirection
+  fullName: BFB.Engine.UI.Components.UIComponentAttributes.StackDirection
+- uid: BFB.Engine.UI.Components.StackDirection
+  commentId: T:BFB.Engine.UI.Components.StackDirection
+  parent: BFB.Engine.UI.Components
+  name: StackDirection
+  nameWithType: StackDirection
+  fullName: BFB.Engine.UI.Components.StackDirection
+- uid: BFB.Engine.UI.Components.UIComponentAttributes.#ctor*
+  commentId: Overload:BFB.Engine.UI.Components.UIComponentAttributes.#ctor
+  name: UIComponentAttributes
+  nameWithType: UIComponentAttributes.UIComponentAttributes
+  fullName: BFB.Engine.UI.Components.UIComponentAttributes.UIComponentAttributes
+- uid: BFB.Engine.UI.Components.UIComponentAttributes.CascadeAttributes*
+  commentId: Overload:BFB.Engine.UI.Components.UIComponentAttributes.CascadeAttributes
+  name: CascadeAttributes
+  nameWithType: UIComponentAttributes.CascadeAttributes
+  fullName: BFB.Engine.UI.Components.UIComponentAttributes.CascadeAttributes
+- uid: BFB.Engine.UI.Components.UIComponentAttributes
+  commentId: T:BFB.Engine.UI.Components.UIComponentAttributes
+  parent: BFB.Engine.UI.Components
+  name: UIComponentAttributes
+  nameWithType: UIComponentAttributes
+  fullName: BFB.Engine.UI.Components.UIComponentAttributes

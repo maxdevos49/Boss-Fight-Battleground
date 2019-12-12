@@ -1,0 +1,378 @@
+### YamlMime:ManagedReference
+items:
+- uid: BFB.Engine.UI.Components.StackDirection
+  commentId: T:BFB.Engine.UI.Components.StackDirection
+  id: StackDirection
+  parent: BFB.Engine.UI.Components
+  children:
+  - BFB.Engine.UI.Components.StackDirection.Horizontal
+  - BFB.Engine.UI.Components.StackDirection.None
+  - BFB.Engine.UI.Components.StackDirection.Vertical
+  langs:
+  - csharp
+  - vb
+  name: StackDirection
+  nameWithType: StackDirection
+  fullName: BFB.Engine.UI.Components.StackDirection
+  type: Enum
+  source:
+    remote:
+      path: BFB/BFB.Engine/UI/Components/UIComponent.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: StackDirection
+    path: ../BFB/BFB.Engine/UI/Components/UIComponent.cs
+    startLine: 339
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.UI.Components
+  syntax:
+    content: 'public enum StackDirection : int'
+    content.vb: Public Enum StackDirection As Integer
+  extensionMethods:
+  - BFB.Engine.UI.Components.StackDirection.BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{BFB.Engine.UI.Components.StackDirection,{TValue}}},{TValue})
+  modifiers.csharp:
+  - public
+  - enum
+  modifiers.vb:
+  - Public
+  - Enum
+- uid: BFB.Engine.UI.Components.StackDirection.Vertical
+  commentId: F:BFB.Engine.UI.Components.StackDirection.Vertical
+  id: Vertical
+  parent: BFB.Engine.UI.Components.StackDirection
+  langs:
+  - csharp
+  - vb
+  name: Vertical
+  nameWithType: StackDirection.Vertical
+  fullName: BFB.Engine.UI.Components.StackDirection.Vertical
+  type: Field
+  source:
+    remote:
+      path: BFB/BFB.Engine/UI/Components/UIComponent.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: Vertical
+    path: ../BFB/BFB.Engine/UI/Components/UIComponent.cs
+    startLine: 341
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.UI.Components
+  syntax:
+    content: Vertical = 0
+    return:
+      type: BFB.Engine.UI.Components.StackDirection
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: BFB.Engine.UI.Components.StackDirection.Horizontal
+  commentId: F:BFB.Engine.UI.Components.StackDirection.Horizontal
+  id: Horizontal
+  parent: BFB.Engine.UI.Components.StackDirection
+  langs:
+  - csharp
+  - vb
+  name: Horizontal
+  nameWithType: StackDirection.Horizontal
+  fullName: BFB.Engine.UI.Components.StackDirection.Horizontal
+  type: Field
+  source:
+    remote:
+      path: BFB/BFB.Engine/UI/Components/UIComponent.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: Horizontal
+    path: ../BFB/BFB.Engine/UI/Components/UIComponent.cs
+    startLine: 342
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.UI.Components
+  syntax:
+    content: Horizontal = 1
+    return:
+      type: BFB.Engine.UI.Components.StackDirection
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: BFB.Engine.UI.Components.StackDirection.None
+  commentId: F:BFB.Engine.UI.Components.StackDirection.None
+  id: None
+  parent: BFB.Engine.UI.Components.StackDirection
+  langs:
+  - csharp
+  - vb
+  name: None
+  nameWithType: StackDirection.None
+  fullName: BFB.Engine.UI.Components.StackDirection.None
+  type: Field
+  source:
+    remote:
+      path: BFB/BFB.Engine/UI/Components/UIComponent.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: None
+    path: ../BFB/BFB.Engine/UI/Components/UIComponent.cs
+    startLine: 343
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.UI.Components
+  syntax:
+    content: None = 2
+    return:
+      type: BFB.Engine.UI.Components.StackDirection
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+references:
+- uid: BFB.Engine.UI.Components
+  commentId: N:BFB.Engine.UI.Components
+  name: BFB.Engine.UI.Components
+  nameWithType: BFB.Engine.UI.Components
+  fullName: BFB.Engine.UI.Components
+- uid: BFB.Engine.UI.Components.StackDirection.BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{BFB.Engine.UI.Components.StackDirection,{TValue}}},{TValue})
+  commentId: M:BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  parent: BFB.Engine.UI.Components.LambdaExtensions
+  definition: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  name: SetPropertyValue<StackDirection, TValue>(Expression<Func<StackDirection, TValue>>, TValue)
+  nameWithType: LambdaExtensions.SetPropertyValue<StackDirection, TValue>(Expression<Func<StackDirection, TValue>>, TValue)
+  fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<BFB.Engine.UI.Components.StackDirection, TValue>(Expression<Func<BFB.Engine.UI.Components.StackDirection, TValue>>, TValue)
+  nameWithType.vb: LambdaExtensions.SetPropertyValue(Of StackDirection, TValue)(Expression(Of Func(Of StackDirection, TValue)), TValue)
+  fullName.vb: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of BFB.Engine.UI.Components.StackDirection, TValue)(Expression(Of Func(Of BFB.Engine.UI.Components.StackDirection, TValue)), TValue)
+  name.vb: SetPropertyValue(Of StackDirection, TValue)(Expression(Of Func(Of StackDirection, TValue)), TValue)
+  spec.csharp:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue<StackDirection, TValue>
+    nameWithType: LambdaExtensions.SetPropertyValue<StackDirection, TValue>
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<BFB.Engine.UI.Components.StackDirection, TValue>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: BFB.Engine.UI.Components.StackDirection
+    name: StackDirection
+    nameWithType: StackDirection
+    fullName: BFB.Engine.UI.Components.StackDirection
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue(Of StackDirection, TValue)
+    nameWithType: LambdaExtensions.SetPropertyValue(Of StackDirection, TValue)
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of BFB.Engine.UI.Components.StackDirection, TValue)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: BFB.Engine.UI.Components.StackDirection
+    name: StackDirection
+    nameWithType: StackDirection
+    fullName: BFB.Engine.UI.Components.StackDirection
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  commentId: M:BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  isExternal: true
+  name: SetPropertyValue<T, TValue>(T, Expression<Func<T, TValue>>, TValue)
+  nameWithType: LambdaExtensions.SetPropertyValue<T, TValue>(T, Expression<Func<T, TValue>>, TValue)
+  fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<T, TValue>(T, Expression<Func<T, TValue>>, TValue)
+  nameWithType.vb: LambdaExtensions.SetPropertyValue(Of T, TValue)(T, Expression(Of Func(Of T, TValue)), TValue)
+  fullName.vb: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of T, TValue)(T, Expression(Of Func(Of T, TValue)), TValue)
+  name.vb: SetPropertyValue(Of T, TValue)(T, Expression(Of Func(Of T, TValue)), TValue)
+  spec.csharp:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue<T, TValue>
+    nameWithType: LambdaExtensions.SetPropertyValue<T, TValue>
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<T, TValue>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue(Of T, TValue)
+    nameWithType: LambdaExtensions.SetPropertyValue(Of T, TValue)
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of T, TValue)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Components.LambdaExtensions
+  commentId: T:BFB.Engine.UI.Components.LambdaExtensions
+  parent: BFB.Engine.UI.Components
+  name: LambdaExtensions
+  nameWithType: LambdaExtensions
+  fullName: BFB.Engine.UI.Components.LambdaExtensions
+- uid: BFB.Engine.UI.Components.StackDirection
+  commentId: T:BFB.Engine.UI.Components.StackDirection
+  parent: BFB.Engine.UI.Components
+  name: StackDirection
+  nameWithType: StackDirection
+  fullName: BFB.Engine.UI.Components.StackDirection

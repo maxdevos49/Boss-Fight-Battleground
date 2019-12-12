@@ -1,73 +1,131 @@
+using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace BFB.Engine.TileMap
 {
 
-    public class Camera2D
+    public class Camera
     {
-        private Vector2 _position;
-        private float _viewportHeight;
-        private float _viewportWidth;
-
-        public Camera2D()
-        {
-        }
-
-        #region Properties
-
         public Vector2 Position
         {
-            get { return _position; }
-            set { _position = value; }
+            get => _position;
+            private set => _position = value;
         }
-
-        public float Rotation { get; set; }
-        public Vector2 Origin { get; set; }
-        public float Scale { get; set; }
-        public Vector2 ScreenCenter { get; protected set; }
-        public Matrix Transform { get; set; }
+        
+        /// <summary>
+        /// The focus point.
+        /// </summary>
         public Vector2 Focus { get; set; }
+        public float Rotation { get; set; }
+        /// <summary>
+        /// The origin location.
+        /// </summary>
+        public Vector2 Origin { get; set; }
+        /// <summary>
+        /// The zoom value.
+        /// </summary>
+        public float Zoom { get; set; }
+        /// <summary>
+        /// The center of the screen location.
+        /// </summary>
+        public Vector2 ScreenCenter { get; protected set; }
+        /// <summary>
+        /// The matrix to transform the camera.
+        /// </summary>
+        public Matrix Transform { get; set; }
+        /// <summary>
+        /// The speed value of the movement.
+        /// </summary>
         public float MoveSpeed { get; set; }
 
-        #endregion
+        public int Left => (int) (Position.X - Origin.X);
+        public int Top => (int) (Position.Y - Origin.Y);
+        public int Right => (int) (Position.X + Origin.X);
+        public int Bottom => (int) (Position.Y + Origin.Y);
+        
+        
+        private Vector2 _position;
+        private readonly GraphicsDevice _graphicsDevice;
+        private readonly int _worldWidth;
+        private readonly int _worldHeight;
+        public readonly int ViewWidth;
+        public readonly int ViewHeight;
+        private float _targetZoom;
 
-        /// <summary>
-        /// Called when the GameComponent needs to be initialized. 
-        /// </summary>
-        public void Initialize(GraphicsDevice graphicsDevice)
+        public Camera(GraphicsDevice graphicsDevice,int worldWidth, int worldHeight, int viewWidth = 800, int viewHeight = 450)
         {
-            _viewportWidth = graphicsDevice.Viewport.Width;
-            _viewportHeight = graphicsDevice.Viewport.Height;
-
-            ScreenCenter = new Vector2(_viewportWidth / 2, _viewportHeight / 2);
-            Scale = 1;
-            MoveSpeed = 15.25f;
-            Position = new Vector2();
-            Rotation = 0;
+            _graphicsDevice = graphicsDevice;
+            _worldWidth = worldWidth;
+            _worldHeight = worldHeight;
+            ViewWidth = viewWidth;
+            ViewHeight = viewHeight;
+            
+            Position = Vector2.Zero;
             Origin = Vector2.Zero;
-
+            ScreenCenter = Vector2.Zero;
+            Zoom = 0.6f;
+            _targetZoom = Zoom;
+            MoveSpeed = 10.25f;
+            Rotation = 0;
         }
 
+        public Vector3 GetScale()
+        {
+            float screenScale = (float)_graphicsDevice.Viewport.Width / ViewWidth;
+            return new Vector3(Zoom * screenScale, Zoom * screenScale, 0);
+        }
+
+        public void ApplyZoom(float zoomStep)
+        {
+            _targetZoom = Zoom + zoomStep;
+            
+            if (_targetZoom > 1.5f)
+                _targetZoom = 1.5f;
+
+            if (_targetZoom < 0.6f)
+                _targetZoom = 0.6f;
+        }
+        
         public void Update(GameTime gameTime)
         {
+            // ReSharper disable once CompareOfFloatsByEqualityOperator
+            if (Zoom != _targetZoom)
+            {
+                if (_targetZoom > Zoom)
+                    Zoom += System.Math.Abs(_targetZoom - Zoom)/10;
+                else
+                    Zoom -= System.Math.Abs(_targetZoom - Zoom)/10;
 
-            // Create the Transform used by any
-            // spritebatch process
+                if (System.Math.Abs(_targetZoom - Zoom) < 0.0005f)
+                    Zoom = _targetZoom;
+            }
+            
+            ScreenCenter = new Vector2((float)_graphicsDevice.Viewport.Width / 2, (float)_graphicsDevice.Viewport.Height / 2);
+            
+            
+            // Create the Transform
             Transform = Matrix.Identity *
                         Matrix.CreateTranslation(-Position.X, -Position.Y, 0) *
                         Matrix.CreateRotationZ(Rotation) *
                         Matrix.CreateTranslation(Origin.X, Origin.Y, 0) *
-                        Matrix.CreateScale(new Vector3(Scale, Scale, Scale));
+                        Matrix.CreateScale(GetScale());
 
-            Origin = ScreenCenter / Scale;
+            
+            Origin = ScreenCenter / GetScale().X;
 
             // Move the Camera to the position that it needs to go
-            var delta = (float) gameTime.ElapsedGameTime.TotalSeconds;
+            float delta = (float) gameTime.ElapsedGameTime.TotalSeconds ;
 
             _position.X += (Focus.X - Position.X) * MoveSpeed * delta;
             _position.Y += (Focus.Y - Position.Y) * MoveSpeed * delta;
 
+            //Keep camera within bounds of the world
+            if (_position.X < Origin.X)
+                _position.X = Origin.X;
+            else if(_position.X > _worldWidth - Origin.X)
+                _position.X = _worldWidth - Origin.X;
+           
         }
 
     }

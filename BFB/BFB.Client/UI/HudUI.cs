@@ -1,71 +1,132 @@
+using System;
+using BFB.Client.Helpers;
+using BFB.Engine;
 using BFB.Engine.UI;
-using BFB.Engine.UI.Components;
-using BFB.Engine.UI.Constraints;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Input;
 
 namespace BFB.Client.UI
 {
     public class HudUI : UILayer
     {
-        public HudUI() : base(nameof(HudUI)) { }
+        
+        private  ClientDataRegistry ClientData { get; set; }
+
+        public HudUI() : base(nameof(HudUI))
+        {
+            BlockInput = false;
+        }
+
+        protected override void Init()
+        {
+            ClientData = ClientDataRegistry.GetInstance();
+
+            #region Keypress Events
+
+            AddInputListener("keypress", e =>
+            {
+                switch (e.Keyboard.KeyEnum)
+                {
+                    case Keys.Escape:
+                        UIManager.StartLayer(nameof(GameMenuUI),ParentScene);
+                        break;
+                    case Keys.E:
+                        UIManager.LaunchLayer(nameof(InventoryUI), ParentScene);
+                        break;
+                    case Keys.T:
+                        UIManager.StartLayer(nameof(ChatUI), ParentScene);
+                        break;
+                    case Keys.D1:
+                        ClientData.Inventory.ActiveSlot = 0;
+                        break;
+                    case Keys.D2:
+                        ClientData.Inventory.ActiveSlot = 1;
+                        break;
+                    case Keys.D3:
+                        ClientData.Inventory.ActiveSlot = 2;
+                        break;
+                    case Keys.D4:
+                        ClientData.Inventory.ActiveSlot = 3;
+                        break;
+                    case Keys.D5:
+                        ClientData.Inventory.ActiveSlot = 4;
+                        break;
+                    case Keys.D6:
+                        ClientData.Inventory.ActiveSlot = 5;
+                        break;
+                    case Keys.D7:
+                        ClientData.Inventory.ActiveSlot = 6;
+                        break;
+                }
+            });
+
+            #endregion
+            
+            #region MouseScroll Events
+            
+            AddInputListener("mousescroll", e =>
+            {
+
+                if (Math.Abs(e.Mouse.VerticalScrollAmount) <= 200 || e.Keyboard.KeyboardState.IsKeyDown(Keys.LeftControl))
+                    return;
+                
+                if (e.Mouse.VerticalScrollAmount > 0)
+                    ClientData.Inventory.ActiveSlot++;
+                else
+                {
+                    if (ClientData.Inventory.ActiveSlot == 0)
+                        ClientData.Inventory.ActiveSlot = 6;
+                    else
+                        ClientData.Inventory.ActiveSlot--;
+                }
+
+                if (ClientData.Inventory.ActiveSlot > 6)
+                    ClientData.Inventory.ActiveSlot = 0;
+
+            });
+            
+            #endregion
+        }
 
         public override void Body()
         {
-            //Change this to draw frame outlines or not
-            Debug = true;
-            
-            RootUI.Zstack(z1 => { 
-                z1.Vstack(v1 =>
+            RootUI.Background(Color.Transparent);
+
+            RootUI.Zstack(z1 =>
+            {
+                z1.Vstack(h2 =>
                     {
-                        v1.Button("Menu",
-                                clickAction: (e, a) =>
-                                {
-                                    UIManager.Start(nameof(GameMenuUI));
-                                })
-                            .Width(0.07f)
-                            .Image("button")
-                            .AspectRatio(1);
+
+                        //Health Bar
+                        h2.HudMeter(ClientData, x => x.Client.Meta);
+                        //Mana Bar
+                        h2.HudMeter(ClientData,x => x.Client.Meta, true);
+
                     })
-                    .Top(0)
-                    .Left(0);
-
-                z1.Hstack(h1 =>
+                    .Position(Position.Absolute)
+                    .Width(0.3f)
+                    .Height(0.1f)
+                    .Right(0)
+                    .Top(0);
+                
+                //Hotbar
+                z1.Hstack(h2 =>
                     {
-                        h1.Spacer(2);
-
-                        h1.Hstack(h2 =>
+                        for (byte i = 0; i < 7; i++)
+                        {
+                            h2.InventorySlot(ClientData.Inventory, i, hotBarMode:true, clickAction: (e, slotId) =>
                             {
-                                h2.Button("Slot 0")
-                                    .Background(new Color(0, 0, 0, 100));
-                                h2.Button("Slot 1")
-                                    .Background(new Color(0, 0, 0, 100));
-//                                    .AspectRatio(1);
-                                h2.Button("Slot 2")
-                                    .Background(new Color(0, 0, 0, 100));
-                                h2.Button("Slot 3")
-                                    .Background(new Color(0, 0, 0, 100));
-                                h2.Button("Slot 4")
-                                    .Background(new Color(0, 0, 0, 100));
-                                h2.Button("Slot 5")
-                                    .Background(new Color(0, 0, 0, 100));
-                                h2.Button("Slot 6")
-                                    .Background(new Color(0, 0, 0, 100));
-                                h2.Button("Slot 7")
-                                    .Background(new Color(0, 0, 0, 100));
-                                h2.Button("Slot 8")
-                                    .Background(new Color(0, 0, 0, 100));
-                                h2.Button("Slot 9")
-                                    .Background(new Color(0, 0, 0, 100));
-
-                            })
-                            .Grow(10);
-                        
-                        h1.Spacer(2);
+                                if (e.Mouse.LeftButton == ButtonState.Pressed)
+                                    ClientData.Inventory.ActiveSlot = slotId;
+                            });
+                        }
                     })
-                    .Height(0.07f)
+                    .Position(Position.Absolute)
+                    .Height(0.1f)
+                    .Width(0.4f)
                     .Bottom(0);
             });
-            
+
         }
     }
 }

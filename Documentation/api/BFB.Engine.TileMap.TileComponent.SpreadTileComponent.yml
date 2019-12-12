@@ -1,0 +1,521 @@
+### YamlMime:ManagedReference
+items:
+- uid: BFB.Engine.TileMap.TileComponent.SpreadTileComponent
+  commentId: T:BFB.Engine.TileMap.TileComponent.SpreadTileComponent
+  id: SpreadTileComponent
+  parent: BFB.Engine.TileMap.TileComponent
+  children:
+  - BFB.Engine.TileMap.TileComponent.SpreadTileComponent.#ctor(BFB.Engine.TileMap.WorldTile,BFB.Engine.TileMap.WorldTile,BFB.Engine.TileMap.WorldTile,System.Byte)
+  - BFB.Engine.TileMap.TileComponent.SpreadTileComponent.TickTile(BFB.Engine.TileMap.WorldManager,BFB.Engine.TileMap.Chunk,System.Int32,System.Int32)
+  langs:
+  - csharp
+  - vb
+  name: SpreadTileComponent
+  nameWithType: SpreadTileComponent
+  fullName: BFB.Engine.TileMap.TileComponent.SpreadTileComponent
+  type: Class
+  source:
+    remote:
+      path: BFB/BFB.Engine/TileMap/TileComponent/SpreadTileComponent.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: SpreadTileComponent
+    path: ../BFB/BFB.Engine/TileMap/TileComponent/SpreadTileComponent.cs
+    startLine: 7
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.TileMap.TileComponent
+  summary: "\nUsed to have a tile spread in the tilemap.\n"
+  example: []
+  syntax:
+    content: 'public class SpreadTileComponent : object, ITileComponent'
+    content.vb: >-
+      Public Class SpreadTileComponent
+
+          Inherits Object
+
+          Implements ITileComponent
+  inheritance:
+  - System.Object
+  implements:
+  - BFB.Engine.TileMap.TileComponent.ITileComponent
+  extensionMethods:
+  - BFB.Engine.TileMap.TileComponent.SpreadTileComponent.BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{BFB.Engine.TileMap.TileComponent.SpreadTileComponent,{TValue}}},{TValue})
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: BFB.Engine.TileMap.TileComponent.SpreadTileComponent.#ctor(BFB.Engine.TileMap.WorldTile,BFB.Engine.TileMap.WorldTile,BFB.Engine.TileMap.WorldTile,System.Byte)
+  commentId: M:BFB.Engine.TileMap.TileComponent.SpreadTileComponent.#ctor(BFB.Engine.TileMap.WorldTile,BFB.Engine.TileMap.WorldTile,BFB.Engine.TileMap.WorldTile,System.Byte)
+  id: '#ctor(BFB.Engine.TileMap.WorldTile,BFB.Engine.TileMap.WorldTile,BFB.Engine.TileMap.WorldTile,System.Byte)'
+  parent: BFB.Engine.TileMap.TileComponent.SpreadTileComponent
+  langs:
+  - csharp
+  - vb
+  name: SpreadTileComponent(WorldTile, WorldTile, WorldTile, Byte)
+  nameWithType: SpreadTileComponent.SpreadTileComponent(WorldTile, WorldTile, WorldTile, Byte)
+  fullName: BFB.Engine.TileMap.TileComponent.SpreadTileComponent.SpreadTileComponent(BFB.Engine.TileMap.WorldTile, BFB.Engine.TileMap.WorldTile, BFB.Engine.TileMap.WorldTile, System.Byte)
+  type: Constructor
+  source:
+    remote:
+      path: BFB/BFB.Engine/TileMap/TileComponent/SpreadTileComponent.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: .ctor
+    path: ../BFB/BFB.Engine/TileMap/TileComponent/SpreadTileComponent.cs
+    startLine: 23
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.TileMap.TileComponent
+  summary: "\nConstructs a spread tile component with a given configuration.\n"
+  example: []
+  syntax:
+    content: public SpreadTileComponent(WorldTile spreadBlock, WorldTile targetBlock, WorldTile aboveBlock = WorldTile.Unknown, byte randomness = null)
+    parameters:
+    - id: spreadBlock
+      type: BFB.Engine.TileMap.WorldTile
+      description: The block that is placed while spreading.
+    - id: targetBlock
+      type: BFB.Engine.TileMap.WorldTile
+      description: The block that will change configuration to the given spread block.
+    - id: aboveBlock
+      type: BFB.Engine.TileMap.WorldTile
+      description: The block above the target block.
+    - id: randomness
+      type: System.Byte
+      description: How often the spreadBlock spreads.
+    content.vb: Public Sub New(spreadBlock As WorldTile, targetBlock As WorldTile, aboveBlock As WorldTile = WorldTile.Unknown, randomness As Byte = Nothing)
+  overload: BFB.Engine.TileMap.TileComponent.SpreadTileComponent.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.TileMap.TileComponent.SpreadTileComponent.TickTile(BFB.Engine.TileMap.WorldManager,BFB.Engine.TileMap.Chunk,System.Int32,System.Int32)
+  commentId: M:BFB.Engine.TileMap.TileComponent.SpreadTileComponent.TickTile(BFB.Engine.TileMap.WorldManager,BFB.Engine.TileMap.Chunk,System.Int32,System.Int32)
+  id: TickTile(BFB.Engine.TileMap.WorldManager,BFB.Engine.TileMap.Chunk,System.Int32,System.Int32)
+  parent: BFB.Engine.TileMap.TileComponent.SpreadTileComponent
+  langs:
+  - csharp
+  - vb
+  name: TickTile(WorldManager, Chunk, Int32, Int32)
+  nameWithType: SpreadTileComponent.TickTile(WorldManager, Chunk, Int32, Int32)
+  fullName: BFB.Engine.TileMap.TileComponent.SpreadTileComponent.TickTile(BFB.Engine.TileMap.WorldManager, BFB.Engine.TileMap.Chunk, System.Int32, System.Int32)
+  type: Method
+  source:
+    remote:
+      path: BFB/BFB.Engine/TileMap/TileComponent/SpreadTileComponent.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: TickTile
+    path: ../BFB/BFB.Engine/TileMap/TileComponent/SpreadTileComponent.cs
+    startLine: 40
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.TileMap.TileComponent
+  summary: "\nThe update for the tile component.\n"
+  example: []
+  syntax:
+    content: public void TickTile(WorldManager world, Chunk chunk, int blockX, int blockY)
+    parameters:
+    - id: world
+      type: BFB.Engine.TileMap.WorldManager
+      description: The manager for the world.
+    - id: chunk
+      type: BFB.Engine.TileMap.Chunk
+      description: The chunk in a given world.
+    - id: blockX
+      type: System.Int32
+      description: The x block in the given chunk.
+    - id: blockY
+      type: System.Int32
+      description: The y block in the given chunk.
+    content.vb: Public Sub TickTile(world As WorldManager, chunk As Chunk, blockX As Integer, blockY As Integer)
+  overload: BFB.Engine.TileMap.TileComponent.SpreadTileComponent.TickTile*
+  implements:
+  - BFB.Engine.TileMap.TileComponent.ITileComponent.TickTile(BFB.Engine.TileMap.WorldManager,BFB.Engine.TileMap.Chunk,System.Int32,System.Int32)
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+references:
+- uid: BFB.Engine.TileMap.TileComponent
+  commentId: N:BFB.Engine.TileMap.TileComponent
+  name: BFB.Engine.TileMap.TileComponent
+  nameWithType: BFB.Engine.TileMap.TileComponent
+  fullName: BFB.Engine.TileMap.TileComponent
+- uid: System.Object
+  commentId: '!:System.Object'
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: BFB.Engine.TileMap.TileComponent.ITileComponent
+  commentId: T:BFB.Engine.TileMap.TileComponent.ITileComponent
+  parent: BFB.Engine.TileMap.TileComponent
+  name: ITileComponent
+  nameWithType: ITileComponent
+  fullName: BFB.Engine.TileMap.TileComponent.ITileComponent
+- uid: BFB.Engine.TileMap.TileComponent.SpreadTileComponent.BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{BFB.Engine.TileMap.TileComponent.SpreadTileComponent,{TValue}}},{TValue})
+  commentId: M:BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  parent: BFB.Engine.UI.Components.LambdaExtensions
+  definition: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  name: SetPropertyValue<SpreadTileComponent, TValue>(Expression<Func<SpreadTileComponent, TValue>>, TValue)
+  nameWithType: LambdaExtensions.SetPropertyValue<SpreadTileComponent, TValue>(Expression<Func<SpreadTileComponent, TValue>>, TValue)
+  fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<BFB.Engine.TileMap.TileComponent.SpreadTileComponent, TValue>(Expression<Func<BFB.Engine.TileMap.TileComponent.SpreadTileComponent, TValue>>, TValue)
+  nameWithType.vb: LambdaExtensions.SetPropertyValue(Of SpreadTileComponent, TValue)(Expression(Of Func(Of SpreadTileComponent, TValue)), TValue)
+  fullName.vb: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of BFB.Engine.TileMap.TileComponent.SpreadTileComponent, TValue)(Expression(Of Func(Of BFB.Engine.TileMap.TileComponent.SpreadTileComponent, TValue)), TValue)
+  name.vb: SetPropertyValue(Of SpreadTileComponent, TValue)(Expression(Of Func(Of SpreadTileComponent, TValue)), TValue)
+  spec.csharp:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue<SpreadTileComponent, TValue>
+    nameWithType: LambdaExtensions.SetPropertyValue<SpreadTileComponent, TValue>
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<BFB.Engine.TileMap.TileComponent.SpreadTileComponent, TValue>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: BFB.Engine.TileMap.TileComponent.SpreadTileComponent
+    name: SpreadTileComponent
+    nameWithType: SpreadTileComponent
+    fullName: BFB.Engine.TileMap.TileComponent.SpreadTileComponent
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue(Of SpreadTileComponent, TValue)
+    nameWithType: LambdaExtensions.SetPropertyValue(Of SpreadTileComponent, TValue)
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of BFB.Engine.TileMap.TileComponent.SpreadTileComponent, TValue)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: BFB.Engine.TileMap.TileComponent.SpreadTileComponent
+    name: SpreadTileComponent
+    nameWithType: SpreadTileComponent
+    fullName: BFB.Engine.TileMap.TileComponent.SpreadTileComponent
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  commentId: M:BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  isExternal: true
+  name: SetPropertyValue<T, TValue>(T, Expression<Func<T, TValue>>, TValue)
+  nameWithType: LambdaExtensions.SetPropertyValue<T, TValue>(T, Expression<Func<T, TValue>>, TValue)
+  fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<T, TValue>(T, Expression<Func<T, TValue>>, TValue)
+  nameWithType.vb: LambdaExtensions.SetPropertyValue(Of T, TValue)(T, Expression(Of Func(Of T, TValue)), TValue)
+  fullName.vb: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of T, TValue)(T, Expression(Of Func(Of T, TValue)), TValue)
+  name.vb: SetPropertyValue(Of T, TValue)(T, Expression(Of Func(Of T, TValue)), TValue)
+  spec.csharp:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue<T, TValue>
+    nameWithType: LambdaExtensions.SetPropertyValue<T, TValue>
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<T, TValue>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue(Of T, TValue)
+    nameWithType: LambdaExtensions.SetPropertyValue(Of T, TValue)
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of T, TValue)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Components.LambdaExtensions
+  commentId: T:BFB.Engine.UI.Components.LambdaExtensions
+  parent: BFB.Engine.UI.Components
+  name: LambdaExtensions
+  nameWithType: LambdaExtensions
+  fullName: BFB.Engine.UI.Components.LambdaExtensions
+- uid: BFB.Engine.UI.Components
+  commentId: N:BFB.Engine.UI.Components
+  name: BFB.Engine.UI.Components
+  nameWithType: BFB.Engine.UI.Components
+  fullName: BFB.Engine.UI.Components
+- uid: BFB.Engine.TileMap.TileComponent.SpreadTileComponent.#ctor*
+  commentId: Overload:BFB.Engine.TileMap.TileComponent.SpreadTileComponent.#ctor
+  name: SpreadTileComponent
+  nameWithType: SpreadTileComponent.SpreadTileComponent
+  fullName: BFB.Engine.TileMap.TileComponent.SpreadTileComponent.SpreadTileComponent
+- uid: BFB.Engine.TileMap.WorldTile
+  commentId: T:BFB.Engine.TileMap.WorldTile
+  parent: BFB.Engine.TileMap
+  name: WorldTile
+  nameWithType: WorldTile
+  fullName: BFB.Engine.TileMap.WorldTile
+- uid: System.Byte
+  isExternal: true
+  name: Byte
+  nameWithType: Byte
+  fullName: System.Byte
+- uid: BFB.Engine.TileMap
+  commentId: N:BFB.Engine.TileMap
+  name: BFB.Engine.TileMap
+  nameWithType: BFB.Engine.TileMap
+  fullName: BFB.Engine.TileMap
+- uid: BFB.Engine.TileMap.TileComponent.SpreadTileComponent.TickTile*
+  commentId: Overload:BFB.Engine.TileMap.TileComponent.SpreadTileComponent.TickTile
+  name: TickTile
+  nameWithType: SpreadTileComponent.TickTile
+  fullName: BFB.Engine.TileMap.TileComponent.SpreadTileComponent.TickTile
+- uid: BFB.Engine.TileMap.TileComponent.ITileComponent.TickTile(BFB.Engine.TileMap.WorldManager,BFB.Engine.TileMap.Chunk,System.Int32,System.Int32)
+  commentId: M:BFB.Engine.TileMap.TileComponent.ITileComponent.TickTile(BFB.Engine.TileMap.WorldManager,BFB.Engine.TileMap.Chunk,System.Int32,System.Int32)
+  parent: BFB.Engine.TileMap.TileComponent.ITileComponent
+  isExternal: true
+  name: TickTile(WorldManager, Chunk, Int32, Int32)
+  nameWithType: ITileComponent.TickTile(WorldManager, Chunk, Int32, Int32)
+  fullName: BFB.Engine.TileMap.TileComponent.ITileComponent.TickTile(BFB.Engine.TileMap.WorldManager, BFB.Engine.TileMap.Chunk, System.Int32, System.Int32)
+  spec.csharp:
+  - uid: BFB.Engine.TileMap.TileComponent.ITileComponent.TickTile(BFB.Engine.TileMap.WorldManager,BFB.Engine.TileMap.Chunk,System.Int32,System.Int32)
+    name: TickTile
+    nameWithType: ITileComponent.TickTile
+    fullName: BFB.Engine.TileMap.TileComponent.ITileComponent.TickTile
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: BFB.Engine.TileMap.WorldManager
+    name: WorldManager
+    nameWithType: WorldManager
+    fullName: BFB.Engine.TileMap.WorldManager
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: BFB.Engine.TileMap.Chunk
+    name: Chunk
+    nameWithType: Chunk
+    fullName: BFB.Engine.TileMap.Chunk
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.TileMap.TileComponent.ITileComponent.TickTile(BFB.Engine.TileMap.WorldManager,BFB.Engine.TileMap.Chunk,System.Int32,System.Int32)
+    name: TickTile
+    nameWithType: ITileComponent.TickTile
+    fullName: BFB.Engine.TileMap.TileComponent.ITileComponent.TickTile
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: BFB.Engine.TileMap.WorldManager
+    name: WorldManager
+    nameWithType: WorldManager
+    fullName: BFB.Engine.TileMap.WorldManager
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: BFB.Engine.TileMap.Chunk
+    name: Chunk
+    nameWithType: Chunk
+    fullName: BFB.Engine.TileMap.Chunk
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.TileMap.WorldManager
+  commentId: T:BFB.Engine.TileMap.WorldManager
+  parent: BFB.Engine.TileMap
+  name: WorldManager
+  nameWithType: WorldManager
+  fullName: BFB.Engine.TileMap.WorldManager
+- uid: BFB.Engine.TileMap.Chunk
+  commentId: T:BFB.Engine.TileMap.Chunk
+  parent: BFB.Engine.TileMap
+  name: Chunk
+  nameWithType: Chunk
+  fullName: BFB.Engine.TileMap.Chunk
+- uid: System.Int32
+  isExternal: true
+  name: Int32
+  nameWithType: Int32
+  fullName: System.Int32

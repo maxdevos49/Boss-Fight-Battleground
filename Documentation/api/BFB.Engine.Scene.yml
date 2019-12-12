@@ -1,0 +1,42 @@
+### YamlMime:ManagedReference
+items:
+- uid: BFB.Engine.Scene
+  commentId: N:BFB.Engine.Scene
+  id: BFB.Engine.Scene
+  children:
+  - BFB.Engine.Scene.Scene
+  - BFB.Engine.Scene.SceneManager
+  - BFB.Engine.Scene.SceneStatus
+  langs:
+  - csharp
+  - vb
+  name: BFB.Engine.Scene
+  nameWithType: BFB.Engine.Scene
+  fullName: BFB.Engine.Scene
+  type: Namespace
+  assemblies:
+  - BFB.Engine
+references:
+- uid: BFB.Engine.Scene.Scene
+  commentId: T:BFB.Engine.Scene.Scene
+  parent: BFB.Engine.Scene
+  name: Scene
+  nameWithType: Scene
+  fullName: BFB.Engine.Scene.Scene
+- uid: BFB.Engine.Scene.SceneManager
+  commentId: T:BFB.Engine.Scene.SceneManager
+  parent: BFB.Engine.Scene
+  name: SceneManager
+  nameWithType: SceneManager
+  fullName: BFB.Engine.Scene.SceneManager
+- uid: BFB.Engine.Scene.SceneStatus
+  commentId: T:BFB.Engine.Scene.SceneStatus
+  parent: BFB.Engine.Scene
+  name: SceneStatus
+  nameWithType: SceneStatus
+  fullName: BFB.Engine.Scene.SceneStatus
+- uid: BFB.Engine.Scene
+  commentId: N:BFB.Engine.Scene
+  name: BFB.Engine.Scene
+  nameWithType: BFB.Engine.Scene
+  fullName: BFB.Engine.Scene

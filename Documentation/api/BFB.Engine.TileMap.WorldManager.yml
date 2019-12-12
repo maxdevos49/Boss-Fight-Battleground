@@ -1,0 +1,1579 @@
+### YamlMime:ManagedReference
+items:
+- uid: BFB.Engine.TileMap.WorldManager
+  commentId: T:BFB.Engine.TileMap.WorldManager
+  id: WorldManager
+  parent: BFB.Engine.TileMap
+  children:
+  - BFB.Engine.TileMap.WorldManager.#ctor(BFB.Engine.TileMap.Generators.WorldOptions)
+  - BFB.Engine.TileMap.WorldManager.ChunkFromChunkLocation(System.Int32,System.Int32)
+  - BFB.Engine.TileMap.WorldManager.ChunkFromPixelLocation(System.Int32,System.Int32)
+  - BFB.Engine.TileMap.WorldManager.ChunkFromTileLocation(System.Int32,System.Int32)
+  - BFB.Engine.TileMap.WorldManager.ChunkIndex
+  - BFB.Engine.TileMap.WorldManager.ChunkKeyFromChunkLocation(System.Int32,System.Int32)
+  - BFB.Engine.TileMap.WorldManager.ChunkMap
+  - BFB.Engine.TileMap.WorldManager.GenerateWorld(Action{System.String})
+  - BFB.Engine.TileMap.WorldManager.GetBlock(System.Int32,System.Int32)
+  - BFB.Engine.TileMap.WorldManager.GetHardness(System.Int32,System.Int32)
+  - BFB.Engine.TileMap.WorldManager.GetLight(System.Int32,System.Int32)
+  - BFB.Engine.TileMap.WorldManager.GetWall(System.Int32,System.Int32)
+  - BFB.Engine.TileMap.WorldManager.LoadWorld(System.String)
+  - BFB.Engine.TileMap.WorldManager.MoveEntity(System.String,BFB.Engine.TileMap.Chunk,BFB.Engine.TileMap.Chunk)
+  - BFB.Engine.TileMap.WorldManager.SaveWorld(System.String)
+  - BFB.Engine.TileMap.WorldManager.SetAll(System.Int32,System.Int32,System.UInt16,System.Byte,System.UInt16,BFB.Engine.TileMap.WorldTile)
+  - BFB.Engine.TileMap.WorldManager.SetBlock(System.Int32,System.Int32,BFB.Engine.TileMap.WorldTile)
+  - BFB.Engine.TileMap.WorldManager.SetHardness(System.Int32,System.Int32,System.UInt16)
+  - BFB.Engine.TileMap.WorldManager.SetLight(System.Int32,System.Int32,System.Byte)
+  - BFB.Engine.TileMap.WorldManager.SetWall(System.Int32,System.Int32,System.UInt16)
+  - BFB.Engine.TileMap.WorldManager.WorldGeneratorCallback
+  - BFB.Engine.TileMap.WorldManager.WorldOptions
+  langs:
+  - csharp
+  - vb
+  name: WorldManager
+  nameWithType: WorldManager
+  fullName: BFB.Engine.TileMap.WorldManager
+  type: Class
+  source:
+    remote:
+      path: BFB/BFB.Engine/TileMap/WorldManager.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: WorldManager
+    path: ../BFB/BFB.Engine/TileMap/WorldManager.cs
+    startLine: 11
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.TileMap
+  syntax:
+    content: 'public class WorldManager : object'
+    content.vb: >-
+      Public Class WorldManager
+
+          Inherits Object
+  inheritance:
+  - System.Object
+  extensionMethods:
+  - BFB.Engine.TileMap.WorldManager.BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{BFB.Engine.TileMap.WorldManager,{TValue}}},{TValue})
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: BFB.Engine.TileMap.WorldManager.WorldOptions
+  commentId: P:BFB.Engine.TileMap.WorldManager.WorldOptions
+  id: WorldOptions
+  parent: BFB.Engine.TileMap.WorldManager
+  langs:
+  - csharp
+  - vb
+  name: WorldOptions
+  nameWithType: WorldManager.WorldOptions
+  fullName: BFB.Engine.TileMap.WorldManager.WorldOptions
+  type: Property
+  source:
+    remote:
+      path: BFB/BFB.Engine/TileMap/WorldManager.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: WorldOptions
+    path: ../BFB/BFB.Engine/TileMap/WorldManager.cs
+    startLine: 19
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.TileMap
+  summary: "\nThe options for the world.\n"
+  example: []
+  syntax:
+    content: public WorldOptions WorldOptions { get; }
+    parameters: []
+    return:
+      type: BFB.Engine.TileMap.Generators.WorldOptions
+    content.vb: Public ReadOnly Property WorldOptions As WorldOptions
+  overload: BFB.Engine.TileMap.WorldManager.WorldOptions*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: BFB.Engine.TileMap.WorldManager.ChunkMap
+  commentId: P:BFB.Engine.TileMap.WorldManager.ChunkMap
+  id: ChunkMap
+  parent: BFB.Engine.TileMap.WorldManager
+  langs:
+  - csharp
+  - vb
+  name: ChunkMap
+  nameWithType: WorldManager.ChunkMap
+  fullName: BFB.Engine.TileMap.WorldManager.ChunkMap
+  type: Property
+  source:
+    remote:
+      path: BFB/BFB.Engine/TileMap/WorldManager.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: ChunkMap
+    path: ../BFB/BFB.Engine/TileMap/WorldManager.cs
+    startLine: 24
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.TileMap
+  summary: "\nThe map for a chunk.\n"
+  example: []
+  syntax:
+    content: public Chunk[, ] ChunkMap { get; }
+    parameters: []
+    return:
+      type: BFB.Engine.TileMap.Chunk[,]
+    content.vb: Public ReadOnly Property ChunkMap As Chunk(,)
+  overload: BFB.Engine.TileMap.WorldManager.ChunkMap*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: BFB.Engine.TileMap.WorldManager.ChunkIndex
+  commentId: P:BFB.Engine.TileMap.WorldManager.ChunkIndex
+  id: ChunkIndex
+  parent: BFB.Engine.TileMap.WorldManager
+  langs:
+  - csharp
+  - vb
+  name: ChunkIndex
+  nameWithType: WorldManager.ChunkIndex
+  fullName: BFB.Engine.TileMap.WorldManager.ChunkIndex
+  type: Property
+  source:
+    remote:
+      path: BFB/BFB.Engine/TileMap/WorldManager.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: ChunkIndex
+    path: ../BFB/BFB.Engine/TileMap/WorldManager.cs
+    startLine: 28
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.TileMap
+  summary: "\nThe index for the chunk.\n"
+  example: []
+  syntax:
+    content: public Dictionary<string, Chunk> ChunkIndex { get; }
+    parameters: []
+    return:
+      type: Dictionary{System.String,BFB.Engine.TileMap.Chunk}
+    content.vb: Public ReadOnly Property ChunkIndex As Dictionary(Of String, Chunk)
+  overload: BFB.Engine.TileMap.WorldManager.ChunkIndex*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: BFB.Engine.TileMap.WorldManager.WorldGeneratorCallback
+  commentId: P:BFB.Engine.TileMap.WorldManager.WorldGeneratorCallback
+  id: WorldGeneratorCallback
+  parent: BFB.Engine.TileMap.WorldManager
+  langs:
+  - csharp
+  - vb
+  name: WorldGeneratorCallback
+  nameWithType: WorldManager.WorldGeneratorCallback
+  fullName: BFB.Engine.TileMap.WorldManager.WorldGeneratorCallback
+  type: Property
+  source:
+    remote:
+      path: BFB/BFB.Engine/TileMap/WorldManager.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: WorldGeneratorCallback
+    path: ../BFB/BFB.Engine/TileMap/WorldManager.cs
+    startLine: 32
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.TileMap
+  summary: "\nThe callback action for the world generator.\n"
+  example: []
+  syntax:
+    content: public Action<string> WorldGeneratorCallback { get; set; }
+    parameters: []
+    return:
+      type: Action{System.String}
+    content.vb: Public Property WorldGeneratorCallback As Action(Of String)
+  overload: BFB.Engine.TileMap.WorldManager.WorldGeneratorCallback*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.TileMap.WorldManager.#ctor(BFB.Engine.TileMap.Generators.WorldOptions)
+  commentId: M:BFB.Engine.TileMap.WorldManager.#ctor(BFB.Engine.TileMap.Generators.WorldOptions)
+  id: '#ctor(BFB.Engine.TileMap.Generators.WorldOptions)'
+  parent: BFB.Engine.TileMap.WorldManager
+  langs:
+  - csharp
+  - vb
+  name: WorldManager(WorldOptions)
+  nameWithType: WorldManager.WorldManager(WorldOptions)
+  fullName: BFB.Engine.TileMap.WorldManager.WorldManager(BFB.Engine.TileMap.Generators.WorldOptions)
+  type: Constructor
+  source:
+    remote:
+      path: BFB/BFB.Engine/TileMap/WorldManager.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: .ctor
+    path: ../BFB/BFB.Engine/TileMap/WorldManager.cs
+    startLine: 45
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.TileMap
+  summary: "\nThe constructor for worldManager.\n"
+  example: []
+  syntax:
+    content: public WorldManager(WorldOptions worldOptions)
+    parameters:
+    - id: worldOptions
+      type: BFB.Engine.TileMap.Generators.WorldOptions
+      description: The options for the world configuration.
+    content.vb: Public Sub New(worldOptions As WorldOptions)
+  overload: BFB.Engine.TileMap.WorldManager.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.TileMap.WorldManager.GenerateWorld(Action{System.String})
+  commentId: M:BFB.Engine.TileMap.WorldManager.GenerateWorld(Action{System.String})
+  id: GenerateWorld(Action{System.String})
+  parent: BFB.Engine.TileMap.WorldManager
+  langs:
+  - csharp
+  - vb
+  name: GenerateWorld(Action<String>)
+  nameWithType: WorldManager.GenerateWorld(Action<String>)
+  fullName: BFB.Engine.TileMap.WorldManager.GenerateWorld(Action<System.String>)
+  type: Method
+  source:
+    remote:
+      path: BFB/BFB.Engine/TileMap/WorldManager.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: GenerateWorld
+    path: ../BFB/BFB.Engine/TileMap/WorldManager.cs
+    startLine: 63
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.TileMap
+  summary: "\nGenerates the entire map at once.\n"
+  example: []
+  syntax:
+    content: public void GenerateWorld(Action<string> progressCallback)
+    parameters:
+    - id: progressCallback
+      type: Action{System.String}
+      description: Gets the progress from the world generation.
+    content.vb: Public Sub GenerateWorld(progressCallback As Action(Of String))
+  overload: BFB.Engine.TileMap.WorldManager.GenerateWorld*
+  nameWithType.vb: WorldManager.GenerateWorld(Action(Of String))
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+  fullName.vb: BFB.Engine.TileMap.WorldManager.GenerateWorld(Action(Of System.String))
+  name.vb: GenerateWorld(Action(Of String))
+- uid: BFB.Engine.TileMap.WorldManager.SaveWorld(System.String)
+  commentId: M:BFB.Engine.TileMap.WorldManager.SaveWorld(System.String)
+  id: SaveWorld(System.String)
+  parent: BFB.Engine.TileMap.WorldManager
+  langs:
+  - csharp
+  - vb
+  name: SaveWorld(String)
+  nameWithType: WorldManager.SaveWorld(String)
+  fullName: BFB.Engine.TileMap.WorldManager.SaveWorld(System.String)
+  type: Method
+  source:
+    remote:
+      path: BFB/BFB.Engine/TileMap/WorldManager.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: SaveWorld
+    path: ../BFB/BFB.Engine/TileMap/WorldManager.cs
+    startLine: 121
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.TileMap
+  summary: "\nSaves the current state of the world with a given name in the world folder.\n"
+  example: []
+  syntax:
+    content: public bool SaveWorld(string fileName)
+    parameters:
+    - id: fileName
+      type: System.String
+      description: The name to save the file as.
+    return:
+      type: System.Boolean
+      description: Returns true if world is saved, false otherwise.
+    content.vb: Public Function SaveWorld(fileName As String) As Boolean
+  overload: BFB.Engine.TileMap.WorldManager.SaveWorld*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.TileMap.WorldManager.LoadWorld(System.String)
+  commentId: M:BFB.Engine.TileMap.WorldManager.LoadWorld(System.String)
+  id: LoadWorld(System.String)
+  parent: BFB.Engine.TileMap.WorldManager
+  langs:
+  - csharp
+  - vb
+  name: LoadWorld(String)
+  nameWithType: WorldManager.LoadWorld(String)
+  fullName: BFB.Engine.TileMap.WorldManager.LoadWorld(System.String)
+  type: Method
+  source:
+    remote:
+      path: BFB/BFB.Engine/TileMap/WorldManager.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: LoadWorld
+    path: ../BFB/BFB.Engine/TileMap/WorldManager.cs
+    startLine: 166
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.TileMap
+  summary: "\nLoads a world from a given filename.\n"
+  example: []
+  syntax:
+    content: public bool LoadWorld(string fileName)
+    parameters:
+    - id: fileName
+      type: System.String
+      description: The name of the file.
+    return:
+      type: System.Boolean
+      description: Returns true if file is loaded.
+    content.vb: Public Function LoadWorld(fileName As String) As Boolean
+  overload: BFB.Engine.TileMap.WorldManager.LoadWorld*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.TileMap.WorldManager.MoveEntity(System.String,BFB.Engine.TileMap.Chunk,BFB.Engine.TileMap.Chunk)
+  commentId: M:BFB.Engine.TileMap.WorldManager.MoveEntity(System.String,BFB.Engine.TileMap.Chunk,BFB.Engine.TileMap.Chunk)
+  id: MoveEntity(System.String,BFB.Engine.TileMap.Chunk,BFB.Engine.TileMap.Chunk)
+  parent: BFB.Engine.TileMap.WorldManager
+  langs:
+  - csharp
+  - vb
+  name: MoveEntity(String, Chunk, Chunk)
+  nameWithType: WorldManager.MoveEntity(String, Chunk, Chunk)
+  fullName: BFB.Engine.TileMap.WorldManager.MoveEntity(System.String, BFB.Engine.TileMap.Chunk, BFB.Engine.TileMap.Chunk)
+  type: Method
+  source:
+    remote:
+      path: BFB/BFB.Engine/TileMap/WorldManager.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: MoveEntity
+    path: ../BFB/BFB.Engine/TileMap/WorldManager.cs
+    startLine: 209
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.TileMap
+  summary: "\nMoves entity from one chunk to another.\n"
+  example: []
+  syntax:
+    content: public void MoveEntity(string entityKey, Chunk originalChunk, Chunk newChunk)
+    parameters:
+    - id: entityKey
+      type: System.String
+      description: The given entity.
+    - id: originalChunk
+      type: BFB.Engine.TileMap.Chunk
+      description: The chunk the entity is in.
+    - id: newChunk
+      type: BFB.Engine.TileMap.Chunk
+      description: The chunk the entity is going to be in.
+    content.vb: Public Sub MoveEntity(entityKey As String, originalChunk As Chunk, newChunk As Chunk)
+  overload: BFB.Engine.TileMap.WorldManager.MoveEntity*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.TileMap.WorldManager.ChunkFromChunkLocation(System.Int32,System.Int32)
+  commentId: M:BFB.Engine.TileMap.WorldManager.ChunkFromChunkLocation(System.Int32,System.Int32)
+  id: ChunkFromChunkLocation(System.Int32,System.Int32)
+  parent: BFB.Engine.TileMap.WorldManager
+  langs:
+  - csharp
+  - vb
+  name: ChunkFromChunkLocation(Int32, Int32)
+  nameWithType: WorldManager.ChunkFromChunkLocation(Int32, Int32)
+  fullName: BFB.Engine.TileMap.WorldManager.ChunkFromChunkLocation(System.Int32, System.Int32)
+  type: Method
+  source:
+    remote:
+      path: BFB/BFB.Engine/TileMap/WorldManager.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: ChunkFromChunkLocation
+    path: ../BFB/BFB.Engine/TileMap/WorldManager.cs
+    startLine: 234
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.TileMap
+  summary: "\nGets a chunk from a chunk location.\n"
+  example: []
+  syntax:
+    content: public Chunk ChunkFromChunkLocation(int chunkX, int chunkY)
+    parameters:
+    - id: chunkX
+      type: System.Int32
+      description: The X location of the chunk.
+    - id: chunkY
+      type: System.Int32
+      description: The Y location of the chunk.
+    return:
+      type: BFB.Engine.TileMap.Chunk
+      description: Returns the specified chunk.
+    content.vb: Public Function ChunkFromChunkLocation(chunkX As Integer, chunkY As Integer) As Chunk
+  overload: BFB.Engine.TileMap.WorldManager.ChunkFromChunkLocation*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.TileMap.WorldManager.ChunkKeyFromChunkLocation(System.Int32,System.Int32)
+  commentId: M:BFB.Engine.TileMap.WorldManager.ChunkKeyFromChunkLocation(System.Int32,System.Int32)
+  id: ChunkKeyFromChunkLocation(System.Int32,System.Int32)
+  parent: BFB.Engine.TileMap.WorldManager
+  langs:
+  - csharp
+  - vb
+  name: ChunkKeyFromChunkLocation(Int32, Int32)
+  nameWithType: WorldManager.ChunkKeyFromChunkLocation(Int32, Int32)
+  fullName: BFB.Engine.TileMap.WorldManager.ChunkKeyFromChunkLocation(System.Int32, System.Int32)
+  type: Method
+  source:
+    remote:
+      path: BFB/BFB.Engine/TileMap/WorldManager.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: ChunkKeyFromChunkLocation
+    path: ../BFB/BFB.Engine/TileMap/WorldManager.cs
+    startLine: 255
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.TileMap
+  summary: "\nRetrieves the key of the chunk location.\n"
+  example: []
+  syntax:
+    content: public string ChunkKeyFromChunkLocation(int chunkX, int chunkY)
+    parameters:
+    - id: chunkX
+      type: System.Int32
+      description: The X location of the chunk.
+    - id: chunkY
+      type: System.Int32
+      description: The Y location of the chunk.
+    return:
+      type: System.String
+      description: Returns the key of the specified chunk.
+    content.vb: Public Function ChunkKeyFromChunkLocation(chunkX As Integer, chunkY As Integer) As String
+  overload: BFB.Engine.TileMap.WorldManager.ChunkKeyFromChunkLocation*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.TileMap.WorldManager.ChunkFromTileLocation(System.Int32,System.Int32)
+  commentId: M:BFB.Engine.TileMap.WorldManager.ChunkFromTileLocation(System.Int32,System.Int32)
+  id: ChunkFromTileLocation(System.Int32,System.Int32)
+  parent: BFB.Engine.TileMap.WorldManager
+  langs:
+  - csharp
+  - vb
+  name: ChunkFromTileLocation(Int32, Int32)
+  nameWithType: WorldManager.ChunkFromTileLocation(Int32, Int32)
+  fullName: BFB.Engine.TileMap.WorldManager.ChunkFromTileLocation(System.Int32, System.Int32)
+  type: Method
+  source:
+    remote:
+      path: BFB/BFB.Engine/TileMap/WorldManager.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: ChunkFromTileLocation
+    path: ../BFB/BFB.Engine/TileMap/WorldManager.cs
+    startLine: 276
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.TileMap
+  summary: "\nRetrieves the chunk where the tile is located.\n"
+  example: []
+  syntax:
+    content: public Chunk ChunkFromTileLocation(int blockX, int blockY)
+    parameters:
+    - id: blockX
+      type: System.Int32
+      description: The X block location of the tileMap.
+    - id: blockY
+      type: System.Int32
+      description: The Y block location of the tileMap.
+    return:
+      type: BFB.Engine.TileMap.Chunk
+      description: Returns the chunk from the specified block locations.
+    content.vb: Public Function ChunkFromTileLocation(blockX As Integer, blockY As Integer) As Chunk
+  overload: BFB.Engine.TileMap.WorldManager.ChunkFromTileLocation*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.TileMap.WorldManager.ChunkFromPixelLocation(System.Int32,System.Int32)
+  commentId: M:BFB.Engine.TileMap.WorldManager.ChunkFromPixelLocation(System.Int32,System.Int32)
+  id: ChunkFromPixelLocation(System.Int32,System.Int32)
+  parent: BFB.Engine.TileMap.WorldManager
+  langs:
+  - csharp
+  - vb
+  name: ChunkFromPixelLocation(Int32, Int32)
+  nameWithType: WorldManager.ChunkFromPixelLocation(Int32, Int32)
+  fullName: BFB.Engine.TileMap.WorldManager.ChunkFromPixelLocation(System.Int32, System.Int32)
+  type: Method
+  source:
+    remote:
+      path: BFB/BFB.Engine/TileMap/WorldManager.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: ChunkFromPixelLocation
+    path: ../BFB/BFB.Engine/TileMap/WorldManager.cs
+    startLine: 294
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.TileMap
+  summary: "\nRetrieves the chunk from the pixel location on the screen.\n"
+  example: []
+  syntax:
+    content: public Chunk ChunkFromPixelLocation(int pixelX, int pixelY)
+    parameters:
+    - id: pixelX
+      type: System.Int32
+      description: The X pixel location on the screen.
+    - id: pixelY
+      type: System.Int32
+      description: The Y pixel location on the screen.
+    return:
+      type: BFB.Engine.TileMap.Chunk
+      description: Returns the chunk from the pixel locations.
+    content.vb: Public Function ChunkFromPixelLocation(pixelX As Integer, pixelY As Integer) As Chunk
+  overload: BFB.Engine.TileMap.WorldManager.ChunkFromPixelLocation*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.TileMap.WorldManager.GetHardness(System.Int32,System.Int32)
+  commentId: M:BFB.Engine.TileMap.WorldManager.GetHardness(System.Int32,System.Int32)
+  id: GetHardness(System.Int32,System.Int32)
+  parent: BFB.Engine.TileMap.WorldManager
+  langs:
+  - csharp
+  - vb
+  name: GetHardness(Int32, Int32)
+  nameWithType: WorldManager.GetHardness(Int32, Int32)
+  fullName: BFB.Engine.TileMap.WorldManager.GetHardness(System.Int32, System.Int32)
+  type: Method
+  source:
+    remote:
+      path: BFB/BFB.Engine/TileMap/WorldManager.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: GetHardness
+    path: ../BFB/BFB.Engine/TileMap/WorldManager.cs
+    startLine: 321
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.TileMap
+  summary: "\nRetrieves the hardness value of a block.\n"
+  example: []
+  syntax:
+    content: public int GetHardness(int xBlock, int yBlock)
+    parameters:
+    - id: xBlock
+      type: System.Int32
+      description: The X location of a block.
+    - id: yBlock
+      type: System.Int32
+      description: The Y location of a block.
+    return:
+      type: System.Int32
+      description: Returns the hardness value based on the block locations.
+    content.vb: Public Function GetHardness(xBlock As Integer, yBlock As Integer) As Integer
+  overload: BFB.Engine.TileMap.WorldManager.GetHardness*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.TileMap.WorldManager.GetLight(System.Int32,System.Int32)
+  commentId: M:BFB.Engine.TileMap.WorldManager.GetLight(System.Int32,System.Int32)
+  id: GetLight(System.Int32,System.Int32)
+  parent: BFB.Engine.TileMap.WorldManager
+  langs:
+  - csharp
+  - vb
+  name: GetLight(Int32, Int32)
+  nameWithType: WorldManager.GetLight(Int32, Int32)
+  fullName: BFB.Engine.TileMap.WorldManager.GetLight(System.Int32, System.Int32)
+  type: Method
+  source:
+    remote:
+      path: BFB/BFB.Engine/TileMap/WorldManager.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: GetLight
+    path: ../BFB/BFB.Engine/TileMap/WorldManager.cs
+    startLine: 336
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.TileMap
+  summary: "\nRetrieves the light value of a block.\n"
+  example: []
+  syntax:
+    content: public int GetLight(int xBlock, int yBlock)
+    parameters:
+    - id: xBlock
+      type: System.Int32
+      description: The X location of a block.
+    - id: yBlock
+      type: System.Int32
+      description: The Y location of a block.
+    return:
+      type: System.Int32
+      description: Returns the light value based on the block locations.
+    content.vb: Public Function GetLight(xBlock As Integer, yBlock As Integer) As Integer
+  overload: BFB.Engine.TileMap.WorldManager.GetLight*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.TileMap.WorldManager.GetWall(System.Int32,System.Int32)
+  commentId: M:BFB.Engine.TileMap.WorldManager.GetWall(System.Int32,System.Int32)
+  id: GetWall(System.Int32,System.Int32)
+  parent: BFB.Engine.TileMap.WorldManager
+  langs:
+  - csharp
+  - vb
+  name: GetWall(Int32, Int32)
+  nameWithType: WorldManager.GetWall(Int32, Int32)
+  fullName: BFB.Engine.TileMap.WorldManager.GetWall(System.Int32, System.Int32)
+  type: Method
+  source:
+    remote:
+      path: BFB/BFB.Engine/TileMap/WorldManager.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: GetWall
+    path: ../BFB/BFB.Engine/TileMap/WorldManager.cs
+    startLine: 351
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.TileMap
+  summary: "\nRetrieves the wall value of a block.\n"
+  example: []
+  syntax:
+    content: public int GetWall(int xBlock, int yBlock)
+    parameters:
+    - id: xBlock
+      type: System.Int32
+      description: The X location of a block.
+    - id: yBlock
+      type: System.Int32
+      description: The Y location of a block.
+    return:
+      type: System.Int32
+      description: Returns the wall value based on the block locations.
+    content.vb: Public Function GetWall(xBlock As Integer, yBlock As Integer) As Integer
+  overload: BFB.Engine.TileMap.WorldManager.GetWall*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.TileMap.WorldManager.GetBlock(System.Int32,System.Int32)
+  commentId: M:BFB.Engine.TileMap.WorldManager.GetBlock(System.Int32,System.Int32)
+  id: GetBlock(System.Int32,System.Int32)
+  parent: BFB.Engine.TileMap.WorldManager
+  langs:
+  - csharp
+  - vb
+  name: GetBlock(Int32, Int32)
+  nameWithType: WorldManager.GetBlock(Int32, Int32)
+  fullName: BFB.Engine.TileMap.WorldManager.GetBlock(System.Int32, System.Int32)
+  type: Method
+  source:
+    remote:
+      path: BFB/BFB.Engine/TileMap/WorldManager.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: GetBlock
+    path: ../BFB/BFB.Engine/TileMap/WorldManager.cs
+    startLine: 366
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.TileMap
+  summary: "\nRetrieves the block value of a block.\n"
+  example: []
+  syntax:
+    content: public WorldTile GetBlock(int xBlock, int yBlock)
+    parameters:
+    - id: xBlock
+      type: System.Int32
+      description: The X location of a block.
+    - id: yBlock
+      type: System.Int32
+      description: The Y location of a block.
+    return:
+      type: BFB.Engine.TileMap.WorldTile
+      description: Returns the block value based on the block locations.
+    content.vb: Public Function GetBlock(xBlock As Integer, yBlock As Integer) As WorldTile
+  overload: BFB.Engine.TileMap.WorldManager.GetBlock*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.TileMap.WorldManager.SetHardness(System.Int32,System.Int32,System.UInt16)
+  commentId: M:BFB.Engine.TileMap.WorldManager.SetHardness(System.Int32,System.Int32,System.UInt16)
+  id: SetHardness(System.Int32,System.Int32,System.UInt16)
+  parent: BFB.Engine.TileMap.WorldManager
+  langs:
+  - csharp
+  - vb
+  name: SetHardness(Int32, Int32, UInt16)
+  nameWithType: WorldManager.SetHardness(Int32, Int32, UInt16)
+  fullName: BFB.Engine.TileMap.WorldManager.SetHardness(System.Int32, System.Int32, System.UInt16)
+  type: Method
+  source:
+    remote:
+      path: BFB/BFB.Engine/TileMap/WorldManager.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: SetHardness
+    path: ../BFB/BFB.Engine/TileMap/WorldManager.cs
+    startLine: 384
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.TileMap
+  summary: "\nSets the hardness value of a block.\n"
+  example: []
+  syntax:
+    content: public void SetHardness(int xBlock, int yBlock, ushort hardnessValue)
+    parameters:
+    - id: xBlock
+      type: System.Int32
+      description: The X location of a block.
+    - id: yBlock
+      type: System.Int32
+      description: The Y location of a block.
+    - id: hardnessValue
+      type: System.UInt16
+      description: The value of the hardness to be set.
+    content.vb: Public Sub SetHardness(xBlock As Integer, yBlock As Integer, hardnessValue As UShort)
+  overload: BFB.Engine.TileMap.WorldManager.SetHardness*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.TileMap.WorldManager.SetLight(System.Int32,System.Int32,System.Byte)
+  commentId: M:BFB.Engine.TileMap.WorldManager.SetLight(System.Int32,System.Int32,System.Byte)
+  id: SetLight(System.Int32,System.Int32,System.Byte)
+  parent: BFB.Engine.TileMap.WorldManager
+  langs:
+  - csharp
+  - vb
+  name: SetLight(Int32, Int32, Byte)
+  nameWithType: WorldManager.SetLight(Int32, Int32, Byte)
+  fullName: BFB.Engine.TileMap.WorldManager.SetLight(System.Int32, System.Int32, System.Byte)
+  type: Method
+  source:
+    remote:
+      path: BFB/BFB.Engine/TileMap/WorldManager.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: SetLight
+    path: ../BFB/BFB.Engine/TileMap/WorldManager.cs
+    startLine: 400
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.TileMap
+  summary: "\nSets the light value of a block.\n"
+  example: []
+  syntax:
+    content: public void SetLight(int xBlock, int yBlock, byte lightValue)
+    parameters:
+    - id: xBlock
+      type: System.Int32
+      description: The X location of a block.
+    - id: yBlock
+      type: System.Int32
+      description: The Y location of a block.
+    - id: lightValue
+      type: System.Byte
+      description: The value of the light to be set.
+    content.vb: Public Sub SetLight(xBlock As Integer, yBlock As Integer, lightValue As Byte)
+  overload: BFB.Engine.TileMap.WorldManager.SetLight*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.TileMap.WorldManager.SetWall(System.Int32,System.Int32,System.UInt16)
+  commentId: M:BFB.Engine.TileMap.WorldManager.SetWall(System.Int32,System.Int32,System.UInt16)
+  id: SetWall(System.Int32,System.Int32,System.UInt16)
+  parent: BFB.Engine.TileMap.WorldManager
+  langs:
+  - csharp
+  - vb
+  name: SetWall(Int32, Int32, UInt16)
+  nameWithType: WorldManager.SetWall(Int32, Int32, UInt16)
+  fullName: BFB.Engine.TileMap.WorldManager.SetWall(System.Int32, System.Int32, System.UInt16)
+  type: Method
+  source:
+    remote:
+      path: BFB/BFB.Engine/TileMap/WorldManager.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: SetWall
+    path: ../BFB/BFB.Engine/TileMap/WorldManager.cs
+    startLine: 416
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.TileMap
+  summary: "\nSets the wall value of a block.\n"
+  example: []
+  syntax:
+    content: public void SetWall(int xBlock, int yBlock, ushort wallValue)
+    parameters:
+    - id: xBlock
+      type: System.Int32
+      description: The X location of a block.
+    - id: yBlock
+      type: System.Int32
+      description: The Y location of a block.
+    - id: wallValue
+      type: System.UInt16
+      description: The value of the wall to be set.
+    content.vb: Public Sub SetWall(xBlock As Integer, yBlock As Integer, wallValue As UShort)
+  overload: BFB.Engine.TileMap.WorldManager.SetWall*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.TileMap.WorldManager.SetBlock(System.Int32,System.Int32,BFB.Engine.TileMap.WorldTile)
+  commentId: M:BFB.Engine.TileMap.WorldManager.SetBlock(System.Int32,System.Int32,BFB.Engine.TileMap.WorldTile)
+  id: SetBlock(System.Int32,System.Int32,BFB.Engine.TileMap.WorldTile)
+  parent: BFB.Engine.TileMap.WorldManager
+  langs:
+  - csharp
+  - vb
+  name: SetBlock(Int32, Int32, WorldTile)
+  nameWithType: WorldManager.SetBlock(Int32, Int32, WorldTile)
+  fullName: BFB.Engine.TileMap.WorldManager.SetBlock(System.Int32, System.Int32, BFB.Engine.TileMap.WorldTile)
+  type: Method
+  source:
+    remote:
+      path: BFB/BFB.Engine/TileMap/WorldManager.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: SetBlock
+    path: ../BFB/BFB.Engine/TileMap/WorldManager.cs
+    startLine: 432
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.TileMap
+  summary: "\nSets the block value of a block.\n"
+  example: []
+  syntax:
+    content: public void SetBlock(int xBlock, int yBlock, WorldTile blockValue)
+    parameters:
+    - id: xBlock
+      type: System.Int32
+      description: The X location of a block.
+    - id: yBlock
+      type: System.Int32
+      description: The Y location of a block.
+    - id: blockValue
+      type: BFB.Engine.TileMap.WorldTile
+      description: The value of the block to be set.
+    content.vb: Public Sub SetBlock(xBlock As Integer, yBlock As Integer, blockValue As WorldTile)
+  overload: BFB.Engine.TileMap.WorldManager.SetBlock*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.TileMap.WorldManager.SetAll(System.Int32,System.Int32,System.UInt16,System.Byte,System.UInt16,BFB.Engine.TileMap.WorldTile)
+  commentId: M:BFB.Engine.TileMap.WorldManager.SetAll(System.Int32,System.Int32,System.UInt16,System.Byte,System.UInt16,BFB.Engine.TileMap.WorldTile)
+  id: SetAll(System.Int32,System.Int32,System.UInt16,System.Byte,System.UInt16,BFB.Engine.TileMap.WorldTile)
+  parent: BFB.Engine.TileMap.WorldManager
+  langs:
+  - csharp
+  - vb
+  name: SetAll(Int32, Int32, UInt16, Byte, UInt16, WorldTile)
+  nameWithType: WorldManager.SetAll(Int32, Int32, UInt16, Byte, UInt16, WorldTile)
+  fullName: BFB.Engine.TileMap.WorldManager.SetAll(System.Int32, System.Int32, System.UInt16, System.Byte, System.UInt16, BFB.Engine.TileMap.WorldTile)
+  type: Method
+  source:
+    remote:
+      path: BFB/BFB.Engine/TileMap/WorldManager.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: SetAll
+    path: ../BFB/BFB.Engine/TileMap/WorldManager.cs
+    startLine: 452
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.TileMap
+  summary: "\n\n"
+  example: []
+  syntax:
+    content: public void SetAll(int xBlock, int yBlock, ushort hardnessValue, byte lightValue, ushort wallValue, WorldTile tile)
+    parameters:
+    - id: xBlock
+      type: System.Int32
+      description: The X location of a block.
+    - id: yBlock
+      type: System.Int32
+      description: The Y location of a block.
+    - id: hardnessValue
+      type: System.UInt16
+      description: The value of the hardness to be set.
+    - id: lightValue
+      type: System.Byte
+      description: The value of the light to be set.
+    - id: wallValue
+      type: System.UInt16
+      description: The value of the wall to be set.
+    - id: tile
+      type: BFB.Engine.TileMap.WorldTile
+      description: The value of the block to be set.
+    content.vb: Public Sub SetAll(xBlock As Integer, yBlock As Integer, hardnessValue As UShort, lightValue As Byte, wallValue As UShort, tile As WorldTile)
+  overload: BFB.Engine.TileMap.WorldManager.SetAll*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+references:
+- uid: BFB.Engine.TileMap
+  commentId: N:BFB.Engine.TileMap
+  name: BFB.Engine.TileMap
+  nameWithType: BFB.Engine.TileMap
+  fullName: BFB.Engine.TileMap
+- uid: System.Object
+  commentId: '!:System.Object'
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: BFB.Engine.TileMap.WorldManager.BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{BFB.Engine.TileMap.WorldManager,{TValue}}},{TValue})
+  commentId: M:BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  parent: BFB.Engine.UI.Components.LambdaExtensions
+  definition: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  name: SetPropertyValue<WorldManager, TValue>(Expression<Func<WorldManager, TValue>>, TValue)
+  nameWithType: LambdaExtensions.SetPropertyValue<WorldManager, TValue>(Expression<Func<WorldManager, TValue>>, TValue)
+  fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<BFB.Engine.TileMap.WorldManager, TValue>(Expression<Func<BFB.Engine.TileMap.WorldManager, TValue>>, TValue)
+  nameWithType.vb: LambdaExtensions.SetPropertyValue(Of WorldManager, TValue)(Expression(Of Func(Of WorldManager, TValue)), TValue)
+  fullName.vb: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of BFB.Engine.TileMap.WorldManager, TValue)(Expression(Of Func(Of BFB.Engine.TileMap.WorldManager, TValue)), TValue)
+  name.vb: SetPropertyValue(Of WorldManager, TValue)(Expression(Of Func(Of WorldManager, TValue)), TValue)
+  spec.csharp:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue<WorldManager, TValue>
+    nameWithType: LambdaExtensions.SetPropertyValue<WorldManager, TValue>
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<BFB.Engine.TileMap.WorldManager, TValue>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: BFB.Engine.TileMap.WorldManager
+    name: WorldManager
+    nameWithType: WorldManager
+    fullName: BFB.Engine.TileMap.WorldManager
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue(Of WorldManager, TValue)
+    nameWithType: LambdaExtensions.SetPropertyValue(Of WorldManager, TValue)
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of BFB.Engine.TileMap.WorldManager, TValue)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: BFB.Engine.TileMap.WorldManager
+    name: WorldManager
+    nameWithType: WorldManager
+    fullName: BFB.Engine.TileMap.WorldManager
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  commentId: M:BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  isExternal: true
+  name: SetPropertyValue<T, TValue>(T, Expression<Func<T, TValue>>, TValue)
+  nameWithType: LambdaExtensions.SetPropertyValue<T, TValue>(T, Expression<Func<T, TValue>>, TValue)
+  fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<T, TValue>(T, Expression<Func<T, TValue>>, TValue)
+  nameWithType.vb: LambdaExtensions.SetPropertyValue(Of T, TValue)(T, Expression(Of Func(Of T, TValue)), TValue)
+  fullName.vb: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of T, TValue)(T, Expression(Of Func(Of T, TValue)), TValue)
+  name.vb: SetPropertyValue(Of T, TValue)(T, Expression(Of Func(Of T, TValue)), TValue)
+  spec.csharp:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue<T, TValue>
+    nameWithType: LambdaExtensions.SetPropertyValue<T, TValue>
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<T, TValue>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue(Of T, TValue)
+    nameWithType: LambdaExtensions.SetPropertyValue(Of T, TValue)
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of T, TValue)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Components.LambdaExtensions
+  commentId: T:BFB.Engine.UI.Components.LambdaExtensions
+  parent: BFB.Engine.UI.Components
+  name: LambdaExtensions
+  nameWithType: LambdaExtensions
+  fullName: BFB.Engine.UI.Components.LambdaExtensions
+- uid: BFB.Engine.UI.Components
+  commentId: N:BFB.Engine.UI.Components
+  name: BFB.Engine.UI.Components
+  nameWithType: BFB.Engine.UI.Components
+  fullName: BFB.Engine.UI.Components
+- uid: BFB.Engine.TileMap.WorldManager.WorldOptions*
+  commentId: Overload:BFB.Engine.TileMap.WorldManager.WorldOptions
+  name: WorldOptions
+  nameWithType: WorldManager.WorldOptions
+  fullName: BFB.Engine.TileMap.WorldManager.WorldOptions
+- uid: BFB.Engine.TileMap.Generators.WorldOptions
+  commentId: T:BFB.Engine.TileMap.Generators.WorldOptions
+  parent: BFB.Engine.TileMap.Generators
+  name: WorldOptions
+  nameWithType: WorldOptions
+  fullName: BFB.Engine.TileMap.Generators.WorldOptions
+- uid: BFB.Engine.TileMap.Generators
+  commentId: N:BFB.Engine.TileMap.Generators
+  name: BFB.Engine.TileMap.Generators
+  nameWithType: BFB.Engine.TileMap.Generators
+  fullName: BFB.Engine.TileMap.Generators
+- uid: BFB.Engine.TileMap.WorldManager.ChunkMap*
+  commentId: Overload:BFB.Engine.TileMap.WorldManager.ChunkMap
+  name: ChunkMap
+  nameWithType: WorldManager.ChunkMap
+  fullName: BFB.Engine.TileMap.WorldManager.ChunkMap
+- uid: BFB.Engine.TileMap.Chunk[,]
+  isExternal: true
+  name: Chunk[,]
+  nameWithType: Chunk[,]
+  fullName: BFB.Engine.TileMap.Chunk[,]
+  nameWithType.vb: Chunk(,)
+  fullName.vb: BFB.Engine.TileMap.Chunk(,)
+  name.vb: Chunk(,)
+  spec.csharp:
+  - uid: BFB.Engine.TileMap.Chunk
+    name: Chunk
+    nameWithType: Chunk
+    fullName: BFB.Engine.TileMap.Chunk
+  - name: '[,]'
+    nameWithType: '[,]'
+    fullName: '[,]'
+  spec.vb:
+  - uid: BFB.Engine.TileMap.Chunk
+    name: Chunk
+    nameWithType: Chunk
+    fullName: BFB.Engine.TileMap.Chunk
+  - name: (,)
+    nameWithType: (,)
+    fullName: (,)
+- uid: BFB.Engine.TileMap.WorldManager.ChunkIndex*
+  commentId: Overload:BFB.Engine.TileMap.WorldManager.ChunkIndex
+  name: ChunkIndex
+  nameWithType: WorldManager.ChunkIndex
+  fullName: BFB.Engine.TileMap.WorldManager.ChunkIndex
+- uid: Dictionary{System.String,BFB.Engine.TileMap.Chunk}
+  commentId: '!:Dictionary{System.String,BFB.Engine.TileMap.Chunk}'
+  definition: Dictionary`2
+  name: Dictionary<String, Chunk>
+  nameWithType: Dictionary<String, Chunk>
+  fullName: Dictionary<System.String, BFB.Engine.TileMap.Chunk>
+  nameWithType.vb: Dictionary(Of String, Chunk)
+  fullName.vb: Dictionary(Of System.String, BFB.Engine.TileMap.Chunk)
+  name.vb: Dictionary(Of String, Chunk)
+  spec.csharp:
+  - uid: Dictionary`2
+    name: Dictionary
+    nameWithType: Dictionary
+    fullName: Dictionary
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: BFB.Engine.TileMap.Chunk
+    name: Chunk
+    nameWithType: Chunk
+    fullName: BFB.Engine.TileMap.Chunk
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: Dictionary`2
+    name: Dictionary
+    nameWithType: Dictionary
+    fullName: Dictionary
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: BFB.Engine.TileMap.Chunk
+    name: Chunk
+    nameWithType: Chunk
+    fullName: BFB.Engine.TileMap.Chunk
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Dictionary`2
+  isExternal: true
+  name: Dictionary<, >
+  nameWithType: Dictionary<, >
+  fullName: Dictionary<, >
+  nameWithType.vb: Dictionary(Of , )
+  fullName.vb: Dictionary(Of , )
+  name.vb: Dictionary(Of , )
+  spec.csharp:
+  - uid: Dictionary`2
+    name: Dictionary
+    nameWithType: Dictionary
+    fullName: Dictionary
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: Dictionary`2
+    name: Dictionary
+    nameWithType: Dictionary
+    fullName: Dictionary
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.TileMap.WorldManager.WorldGeneratorCallback*
+  commentId: Overload:BFB.Engine.TileMap.WorldManager.WorldGeneratorCallback
+  name: WorldGeneratorCallback
+  nameWithType: WorldManager.WorldGeneratorCallback
+  fullName: BFB.Engine.TileMap.WorldManager.WorldGeneratorCallback
+- uid: Action{System.String}
+  commentId: '!:Action{System.String}'
+  definition: Action`1
+  name: Action<String>
+  nameWithType: Action<String>
+  fullName: Action<System.String>
+  nameWithType.vb: Action(Of String)
+  fullName.vb: Action(Of System.String)
+  name.vb: Action(Of String)
+  spec.csharp:
+  - uid: Action`1
+    name: Action
+    nameWithType: Action
+    fullName: Action
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: Action`1
+    name: Action
+    nameWithType: Action
+    fullName: Action
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Action`1
+  isExternal: true
+  name: Action<>
+  nameWithType: Action<>
+  fullName: Action<>
+  nameWithType.vb: Action(Of )
+  fullName.vb: Action(Of )
+  name.vb: Action(Of )
+  spec.csharp:
+  - uid: Action`1
+    name: Action
+    nameWithType: Action
+    fullName: Action
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: Action`1
+    name: Action
+    nameWithType: Action
+    fullName: Action
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.TileMap.WorldManager.#ctor*
+  commentId: Overload:BFB.Engine.TileMap.WorldManager.#ctor
+  name: WorldManager
+  nameWithType: WorldManager.WorldManager
+  fullName: BFB.Engine.TileMap.WorldManager.WorldManager
+- uid: BFB.Engine.TileMap.WorldManager.GenerateWorld*
+  commentId: Overload:BFB.Engine.TileMap.WorldManager.GenerateWorld
+  name: GenerateWorld
+  nameWithType: WorldManager.GenerateWorld
+  fullName: BFB.Engine.TileMap.WorldManager.GenerateWorld
+- uid: BFB.Engine.TileMap.WorldManager.SaveWorld*
+  commentId: Overload:BFB.Engine.TileMap.WorldManager.SaveWorld
+  name: SaveWorld
+  nameWithType: WorldManager.SaveWorld
+  fullName: BFB.Engine.TileMap.WorldManager.SaveWorld
+- uid: System.String
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: System.Boolean
+  isExternal: true
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: BFB.Engine.TileMap.WorldManager.LoadWorld*
+  commentId: Overload:BFB.Engine.TileMap.WorldManager.LoadWorld
+  name: LoadWorld
+  nameWithType: WorldManager.LoadWorld
+  fullName: BFB.Engine.TileMap.WorldManager.LoadWorld
+- uid: BFB.Engine.TileMap.WorldManager.MoveEntity*
+  commentId: Overload:BFB.Engine.TileMap.WorldManager.MoveEntity
+  name: MoveEntity
+  nameWithType: WorldManager.MoveEntity
+  fullName: BFB.Engine.TileMap.WorldManager.MoveEntity
+- uid: BFB.Engine.TileMap.Chunk
+  commentId: T:BFB.Engine.TileMap.Chunk
+  parent: BFB.Engine.TileMap
+  name: Chunk
+  nameWithType: Chunk
+  fullName: BFB.Engine.TileMap.Chunk
+- uid: BFB.Engine.TileMap.WorldManager.ChunkFromChunkLocation*
+  commentId: Overload:BFB.Engine.TileMap.WorldManager.ChunkFromChunkLocation
+  name: ChunkFromChunkLocation
+  nameWithType: WorldManager.ChunkFromChunkLocation
+  fullName: BFB.Engine.TileMap.WorldManager.ChunkFromChunkLocation
+- uid: System.Int32
+  isExternal: true
+  name: Int32
+  nameWithType: Int32
+  fullName: System.Int32
+- uid: BFB.Engine.TileMap.WorldManager.ChunkKeyFromChunkLocation*
+  commentId: Overload:BFB.Engine.TileMap.WorldManager.ChunkKeyFromChunkLocation
+  name: ChunkKeyFromChunkLocation
+  nameWithType: WorldManager.ChunkKeyFromChunkLocation
+  fullName: BFB.Engine.TileMap.WorldManager.ChunkKeyFromChunkLocation
+- uid: BFB.Engine.TileMap.WorldManager.ChunkFromTileLocation*
+  commentId: Overload:BFB.Engine.TileMap.WorldManager.ChunkFromTileLocation
+  name: ChunkFromTileLocation
+  nameWithType: WorldManager.ChunkFromTileLocation
+  fullName: BFB.Engine.TileMap.WorldManager.ChunkFromTileLocation
+- uid: BFB.Engine.TileMap.WorldManager.ChunkFromPixelLocation*
+  commentId: Overload:BFB.Engine.TileMap.WorldManager.ChunkFromPixelLocation
+  name: ChunkFromPixelLocation
+  nameWithType: WorldManager.ChunkFromPixelLocation
+  fullName: BFB.Engine.TileMap.WorldManager.ChunkFromPixelLocation
+- uid: BFB.Engine.TileMap.WorldManager.GetHardness*
+  commentId: Overload:BFB.Engine.TileMap.WorldManager.GetHardness
+  name: GetHardness
+  nameWithType: WorldManager.GetHardness
+  fullName: BFB.Engine.TileMap.WorldManager.GetHardness
+- uid: BFB.Engine.TileMap.WorldManager.GetLight*
+  commentId: Overload:BFB.Engine.TileMap.WorldManager.GetLight
+  name: GetLight
+  nameWithType: WorldManager.GetLight
+  fullName: BFB.Engine.TileMap.WorldManager.GetLight
+- uid: BFB.Engine.TileMap.WorldManager.GetWall*
+  commentId: Overload:BFB.Engine.TileMap.WorldManager.GetWall
+  name: GetWall
+  nameWithType: WorldManager.GetWall
+  fullName: BFB.Engine.TileMap.WorldManager.GetWall
+- uid: BFB.Engine.TileMap.WorldManager.GetBlock*
+  commentId: Overload:BFB.Engine.TileMap.WorldManager.GetBlock
+  name: GetBlock
+  nameWithType: WorldManager.GetBlock
+  fullName: BFB.Engine.TileMap.WorldManager.GetBlock
+- uid: BFB.Engine.TileMap.WorldTile
+  commentId: T:BFB.Engine.TileMap.WorldTile
+  parent: BFB.Engine.TileMap
+  name: WorldTile
+  nameWithType: WorldTile
+  fullName: BFB.Engine.TileMap.WorldTile
+- uid: BFB.Engine.TileMap.WorldManager.SetHardness*
+  commentId: Overload:BFB.Engine.TileMap.WorldManager.SetHardness
+  name: SetHardness
+  nameWithType: WorldManager.SetHardness
+  fullName: BFB.Engine.TileMap.WorldManager.SetHardness
+- uid: System.UInt16
+  isExternal: true
+  name: UInt16
+  nameWithType: UInt16
+  fullName: System.UInt16
+- uid: BFB.Engine.TileMap.WorldManager.SetLight*
+  commentId: Overload:BFB.Engine.TileMap.WorldManager.SetLight
+  name: SetLight
+  nameWithType: WorldManager.SetLight
+  fullName: BFB.Engine.TileMap.WorldManager.SetLight
+- uid: System.Byte
+  isExternal: true
+  name: Byte
+  nameWithType: Byte
+  fullName: System.Byte
+- uid: BFB.Engine.TileMap.WorldManager.SetWall*
+  commentId: Overload:BFB.Engine.TileMap.WorldManager.SetWall
+  name: SetWall
+  nameWithType: WorldManager.SetWall
+  fullName: BFB.Engine.TileMap.WorldManager.SetWall
+- uid: BFB.Engine.TileMap.WorldManager.SetBlock*
+  commentId: Overload:BFB.Engine.TileMap.WorldManager.SetBlock
+  name: SetBlock
+  nameWithType: WorldManager.SetBlock
+  fullName: BFB.Engine.TileMap.WorldManager.SetBlock
+- uid: BFB.Engine.TileMap.WorldManager.SetAll*
+  commentId: Overload:BFB.Engine.TileMap.WorldManager.SetAll
+  name: SetAll
+  nameWithType: WorldManager.SetAll
+  fullName: BFB.Engine.TileMap.WorldManager.SetAll

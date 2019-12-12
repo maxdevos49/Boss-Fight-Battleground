@@ -1,0 +1,47 @@
+### YamlMime:ManagedReference
+items:
+- uid: BFB.Engine.TileMap.Generators
+  commentId: N:BFB.Engine.TileMap.Generators
+  id: BFB.Engine.TileMap.Generators
+  children:
+  - BFB.Engine.TileMap.Generators.FlatWorld
+  - BFB.Engine.TileMap.Generators.RemoteWorld
+  - BFB.Engine.TileMap.Generators.WorldGenerator
+  - BFB.Engine.TileMap.Generators.WorldOptions
+  langs:
+  - csharp
+  - vb
+  name: BFB.Engine.TileMap.Generators
+  nameWithType: BFB.Engine.TileMap.Generators
+  fullName: BFB.Engine.TileMap.Generators
+  type: Namespace
+  assemblies:
+  - BFB.Engine
+references:
+- uid: BFB.Engine.TileMap.Generators.FlatWorld
+  commentId: T:BFB.Engine.TileMap.Generators.FlatWorld
+  name: FlatWorld
+  nameWithType: FlatWorld
+  fullName: BFB.Engine.TileMap.Generators.FlatWorld
+- uid: BFB.Engine.TileMap.Generators.RemoteWorld
+  commentId: T:BFB.Engine.TileMap.Generators.RemoteWorld
+  name: RemoteWorld
+  nameWithType: RemoteWorld
+  fullName: BFB.Engine.TileMap.Generators.RemoteWorld
+- uid: BFB.Engine.TileMap.Generators.WorldGenerator
+  commentId: T:BFB.Engine.TileMap.Generators.WorldGenerator
+  parent: BFB.Engine.TileMap.Generators
+  name: WorldGenerator
+  nameWithType: WorldGenerator
+  fullName: BFB.Engine.TileMap.Generators.WorldGenerator
+- uid: BFB.Engine.TileMap.Generators.WorldOptions
+  commentId: T:BFB.Engine.TileMap.Generators.WorldOptions
+  parent: BFB.Engine.TileMap.Generators
+  name: WorldOptions
+  nameWithType: WorldOptions
+  fullName: BFB.Engine.TileMap.Generators.WorldOptions
+- uid: BFB.Engine.TileMap.Generators
+  commentId: N:BFB.Engine.TileMap.Generators
+  name: BFB.Engine.TileMap.Generators
+  nameWithType: BFB.Engine.TileMap.Generators
+  fullName: BFB.Engine.TileMap.Generators

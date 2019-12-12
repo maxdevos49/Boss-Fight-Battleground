@@ -1,0 +1,1308 @@
+### YamlMime:ManagedReference
+items:
+- uid: BFB.Engine.Simulation.Simulation
+  commentId: T:BFB.Engine.Simulation.Simulation
+  id: Simulation
+  parent: BFB.Engine.Simulation
+  children:
+  - BFB.Engine.Simulation.Simulation.#ctor(BFB.Engine.TileMap.Generators.WorldOptions,System.Int32)
+  - BFB.Engine.Simulation.Simulation.AddEntity(BFB.Engine.Entity.SimulationEntity,System.Boolean)
+  - BFB.Engine.Simulation.Simulation.GenerateWorld
+  - BFB.Engine.Simulation.Simulation.OnChunkUpdates
+  - BFB.Engine.Simulation.Simulation.OnEntityAdd
+  - BFB.Engine.Simulation.Simulation.OnEntityRemove
+  - BFB.Engine.Simulation.Simulation.OnEntityUpdates
+  - BFB.Engine.Simulation.Simulation.OnSimulationOverLoad
+  - BFB.Engine.Simulation.Simulation.OnSimulationStart
+  - BFB.Engine.Simulation.Simulation.OnSimulationStop
+  - BFB.Engine.Simulation.Simulation.OnWorldGenerationProgress
+  - BFB.Engine.Simulation.Simulation.RemoveEntity(System.String)
+  - BFB.Engine.Simulation.Simulation.SimulationDistance
+  - BFB.Engine.Simulation.Simulation.Start
+  - BFB.Engine.Simulation.Simulation.Stop
+  - BFB.Engine.Simulation.Simulation.WorldManager
+  langs:
+  - csharp
+  - vb
+  name: Simulation
+  nameWithType: Simulation
+  fullName: BFB.Engine.Simulation.Simulation
+  type: Class
+  source:
+    remote:
+      path: BFB/BFB.Engine/Simulation/Simulation.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: Simulation
+    path: ../BFB/BFB.Engine/Simulation/Simulation.cs
+    startLine: 15
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Simulation
+  summary: "\nCreates a simulation for simulating entities and a tilemap in a game\n"
+  example: []
+  syntax:
+    content: 'public class Simulation : object'
+    content.vb: >-
+      Public Class Simulation
+
+          Inherits Object
+  inheritance:
+  - System.Object
+  extensionMethods:
+  - BFB.Engine.Simulation.Simulation.BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{BFB.Engine.Simulation.Simulation,{TValue}}},{TValue})
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: BFB.Engine.Simulation.Simulation.SimulationDistance
+  commentId: F:BFB.Engine.Simulation.Simulation.SimulationDistance
+  id: SimulationDistance
+  parent: BFB.Engine.Simulation.Simulation
+  langs:
+  - csharp
+  - vb
+  name: SimulationDistance
+  nameWithType: Simulation.SimulationDistance
+  fullName: BFB.Engine.Simulation.Simulation.SimulationDistance
+  type: Field
+  source:
+    remote:
+      path: BFB/BFB.Engine/Simulation/Simulation.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: SimulationDistance
+    path: ../BFB/BFB.Engine/Simulation/Simulation.cs
+    startLine: 31
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Simulation
+  summary: "\nIndicates the distance at which a player causes the simulation to simulate\n"
+  example: []
+  syntax:
+    content: public readonly int SimulationDistance
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly SimulationDistance As Integer
+  modifiers.csharp:
+  - public
+  - readonly
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: BFB.Engine.Simulation.Simulation.WorldManager
+  commentId: F:BFB.Engine.Simulation.Simulation.WorldManager
+  id: WorldManager
+  parent: BFB.Engine.Simulation.Simulation
+  langs:
+  - csharp
+  - vb
+  name: WorldManager
+  nameWithType: Simulation.WorldManager
+  fullName: BFB.Engine.Simulation.Simulation.WorldManager
+  type: Field
+  source:
+    remote:
+      path: BFB/BFB.Engine/Simulation/Simulation.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: WorldManager
+    path: ../BFB/BFB.Engine/Simulation/Simulation.cs
+    startLine: 36
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Simulation
+  summary: "\nHolds the World Manager for maintaining world state\n"
+  example: []
+  syntax:
+    content: public readonly WorldManager WorldManager
+    return:
+      type: BFB.Engine.TileMap.WorldManager
+    content.vb: Public ReadOnly WorldManager As WorldManager
+  modifiers.csharp:
+  - public
+  - readonly
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: BFB.Engine.Simulation.Simulation.OnWorldGenerationProgress
+  commentId: P:BFB.Engine.Simulation.Simulation.OnWorldGenerationProgress
+  id: OnWorldGenerationProgress
+  parent: BFB.Engine.Simulation.Simulation
+  langs:
+  - csharp
+  - vb
+  name: OnWorldGenerationProgress
+  nameWithType: Simulation.OnWorldGenerationProgress
+  fullName: BFB.Engine.Simulation.Simulation.OnWorldGenerationProgress
+  type: Property
+  source:
+    remote:
+      path: BFB/BFB.Engine/Simulation/Simulation.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: OnWorldGenerationProgress
+    path: ../BFB/BFB.Engine/Simulation/Simulation.cs
+    startLine: 41
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Simulation
+  summary: "\nCallback that is fired on every 1% of world generation progress. Supplies the current world generating progress as a string\n"
+  example: []
+  syntax:
+    content: public Action<string> OnWorldGenerationProgress { get; set; }
+    parameters: []
+    return:
+      type: Action{System.String}
+    content.vb: Public Property OnWorldGenerationProgress As Action(Of String)
+  overload: BFB.Engine.Simulation.Simulation.OnWorldGenerationProgress*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.Simulation.Simulation.OnSimulationStart
+  commentId: P:BFB.Engine.Simulation.Simulation.OnSimulationStart
+  id: OnSimulationStart
+  parent: BFB.Engine.Simulation.Simulation
+  langs:
+  - csharp
+  - vb
+  name: OnSimulationStart
+  nameWithType: Simulation.OnSimulationStart
+  fullName: BFB.Engine.Simulation.Simulation.OnSimulationStart
+  type: Property
+  source:
+    remote:
+      path: BFB/BFB.Engine/Simulation/Simulation.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: OnSimulationStart
+    path: ../BFB/BFB.Engine/Simulation/Simulation.cs
+    startLine: 46
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Simulation
+  summary: "\nCallback that is called when the simulation is started\n"
+  example: []
+  syntax:
+    content: public Action OnSimulationStart { get; set; }
+    parameters: []
+    return:
+      type: Action
+    content.vb: Public Property OnSimulationStart As Action
+  overload: BFB.Engine.Simulation.Simulation.OnSimulationStart*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.Simulation.Simulation.OnSimulationStop
+  commentId: P:BFB.Engine.Simulation.Simulation.OnSimulationStop
+  id: OnSimulationStop
+  parent: BFB.Engine.Simulation.Simulation
+  langs:
+  - csharp
+  - vb
+  name: OnSimulationStop
+  nameWithType: Simulation.OnSimulationStop
+  fullName: BFB.Engine.Simulation.Simulation.OnSimulationStop
+  type: Property
+  source:
+    remote:
+      path: BFB/BFB.Engine/Simulation/Simulation.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: OnSimulationStop
+    path: ../BFB/BFB.Engine/Simulation/Simulation.cs
+    startLine: 51
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Simulation
+  summary: "\nCallback that is called when the simulation is stopped\n"
+  example: []
+  syntax:
+    content: public Action OnSimulationStop { get; set; }
+    parameters: []
+    return:
+      type: Action
+    content.vb: Public Property OnSimulationStop As Action
+  overload: BFB.Engine.Simulation.Simulation.OnSimulationStop*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.Simulation.Simulation.OnEntityAdd
+  commentId: P:BFB.Engine.Simulation.Simulation.OnEntityAdd
+  id: OnEntityAdd
+  parent: BFB.Engine.Simulation.Simulation
+  langs:
+  - csharp
+  - vb
+  name: OnEntityAdd
+  nameWithType: Simulation.OnEntityAdd
+  fullName: BFB.Engine.Simulation.Simulation.OnEntityAdd
+  type: Property
+  source:
+    remote:
+      path: BFB/BFB.Engine/Simulation/Simulation.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: OnEntityAdd
+    path: ../BFB/BFB.Engine/Simulation/Simulation.cs
+    startLine: 56
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Simulation
+  summary: "\nCallback that is called when a entity is added. Supplies the entity key and a boolean indicating if the entity is a player.\n"
+  example: []
+  syntax:
+    content: public Action<string, bool> OnEntityAdd { get; set; }
+    parameters: []
+    return:
+      type: Action{System.String,System.Boolean}
+    content.vb: Public Property OnEntityAdd As Action(Of String, Boolean)
+  overload: BFB.Engine.Simulation.Simulation.OnEntityAdd*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.Simulation.Simulation.OnEntityRemove
+  commentId: P:BFB.Engine.Simulation.Simulation.OnEntityRemove
+  id: OnEntityRemove
+  parent: BFB.Engine.Simulation.Simulation
+  langs:
+  - csharp
+  - vb
+  name: OnEntityRemove
+  nameWithType: Simulation.OnEntityRemove
+  fullName: BFB.Engine.Simulation.Simulation.OnEntityRemove
+  type: Property
+  source:
+    remote:
+      path: BFB/BFB.Engine/Simulation/Simulation.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: OnEntityRemove
+    path: ../BFB/BFB.Engine/Simulation/Simulation.cs
+    startLine: 61
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Simulation
+  summary: "\nCallback that is called when a entity is removed. Supplies the entity key and a boolean indicating if the entity is a player\n"
+  example: []
+  syntax:
+    content: public Action<string, bool> OnEntityRemove { get; set; }
+    parameters: []
+    return:
+      type: Action{System.String,System.Boolean}
+    content.vb: Public Property OnEntityRemove As Action(Of String, Boolean)
+  overload: BFB.Engine.Simulation.Simulation.OnEntityRemove*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.Simulation.Simulation.OnEntityUpdates
+  commentId: P:BFB.Engine.Simulation.Simulation.OnEntityUpdates
+  id: OnEntityUpdates
+  parent: BFB.Engine.Simulation.Simulation
+  langs:
+  - csharp
+  - vb
+  name: OnEntityUpdates
+  nameWithType: Simulation.OnEntityUpdates
+  fullName: BFB.Engine.Simulation.Simulation.OnEntityUpdates
+  type: Property
+  source:
+    remote:
+      path: BFB/BFB.Engine/Simulation/Simulation.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: OnEntityUpdates
+    path: ../BFB/BFB.Engine/Simulation/Simulation.cs
+    startLine: 66
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Simulation
+  summary: "\nCallback that is called when the simulation is ready to supply updates for a player entity. Supplies the player entity key and its relevant updates\n"
+  example: []
+  syntax:
+    content: public Action<string, EntityUpdateMessage> OnEntityUpdates { get; set; }
+    parameters: []
+    return:
+      type: Action{System.String,BFB.Engine.Server.Communication.EntityUpdateMessage}
+    content.vb: Public Property OnEntityUpdates As Action(Of String, EntityUpdateMessage)
+  overload: BFB.Engine.Simulation.Simulation.OnEntityUpdates*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.Simulation.Simulation.OnChunkUpdates
+  commentId: P:BFB.Engine.Simulation.Simulation.OnChunkUpdates
+  id: OnChunkUpdates
+  parent: BFB.Engine.Simulation.Simulation
+  langs:
+  - csharp
+  - vb
+  name: OnChunkUpdates
+  nameWithType: Simulation.OnChunkUpdates
+  fullName: BFB.Engine.Simulation.Simulation.OnChunkUpdates
+  type: Property
+  source:
+    remote:
+      path: BFB/BFB.Engine/Simulation/Simulation.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: OnChunkUpdates
+    path: ../BFB/BFB.Engine/Simulation/Simulation.cs
+    startLine: 71
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Simulation
+  summary: "\nCallback that is called when the simulation is ready to provide updates for player entity. Supplies the player entity key and its relevant updates\n"
+  example: []
+  syntax:
+    content: public Action<string, ChunkUpdatesMessage> OnChunkUpdates { get; set; }
+    parameters: []
+    return:
+      type: Action{System.String,BFB.Engine.Server.Communication.ChunkUpdatesMessage}
+    content.vb: Public Property OnChunkUpdates As Action(Of String, ChunkUpdatesMessage)
+  overload: BFB.Engine.Simulation.Simulation.OnChunkUpdates*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.Simulation.Simulation.OnSimulationOverLoad
+  commentId: P:BFB.Engine.Simulation.Simulation.OnSimulationOverLoad
+  id: OnSimulationOverLoad
+  parent: BFB.Engine.Simulation.Simulation
+  langs:
+  - csharp
+  - vb
+  name: OnSimulationOverLoad
+  nameWithType: Simulation.OnSimulationOverLoad
+  fullName: BFB.Engine.Simulation.Simulation.OnSimulationOverLoad
+  type: Property
+  source:
+    remote:
+      path: BFB/BFB.Engine/Simulation/Simulation.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: OnSimulationOverLoad
+    path: ../BFB/BFB.Engine/Simulation/Simulation.cs
+    startLine: 72
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Simulation
+  syntax:
+    content: public Action<string> OnSimulationOverLoad { get; set; }
+    parameters: []
+    return:
+      type: Action{System.String}
+    content.vb: Public Property OnSimulationOverLoad As Action(Of String)
+  overload: BFB.Engine.Simulation.Simulation.OnSimulationOverLoad*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.Simulation.Simulation.#ctor(BFB.Engine.TileMap.Generators.WorldOptions,System.Int32)
+  commentId: M:BFB.Engine.Simulation.Simulation.#ctor(BFB.Engine.TileMap.Generators.WorldOptions,System.Int32)
+  id: '#ctor(BFB.Engine.TileMap.Generators.WorldOptions,System.Int32)'
+  parent: BFB.Engine.Simulation.Simulation
+  langs:
+  - csharp
+  - vb
+  name: Simulation(WorldOptions, Int32)
+  nameWithType: Simulation.Simulation(WorldOptions, Int32)
+  fullName: BFB.Engine.Simulation.Simulation.Simulation(BFB.Engine.TileMap.Generators.WorldOptions, System.Int32)
+  type: Constructor
+  source:
+    remote:
+      path: BFB/BFB.Engine/Simulation/Simulation.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: .ctor
+    path: ../BFB/BFB.Engine/Simulation/Simulation.cs
+    startLine: 84
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Simulation
+  summary: "\nConstructs a simulation\n"
+  example: []
+  syntax:
+    content: public Simulation(WorldOptions worldOptions, int tickSpeed = 20)
+    parameters:
+    - id: worldOptions
+      type: BFB.Engine.TileMap.Generators.WorldOptions
+      description: Given world options that is given to the world manager
+    - id: tickSpeed
+      type: System.Int32
+      description: A optional parameter used for indicating the ticks per second. (20tps is the default)
+    content.vb: Public Sub New(worldOptions As WorldOptions, tickSpeed As Integer = 20)
+  overload: BFB.Engine.Simulation.Simulation.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.Simulation.Simulation.GenerateWorld
+  commentId: M:BFB.Engine.Simulation.Simulation.GenerateWorld
+  id: GenerateWorld
+  parent: BFB.Engine.Simulation.Simulation
+  langs:
+  - csharp
+  - vb
+  name: GenerateWorld()
+  nameWithType: Simulation.GenerateWorld()
+  fullName: BFB.Engine.Simulation.Simulation.GenerateWorld()
+  type: Method
+  source:
+    remote:
+      path: BFB/BFB.Engine/Simulation/Simulation.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: GenerateWorld
+    path: ../BFB/BFB.Engine/Simulation/Simulation.cs
+    startLine: 109
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Simulation
+  summary: "\nGenerates the entire tilemap. Calls the OnWorldGenerationProgress during the generation\n"
+  example: []
+  syntax:
+    content: public void GenerateWorld()
+    content.vb: Public Sub GenerateWorld
+  overload: BFB.Engine.Simulation.Simulation.GenerateWorld*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.Simulation.Simulation.AddEntity(BFB.Engine.Entity.SimulationEntity,System.Boolean)
+  commentId: M:BFB.Engine.Simulation.Simulation.AddEntity(BFB.Engine.Entity.SimulationEntity,System.Boolean)
+  id: AddEntity(BFB.Engine.Entity.SimulationEntity,System.Boolean)
+  parent: BFB.Engine.Simulation.Simulation
+  langs:
+  - csharp
+  - vb
+  name: AddEntity(SimulationEntity, Boolean)
+  nameWithType: Simulation.AddEntity(SimulationEntity, Boolean)
+  fullName: BFB.Engine.Simulation.Simulation.AddEntity(BFB.Engine.Entity.SimulationEntity, System.Boolean)
+  type: Method
+  source:
+    remote:
+      path: BFB/BFB.Engine/Simulation/Simulation.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: AddEntity
+    path: ../BFB/BFB.Engine/Simulation/Simulation.cs
+    startLine: 126
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Simulation
+  summary: "\nAdds a entity to the simulation\n"
+  example: []
+  syntax:
+    content: public void AddEntity(SimulationEntity simulationEntity, bool isPlayer = false)
+    parameters:
+    - id: simulationEntity
+      type: BFB.Engine.Entity.SimulationEntity
+      description: The simulation entity
+    - id: isPlayer
+      type: System.Boolean
+      description: Optional parameter indicating if the entity is a player.(false is default)
+    content.vb: Public Sub AddEntity(simulationEntity As SimulationEntity, isPlayer As Boolean = False)
+  overload: BFB.Engine.Simulation.Simulation.AddEntity*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.Simulation.Simulation.RemoveEntity(System.String)
+  commentId: M:BFB.Engine.Simulation.Simulation.RemoveEntity(System.String)
+  id: RemoveEntity(System.String)
+  parent: BFB.Engine.Simulation.Simulation
+  langs:
+  - csharp
+  - vb
+  name: RemoveEntity(String)
+  nameWithType: Simulation.RemoveEntity(String)
+  fullName: BFB.Engine.Simulation.Simulation.RemoveEntity(System.String)
+  type: Method
+  source:
+    remote:
+      path: BFB/BFB.Engine/Simulation/Simulation.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: RemoveEntity
+    path: ../BFB/BFB.Engine/Simulation/Simulation.cs
+    startLine: 168
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Simulation
+  summary: "\nRemoves a entity from the simulation with a entity id.\n"
+  example: []
+  syntax:
+    content: public void RemoveEntity(string key)
+    parameters:
+    - id: key
+      type: System.String
+      description: The entity Id used to determine who is being removed from the simulation.
+    content.vb: Public Sub RemoveEntity(key As String)
+  overload: BFB.Engine.Simulation.Simulation.RemoveEntity*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.Simulation.Simulation.Start
+  commentId: M:BFB.Engine.Simulation.Simulation.Start
+  id: Start
+  parent: BFB.Engine.Simulation.Simulation
+  langs:
+  - csharp
+  - vb
+  name: Start()
+  nameWithType: Simulation.Start()
+  fullName: BFB.Engine.Simulation.Simulation.Start()
+  type: Method
+  source:
+    remote:
+      path: BFB/BFB.Engine/Simulation/Simulation.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: Start
+    path: ../BFB/BFB.Engine/Simulation/Simulation.cs
+    startLine: 209
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Simulation
+  summary: "\nStarts the simulation\n"
+  example: []
+  syntax:
+    content: public void Start()
+    content.vb: Public Sub Start
+  overload: BFB.Engine.Simulation.Simulation.Start*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.Simulation.Simulation.Stop
+  commentId: M:BFB.Engine.Simulation.Simulation.Stop
+  id: Stop
+  parent: BFB.Engine.Simulation.Simulation
+  langs:
+  - csharp
+  - vb
+  name: Stop()
+  nameWithType: Simulation.Stop()
+  fullName: BFB.Engine.Simulation.Simulation.Stop()
+  type: Method
+  source:
+    remote:
+      path: BFB/BFB.Engine/Simulation/Simulation.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: Stop
+    path: ../BFB/BFB.Engine/Simulation/Simulation.cs
+    startLine: 228
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Simulation
+  summary: "\nStops the simulation\n"
+  example: []
+  syntax:
+    content: public void Stop()
+    content.vb: Public Sub Stop
+  overload: BFB.Engine.Simulation.Simulation.Stop*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+references:
+- uid: BFB.Engine.Simulation
+  commentId: N:BFB.Engine.Simulation
+  name: BFB.Engine.Simulation
+  nameWithType: BFB.Engine.Simulation
+  fullName: BFB.Engine.Simulation
+- uid: System.Object
+  commentId: '!:System.Object'
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: BFB.Engine.Simulation.Simulation.BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{BFB.Engine.Simulation.Simulation,{TValue}}},{TValue})
+  commentId: M:BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  parent: BFB.Engine.UI.Components.LambdaExtensions
+  definition: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  name: SetPropertyValue<Simulation, TValue>(Expression<Func<Simulation, TValue>>, TValue)
+  nameWithType: LambdaExtensions.SetPropertyValue<Simulation, TValue>(Expression<Func<Simulation, TValue>>, TValue)
+  fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<BFB.Engine.Simulation.Simulation, TValue>(Expression<Func<BFB.Engine.Simulation.Simulation, TValue>>, TValue)
+  nameWithType.vb: LambdaExtensions.SetPropertyValue(Of Simulation, TValue)(Expression(Of Func(Of Simulation, TValue)), TValue)
+  fullName.vb: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of BFB.Engine.Simulation.Simulation, TValue)(Expression(Of Func(Of BFB.Engine.Simulation.Simulation, TValue)), TValue)
+  name.vb: SetPropertyValue(Of Simulation, TValue)(Expression(Of Func(Of Simulation, TValue)), TValue)
+  spec.csharp:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue<Simulation, TValue>
+    nameWithType: LambdaExtensions.SetPropertyValue<Simulation, TValue>
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<BFB.Engine.Simulation.Simulation, TValue>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: BFB.Engine.Simulation.Simulation
+    name: Simulation
+    nameWithType: Simulation
+    fullName: BFB.Engine.Simulation.Simulation
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue(Of Simulation, TValue)
+    nameWithType: LambdaExtensions.SetPropertyValue(Of Simulation, TValue)
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of BFB.Engine.Simulation.Simulation, TValue)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: BFB.Engine.Simulation.Simulation
+    name: Simulation
+    nameWithType: Simulation
+    fullName: BFB.Engine.Simulation.Simulation
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  commentId: M:BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  isExternal: true
+  name: SetPropertyValue<T, TValue>(T, Expression<Func<T, TValue>>, TValue)
+  nameWithType: LambdaExtensions.SetPropertyValue<T, TValue>(T, Expression<Func<T, TValue>>, TValue)
+  fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<T, TValue>(T, Expression<Func<T, TValue>>, TValue)
+  nameWithType.vb: LambdaExtensions.SetPropertyValue(Of T, TValue)(T, Expression(Of Func(Of T, TValue)), TValue)
+  fullName.vb: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of T, TValue)(T, Expression(Of Func(Of T, TValue)), TValue)
+  name.vb: SetPropertyValue(Of T, TValue)(T, Expression(Of Func(Of T, TValue)), TValue)
+  spec.csharp:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue<T, TValue>
+    nameWithType: LambdaExtensions.SetPropertyValue<T, TValue>
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<T, TValue>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue(Of T, TValue)
+    nameWithType: LambdaExtensions.SetPropertyValue(Of T, TValue)
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of T, TValue)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Components.LambdaExtensions
+  commentId: T:BFB.Engine.UI.Components.LambdaExtensions
+  parent: BFB.Engine.UI.Components
+  name: LambdaExtensions
+  nameWithType: LambdaExtensions
+  fullName: BFB.Engine.UI.Components.LambdaExtensions
+- uid: BFB.Engine.UI.Components
+  commentId: N:BFB.Engine.UI.Components
+  name: BFB.Engine.UI.Components
+  nameWithType: BFB.Engine.UI.Components
+  fullName: BFB.Engine.UI.Components
+- uid: System.Int32
+  isExternal: true
+  name: Int32
+  nameWithType: Int32
+  fullName: System.Int32
+- uid: BFB.Engine.TileMap.WorldManager
+  commentId: T:BFB.Engine.TileMap.WorldManager
+  parent: BFB.Engine.TileMap
+  name: WorldManager
+  nameWithType: WorldManager
+  fullName: BFB.Engine.TileMap.WorldManager
+- uid: BFB.Engine.TileMap
+  commentId: N:BFB.Engine.TileMap
+  name: BFB.Engine.TileMap
+  nameWithType: BFB.Engine.TileMap
+  fullName: BFB.Engine.TileMap
+- uid: BFB.Engine.Simulation.Simulation.OnWorldGenerationProgress*
+  commentId: Overload:BFB.Engine.Simulation.Simulation.OnWorldGenerationProgress
+  name: OnWorldGenerationProgress
+  nameWithType: Simulation.OnWorldGenerationProgress
+  fullName: BFB.Engine.Simulation.Simulation.OnWorldGenerationProgress
+- uid: Action{System.String}
+  commentId: '!:Action{System.String}'
+  definition: Action`1
+  name: Action<String>
+  nameWithType: Action<String>
+  fullName: Action<System.String>
+  nameWithType.vb: Action(Of String)
+  fullName.vb: Action(Of System.String)
+  name.vb: Action(Of String)
+  spec.csharp:
+  - uid: Action`1
+    name: Action
+    nameWithType: Action
+    fullName: Action
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: Action`1
+    name: Action
+    nameWithType: Action
+    fullName: Action
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Action`1
+  isExternal: true
+  name: Action<>
+  nameWithType: Action<>
+  fullName: Action<>
+  nameWithType.vb: Action(Of )
+  fullName.vb: Action(Of )
+  name.vb: Action(Of )
+  spec.csharp:
+  - uid: Action`1
+    name: Action
+    nameWithType: Action
+    fullName: Action
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: Action`1
+    name: Action
+    nameWithType: Action
+    fullName: Action
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.Simulation.Simulation.OnSimulationStart*
+  commentId: Overload:BFB.Engine.Simulation.Simulation.OnSimulationStart
+  name: OnSimulationStart
+  nameWithType: Simulation.OnSimulationStart
+  fullName: BFB.Engine.Simulation.Simulation.OnSimulationStart
+- uid: Action
+  isExternal: true
+  name: Action
+  nameWithType: Action
+  fullName: Action
+- uid: BFB.Engine.Simulation.Simulation.OnSimulationStop*
+  commentId: Overload:BFB.Engine.Simulation.Simulation.OnSimulationStop
+  name: OnSimulationStop
+  nameWithType: Simulation.OnSimulationStop
+  fullName: BFB.Engine.Simulation.Simulation.OnSimulationStop
+- uid: BFB.Engine.Simulation.Simulation.OnEntityAdd*
+  commentId: Overload:BFB.Engine.Simulation.Simulation.OnEntityAdd
+  name: OnEntityAdd
+  nameWithType: Simulation.OnEntityAdd
+  fullName: BFB.Engine.Simulation.Simulation.OnEntityAdd
+- uid: Action{System.String,System.Boolean}
+  commentId: '!:Action{System.String,System.Boolean}'
+  definition: Action`2
+  name: Action<String, Boolean>
+  nameWithType: Action<String, Boolean>
+  fullName: Action<System.String, System.Boolean>
+  nameWithType.vb: Action(Of String, Boolean)
+  fullName.vb: Action(Of System.String, System.Boolean)
+  name.vb: Action(Of String, Boolean)
+  spec.csharp:
+  - uid: Action`2
+    name: Action
+    nameWithType: Action
+    fullName: Action
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: Action`2
+    name: Action
+    nameWithType: Action
+    fullName: Action
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Action`2
+  isExternal: true
+  name: Action<, >
+  nameWithType: Action<, >
+  fullName: Action<, >
+  nameWithType.vb: Action(Of , )
+  fullName.vb: Action(Of , )
+  name.vb: Action(Of , )
+  spec.csharp:
+  - uid: Action`2
+    name: Action
+    nameWithType: Action
+    fullName: Action
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: Action`2
+    name: Action
+    nameWithType: Action
+    fullName: Action
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.Simulation.Simulation.OnEntityRemove*
+  commentId: Overload:BFB.Engine.Simulation.Simulation.OnEntityRemove
+  name: OnEntityRemove
+  nameWithType: Simulation.OnEntityRemove
+  fullName: BFB.Engine.Simulation.Simulation.OnEntityRemove
+- uid: BFB.Engine.Simulation.Simulation.OnEntityUpdates*
+  commentId: Overload:BFB.Engine.Simulation.Simulation.OnEntityUpdates
+  name: OnEntityUpdates
+  nameWithType: Simulation.OnEntityUpdates
+  fullName: BFB.Engine.Simulation.Simulation.OnEntityUpdates
+- uid: Action{System.String,BFB.Engine.Server.Communication.EntityUpdateMessage}
+  commentId: '!:Action{System.String,BFB.Engine.Server.Communication.EntityUpdateMessage}'
+  definition: Action`2
+  name: Action<String, EntityUpdateMessage>
+  nameWithType: Action<String, EntityUpdateMessage>
+  fullName: Action<System.String, BFB.Engine.Server.Communication.EntityUpdateMessage>
+  nameWithType.vb: Action(Of String, EntityUpdateMessage)
+  fullName.vb: Action(Of System.String, BFB.Engine.Server.Communication.EntityUpdateMessage)
+  name.vb: Action(Of String, EntityUpdateMessage)
+  spec.csharp:
+  - uid: Action`2
+    name: Action
+    nameWithType: Action
+    fullName: Action
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: BFB.Engine.Server.Communication.EntityUpdateMessage
+    name: EntityUpdateMessage
+    nameWithType: EntityUpdateMessage
+    fullName: BFB.Engine.Server.Communication.EntityUpdateMessage
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: Action`2
+    name: Action
+    nameWithType: Action
+    fullName: Action
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: BFB.Engine.Server.Communication.EntityUpdateMessage
+    name: EntityUpdateMessage
+    nameWithType: EntityUpdateMessage
+    fullName: BFB.Engine.Server.Communication.EntityUpdateMessage
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.Simulation.Simulation.OnChunkUpdates*
+  commentId: Overload:BFB.Engine.Simulation.Simulation.OnChunkUpdates
+  name: OnChunkUpdates
+  nameWithType: Simulation.OnChunkUpdates
+  fullName: BFB.Engine.Simulation.Simulation.OnChunkUpdates
+- uid: Action{System.String,BFB.Engine.Server.Communication.ChunkUpdatesMessage}
+  commentId: '!:Action{System.String,BFB.Engine.Server.Communication.ChunkUpdatesMessage}'
+  definition: Action`2
+  name: Action<String, ChunkUpdatesMessage>
+  nameWithType: Action<String, ChunkUpdatesMessage>
+  fullName: Action<System.String, BFB.Engine.Server.Communication.ChunkUpdatesMessage>
+  nameWithType.vb: Action(Of String, ChunkUpdatesMessage)
+  fullName.vb: Action(Of System.String, BFB.Engine.Server.Communication.ChunkUpdatesMessage)
+  name.vb: Action(Of String, ChunkUpdatesMessage)
+  spec.csharp:
+  - uid: Action`2
+    name: Action
+    nameWithType: Action
+    fullName: Action
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: BFB.Engine.Server.Communication.ChunkUpdatesMessage
+    name: ChunkUpdatesMessage
+    nameWithType: ChunkUpdatesMessage
+    fullName: BFB.Engine.Server.Communication.ChunkUpdatesMessage
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: Action`2
+    name: Action
+    nameWithType: Action
+    fullName: Action
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: BFB.Engine.Server.Communication.ChunkUpdatesMessage
+    name: ChunkUpdatesMessage
+    nameWithType: ChunkUpdatesMessage
+    fullName: BFB.Engine.Server.Communication.ChunkUpdatesMessage
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.Simulation.Simulation.OnSimulationOverLoad*
+  commentId: Overload:BFB.Engine.Simulation.Simulation.OnSimulationOverLoad
+  name: OnSimulationOverLoad
+  nameWithType: Simulation.OnSimulationOverLoad
+  fullName: BFB.Engine.Simulation.Simulation.OnSimulationOverLoad
+- uid: BFB.Engine.Simulation.Simulation.#ctor*
+  commentId: Overload:BFB.Engine.Simulation.Simulation.#ctor
+  name: Simulation
+  nameWithType: Simulation.Simulation
+  fullName: BFB.Engine.Simulation.Simulation.Simulation
+- uid: BFB.Engine.TileMap.Generators.WorldOptions
+  commentId: T:BFB.Engine.TileMap.Generators.WorldOptions
+  parent: BFB.Engine.TileMap.Generators
+  name: WorldOptions
+  nameWithType: WorldOptions
+  fullName: BFB.Engine.TileMap.Generators.WorldOptions
+- uid: BFB.Engine.TileMap.Generators
+  commentId: N:BFB.Engine.TileMap.Generators
+  name: BFB.Engine.TileMap.Generators
+  nameWithType: BFB.Engine.TileMap.Generators
+  fullName: BFB.Engine.TileMap.Generators
+- uid: BFB.Engine.Simulation.Simulation.GenerateWorld*
+  commentId: Overload:BFB.Engine.Simulation.Simulation.GenerateWorld
+  name: GenerateWorld
+  nameWithType: Simulation.GenerateWorld
+  fullName: BFB.Engine.Simulation.Simulation.GenerateWorld
+- uid: BFB.Engine.Simulation.Simulation.AddEntity*
+  commentId: Overload:BFB.Engine.Simulation.Simulation.AddEntity
+  name: AddEntity
+  nameWithType: Simulation.AddEntity
+  fullName: BFB.Engine.Simulation.Simulation.AddEntity
+- uid: BFB.Engine.Entity.SimulationEntity
+  commentId: T:BFB.Engine.Entity.SimulationEntity
+  parent: BFB.Engine.Entity
+  name: SimulationEntity
+  nameWithType: SimulationEntity
+  fullName: BFB.Engine.Entity.SimulationEntity
+- uid: System.Boolean
+  isExternal: true
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: BFB.Engine.Entity
+  commentId: N:BFB.Engine.Entity
+  name: BFB.Engine.Entity
+  nameWithType: BFB.Engine.Entity
+  fullName: BFB.Engine.Entity
+- uid: BFB.Engine.Simulation.Simulation.RemoveEntity*
+  commentId: Overload:BFB.Engine.Simulation.Simulation.RemoveEntity
+  name: RemoveEntity
+  nameWithType: Simulation.RemoveEntity
+  fullName: BFB.Engine.Simulation.Simulation.RemoveEntity
+- uid: System.String
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: BFB.Engine.Simulation.Simulation.Start*
+  commentId: Overload:BFB.Engine.Simulation.Simulation.Start
+  name: Start
+  nameWithType: Simulation.Start
+  fullName: BFB.Engine.Simulation.Simulation.Start
+- uid: BFB.Engine.Simulation.Simulation.Stop*
+  commentId: Overload:BFB.Engine.Simulation.Simulation.Stop
+  name: Stop
+  nameWithType: Simulation.Stop
+  fullName: BFB.Engine.Simulation.Simulation.Stop

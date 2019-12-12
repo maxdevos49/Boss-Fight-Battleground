@@ -1,0 +1,553 @@
+### YamlMime:ManagedReference
+items:
+- uid: BFB.Engine.Input.MouseStatus
+  commentId: T:BFB.Engine.Input.MouseStatus
+  id: MouseStatus
+  parent: BFB.Engine.Input
+  children:
+  - BFB.Engine.Input.MouseStatus.LeftButton
+  - BFB.Engine.Input.MouseStatus.MiddleButton
+  - BFB.Engine.Input.MouseStatus.MouseState
+  - BFB.Engine.Input.MouseStatus.RightButton
+  - BFB.Engine.Input.MouseStatus.X
+  - BFB.Engine.Input.MouseStatus.Y
+  langs:
+  - csharp
+  - vb
+  name: MouseStatus
+  nameWithType: MouseStatus
+  fullName: BFB.Engine.Input.MouseStatus
+  type: Class
+  source:
+    remote:
+      path: BFB/BFB.Engine/Input/MouseStatus.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: MouseStatus
+    path: ../BFB/BFB.Engine/Input/MouseStatus.cs
+    startLine: 7
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Input
+  summary: "\nThe state at which a mouse can be. Holds the X and Y coordinate, and the the states of each click.\n"
+  example: []
+  syntax:
+    content: 'public class MouseStatus : object'
+    content.vb: >-
+      Public Class MouseStatus
+
+          Inherits Object
+  inheritance:
+  - System.Object
+  extensionMethods:
+  - BFB.Engine.Input.MouseStatus.BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{BFB.Engine.Input.MouseStatus,{TValue}}},{TValue})
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: BFB.Engine.Input.MouseStatus.X
+  commentId: P:BFB.Engine.Input.MouseStatus.X
+  id: X
+  parent: BFB.Engine.Input.MouseStatus
+  langs:
+  - csharp
+  - vb
+  name: X
+  nameWithType: MouseStatus.X
+  fullName: BFB.Engine.Input.MouseStatus.X
+  type: Property
+  source:
+    remote:
+      path: BFB/BFB.Engine/Input/MouseStatus.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: X
+    path: ../BFB/BFB.Engine/Input/MouseStatus.cs
+    startLine: 9
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Input
+  syntax:
+    content: public int X { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property X As Integer
+  overload: BFB.Engine.Input.MouseStatus.X*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.Input.MouseStatus.Y
+  commentId: P:BFB.Engine.Input.MouseStatus.Y
+  id: Y
+  parent: BFB.Engine.Input.MouseStatus
+  langs:
+  - csharp
+  - vb
+  name: Y
+  nameWithType: MouseStatus.Y
+  fullName: BFB.Engine.Input.MouseStatus.Y
+  type: Property
+  source:
+    remote:
+      path: BFB/BFB.Engine/Input/MouseStatus.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: Y
+    path: ../BFB/BFB.Engine/Input/MouseStatus.cs
+    startLine: 11
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Input
+  syntax:
+    content: public int Y { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property Y As Integer
+  overload: BFB.Engine.Input.MouseStatus.Y*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.Input.MouseStatus.LeftButton
+  commentId: P:BFB.Engine.Input.MouseStatus.LeftButton
+  id: LeftButton
+  parent: BFB.Engine.Input.MouseStatus
+  langs:
+  - csharp
+  - vb
+  name: LeftButton
+  nameWithType: MouseStatus.LeftButton
+  fullName: BFB.Engine.Input.MouseStatus.LeftButton
+  type: Property
+  source:
+    remote:
+      path: BFB/BFB.Engine/Input/MouseStatus.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: LeftButton
+    path: ../BFB/BFB.Engine/Input/MouseStatus.cs
+    startLine: 13
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Input
+  syntax:
+    content: public ButtonState LeftButton { get; set; }
+    parameters: []
+    return:
+      type: ButtonState
+    content.vb: Public Property LeftButton As ButtonState
+  overload: BFB.Engine.Input.MouseStatus.LeftButton*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.Input.MouseStatus.RightButton
+  commentId: P:BFB.Engine.Input.MouseStatus.RightButton
+  id: RightButton
+  parent: BFB.Engine.Input.MouseStatus
+  langs:
+  - csharp
+  - vb
+  name: RightButton
+  nameWithType: MouseStatus.RightButton
+  fullName: BFB.Engine.Input.MouseStatus.RightButton
+  type: Property
+  source:
+    remote:
+      path: BFB/BFB.Engine/Input/MouseStatus.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: RightButton
+    path: ../BFB/BFB.Engine/Input/MouseStatus.cs
+    startLine: 15
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Input
+  syntax:
+    content: public ButtonState RightButton { get; set; }
+    parameters: []
+    return:
+      type: ButtonState
+    content.vb: Public Property RightButton As ButtonState
+  overload: BFB.Engine.Input.MouseStatus.RightButton*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.Input.MouseStatus.MiddleButton
+  commentId: P:BFB.Engine.Input.MouseStatus.MiddleButton
+  id: MiddleButton
+  parent: BFB.Engine.Input.MouseStatus
+  langs:
+  - csharp
+  - vb
+  name: MiddleButton
+  nameWithType: MouseStatus.MiddleButton
+  fullName: BFB.Engine.Input.MouseStatus.MiddleButton
+  type: Property
+  source:
+    remote:
+      path: BFB/BFB.Engine/Input/MouseStatus.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: MiddleButton
+    path: ../BFB/BFB.Engine/Input/MouseStatus.cs
+    startLine: 17
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Input
+  syntax:
+    content: public ButtonState MiddleButton { get; set; }
+    parameters: []
+    return:
+      type: ButtonState
+    content.vb: Public Property MiddleButton As ButtonState
+  overload: BFB.Engine.Input.MouseStatus.MiddleButton*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.Input.MouseStatus.MouseState
+  commentId: P:BFB.Engine.Input.MouseStatus.MouseState
+  id: MouseState
+  parent: BFB.Engine.Input.MouseStatus
+  langs:
+  - csharp
+  - vb
+  name: MouseState
+  nameWithType: MouseStatus.MouseState
+  fullName: BFB.Engine.Input.MouseStatus.MouseState
+  type: Property
+  source:
+    remote:
+      path: BFB/BFB.Engine/Input/MouseStatus.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: MouseState
+    path: ../BFB/BFB.Engine/Input/MouseStatus.cs
+    startLine: 19
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Input
+  syntax:
+    content: public MouseState MouseState { get; set; }
+    parameters: []
+    return:
+      type: MouseState
+    content.vb: Public Property MouseState As MouseState
+  overload: BFB.Engine.Input.MouseStatus.MouseState*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+references:
+- uid: BFB.Engine.Input
+  commentId: N:BFB.Engine.Input
+  name: BFB.Engine.Input
+  nameWithType: BFB.Engine.Input
+  fullName: BFB.Engine.Input
+- uid: System.Object
+  commentId: '!:System.Object'
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: BFB.Engine.Input.MouseStatus.BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{BFB.Engine.Input.MouseStatus,{TValue}}},{TValue})
+  commentId: M:BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  parent: BFB.Engine.UI.Components.LambdaExtensions
+  definition: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  name: SetPropertyValue<MouseStatus, TValue>(Expression<Func<MouseStatus, TValue>>, TValue)
+  nameWithType: LambdaExtensions.SetPropertyValue<MouseStatus, TValue>(Expression<Func<MouseStatus, TValue>>, TValue)
+  fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<BFB.Engine.Input.MouseStatus, TValue>(Expression<Func<BFB.Engine.Input.MouseStatus, TValue>>, TValue)
+  nameWithType.vb: LambdaExtensions.SetPropertyValue(Of MouseStatus, TValue)(Expression(Of Func(Of MouseStatus, TValue)), TValue)
+  fullName.vb: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of BFB.Engine.Input.MouseStatus, TValue)(Expression(Of Func(Of BFB.Engine.Input.MouseStatus, TValue)), TValue)
+  name.vb: SetPropertyValue(Of MouseStatus, TValue)(Expression(Of Func(Of MouseStatus, TValue)), TValue)
+  spec.csharp:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue<MouseStatus, TValue>
+    nameWithType: LambdaExtensions.SetPropertyValue<MouseStatus, TValue>
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<BFB.Engine.Input.MouseStatus, TValue>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: BFB.Engine.Input.MouseStatus
+    name: MouseStatus
+    nameWithType: MouseStatus
+    fullName: BFB.Engine.Input.MouseStatus
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue(Of MouseStatus, TValue)
+    nameWithType: LambdaExtensions.SetPropertyValue(Of MouseStatus, TValue)
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of BFB.Engine.Input.MouseStatus, TValue)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: BFB.Engine.Input.MouseStatus
+    name: MouseStatus
+    nameWithType: MouseStatus
+    fullName: BFB.Engine.Input.MouseStatus
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  commentId: M:BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  isExternal: true
+  name: SetPropertyValue<T, TValue>(T, Expression<Func<T, TValue>>, TValue)
+  nameWithType: LambdaExtensions.SetPropertyValue<T, TValue>(T, Expression<Func<T, TValue>>, TValue)
+  fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<T, TValue>(T, Expression<Func<T, TValue>>, TValue)
+  nameWithType.vb: LambdaExtensions.SetPropertyValue(Of T, TValue)(T, Expression(Of Func(Of T, TValue)), TValue)
+  fullName.vb: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of T, TValue)(T, Expression(Of Func(Of T, TValue)), TValue)
+  name.vb: SetPropertyValue(Of T, TValue)(T, Expression(Of Func(Of T, TValue)), TValue)
+  spec.csharp:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue<T, TValue>
+    nameWithType: LambdaExtensions.SetPropertyValue<T, TValue>
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<T, TValue>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue(Of T, TValue)
+    nameWithType: LambdaExtensions.SetPropertyValue(Of T, TValue)
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of T, TValue)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Components.LambdaExtensions
+  commentId: T:BFB.Engine.UI.Components.LambdaExtensions
+  parent: BFB.Engine.UI.Components
+  name: LambdaExtensions
+  nameWithType: LambdaExtensions
+  fullName: BFB.Engine.UI.Components.LambdaExtensions
+- uid: BFB.Engine.UI.Components
+  commentId: N:BFB.Engine.UI.Components
+  name: BFB.Engine.UI.Components
+  nameWithType: BFB.Engine.UI.Components
+  fullName: BFB.Engine.UI.Components
+- uid: BFB.Engine.Input.MouseStatus.X*
+  commentId: Overload:BFB.Engine.Input.MouseStatus.X
+  name: X
+  nameWithType: MouseStatus.X
+  fullName: BFB.Engine.Input.MouseStatus.X
+- uid: System.Int32
+  isExternal: true
+  name: Int32
+  nameWithType: Int32
+  fullName: System.Int32
+- uid: BFB.Engine.Input.MouseStatus.Y*
+  commentId: Overload:BFB.Engine.Input.MouseStatus.Y
+  name: Y
+  nameWithType: MouseStatus.Y
+  fullName: BFB.Engine.Input.MouseStatus.Y
+- uid: BFB.Engine.Input.MouseStatus.LeftButton*
+  commentId: Overload:BFB.Engine.Input.MouseStatus.LeftButton
+  name: LeftButton
+  nameWithType: MouseStatus.LeftButton
+  fullName: BFB.Engine.Input.MouseStatus.LeftButton
+- uid: ButtonState
+  isExternal: true
+  name: ButtonState
+  nameWithType: ButtonState
+  fullName: ButtonState
+- uid: BFB.Engine.Input.MouseStatus.RightButton*
+  commentId: Overload:BFB.Engine.Input.MouseStatus.RightButton
+  name: RightButton
+  nameWithType: MouseStatus.RightButton
+  fullName: BFB.Engine.Input.MouseStatus.RightButton
+- uid: BFB.Engine.Input.MouseStatus.MiddleButton*
+  commentId: Overload:BFB.Engine.Input.MouseStatus.MiddleButton
+  name: MiddleButton
+  nameWithType: MouseStatus.MiddleButton
+  fullName: BFB.Engine.Input.MouseStatus.MiddleButton
+- uid: BFB.Engine.Input.MouseStatus.MouseState*
+  commentId: Overload:BFB.Engine.Input.MouseStatus.MouseState
+  name: MouseState
+  nameWithType: MouseStatus.MouseState
+  fullName: BFB.Engine.Input.MouseStatus.MouseState
+- uid: MouseState
+  commentId: '!:MouseState'
+  isExternal: true
+  name: MouseState
+  nameWithType: MouseState
+  fullName: MouseState

@@ -8,6 +8,11 @@ using JetBrains.Annotations;
 
 namespace BFB.Engine.Event
 {
+    /// <summary>
+    /// Manager for events.
+    /// Devides what is to be done when an event is fired
+    /// </summary>
+    /// <typeparam name="TEvent"></typeparam>
     public class EventManager<TEvent> where TEvent : Event, new()
     {
         private readonly Dictionary<string, Dictionary<int, Action<TEvent>>> _eventHandlers;
@@ -28,9 +33,12 @@ namespace BFB.Engine.Event
         }
 
 
-        /**
-         * Adds an event listener for a specified event
-         * */
+        /// <summary>
+        /// Adds an event listener for a specified event
+        /// </summary>
+        /// <param name="eventKey">Unique key of the event being used</param>
+        /// <param name="eventCallback">Callback that will happen when this event is fired</param>
+        /// <returns></returns>
         [UsedImplicitly]
         public int AddEventListener(string eventKey, Action<TEvent> eventCallback)
         {
@@ -56,9 +64,10 @@ namespace BFB.Engine.Event
         }
 
 
-        /**
-         * Removes a event listener for a specified event handler id
-         * */
+        /// <summary>
+        /// Removes a event listener for a specified event handler id
+        /// </summary>
+        /// <param name="eventHandlerId">Unique ID of the event handler to remove</param>
         [UsedImplicitly]
         public void RemoveEventListener(int eventHandlerId)
         {
@@ -70,7 +79,11 @@ namespace BFB.Engine.Event
             }
         }
 
-
+        /// <summary>
+        /// Adds the event with the given key and data to the EventQueue
+        /// </summary>
+        /// <param name="eventKey">key of the event to be added</param>
+        /// <param name="eventData">data of the event to be added</param>
         public void Emit(string eventKey, TEvent eventData = null)
         {
             if (eventData == null)
@@ -82,16 +95,16 @@ namespace BFB.Engine.Event
             _eventQueue.Enqueue(eventData);//This could be a setting to cull events with no listeners
         }
 
-        /**
-         * Processes the events in the EventQueue
-         * */
+        /// <summary>
+        /// Processes the events in the EventQueue
+        /// </summary>
         public void ProcessEvents()
         {
             while (_eventQueue.Count > 0)
             {
                 TEvent currentEvent = _eventQueue.Dequeue();
 
-                if (!(OnEventProcess?.Invoke(currentEvent) ?? false)) continue;
+                if (!(OnEventProcess?.Invoke(currentEvent) ?? true)) continue;
                 
 
                 if(!_eventHandlers.ContainsKey(currentEvent.EventKey)) continue;

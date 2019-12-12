@@ -1,0 +1,22 @@
+### YamlMime:ManagedReference
+items:
+- uid: BFB.Engine.Debug
+  commentId: N:BFB.Engine.Debug
+  id: BFB.Engine.Debug
+  children:
+  - BFB.Engine.Debug.FrameCounter
+  langs:
+  - csharp
+  - vb
+  name: BFB.Engine.Debug
+  nameWithType: BFB.Engine.Debug
+  fullName: BFB.Engine.Debug
+  type: Namespace
+  assemblies:
+  - BFB.Engine
+references:
+- uid: BFB.Engine.Debug.FrameCounter
+  commentId: T:BFB.Engine.Debug.FrameCounter
+  name: FrameCounter
+  nameWithType: FrameCounter
+  fullName: BFB.Engine.Debug.FrameCounter

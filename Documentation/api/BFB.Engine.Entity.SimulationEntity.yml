@@ -1,0 +1,930 @@
+### YamlMime:ManagedReference
+items:
+- uid: BFB.Engine.Entity.SimulationEntity
+  commentId: T:BFB.Engine.Entity.SimulationEntity
+  id: SimulationEntity
+  parent: BFB.Engine.Entity
+  children:
+  - BFB.Engine.Entity.SimulationEntity.#ctor(System.String,BFB.Engine.Entity.EntityOptions,BFB.Engine.Entity.ComponentOptions)
+  - BFB.Engine.Entity.SimulationEntity.ChunkKey
+  - BFB.Engine.Entity.SimulationEntity.ChunkVersions
+  - BFB.Engine.Entity.SimulationEntity.DesiredVector
+  - BFB.Engine.Entity.SimulationEntity.IsPlayer
+  - BFB.Engine.Entity.SimulationEntity.Tick(BFB.Engine.Simulation.Simulation)
+  - BFB.Engine.Entity.SimulationEntity.VisibleChunks
+  langs:
+  - csharp
+  - vb
+  name: SimulationEntity
+  nameWithType: SimulationEntity
+  fullName: BFB.Engine.Entity.SimulationEntity
+  type: Class
+  source:
+    remote:
+      path: BFB/BFB.Engine/Entity/SimulationEntity.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: SimulationEntity
+    path: ../BFB/BFB.Engine/Entity/SimulationEntity.cs
+    startLine: 11
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Entity
+  summary: "\nAn entity stored in the game server&apos;s simulation \n"
+  example: []
+  syntax:
+    content: 'public class SimulationEntity : Entity'
+    content.vb: >-
+      Public Class SimulationEntity
+
+          Inherits Entity
+  inheritance:
+  - System.Object
+  - BFB.Engine.Entity.Entity
+  inheritedMembers:
+  - BFB.Engine.Entity.Entity.EntityId
+  - BFB.Engine.Entity.Entity.AnimatedTextureKey
+  - BFB.Engine.Entity.Entity.AnimationState
+  - BFB.Engine.Entity.Entity.Position
+  - BFB.Engine.Entity.Entity.Dimensions
+  - BFB.Engine.Entity.Entity.Origin
+  - BFB.Engine.Entity.Entity.Velocity
+  - BFB.Engine.Entity.Entity.Rotation
+  - BFB.Engine.Entity.Entity.Grounded
+  - BFB.Engine.Entity.Entity.GetState
+  extensionMethods:
+  - BFB.Engine.Entity.SimulationEntity.BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{BFB.Engine.Entity.SimulationEntity,{TValue}}},{TValue})
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: BFB.Engine.Entity.SimulationEntity.ChunkKey
+  commentId: P:BFB.Engine.Entity.SimulationEntity.ChunkKey
+  id: ChunkKey
+  parent: BFB.Engine.Entity.SimulationEntity
+  langs:
+  - csharp
+  - vb
+  name: ChunkKey
+  nameWithType: SimulationEntity.ChunkKey
+  fullName: BFB.Engine.Entity.SimulationEntity.ChunkKey
+  type: Property
+  source:
+    remote:
+      path: BFB/BFB.Engine/Entity/SimulationEntity.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: ChunkKey
+    path: ../BFB/BFB.Engine/Entity/SimulationEntity.cs
+    startLine: 19
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Entity
+  summary: "\nIndicates the chunk that the entity is currently in\n"
+  example: []
+  syntax:
+    content: public string ChunkKey { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property ChunkKey As String
+  overload: BFB.Engine.Entity.SimulationEntity.ChunkKey*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.Entity.SimulationEntity.IsPlayer
+  commentId: P:BFB.Engine.Entity.SimulationEntity.IsPlayer
+  id: IsPlayer
+  parent: BFB.Engine.Entity.SimulationEntity
+  langs:
+  - csharp
+  - vb
+  name: IsPlayer
+  nameWithType: SimulationEntity.IsPlayer
+  fullName: BFB.Engine.Entity.SimulationEntity.IsPlayer
+  type: Property
+  source:
+    remote:
+      path: BFB/BFB.Engine/Entity/SimulationEntity.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: IsPlayer
+    path: ../BFB/BFB.Engine/Entity/SimulationEntity.cs
+    startLine: 24
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Entity
+  summary: "\nWhether this is a player entity or not\n"
+  example: []
+  syntax:
+    content: public bool IsPlayer { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property IsPlayer As Boolean
+  overload: BFB.Engine.Entity.SimulationEntity.IsPlayer*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.Entity.SimulationEntity.DesiredVector
+  commentId: P:BFB.Engine.Entity.SimulationEntity.DesiredVector
+  id: DesiredVector
+  parent: BFB.Engine.Entity.SimulationEntity
+  langs:
+  - csharp
+  - vb
+  name: DesiredVector
+  nameWithType: SimulationEntity.DesiredVector
+  fullName: BFB.Engine.Entity.SimulationEntity.DesiredVector
+  type: Property
+  source:
+    remote:
+      path: BFB/BFB.Engine/Entity/SimulationEntity.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: DesiredVector
+    path: ../BFB/BFB.Engine/Entity/SimulationEntity.cs
+    startLine: 29
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Entity
+  summary: "\nVector describing a position an entity is attempting to move to \n"
+  example: []
+  syntax:
+    content: public BfbVector DesiredVector { get; }
+    parameters: []
+    return:
+      type: BFB.Engine.Math.BfbVector
+    content.vb: Public ReadOnly Property DesiredVector As BfbVector
+  overload: BFB.Engine.Entity.SimulationEntity.DesiredVector*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: BFB.Engine.Entity.SimulationEntity.VisibleChunks
+  commentId: P:BFB.Engine.Entity.SimulationEntity.VisibleChunks
+  id: VisibleChunks
+  parent: BFB.Engine.Entity.SimulationEntity
+  langs:
+  - csharp
+  - vb
+  name: VisibleChunks
+  nameWithType: SimulationEntity.VisibleChunks
+  fullName: BFB.Engine.Entity.SimulationEntity.VisibleChunks
+  type: Property
+  source:
+    remote:
+      path: BFB/BFB.Engine/Entity/SimulationEntity.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: VisibleChunks
+    path: ../BFB/BFB.Engine/Entity/SimulationEntity.cs
+    startLine: 34
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Entity
+  summary: "\nIndicates the chunks that the client can see. Only used if IsPlayer equals true\n"
+  example: []
+  syntax:
+    content: public List<string> VisibleChunks { get; }
+    parameters: []
+    return:
+      type: List{System.String}
+    content.vb: Public ReadOnly Property VisibleChunks As List(Of String)
+  overload: BFB.Engine.Entity.SimulationEntity.VisibleChunks*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: BFB.Engine.Entity.SimulationEntity.ChunkVersions
+  commentId: P:BFB.Engine.Entity.SimulationEntity.ChunkVersions
+  id: ChunkVersions
+  parent: BFB.Engine.Entity.SimulationEntity
+  langs:
+  - csharp
+  - vb
+  name: ChunkVersions
+  nameWithType: SimulationEntity.ChunkVersions
+  fullName: BFB.Engine.Entity.SimulationEntity.ChunkVersions
+  type: Property
+  source:
+    remote:
+      path: BFB/BFB.Engine/Entity/SimulationEntity.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: ChunkVersions
+    path: ../BFB/BFB.Engine/Entity/SimulationEntity.cs
+    startLine: 39
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Entity
+  summary: "\nUsed to determine if the chunk needs to be sent to the client\n"
+  example: []
+  syntax:
+    content: public Dictionary<string, int> ChunkVersions { get; }
+    parameters: []
+    return:
+      type: Dictionary{System.String,System.Int32}
+    content.vb: Public ReadOnly Property ChunkVersions As Dictionary(Of String, Integer)
+  overload: BFB.Engine.Entity.SimulationEntity.ChunkVersions*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: BFB.Engine.Entity.SimulationEntity.#ctor(System.String,BFB.Engine.Entity.EntityOptions,BFB.Engine.Entity.ComponentOptions)
+  commentId: M:BFB.Engine.Entity.SimulationEntity.#ctor(System.String,BFB.Engine.Entity.EntityOptions,BFB.Engine.Entity.ComponentOptions)
+  id: '#ctor(System.String,BFB.Engine.Entity.EntityOptions,BFB.Engine.Entity.ComponentOptions)'
+  parent: BFB.Engine.Entity.SimulationEntity
+  langs:
+  - csharp
+  - vb
+  name: SimulationEntity(String, EntityOptions, ComponentOptions)
+  nameWithType: SimulationEntity.SimulationEntity(String, EntityOptions, ComponentOptions)
+  fullName: BFB.Engine.Entity.SimulationEntity.SimulationEntity(System.String, BFB.Engine.Entity.EntityOptions, BFB.Engine.Entity.ComponentOptions)
+  type: Constructor
+  source:
+    remote:
+      path: BFB/BFB.Engine/Entity/SimulationEntity.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: .ctor
+    path: ../BFB/BFB.Engine/Entity/SimulationEntity.cs
+    startLine: 58
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Entity
+  summary: "\nCreates a new entity for the game simulations\n"
+  example: []
+  syntax:
+    content: public SimulationEntity(string entityId, EntityOptions options, ComponentOptions components)
+    parameters:
+    - id: entityId
+      type: System.String
+      description: Unique ID for this entity
+    - id: options
+      type: BFB.Engine.Entity.EntityOptions
+      description: Sets the initial properties of this entity
+    - id: components
+      type: BFB.Engine.Entity.ComponentOptions
+      description: The components this entity contains
+    content.vb: Public Sub New(entityId As String, options As EntityOptions, components As ComponentOptions)
+  overload: BFB.Engine.Entity.SimulationEntity.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.Entity.SimulationEntity.Tick(BFB.Engine.Simulation.Simulation)
+  commentId: M:BFB.Engine.Entity.SimulationEntity.Tick(BFB.Engine.Simulation.Simulation)
+  id: Tick(BFB.Engine.Simulation.Simulation)
+  parent: BFB.Engine.Entity.SimulationEntity
+  langs:
+  - csharp
+  - vb
+  name: Tick(Simulation)
+  nameWithType: SimulationEntity.Tick(Simulation)
+  fullName: BFB.Engine.Entity.SimulationEntity.Tick(BFB.Engine.Simulation.Simulation)
+  type: Method
+  source:
+    remote:
+      path: BFB/BFB.Engine/Entity/SimulationEntity.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: Tick
+    path: ../BFB/BFB.Engine/Entity/SimulationEntity.cs
+    startLine: 77
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Entity
+  summary: "\nUpdates this entity as part of the chunks in the simulation of this entity\n"
+  example: []
+  syntax:
+    content: public void Tick(Simulation simulation)
+    parameters:
+    - id: simulation
+      type: BFB.Engine.Simulation.Simulation
+      description: ''
+    content.vb: Public Sub Tick(simulation As Simulation)
+  overload: BFB.Engine.Entity.SimulationEntity.Tick*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+references:
+- uid: BFB.Engine.Entity
+  commentId: N:BFB.Engine.Entity
+  name: BFB.Engine.Entity
+  nameWithType: BFB.Engine.Entity
+  fullName: BFB.Engine.Entity
+- uid: System.Object
+  commentId: '!:System.Object'
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: BFB.Engine.Entity.Entity
+  commentId: T:BFB.Engine.Entity.Entity
+  parent: BFB.Engine.Entity
+  name: Entity
+  nameWithType: Entity
+  fullName: BFB.Engine.Entity.Entity
+- uid: BFB.Engine.Entity.Entity.EntityId
+  commentId: P:BFB.Engine.Entity.Entity.EntityId
+  parent: BFB.Engine.Entity.Entity
+  name: EntityId
+  nameWithType: Entity.EntityId
+  fullName: BFB.Engine.Entity.Entity.EntityId
+- uid: BFB.Engine.Entity.Entity.AnimatedTextureKey
+  commentId: P:BFB.Engine.Entity.Entity.AnimatedTextureKey
+  parent: BFB.Engine.Entity.Entity
+  name: AnimatedTextureKey
+  nameWithType: Entity.AnimatedTextureKey
+  fullName: BFB.Engine.Entity.Entity.AnimatedTextureKey
+- uid: BFB.Engine.Entity.Entity.AnimationState
+  commentId: P:BFB.Engine.Entity.Entity.AnimationState
+  parent: BFB.Engine.Entity.Entity
+  name: AnimationState
+  nameWithType: Entity.AnimationState
+  fullName: BFB.Engine.Entity.Entity.AnimationState
+- uid: BFB.Engine.Entity.Entity.Position
+  commentId: P:BFB.Engine.Entity.Entity.Position
+  parent: BFB.Engine.Entity.Entity
+  name: Position
+  nameWithType: Entity.Position
+  fullName: BFB.Engine.Entity.Entity.Position
+- uid: BFB.Engine.Entity.Entity.Dimensions
+  commentId: P:BFB.Engine.Entity.Entity.Dimensions
+  parent: BFB.Engine.Entity.Entity
+  name: Dimensions
+  nameWithType: Entity.Dimensions
+  fullName: BFB.Engine.Entity.Entity.Dimensions
+- uid: BFB.Engine.Entity.Entity.Origin
+  commentId: P:BFB.Engine.Entity.Entity.Origin
+  parent: BFB.Engine.Entity.Entity
+  name: Origin
+  nameWithType: Entity.Origin
+  fullName: BFB.Engine.Entity.Entity.Origin
+- uid: BFB.Engine.Entity.Entity.Velocity
+  commentId: P:BFB.Engine.Entity.Entity.Velocity
+  parent: BFB.Engine.Entity.Entity
+  name: Velocity
+  nameWithType: Entity.Velocity
+  fullName: BFB.Engine.Entity.Entity.Velocity
+- uid: BFB.Engine.Entity.Entity.Rotation
+  commentId: P:BFB.Engine.Entity.Entity.Rotation
+  parent: BFB.Engine.Entity.Entity
+  name: Rotation
+  nameWithType: Entity.Rotation
+  fullName: BFB.Engine.Entity.Entity.Rotation
+- uid: BFB.Engine.Entity.Entity.Grounded
+  commentId: P:BFB.Engine.Entity.Entity.Grounded
+  parent: BFB.Engine.Entity.Entity
+  name: Grounded
+  nameWithType: Entity.Grounded
+  fullName: BFB.Engine.Entity.Entity.Grounded
+- uid: BFB.Engine.Entity.Entity.GetState
+  commentId: M:BFB.Engine.Entity.Entity.GetState
+  parent: BFB.Engine.Entity.Entity
+  name: GetState()
+  nameWithType: Entity.GetState()
+  fullName: BFB.Engine.Entity.Entity.GetState()
+  spec.csharp:
+  - uid: BFB.Engine.Entity.Entity.GetState
+    name: GetState
+    nameWithType: Entity.GetState
+    fullName: BFB.Engine.Entity.Entity.GetState
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.Entity.Entity.GetState
+    name: GetState
+    nameWithType: Entity.GetState
+    fullName: BFB.Engine.Entity.Entity.GetState
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.Entity.SimulationEntity.BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{BFB.Engine.Entity.SimulationEntity,{TValue}}},{TValue})
+  commentId: M:BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  parent: BFB.Engine.UI.Components.LambdaExtensions
+  definition: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  name: SetPropertyValue<SimulationEntity, TValue>(Expression<Func<SimulationEntity, TValue>>, TValue)
+  nameWithType: LambdaExtensions.SetPropertyValue<SimulationEntity, TValue>(Expression<Func<SimulationEntity, TValue>>, TValue)
+  fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<BFB.Engine.Entity.SimulationEntity, TValue>(Expression<Func<BFB.Engine.Entity.SimulationEntity, TValue>>, TValue)
+  nameWithType.vb: LambdaExtensions.SetPropertyValue(Of SimulationEntity, TValue)(Expression(Of Func(Of SimulationEntity, TValue)), TValue)
+  fullName.vb: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of BFB.Engine.Entity.SimulationEntity, TValue)(Expression(Of Func(Of BFB.Engine.Entity.SimulationEntity, TValue)), TValue)
+  name.vb: SetPropertyValue(Of SimulationEntity, TValue)(Expression(Of Func(Of SimulationEntity, TValue)), TValue)
+  spec.csharp:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue<SimulationEntity, TValue>
+    nameWithType: LambdaExtensions.SetPropertyValue<SimulationEntity, TValue>
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<BFB.Engine.Entity.SimulationEntity, TValue>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: BFB.Engine.Entity.SimulationEntity
+    name: SimulationEntity
+    nameWithType: SimulationEntity
+    fullName: BFB.Engine.Entity.SimulationEntity
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue(Of SimulationEntity, TValue)
+    nameWithType: LambdaExtensions.SetPropertyValue(Of SimulationEntity, TValue)
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of BFB.Engine.Entity.SimulationEntity, TValue)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: BFB.Engine.Entity.SimulationEntity
+    name: SimulationEntity
+    nameWithType: SimulationEntity
+    fullName: BFB.Engine.Entity.SimulationEntity
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  commentId: M:BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  isExternal: true
+  name: SetPropertyValue<T, TValue>(T, Expression<Func<T, TValue>>, TValue)
+  nameWithType: LambdaExtensions.SetPropertyValue<T, TValue>(T, Expression<Func<T, TValue>>, TValue)
+  fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<T, TValue>(T, Expression<Func<T, TValue>>, TValue)
+  nameWithType.vb: LambdaExtensions.SetPropertyValue(Of T, TValue)(T, Expression(Of Func(Of T, TValue)), TValue)
+  fullName.vb: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of T, TValue)(T, Expression(Of Func(Of T, TValue)), TValue)
+  name.vb: SetPropertyValue(Of T, TValue)(T, Expression(Of Func(Of T, TValue)), TValue)
+  spec.csharp:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue<T, TValue>
+    nameWithType: LambdaExtensions.SetPropertyValue<T, TValue>
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<T, TValue>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue(Of T, TValue)
+    nameWithType: LambdaExtensions.SetPropertyValue(Of T, TValue)
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of T, TValue)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Components.LambdaExtensions
+  commentId: T:BFB.Engine.UI.Components.LambdaExtensions
+  parent: BFB.Engine.UI.Components
+  name: LambdaExtensions
+  nameWithType: LambdaExtensions
+  fullName: BFB.Engine.UI.Components.LambdaExtensions
+- uid: BFB.Engine.UI.Components
+  commentId: N:BFB.Engine.UI.Components
+  name: BFB.Engine.UI.Components
+  nameWithType: BFB.Engine.UI.Components
+  fullName: BFB.Engine.UI.Components
+- uid: BFB.Engine.Entity.SimulationEntity.ChunkKey*
+  commentId: Overload:BFB.Engine.Entity.SimulationEntity.ChunkKey
+  name: ChunkKey
+  nameWithType: SimulationEntity.ChunkKey
+  fullName: BFB.Engine.Entity.SimulationEntity.ChunkKey
+- uid: System.String
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: BFB.Engine.Entity.SimulationEntity.IsPlayer*
+  commentId: Overload:BFB.Engine.Entity.SimulationEntity.IsPlayer
+  name: IsPlayer
+  nameWithType: SimulationEntity.IsPlayer
+  fullName: BFB.Engine.Entity.SimulationEntity.IsPlayer
+- uid: System.Boolean
+  isExternal: true
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: BFB.Engine.Entity.SimulationEntity.DesiredVector*
+  commentId: Overload:BFB.Engine.Entity.SimulationEntity.DesiredVector
+  name: DesiredVector
+  nameWithType: SimulationEntity.DesiredVector
+  fullName: BFB.Engine.Entity.SimulationEntity.DesiredVector
+- uid: BFB.Engine.Math.BfbVector
+  commentId: T:BFB.Engine.Math.BfbVector
+  parent: BFB.Engine.Math
+  name: BfbVector
+  nameWithType: BfbVector
+  fullName: BFB.Engine.Math.BfbVector
+- uid: BFB.Engine.Math
+  commentId: N:BFB.Engine.Math
+  name: BFB.Engine.Math
+  nameWithType: BFB.Engine.Math
+  fullName: BFB.Engine.Math
+- uid: BFB.Engine.Entity.SimulationEntity.VisibleChunks*
+  commentId: Overload:BFB.Engine.Entity.SimulationEntity.VisibleChunks
+  name: VisibleChunks
+  nameWithType: SimulationEntity.VisibleChunks
+  fullName: BFB.Engine.Entity.SimulationEntity.VisibleChunks
+- uid: List{System.String}
+  commentId: '!:List{System.String}'
+  definition: List`1
+  name: List<String>
+  nameWithType: List<String>
+  fullName: List<System.String>
+  nameWithType.vb: List(Of String)
+  fullName.vb: List(Of System.String)
+  name.vb: List(Of String)
+  spec.csharp:
+  - uid: List`1
+    name: List
+    nameWithType: List
+    fullName: List
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: List`1
+    name: List
+    nameWithType: List
+    fullName: List
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: List`1
+  isExternal: true
+  name: List<>
+  nameWithType: List<>
+  fullName: List<>
+  nameWithType.vb: List(Of )
+  fullName.vb: List(Of )
+  name.vb: List(Of )
+  spec.csharp:
+  - uid: List`1
+    name: List
+    nameWithType: List
+    fullName: List
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: List`1
+    name: List
+    nameWithType: List
+    fullName: List
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.Entity.SimulationEntity.ChunkVersions*
+  commentId: Overload:BFB.Engine.Entity.SimulationEntity.ChunkVersions
+  name: ChunkVersions
+  nameWithType: SimulationEntity.ChunkVersions
+  fullName: BFB.Engine.Entity.SimulationEntity.ChunkVersions
+- uid: Dictionary{System.String,System.Int32}
+  commentId: '!:Dictionary{System.String,System.Int32}'
+  definition: Dictionary`2
+  name: Dictionary<String, Int32>
+  nameWithType: Dictionary<String, Int32>
+  fullName: Dictionary<System.String, System.Int32>
+  nameWithType.vb: Dictionary(Of String, Int32)
+  fullName.vb: Dictionary(Of System.String, System.Int32)
+  name.vb: Dictionary(Of String, Int32)
+  spec.csharp:
+  - uid: Dictionary`2
+    name: Dictionary
+    nameWithType: Dictionary
+    fullName: Dictionary
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: Dictionary`2
+    name: Dictionary
+    nameWithType: Dictionary
+    fullName: Dictionary
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Dictionary`2
+  isExternal: true
+  name: Dictionary<, >
+  nameWithType: Dictionary<, >
+  fullName: Dictionary<, >
+  nameWithType.vb: Dictionary(Of , )
+  fullName.vb: Dictionary(Of , )
+  name.vb: Dictionary(Of , )
+  spec.csharp:
+  - uid: Dictionary`2
+    name: Dictionary
+    nameWithType: Dictionary
+    fullName: Dictionary
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: Dictionary`2
+    name: Dictionary
+    nameWithType: Dictionary
+    fullName: Dictionary
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.Entity.SimulationEntity.#ctor*
+  commentId: Overload:BFB.Engine.Entity.SimulationEntity.#ctor
+  name: SimulationEntity
+  nameWithType: SimulationEntity.SimulationEntity
+  fullName: BFB.Engine.Entity.SimulationEntity.SimulationEntity
+- uid: BFB.Engine.Entity.EntityOptions
+  commentId: T:BFB.Engine.Entity.EntityOptions
+  parent: BFB.Engine.Entity
+  name: EntityOptions
+  nameWithType: EntityOptions
+  fullName: BFB.Engine.Entity.EntityOptions
+- uid: BFB.Engine.Entity.ComponentOptions
+  commentId: T:BFB.Engine.Entity.ComponentOptions
+  parent: BFB.Engine.Entity
+  name: ComponentOptions
+  nameWithType: ComponentOptions
+  fullName: BFB.Engine.Entity.ComponentOptions
+- uid: BFB.Engine.Entity.SimulationEntity.Tick*
+  commentId: Overload:BFB.Engine.Entity.SimulationEntity.Tick
+  name: Tick
+  nameWithType: SimulationEntity.Tick
+  fullName: BFB.Engine.Entity.SimulationEntity.Tick
+- uid: BFB.Engine.Simulation.Simulation
+  commentId: T:BFB.Engine.Simulation.Simulation
+  parent: BFB.Engine.Simulation
+  name: Simulation
+  nameWithType: Simulation
+  fullName: BFB.Engine.Simulation.Simulation
+- uid: BFB.Engine.Simulation
+  commentId: N:BFB.Engine.Simulation
+  name: BFB.Engine.Simulation
+  nameWithType: BFB.Engine.Simulation
+  fullName: BFB.Engine.Simulation

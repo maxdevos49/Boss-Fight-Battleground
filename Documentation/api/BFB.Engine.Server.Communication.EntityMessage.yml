@@ -1,0 +1,744 @@
+### YamlMime:ManagedReference
+items:
+- uid: BFB.Engine.Server.Communication.EntityMessage
+  commentId: T:BFB.Engine.Server.Communication.EntityMessage
+  id: EntityMessage
+  parent: BFB.Engine.Server.Communication
+  children:
+  - BFB.Engine.Server.Communication.EntityMessage.AnimationState
+  - BFB.Engine.Server.Communication.EntityMessage.AnimationTextureKey
+  - BFB.Engine.Server.Communication.EntityMessage.Dimensions
+  - BFB.Engine.Server.Communication.EntityMessage.EntityId
+  - BFB.Engine.Server.Communication.EntityMessage.Grounded
+  - BFB.Engine.Server.Communication.EntityMessage.Origin
+  - BFB.Engine.Server.Communication.EntityMessage.Position
+  - BFB.Engine.Server.Communication.EntityMessage.Rotation
+  - BFB.Engine.Server.Communication.EntityMessage.Velocity
+  langs:
+  - csharp
+  - vb
+  name: EntityMessage
+  nameWithType: EntityMessage
+  fullName: BFB.Engine.Server.Communication.EntityMessage
+  type: Class
+  source:
+    remote:
+      path: BFB/BFB.Engine/Server/Communication/EntityMessage.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: EntityMessage
+    path: ../BFB/BFB.Engine/Server/Communication/EntityMessage.cs
+    startLine: 11
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Server.Communication
+  summary: "\nUsed to pass information about the entity to the client\n"
+  example: []
+  syntax:
+    content: 'public class EntityMessage : DataMessage'
+    content.vb: >-
+      Public Class EntityMessage
+
+          Inherits DataMessage
+  inheritance:
+  - System.Object
+  - BFB.Engine.Server.Communication.DataMessage
+  inheritedMembers:
+  - BFB.Engine.Server.Communication.DataMessage.Route
+  - BFB.Engine.Server.Communication.DataMessage.Message
+  - BFB.Engine.Server.Communication.DataMessage.ClientId
+  extensionMethods:
+  - BFB.Engine.Server.Communication.EntityMessage.BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{BFB.Engine.Server.Communication.EntityMessage,{TValue}}},{TValue})
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: BFB.Engine.Server.Communication.EntityMessage.EntityId
+  commentId: P:BFB.Engine.Server.Communication.EntityMessage.EntityId
+  id: EntityId
+  parent: BFB.Engine.Server.Communication.EntityMessage
+  langs:
+  - csharp
+  - vb
+  name: EntityId
+  nameWithType: EntityMessage.EntityId
+  fullName: BFB.Engine.Server.Communication.EntityMessage.EntityId
+  type: Property
+  source:
+    remote:
+      path: BFB/BFB.Engine/Server/Communication/EntityMessage.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: EntityId
+    path: ../BFB/BFB.Engine/Server/Communication/EntityMessage.cs
+    startLine: 17
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Server.Communication
+  summary: "\nThe entities Id\n"
+  example: []
+  syntax:
+    content: public string EntityId { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property EntityId As String
+  overload: BFB.Engine.Server.Communication.EntityMessage.EntityId*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.Server.Communication.EntityMessage.AnimationTextureKey
+  commentId: P:BFB.Engine.Server.Communication.EntityMessage.AnimationTextureKey
+  id: AnimationTextureKey
+  parent: BFB.Engine.Server.Communication.EntityMessage
+  langs:
+  - csharp
+  - vb
+  name: AnimationTextureKey
+  nameWithType: EntityMessage.AnimationTextureKey
+  fullName: BFB.Engine.Server.Communication.EntityMessage.AnimationTextureKey
+  type: Property
+  source:
+    remote:
+      path: BFB/BFB.Engine/Server/Communication/EntityMessage.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: AnimationTextureKey
+    path: ../BFB/BFB.Engine/Server/Communication/EntityMessage.cs
+    startLine: 22
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Server.Communication
+  summary: "\nThe animation key that the entity should use\n"
+  example: []
+  syntax:
+    content: public string AnimationTextureKey { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property AnimationTextureKey As String
+  overload: BFB.Engine.Server.Communication.EntityMessage.AnimationTextureKey*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.Server.Communication.EntityMessage.AnimationState
+  commentId: P:BFB.Engine.Server.Communication.EntityMessage.AnimationState
+  id: AnimationState
+  parent: BFB.Engine.Server.Communication.EntityMessage
+  langs:
+  - csharp
+  - vb
+  name: AnimationState
+  nameWithType: EntityMessage.AnimationState
+  fullName: BFB.Engine.Server.Communication.EntityMessage.AnimationState
+  type: Property
+  source:
+    remote:
+      path: BFB/BFB.Engine/Server/Communication/EntityMessage.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: AnimationState
+    path: ../BFB/BFB.Engine/Server/Communication/EntityMessage.cs
+    startLine: 27
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Server.Communication
+  summary: "\nThe Animation state enum that the entity is currently in\n"
+  example: []
+  syntax:
+    content: public AnimationState AnimationState { get; set; }
+    parameters: []
+    return:
+      type: BFB.Engine.Content.AnimationState
+    content.vb: Public Property AnimationState As AnimationState
+  overload: BFB.Engine.Server.Communication.EntityMessage.AnimationState*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.Server.Communication.EntityMessage.Velocity
+  commentId: P:BFB.Engine.Server.Communication.EntityMessage.Velocity
+  id: Velocity
+  parent: BFB.Engine.Server.Communication.EntityMessage
+  langs:
+  - csharp
+  - vb
+  name: Velocity
+  nameWithType: EntityMessage.Velocity
+  fullName: BFB.Engine.Server.Communication.EntityMessage.Velocity
+  type: Property
+  source:
+    remote:
+      path: BFB/BFB.Engine/Server/Communication/EntityMessage.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: Velocity
+    path: ../BFB/BFB.Engine/Server/Communication/EntityMessage.cs
+    startLine: 32
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Server.Communication
+  summary: "\nThe velocity of the entity at the time of the current update\n"
+  example: []
+  syntax:
+    content: public BfbVector Velocity { get; set; }
+    parameters: []
+    return:
+      type: BFB.Engine.Math.BfbVector
+    content.vb: Public Property Velocity As BfbVector
+  overload: BFB.Engine.Server.Communication.EntityMessage.Velocity*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.Server.Communication.EntityMessage.Position
+  commentId: P:BFB.Engine.Server.Communication.EntityMessage.Position
+  id: Position
+  parent: BFB.Engine.Server.Communication.EntityMessage
+  langs:
+  - csharp
+  - vb
+  name: Position
+  nameWithType: EntityMessage.Position
+  fullName: BFB.Engine.Server.Communication.EntityMessage.Position
+  type: Property
+  source:
+    remote:
+      path: BFB/BFB.Engine/Server/Communication/EntityMessage.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: Position
+    path: ../BFB/BFB.Engine/Server/Communication/EntityMessage.cs
+    startLine: 37
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Server.Communication
+  summary: "\nThe position of the entity at the time of the current update\n"
+  example: []
+  syntax:
+    content: public BfbVector Position { get; set; }
+    parameters: []
+    return:
+      type: BFB.Engine.Math.BfbVector
+    content.vb: Public Property Position As BfbVector
+  overload: BFB.Engine.Server.Communication.EntityMessage.Position*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.Server.Communication.EntityMessage.Dimensions
+  commentId: P:BFB.Engine.Server.Communication.EntityMessage.Dimensions
+  id: Dimensions
+  parent: BFB.Engine.Server.Communication.EntityMessage
+  langs:
+  - csharp
+  - vb
+  name: Dimensions
+  nameWithType: EntityMessage.Dimensions
+  fullName: BFB.Engine.Server.Communication.EntityMessage.Dimensions
+  type: Property
+  source:
+    remote:
+      path: BFB/BFB.Engine/Server/Communication/EntityMessage.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: Dimensions
+    path: ../BFB/BFB.Engine/Server/Communication/EntityMessage.cs
+    startLine: 42
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Server.Communication
+  summary: "\nThe Dimensions of the entity\n"
+  example: []
+  syntax:
+    content: public BfbVector Dimensions { get; set; }
+    parameters: []
+    return:
+      type: BFB.Engine.Math.BfbVector
+    content.vb: Public Property Dimensions As BfbVector
+  overload: BFB.Engine.Server.Communication.EntityMessage.Dimensions*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.Server.Communication.EntityMessage.Origin
+  commentId: P:BFB.Engine.Server.Communication.EntityMessage.Origin
+  id: Origin
+  parent: BFB.Engine.Server.Communication.EntityMessage
+  langs:
+  - csharp
+  - vb
+  name: Origin
+  nameWithType: EntityMessage.Origin
+  fullName: BFB.Engine.Server.Communication.EntityMessage.Origin
+  type: Property
+  source:
+    remote:
+      path: BFB/BFB.Engine/Server/Communication/EntityMessage.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: Origin
+    path: ../BFB/BFB.Engine/Server/Communication/EntityMessage.cs
+    startLine: 47
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Server.Communication
+  summary: "\nThe origin of the entity\n"
+  example: []
+  syntax:
+    content: public BfbVector Origin { get; set; }
+    parameters: []
+    return:
+      type: BFB.Engine.Math.BfbVector
+    content.vb: Public Property Origin As BfbVector
+  overload: BFB.Engine.Server.Communication.EntityMessage.Origin*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.Server.Communication.EntityMessage.Rotation
+  commentId: P:BFB.Engine.Server.Communication.EntityMessage.Rotation
+  id: Rotation
+  parent: BFB.Engine.Server.Communication.EntityMessage
+  langs:
+  - csharp
+  - vb
+  name: Rotation
+  nameWithType: EntityMessage.Rotation
+  fullName: BFB.Engine.Server.Communication.EntityMessage.Rotation
+  type: Property
+  source:
+    remote:
+      path: BFB/BFB.Engine/Server/Communication/EntityMessage.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: Rotation
+    path: ../BFB/BFB.Engine/Server/Communication/EntityMessage.cs
+    startLine: 52
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Server.Communication
+  summary: "\nThe rotation of the entity\n"
+  example: []
+  syntax:
+    content: public float Rotation { get; set; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: Public Property Rotation As Single
+  overload: BFB.Engine.Server.Communication.EntityMessage.Rotation*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.Server.Communication.EntityMessage.Grounded
+  commentId: P:BFB.Engine.Server.Communication.EntityMessage.Grounded
+  id: Grounded
+  parent: BFB.Engine.Server.Communication.EntityMessage
+  langs:
+  - csharp
+  - vb
+  name: Grounded
+  nameWithType: EntityMessage.Grounded
+  fullName: BFB.Engine.Server.Communication.EntityMessage.Grounded
+  type: Property
+  source:
+    remote:
+      path: BFB/BFB.Engine/Server/Communication/EntityMessage.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: Grounded
+    path: ../BFB/BFB.Engine/Server/Communication/EntityMessage.cs
+    startLine: 57
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Server.Communication
+  summary: "\nIndicates if the entity is currently grounded or not\n"
+  example: []
+  syntax:
+    content: public bool Grounded { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property Grounded As Boolean
+  overload: BFB.Engine.Server.Communication.EntityMessage.Grounded*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+references:
+- uid: BFB.Engine.Server.Communication
+  commentId: N:BFB.Engine.Server.Communication
+  name: BFB.Engine.Server.Communication
+  nameWithType: BFB.Engine.Server.Communication
+  fullName: BFB.Engine.Server.Communication
+- uid: System.Object
+  commentId: '!:System.Object'
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: BFB.Engine.Server.Communication.DataMessage
+  commentId: T:BFB.Engine.Server.Communication.DataMessage
+  parent: BFB.Engine.Server.Communication
+  name: DataMessage
+  nameWithType: DataMessage
+  fullName: BFB.Engine.Server.Communication.DataMessage
+- uid: BFB.Engine.Server.Communication.DataMessage.Route
+  commentId: P:BFB.Engine.Server.Communication.DataMessage.Route
+  parent: BFB.Engine.Server.Communication.DataMessage
+  name: Route
+  nameWithType: DataMessage.Route
+  fullName: BFB.Engine.Server.Communication.DataMessage.Route
+- uid: BFB.Engine.Server.Communication.DataMessage.Message
+  commentId: P:BFB.Engine.Server.Communication.DataMessage.Message
+  parent: BFB.Engine.Server.Communication.DataMessage
+  name: Message
+  nameWithType: DataMessage.Message
+  fullName: BFB.Engine.Server.Communication.DataMessage.Message
+- uid: BFB.Engine.Server.Communication.DataMessage.ClientId
+  commentId: P:BFB.Engine.Server.Communication.DataMessage.ClientId
+  parent: BFB.Engine.Server.Communication.DataMessage
+  name: ClientId
+  nameWithType: DataMessage.ClientId
+  fullName: BFB.Engine.Server.Communication.DataMessage.ClientId
+- uid: BFB.Engine.Server.Communication.EntityMessage.BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{BFB.Engine.Server.Communication.EntityMessage,{TValue}}},{TValue})
+  commentId: M:BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  parent: BFB.Engine.UI.Components.LambdaExtensions
+  definition: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  name: SetPropertyValue<EntityMessage, TValue>(Expression<Func<EntityMessage, TValue>>, TValue)
+  nameWithType: LambdaExtensions.SetPropertyValue<EntityMessage, TValue>(Expression<Func<EntityMessage, TValue>>, TValue)
+  fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<BFB.Engine.Server.Communication.EntityMessage, TValue>(Expression<Func<BFB.Engine.Server.Communication.EntityMessage, TValue>>, TValue)
+  nameWithType.vb: LambdaExtensions.SetPropertyValue(Of EntityMessage, TValue)(Expression(Of Func(Of EntityMessage, TValue)), TValue)
+  fullName.vb: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of BFB.Engine.Server.Communication.EntityMessage, TValue)(Expression(Of Func(Of BFB.Engine.Server.Communication.EntityMessage, TValue)), TValue)
+  name.vb: SetPropertyValue(Of EntityMessage, TValue)(Expression(Of Func(Of EntityMessage, TValue)), TValue)
+  spec.csharp:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue<EntityMessage, TValue>
+    nameWithType: LambdaExtensions.SetPropertyValue<EntityMessage, TValue>
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<BFB.Engine.Server.Communication.EntityMessage, TValue>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: BFB.Engine.Server.Communication.EntityMessage
+    name: EntityMessage
+    nameWithType: EntityMessage
+    fullName: BFB.Engine.Server.Communication.EntityMessage
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue(Of EntityMessage, TValue)
+    nameWithType: LambdaExtensions.SetPropertyValue(Of EntityMessage, TValue)
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of BFB.Engine.Server.Communication.EntityMessage, TValue)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: BFB.Engine.Server.Communication.EntityMessage
+    name: EntityMessage
+    nameWithType: EntityMessage
+    fullName: BFB.Engine.Server.Communication.EntityMessage
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  commentId: M:BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  isExternal: true
+  name: SetPropertyValue<T, TValue>(T, Expression<Func<T, TValue>>, TValue)
+  nameWithType: LambdaExtensions.SetPropertyValue<T, TValue>(T, Expression<Func<T, TValue>>, TValue)
+  fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<T, TValue>(T, Expression<Func<T, TValue>>, TValue)
+  nameWithType.vb: LambdaExtensions.SetPropertyValue(Of T, TValue)(T, Expression(Of Func(Of T, TValue)), TValue)
+  fullName.vb: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of T, TValue)(T, Expression(Of Func(Of T, TValue)), TValue)
+  name.vb: SetPropertyValue(Of T, TValue)(T, Expression(Of Func(Of T, TValue)), TValue)
+  spec.csharp:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue<T, TValue>
+    nameWithType: LambdaExtensions.SetPropertyValue<T, TValue>
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<T, TValue>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue(Of T, TValue)
+    nameWithType: LambdaExtensions.SetPropertyValue(Of T, TValue)
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of T, TValue)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Components.LambdaExtensions
+  commentId: T:BFB.Engine.UI.Components.LambdaExtensions
+  parent: BFB.Engine.UI.Components
+  name: LambdaExtensions
+  nameWithType: LambdaExtensions
+  fullName: BFB.Engine.UI.Components.LambdaExtensions
+- uid: BFB.Engine.UI.Components
+  commentId: N:BFB.Engine.UI.Components
+  name: BFB.Engine.UI.Components
+  nameWithType: BFB.Engine.UI.Components
+  fullName: BFB.Engine.UI.Components
+- uid: BFB.Engine.Server.Communication.EntityMessage.EntityId*
+  commentId: Overload:BFB.Engine.Server.Communication.EntityMessage.EntityId
+  name: EntityId
+  nameWithType: EntityMessage.EntityId
+  fullName: BFB.Engine.Server.Communication.EntityMessage.EntityId
+- uid: System.String
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: BFB.Engine.Server.Communication.EntityMessage.AnimationTextureKey*
+  commentId: Overload:BFB.Engine.Server.Communication.EntityMessage.AnimationTextureKey
+  name: AnimationTextureKey
+  nameWithType: EntityMessage.AnimationTextureKey
+  fullName: BFB.Engine.Server.Communication.EntityMessage.AnimationTextureKey
+- uid: BFB.Engine.Server.Communication.EntityMessage.AnimationState*
+  commentId: Overload:BFB.Engine.Server.Communication.EntityMessage.AnimationState
+  name: AnimationState
+  nameWithType: EntityMessage.AnimationState
+  fullName: BFB.Engine.Server.Communication.EntityMessage.AnimationState
+- uid: BFB.Engine.Content.AnimationState
+  commentId: T:BFB.Engine.Content.AnimationState
+  parent: BFB.Engine.Content
+  name: AnimationState
+  nameWithType: AnimationState
+  fullName: BFB.Engine.Content.AnimationState
+- uid: BFB.Engine.Content
+  commentId: N:BFB.Engine.Content
+  name: BFB.Engine.Content
+  nameWithType: BFB.Engine.Content
+  fullName: BFB.Engine.Content
+- uid: BFB.Engine.Server.Communication.EntityMessage.Velocity*
+  commentId: Overload:BFB.Engine.Server.Communication.EntityMessage.Velocity
+  name: Velocity
+  nameWithType: EntityMessage.Velocity
+  fullName: BFB.Engine.Server.Communication.EntityMessage.Velocity
+- uid: BFB.Engine.Math.BfbVector
+  commentId: T:BFB.Engine.Math.BfbVector
+  parent: BFB.Engine.Math
+  name: BfbVector
+  nameWithType: BfbVector
+  fullName: BFB.Engine.Math.BfbVector
+- uid: BFB.Engine.Math
+  commentId: N:BFB.Engine.Math
+  name: BFB.Engine.Math
+  nameWithType: BFB.Engine.Math
+  fullName: BFB.Engine.Math
+- uid: BFB.Engine.Server.Communication.EntityMessage.Position*
+  commentId: Overload:BFB.Engine.Server.Communication.EntityMessage.Position
+  name: Position
+  nameWithType: EntityMessage.Position
+  fullName: BFB.Engine.Server.Communication.EntityMessage.Position
+- uid: BFB.Engine.Server.Communication.EntityMessage.Dimensions*
+  commentId: Overload:BFB.Engine.Server.Communication.EntityMessage.Dimensions
+  name: Dimensions
+  nameWithType: EntityMessage.Dimensions
+  fullName: BFB.Engine.Server.Communication.EntityMessage.Dimensions
+- uid: BFB.Engine.Server.Communication.EntityMessage.Origin*
+  commentId: Overload:BFB.Engine.Server.Communication.EntityMessage.Origin
+  name: Origin
+  nameWithType: EntityMessage.Origin
+  fullName: BFB.Engine.Server.Communication.EntityMessage.Origin
+- uid: BFB.Engine.Server.Communication.EntityMessage.Rotation*
+  commentId: Overload:BFB.Engine.Server.Communication.EntityMessage.Rotation
+  name: Rotation
+  nameWithType: EntityMessage.Rotation
+  fullName: BFB.Engine.Server.Communication.EntityMessage.Rotation
+- uid: System.Single
+  isExternal: true
+  name: Single
+  nameWithType: Single
+  fullName: System.Single
+- uid: BFB.Engine.Server.Communication.EntityMessage.Grounded*
+  commentId: Overload:BFB.Engine.Server.Communication.EntityMessage.Grounded
+  name: Grounded
+  nameWithType: EntityMessage.Grounded
+  fullName: BFB.Engine.Server.Communication.EntityMessage.Grounded
+- uid: System.Boolean
+  isExternal: true
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean

@@ -1,0 +1,85 @@
+{
+    "EntityComponents": {
+        "HumanPhysics": {
+            "FullyQualifiedName": "BFB.Engine.Simulation.EntityComponents.PhysicsWalking",
+            "Args": [
+                20
+            ]
+        },
+        "ZombiePhysics": {
+            "FullyQualifiedName": "BFB.Engine.Simulation.EntityComponents.PhysicsWalking",
+            "Args": [
+                14
+            ]
+        },
+        "SkeletonPhysics": {
+            "FullyQualifiedName": "BFB.Engine.Simulation.EntityComponents.PhysicsWalking",
+            "Args": [
+                21
+            ]
+        },
+        "SpiderPhysics": {
+            "FullyQualifiedName": "BFB.Engine.Simulation.EntityComponents.PhysicsWalking",
+            "Args": [
+                24
+            ]
+        },
+        "FloatPhysics": {
+            "FullyQualifiedName": "BFB.Engine.Simulation.EntityComponents.PhysicsFloat"
+        },
+        "BombPhysics": {
+            "FullyQualifiedName": "BFB.Engine.Simulation.EntityComponents.PhysicsProjectile",
+            "Args": [30, true]
+        },
+        "FireballPhysics": {
+            "FullyQualifiedName": "BFB.Engine.Simulation.EntityComponents.PhysicsProjectile",
+            "Args": [30, false]
+        },
+        "MagicMissilePhysics": {
+            "FullyQualifiedName": "BFB.Engine.Simulation.EntityComponents.PhysicsProjectile",
+            "Args": [40, false]
+        },
+        "ItemPhysics": {
+            "FullyQualifiedName": "BFB.Engine.Simulation.EntityComponents.PhysicsItem"
+        },
+        
+        "WalkingAnimation": {
+            "FullyQualifiedName": "BFB.Engine.Simulation.EntityComponents.AnimatedWalking"
+        },
+        "HoldingAnimation": {
+            "FullyQualifiedName": "BFB.Engine.Simulation.EntityComponents.AnimatedHolding"
+        },
+        
+        "AutoJump": {
+            "FullyQualifiedName": "BFB.Engine.Simulation.EntityComponents.PhysicsAutoJump"
+        },
+        "Inventory": {
+            "FullyQualifiedName": "BFB.Engine.Simulation.EntityComponents.InventoryComponent"
+        },
+        "Health": {
+            "FullyQualifiedName": "BFB.Engine.Simulation.EntityComponents.HealthComponent"
+        },
+        "VoidDeath": {
+            "FullyQualifiedName": "BFB.Engine.Simulation.EntityComponents.VoidDeathComponent"
+        },
+
+        "FireballParticleEffect": {
+            "FullyQualifiedName": "BFB.Engine.Simulation.EntityComponents.ParticleFireballEffect"
+        },
+        "ParticleExplosionEffect": {
+            "FullyQualifiedName": "BFB.Engine.Simulation.EntityComponents.ParticleExplosionEffect"
+        },
+        "ParticleTrailEffect": {
+            "FullyQualifiedName": "BFB.Engine.Simulation.EntityComponents.ParticleTrailEffect"
+        },
+        "ParticleEffect1": {
+            "FullyQualifiedName": "BFB.Engine.Simulation.EntityComponents.ParticleEffect1"
+        },
+        "ParticleEffect2": {
+            "FullyQualifiedName": "BFB.Engine.Simulation.EntityComponents.ParticleEffect2"
+        },
+        "ParticleEffect3": {
+            "FullyQualifiedName": "BFB.Engine.Simulation.EntityComponents.ParticleEffect3"
+        }
+    }
+}

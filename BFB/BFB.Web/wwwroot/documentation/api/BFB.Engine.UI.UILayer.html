@@ -1,0 +1,455 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class UILayer
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class UILayer
+   ">
+    <meta name="generator" content="docfx 2.47.0.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="BFB.Engine.UI.UILayer">
+  
+  
+  <h1 id="BFB_Engine_UI_UILayer" data-uid="BFB.Engine.UI.UILayer" class="text-break">Class UILayer
+  </h1>
+  <div class="markdown level0 summary"><p>Used to create a layer for ui elements</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">UILayer</span></div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="BFB.Engine.UI.html">BFB.Engine.UI</a></h6>
+  <h6><strong>Assembly</strong>: BFB.Engine.dll</h6>
+  <h5 id="BFB_Engine_UI_UILayer_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract class UILayer : object</code></pre>
+  </div>
+  <h3 id="constructors">Constructors
+  </h3>
+  
+  
+  <a id="BFB_Engine_UI_UILayer__ctor_" data-uid="BFB.Engine.UI.UILayer.#ctor*"></a>
+  <h4 id="BFB_Engine_UI_UILayer__ctor_System_String_" data-uid="BFB.Engine.UI.UILayer.#ctor(System.String)">UILayer(String)</h4>
+  <div class="markdown level1 summary"><p>Constructs a UILayer for displaying UIElements</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected UILayer(string key)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">key</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+  </h3>
+  
+  
+  <a id="BFB_Engine_UI_UILayer_Debug_" data-uid="BFB.Engine.UI.UILayer.Debug*"></a>
+  <h4 id="BFB_Engine_UI_UILayer_Debug" data-uid="BFB.Engine.UI.UILayer.Debug">Debug</h4>
+  <div class="markdown level1 summary"><p>Used to inidicate if the scene should be drawn in debug mode</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Debug { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="BFB_Engine_UI_UILayer_Key_" data-uid="BFB.Engine.UI.UILayer.Key*"></a>
+  <h4 id="BFB_Engine_UI_UILayer_Key" data-uid="BFB.Engine.UI.UILayer.Key">Key</h4>
+  <div class="markdown level1 summary"><p>The identification key for the uilayer</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string Key { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="BFB_Engine_UI_UILayer_RootUI_" data-uid="BFB.Engine.UI.UILayer.RootUI*"></a>
+  <h4 id="BFB_Engine_UI_UILayer_RootUI" data-uid="BFB.Engine.UI.UILayer.RootUI">RootUI</h4>
+  <div class="markdown level1 summary"><p>Represents the foundation of the UI</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public UIRootComponent RootUI { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="BFB.Engine.UI.Components.UIRootComponent.html">UIRootComponent</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="BFB_Engine_UI_UILayer_SceneManager_" data-uid="BFB.Engine.UI.UILayer.SceneManager*"></a>
+  <h4 id="BFB_Engine_UI_UILayer_SceneManager" data-uid="BFB.Engine.UI.UILayer.SceneManager">SceneManager</h4>
+  <div class="markdown level1 summary"><p>The SceneManager class</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static SceneManager SceneManager { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="BFB.Engine.Scene.SceneManager.html">SceneManager</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="BFB_Engine_UI_UILayer_UIManager_" data-uid="BFB.Engine.UI.UILayer.UIManager*"></a>
+  <h4 id="BFB_Engine_UI_UILayer_UIManager" data-uid="BFB.Engine.UI.UILayer.UIManager">UIManager</h4>
+  <div class="markdown level1 summary"><p>The UIManager for the UILayer</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UIManager UIManager { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="BFB.Engine.UI.UIManager.html">UIManager</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  
+  
+  <a id="BFB_Engine_UI_UILayer_AddEventComponent_" data-uid="BFB.Engine.UI.UILayer.AddEventComponent*"></a>
+  <h4 id="BFB_Engine_UI_UILayer_AddEventComponent_BFB_Engine_UI_Components_UIComponent_" data-uid="BFB.Engine.UI.UILayer.AddEventComponent(BFB.Engine.UI.Components.UIComponent)">AddEventComponent(UIComponent)</h4>
+  <div class="markdown level1 summary"><p>Adds a UIComponents that uses events into the Event Index</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void AddEventComponent(UIComponent component)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="BFB.Engine.UI.Components.UIComponent.html">UIComponent</a></td>
+        <td><span class="parametername">component</span></td>
+        <td><p>The UIComponent that will emit events</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="BFB_Engine_UI_UILayer_AddTabIndexComponent_" data-uid="BFB.Engine.UI.UILayer.AddTabIndexComponent*"></a>
+  <h4 id="BFB_Engine_UI_UILayer_AddTabIndexComponent_BFB_Engine_UI_Components_UIComponent_" data-uid="BFB.Engine.UI.UILayer.AddTabIndexComponent(BFB.Engine.UI.Components.UIComponent)">AddTabIndexComponent(UIComponent)</h4>
+  <div class="markdown level1 summary"><p>Adds a UIComponent to the tabindex if it can be tabbed</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void AddTabIndexComponent(UIComponent component)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="BFB.Engine.UI.Components.UIComponent.html">UIComponent</a></td>
+        <td><span class="parametername">component</span></td>
+        <td><p>The UIComponent that can be tabbed</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="BFB_Engine_UI_UILayer_Body_" data-uid="BFB.Engine.UI.UILayer.Body*"></a>
+  <h4 id="BFB_Engine_UI_UILayer_Body" data-uid="BFB.Engine.UI.UILayer.Body">Body()</h4>
+  <div class="markdown level1 summary"><p>The area to define the UIComponent element layouts</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract void Body()</code></pre>
+  </div>
+  
+  
+  <a id="BFB_Engine_UI_UILayer_Init_" data-uid="BFB.Engine.UI.UILayer.Init*"></a>
+  <h4 id="BFB_Engine_UI_UILayer_Init" data-uid="BFB.Engine.UI.UILayer.Init">Init()</h4>
+  <div class="markdown level1 summary"><p>An optional init method for a UILayer to use for setup. Called every time a UILayer is started</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void Init()</code></pre>
+  </div>
+  
+  
+  <a id="BFB_Engine_UI_UILayer_InitializeRoot_" data-uid="BFB.Engine.UI.UILayer.InitializeRoot*"></a>
+  <h4 id="BFB_Engine_UI_UILayer_InitializeRoot_BFB_Engine_UI_Components_UIRootComponent_" data-uid="BFB.Engine.UI.UILayer.InitializeRoot(BFB.Engine.UI.Components.UIRootComponent)">InitializeRoot(UIRootComponent)</h4>
+  <div class="markdown level1 summary"><p>Initializes the layer for drawing</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void InitializeRoot(UIRootComponent rootNode)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="BFB.Engine.UI.Components.UIRootComponent.html">UIRootComponent</a></td>
+        <td><span class="parametername">rootNode</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="BFB_Engine_UI_UILayer_ProcessEvents_" data-uid="BFB.Engine.UI.UILayer.ProcessEvents*"></a>
+  <h4 id="BFB_Engine_UI_UILayer_ProcessEvents_IEnumerable_BFB_Engine_Event_UIEvent__" data-uid="BFB.Engine.UI.UILayer.ProcessEvents(IEnumerable{BFB.Engine.Event.UIEvent})">ProcessEvents(IEnumerable&lt;UIEvent&gt;)</h4>
+  <div class="markdown level1 summary"><p>Processes Input Events into UIEvents</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool ProcessEvents(IEnumerable&lt;UIEvent&gt; events)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IEnumerable</span>&lt;<a class="xref" href="BFB.Engine.Event.UIEvent.html">UIEvent</a>&gt;</td>
+        <td><span class="parametername">events</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="BFB_Engine_UI_UILayer_Stop_" data-uid="BFB.Engine.UI.UILayer.Stop*"></a>
+  <h4 id="BFB_Engine_UI_UILayer_Stop" data-uid="BFB.Engine.UI.UILayer.Stop">Stop()</h4>
+  <div class="markdown level1 summary"><p>Called when a UILayer needs to be stopped</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Stop()</code></pre>
+  </div>
+  <h3 id="extensionmethods">Extension Methods</h3>
+  <div>
+      <a class="xref" href="BFB.Engine.UI.Components.LambdaExtensions.html#BFB_Engine_UI_Components_LambdaExtensions_SetPropertyValue__2___0_Expression_Func___0___1_____1_">LambdaExtensions.SetPropertyValue&lt;T, TValue&gt;(T, Expression&lt;Func&lt;T, TValue&gt;&gt;, TValue)</a>
+  </div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

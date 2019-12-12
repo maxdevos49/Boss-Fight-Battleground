@@ -1,6 +1,5 @@
 using System;
 using BFB.Engine.Event;
-using BFB.Engine.UI.Constraints;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 
@@ -11,28 +10,31 @@ namespace BFB.Engine.UI.Components
 
         #region Properties
         
-        private Action<UIEvent,UIComponentAttributes> _actionClick;
+        private readonly Action<UIEvent,UIAttributes> _actionClick;
         
-        private Action<UIEvent,UIComponentAttributes> _actionHover;
+        private readonly Action<UIEvent,UIAttributes> _actionHover;
         
         #endregion
         
         #region Constructor
         
-        public UIButtonComponent(string text, Action<UIEvent,UIComponentAttributes> actionClick = null, Action<UIEvent,UIComponentAttributes> actionHover = null) : base(nameof(UIButtonComponent))
+        public UIButtonComponent(string text, Action<UIEvent,UIAttributes> actionClick = null, Action<UIEvent,UIAttributes> actionHover = null) : base(nameof(UIButtonComponent))
         {
             
             //Inner text component
             this.Text(text)
-                .Color(DefaultAttributes.Color)
-                .Background(DefaultAttributes.Background);
+                .Color(Color.Black);
+            
+            this.Background(new Color(169,170,168))
+                .Border(3, new Color(211,212,210));
             
             Focusable = true;
             
             _actionClick = actionClick;
             _actionHover = actionHover ?? ((e,a) =>
             {
-                a.Background = Color.Red;
+                a.Background = new Color(125,125,125);
+                a.Color = Color.White;
             });
             
             AddEvent("click", ClickEventHandler);
@@ -57,7 +59,7 @@ namespace BFB.Engine.UI.Components
         
         private void ClickEventHandler(UIEvent e)
         {
-            UIComponentAttributes attr = new UIComponentAttributes();
+            UIAttributes attr = new UIAttributes();
             _actionClick?.Invoke(e,attr);
             RenderAttributes = DefaultAttributes.CascadeAttributes(attr);
         }
@@ -68,7 +70,7 @@ namespace BFB.Engine.UI.Components
         
         private void HoverEventHandler(UIEvent e)
         {
-            UIComponentAttributes attr = new UIComponentAttributes();
+            UIAttributes attr = new UIAttributes();
             _actionHover?.Invoke(e,attr);
             RenderAttributes = DefaultAttributes.CascadeAttributes(attr);
         }

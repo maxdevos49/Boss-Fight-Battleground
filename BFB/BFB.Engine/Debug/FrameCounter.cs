@@ -6,6 +6,9 @@ using System.Linq;
 
 namespace BFB.Engine.Debug
 {
+    /// <summary>
+    /// FrameCounter has the ability to count the frames the BFB.Client is running at
+    /// </summary>
     public class FrameCounter
     {
         private long TotalFrames { get; set; }
@@ -17,6 +20,11 @@ namespace BFB.Engine.Debug
 
         private readonly Queue<float> _sampleBuffer = new Queue<float>();
 
+        /// <summary>
+        /// Updates the framerate everyt
+        /// </summary>
+        /// <param name="deltaTime">The change of time used to calculate FPS</param>
+        /// <returns></returns>
         public bool Update(float deltaTime)
         {
             CurrentFramesPerSecond = 1.0f / deltaTime;

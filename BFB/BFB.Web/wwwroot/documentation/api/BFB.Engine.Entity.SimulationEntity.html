@@ -1,0 +1,368 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class SimulationEntity
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class SimulationEntity
+   ">
+    <meta name="generator" content="docfx 2.47.0.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="BFB.Engine.Entity.SimulationEntity">
+  
+  
+  <h1 id="BFB_Engine_Entity_SimulationEntity" data-uid="BFB.Engine.Entity.SimulationEntity" class="text-break">Class SimulationEntity
+  </h1>
+  <div class="markdown level0 summary"><p>An entity stored in the game server's simulation</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><a class="xref" href="BFB.Engine.Entity.Entity.html">Entity</a></div>
+    <div class="level2"><span class="xref">SimulationEntity</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="BFB.Engine.Entity.Entity.html#BFB_Engine_Entity_Entity_EntityId">Entity.EntityId</a>
+    </div>
+    <div>
+      <a class="xref" href="BFB.Engine.Entity.Entity.html#BFB_Engine_Entity_Entity_AnimatedTextureKey">Entity.AnimatedTextureKey</a>
+    </div>
+    <div>
+      <a class="xref" href="BFB.Engine.Entity.Entity.html#BFB_Engine_Entity_Entity_AnimationState">Entity.AnimationState</a>
+    </div>
+    <div>
+      <a class="xref" href="BFB.Engine.Entity.Entity.html#BFB_Engine_Entity_Entity_Position">Entity.Position</a>
+    </div>
+    <div>
+      <a class="xref" href="BFB.Engine.Entity.Entity.html#BFB_Engine_Entity_Entity_Dimensions">Entity.Dimensions</a>
+    </div>
+    <div>
+      <a class="xref" href="BFB.Engine.Entity.Entity.html#BFB_Engine_Entity_Entity_Origin">Entity.Origin</a>
+    </div>
+    <div>
+      <a class="xref" href="BFB.Engine.Entity.Entity.html#BFB_Engine_Entity_Entity_Velocity">Entity.Velocity</a>
+    </div>
+    <div>
+      <a class="xref" href="BFB.Engine.Entity.Entity.html#BFB_Engine_Entity_Entity_Rotation">Entity.Rotation</a>
+    </div>
+    <div>
+      <a class="xref" href="BFB.Engine.Entity.Entity.html#BFB_Engine_Entity_Entity_Grounded">Entity.Grounded</a>
+    </div>
+    <div>
+      <a class="xref" href="BFB.Engine.Entity.Entity.html#BFB_Engine_Entity_Entity_GetState">Entity.GetState()</a>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="BFB.Engine.Entity.html">BFB.Engine.Entity</a></h6>
+  <h6><strong>Assembly</strong>: BFB.Engine.dll</h6>
+  <h5 id="BFB_Engine_Entity_SimulationEntity_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class SimulationEntity : Entity</code></pre>
+  </div>
+  <h3 id="constructors">Constructors
+  </h3>
+  
+  
+  <a id="BFB_Engine_Entity_SimulationEntity__ctor_" data-uid="BFB.Engine.Entity.SimulationEntity.#ctor*"></a>
+  <h4 id="BFB_Engine_Entity_SimulationEntity__ctor_System_String_BFB_Engine_Entity_EntityOptions_BFB_Engine_Entity_ComponentOptions_" data-uid="BFB.Engine.Entity.SimulationEntity.#ctor(System.String,BFB.Engine.Entity.EntityOptions,BFB.Engine.Entity.ComponentOptions)">SimulationEntity(String, EntityOptions, ComponentOptions)</h4>
+  <div class="markdown level1 summary"><p>Creates a new entity for the game simulations</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public SimulationEntity(string entityId, EntityOptions options, ComponentOptions components)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">entityId</span></td>
+        <td><p>Unique ID for this entity</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="BFB.Engine.Entity.EntityOptions.html">EntityOptions</a></td>
+        <td><span class="parametername">options</span></td>
+        <td><p>Sets the initial properties of this entity</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="BFB.Engine.Entity.ComponentOptions.html">ComponentOptions</a></td>
+        <td><span class="parametername">components</span></td>
+        <td><p>The components this entity contains</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+  </h3>
+  
+  
+  <a id="BFB_Engine_Entity_SimulationEntity_ChunkKey_" data-uid="BFB.Engine.Entity.SimulationEntity.ChunkKey*"></a>
+  <h4 id="BFB_Engine_Entity_SimulationEntity_ChunkKey" data-uid="BFB.Engine.Entity.SimulationEntity.ChunkKey">ChunkKey</h4>
+  <div class="markdown level1 summary"><p>Indicates the chunk that the entity is currently in</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string ChunkKey { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="BFB_Engine_Entity_SimulationEntity_ChunkVersions_" data-uid="BFB.Engine.Entity.SimulationEntity.ChunkVersions*"></a>
+  <h4 id="BFB_Engine_Entity_SimulationEntity_ChunkVersions" data-uid="BFB.Engine.Entity.SimulationEntity.ChunkVersions">ChunkVersions</h4>
+  <div class="markdown level1 summary"><p>Used to determine if the chunk needs to be sent to the client</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Dictionary&lt;string, int&gt; ChunkVersions { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Dictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.Int32</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="BFB_Engine_Entity_SimulationEntity_DesiredVector_" data-uid="BFB.Engine.Entity.SimulationEntity.DesiredVector*"></a>
+  <h4 id="BFB_Engine_Entity_SimulationEntity_DesiredVector" data-uid="BFB.Engine.Entity.SimulationEntity.DesiredVector">DesiredVector</h4>
+  <div class="markdown level1 summary"><p>Vector describing a position an entity is attempting to move to</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public BfbVector DesiredVector { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="BFB.Engine.Math.BfbVector.html">BfbVector</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="BFB_Engine_Entity_SimulationEntity_IsPlayer_" data-uid="BFB.Engine.Entity.SimulationEntity.IsPlayer*"></a>
+  <h4 id="BFB_Engine_Entity_SimulationEntity_IsPlayer" data-uid="BFB.Engine.Entity.SimulationEntity.IsPlayer">IsPlayer</h4>
+  <div class="markdown level1 summary"><p>Whether this is a player entity or not</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsPlayer { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="BFB_Engine_Entity_SimulationEntity_VisibleChunks_" data-uid="BFB.Engine.Entity.SimulationEntity.VisibleChunks*"></a>
+  <h4 id="BFB_Engine_Entity_SimulationEntity_VisibleChunks" data-uid="BFB.Engine.Entity.SimulationEntity.VisibleChunks">VisibleChunks</h4>
+  <div class="markdown level1 summary"><p>Indicates the chunks that the client can see. Only used if IsPlayer equals true</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;string&gt; VisibleChunks { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">List</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  
+  
+  <a id="BFB_Engine_Entity_SimulationEntity_Tick_" data-uid="BFB.Engine.Entity.SimulationEntity.Tick*"></a>
+  <h4 id="BFB_Engine_Entity_SimulationEntity_Tick_BFB_Engine_Simulation_Simulation_" data-uid="BFB.Engine.Entity.SimulationEntity.Tick(BFB.Engine.Simulation.Simulation)">Tick(Simulation)</h4>
+  <div class="markdown level1 summary"><p>Updates this entity as part of the chunks in the simulation of this entity</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Tick(Simulation simulation)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="BFB.Engine.Simulation.Simulation.html">Simulation</a></td>
+        <td><span class="parametername">simulation</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="extensionmethods">Extension Methods</h3>
+  <div>
+      <a class="xref" href="BFB.Engine.UI.Components.LambdaExtensions.html#BFB_Engine_UI_Components_LambdaExtensions_SetPropertyValue__2___0_Expression_Func___0___1_____1_">LambdaExtensions.SetPropertyValue&lt;T, TValue&gt;(T, Expression&lt;Func&lt;T, TValue&gt;&gt;, TValue)</a>
+  </div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

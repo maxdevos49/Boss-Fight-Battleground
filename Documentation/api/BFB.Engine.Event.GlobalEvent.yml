@@ -1,0 +1,466 @@
+### YamlMime:ManagedReference
+items:
+- uid: BFB.Engine.Event.GlobalEvent
+  commentId: T:BFB.Engine.Event.GlobalEvent
+  id: GlobalEvent
+  parent: BFB.Engine.Event
+  children:
+  - BFB.Engine.Event.GlobalEvent.Data
+  - BFB.Engine.Event.GlobalEvent.Message
+  langs:
+  - csharp
+  - vb
+  name: GlobalEvent
+  nameWithType: GlobalEvent
+  fullName: BFB.Engine.Event.GlobalEvent
+  type: Class
+  source:
+    remote:
+      path: BFB/BFB.Engine/Event/GlobalEvent.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: GlobalEvent
+    path: ../BFB/BFB.Engine/Event/GlobalEvent.cs
+    startLine: 5
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Event
+  summary: "\nAn event to be send globally\n"
+  example: []
+  syntax:
+    content: 'public class GlobalEvent : Event'
+    content.vb: >-
+      Public Class GlobalEvent
+
+          Inherits
+
+
+
+           Event
+  inheritance:
+  - System.Object
+  - BFB.Engine.Event.Event
+  inheritedMembers:
+  - BFB.Engine.Event.Event.EventId
+  - BFB.Engine.Event.Event.EventKey
+  - BFB.Engine.Event.Event.Propagate
+  - BFB.Engine.Event.Event.StopPropagation
+  extensionMethods:
+  - BFB.Engine.Event.GlobalEvent.BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{BFB.Engine.Event.GlobalEvent,{TValue}}},{TValue})
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: BFB.Engine.Event.GlobalEvent.Message
+  commentId: P:BFB.Engine.Event.GlobalEvent.Message
+  id: Message
+  parent: BFB.Engine.Event.GlobalEvent
+  langs:
+  - csharp
+  - vb
+  name: Message
+  nameWithType: GlobalEvent.Message
+  fullName: BFB.Engine.Event.GlobalEvent.Message
+  type: Property
+  source:
+    remote:
+      path: BFB/BFB.Engine/Event/GlobalEvent.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: Message
+    path: ../BFB/BFB.Engine/Event/GlobalEvent.cs
+    startLine: 10
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Event
+  summary: "\nMessage to be sent\n"
+  example: []
+  syntax:
+    content: public string Message { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Message As String
+  overload: BFB.Engine.Event.GlobalEvent.Message*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: BFB.Engine.Event.GlobalEvent.Data
+  commentId: P:BFB.Engine.Event.GlobalEvent.Data
+  id: Data
+  parent: BFB.Engine.Event.GlobalEvent
+  langs:
+  - csharp
+  - vb
+  name: Data
+  nameWithType: GlobalEvent.Data
+  fullName: BFB.Engine.Event.GlobalEvent.Data
+  type: Property
+  source:
+    remote:
+      path: BFB/BFB.Engine/Event/GlobalEvent.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: Data
+    path: ../BFB/BFB.Engine/Event/GlobalEvent.cs
+    startLine: 18
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.Event
+  summary: "\nOnly use if absolutely necessary. If it sees fit add a strongly typed property instead\nof this. object encourages messy programming problems and is lacking of type safety due\nto need of cast to use the useful stuff inside of it\n"
+  example: []
+  syntax:
+    content: public object Data { get; set; }
+    parameters: []
+    return:
+      type: System.Object
+    content.vb: Public Property Data As Object
+  overload: BFB.Engine.Event.GlobalEvent.Data*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+references:
+- uid: BFB.Engine.Event
+  commentId: N:BFB.Engine.Event
+  name: BFB.Engine.Event
+  nameWithType: BFB.Engine.Event
+  fullName: BFB.Engine.Event
+- uid: System.Object
+  commentId: '!:System.Object'
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: BFB.Engine.Event.Event
+  commentId: T:BFB.Engine.Event.Event
+  parent: BFB.Engine.Event
+  name: Event
+  nameWithType: Event
+  fullName: BFB.Engine.Event.Event
+- uid: BFB.Engine.Event.Event.EventId
+  commentId: P:BFB.Engine.Event.Event.EventId
+  parent: BFB.Engine.Event.Event
+  name: EventId
+  nameWithType: Event.EventId
+  fullName: BFB.Engine.Event.Event.EventId
+- uid: BFB.Engine.Event.Event.EventKey
+  commentId: P:BFB.Engine.Event.Event.EventKey
+  parent: BFB.Engine.Event.Event
+  name: EventKey
+  nameWithType: Event.EventKey
+  fullName: BFB.Engine.Event.Event.EventKey
+- uid: BFB.Engine.Event.Event.Propagate
+  commentId: M:BFB.Engine.Event.Event.Propagate
+  parent: BFB.Engine.Event.Event
+  name: Propagate()
+  nameWithType: Event.Propagate()
+  fullName: BFB.Engine.Event.Event.Propagate()
+  spec.csharp:
+  - uid: BFB.Engine.Event.Event.Propagate
+    name: Propagate
+    nameWithType: Event.Propagate
+    fullName: BFB.Engine.Event.Event.Propagate
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.Event.Event.Propagate
+    name: Propagate
+    nameWithType: Event.Propagate
+    fullName: BFB.Engine.Event.Event.Propagate
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.Event.Event.StopPropagation
+  commentId: M:BFB.Engine.Event.Event.StopPropagation
+  parent: BFB.Engine.Event.Event
+  name: StopPropagation()
+  nameWithType: Event.StopPropagation()
+  fullName: BFB.Engine.Event.Event.StopPropagation()
+  spec.csharp:
+  - uid: BFB.Engine.Event.Event.StopPropagation
+    name: StopPropagation
+    nameWithType: Event.StopPropagation
+    fullName: BFB.Engine.Event.Event.StopPropagation
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.Event.Event.StopPropagation
+    name: StopPropagation
+    nameWithType: Event.StopPropagation
+    fullName: BFB.Engine.Event.Event.StopPropagation
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.Event.GlobalEvent.BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{BFB.Engine.Event.GlobalEvent,{TValue}}},{TValue})
+  commentId: M:BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  parent: BFB.Engine.UI.Components.LambdaExtensions
+  definition: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  name: SetPropertyValue<GlobalEvent, TValue>(Expression<Func<GlobalEvent, TValue>>, TValue)
+  nameWithType: LambdaExtensions.SetPropertyValue<GlobalEvent, TValue>(Expression<Func<GlobalEvent, TValue>>, TValue)
+  fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<BFB.Engine.Event.GlobalEvent, TValue>(Expression<Func<BFB.Engine.Event.GlobalEvent, TValue>>, TValue)
+  nameWithType.vb: LambdaExtensions.SetPropertyValue(Of GlobalEvent, TValue)(Expression(Of Func(Of GlobalEvent, TValue)), TValue)
+  fullName.vb: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of BFB.Engine.Event.GlobalEvent, TValue)(Expression(Of Func(Of BFB.Engine.Event.GlobalEvent, TValue)), TValue)
+  name.vb: SetPropertyValue(Of GlobalEvent, TValue)(Expression(Of Func(Of GlobalEvent, TValue)), TValue)
+  spec.csharp:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue<GlobalEvent, TValue>
+    nameWithType: LambdaExtensions.SetPropertyValue<GlobalEvent, TValue>
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<BFB.Engine.Event.GlobalEvent, TValue>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: BFB.Engine.Event.GlobalEvent
+    name: GlobalEvent
+    nameWithType: GlobalEvent
+    fullName: BFB.Engine.Event.GlobalEvent
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue(Of GlobalEvent, TValue)
+    nameWithType: LambdaExtensions.SetPropertyValue(Of GlobalEvent, TValue)
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of BFB.Engine.Event.GlobalEvent, TValue)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: BFB.Engine.Event.GlobalEvent
+    name: GlobalEvent
+    nameWithType: GlobalEvent
+    fullName: BFB.Engine.Event.GlobalEvent
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  commentId: M:BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+  isExternal: true
+  name: SetPropertyValue<T, TValue>(T, Expression<Func<T, TValue>>, TValue)
+  nameWithType: LambdaExtensions.SetPropertyValue<T, TValue>(T, Expression<Func<T, TValue>>, TValue)
+  fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<T, TValue>(T, Expression<Func<T, TValue>>, TValue)
+  nameWithType.vb: LambdaExtensions.SetPropertyValue(Of T, TValue)(T, Expression(Of Func(Of T, TValue)), TValue)
+  fullName.vb: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of T, TValue)(T, Expression(Of Func(Of T, TValue)), TValue)
+  name.vb: SetPropertyValue(Of T, TValue)(T, Expression(Of Func(Of T, TValue)), TValue)
+  spec.csharp:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue<T, TValue>
+    nameWithType: LambdaExtensions.SetPropertyValue<T, TValue>
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue<T, TValue>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue``2(``0,Expression{Func{``0,``1}},``1)
+    name: SetPropertyValue(Of T, TValue)
+    nameWithType: LambdaExtensions.SetPropertyValue(Of T, TValue)
+    fullName: BFB.Engine.UI.Components.LambdaExtensions.SetPropertyValue(Of T, TValue)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: BFB.Engine.UI.Components.LambdaExtensions
+  commentId: T:BFB.Engine.UI.Components.LambdaExtensions
+  parent: BFB.Engine.UI.Components
+  name: LambdaExtensions
+  nameWithType: LambdaExtensions
+  fullName: BFB.Engine.UI.Components.LambdaExtensions
+- uid: BFB.Engine.UI.Components
+  commentId: N:BFB.Engine.UI.Components
+  name: BFB.Engine.UI.Components
+  nameWithType: BFB.Engine.UI.Components
+  fullName: BFB.Engine.UI.Components
+- uid: BFB.Engine.Event.GlobalEvent.Message*
+  commentId: Overload:BFB.Engine.Event.GlobalEvent.Message
+  name: Message
+  nameWithType: GlobalEvent.Message
+  fullName: BFB.Engine.Event.GlobalEvent.Message
+- uid: System.String
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: BFB.Engine.Event.GlobalEvent.Data*
+  commentId: Overload:BFB.Engine.Event.GlobalEvent.Data
+  name: Data
+  nameWithType: GlobalEvent.Data
+  fullName: BFB.Engine.Event.GlobalEvent.Data

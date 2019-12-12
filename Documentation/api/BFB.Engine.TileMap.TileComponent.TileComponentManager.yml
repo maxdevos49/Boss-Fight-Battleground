@@ -1,0 +1,169 @@
+### YamlMime:ManagedReference
+items:
+- uid: BFB.Engine.TileMap.TileComponent.TileComponentManager
+  commentId: T:BFB.Engine.TileMap.TileComponent.TileComponentManager
+  id: TileComponentManager
+  parent: BFB.Engine.TileMap.TileComponent
+  children:
+  - BFB.Engine.TileMap.TileComponent.TileComponentManager.LoadTileComponents
+  - BFB.Engine.TileMap.TileComponent.TileComponentManager.TickTile(BFB.Engine.TileMap.WorldManager,BFB.Engine.TileMap.Chunk,System.Int32,System.Int32)
+  langs:
+  - csharp
+  - vb
+  name: TileComponentManager
+  nameWithType: TileComponentManager
+  fullName: BFB.Engine.TileMap.TileComponent.TileComponentManager
+  type: Class
+  source:
+    remote:
+      path: BFB/BFB.Engine/TileMap/TileComponent/TileComponentManager.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: TileComponentManager
+    path: ../BFB/BFB.Engine/TileMap/TileComponent/TileComponentManager.cs
+    startLine: 7
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.TileMap.TileComponent
+  summary: "\nUsed to manage the tile component.\n"
+  example: []
+  syntax:
+    content: 'public static class TileComponentManager : object'
+    content.vb: >-
+      Public Module TileComponentManager
+
+          Inherits Object
+  inheritance:
+  - System.Object
+  modifiers.csharp:
+  - public
+  - static
+  - class
+  modifiers.vb:
+  - Public
+  - Module
+- uid: BFB.Engine.TileMap.TileComponent.TileComponentManager.LoadTileComponents
+  commentId: M:BFB.Engine.TileMap.TileComponent.TileComponentManager.LoadTileComponents
+  id: LoadTileComponents
+  parent: BFB.Engine.TileMap.TileComponent.TileComponentManager
+  langs:
+  - csharp
+  - vb
+  name: LoadTileComponents()
+  nameWithType: TileComponentManager.LoadTileComponents()
+  fullName: BFB.Engine.TileMap.TileComponent.TileComponentManager.LoadTileComponents()
+  type: Method
+  source:
+    remote:
+      path: BFB/BFB.Engine/TileMap/TileComponent/TileComponentManager.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: LoadTileComponents
+    path: ../BFB/BFB.Engine/TileMap/TileComponent/TileComponentManager.cs
+    startLine: 17
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.TileMap.TileComponent
+  summary: "\nHow the tile components are loaded.\n"
+  example: []
+  syntax:
+    content: public static void LoadTileComponents()
+    content.vb: Public Shared Sub LoadTileComponents
+  overload: BFB.Engine.TileMap.TileComponent.TileComponentManager.LoadTileComponents*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: BFB.Engine.TileMap.TileComponent.TileComponentManager.TickTile(BFB.Engine.TileMap.WorldManager,BFB.Engine.TileMap.Chunk,System.Int32,System.Int32)
+  commentId: M:BFB.Engine.TileMap.TileComponent.TileComponentManager.TickTile(BFB.Engine.TileMap.WorldManager,BFB.Engine.TileMap.Chunk,System.Int32,System.Int32)
+  id: TickTile(BFB.Engine.TileMap.WorldManager,BFB.Engine.TileMap.Chunk,System.Int32,System.Int32)
+  parent: BFB.Engine.TileMap.TileComponent.TileComponentManager
+  langs:
+  - csharp
+  - vb
+  name: TickTile(WorldManager, Chunk, Int32, Int32)
+  nameWithType: TileComponentManager.TickTile(WorldManager, Chunk, Int32, Int32)
+  fullName: BFB.Engine.TileMap.TileComponent.TileComponentManager.TickTile(BFB.Engine.TileMap.WorldManager, BFB.Engine.TileMap.Chunk, System.Int32, System.Int32)
+  type: Method
+  source:
+    remote:
+      path: BFB/BFB.Engine/TileMap/TileComponent/TileComponentManager.cs
+      branch: develop
+      repo: https://git.linux.iastate.edu/cs309/fall2019/ks_5.git
+    id: TickTile
+    path: ../BFB/BFB.Engine/TileMap/TileComponent/TileComponentManager.cs
+    startLine: 37
+  assemblies:
+  - BFB.Engine
+  namespace: BFB.Engine.TileMap.TileComponent
+  summary: "\nThe update for the tile component.\n"
+  example: []
+  syntax:
+    content: public static void TickTile(WorldManager worldManager, Chunk chunk, int blockX, int blockY)
+    parameters:
+    - id: worldManager
+      type: BFB.Engine.TileMap.WorldManager
+      description: The manager for the world.
+    - id: chunk
+      type: BFB.Engine.TileMap.Chunk
+      description: The chunk in a given world.
+    - id: blockX
+      type: System.Int32
+      description: The x block in the given chunk.
+    - id: blockY
+      type: System.Int32
+      description: The y block in the given chunk.
+    content.vb: Public Shared Sub TickTile(worldManager As WorldManager, chunk As Chunk, blockX As Integer, blockY As Integer)
+  overload: BFB.Engine.TileMap.TileComponent.TileComponentManager.TickTile*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+references:
+- uid: BFB.Engine.TileMap.TileComponent
+  commentId: N:BFB.Engine.TileMap.TileComponent
+  name: BFB.Engine.TileMap.TileComponent
+  nameWithType: BFB.Engine.TileMap.TileComponent
+  fullName: BFB.Engine.TileMap.TileComponent
+- uid: System.Object
+  commentId: '!:System.Object'
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: BFB.Engine.TileMap.TileComponent.TileComponentManager.LoadTileComponents*
+  commentId: Overload:BFB.Engine.TileMap.TileComponent.TileComponentManager.LoadTileComponents
+  name: LoadTileComponents
+  nameWithType: TileComponentManager.LoadTileComponents
+  fullName: BFB.Engine.TileMap.TileComponent.TileComponentManager.LoadTileComponents
+- uid: BFB.Engine.TileMap.TileComponent.TileComponentManager.TickTile*
+  commentId: Overload:BFB.Engine.TileMap.TileComponent.TileComponentManager.TickTile
+  name: TickTile
+  nameWithType: TileComponentManager.TickTile
+  fullName: BFB.Engine.TileMap.TileComponent.TileComponentManager.TickTile
+- uid: BFB.Engine.TileMap.WorldManager
+  commentId: T:BFB.Engine.TileMap.WorldManager
+  parent: BFB.Engine.TileMap
+  name: WorldManager
+  nameWithType: WorldManager
+  fullName: BFB.Engine.TileMap.WorldManager
+- uid: BFB.Engine.TileMap.Chunk
+  commentId: T:BFB.Engine.TileMap.Chunk
+  parent: BFB.Engine.TileMap
+  name: Chunk
+  nameWithType: Chunk
+  fullName: BFB.Engine.TileMap.Chunk
+- uid: System.Int32
+  isExternal: true
+  name: Int32
+  nameWithType: Int32
+  fullName: System.Int32
+- uid: BFB.Engine.TileMap
+  commentId: N:BFB.Engine.TileMap
+  name: BFB.Engine.TileMap
+  nameWithType: BFB.Engine.TileMap
+  fullName: BFB.Engine.TileMap

@@ -1,0 +1,28 @@
+### YamlMime:ManagedReference
+items:
+- uid: BFB.Engine.Simulation
+  commentId: N:BFB.Engine.Simulation
+  id: BFB.Engine.Simulation
+  children:
+  - BFB.Engine.Simulation.Simulation
+  langs:
+  - csharp
+  - vb
+  name: BFB.Engine.Simulation
+  nameWithType: BFB.Engine.Simulation
+  fullName: BFB.Engine.Simulation
+  type: Namespace
+  assemblies:
+  - BFB.Engine
+references:
+- uid: BFB.Engine.Simulation.Simulation
+  commentId: T:BFB.Engine.Simulation.Simulation
+  parent: BFB.Engine.Simulation
+  name: Simulation
+  nameWithType: Simulation
+  fullName: BFB.Engine.Simulation.Simulation
+- uid: BFB.Engine.Simulation
+  commentId: N:BFB.Engine.Simulation
+  name: BFB.Engine.Simulation
+  nameWithType: BFB.Engine.Simulation
+  fullName: BFB.Engine.Simulation

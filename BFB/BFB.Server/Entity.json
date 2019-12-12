@@ -1,0 +1,364 @@
+{
+  "Entities": {
+    "Human": {
+      "TextureKey": "Player",
+      "EntityType": "Mob",
+      "Health": 20,
+      "Mana": 1000,
+      "Lifetime": 0,
+      "DimensionRange": null,
+      "Dimensions": {
+        "X": 2,
+        "Y": 3
+      },
+      "Origin": {
+        "X": 0.5,
+        "Y": 0.5
+      },
+      "CollideFilter": "mob",
+      "CollideWithFilters": [
+        "tile",
+        "item",
+        "projectile",
+        "melee"
+      ],
+      "Components": [
+        "AutoJump",
+        "Health",
+        "HumanPhysics",
+        "WalkingAnimation",
+        "VoidDeath"
+      ]
+    },
+    "Zombie": {
+      "TextureKey": "Zombie",
+      "EntityType": "Mob",
+      "Health": 20,
+      "Mana": 1000,
+      "Lifetime": 0,
+      "DimensionRange": null,
+      "Dimensions": {
+        "X": 2,
+        "Y": 3
+      },
+      "Origin": {
+        "X": 0.5,
+        "Y": 0.5
+      },
+      "CollideFilter": "mob",
+      "CollideWithFilters": [
+        "tile",
+        "item",
+        "projectile",
+        "melee"
+      ],
+      "Components": [
+        "AutoJump",
+        "Health",
+        "ZombiePhysics",
+        "WalkingAnimation",
+        "VoidDeath"
+      ]
+    },
+    "Skeleton": {
+      "TextureKey": "Skeleton",
+      "EntityType": "Mob",
+      "Health": 20,
+      "Mana": 1000,
+      "Lifetime": 0,
+      "DimensionRange": null,
+      "Dimensions": {
+        "X": 2,
+        "Y": 3
+      },
+      "Origin": {
+        "X": 0.5,
+        "Y": 0.5
+      },
+      "CollideFilter": "mob",
+      "CollideWithFilters": [
+        "tile",
+        "item",
+        "projectile",
+        "melee"
+      ],
+      "Components": [
+        "AutoJump",
+        "Health",
+        "SkeletonPhysics",
+        "WalkingAnimation",
+        "VoidDeath"
+      ]
+    },
+    "Spider": {
+      "TextureKey": "Spider",
+      "EntityType": "Mob",
+      "Health": 20,
+      "Mana": 1000,
+      "Lifetime": 0,
+      "DimensionRange": null,
+      "Dimensions": {
+        "X": 3,
+        "Y": 2
+      },
+      "Origin": {
+        "X": 0.5,
+        "Y": 0.5
+      },
+      "CollideFilter": "mob",
+      "CollideWithFilters": [
+        "tile",
+        "item",
+        "projectile",
+        "melee"
+      ],
+      "Components": [
+        "AutoJump",
+        "Health",
+        "SpiderPhysics",
+        "WalkingAnimation",
+        "VoidDeath"
+      ]
+    },
+    "AdamBoss": {
+      "TextureKey": "Boss",
+      "EntityType": "Mob",
+      "Health": 100,
+      "Mana": 1000,
+      "Lifetime": 0,
+      "DimensionRange": null,
+      "Dimensions": {
+        "X": 3,
+        "Y": 4
+      },
+      "Origin": {
+        "X": 0.5,
+        "Y": 0.5
+      },
+      "CollideFilter": "mob",
+      "CollideWithFilters": [
+        "tile",
+        "item",
+        "projectile",
+        "melee"
+      ],
+      "Components": [
+        "AutoJump",
+        "Health",
+        "HumanPhysics",
+        "WalkingAnimation",
+        "VoidDeath"
+      ]
+    },
+    "MagicMissile": {
+      "TextureKey": "Missile",
+      "EntityType": "Projectile",
+      "Lifetime": 50,
+      "Dimensions": {
+        "X": 1,
+        "Y": 1
+      },
+      "Origin": {
+        "X": 0.5,
+        "Y": 0.5
+      },
+      "CollideFilter": "projectile",
+      "CollideWithFilters": [
+        "tile",
+        "mob"
+      ],
+      "Components": [
+        "MagicMissilePhysics",
+        "ParticleTrailEffect"
+      ]
+    },
+    "Bomb": {
+      "TextureKey": "Bomb",
+      "EntityType": "Projectile",
+      "Lifetime": 0,
+      "Dimensions": {
+        "X": 1,
+        "Y": 1
+      },
+      "Origin": {
+        "X": 0.5,
+        "Y": 0.5
+      },
+      "CollideFilter": "projectile",
+      "CollideWithFilters": [
+        "tile",
+        "mob"
+      ],
+      "Components": [
+        "BombPhysics",
+        "ParticleExplosionEffect",
+        "ParticleTrailEffect"
+      ]
+    },
+    "HealSpell": {
+      "TextureKey": "Heart",
+      "EntityType": "Projectile",
+      "Lifetime": 7,
+      "Dimensions": {
+        "X": 1,
+        "Y": 1
+      },
+      "Origin": {
+        "X": 0.5,
+        "Y": 0.5
+      },
+      "Components": [
+        "FloatPhysics"
+      ]
+    },
+    "FireBall": {
+      "TextureKey": "Fireball",
+      "EntityType": "Projectile",
+      "Lifetime": 0,
+      "Dimensions": {
+        "X": 1,
+        "Y": 1
+      },
+      "Origin": {
+        "X": 0.5,
+        "Y": 0.5
+      },
+      "Components": [
+        "FireballPhysics",
+        "FireballParticleEffect"
+      ]
+    },
+    "MiniStarParticle": {
+      "TextureKey": "EffectMiniStar",
+      "EntityType": "Particle",
+      "Lifetime": 5,
+      "DimensionRange": {
+        "X": 0,
+        "Y": 2
+      },
+      "Origin": {
+        "X": 0.5,
+        "Y": 0.5
+      },
+      "Components": [
+        "ParticleEffect1"
+      ]
+    },
+    "StarParticle": {
+      "TextureKey": "EffectStar",
+      "EntityType": "Particle",
+      "Lifetime": 5,
+      "DimensionRange": {
+        "X": 0,
+        "Y": 2
+      },
+      "Origin": {
+        "X": 0.5,
+        "Y": 0.5
+      },
+      "Components": [
+        "ParticleEffect1"
+      ]
+    },
+    "XParticle": {
+      "TextureKey": "EffectX",
+      "EntityType": "Particle",
+      "Lifetime": 5,
+      "DimensionRange": {
+        "X": 0,
+        "Y": 2
+      },
+      "Origin": {
+        "X": 0.5,
+        "Y": 0.5
+      },
+      "Components": [
+        "ParticleEffect1"
+      ]
+    },
+    "rMiniStarParticle": {
+      "TextureKey": "EffectMiniStar",
+      "EntityType": "Particle",
+      "Lifetime": 10,
+      "DimensionRange": {
+        "X": 0,
+        "Y": 2
+      },
+      "Origin": {
+        "X": 0.5,
+        "Y": 0.5
+      },
+      "Components": [
+        "ParticleEffect3"
+      ]
+    },
+    "rStarParticle": {
+      "TextureKey": "EffectStar",
+      "EntityType": "Particle",
+      "Lifetime": 10,
+      "DimensionRange": {
+        "X": 0,
+        "Y": 2
+      },
+      "Origin": {
+        "X": 0.5,
+        "Y": 0.5
+      },
+      "Components": [
+        "ParticleEffect3"
+      ]
+    },
+    "rXParticle": {
+      "TextureKey": "EffectX",
+      "EntityType": "Particle",
+      "Lifetime": 10,
+      "DimensionRange": {
+        "X": 0,
+        "Y": 2
+      },
+      "Origin": {
+        "X": 0.5,
+        "Y": 0.5
+      },
+      "Components": [
+        "ParticleEffect3"
+      ]
+    },
+    "FireBallParticle": {
+      "TextureKey": "EffectRedBall",
+      "EntityType": "Particle",
+      "Lifetime": 5,
+      "DimensionRange": {
+        "X": 0,
+        "Y": 2
+      },
+      "Origin": {
+        "X": 0.5,
+        "Y": 0.5
+      },
+      "Components": [
+        "ParticleEffect2"
+      ]
+    },
+    "Item": {
+      "TextureKey": "Tile:Missing",
+      "EntityType": "Item",
+      "Lifetime": 2000,
+      "Dimensions": {
+        "X": 1,
+        "Y": 1
+      },
+      "Origin": {
+        "X": 0.5,
+        "Y": 0.5
+      },
+      "CollideFilter": "item",
+      "CollideWithFilters": [
+        "tile"
+      ],
+      "Components": [
+        "ItemPhysics"
+      ]
+    }
+  }
+}
