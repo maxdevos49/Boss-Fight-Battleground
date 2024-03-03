@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
     <ReleaseVersion>0.0.0.1</ReleaseVersion>
   </PropertyGroup>
 
@@ -43,7 +43,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\BFB.Engine\BFB.Engine.csproj" />
+    <ProjectReference Include="..\BFB.Engine\BFB.Engine.csproj">
+      <ReferenceSourceTarget></ReferenceSourceTarget>
+    </ProjectReference>
   </ItemGroup>
 
 

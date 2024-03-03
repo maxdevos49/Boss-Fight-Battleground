@@ -77,8 +77,9 @@ namespace BFB.Client
             #region Window Options
 
             Window.Title = "Boss Fight Battlegrounds";
-            Window.ClientSizeChanged += Window_ClientSizeChanged;
-            Window.AllowUserResizing = true;
+            // On M1 Mac self installed SDL does not support this. Commenting for now
+            // Window.ClientSizeChanged += Window_ClientSizeChanged;
+            // Window.AllowUserResizing = true;
 
             #endregion
 
